@@ -1,0 +1,55 @@
+#top{
+	float:left;
+}
+
+#drop-area{
+	float:left;
+	padding:10px;
+	margin:10px;
+	border:1px dashed #000;
+	width: 150px;
+	font-size: 25px;
+}
+
+#drop-area.over{
+	background-color: #CCC;
+}
+
+#error-display{
+	float:left;
+	display: none;
+	padding:10px;
+	margin:10px;
+	color:red;
+	border:1px solid red;
+}
+
+
+#song-slides{
+	display:none;
+	clear:both;
+	border-top: 1px solid #000;
+	padding-top:20px;
+}
+
+.slide{
+	float:left;
+	border:5px solid #FFF;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #333;
+	margin:10px;
+}
+
+.slide .content{
+	border:1px solid #000;
+	font-size:13px;
+	padding:5px;
+	white-space: pre-wrap;
+	width:200px;
+}
+
+.slide .label{
+	font-weight: bold;
+	margin-top:5px;
+}
+
