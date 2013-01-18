@@ -1,3 +1,7 @@
+html{
+	min-height: 100%;
+}
+
 #top{
 	float:left;
 }

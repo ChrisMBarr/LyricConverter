@@ -5,7 +5,6 @@ var parser = (function(){
 	var $songInfoList;
 	var $songSlideContainer;
 	var $errorContainer;
-	var fileDropElement;
 
 	var setup={
 		pageInit:function(){
@@ -16,13 +15,37 @@ var parser = (function(){
 				nope: "js/base64.js"
 			});
 
-			dragNDrop.init();
-
 			//Fill in the variables
 			$songTitle = $("#song-title");
 			$songInfoList = $("#song-info");
 			$songSlideContainer = $("#song-slides");
 			$errorContainer = $("#error-display");
+
+			if(Modernizr.draganddrop && window.FileReader){
+				setup.fileDragAndDrop();
+			}else{
+				//no drag-n-drop support
+				_displayError("Your browser does not support file Drag-N-Drop!")
+			}
+		},
+		fileDragAndDrop:function(){
+			$("#drop-area").fileDragAndDrop(function(data, fileName){
+				//Empty out the UI so we can put in new data...
+				song.resetUI();
+				try{
+					//Browsers will add some unneeded text to the base64 encoding. Remove it.
+					var encodedSong = data.replace("data:text/xml;base64,","");
+					var decodedSong = utilities.decode(encodedSong);
+
+					//Pass the decoded song date to the parser
+					song.initParse(decodedSong);
+
+					//Now make all the slides have the same height
+					setup.equalSlideHeights();
+				}catch(ex){
+					_displayError("There was an error reading the file <strong>"+fileName+"</strong><br/>Is this a ProPresenter file?")
+				}
+			});
 		},
 		equalSlideHeights:function(){
 			var currentTallest = 0;
@@ -36,100 +59,6 @@ var parser = (function(){
 				});
 
 			$slideContent.css({'min-height': currentTallest}); 
-		}
-	};
-
-	var dragNDrop = {
-		init:function(){
-			fileDropElement = document.getElementById("drop-area");
-			if(Modernizr.draganddrop && window.FileReader){
-				//can't bind these events with jQuery!
-				fileDropElement.addEventListener('dragenter', dragNDrop._dragEvents._enter, false);
-				fileDropElement.addEventListener('dragover', dragNDrop._dragEvents._exit, false);
-				fileDropElement.addEventListener('dragover', dragNDrop._dragEvents._over, false);
-				fileDropElement.addEventListener('drop', dragNDrop._dragEvents._drop, false);
-				
-			}else{
-				//no drag-n-drop support
-				$songTitle.text("Your browser does not support file Drag-N-Drop!")
-			}
-			
-		},
-		_dragEvents:{
-			_exitTimer:null,
-			_enter:function(ev){
-				$(fileDropElement).addClass("over")
-				ev.stopPropagation();
-				ev.preventDefault();
-			},
-			_exit:function(ev){
-				clearTimeout(dragNDrop._dragEvents._exitTimer);
-				dragNDrop._dragEvents._exitTimer=setTimeout(function(){
-					$(fileDropElement).removeClass("over");
-				},50);
-				ev.stopPropagation();
-				ev.preventDefault();
-			},
-			_over:function(ev){
-				$(fileDropElement).addClass("over")
-				ev.stopPropagation();
-				ev.preventDefault();
-			},
-			_drop:function(ev){
-				$(fileDropElement).removeClass("over")
-				ev.stopPropagation();
-				ev.preventDefault();
-				var files = ev.dataTransfer.files;
-				// Only call the handler if 1 or more files was dropped.
-				if (files.length > 0){
-					 //Loop through the files we can add!
-					 for (var i = 0; i < files.length; i++) {
-					 	dragNDrop._handleFiles(files[i]);
-					 }
-
-					 
-				}
-			}
-		},
-		_handleFiles:function(file) {
-			var reader = new FileReader();
-
-			if(reader.addEventListener) {
-				// Firefox, Chrome
-				reader.addEventListener('loadend', function(ev){
-					dragNDrop._handleReaderLoadEnd(ev, file.name);
-				}, false);
-			} else {
-				// Safari
-				reader.onloadend = function(ev){
-					dragNDrop._handleReaderLoadEnd(ev, file.name);
-				};
-			}
-			// begin the read operation
-			//reader.readAsBinaryString(file);
-			reader.readAsDataURL(file);
-		},
-		_handleReaderLoadEnd:function(ev, fullFileName) {
-			//Empty out the UI so we can put in new data...
-			song.resetUI();
-
-			try{
-				console.log(ev)
-				if(ev.target.result.length>1){
-					
-					//Browsers will add some unneeded text to the base64 encoding that messes up the server code.  Remove it.
-					var encodedSong = ev.target.result.replace("data:text/xml;base64,","");
-					var decodedSong = utilities.decode(encodedSong);
-
-					//Pass the decoded song date to the parser
-					song.initParse(decodedSong);
-					setup.equalSlideHeights();
-
-				}
-
-			}catch(ex){
-				_displayError("There was an error reading this file. ")
-			}
 		}
 	};
 
@@ -221,7 +150,7 @@ var parser = (function(){
 	}
 
 	function _displayError(msg){
-		$errorContainer.show().text(msg);
+		$errorContainer.show().html(msg);
 	}
 
 	//Run this on page load
