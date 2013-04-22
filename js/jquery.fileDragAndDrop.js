@@ -13,21 +13,25 @@
 			options=o; 
 		}
 
-		//Create a finalized version of the options
-		var opts = opts = $.extend({}, $.fn.fileDragAndDrop.defaults, options);
+		
 
 		//Return the elements & loop though them
 		return this.each(function(){
 			var $dropArea = $(this);
 			
+			//Create a finalized version of the options
+			var opts = opts = $.extend({}, $.fn.fileDragAndDrop.defaults, options);
+
+			//If this option was not set, make it the same as the drop area
+			if (opts.addClassTo.length===0){
+				opts.addClassTo = $dropArea;
+			}
+
 			//can't bind these events with jQuery!
 			this.addEventListener('dragenter', function(ev){
 				_events._over(ev, $dropArea, opts);
 			}, false);
 			this.addEventListener('dragover', function(ev){
-				_events._over(ev, $dropArea, opts);
-			}, false);
-			this.addEventListener('dragexit', function(ev){
 				_events._exit(ev, $dropArea, opts);
 			}, false);
 			this.addEventListener('drop', function(ev){
@@ -38,23 +42,24 @@
 
 	$.fn.fileDragAndDrop.defaults = {
 		overClass: "over",
+		addClassTo: $([]),
 		onFileRead: null
 	};
 
 	var _events = {
 		_over : function(ev, $dropArea, opts){
-			$dropArea.addClass(opts.overClass);
+			$(opts.addClassTo).addClass(opts.overClass);
 			_stopEvent(ev);
 		},
 		_exit : function(ev, $dropArea, opts){
 			clearTimeout(_exitTimer);
 			_exitTimer=setTimeout(function(){
-				$dropArea.removeClass(opts.overClass);
-			},50);
+				$(opts.addClassTo).removeClass(opts.overClass);
+			},100);
 			_stopEvent(ev);
 		},
 		_drop : function(ev, $dropArea, opts){
-			$dropArea.removeClass(opts.overClass);
+			$(opts.addClassTo).removeClass(opts.overClass);
 			_stopEvent(ev);
 			var files = ev.dataTransfer.files;
 
