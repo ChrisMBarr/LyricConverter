@@ -1,3 +1,9 @@
+/*=====================================================
+ * PARSER for ProPresenter 4 files
+ * Extension: .pro4
+ * Site: http://www.renewedvision.com/propresenter.php
+=======================================================*/
+
 (function () {
 	parser.formats.pro4 = function(content){
 		
@@ -18,16 +24,16 @@
 			song.title = attrs.cclisongtitle.value;
 
 			//Parse the song info by passing in the arributes object
-			song.info = _makeInfo(attrs);
+			song.info = _getInfo(attrs);
 
 			//Parse the slides by passing them all in
-			song.slides = _makeSlides($presentationDoc.children("slides").children());
+			song.slides = _getSlides($presentationDoc.children("slides").children());
 		}
 
 		return song;
 	};
 
-	function _makeSlides($slides){
+	function _getSlides($slides){
 		var songSlides = [];
 
 		//Loop through all the passed in slides
@@ -50,7 +56,7 @@
 		return songSlides;
 	}
 
-	function _makeInfo(infoAttributes){
+	function _getInfo(infoAttributes){
 		//An array of attributes that we don't need to display in the UI
 		var itemsToRemove = ['height','width','cclisongtitle','cclidisplay','versionnumber','doctype','creatorcode','lastdateused', 'usedcount','backgroundcolor','drawingbackgroundcolor',];
 
