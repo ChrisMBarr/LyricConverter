@@ -7,12 +7,23 @@ html{
 }
 
 #drop-area{
+	background-color: #FFF;
+	border:3px dashed #000;
+	border-radius: 20px;
 	float:left;
-	padding:10px;
-	margin:10px;
-	border:1px dashed #000;
-	width: 150px;
+	padding:20px;
+	margin: 5px 20px 5px 5px;
 	font-size: 25px;
+	
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+#drop-area p{
+	display:table-cell;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #drop-area.over{
@@ -20,12 +31,13 @@ html{
 }
 
 #error-display{
-	float:left;
+	border:1px solid red;
+	border-radius: 20px;
+	color:red;
 	display: none;
+	float:left;
 	padding:10px;
 	margin:10px;
-	color:red;
-	border:1px solid red;
 }
 
 

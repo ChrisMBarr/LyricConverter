@@ -25,26 +25,40 @@ var parser = (function(){
 				setup.fileDragAndDrop();
 			}else{
 				//no drag-n-drop support
-				_displayError("Your browser does not support file Drag-N-Drop!")
+				displayError("Your browser does not support file Drag-N-Drop!")
 			}
 		},
 		fileDragAndDrop:function(){
 			$("#drop-area").fileDragAndDrop(function(data, fileName){
 				//Empty out the UI so we can put in new data...
-				song.resetUI();
-				try{
-					//Browsers will add some unneeded text to the base64 encoding. Remove it.
-					var encodedSong = data.replace("data:text/xml;base64,","");
-					var decodedSong = utilities.decode(encodedSong);
+				resetUI();
 
-					//Pass the decoded song date to the parser
-					song.initParse(decodedSong);
+				//try{
 
-					//Now make all the slides have the same height
-					setup.equalSlideHeights();
-				}catch(ex){
-					_displayError("There was an error reading the file <strong>"+fileName+"</strong><br/>Is this a ProPresenter file?")
-				}
+					//Find the file extention
+					var fileExt = fileName.split(".").slice(-1)[0].toLowerCase();
+
+					//Make sure the file extention matches up with an existing parser
+					if($.isFunction(parser.formats[fileExt])){
+						//Browsers will add some unneeded text to the base64 encoding. Remove it.
+						var encodedSongData = data.replace("data:text/xml;base64,","");
+						var decodedSongData = utilities.decode(encodedSongData);
+
+						//Pass the decoded song date to the parser
+						//We will get back a normalized version of teh song content for any file type
+						var normalizedSongData = parser.formats[fileExt](decodedSongData);
+
+						//Create some slides with the normalized song data
+						createSlides(normalizedSongData);
+
+						//Now make all the slides have the same height
+						setup.equalSlideHeights();
+					}else{
+						displayError("The file <strong>"+fileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> is not a supported file type!")
+					}
+				//}catch(ex){
+					//displayError("There was an error reading the file <strong>"+fileName+"</strong>");
+				//}
 			});
 		},
 		equalSlideHeights:function(){
@@ -68,91 +82,53 @@ var parser = (function(){
 		},
 		encode:function(str){
 			return window.btoa(unescape(encodeURIComponent( str )));
-		},
-		stripRtf:function(str){
-			//var pattern = /\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-			var basicRtfPattern = /\{\*?\\[^{}]+}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-			var newLineSlashesPattern = /\\\n/g;
-
-			var stripped = str.replace(basicRtfPattern,"");
-			var removeNewlineSlashes = stripped.replace(newLineSlashesPattern, "\n")
-			var removeWhitespace = removeNewlineSlashes.trim();
-
-			return removeWhitespace;
 		}
 	}
 
-	var song = {
-		initParse:function(content){
-			//select the top-level document element
-			var $presentationDoc = $(content);
 
-			if($presentationDoc.length<=0){
-				$.error("error reading file!")
-			}else{
-				//Parse the song info by passing in the arributes object
-				song.info($presentationDoc.get(0).attributes)
+	function createSlides(songData){
+		console.log(songData);
 
-				//Parse the slides by passing them all in
-				song.slides($presentationDoc.children("slides").children());
-			}
-		},
-		info:function(infoAttributes){
-			//An array of attributes that we don't need to display in the UI
-			var itemsToRemove = ['height','width','cclisongtitle','cclidisplay','versionnumber','doctype','creatorcode','lastdateused', 'usedcount','backgroundcolor','drawingbackgroundcolor',];
+		$songTitle.text(songData.title);
 
-			//Loop through all the passed in attributes
-			$.each(infoAttributes, function(i, thisAttr){
+		//Add the title
+		if(songData.slides.length>0) $songSlideContainer.show();
 
-				//Continue only if the attribute is not in the array above AND the value is not blank
-				if($.inArray(thisAttr.name, itemsToRemove) < 0 && thisAttr.value !== ""){
-					$("<li>"+thisAttr.name+": <strong>"+thisAttr.value+"</strong></li>").appendTo($songInfoList);
-				}
-			});
+		//Add each info item
+		for (var i = songData.info.length - 1; i >= 0; i--) {
+			var s = songData.info[i];
 
-			//Special case - Set the date. Parse it to a human readable date!
-			var lastUsedDate = new Date(Date.parse(infoAttributes.lastdateused.value));
-			if(!isNaN(lastUsedDate.getTime())){
-				$("<li>Last Used On: <strong>"+lastUsedDate+"</strong></li>").appendTo($songInfoList);
-			}
+			$("<li><strong>"+s.name+":</strong> "+s.value+"</li>").appendTo($songInfoList);
+		};
 
-			//Special case - Set the song title
-			$songTitle.text(infoAttributes.cclisongtitle.value)
-		},
-		slides:function($slides){
+		//Output the slides themselves
+		for (var i = songData.slides.length - 1; i >= 0; i--) {
+			var s = songData.slides[i];
 
-			if($slides.length>0) $songSlideContainer.show();
+			//Create a new HTML clide and add it to the DOM
+			$("<div class='slide'><div class='content'>"+s.lyrics+"</div><div class='label'>"+s.title+"</div></div>").appendTo($songSlideContainer);
+		};
 
-			//Loop through all the passed in slides
-			$slides.each(function(i, el){
-				var $thisSlide = $(el);
-
-				//Get the slide label. If it's blank add in a space so it still renders correctly in the UI
-				var labelText = $.trim($thisSlide.attr("label"));
-				if (labelText === "") labelText = "&nbsp;";
-
-				//Grab the base64 encoded data from the slide element, decode it, the strip off the RTF formatting
-				var encodedRtfData = $thisSlide.find("rvtextelement").attr("rtfdata");
-				var decodedRtfData = utilities.decode(encodedRtfData);
-				var lyricsText = utilities.stripRtf(decodedRtfData);
-
-				//Create a new HTML clide and add it to the DOM
-				$("<div class='slide'><div class='content'>"+lyricsText+"</div><div class='label'>"+labelText+"</div></div>")
-					.appendTo($songSlideContainer);
-			});
-		},
-		resetUI:function(){
-			$errorContainer.empty().hide();
-			$songTitle.text("");
-			$songInfoList.empty();
-			$songSlideContainer.empty().hide();
-		}
+		
 	}
 
-	function _displayError(msg){
+	function resetUI(){
+		$errorContainer.empty().hide();
+		$songTitle.text("");
+		$songInfoList.empty();
+		$songSlideContainer.empty().hide();
+	}
+
+	function displayError(msg){
 		$errorContainer.show().html(msg);
 	}
 
 	//Run this on page load
 	$(setup.pageInit);
+
+	return {
+		utilities: utilities,
+		displayError: displayError,
+		formats:{} //Filled in by other files
+	}
 })();
