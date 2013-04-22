@@ -41,7 +41,7 @@ var parser = (function(){
 					//Make sure the file extention matches up with an existing parser
 					if($.isFunction(parser.formats[fileExt])){
 						//Browsers will add some unneeded text to the base64 encoding. Remove it.
-						var encodedSongData = data.replace("data:text/xml;base64,","");
+						var encodedSongData = data.replace(/^data:.*;base64,/,"");
 						var decodedSongData = utilities.decode(encodedSongData);
 
 						//Pass the decoded song date to the parser
@@ -78,16 +78,20 @@ var parser = (function(){
 
 	var utilities = {
 		decode: function(str){
-			return decodeURIComponent(escape(window.atob( str )));
+			var decoded = window.atob( str );
+			try{
+				return decodeURIComponent(escape(decoded));
+			}catch(ex){
+				return decoded;
+			}
 		},
 		encode:function(str){
 			return window.btoa(unescape(encodeURIComponent( str )));
 		}
 	}
 
-
 	function createSlides(songData){
-		console.log(songData);
+		//console.log(songData);
 
 		$songTitle.text(songData.title);
 
@@ -108,8 +112,6 @@ var parser = (function(){
 			//Create a new HTML clide and add it to the DOM
 			$("<div class='slide'><div class='content'>"+s.lyrics+"</div><div class='label'>"+s.title+"</div></div>").appendTo($songSlideContainer);
 		};
-
-		
 	}
 
 	function resetUI(){
