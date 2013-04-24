@@ -99,18 +99,19 @@ var parser = (function(){
 		if(songData.slides.length>0) $songSlideContainer.show();
 
 		//Add each info item
-		for (var i = songData.info.length - 1; i >= 0; i--) {
+		for (var i = 0; i < songData.info.length; i++) {
 			var s = songData.info[i];
 
 			$("<li><strong>"+s.name+":</strong> "+s.value+"</li>").appendTo($songInfoList);
 		};
 
 		//Output the slides themselves
-		for (var i = songData.slides.length - 1; i >= 0; i--) {
+		for (var i = 0; i < songData.slides.length; i++) {
 			var s = songData.slides[i];
-
+			//If the title is blank, add a space character so it look even
+			var title = s.title.length < 1 ? '&nbsp;' : s.title;
 			//Create a new HTML clide and add it to the DOM
-			$("<div class='slide'><div class='content'>"+s.lyrics+"</div><div class='label'>"+s.title+"</div></div>").appendTo($songSlideContainer);
+			$("<div class='slide'><div class='content'>"+s.lyrics+"</div><div class='label'>"+title+"</div></div>").appendTo($songSlideContainer);
 		};
 	}
 
