@@ -13,17 +13,6 @@
       "outputAbbreviatedPath" : "\/js-min\/formats.sbsong.min.min.js",
       "fileType" : 64
     },
-    "\/js\/jquery.fileDragAndDrop.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/jquery.fileDragAndDrop.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/js-min\/jquery.fileDragAndDrop.min.js",
-      "fileType" : 64
-    },
     "\/js\/formats.pro4.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 0,
@@ -35,13 +24,24 @@
       "outputAbbreviatedPath" : "\/js-min\/formats.pro4.min.js",
       "fileType" : 64
     },
-    "\/js\/formats.sbsong.js" : {
+    "\/js\/jquery.fileDragAndDrop.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/formats.sbsong.js",
+      "inputAbbreviatedPath" : "\/js\/jquery.fileDragAndDrop.js",
       "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/js-min\/jquery.fileDragAndDrop.min.js",
+      "fileType" : 64
+    },
+    "\/js\/formats.sbsong.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/formats.sbsong.js",
+      "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/js-min\/formats.sbsong.min.js",
       "fileType" : 64
@@ -79,6 +79,15 @@
       "outputAbbreviatedPath" : "\/js-min\/base64.min.js",
       "fileType" : 64
     },
+    "\/index.htm" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/index.htm",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/js\/parser.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 0,
@@ -89,15 +98,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/js-min\/parser.min.js",
       "fileType" : 64
-    },
-    "\/index.htm" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.htm",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/css\/normalize.css" : {
       "ignoreWasSetByUser" : 0,
