@@ -17,7 +17,7 @@
 		};
 
 		if($presentationDoc.length<=0){
-			parser.displayError("error reading PRO4 file!")
+			parser.displayError("error reading PRO4 file!");
 		}else{
 			var attrs = $presentationDoc.get(0).attributes;
 
@@ -58,7 +58,7 @@
 
 	function _getInfo(infoAttributes){
 		//An array of attributes that we don't need to display in the UI
-		var itemsToRemove = ['height','width','cclisongtitle','cclidisplay','versionnumber','doctype','creatorcode','lastdateused', 'usedcount','backgroundcolor','drawingbackgroundcolor',];
+		var itemsToRemove = ['height','width','cclisongtitle','cclidisplay','versionnumber','doctype','creatorcode','lastdateused', 'usedcount','backgroundcolor','drawingbackgroundcolor'];
 
 		var songInfo = [];
 
@@ -93,7 +93,7 @@
 		var newLineSlashesPattern = /\\\n/g;
 
 		var stripped = str.replace(basicRtfPattern,"");
-		var removeNewlineSlashes = stripped.replace(newLineSlashesPattern, "\n")
+		var removeNewlineSlashes = stripped.replace(newLineSlashesPattern, "\n");
 		var removeWhitespace = removeNewlineSlashes.trim();
 
 		return removeWhitespace;

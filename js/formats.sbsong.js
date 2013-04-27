@@ -37,7 +37,9 @@
 		});
 
 		//If the first items is a number between 1 and 4 digits, remove it
-		if(/[0-9]{1,4}/.test(infoArray[0])) infoArray.splice(0,1);
+		if(/[0-9]{1,4}/.test(infoArray[0])){
+			infoArray.splice(0,1);
+		}
 
 		var songTitle = infoArray[0];
 		var songInfo = [];
@@ -97,12 +99,10 @@
 				"title": slideTitle,
 				"lyrics": slideLyrics
 			});
-		};
+		}
 
 		//The last slide also contains the keywords, we need to parse these out separately
-		var lastSlideRaw = sections.slice(-1)[0];
-		var lastSlideParsed = slideArray.slice(-1)[0];
-		var lastSlideObj = _getKeywordsFromLastSlide(lastSlideRaw, lastSlideParsed);
+		var lastSlideObj = _getKeywordsFromLastSlide(sections.slice(-1)[0]);
 		var keywords = false;
 		if(lastSlideObj){
 			keywords = lastSlideObj.keywords;
@@ -115,7 +115,7 @@
 		};
 	}
 
-	function _getKeywordsFromLastSlide(lastSlideRaw, lastSlideParsed) {
+	function _getKeywordsFromLastSlide(lastSlideRaw) {
 
 		var infoArray = lastSlideRaw.split(patterns.invisibles);
 		//Now loop through the array and remove all empty items and items that are only 1 character long
