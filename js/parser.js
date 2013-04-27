@@ -129,6 +129,27 @@ var parser = (function(){
 	//Run this on page load
 	$(setup.pageInit);
 
+	/*
+	var testFile = 'Be Near.sbsong';
+	$.ajax({
+	  url: 'sample files/'+testFile,
+	  type: 'GET',
+	  dataType: 'text/plain',
+	  complete: function(xhr, textStatus) {
+	    var fileExt = testFile.split(".").slice(-1)[0].toLowerCase();
+
+		//Pass the decoded song date to the parser
+		//We will get back a normalized version of teh song content for any file type
+		var normalizedSongData = parser.formats[fileExt](xhr.responseText);
+
+		//Create some slides with the normalized song data
+		createSlides(normalizedSongData);
+
+		//Now make all the slides have the same height
+		setup.equalSlideHeights();
+	  }
+	});
+	*/
 	return {
 		utilities: utilities,
 		displayError: displayError,
