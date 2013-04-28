@@ -39,7 +39,7 @@ var parser = (function(){
 				try{
 
 					//Find the file extention
-					var fileparts = fullFileName.split(".");
+					var fileParts = fullFileName.split(".");
 					var fileName = fileParts[0];
 					var fileExt = fileParts.slice(-1)[0].toLowerCase();
 

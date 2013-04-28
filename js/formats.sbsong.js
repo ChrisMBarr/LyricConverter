@@ -9,7 +9,7 @@
 		//We don't want any properties XML tags which can sometimes begin the file.
 		//Splitting these out and then taking teh first array item can prevent this.
 		//Each song sections seems to be split up by a percent sign, so make an array by splitting on that
-		var sections = content.split("<Properties>")[0].split("%");
+		var sections = songData.split("<Properties>")[0].split("%");
 
 		//Pass all the sections in here to get the lyrics
 		//We will get out the slides and the keywords
