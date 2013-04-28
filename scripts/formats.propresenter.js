@@ -5,7 +5,7 @@
 =======================================================*/
 
 (function () {
-	parser.formats.pro4 = function(songData, fileName){
+	parser.formats.propresenter = function(songData, fileName){
 		
 		//select the top-level document element
 		var $presentationDoc = $(songData);

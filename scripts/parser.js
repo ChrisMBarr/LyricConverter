@@ -43,33 +43,40 @@ var parser = (function(){
 		$dropArea.fileDragAndDrop(function(data, fullFileName){
 			_resetUI();
 
-			try{
+			//try{
 				//Find the file extention
 				var fileParts = fullFileName.split(".");
 				var fileName = fileParts[0];
 				var fileExt = fileParts.slice(-1)[0].toLowerCase();
 
+				var formatToParse = '';
+				if(/pro\d+/.test(fileExt)){
+					formatToParse = 'propresenter';
+				}else if(fileExt === 'sbsong'){
+					formatToParse = 'ssp';
+				}
+				
 				//Make sure the file extention matches up with an existing parser
-				if($.isFunction(parser.formats[fileExt])){
+				if($.isFunction(parser.formats[formatToParse])){
 					//Browsers will add some unneeded text to the base64 encoding. Remove it.
 					var encodedSongData = data.replace(/^data:.*;base64,/,"");
 					var decodedSongData = utilities.decode(encodedSongData);
 
 					//Pass the decoded song date to the parser
 					//We will get back a normalized version of the song content for any supported file type
-					var normalizedSongData = parser.formats[fileExt](decodedSongData, fileName);
+					var normalizedSongData = parser.formats[formatToParse](decodedSongData, fileName);
 
 					//Pass the final song data to the selected output type
 					parser.outputs[$outputSelection.val()]().run(normalizedSongData);
 				}else{
 					_resetUI();
-					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> is not a supported file type!","Invalid Filetype!")
+					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> files are not supported!", "Invalid Filetype!")
 				}
-			}catch(ex){
-				_resetUI();
-				displayError("There was an error reading the file <strong>"+fullFileName+"</strong>","Error!");
+			//}catch(ex){
+				//_resetUI();
+				//displayError("There was an error reading the file <strong>"+fullFileName+"</strong>","Error!");
 				
-			}
+			//}
 		});
 	}
 

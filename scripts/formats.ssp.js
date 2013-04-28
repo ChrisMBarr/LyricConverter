@@ -5,7 +5,7 @@
 =======================================================*/
 
 (function () {
-	parser.formats.sbsong = function(songData, fileName){
+	parser.formats.ssp = function(songData, fileName){
 		//We don't want any properties XML tags which can sometimes begin the file.
 		//Splitting these out and then taking teh first array item can prevent this.
 		//Each song sections seems to be split up by a percent sign, so make an array by splitting on that
