@@ -10,7 +10,7 @@
 	var $songSlideContainer;
 
 	//Extend the outputs object on the parser to allow for HTML output
-	parser.outputs.display = function (songData) {
+	parser.outputs.display = function (songData, fileName) {
 		//Create some slides with the normalized song data
 		_createSlides(songData);
 

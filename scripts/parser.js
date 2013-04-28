@@ -67,7 +67,7 @@ var parser = (function(){
 					var normalizedSongData = parser.formats[formatToParse](decodedSongData, fileName);
 
 					//Pass the final song data to the selected output type
-					parser.outputs[$outputSelection.val()](normalizedSongData);
+					parser.outputs[$outputSelection.val()](normalizedSongData, fileName);
 				}else{
 					_resetUI();
 					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> files are not supported!", "Invalid Filetype!")
