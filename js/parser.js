@@ -34,7 +34,7 @@ var parser = (function(){
 		fileDragAndDrop:function(){
 			$dropArea.fileDragAndDrop(function(data, fullFileName){
 				//Empty out the UI so we can put in new data...
-				_resetUI();
+				$errorContainer.empty().hide();
 
 				try{
 
@@ -64,11 +64,7 @@ var parser = (function(){
 			});
 		}
 	};
-
-	function _resetUI(){
-		$errorContainer.empty().hide();
-	}
-
+	
 	//==========================
 	//PUBLIC FUNCTIONS BELOW
 	//==========================
