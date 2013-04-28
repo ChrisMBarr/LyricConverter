@@ -31,9 +31,16 @@
 	//===================================
 	//PRIVATE FUNCTIONS
 	//===================================
+
+	//Regex pattern AS A STRING to match invisible control characters
+	//Slashes are double escaped here so it can be in a string!
+	var _patternInvisiblesStr = "[\\xA0\\x00-\\x09\\x0B\\x0C\\x0E-\\x1F\\x7F]";
+	//Same pattern, but as a real RexExp object
+	var _invisibles = new RegExp(_patternInvisiblesStr);
+
 	function _getInfo (firstSection, keywords, fileName) {
 		//Split the info up into an array by the invisible characters
-		var infoArray = firstSection.split(patterns.invisibles);
+		var infoArray = firstSection.split(_invisibles);
 		
 		//Now loop through the array and remove all empty items and items that are only 1 character long
 		infoArray = $.grep(infoArray,function(n){
@@ -89,7 +96,8 @@
 	function _getSlides (sections) {
 		//Sections tend to begin with N number of control characters, a random print character, more control characters, and then the title "Verse 1" or soemthing
 		//After that is the actual song lyrics, but it may be preceeded by one non-word character
-		var slidePattern = /^[\xA0\x00-\x09\x0B\x0C\x0E-\x1F\x7F]+.{1}[\xA0\x00-\x09\x0B\x0C\x0E-\x1F\x7F]+(.+)[\xA0\x00-\x09\x0B\x0C\x0E-\x1F\x7F]+\W*([\s\S]+)/m;
+		//Slashes are double escaped here so it can be in a string!
+		var slidePattern = new RegExp("^" + _patternInvisiblesStr + "+.{1}" + _patternInvisiblesStr + "+(.+)" + _patternInvisiblesStr + "+\\W*([\\s\\S]+)", "m");
 
 		var slideArray = [];
 
@@ -98,12 +106,14 @@
 			
 			//Run the regex on each section to split out the slide title from the lyrics
 			var matches = sections[i].match(slidePattern);
+
+
 			
 			//Remove whitespace from the title
 			var slideTitle = $.trim(matches[1]);
 
 			//Remove any more invisibles from the lyrics and remove whitespace
-			var slideLyrics = $.trim(matches[2].replace(patterns.invisibles,""));
+			var slideLyrics = $.trim(matches[2].replace(_invisibles,""));
 			
 			//Save it to the array!
 			slideArray.push({
@@ -128,7 +138,7 @@
 
 	function _getKeywordsFromLastSlide(lastSlideRaw) {
 
-		var infoArray = lastSlideRaw.split(patterns.invisibles);
+		var infoArray = lastSlideRaw.split(_invisibles);
 		//Now loop through the array and remove all empty items and items that are only 1 character long
 		infoArray = $.grep(infoArray,function(n){
 			var item = $.trim(n);
@@ -153,9 +163,5 @@
 		return false;
 		
 	}
-
-	var patterns = {
-		invisibles: /[\xA0\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/
-	};
 
 })();
