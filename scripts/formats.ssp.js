@@ -44,7 +44,7 @@
 		
 		//Now loop through the array and remove all empty items and items that are only 1 character long
 		infoArray = $.grep(infoArray,function(n){
-			var item = $.trim(n);
+			var item = $.trim(n).replace(/\r\n\t/g,"");
 			return item.length>1 ? item : false;
 		});
 
@@ -107,13 +107,11 @@
 			//Run the regex on each section to split out the slide title from the lyrics
 			var matches = sections[i].match(slidePattern);
 
-
-			
 			//Remove whitespace from the title
-			var slideTitle = $.trim(matches[1]);
+			var slideTitle = $.trim(matches[1]).replace(_invisibles, "");
 
 			//Remove any more invisibles from the lyrics and remove whitespace
-			var slideLyrics = $.trim(matches[2].replace(_invisibles,""));
+			var slideLyrics = $.trim(matches[2]).replace(_invisibles, "");
 			
 			//Save it to the array!
 			slideArray.push({
@@ -147,8 +145,8 @@
 
 		//If we have at least 3 sections, then we have keywords
 		if(infoArray.length>2){
-			//They keywords are the entire array except for the first two items
-			var keywords = infoArray.splice(2).join(", ");
+			//The keywords are the entire array except for the first two items
+			var keywords = infoArray.splice(2).join(", ").replace(/\r\n\t/g,"");
 
 			//Return the last slide minus the keywords, then parse out the optional begining non-word character
 			var lastLyrics = infoArray[1].match(/^\W*([\s\S]+)/m)[1];
