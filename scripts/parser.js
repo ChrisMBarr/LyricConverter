@@ -55,7 +55,7 @@ var parser = (function(){
 				}else if(fileExt === 'sbsong'){
 					formatToParse = 'ssp';
 				}
-				
+
 				//Make sure the file extention matches up with an existing parser
 				if($.isFunction(parser.formats[formatToParse])){
 					//Browsers will add some unneeded text to the base64 encoding. Remove it.
@@ -67,7 +67,7 @@ var parser = (function(){
 					var normalizedSongData = parser.formats[formatToParse](decodedSongData, fileName);
 
 					//Pass the final song data to the selected output type
-					parser.outputs[$outputSelection.val()]().run(normalizedSongData);
+					parser.outputs[$outputSelection.val()](normalizedSongData);
 				}else{
 					_resetUI();
 					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> files are not supported!", "Invalid Filetype!")
@@ -86,7 +86,7 @@ var parser = (function(){
 		$beginTutorial.hide();
 
 		//Call the reset function for the selected display type
-		parser.outputs[$outputSelection.val()]().resetUI();
+		parser.resetUI[$outputSelection.val()]();
 	}
 	
 	//==========================
@@ -124,6 +124,7 @@ var parser = (function(){
 		utilities: utilities,
 		displayError: displayError,
 		formats:{}, //Filled in by other files
-		outputs:{} //Filled in by other files
+		outputs:{}, //Filled in by other files
+		resetUI:{} //Filled in by other files
 	}
 })();

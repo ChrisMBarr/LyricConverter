@@ -5,6 +5,8 @@
 =======================================================*/
 
 (function () {
+
+	//Extend the formats object on the parser to allow for parsing ProPresenter files
 	parser.formats.propresenter = function(songData, fileName){
 		
 		//select the top-level document element
@@ -27,6 +29,9 @@
 		};
 	};
 
+	//===================================
+	//PRIVATE FUNCTIONS
+	//===================================
 	function _getSlides($slides){
 		var songSlides = [];
 

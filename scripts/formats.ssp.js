@@ -5,6 +5,8 @@
 =======================================================*/
 
 (function () {
+
+	//Extend the formats object on the parser to allow for parsing SongShowPlus files
 	parser.formats.ssp = function(songData, fileName){
 		//We don't want any properties XML tags which can sometimes begin the file.
 		//Splitting these out and then taking teh first array item can prevent this.
@@ -26,6 +28,9 @@
 		};
 	};
 
+	//===================================
+	//PRIVATE FUNCTIONS
+	//===================================
 	function _getInfo (firstSection, keywords, fileName) {
 		//Split the info up into an array by the invisible characters
 		var infoArray = firstSection.split(patterns.invisibles);
