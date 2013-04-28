@@ -28,7 +28,9 @@ var parser = (function(){
 				setup.fileDragAndDrop();
 			}else{
 				//no drag-n-drop support
-				displayError("Your browser does not support file Drag-N-Drop!")
+				displayError("Sorry, you won't be able to use SongParserJS<br />because your browser does not support file Drag-N-Drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!");
+				$dropArea.hide();
+				$outputSelection.hide();
 			}
 		},
 		fileDragAndDrop:function(){
