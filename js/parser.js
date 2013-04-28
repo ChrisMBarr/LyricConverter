@@ -1,27 +1,30 @@
 var parser = (function(){
 
-	//Init some vars to be used all over the place!
-	var $songTitle;
-	var $songInfoList;
-	var $songSlideContainer;
+	//Init some vars to be used within this scope
+	var $dropArea;
 	var $errorContainer;
+	var $outputSelection;
 
 	var setup={
 		pageInit:function(){
-			//If the browser does not nativly support Base64 encode/decode,
-			//load in a file to add this support
-			Modernizr.load({
-				test: window.atob && window.btoa,
-				nope: "js/base64.js"
-			});
-
 			//Fill in the variables
-			$songTitle = $("#song-title");
-			$songInfoList = $("#song-info");
-			$songSlideContainer = $("#song-slides");
+			$dropArea = $("#drop-area");
 			$errorContainer = $("#error-display");
+			$outputSelection = $("#js-output");
 
-			if(Modernizr.draganddrop && window.FileReader){
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone|Zune/i.test(navigator.userAgent) ) {
+				displayError("Sorry, SongParserJS this cannot be used on mobile devices!");
+				$dropArea.hide();
+				$outputSelection.hide();
+			}else if(Modernizr.draganddrop && window.FileReader){
+				//If the browser does not nativly support Base64 encode/decode,
+				//load in a file to add this support
+				Modernizr.load({
+					test: window.atob && window.btoa,
+					nope: "js/base64.js"
+				});
+
+				//Init the drag-n-drop feature
 				setup.fileDragAndDrop();
 			}else{
 				//no drag-n-drop support
@@ -29,14 +32,16 @@ var parser = (function(){
 			}
 		},
 		fileDragAndDrop:function(){
-			$("#drop-area").fileDragAndDrop(function(data, fileName){
+			$dropArea.fileDragAndDrop(function(data, fullFileName){
 				//Empty out the UI so we can put in new data...
-				resetUI();
+				_resetUI();
 
-				//try{
+				try{
 
 					//Find the file extention
-					var fileExt = fileName.split(".").slice(-1)[0].toLowerCase();
+					var fileparts = fullFileName.split(".");
+					var fileName = fileParts[0];
+					var fileExt = fileParts.slice(-1)[0].toLowerCase();
 
 					//Make sure the file extention matches up with an existing parser
 					if($.isFunction(parser.formats[fileExt])){
@@ -45,37 +50,28 @@ var parser = (function(){
 						var decodedSongData = utilities.decode(encodedSongData);
 
 						//Pass the decoded song date to the parser
-						//We will get back a normalized version of teh song content for any file type
-						var normalizedSongData = parser.formats[fileExt](decodedSongData);
+						//We will get back a normalized version of the song content for any supported file type
+						var normalizedSongData = parser.formats[fileExt](decodedSongData, fileName);
 
-						//Create some slides with the normalized song data
-						createSlides(normalizedSongData);
-
-						//Now make all the slides have the same height
-						setup.equalSlideHeights();
+						//Pass the final song data to the selected output type
+						parser.outputs[$outputSelection.val()](normalizedSongData);
 					}else{
-						displayError("The file <strong>"+fileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> is not a supported file type!")
+						displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> is not a supported file type!")
 					}
-				//}catch(ex){
-					//displayError("There was an error reading the file <strong>"+fileName+"</strong>");
-				//}
+				}catch(ex){
+					displayError("There was an error reading the file <strong>"+fullFileName+"</strong>");
+				}
 			});
-		},
-		equalSlideHeights:function(){
-			var currentTallest = 0;
-
-			var $slideContent = $("#song-slides")
-			.children()
-			.children(".content");
-
-			$slideContent.each(function(i){
-					if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
-				});
-
-			$slideContent.css({'min-height': currentTallest}); 
 		}
 	};
 
+	function _resetUI(){
+		$errorContainer.empty().hide();
+	}
+
+	//==========================
+	//PUBLIC FUNCTIONS BELOW
+	//==========================
 	var utilities = {
 		decode: function(str){
 			var decoded = window.atob( str );
@@ -90,69 +86,19 @@ var parser = (function(){
 		}
 	}
 
-	function createSlides(songData){
-		//console.log(songData);
-
-		$songTitle.text(songData.title);
-
-		//Add the title
-		if(songData.slides.length>0) $songSlideContainer.show();
-
-		//Add each info item
-		for (var i = 0; i < songData.info.length; i++) {
-			var s = songData.info[i];
-
-			$("<li><strong>"+s.name+":</strong> "+s.value+"</li>").appendTo($songInfoList);
-		};
-
-		//Output the slides themselves
-		for (var i = 0; i < songData.slides.length; i++) {
-			var s = songData.slides[i];
-			//If the title is blank, add a space character so it look even
-			var title = s.title.length < 1 ? '&nbsp;' : s.title;
-			//Create a new HTML clide and add it to the DOM
-			$("<div class='slide'><div class='content'>"+s.lyrics+"</div><div class='label'>"+title+"</div></div>").appendTo($songSlideContainer);
-		};
-	}
-
-	function resetUI(){
-		$errorContainer.empty().hide();
-		$songTitle.text("");
-		$songInfoList.empty();
-		$songSlideContainer.empty().hide();
-	}
-
 	function displayError(msg){
 		$errorContainer.show().html(msg);
 	}
 
-	//Run this on page load
+	//==========================
+	//PAGE LOAD
+	//==========================
 	$(setup.pageInit);
 
-	/*
-	var testFile = 'Be Near.sbsong';
-	$.ajax({
-	  url: 'sample files/'+testFile,
-	  type: 'GET',
-	  dataType: 'text/plain',
-	  complete: function(xhr, textStatus) {
-	    var fileExt = testFile.split(".").slice(-1)[0].toLowerCase();
-
-		//Pass the decoded song date to the parser
-		//We will get back a normalized version of teh song content for any file type
-		var normalizedSongData = parser.formats[fileExt](xhr.responseText);
-
-		//Create some slides with the normalized song data
-		createSlides(normalizedSongData);
-
-		//Now make all the slides have the same height
-		setup.equalSlideHeights();
-	  }
-	});
-	*/
 	return {
 		utilities: utilities,
 		displayError: displayError,
-		formats:{} //Filled in by other files
+		formats:{}, //Filled in by other files
+		outputs:{} //Filled in by other files
 	}
 })();

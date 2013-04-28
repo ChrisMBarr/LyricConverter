@@ -79,15 +79,6 @@
       "outputAbbreviatedPath" : "\/js-min\/base64.min.js",
       "fileType" : 64
     },
-    "\/index.htm" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.htm",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/js\/parser.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 0,
@@ -99,14 +90,14 @@
       "outputAbbreviatedPath" : "\/js-min\/parser.min.js",
       "fileType" : 64
     },
-    "\/css\/normalize.css" : {
+    "\/index.htm" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/normalize.css",
+      "inputAbbreviatedPath" : "\/index.htm",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "fileType" : 2048
     },
     "\/js-min\/parser.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -119,6 +110,15 @@
       "outputAbbreviatedPath" : "\/js-min\/parser.min.min.js",
       "fileType" : 64
     },
+    "\/css\/normalize.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/normalize.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/css\/parser.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -127,6 +127,17 @@
       "inputAbbreviatedPath" : "\/css\/parser.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
+    },
+    "\/js\/outputs.display.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/outputs.display.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/js-min\/outputs.display.min.js",
+      "fileType" : 64
     }
   },
   "manualImportLinks" : [

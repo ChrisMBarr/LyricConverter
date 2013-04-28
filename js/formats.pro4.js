@@ -5,32 +5,26 @@
 =======================================================*/
 
 (function () {
-	parser.formats.pro4 = function(content){
+	parser.formats.pro4 = function(songData, fileName){
 		
 		//select the top-level document element
-		var $presentationDoc = $(content);
+		var $presentationDoc = $(songData);
 
-		var song={
-			title:"",
-			info:[],
-			slides:[]
+		//Collect all the attributes to parse later
+		var attrs = $presentationDoc.get(0).attributes;
+			
+		//Collect all the sides to parse later
+		var $slides = $presentationDoc.children("slides").children();
+
+		//Make sure the title is filled in, if not use the filename
+		var songTitle = (typeof attrs.cclisongtitle === "string" && attrs.cclisongtitle.length > 0) ? attrs.cclisongtitle.value : fileName;
+
+		//Fill in the filled-in song object
+		return {
+			title: songTitle,
+			info: _getInfo(attrs),
+			slides: _getSlides($slides)
 		};
-
-		if($presentationDoc.length<=0){
-			parser.displayError("error reading PRO4 file!");
-		}else{
-			var attrs = $presentationDoc.get(0).attributes;
-
-			song.title = attrs.cclisongtitle.value;
-
-			//Parse the song info by passing in the arributes object
-			song.info = _getInfo(attrs);
-
-			//Parse the slides by passing them all in
-			song.slides = _getSlides($presentationDoc.children("slides").children());
-		}
-
-		return song;
 	};
 
 	function _getSlides($slides){
@@ -84,7 +78,6 @@
 		}
 
 		return songInfo;
-
 	}
 
 	function _stripRtf(str){

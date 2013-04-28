@@ -5,7 +5,7 @@
 =======================================================*/
 
 (function () {
-	parser.formats.sbsong = function(content){
+	parser.formats.sbsong = function(songData, fileName){
 		//We don't want any properties XML tags which can sometimes begin the file.
 		//Splitting these out and then taking teh first array item can prevent this.
 		//Each song sections seems to be split up by a percent sign, so make an array by splitting on that
@@ -16,7 +16,7 @@
 		var slideContent = _getSlides(sections);
 
 		//The info is all contained in the first section, so only pass that in and pass in teh keywords from above
-		var parsedInfo = _getInfo(sections[0], slideContent.keywords);
+		var parsedInfo = _getInfo(sections[0], slideContent.keywords, fileName);
 
 		//Return the filled in song object
 		return {
@@ -26,7 +26,7 @@
 		};
 	};
 
-	function _getInfo (firstSection, keywords) {
+	function _getInfo (firstSection, keywords, fileName) {
 		//Split the info up into an array by the invisible characters
 		var infoArray = firstSection.split(patterns.invisibles);
 		
@@ -41,7 +41,9 @@
 			infoArray.splice(0,1);
 		}
 
-		var songTitle = infoArray[0];
+		//Make sure the title is filled in, if not use the filename
+		var songTitle = (infoArray[0].length > 0) ? infoArray[0] : fileName;
+
 		var songInfo = [];
 
 		songInfo.push({
@@ -49,11 +51,15 @@
 			'value':infoArray[1]
 		});
 
-		songInfo.push({
-			'name':'Copyright',
-			'value':infoArray[2].replace("$","") //copyright info tends to end with a $ sign, so remove it
-		});
+		//If the copyright exists, add it
+		if(infoArray[2]){
+			songInfo.push({
+				'name':'Copyright',
+				'value':infoArray[2].replace("$","") //copyright info tends to end with a $ sign, so remove it
+			});
+		}
 
+		//If the CCLI exists, add it
 		if(infoArray[3]){
 			songInfo.push({
 				'name':'CCLI',
