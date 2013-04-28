@@ -2,30 +2,43 @@
 <html>
 <head>
 	<title>Song Parser!</title>
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="css/parser.css">
-	<script src="js/modernizr.js"></script>
-	<script src="js/jquery-1.8.3.min.js"></script>
-	<script src="js/jquery.fileDragAndDrop.js"></script>
-	<script src="js/parser.js"></script>
-	<script src="js/formats.pro4.js"></script>
-	<script src="js/formats.sbsong.js"></script>
-	<script src="js/outputs.display.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles/parser.css">
+	<script src="scripts/lib/modernizr.js"></script>
+	<script src="scripts/lib/jquery-2.0.0.min.js"></script>
+	<script src="scripts/bootstrap/bootstrap-affix.js"></script>
+	<script src="scripts/plugins/jquery.fileDragAndDrop.js"></script>
+	<script src="scripts/parser.js"></script>
+	<script src="scripts/formats.pro4.js"></script>
+	<script src="scripts/formats.sbsong.js"></script>
+	<script src="scripts/outputs.display.js"></script>
 </head>
 <body>
-	<div id="drop-area">
-		<p>Drag a<br/><strong>Song File</strong><br/>Here</p>
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<aside id="sidebar">
+					<h3>SongParser JS</h3>
+					<h5>Display lyrics from ProPresenter and SongShowPlus files in your browser!</h5>
+					<div id="drop-area" class="well">
+						<p>Drag a<br/><strong>Song File</strong><br/>Here</p>
+					</div>
+					
+					<label for="js-output">When finished&hellip;</label>
+					<select id="js-output" class="input-block-level">
+						<option value="display">Display The Lyrics Here</option>
+					</select>
+				</aside>
+			</div>
+			<div class="span9">
+				<div id="error-display"></div>
+			
+				<h3 id="song-title"></h3>
+				<ul id="song-info"></ul>
+			
+				<ul id="slides-container" class="thumbnails"></ul>
+			</div>
+		</div>
 	</div>
-
-	<select id="js-output">
-		<option value="display">Display Slides In Browser</option>
-	</select>
-	
-	<div id="error-display"></div>
-	<div id="top">
-		<h1 id="song-title"></h1>
-		<ul id="song-info"></ul>
-	</div>
-	<div id="song-slides"></div>
 </body>
 </html>

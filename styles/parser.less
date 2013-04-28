@@ -1,0 +1,58 @@
+@import "bootstrap/variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins.less";
+
+#drop-area{
+	background-color: @white;
+	color: @linkColor;
+	font-size: 25px;
+	line-height: 30px;
+	
+	.transition(all 0.4s);
+
+	p{
+		text-align: center;
+		vertical-align: middle;
+		margin:0;
+	}
+
+	&.over{
+		background-color: @linkColor;
+		color: @white;
+	}
+}
+
+#error-display{
+	border:1px solid red;
+	border-radius: 20px;
+	color:red;
+	display: none;
+	float:left;
+	padding:10px;
+	margin:10px;
+}
+
+
+#slides-container{
+	display:none;
+	padding-top:20px;
+}
+
+.slide-content{
+	background: @grayLighter;
+}
+
+.slide-lyrics{
+	background-color: @white;
+	border: 1px solid #DDD;
+	.border-radius(@baseBorderRadius);
+	font-size: 13px;
+	line-height: 15px;
+	margin:0;
+	padding: 3px;
+	white-space: pre-wrap; //Keeps the line breaks
+}
+
+.slide-label{
+	padding-left:3px;
+	margin: 3px 0 0 0;
+}

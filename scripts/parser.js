@@ -20,11 +20,15 @@ var parser = (function(){
 			//load in a file to add this support
 			Modernizr.load({
 				test: window.atob && window.btoa,
-				nope: "js/base64.js"
+				nope: "scripts/plugins/base64.js"
 			});
 
 			//Init the drag-n-drop feature
 			_fileDragAndDrop();
+
+			//Hard-set the sidebar width, then affix it to the page
+			var $sidebar = $("#sidebar");
+			$sidebar.width($sidebar.width()).affix();
 		}else{
 			//no drag-n-drop support
 			displayError("Sorry, you won't be able to use SongParserJS<br />because your browser does not support file Drag-N-Drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!");

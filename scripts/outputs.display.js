@@ -13,7 +13,7 @@
 		//Fill in the variables
 		$songTitle = $("#song-title");
 		$songInfoList = $("#song-info");
-		$songSlideContainer = $("#song-slides");
+		$songSlideContainer = $("#slides-container");
 	}
 
 	//Extend the outputs object on the parser to allow for HTML output
@@ -46,7 +46,7 @@
 			//If the title is blank, add a space character so it look even
 			var title = s.title.length < 1 ? '&nbsp;' : s.title;
 			//Create a new HTML clide and add it to the DOM
-			$("<div class='slide'><div class='content'>"+s.lyrics+"</div><div class='label'>"+title+"</div></div>").appendTo($songSlideContainer);
+			$("<li class='span3'><div class='thumbnail slide-content'><p class='slide-lyrics'>"+s.lyrics+"</p><h6 class='slide-label'>"+title+"</h6></div></li>").appendTo($songSlideContainer);
 		};
 	}
 
@@ -54,10 +54,11 @@
 		var currentTallest = 0;
 
 		$songSlideContainer
-			.children()
-			.children(".content")
+			.find('.slide-lyrics')
 			.each(function(i){
-				if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
+				if ($(this).height() > currentTallest) {
+					currentTallest = $(this).height();
+				}
 			})
 			.css({'min-height': currentTallest}); 
 	}
