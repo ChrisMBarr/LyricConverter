@@ -2,6 +2,7 @@ var parser = (function(){
 
 	//Init some vars to be used within this scope
 	var $dropArea;
+	var $beginTutorial;
 	var $errorContainer;
 	var $outputSelection;
 
@@ -10,9 +11,10 @@ var parser = (function(){
 		$dropArea = $("#drop-area");
 		$errorContainer = $("#error-display");
 		$outputSelection = $("#js-output");
+		$beginTutorial = $("#begin");
 
 		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone|Zune/i.test(navigator.userAgent) ) {
-			displayError("Sorry, SongParserJS this cannot be used on mobile devices!");
+			displayError("Sorry, SongParserJS this cannot be used on mobile devices!","Unsupported Browser!");
 			$dropArea.hide();
 			$outputSelection.hide();
 		}else if(Modernizr.draganddrop && window.FileReader){
@@ -31,7 +33,7 @@ var parser = (function(){
 			$sidebar.width($sidebar.width()).affix();
 		}else{
 			//no drag-n-drop support
-			displayError("Sorry, you won't be able to use SongParserJS<br />because your browser does not support file Drag-N-Drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!");
+			displayError("Sorry, you won't be able to use SongParserJS<br />because your browser does not support file Drag-N-Drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!","Unsupported Browser!");
 			$dropArea.hide();
 			$outputSelection.hide();
 		}
@@ -39,11 +41,9 @@ var parser = (function(){
 
 	function _fileDragAndDrop(){
 		$dropArea.fileDragAndDrop(function(data, fullFileName){
-			//Empty out the UI so we can put in new data...
-			$errorContainer.empty().hide();
+			_resetUI();
 
 			try{
-
 				//Find the file extention
 				var fileParts = fullFileName.split(".");
 				var fileName = fileParts[0];
@@ -60,14 +60,26 @@ var parser = (function(){
 					var normalizedSongData = parser.formats[fileExt](decodedSongData, fileName);
 
 					//Pass the final song data to the selected output type
-					parser.outputs[$outputSelection.val()](normalizedSongData);
+					parser.outputs[$outputSelection.val()]().run(normalizedSongData);
 				}else{
-					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> is not a supported file type!")
+					_resetUI();
+					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> is not a supported file type!","Invalid Filetype!")
 				}
 			}catch(ex){
-				displayError("There was an error reading the file <strong>"+fullFileName+"</strong>");
+				_resetUI();
+				displayError("There was an error reading the file <strong>"+fullFileName+"</strong>","Error!");
+				
 			}
 		});
+	}
+
+	function _resetUI(){
+		//Empty out the UI so we can put in new data...
+		$errorContainer.empty().hide();
+		$beginTutorial.hide();
+
+		//Call the reset function for the selected display type
+		parser.outputs[$outputSelection.val()]().resetUI();
 	}
 	
 	//==========================
@@ -87,8 +99,13 @@ var parser = (function(){
 		}
 	}
 
-	function displayError(msg){
-		$errorContainer.show().html(msg);
+	function displayError(msg, title){
+		var htmlString = "";
+		if(title && title.length){
+			htmlString += "<h3>"+title+"</h3>";
+		}
+		htmlString += "<p>"+msg+"</p>";
+		$errorContainer.show().html(htmlString);
 	}
 
 	//==========================

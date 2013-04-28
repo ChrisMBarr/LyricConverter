@@ -2,7 +2,7 @@
  * OUTPUT for displaying slide content in the browser as HTML
 =======================================================*/
 
-(function(){
+parser.outputs.display = (function(){
 
 	//Init some vars to be used within this scope
 	var $songTitle;
@@ -17,15 +17,6 @@
 	}
 
 	//Extend the outputs object on the parser to allow for HTML output
-	parser.outputs.display = function (songData) {
-		_resetUI();
-
-		//Create some slides with the normalized song data
-		_createSlides(songData);
-
-		//Now make all the slides have the same height
-		_equalSlideHeights();
-	}
 
 	function _createSlides(songData){
 		$songTitle.text(songData.title);
@@ -63,16 +54,22 @@
 			.css({'min-height': currentTallest}); 
 	}
 
-	function _resetUI(){
-		$songTitle.text("");
-		$songInfoList.empty();
-		$songSlideContainer.empty().hide();
+	_init();
+
+	return{
+		run:function (songData) {
+			//Create some slides with the normalized song data
+			_createSlides(songData);
+
+			//Now make all the slides have the same height
+			_equalSlideHeights();
+		},
+		resetUI: function(){
+			//Impliment the required reset function
+			$songTitle.text("");
+			$songInfoList.empty();
+			$songSlideContainer.empty().hide();
+		}
 	}
 
-
-	//==========================
-	//PAGE LOAD
-	//==========================
-	$(_init);
-
-})();
+});
