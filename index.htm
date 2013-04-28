@@ -14,29 +14,34 @@
 	<script src="scripts/outputs.display.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div id="main" class="container">
 		<div class="row">
 			<div class="span3">
 				<aside id="sidebar">
-					<h3>SongParser JS</h3>
-					<h5>Display lyrics from ProPresenter and SongShowPlus files in your browser!</h5>
+					<h3 class="text-center">SongParser JS</h3>
+
 					<div id="drop-area" class="well">
 						<p>Drag a<br/><strong>Song File</strong><br/>Here</p>
 					</div>
 					
-					<label for="js-output">When finished&hellip;</label>
+					<label for="js-output">Then&hellip;</label>
 					<select id="js-output" class="input-block-level">
 						<option value="display">Display The Lyrics Here</option>
 					</select>
+					<small class="muted">(More options wil be added here later&hellip;)</small>
 				</aside>
 			</div>
 			<div class="span9">
-				<div id="error-display"></div>
+				<div id="begin" class="hero-unit">
+					<h2 class="muted">The lyrics will be shown over here!</h2>
+					<p>This can display lyrics from ProPresenter and SongShowPlus files right in your browser! Just drop a song file in the area on the left!</p>
+				</div>
+
+				<div id="error-display" class="hide alert alert-error"></div>
 			
 				<h3 id="song-title"></h3>
 				<ul id="song-info"></ul>
-			
-				<ul id="slides-container" class="thumbnails"></ul>
+				<ul id="slides-container" class="hide thumbnails"></ul>
 			</div>
 		</div>
 	</div>

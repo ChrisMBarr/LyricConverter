@@ -1,8 +1,18 @@
 @import "bootstrap/variables.less"; // Modify this for custom colors, font-sizes, etc
 @import "bootstrap/mixins.less";
 
+html,body{
+	//background-color:orange;
+	min-height: 100%;
+	height: 100%;
+}
+
+#main{
+	//background-color: rgba(255, 255,255 ,0.7);
+	min-height: 100%;
+}
+
 #drop-area{
-	background-color: @white;
 	color: @linkColor;
 	font-size: 25px;
 	line-height: 30px;
@@ -21,19 +31,12 @@
 	}
 }
 
+#begin,
 #error-display{
-	border:1px solid red;
-	border-radius: 20px;
-	color:red;
-	display: none;
-	float:left;
-	padding:10px;
-	margin:10px;
+	margin-top:20px;
 }
 
-
 #slides-container{
-	display:none;
 	padding-top:20px;
 }
 
