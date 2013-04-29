@@ -7,12 +7,11 @@
 	//Extend the outputs object on the parser to allow for HTML output
 	parser.outputs.propresenter = function ($container, songList) {
 
-		//console.log(songData);
-
-		var ppDoc = _makeProPresenterFile(songData);
-		
-		console.log(ppDoc);
-
+		$.each(songList, function(i, song) {
+			var ppDoc = _makeProPresenterFile(song.data);
+			var blob = new Blob([ppDoc], {type: "text/xml;charset=utf-8"});
+			saveAs(blob, song.name+".pro4");
+		})
 	}
 
 	//===================================
@@ -50,9 +49,13 @@
 			var info = songData.info[i];
 
 			if(/copyright/i.test(info.name)){
-				var ccMatches = info.value.match(/(\d{4})(.+)/);
-				year = ccMatches[1];
-				copyright = ccMatches[2];
+				var ccMatches = info.value.match(/(\d{4})(.*)/);
+				if(ccMatches){
+					if(ccMatches.length>1) year = ccMatches[1];
+					if(ccMatches.length>2) copyright = ccMatches[2];
+				}else{
+					copyright = info.value;
+				}
 			}else if(/ccli/i.test(info.name)){
 				ccli = info.value;
 			}else if(/keywords/i.test(info.name)){
