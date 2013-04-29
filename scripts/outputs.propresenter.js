@@ -5,7 +5,7 @@
 (function(){
 
 	//Extend the outputs object on the parser to allow for HTML output
-	parser.outputs.propresenter = function (songData, fileName) {
+	parser.outputs.propresenter = function ($container, songList) {
 
 		//console.log(songData);
 
@@ -15,20 +15,9 @@
 
 	}
 
-	//Extend the resetUI object on the parser to allow the specifics here to be reset when needed
-	parser.resetUI.propresenter = function(){
-		
-
-
-	}
-
 	//===================================
 	//PRIVATE FUNCTIONS
 	//===================================
-	function _init() {
-
-	}
-
 	function _makeProPresenterFile(songData){
 		
 		var ppDoc = _getPPDocBegin(songData);
@@ -128,7 +117,4 @@
 
 		return slideXML;
 	}
-
-	//Call the init function in this file
-	$(_init);
 })();

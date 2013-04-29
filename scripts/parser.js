@@ -4,13 +4,15 @@ var parser = (function(){
 	var $dropArea;
 	var $beginTutorial;
 	var $errorContainer;
+	var $output;
 	var $outputSelection;
 
 	function _init(){
 		//Fill in the variables
 		$dropArea = $("#drop-area");
 		$errorContainer = $("#error-display");
-		$outputSelection = $("#js-output");
+		$output = $("#js-output");
+		$outputSelection = $("#js-output-selection");
 		$beginTutorial = $("#begin");
 
 		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone|Zune/i.test(navigator.userAgent) ) {
@@ -40,53 +42,67 @@ var parser = (function(){
 	}
 
 	function _fileDragAndDrop(){
-		$dropArea.fileDragAndDrop(function(data, fullFileName){
+		$dropArea.fileDragAndDrop(function(fileCollection){
 			_resetUI();
 
-			//try{
-				//Find the file extention
-				var fileParts = fullFileName.split(".");
-				var fileName = fileParts[0];
-				var fileExt = fileParts.slice(-1)[0].toLowerCase();
+			var errors=[];
+			var songList = [];
 
-				var formatToParse = '';
-				if(/pro\d+/.test(fileExt)){
-					formatToParse = 'propresenter';
-				}else if(fileExt === 'sbsong'){
-					formatToParse = 'ssp';
+			$.each(fileCollection, function(i, fileObj){
+				var data = fileObj.data;
+				var fullFileName = fileObj.name;
+
+				try{
+					//Find the file extention
+					var fileParts = fullFileName.split(".");
+					var fileName = fileParts[0];
+					var fileExt = fileParts.slice(-1)[0].toLowerCase();
+
+					var formatToParse = '';
+					if(/pro\d+/.test(fileExt)){
+						formatToParse = 'propresenter';
+					}else if(fileExt === 'sbsong'){
+						formatToParse = 'ssp';
+					}
+
+					//Make sure the file extention matches up with an existing parser
+					if($.isFunction(parser.formats[formatToParse])){
+						//Browsers will add some unneeded text to the base64 encoding. Remove it.
+						var encodedSongData = data.replace(/^data:.*;base64,/,"");
+						var decodedSongData = utilities.decode(encodedSongData);
+
+						//Pass the decoded song date to the parser
+						//We will get back a normalized version of the song content for any supported file type
+						songList.push({
+							name: fileName,
+							data: parser.formats[formatToParse](decodedSongData, fileName)
+						});
+
+					}else{
+						errors.push("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> files are not supported!", "Invalid Filetype!")
+					}
+				}catch(ex){
+					errors.push("There was an error reading the file <strong>"+fullFileName+"</strong>","Error!");
 				}
+			});
 
-				//Make sure the file extention matches up with an existing parser
-				if($.isFunction(parser.formats[formatToParse])){
-					//Browsers will add some unneeded text to the base64 encoding. Remove it.
-					var encodedSongData = data.replace(/^data:.*;base64,/,"");
-					var decodedSongData = utilities.decode(encodedSongData);
-
-					//Pass the decoded song date to the parser
-					//We will get back a normalized version of the song content for any supported file type
-					var normalizedSongData = parser.formats[formatToParse](decodedSongData, fileName);
-
-					//Pass the final song data to the selected output type
-					parser.outputs[$outputSelection.val()](normalizedSongData, fileName);
-				}else{
-					_resetUI();
-					displayError("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> files are not supported!", "Invalid Filetype!")
-				}
-			//}catch(ex){
-				//_resetUI();
-				//displayError("There was an error reading the file <strong>"+fullFileName+"</strong>","Error!");
+			if(songList.length){
+				//Pass the final song data to the selected output type
+				parser.outputs[$outputSelection.val()]($output, songList);
+			}
 				
-			//}
+			if(errors.length){
+				displayError(errors.join("<br/>"));
+			}
+
 		});
 	}
 
 	function _resetUI(){
 		//Empty out the UI so we can put in new data...
 		$errorContainer.empty().hide();
+		$output.empty();
 		$beginTutorial.hide();
-
-		//Call the reset function for the selected display type
-		parser.resetUI[$outputSelection.val()]();
 	}
 	
 	//==========================

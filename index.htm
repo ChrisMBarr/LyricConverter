@@ -25,10 +25,11 @@
 						<p>Drag a<br/><strong>Song File</strong><br/>Here</p>
 					</div>
 					
-					<label for="js-output">Then&hellip;</label>
-					<select id="js-output" class="input-block-level">
-						<option value="propresenter">Convert To ProPresenter</option>
+					<label for="js-output-selection">Then&hellip;</label>
+					<select id="js-output-selection" class="input-block-level">
 						<option value="display">Display The Lyrics</option>
+						<option value="propresenter">Convert To ProPresenter</option>
+						
 					</select>
 					<small class="muted">(More options wil be added here later&hellip;)</small>
 				</aside>
@@ -41,9 +42,7 @@
 
 				<div id="error-display" class="hide alert alert-error"></div>
 			
-				<h3 id="song-title"></h3>
-				<ul id="song-info"></ul>
-				<ul id="slides-container" class="hide thumbnails"></ul>
+				<div id="js-output"></div>
 			</div>
 		</div>
 	</div>
