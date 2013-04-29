@@ -1,6 +1,5 @@
 (function($){
 	var _exitTimer = null;
-	var overClass = "over";
 
 	// jQuery plugin initialization
 	$.fn.fileDragAndDrop = function (options) {
@@ -12,8 +11,6 @@
 			o.onFileRead = options;
 			options=o; 
 		}
-
-		
 
 		//Return the elements & loop though them
 		return this.each(function(){
@@ -61,29 +58,54 @@
 		_drop : function(ev, $dropArea, opts){
 			$(opts.addClassTo).removeClass(opts.overClass);
 			_stopEvent(ev);
-			var files = ev.dataTransfer.files;
+			var fileList = ev.dataTransfer.files;
 
-			for(var i = 0; i <= files.length; i++){
-				_handleFiles(files[i], opts);
+			//Create an array of file objects for us to fill in
+			var fileArray = [];
+
+			//Loop through each file
+			for(var i = 0; i <= fileList.length; i++){
+
+				//Create a new file reader to read the file
+				var reader = new FileReader();
+
+				//Create a closure so we can properly pass in the file information since this will complete async!
+				var completeFn = (_handleFile)(fileList[i], fileArray, fileList.length, opts);
+
+				//Different browsers impliment this in different ways, but call the complete function when the file has finished being read
+				if(reader.addEventListener) {
+					// Firefox, Chrome
+					reader.addEventListener('loadend', completeFn, false);
+				} else {
+					// Safari
+					reader.onloadend = completeFn;
+				}
+
+				//Actually read the file
+				reader.readAsDataURL(fileList[i]);
 			}
 		}
 	};
 
-	function _handleFiles(file, opts) {
-		var reader = new FileReader();
+	//This is the complete function for reading a file,
 
-		if(reader.addEventListener) {
-			// Firefox, Chrome
-			reader.addEventListener('loadend', function(ev){
-				_handleReaderLoadEnd(ev, file.name, opts);
-			}, false);
-		} else {
-			// Safari
-			reader.onloadend = function(ev){
-				_handleReaderLoadEnd(ev, file.name, opts);
-			};
+	function _handleFile(theFile, fileArray, fileCount, opts) {
+		//When called, it has to return a function back up to the listener event
+		return function(ev){
+			//Add the current file to the array
+			fileArray.push({
+				name: theFile.name,
+				size: theFile.size,
+				type: theFile.type,
+				lastModified: theFile.lastModifiedDate,
+				data: ev.target.result
+			});
+			
+			//Once the correct number of items have been put in the array, call the completion function		
+			if(fileArray.length == fileCount && $.isFunction(opts.onFileRead)){
+				opts.onFileRead(fileArray, opts)
+			}
 		}
-		reader.readAsDataURL(file);
 	}
 
 	function _handleReaderLoadEnd(ev, fullFileName, opts) {
