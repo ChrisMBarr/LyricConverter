@@ -6,8 +6,15 @@
 
 (function () {
 
+	var THIS_FORMAT = 'propresenter';
+	parser.formats[THIS_FORMAT] = {};
+
+	parser.formats[THIS_FORMAT].testExtension = function(fileExt){
+		return /pro\d+/i.test(fileExt);
+	};
+
 	//Extend the formats object on the parser to allow for parsing ProPresenter files
-	parser.formats.propresenter = function(songData, fileName){
+	parser.formats[THIS_FORMAT].convert = function(songData, fileName){
 		
 		//select the top-level document element
 		var $presentationDoc = $(songData);

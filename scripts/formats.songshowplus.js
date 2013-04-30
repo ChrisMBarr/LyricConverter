@@ -6,8 +6,15 @@
 
 (function () {
 
+	var THIS_FORMAT = 'songshowplus';
+	parser.formats[THIS_FORMAT] = {};
+
+	parser.formats[THIS_FORMAT].testExtension = function(fileExt){
+		return /sbsong/i.test(fileExt);
+	};
+
 	//Extend the formats object on the parser to allow for parsing SongShowPlus files
-	parser.formats.ssp = function(songData, fileName){
+	parser.formats[THIS_FORMAT].convert = function(songData, fileName){
 		//We don't want any properties XML tags which can sometimes begin the file.
 		//Splitting these out and then taking teh first array item can prevent this.
 		//Each song sections seems to be split up by a percent sign, so make an array by splitting on that
