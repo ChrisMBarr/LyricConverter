@@ -3,9 +3,10 @@
 =======================================================*/
 
 (function(){
+	var THIS_OUTPUT = 'propresenter';
 
 	//Extend the outputs object on the parser to allow for HTML output
-	parser.outputs.propresenter = function ($container, songList) {
+	parser.outputs[THIS_OUTPUT] = function ($container, songList) {
 
 		$.each(songList, function(i, song) {
 			var ppDoc = _makeProPresenterFile(song.data);

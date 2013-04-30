@@ -3,9 +3,10 @@
 =======================================================*/
 
 (function(){
+	var THIS_OUTPUT = 'display';
 
 	//Extend the outputs object on the parser to allow for HTML output
-	parser.outputs.display = function ($container, songList) {
+	parser.outputs[THIS_OUTPUT] = function ($container, songList) {
 		
 		$.each(songList, function(i, song){
 			//Create some slides with the normalized song data
