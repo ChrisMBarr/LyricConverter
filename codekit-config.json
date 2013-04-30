@@ -2,26 +2,15 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8283",
   "files" : {
-    "\/scripts\/formats.ssp.js" : {
+    "\/scripts\/bootstrap\/bootstrap-tab.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/formats.ssp.js",
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/formats.ssp.min.js",
-      "fileType" : 64
-    },
-    "\/scripts\/lib\/jszip-inflate.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.min.js",
       "fileType" : 64
     },
     "\/styles\/bootstrap\/button-groups.less" : {
@@ -37,17 +26,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/bootstrap\/bootstrap-tab.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.min.js",
-      "fileType" : 64
-    },
     "\/scripts\/outputs.display.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -57,6 +35,17 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/outputs.display.min.js",
+      "fileType" : 64
+    },
+    "\/scripts\/lib\/jszip-inflate.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.min.js",
       "fileType" : 64
     },
     "\/scripts\/bootstrap\/bootstrap-scrollspy.js" : {
@@ -341,19 +330,6 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap\/reset.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap\/reset.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap\/reset.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/parser.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -363,6 +339,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/parser.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/bootstrap\/reset.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap\/reset.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap\/reset.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -498,19 +487,6 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap\/utilities.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap\/utilities.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap\/utilities.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap\/hero-unit.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -520,6 +496,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap\/hero-unit.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/bootstrap\/utilities.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap\/utilities.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap\/utilities.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -600,15 +589,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap.less" : {
+    "\/styles\/bootstrap\/type.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap\/type.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap\/type.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -648,18 +637,29 @@
       "outputAbbreviatedPath" : "\/scripts\/outputs.propresenter.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap\/type.less" : {
+    "\/styles\/bootstrap.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap\/type.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap\/type.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/scripts\/formats.songshowplus.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
+      "fileType" : 64
     },
     "\/scripts\/bootstrap\/bootstrap-typeahead.js" : {
       "ignoreWasSetByUser" : 0,
@@ -683,19 +683,6 @@
       "outputAbbreviatedPath" : "\/scripts\/plugins\/base64.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap\/accordion.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap\/accordion.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap\/accordion.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap\/tables.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -705,6 +692,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap\/tables.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/bootstrap\/accordion.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap\/accordion.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap\/accordion.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -779,17 +779,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/bootstrap\/bootstrap-modal.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-modal.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-modal.min.js",
-      "fileType" : 64
-    },
     "\/styles\/bootstrap\/modals.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -826,6 +815,17 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/scripts\/bootstrap\/bootstrap-modal.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-modal.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-modal.min.js",
+      "fileType" : 64
     }
   },
   "manualImportLinks" : [
