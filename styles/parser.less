@@ -1,61 +1,9 @@
-@import "bootstrap/variables.less"; // Modify this for custom colors, font-sizes, etc
-@import "bootstrap/mixins.less";
+//Boostrap stuff
+@import "bootstrap-assets/variables.less";
+@import "_override-variables.less";
+@import "bootstrap-assets/mixins.less";
 
-html,body{
-	//background-color:orange;
-	min-height: 100%;
-	height: 100%;
-}
-
-#main{
-	//background-color: rgba(255, 255,255 ,0.7);
-	min-height: 100%;
-}
-
-#drop-area{
-	color: @linkColor;
-	font-size: 25px;
-	line-height: 30px;
-	
-	.transition(all 0.4s);
-
-	p{
-		text-align: center;
-		vertical-align: middle;
-		margin:0;
-	}
-
-	&.over{
-		background-color: @linkColor;
-		color: @white;
-	}
-}
-
-#begin,
-#error-display{
-	margin-top:20px;
-}
-
-.slides-container{
-	padding-top:20px;
-}
-
-.slide-content{
-	background: @grayLighter;
-}
-
-.slide-lyrics{
-	background-color: @white;
-	border: 1px solid #DDD;
-	.border-radius(@baseBorderRadius);
-	font-size: 13px;
-	line-height: 15px;
-	margin:0;
-	padding: 3px;
-	white-space: pre-wrap; //Keeps the line breaks
-}
-
-.slide-label{
-	padding-left:3px;
-	margin: 3px 0 0 0;
-}
+//Custom design stuff
+@import "main-assets/_header.less";
+@import "main-assets/_content.less";
+@import "main-assets/_slides.less";

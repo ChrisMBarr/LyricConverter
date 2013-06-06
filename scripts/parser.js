@@ -31,8 +31,8 @@ var parser = (function(){
 			_fileDragAndDrop();
 
 			//Hard-set the sidebar width, then affix it to the page
-			var $sidebar = $("#sidebar");
-			$sidebar.width($sidebar.width()).affix();
+			//var $sidebar = $("#sidebar");
+			//$sidebar.width($sidebar.width()).affix();
 		}else{
 			//no drag-n-drop support
 			displayError("Sorry, you won't be able to use SongParserJS<br />because your browser does not support file Drag-N-Drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!","Unsupported Browser!");

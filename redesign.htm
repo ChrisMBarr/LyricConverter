@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>Lyric Converter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles/parser.css">
+	<script src="scripts/lib/modernizr.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	
+	<!--
+	<script src="scripts/lib/FileSaver.js"></script>
+	<script src="scripts/lib/jszip.js"></script>
+	<script src="scripts/plugins/jquery.fileDragAndDrop.js"></script>
+	
+	<script src="scripts/parser.js"></script>
+	<script src="scripts/formats.propresenter.js"></script>
+	<script src="scripts/formats.songshowplus.js"></script>
+	<script src="scripts/outputs.display.js"></script>
+	<script src="scripts/outputs.propresenter.js"></script>
+	-->
+</head>
+<body>
+	<div class="container">
+	<header id="header">
+		<h1 id="title">Lyric <span id="title-secondary">Converter</span></h1>
+		<nav id="main-nav">
+			<a href="#convert" class="nav-current">Convert</a>
+			<a href="#about">About</a>
+			<a href="#help">Help</a>
+			<a href="javascript:{parser.setUi('donate');}">Donate</a>
+		</nav>
+	</header>
+	
+	<div id="main" >
+
+		<nav id="nav-convert-type">
+			<a href="javascript:{parser.setUi('convert','propresenter');}" class="nav-current">Convert to <strong>ProPresenter</strong></a>
+			<a href="javascript:{parser.setUi('convert','text');}">Convert to <strong>Plain Text</strong></a>
+			<a href="javascript:{parser.setUi('convert','display');}">Display <strong>Slides</strong></a>
+		</nav>
+		
+		<div id="drop-area">
+			Drag your <strong>Song Files</strong> here
+
+			<small>(Song Show Plus or ProPresenter)</small>
+		</div>
+
+	</div>
+	</div>
+</body>
+</html>
