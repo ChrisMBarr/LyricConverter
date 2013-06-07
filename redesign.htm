@@ -22,8 +22,7 @@
 	-->
 </head>
 <body>
-	<div class="container">
-	<header id="header">
+	<header id="header" class="container">
 		<h1 id="title">Lyric <span id="title-secondary">Converter</span></h1>
 		<nav id="main-nav">
 			<a href="#convert" class="nav-current">Convert</a>
@@ -33,13 +32,23 @@
 		</nav>
 	</header>
 	
-	<div id="main" >
-
-		<nav id="nav-convert-type">
-			<a href="javascript:{parser.setUi('convert','propresenter');}" class="nav-current">Convert to <strong>ProPresenter</strong></a>
-			<a href="javascript:{parser.setUi('convert','text');}">Convert to <strong>Plain Text</strong></a>
-			<a href="javascript:{parser.setUi('convert','display');}">Display <strong>Slides</strong></a>
-		</nav>
+	<div id="main" class="container">
+		<div class="row">
+			<div class="span3">
+				<nav class="nav-sidebar" id="nav-convert-type">
+					<a href="javascript:{parser.setUi('convert','propresenter');}" class="nav-current">
+						Convert to <strong>ProPresenter</strong>
+					</a>
+					<a href="javascript:{parser.setUi('convert','text');}">
+						Convert to <strong>Plain Text</strong>
+					</a>
+					<a href="javascript:{parser.setUi('convert','display');}">
+						Display <strong>Slides</strong>
+					</a>
+				</nav>
+			</div>
+		</div>
+		
 		
 		<div id="drop-area">
 			Drag your <strong>Song Files</strong> here
@@ -47,7 +56,6 @@
 			<small>(Song Show Plus or ProPresenter)</small>
 		</div>
 
-	</div>
 	</div>
 </body>
 </html>

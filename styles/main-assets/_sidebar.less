@@ -1,0 +1,31 @@
+@sidebar-radius: 10px;
+
+.nav-sidebar{
+	border-radius: @sidebar-radius;
+	border: 1px solid @color-light;
+
+	a{
+		border-bottom: 1px solid @color-light;
+		color: @color-dark;
+		display:block;
+		font-size: 18px;
+		padding: 10px;
+
+		&:first-child{
+			border-top-left-radius: @sidebar-radius;
+			border-top-right-radius: @sidebar-radius;
+		}
+
+		&:last-child{
+			border-bottom-width: 0;
+			border-bottom-left-radius: @sidebar-radius;
+			border-bottom-right-radius: @sidebar-radius;
+		}
+	}
+
+	.nav-current{
+		border-left: 5px solid @color-highlight;
+		background-color: @color-medium;
+		padding-left:5px;
+	}
+}
