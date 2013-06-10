@@ -1,22 +1,46 @@
 #drop-area{
-	font-size: 25px;
-	line-height: 30px;
 	
+	background-color: @color-medium;
+	border: 1px solid @color-highlight;
+	border-radius: @radius-default;
+	color: @color-dark;
+	text-align: center;
 	.transition(all 0.4s);
+	margin-top: 50px;
 
 	p{
-		text-align: center;
+		font-size: 40px;
+		line-height: 40px;
+		margin: 0;
+		padding: 50px;
 		vertical-align: middle;
-		margin:0;
+	}
+
+	small{
+		display:block;
+		margin-top: 50px;
+		margin-bottom: 10px;
 	}
 
 	&.over{
-		background-color: @linkColor;
-		color: @white;
+		@shadow: 0 0 50px @color-highlight, inset 0 0 10px @color-highlight;
+		.box-shadow(@shadow);
+		background-color: @color-light;
+		color: @color-text;
 	}
-}
+	
+	// Tablets, small desktops, & smaller
+	@media (max-width: 979px) {
+		& {
+			p {
+				padding: 20px 10px;
+				font-size: 30px;
+				line-height: 30px;
+			}
 
-#begin,
-#error-display{
-	margin-top:20px;
+			small {
+				margin-top: 20px;
+			}
+		}
+	}
 }

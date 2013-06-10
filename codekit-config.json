@@ -15,38 +15,18 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/bootstrap\/bootstrap-tab.js" : {
+    "\/styles\/bootstrap-assets\/responsive-utilities.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.js",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.less",
       "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.min.js",
-      "fileType" : 64
-    },
-    "\/scripts\/lib\/jszip-inflate.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.min.js",
-      "fileType" : 64
-    },
-    "\/scripts\/outputs.display.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/outputs.display.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/outputs.display.min.js",
-      "fileType" : 64
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/scripts\/bootstrap\/bootstrap-carousel.js" : {
       "ignoreWasSetByUser" : 0,
@@ -72,6 +52,28 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/bootstrap\/bootstrap-tab.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tab.min.js",
+      "fileType" : 64
+    },
+    "\/scripts\/outputs.display.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/outputs.display.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/outputs.display.min.js",
+      "fileType" : 64
+    },
     "\/scripts\/bootstrap\/bootstrap-scrollspy.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -81,6 +83,17 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-scrollspy.min.js",
+      "fileType" : 64
+    },
+    "\/scripts\/lib\/jszip-inflate.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.min.js",
       "fileType" : 64
     },
     "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
@@ -93,19 +106,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
       "fileType" : 64
-    },
-    "\/styles\/bootstrap-assets\/wells.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/wells.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/wells.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/scripts\/formats.propresenter.js" : {
       "ignoreWasSetByUser" : 0,
@@ -166,19 +166,6 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap-assets\/responsive-navbar.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap-assets\/pagination.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -203,24 +190,15 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-transition.min.js",
       "fileType" : 64
     },
-    "\/styles\/_override-variables.css" : {
+    "\/styles\/bootstrap-assets\/responsive-navbar.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/_override-variables.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/styles\/bootstrap-assets\/modals.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -235,6 +213,19 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-deflate.min.js",
       "fileType" : 64
+    },
+    "\/styles\/bootstrap-assets\/modals.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/scripts\/lib\/FileSaver.js" : {
       "ignoreWasSetByUser" : 0,
@@ -286,18 +277,40 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/_override-variables.less" : {
+    "\/styles\/img\/icons@2x.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/icons@2x.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/icons@2x.png",
+      "initialSize" : 2865,
+      "fileType" : 8192
+    },
+    "\/styles\/bootstrap-assets\/forms.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/_override-variables.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/forms.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/_override-variables.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/forms.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/styles\/img\/glyphicons-halflings-white.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings-white.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings-white.png",
+      "initialSize" : 8777,
+      "fileType" : 8192
     },
     "\/styles\/bootstrap-assets\/button-groups.less" : {
       "ignoreWasSetByUser" : 0,
@@ -312,15 +325,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/forms.less" : {
+    "\/styles\/_override-variables.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/forms.less",
+      "inputAbbreviatedPath" : "\/styles\/_override-variables.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/forms.css",
+      "outputAbbreviatedPath" : "\/styles\/_override-variables.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -338,17 +351,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/img\/glyphicons-halflings-white.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings-white.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings-white.png",
-      "initialSize" : 8777,
-      "fileType" : 8192
-    },
     "\/scripts\/bootstrap\/bootstrap-alert.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -360,19 +362,6 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.min.js",
       "fileType" : 64
     },
-    "\/styles\/main-assets\/_header.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/main-assets\/_header.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/main-assets\/_header.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap-assets\/tables.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -382,6 +371,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/main-assets\/_header.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/main-assets\/_header.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/main-assets\/_header.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -456,18 +458,16 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/styles\/bootstrap-assets\/hero-unit.less" : {
+    "\/scripts\/bootstrap\/bootstrap-dropdown.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/hero-unit.less",
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.js",
       "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/hero-unit.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.min.js",
+      "fileType" : 64
     },
     "\/redesign.htm" : {
       "ignoreWasSetByUser" : 0,
@@ -504,6 +504,19 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/bootstrap-assets\/hero-unit.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/hero-unit.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/hero-unit.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/styles\/parser.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -516,17 +529,6 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/scripts\/bootstrap\/bootstrap-dropdown.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.min.js",
-      "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/navs.less" : {
       "ignoreWasSetByUser" : 0,
@@ -628,17 +630,6 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
       "fileType" : 64
     },
-    "\/scripts\/parser.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/parser.min.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/parser.min.min.js",
-      "fileType" : 64
-    },
     "\/styles\/bootstrap-assets\/component-animations.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -652,6 +643,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/parser.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/parser.min.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/parser.min.min.js",
+      "fileType" : 64
+    },
     "\/scripts\/lib\/modernizr.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -663,19 +665,6 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/modernizr.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap-assets\/media.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/media.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/media.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/scripts\/lib\/jszip.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -686,6 +675,19 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip.min.js",
       "fileType" : 64
+    },
+    "\/styles\/bootstrap-assets\/buttons.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/buttons.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/buttons.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/pager.less" : {
       "ignoreWasSetByUser" : 0,
@@ -700,15 +702,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/buttons.less" : {
+    "\/styles\/bootstrap-assets\/media.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/buttons.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/media.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/buttons.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/media.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -750,6 +752,17 @@
       "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
       "fileType" : 64
     },
+    "\/styles\/img\/icons.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/icons.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/icons.png",
+      "initialSize" : 1542,
+      "fileType" : 8192
+    },
     "\/styles\/bootstrap.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -774,17 +787,6 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-collapse.min.js",
       "fileType" : 64
     },
-    "\/scripts\/outputs.propresenter.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/outputs.propresenter.min.js",
-      "fileType" : 64
-    },
     "\/styles\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -796,6 +798,17 @@
       "initialSize" : 12799,
       "fileType" : 8192
     },
+    "\/scripts\/outputs.propresenter.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/outputs.propresenter.min.js",
+      "fileType" : 64
+    },
     "\/scripts\/formats.songshowplus.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -805,6 +818,17 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
+      "fileType" : 64
+    },
+    "\/scripts\/bootstrap\/bootstrap-typeahead.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-typeahead.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-typeahead.min.js",
       "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/alerts.less" : {
@@ -819,17 +843,6 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/scripts\/bootstrap\/bootstrap-typeahead.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-typeahead.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-typeahead.min.js",
-      "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/variables.less" : {
       "ignoreWasSetByUser" : 0,
@@ -855,15 +868,15 @@
       "outputAbbreviatedPath" : "\/scripts\/plugins\/base64.min.js",
       "fileType" : 64
     },
-    "\/styles\/bootstrap-assets\/responsive-768px-979px.less" : {
+    "\/styles\/bootstrap-assets\/popovers.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-768px-979px.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-768px-979px.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -901,15 +914,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/popovers.less" : {
+    "\/styles\/bootstrap-assets\/responsive-768px-979px.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-768px-979px.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-768px-979px.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -975,6 +988,19 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/bootstrap-assets\/wells.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/wells.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/wells.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/styles\/bootstrap-assets\/bootstrap.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -983,19 +1009,6 @@
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/bootstrap.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
-    },
-    "\/styles\/bootstrap-assets\/responsive-utilities.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     }
   },
   "manualImportLinks" : [

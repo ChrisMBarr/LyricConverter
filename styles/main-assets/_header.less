@@ -31,6 +31,19 @@ body{
 	padding-left: 125px;
 }
 
+//Phones only - make the title fit properly
+@media (max-width: 767px) {
+	#title{
+		font-size: 80px;
+		line-height: 60px;
+
+	}
+	#title-secondary{
+		font-size: 40px;
+		padding-left: 0;
+	}
+}
+
 #main-nav{
 	@header-nav-height: @header-nav-font-size + @header-border-size;
 
@@ -43,6 +56,8 @@ body{
 		color: @color-light;
 		font-size: @header-nav-font-size;
 		margin-right:10px;
+		padding:0 10px;
+		text-align: center;
 		text-shadow: 1px 1px 0 #000;
 
 		.transition(all 0.3s);
@@ -50,6 +65,13 @@ body{
 		&:hover{
 			text-decoration:none;
 			border-bottom-color: @color-highlight;	
+		}
+		
+		//Phones only - make the nav fit properly
+		@media (max-width: 767px) {
+			&{
+				padding:0;
+			}
 		}
 	}
 

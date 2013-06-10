@@ -1,31 +1,70 @@
-@sidebar-radius: 10px;
-
 .nav-sidebar{
-	border-radius: @sidebar-radius;
+	border-radius: @radius-default;
 	border: 1px solid @color-light;
 
 	a{
 		border-bottom: 1px solid @color-light;
+		border-left: 5px solid transparent;
 		color: @color-dark;
 		display:block;
 		font-size: 18px;
-		padding: 10px;
+		padding: 10px 10px 10px 5px;
+		.transition(all 0.4s);
+
+		&:hover{
+			text-decoration: none;
+			background-color: @color-medium;
+		}
 
 		&:first-child{
-			border-top-left-radius: @sidebar-radius;
-			border-top-right-radius: @sidebar-radius;
+			border-top-left-radius: @radius-default;
+			border-top-right-radius: @radius-default;
 		}
 
 		&:last-child{
 			border-bottom-width: 0;
-			border-bottom-left-radius: @sidebar-radius;
-			border-bottom-right-radius: @sidebar-radius;
+			border-bottom-left-radius: @radius-default;
+			border-bottom-right-radius: @radius-default;
 		}
 	}
 
 	.nav-current{
-		border-left: 5px solid @color-highlight;
+		border-left-color: @color-highlight;
 		background-color: @color-medium;
-		padding-left:5px;
 	}
+}
+
+
+@icon-size: 34px;
+@icon-count: 3;
+[class *= "nav-icon-"]{
+	background-image: url('img/icons.png');
+	background-repeat: no-repeat;
+	display:inline-block;
+	vertical-align:middle;
+	.square(@icon-size);
+}
+
+//High-DPI screens get high-res images
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	   only screen and (min--moz-device-pixel-ratio: 1.5),
+	   only screen and (min-device-pixel-ratio: 1.5){
+
+	[class *= "nav-icon-"]{
+		background-image: url('img/icons@2x.png');
+		background-size: @icon-size (@icon-size * @icon-count);
+	}	
+}
+
+//first icon
+.nav-icon-pro{
+	background-position:0 0;
+}
+//second icon
+.nav-icon-txt{
+	background-position: 0 @icon-size * -1;
+}
+//third icon
+.nav-icon-slides{
+	background-position: 0 @icon-size * -2 ;
 }
