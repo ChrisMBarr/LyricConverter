@@ -59,6 +59,7 @@ body {
   color: #ffffff;
   background-image: url('img/header-1.jpg');
   background-repeat: no-repeat;
+  background-position: 50% 0;
   height: 250px;
   padding: 11px 19px;
   margin-bottom: 20px;
