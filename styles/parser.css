@@ -172,6 +172,14 @@ body {
   -o-transition: all 0.4s;
   transition: all 0.4s;
 }
+@media (max-width: 979px) and (min-width: 768px) {
+  .nav-sidebar a {
+    font-size: 16px;
+  }
+}
+.nav-sidebar a strong {
+  display: block;
+}
 .nav-sidebar a:hover {
   text-decoration: none;
   background-color: #e3e0cf;
@@ -192,7 +200,8 @@ body {
 [class*="nav-icon-"] {
   background-image: url('img/icons.png');
   background-repeat: no-repeat;
-  display: inline-block;
+  float: left;
+  margin-right: 5px;
   vertical-align: middle;
   width: 34px;
   height: 34px;
