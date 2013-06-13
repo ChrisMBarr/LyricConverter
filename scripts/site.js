@@ -17,32 +17,32 @@
 			_setupHeaderParrallax();
 
 			_setupNav();
+
+			_detectFeatures();
 		}
 	});
 
-	function _detectMobile(){
-		//Set var in upper scope
-		isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone|Zune/i.test(navigator.userAgent);
-		
-		if(isMobile) {
-			
-			//Build up an HTML string for a bootstrap modal window
+
+
+	//======================================================================
+	//Detect unsupported features and or devices
+	//======================================================================
+
+	function _displaySupportError (title, msg) {
+		//Build up an HTML string for a bootstrap modal window
 			var modalHtml = [
 			'<div style="width: 90%; margin-left: -45%;" class="modal" tabindex="-1" role="dialog" aria-labelledby="unsupportedModalLabel" aria-hidden="true">',
 			'   <div class="modal-header">',
-			'       <h2 id="unsupportedModalLabel" class="text-error">Unsupported Device!</h2>',
+			'       <h2 id="unsupportedModalLabel" class="text-error">'+title+'</h2>',
 			'   </div>',
 			'   <div class="modal-body">',
-			'       <p style="font-size:22x;">',
-			'          Sorry, LyricConverter cannot be used on mobile devices!',
-			'          <br/><br/>',
-			'          Please use a desktop computer that supports file uploads and downloads.',
-			'       </p>',
+			'       <p style="font-size:22x;">'+msg+'</p>',
 			'   </div>',
 			'</div>'].join('');
 
 			//Load in the needed bootstrap components
 			Modernizr.load({
+				test: $.fn.modal,
 				load:[
 					'scripts/bootstrap/bootstrap-modal.js',
 					'styles/bootstrap-assets/modals.css'
@@ -56,8 +56,49 @@
 						});
 				}
 			});
+	}
+
+	function _detectMobile(){
+		//Set var in upper scope
+		isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone|Zune/i.test(navigator.userAgent);
+		
+		if(isMobile) {
+			_displaySupportError(
+				'Unsupported Device!',
+				'Sorry, LyricConverter cannot be used on mobile devices!<br/><br/>Please use a desktop computer that supports file uploads and downloads.'
+			);
 		}
 	}
+
+	function _detectFeatures(){
+
+		//If the browser does not nativly support Base64 encode/decode,
+		//load in a file to add this support
+		Modernizr.load({
+			test: window.atob && window.btoa,
+			nope: "scripts/plugins/base64.js"
+		});
+
+
+		//Make sure we have basic support for
+		if(Modernizr.draganddrop && window.FileReader){
+			//Init the drag-n-drop feature
+			//_fileDragAndDrop();
+		}else{
+			//no drag-n-drop support
+			_displaySupportError(
+				"Unsupported Browser!",
+				"Sorry, you won't be able to use LyricConverter because your browser does not support file drag-n-drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!"
+			);
+		}
+	}
+	//======================================================================
+
+
+
+	//======================================================================
+	//Do initial UI setup
+	//======================================================================
 
 	function _setupHeaderImage(){
 		var headerImgCount = 8;
@@ -167,5 +208,13 @@
 					ev.preventDefault();
 				})
 	}
+	//======================================================================
+
+
+
+	function _setupFileDragAndDrop(){
+
+	}
 	
+
 })();

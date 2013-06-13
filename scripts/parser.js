@@ -15,30 +15,7 @@ var parser = (function(){
 		$outputSelection = $("#js-output-selection");
 		$beginTutorial = $("#begin");
 
-		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone|Zune/i.test(navigator.userAgent) ) {
-			displayError("Sorry, SongParserJS this cannot be used on mobile devices!","Unsupported Browser!");
-			$dropArea.hide();
-			$outputSelection.hide();
-		}else if(Modernizr.draganddrop && window.FileReader){
-			//If the browser does not nativly support Base64 encode/decode,
-			//load in a file to add this support
-			Modernizr.load({
-				test: window.atob && window.btoa,
-				nope: "scripts/plugins/base64.js"
-			});
-
-			//Init the drag-n-drop feature
-			_fileDragAndDrop();
-
-			//Hard-set the sidebar width, then affix it to the page
-			//var $sidebar = $("#sidebar");
-			//$sidebar.width($sidebar.width()).affix();
-		}else{
-			//no drag-n-drop support
-			displayError("Sorry, you won't be able to use SongParserJS<br />because your browser does not support file Drag-N-Drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!","Unsupported Browser!");
-			$dropArea.hide();
-			$outputSelection.hide();
-		}
+		
 	}
 
 	function _fileDragAndDrop(){

@@ -98,6 +98,17 @@
       "initialSize" : 2865,
       "fileType" : 8192
     },
+    "\/scripts\/lib\/jszip-load.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.min.js",
+      "fileType" : 64
+    },
     "\/redesign.htm" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -119,17 +130,6 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/scripts\/lib\/jszip-load.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.min.js",
-      "fileType" : 64
     },
     "\/styles\/img\/header-6.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -172,7 +172,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/parser.css",
-      "outputAbbreviatedPath" : "No Output Path",
+      "outputAbbreviatedPath" : "\/No Output Path",
       "fileType" : 16
     },
     "\/styles\/img\/glyphicons-halflings.png" : {
@@ -256,15 +256,15 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-deflate.min.js",
       "fileType" : 64
     },
-    "\/scripts\/bootstrap\/bootstrap-carousel.js" : {
+    "\/scripts\/plugins\/base64.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-carousel.js",
+      "inputAbbreviatedPath" : "\/scripts\/plugins\/base64.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-carousel.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/plugins\/base64.min.js",
       "fileType" : 64
     },
     "\/scripts\/bootstrap\/bootstrap-alert.js" : {
@@ -278,26 +278,13 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.min.js",
       "fileType" : 64
     },
-    "\/styles\/main-assets\/_slides.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/main-assets\/_slides.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/main-assets\/_slides.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap.css",
-      "outputAbbreviatedPath" : "No Output Path",
+      "outputAbbreviatedPath" : "\/No Output Path",
       "fileType" : 16
     },
     "\/styles\/bootstrap-assets\/component-animations.less" : {
@@ -324,15 +311,15 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-collapse.min.js",
       "fileType" : 64
     },
-    "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
+    "\/scripts\/bootstrap\/bootstrap-popover.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.js",
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.min.js",
       "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/dropdowns.less" : {
@@ -357,27 +344,40 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/scripts\/bootstrap\/bootstrap-popover.js" : {
+    "\/scripts\/bootstrap\/bootstrap-carousel.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.js",
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-carousel.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-carousel.min.js",
       "fileType" : 64
     },
-    "\/scripts\/plugins\/base64.js" : {
+    "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/plugins\/base64.js",
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/plugins\/base64.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
       "fileType" : 64
+    },
+    "\/styles\/main-assets\/_slides.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/main-assets\/_slides.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/main-assets\/_slides.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/buttons.less" : {
       "ignoreWasSetByUser" : 0,
@@ -1030,7 +1030,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.css",
-      "outputAbbreviatedPath" : "No Output Path",
+      "outputAbbreviatedPath" : "\/No Output Path",
       "fileType" : 16
     },
     "\/styles\/bootstrap-assets\/close.less" : {
@@ -1158,7 +1158,7 @@
       "curly" : 1,
       "trailing" : 1,
       "nonew" : 1,
-      "es3" : false,
+      "es3" : 0,
       "yui" : 0,
       "mootools" : 0,
       "proto" : 0,
@@ -1173,7 +1173,7 @@
       "wsh" : 0,
       "nonstandard" : 0,
       "asi" : 0,
-      "moz" : false,
+      "moz" : 0,
       "rhino" : 0,
       "smarttabs" : 0,
       "lastsemic" : 0,
@@ -1215,11 +1215,11 @@
       "vars" : 0,
       "sub" : 0,
       "stupid" : 0,
-      "continue" : false,
+      "continue" : 0,
       "bitwise" : 0,
       "newcap" : 0,
       "sloppy" : 0,
-      "closure" : false,
+      "closure" : 0,
       "es5" : 0,
       "browser" : 1,
       "properties" : 0,
@@ -1231,7 +1231,7 @@
       "node" : 0,
       "rhino" : 0,
       "devel" : 0,
-      "ass" : false
+      "ass" : 0
     },
     "uglifyFlags" : {
       "no-mangle-functions" : 0,
