@@ -60,19 +60,42 @@
 	}
 
 	function _setupHeaderImage(){
-		var headerImageCount = 8;
+		var headerImgCount = 8;
+		var headerImgPattern = /header-(\d+)\.jpg/;
 
-		//Determine teh new number
-		var randomImgNumber = Math.floor(Math.random() * headerImageCount) + 1;
+		function _replaceImg (fromClick) {
+			//Determine the new number
+			var randomImgNumber = Math.floor(Math.random() * headerImgCount) + 1;
+			var imgPath = $header.css("background-image");
 
-		//Get the current path
-		var imgPath = $header.css("background-image");
-		
-		//Replace it with the new one
-		var newimgPath= imgPath.replace(/header-\d+\.jpg/, "header-"+randomImgNumber+".jpg");
+			//Get the current path & parse it
+			var parts = imgPath.match(headerImgPattern);
 
-		//Set the CSS
-		$header.css("background-image", newimgPath);
+			//If the numbers cannot be teh same AND the same number was just selected,
+			//Then recurse this function and stop this iteration of it
+			if(fromClick && randomImgNumber === parseInt(parts[1],10)){
+				_replaceImg(true);
+				return;
+			}
+			
+			//Replace it with the new one
+			var newimgPath= imgPath.replace(parts[0], "header-"+randomImgNumber+".jpg");
+
+			//Set the CSS
+			$header.css("background-image", newimgPath);
+		}
+
+		//call initially
+		_replaceImg(false);
+
+		//When the header is clicked...
+		$header.on("click",function (ev) {
+			//Make sure a link wasn't clicked
+			if(ev.target.tagName !== "A"){
+				//Get another random image
+				_replaceImg(true);
+			}
+		})
 	}
 
 	function _setupHeaderParrallax(){
