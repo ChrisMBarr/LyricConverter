@@ -2,12 +2,21 @@
 	//Vars for this scope
 	var $header;
 	var $content;
+	var $areaBegin;
+	var $areaDisplay;
+	var $output;
+	var $parserErrorDisplay;
 	var isMobile = false;
 
 	//Page Load
 	$(function(){
-		$header = $("#header");
-		$content = $("#main");
+		//Fill in variables wil selected elements
+		$header = $('#header');
+		$content = $('#main');
+		$areaBegin = $("#begin-area");
+		$areaDisplay = $("#display-area");
+		$output = $("#output")
+		$parserErrorDisplay = $('#parser-error-display');
 
 		_detectMobile();
 
@@ -80,12 +89,13 @@
 		});
 
 
-		//Make sure we have basic support for
+		//Make sure we have basic support for file drag-drop features
 		if(Modernizr.draganddrop && window.FileReader){
-			//Init the drag-n-drop feature
-			//_fileDragAndDrop();
+			//Yay! This browser can be used!
+			//Init the parser
+			_setupParser();
 		}else{
-			//no drag-n-drop support
+			//Boo! no drag-n-drop support!
 			_displaySupportError(
 				"Unsupported Browser!",
 				"Sorry, you won't be able to use LyricConverter because your browser does not support file drag-n-drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!"
@@ -203,17 +213,69 @@
 
 					//Tell the parser to change formats
 					var format = $self.data("format");
-					//parser.change(format);
+					parser.outputFormat = format;
 
 					ev.preventDefault();
 				})
+
+				//Find the first one and fire it's click event
+				.first()
+				.triggerHandler("click");
 	}
 	//======================================================================
 
 
+	//======================================================================
+	//Set up the parser
+	//======================================================================
+	function _setupParser(){
 
-	function _setupFileDragAndDrop(){
+		//Extend the parser with the local displayError function
+		parser.displayError = displayError;
 
+		$('#drop-area')
+			.fileDragAndDrop(function(fileCollection){
+				_resetUI();
+
+				//Reset lists
+				parser.errorList = [];
+				parser.songList = [];
+
+				$.each(fileCollection, parser.parseFile);
+
+				if(parser.songList.length){
+					//Pass the final song data to the selected output type
+					parser.outputs[parser.outputFormat]($output, parser.songList);
+				}
+					
+				if(parser.errorList.length){
+					displayError(parser.errorList.join("<br/>"), "Error!");
+				}
+
+			});
+	}
+
+	function _resetUI(){
+		$areaBegin.hide();
+		$areaDisplay.show();
+		$output.empty();
+
+		//Empty out the UI so we can put in new data...
+		$parserErrorDisplay
+			.empty()
+			.hide();
+	}
+
+	function displayError(msg, title){
+		var htmlString = "";
+		if(title && title.length){
+			htmlString += "<h3>"+title+"</h3>";
+		}
+		htmlString += "<p>"+msg+"</p>";
+
+		$parserErrorDisplay
+			.show()
+			.html(htmlString);
 	}
 	
 
