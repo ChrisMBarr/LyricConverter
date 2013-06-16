@@ -2,6 +2,37 @@
 	border-radius: @radius-default;
 	border: 1px solid @color-light;
 
+	&.affix{
+		@sidebarColumns: 3;
+		@sidebarWidthDefault: (@sidebarColumns * @gridColumnWidth) + (@gridGutterWidth * (@sidebarColumns - 1));
+		@sidebarWidth1200:    (@sidebarColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@sidebarColumns - 1));
+		@sidebarWidth768:     (@sidebarColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@sidebarColumns - 1));
+
+		top: 20px;
+		width: @sidebarWidthDefault;
+
+		@media (max-width: 767px) {
+			
+			&{
+				top: auto;
+				position:relative;
+				width: auto;
+			}
+		}
+
+		@media (max-width: 979px) and (min-width: 768px){
+			&{
+				width: @sidebarWidth768;
+			}
+		}
+
+		@media (min-width: 1200px) {
+				&{
+				width: @sidebarWidth1200;
+			}
+		}
+	}
+
 	a{
 		border-bottom: 1px solid @color-light;
 		border-left: 5px solid transparent;

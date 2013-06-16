@@ -177,6 +177,7 @@
 	function _setupNav() {
 		var selectedClass = "nav-current";
 		var $sections = $content.children(".js-main-section");
+		var $sidebars = $content.find(".nav-sidebar");
 
 		$("#main-nav")
 			.children("a")
@@ -200,8 +201,8 @@
 			});
 
 			//Click on the sidebar items to change settings in the UI
-			$content
-				.find(".nav-sidebar a")
+			$sidebars
+				.find("a")
 				.on("click",function(ev){
 					var $self = $(this);
 
@@ -221,6 +222,18 @@
 				//Find the first one and fire it's click event
 				.first()
 				.triggerHandler("click");
+
+			//Affix the sidebars
+			$sidebars.each(function(){
+				var $self = $(this);
+				var topPos = $self.offset().top - parseInt($header.css("margin-bottom"), 10);
+
+				$self.affix({
+					offset:{
+						top: topPos
+					}
+				});
+			});
 	}
 	//======================================================================
 
