@@ -64,6 +64,11 @@ body {
   padding: 11px 19px;
   margin-bottom: 20px;
 }
+@media (max-width: 1200px) {
+  #header {
+    width: auto;
+  }
+}
 #title {
   text-shadow: 2px 2px 2px #000;
   font-size: 110px;

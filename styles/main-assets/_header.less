@@ -16,6 +16,13 @@ body{
 	height: @header-height;
 	padding: @paddingLarge;
 	margin-bottom: 20px;
+	
+	//Keep the header fluid width when below the max size
+	@media (max-width: 1200px){
+		&{
+			width:auto;
+		}
+	}
 }
 
 #title{
