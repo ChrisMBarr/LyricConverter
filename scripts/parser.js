@@ -55,11 +55,19 @@ var parser = (function(){
 		}
 	}
 
+	function complete($outputContainer){
+		if(parser.songList.length){
+			//Pass the final song data to the selected output type
+			parser.outputs[parser.outputFormat]($outputContainer, parser.songList);
+		}
+	}
+
 	return {
 		//Expose functions publicly
 		utilities: utilities,
 		parseFile: parseFile,
-		outputFormat:null,
+		complete: complete,
+		outputFormat: null,
 		
 		//UI properties should be filled in when this is run
 		displayError: null,

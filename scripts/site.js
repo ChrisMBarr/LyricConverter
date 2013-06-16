@@ -241,13 +241,13 @@
 				parser.errorList = [];
 				parser.songList = [];
 
+				//Loop through each file and parse it
 				$.each(fileCollection, parser.parseFile);
 
-				if(parser.songList.length){
-					//Pass the final song data to the selected output type
-					parser.outputs[parser.outputFormat]($output, parser.songList);
-				}
-					
+				//Parsing complete, run the display/output functions
+				parser.complete($output);
+				
+				//Also display errors if there are any
 				if(parser.errorList.length){
 					displayError(parser.errorList.join("<br/>"), "Error!");
 				}
