@@ -37,7 +37,7 @@
 	//Detect unsupported features and or devices
 	//======================================================================
 
-	function _displaySupportError (title, msg) {
+	function _displaySupportError(title, msg) {
 		//Build up an HTML string for a bootstrap modal window
 			var modalHtml = [
 			'<div style="width: 90%; margin-left: -45%;" class="modal" tabindex="-1" role="dialog" aria-labelledby="unsupportedModalLabel" aria-hidden="true">',
@@ -174,7 +174,7 @@
 		});
 	}
 
-	function _setupNav () {
+	function _setupNav() {
 		var selectedClass = "nav-current";
 		var $sections = $content.children(".js-main-section");
 
@@ -225,6 +225,7 @@
 	//======================================================================
 
 
+
 	//======================================================================
 	//Set up the parser
 	//======================================================================
@@ -266,6 +267,7 @@
 			.hide();
 	}
 
+	//Public function used to "fill in" the parser's error display requirement
 	function displayError(msg, title){
 		var htmlString = "";
 		if(title && title.length){
@@ -276,7 +278,6 @@
 		$parserErrorDisplay
 			.show()
 			.html(htmlString);
-	}
-	
+	}	
 
 })();
