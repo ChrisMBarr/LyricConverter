@@ -233,7 +233,7 @@
 		//Extend the parser with the local displayError function
 		parser.displayError = displayError;
 
-		$('#drop-area')
+		$('html')
 			.fileDragAndDrop(function(fileCollection){
 				_resetUI();
 

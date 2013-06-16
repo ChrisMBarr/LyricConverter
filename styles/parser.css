@@ -121,43 +121,50 @@ body {
 #main-nav .nav-current {
   border-bottom-color: #3ea8b2;
 }
-#drop-area {
+html {
+  min-height: 100%;
+}
+.drop-area {
   background-color: #e3e0cf;
   border: 1px solid #3ea8b2;
   border-radius: 10px;
   color: #807e74;
   text-align: center;
+  padding: 10px;
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
   -o-transition: all 0.4s;
   transition: all 0.4s;
-  margin-top: 50px;
 }
-#drop-area p {
+.over .drop-area {
+  -webkit-box-shadow: 0 0 50px #3ea8b2, inset 0 0 10px #3ea8b2;
+  box-shadow: 0 0 50px #3ea8b2, inset 0 0 10px #3ea8b2;
+  background-color: #ccc9ba;
+  color: #1d1d1d;
+}
+#begin-area .drop-area {
+  margin-top: 50px;
+  padding: 0;
+}
+#begin-area .drop-area p {
   font-size: 40px;
   line-height: 40px;
   margin: 0;
   padding: 50px;
   vertical-align: middle;
 }
-#drop-area small {
+#begin-area .drop-area small {
   display: block;
   margin-top: 50px;
   margin-bottom: 10px;
 }
-#drop-area.over {
-  -webkit-box-shadow: 0 0 50px #3ea8b2, inset 0 0 10px #3ea8b2;
-  box-shadow: 0 0 50px #3ea8b2, inset 0 0 10px #3ea8b2;
-  background-color: #ccc9ba;
-  color: #1d1d1d;
-}
 @media (max-width: 979px) {
-  #drop-area p {
+  #begin-area .drop-area p {
     padding: 20px 10px;
     font-size: 30px;
     line-height: 30px;
   }
-  #drop-area small {
+  #begin-area .drop-area small {
     margin-top: 20px;
   }
 }
