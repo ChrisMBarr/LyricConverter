@@ -109,15 +109,6 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.min.js",
       "fileType" : 64
     },
-    "\/redesign.htm" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/redesign.htm",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/styles\/bootstrap-assets\/responsive-768px-979px.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -267,6 +258,17 @@
       "outputAbbreviatedPath" : "\/scripts\/plugins\/base64.min.js",
       "fileType" : 64
     },
+    "\/scripts\/bootstrap\/bootstrap-alert.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -275,19 +277,6 @@
       "inputAbbreviatedPath" : "\/styles\/bootstrap.css",
       "outputAbbreviatedPath" : "\/No Output Path",
       "fileType" : 16
-    },
-    "\/styles\/main-assets\/_slides.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/main-assets\/_slides.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/main-assets\/_slides.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/component-animations.less" : {
       "ignoreWasSetByUser" : 0,
@@ -368,16 +357,18 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-carousel.min.js",
       "fileType" : 64
     },
-    "\/scripts\/bootstrap\/bootstrap-alert.js" : {
+    "\/styles\/main-assets\/_slides.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.js",
+      "inputAbbreviatedPath" : "\/styles\/main-assets\/_slides.less",
       "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.min.js",
-      "fileType" : 64
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/main-assets\/_slides.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/buttons.less" : {
       "ignoreWasSetByUser" : 0,
@@ -662,15 +653,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/responsive-navbar.less" : {
+    "\/styles\/bootstrap-assets\/pager.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.less",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/pager.less",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.css",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/pager.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -688,19 +679,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/pager.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/pager.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/pager.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap-assets\/wells.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -710,6 +688,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/wells.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/bootstrap-assets\/responsive-navbar.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
