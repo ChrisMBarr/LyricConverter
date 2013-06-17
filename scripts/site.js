@@ -269,7 +269,12 @@
 				
 				//Also display errors if there are any
 				if(parser.errorList.length){
-					displayError(parser.errorList.join("<br/>"), "Error!");
+
+
+					var errorTitle = parser.errorList.length == 1 ? "One song ran into an error and coukd not be converted": "We ran into errors with " + parser.errorList.length + " of the songs, and they were not converted";
+
+					//Join all the error messages together
+					displayError(parser.errorList.join("<br/>"), errorTitle);
 				}
 
 			});

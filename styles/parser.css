@@ -168,6 +168,9 @@ html {
     margin-top: 20px;
   }
 }
+#output {
+  margin-bottom: 20px;
+}
 #affix-contents.affix {
   top: 20px;
   width: 220px;
