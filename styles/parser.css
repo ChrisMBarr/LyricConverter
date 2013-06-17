@@ -168,30 +168,33 @@ html {
     margin-top: 20px;
   }
 }
-.nav-sidebar {
-  border-radius: 10px;
-  border: 1px solid #ccc9ba;
-}
-.nav-sidebar.affix {
+#affix-contents.affix {
   top: 20px;
   width: 220px;
 }
 @media (max-width: 767px) {
-  .nav-sidebar.affix {
+  #affix-contents.affix {
     top: auto;
     position: relative;
     width: auto;
   }
 }
 @media (max-width: 979px) and (min-width: 768px) {
-  .nav-sidebar.affix {
+  #affix-contents.affix {
     width: 166px;
   }
 }
 @media (min-width: 1200px) {
-  .nav-sidebar.affix {
+  #affix-contents.affix {
     width: 270px;
   }
+}
+#drop-area-more {
+  margin-top: 20px;
+}
+.nav-sidebar {
+  border-radius: 10px;
+  border: 1px solid #ccc9ba;
 }
 .nav-sidebar a {
   border-bottom: 1px solid #ccc9ba;

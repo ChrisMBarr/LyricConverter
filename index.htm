@@ -41,20 +41,25 @@
 			<div class="row">
 
 				<div class="span3">
-					<nav class="nav-sidebar" id="nav-convert-type">
-						<a href="#" data-format="propresenter" class="clearfix">
-							<i class="nav-icon-pro"></i>
-							Convert to <strong>ProPresenter</strong>
-						</a>
-						<!-- <a href="#" data-format="txt" class="clearfix">
-							<i class="nav-icon-txt"></i>
-							Convert to <strong>Plain Text</strong>
-						</a> -->
-						<a href="#" data-format="display" class="clearfix">
-							<i class="nav-icon-slides"></i>
-							Display <strong>Slides</strong>
-						</a>
-					</nav>
+					<div id="affix-contents">
+						<nav class="nav-sidebar" id="nav-convert-type">
+							<a href="#" data-format="propresenter" class="clearfix">
+								<i class="nav-icon-pro"></i>
+								Convert to <strong>ProPresenter</strong>
+							</a>
+							<!-- <a href="#" data-format="txt" class="clearfix">
+								<i class="nav-icon-txt"></i>
+								Convert to <strong>Plain Text</strong>
+							</a> -->
+							<a href="#" data-format="display" class="clearfix">
+								<i class="nav-icon-slides"></i>
+								Display <strong>Slides</strong>
+							</a>
+						</nav>
+						<div class="drop-area hide" id="drop-area-more">
+							You can drag more songs into this window to convert them!
+						</div>
+					</div>
 				</div>
 
 				<div id="begin-area" class="span4 offset2">
@@ -67,7 +72,6 @@
 				</div>
 
 				<div id="display-area" class="span9 hide">
-					<div class="drop-area">You can drag more songs into this window to convert them!</div>
 					<div id="parser-error-display" class="alert alert-error"></div>
 					<div id="output"></div>
 				</div>

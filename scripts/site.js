@@ -4,8 +4,10 @@
 	var $content;
 	var $areaBegin;
 	var $areaDisplay;
+	var $dropMore;
 	var $output;
 	var $parserErrorDisplay;
+	var fadeSpeed = 400;
 	var isMobile = false;
 
 	//Page Load
@@ -15,6 +17,7 @@
 		$content = $('#main');
 		$areaBegin = $("#begin-area");
 		$areaDisplay = $("#display-area");
+		$dropMore = $("#drop-area-more");
 		$output = $("#output")
 		$parserErrorDisplay = $('#parser-error-display');
 
@@ -177,7 +180,6 @@
 	function _setupNav() {
 		var selectedClass = "nav-current";
 		var $sections = $content.children(".js-main-section");
-		var $sidebars = $content.find(".nav-sidebar");
 
 		$("#main-nav")
 			.children("a")
@@ -201,8 +203,8 @@
 			});
 
 			//Click on the sidebar items to change settings in the UI
-			$sidebars
-				.find("a")
+			$content
+				.find(".nav-sidebar a")
 				.on("click",function(ev){
 					var $self = $(this);
 
@@ -223,17 +225,16 @@
 				.first()
 				.triggerHandler("click");
 
-			//Affix the sidebars
-			$sidebars.each(function(){
-				var $self = $(this);
-				var topPos = $self.offset().top - parseInt($header.css("margin-bottom"), 10);
 
-				$self.affix({
+			var $toAffix = $("#affix-contents");
+			var topPos = $toAffix.offset().top - parseInt($header.css("margin-bottom"), 10);
+
+			$toAffix
+				.affix({
 					offset:{
 						top: topPos
 					}
 				});
-			});
 	}
 	//======================================================================
 
@@ -271,7 +272,8 @@
 
 	function _resetUI(){
 		$areaBegin.hide();
-		$areaDisplay.show();
+		$areaDisplay.fadeIn(fadeSpeed);
+		$dropMore.fadeIn(fadeSpeed);
 		$output.empty();
 
 		//Empty out the UI so we can put in new data...
