@@ -156,15 +156,20 @@
 		var $win = $(window)
 		var scrollSpeed = 2.4;
 		var imgHeight = 350;
+
+		//cut off the top of the image a bit, this will show the parrallax effect for OSX Elastic scrolling upwards
+		var scrollUpElasticMax = 20;
 		var headerScrollMax = -(imgHeight - $header.outerHeight());
 
 		$win.on("scroll", function() {
-			var yPos = -($win.scrollTop() / scrollSpeed);
+
+			//Determine the vertical position, then subtract the  elastic scrolling amount
+			var yPos = -($win.scrollTop() / scrollSpeed) - scrollUpElasticMax;
 			
 			if(yPos <= headerScrollMax){
 				//Disregard anything more than the image can be scroll past without seeing edges
 				yPos = headerScrollMax;
-			}else if(yPos >=0){
+			}else if(yPos >= 0){
 				//Keep it in bounds when there is elastic scrolling
 				yPos = 0;
 			}
