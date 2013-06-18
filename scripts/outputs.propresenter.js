@@ -4,6 +4,7 @@
 
 (function(){
 	var THIS_OUTPUT = 'propresenter';
+	var FILE_EXTENSION = ".pro4";
 
 	//Extend the outputs object on the parser to allow for HTML output
 	parser.outputs[THIS_OUTPUT] = function ($container, songList) {
@@ -164,7 +165,7 @@
 
 				//Go through and add each fiel to the zip
 				$.each(convertedFileContents, function(i, convertedSong) {
-					zip.file(convertedSong.name+".pro4", convertedSong.data)
+					zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data)
 				});
 
 				//Generate the zip file contents
@@ -176,7 +177,7 @@
 			$("#"+downloadFilesId).on("click",function(){
 				$.each(convertedFileContents, function(i, convertedSong) {
 					var fileBlob = new Blob([convertedSong.data], {type: "text/xml;charset=utf-8"});
-					saveAs(fileBlob, convertedSong.name+".pro4");
+					saveAs(fileBlob, convertedSong.name + FILE_EXTENSION);
 				});
 			});
 		}
