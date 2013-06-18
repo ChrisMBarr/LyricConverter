@@ -14,7 +14,7 @@
       "fileType" : 64
     },
     "\/scripts\/outputs.propresenter.js" : {
-      "ignoreWasSetByUser" : 1,
+      "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
@@ -218,19 +218,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/tables.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap-assets\/wells.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -244,13 +231,37 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/bootstrap-assets\/tables.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/scripts\/site.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/site.min.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/site.min.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap.less",
-      "outputStyle" : 0,
+      "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap.css",
       "strictImports" : 0,
@@ -308,7 +319,7 @@
     },
     "\/scripts\/lib\/FileSaver.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
@@ -325,7 +336,7 @@
       "inputAbbreviatedPath" : "\/styles\/img\/icons.png",
       "processed" : 0,
       "outputAbbreviatedPath" : "\/styles\/img\/icons.png",
-      "initialSize" : 1542,
+      "initialSize" : 1487,
       "fileType" : 8192
     },
     "\/old\/_DESIGN\/pro4.png" : {
@@ -341,7 +352,7 @@
     },
     "\/scripts\/plugins\/jquery.fileDragAndDrop.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.js",
@@ -363,17 +374,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/_DESIGN\/SSP Logo.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
-      "initialSize" : 19971,
-      "fileType" : 8192
-    },
     "\/styles\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -383,17 +383,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings.png",
       "initialSize" : 12799,
-      "fileType" : 8192
-    },
-    "\/old\/img\/split-shadow.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/img\/split-shadow.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/img\/split-shadow.png",
-      "initialSize" : 150,
       "fileType" : 8192
     },
     "\/styles\/bootstrap-assets\/breadcrumbs.less" : {
@@ -408,6 +397,28 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/old\/img\/split-shadow.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/img\/split-shadow.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/img\/split-shadow.png",
+      "initialSize" : 150,
+      "fileType" : 8192
+    },
+    "\/old\/_DESIGN\/SSP Logo.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
+      "initialSize" : 19971,
+      "fileType" : 8192
     },
     "\/old\/lib\/HTMLParts\/About.php" : {
       "ignoreWasSetByUser" : 0,
@@ -448,7 +459,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/parser.css",
-      "outputAbbreviatedPath" : "\/No Output Path",
+      "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
     "\/styles\/img\/header-5.jpg" : {
@@ -492,7 +503,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.css",
-      "outputAbbreviatedPath" : "\/No Output Path",
+      "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
     "\/old\/lib\/Process.php" : {
@@ -589,6 +600,19 @@
       "initialSize" : 1061,
       "fileType" : 8192
     },
+    "\/styles\/parser.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/parser.less",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/parser.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/old\/lib\/HTMLParts\/Help.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -597,19 +621,6 @@
       "inputAbbreviatedPath" : "\/old\/lib\/HTMLParts\/Help.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
-    },
-    "\/styles\/parser.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/parser.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/parser.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/responsive-utilities.less" : {
       "ignoreWasSetByUser" : 0,
@@ -638,7 +649,7 @@
       "debugStyle" : 0
     },
     "\/scripts\/formats.propresenter.js" : {
-      "ignoreWasSetByUser" : 1,
+      "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
@@ -649,7 +660,7 @@
       "fileType" : 64
     },
     "\/scripts\/outputs.display.js" : {
-      "ignoreWasSetByUser" : 1,
+      "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
@@ -670,29 +681,27 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-inflate.min.js",
       "fileType" : 64
     },
+    "\/styles\/img\/header-4.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/header-4.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/header-4.jpg",
+      "initialSize" : 39575,
+      "fileType" : 4096
+    },
     "\/scripts\/parser.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/parser.js",
-      "outputStyle" : 0,
+      "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
       "fileType" : 64
-    },
-    "\/styles\/bootstrap-assets\/alerts.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/old\/js\/jquery.easing.js" : {
       "ignoreWasSetByUser" : 0,
@@ -745,16 +754,18 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/img\/header-4.jpg" : {
+    "\/styles\/bootstrap-assets\/alerts.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/img\/header-4.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/styles\/img\/header-4.jpg",
-      "initialSize" : 39575,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/progress-bars.less" : {
       "ignoreWasSetByUser" : 0,
@@ -803,7 +814,7 @@
       "fileType" : 64
     },
     "\/scripts\/outputs.text.js" : {
-      "ignoreWasSetByUser" : 1,
+      "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
@@ -864,7 +875,7 @@
       "debugStyle" : 0
     },
     "\/scripts\/formats.songshowplus.js" : {
-      "ignoreWasSetByUser" : 1,
+      "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
@@ -873,15 +884,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
       "fileType" : 64
-    },
-    "\/old\/debug\/array.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/debug\/array.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/styles\/main-assets\/_header.less" : {
       "ignoreWasSetByUser" : 0,
@@ -896,6 +898,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/bootstrap\/bootstrap-affix.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap-assets\/responsive-768px-979px.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -909,16 +922,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/bootstrap\/bootstrap-affix.js" : {
+    "\/old\/debug\/array.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/old\/debug\/array.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/bootstrap-assets\/close.less" : {
       "ignoreWasSetByUser" : 0,
@@ -963,7 +974,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap.css",
-      "outputAbbreviatedPath" : "\/No Output Path",
+      "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
     "\/styles\/img\/header-3.jpg" : {
@@ -1182,12 +1193,12 @@
       "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/modals.less" : {
-      "ignoreWasSetByUser" : 1,
+      "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.less",
-      "outputStyle" : 0,
+      "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/modals.css",
       "strictImports" : 0,
@@ -1215,7 +1226,7 @@
       "inputAbbreviatedPath" : "\/styles\/img\/icons@2x.png",
       "processed" : 0,
       "outputAbbreviatedPath" : "\/styles\/img\/icons@2x.png",
-      "initialSize" : 2865,
+      "initialSize" : 2723,
       "fileType" : 8192
     },
     "\/old\/css\/main.css" : {
@@ -1227,15 +1238,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/old\/lib\/includes\/rtf.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/includes\/rtf.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/scripts\/bootstrap\/bootstrap-button.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1246,6 +1248,15 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
       "fileType" : 64
+    },
+    "\/old\/lib\/includes\/rtf.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/lib\/includes\/rtf.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/img\/header-2.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -1295,7 +1306,7 @@
     },
     "\/scripts\/lib\/jszip.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/lib\/jszip.js",
@@ -1339,19 +1350,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/tooltip.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap-assets\/popovers.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1365,27 +1363,29 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/bootstrap-assets\/tooltip.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/scripts\/site.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/site.js",
-      "outputStyle" : 0,
+      "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/site.min.js",
       "fileType" : 64
-    },
-    "\/old\/img\/bg-input-focus.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
-      "initialSize" : 129,
-      "fileType" : 8192
     },
     "\/styles\/bootstrap-assets\/responsive-1200px-min.less" : {
       "ignoreWasSetByUser" : 0,
@@ -1399,6 +1399,17 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/old\/img\/bg-input-focus.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
+      "initialSize" : 129,
+      "fileType" : 8192
     },
     "\/scripts\/bootstrap\/bootstrap-tab.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1419,21 +1430,8 @@
       "inputAbbreviatedPath" : "\/styles\/img\/header-1.jpg",
       "processed" : 0,
       "outputAbbreviatedPath" : "\/styles\/img\/header-1.jpg",
-      "initialSize" : 36207,
+      "initialSize" : 42306,
       "fileType" : 4096
-    },
-    "\/styles\/bootstrap-assets\/reset.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/reset.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/reset.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/labels-badges.less" : {
       "ignoreWasSetByUser" : 0,
@@ -1444,6 +1442,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/labels-badges.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/bootstrap-assets\/reset.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/reset.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/reset.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -1482,28 +1493,56 @@
     {
       "type" : 1,
       "position" : 0,
-      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.text.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 1,
+      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/jszip.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 2,
+      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 0,
+      "linkedFileAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 1,
-      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/formats.propresenter.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 2,
-      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.display.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 3,
-      "linkedFileAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.text.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 4,
+      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.display.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     }
