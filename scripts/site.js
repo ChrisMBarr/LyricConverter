@@ -36,6 +36,33 @@
 
 
 
+	var _cookie = {
+		_create: function(name,value,days) {
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		},
+		_read:function(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		},
+		_erase: function(name) {
+			createCookie(name,"",-1);
+		}
+	};
+
+
+
 	//======================================================================
 	//Detect unsupported features and or devices
 	//======================================================================
@@ -183,8 +210,10 @@
 	}
 
 	function _setupNav() {
+		var formatCookieName = "format";
 		var selectedClass = "nav-current";
 		var $sections = $content.children(".js-main-section");
+		var $sidebarLinks = $content.find(".nav-sidebar a");
 
 		$("#main-nav")
 			.children("a")
@@ -208,8 +237,7 @@
 			});
 
 			//Click on the sidebar items to change settings in the UI
-			$content
-				.find(".nav-sidebar a")
+			$sidebarLinks
 				.on("click",function(ev){
 					var $self = $(this);
 
@@ -223,14 +251,30 @@
 					var format = $self.data("format");
 					parser.outputFormat = format;
 
+					//Save this setting as a cookie stored for 1 year
+					_cookie._create(formatCookieName, format, 365)
+
 					ev.preventDefault();
-				})
+				});
 
-				//Find the first one and fire it's click event
-				.first()
-				.triggerHandler("click");
+			//Read the saved format cookie on load
+			var savedFormat = _cookie._read(formatCookieName);
+			var $toSelect = $([]);
 
+			//If we have a value, find the item in the UI that matches
+			if(savedFormat !== null){
+				$toSelect = $sidebarLinks.filter('[data-format="'+ savedFormat +'"]');
+			}
+			
+			//If the UI item was not selected, then just select the first one
+			if($toSelect.length===0){
+				$toSelect = $sidebarLinks.first();
+			}
 
+			//Trigger a click on this item
+			$toSelect.triggerHandler("click");
+			
+			//Affix the sidebar to the page on scroll	
 			var $toAffix = $("#affix-contents");
 			var topPos = $toAffix.offset().top - parseInt($header.css("margin-bottom"), 10);
 
