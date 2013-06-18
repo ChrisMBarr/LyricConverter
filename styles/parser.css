@@ -113,11 +113,6 @@ body {
   text-decoration: none;
   border-bottom-color: #3ea8b2;
 }
-@media (max-width: 767px) {
-  #main-nav a {
-    padding: 0;
-  }
-}
 #main-nav .nav-current {
   border-bottom-color: #3ea8b2;
 }
