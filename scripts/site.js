@@ -10,6 +10,18 @@
 	var fadeSpeed = 400;
 	var isMobile = false;
 
+	//Donation stuff
+	var donationNagThreshhold = 100;
+	var showDonationNag = true;
+	var $donationNag;
+	var $totalSongCountDisplay;
+
+	//Cookie variables
+	var cookieDuration = 365; //1 year
+	var formatCookieName = "last-used-format";
+	var songCountCookieName = "total-converted-song-count";
+	var songCount = 0;
+
 	//Page Load
 	$(function(){
 		//Fill in variables wil selected elements
@@ -20,6 +32,8 @@
 		$dropMore = $("#drop-area-more");
 		$output = $("#output")
 		$parserErrorDisplay = $('#parser-error-display');
+		$donationNag = $("#many-songs-please-donate");
+		$totalSongCountDisplay = $("#total-song-count");
 
 		_detectMobile();
 
@@ -27,10 +41,9 @@
 		if(!isMobile){
 			_setupHeaderImage();
 			_setupHeaderParrallax();
-
 			_setupNav();
-
 			_detectFeatures();
+			_setupDonationAndSongCounter()
 		}
 	});
 
@@ -210,7 +223,6 @@
 	}
 
 	function _setupNav() {
-		var formatCookieName = "format";
 		var selectedClass = "nav-current";
 		var $sections = $content.children(".js-main-section");
 		var $sidebarLinks = $content.find(".nav-sidebar a");
@@ -252,7 +264,7 @@
 					parser.outputFormat = format;
 
 					//Save this setting as a cookie stored for 1 year
-					_cookie._create(formatCookieName, format, 365)
+					_cookie._create(formatCookieName, format, cookieDuration)
 
 					ev.preventDefault();
 				});
@@ -285,6 +297,23 @@
 					}
 				});
 	}
+
+	function _setupDonationAndSongCounter(){
+		//Get the previous number of parsed songs
+		songCount = parseInt(_cookie._read(songCountCookieName));
+		
+		//If there is no stored count, create a cookie that will last for 1 year
+		if(isNaN(songCount)){
+			songCount = 0;
+			_cookie._create(songCountCookieName, songCount, cookieDuration);
+		}
+
+		$("#donate-nag-no-thanks").one('click', function(){
+			showDonationNag = false;
+			$donationNag.fadeOut(fadeSpeed);
+
+		});
+	}
 	//======================================================================
 
 
@@ -293,7 +322,6 @@
 	//Set up the parser
 	//======================================================================
 	function _setupParser(){
-
 		//Extend the parser with the local displayError function
 		parser.displayError = displayError;
 
@@ -310,10 +338,12 @@
 
 				//Parsing complete, run the display/output functions
 				parser.complete($output);
+
+				//Update the total converted song count
+				_updateSongCount(parser.songList.length);
 				
 				//Also display errors if there are any
 				if(parser.errorList.length){
-
 
 					var errorTitle = parser.errorList.length == 1 ? "One song ran into an error and could not be converted": "We ran into errors with " + parser.errorList.length + " of the songs, and they were not converted";
 
@@ -322,6 +352,18 @@
 				}
 
 			});
+	}
+
+	function _updateSongCount(songsToAdd){
+		songCount += songsToAdd;
+
+		//re-save the cookie with the new count
+		_cookie._create(songCountCookieName, songCount, cookieDuration);
+
+		if(showDonationNag && songCount > donationNagThreshhold){
+			$donationNag.show();
+			$("#total-song-count").text(songCount);
+		}
 	}
 
 	function _resetUI(){
