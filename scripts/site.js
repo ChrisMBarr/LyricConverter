@@ -24,17 +24,7 @@
 
 	//Page Load
 	$(function(){
-		//Fill in variables wil selected elements
-		$header = $('#header');
-		$content = $('#main');
-		$areaBegin = $("#begin-area");
-		$areaDisplay = $("#display-area");
-		$dropMore = $("#drop-area-more");
-		$output = $("#output")
-		$parserErrorDisplay = $('#parser-error-display');
-		$donationNag = $("#many-songs-please-donate");
-		$totalSongCountDisplay = $("#total-song-count");
-
+		_selectElements();
 		_detectMobile();
 
 		//Skip for mobile devices since they won't be seen anyway
@@ -79,7 +69,6 @@
 	//======================================================================
 	//Detect unsupported features and or devices
 	//======================================================================
-
 	function _displaySupportError(title, msg) {
 		//Build up an HTML string for a bootstrap modal window
 			var modalHtml = [
@@ -152,7 +141,19 @@
 	//======================================================================
 	//Do initial UI setup
 	//======================================================================
-
+	function _selectElements(){
+		//Fill in variables wil selected elements
+		$header = $('#header');
+		$content = $('#main');
+		$areaBegin = $("#begin-area");
+		$areaDisplay = $("#display-area");
+		$dropMore = $("#drop-area-more");
+		$output = $("#output")
+		$parserErrorDisplay = $('#parser-error-display');
+		$donationNag = $("#many-songs-please-donate");
+		$totalSongCountDisplay = $("#total-song-count");
+	}
+	
 	function _setupHeaderImage(){
 		var headerImgCount = 8;
 		var headerImgPattern = /header-(\d+)\.jpg/;
