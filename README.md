@@ -1,4 +1,4 @@
-SongParserJS
+LyricConverter
 ==================
 
 Parses the song info &amp; lyrics in the browser from various lyric presentation software file formats!
