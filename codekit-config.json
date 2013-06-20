@@ -57,19 +57,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/grid.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/scripts\/bootstrap\/bootstrap-modal.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -91,6 +78,19 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-scrollspy.min.js",
       "fileType" : 64
+    },
+    "\/styles\/bootstrap-assets\/grid.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/old\/css\/_styles.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -374,6 +374,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/old\/_DESIGN\/SSP Logo.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
+      "initialSize" : 19971,
+      "fileType" : 8192
+    },
     "\/styles\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -409,17 +420,6 @@
       "initialSize" : 150,
       "fileType" : 8192
     },
-    "\/old\/_DESIGN\/SSP Logo.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/_DESIGN\/SSP Logo.png",
-      "initialSize" : 19971,
-      "fileType" : 8192
-    },
     "\/old\/lib\/HTMLParts\/About.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -453,15 +453,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/parser.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/parser.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/styles\/img\/header-5.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -472,6 +463,15 @@
       "outputAbbreviatedPath" : "\/styles\/img\/header-5.jpg",
       "initialSize" : 47885,
       "fileType" : 4096
+    },
+    "\/styles\/parser.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/parser.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/styles\/bootstrap-assets\/code.less" : {
       "ignoreWasSetByUser" : 0,
@@ -600,6 +600,19 @@
       "initialSize" : 1061,
       "fileType" : 8192
     },
+    "\/styles\/bootstrap-assets\/responsive-utilities.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/styles\/parser.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -621,19 +634,6 @@
       "inputAbbreviatedPath" : "\/old\/lib\/HTMLParts\/Help.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
-    },
-    "\/styles\/bootstrap-assets\/responsive-utilities.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-utilities.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/dropdowns.less" : {
       "ignoreWasSetByUser" : 0,
@@ -692,16 +692,18 @@
       "initialSize" : 39575,
       "fileType" : 4096
     },
-    "\/scripts\/parser.js" : {
+    "\/styles\/bootstrap-assets\/alerts.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/parser.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/old\/js\/jquery.easing.js" : {
       "ignoreWasSetByUser" : 0,
@@ -736,14 +738,16 @@
       "initialSize" : 12622,
       "fileType" : 8192
     },
-    "\/old\/lib\/cron.php" : {
+    "\/scripts\/parser.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/cron.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/scripts\/parser.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
+      "fileType" : 64
     },
     "\/old\/lib\/includes\/ProPresenter.php" : {
       "ignoreWasSetByUser" : 0,
@@ -754,18 +758,14 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/alerts.less" : {
+    "\/old\/lib\/cron.php" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/old\/lib\/cron.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/bootstrap-assets\/progress-bars.less" : {
       "ignoreWasSetByUser" : 0,
@@ -885,6 +885,15 @@
       "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
       "fileType" : 64
     },
+    "\/old\/debug\/array.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/debug\/array.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/styles\/main-assets\/_header.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -897,17 +906,6 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/scripts\/bootstrap\/bootstrap-affix.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.min.js",
-      "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/responsive-768px-979px.less" : {
       "ignoreWasSetByUser" : 0,
@@ -922,14 +920,16 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/debug\/array.php" : {
+    "\/scripts\/bootstrap\/bootstrap-affix.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/debug\/array.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.min.js",
+      "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/close.less" : {
       "ignoreWasSetByUser" : 0,
@@ -1172,14 +1172,18 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/lib\/includes\/Functions.php" : {
+    "\/styles\/bootstrap-assets\/thumbnails.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/includes\/Functions.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/thumbnails.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/thumbnails.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/scripts\/bootstrap\/bootstrap-collapse.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1205,18 +1209,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/thumbnails.less" : {
+    "\/old\/lib\/includes\/Functions.php" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/thumbnails.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/thumbnails.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/old\/lib\/includes\/Functions.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/img\/icons@2x.png" : {
       "ignoreWasSetByUser" : 0,
@@ -1249,26 +1249,6 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
       "fileType" : 64
     },
-    "\/old\/lib\/includes\/rtf.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/includes\/rtf.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/styles\/img\/header-2.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
-      "initialSize" : 40187,
-      "fileType" : 4096
-    },
     "\/styles\/bootstrap-assets\/media.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1282,6 +1262,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/img\/header-2.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
+      "initialSize" : 40187,
+      "fileType" : 4096
+    },
     "\/old\/js\/modernizr.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1292,6 +1283,15 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/old\/js\/modernizr.min.js",
       "fileType" : 64
+    },
+    "\/old\/lib\/includes\/rtf.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/lib\/includes\/rtf.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/img\/header-8.jpg" : {
       "ignoreWasSetByUser" : 0,
