@@ -62,7 +62,7 @@
 
 		//Make sure the title is filled in, if not use the filename
 		var songTitle = (infoArray.length > 0 && infoArray[0].length > 0) ? infoArray[0] : fileName;
-
+		
 		//remove leading dollar signs for whatever reason...
 		songTitle = songTitle.indexOf("$")===1 ? songTitle.substring(1,songTitle.length) : songTitle;
 		
@@ -70,12 +70,12 @@
 		songTitle = songTitle.substring(0, songTitle.length - +(songTitle.lastIndexOf('$')==songTitle.length-1));
 		
 		var songInfo = [];
-
+		
 		songInfo.push({
 			'name':'Artist/Author',
 			'value':infoArray[1]
 		});
-
+		
 		//If the copyright exists, add it
 		if(infoArray[2]){
 			songInfo.push({
@@ -107,7 +107,7 @@
 	}
 
 	function _getSlides (sections) {
-		//Sections tend to begin with N number of control characters, a random print character, more control characters, and then the title "Verse 1" or soemthing
+		//Sections tend to begin with N number of control characters, a random print character, more control characters, and then the title "Verse 1" or something
 		//After that is the actual song lyrics, but it may be preceeded by one non-word character
 		//Slashes are double escaped here so it can be in a string!
 		var slidePattern = new RegExp("^" + _patternInvisiblesStr + "+.{1}" + _patternInvisiblesStr + "+(.+)" + _patternInvisiblesStr + "+\\W*([\\s\\S]+)", "m");
@@ -121,10 +121,10 @@
 			var matches = sections[i].match(slidePattern);
 
 			//Remove whitespace from the title
-			var slideTitle = (matches !== null && matches[1]) ? $.trim(matches[1]).replace(_invisibles, "") : "";
+			var slideTitle = (matches !== null && matches[1]) ? $.trim(matches[1].replace(_invisibles, "")) : "";
 
 			//Remove any more invisibles from the lyrics and remove whitespace
-			var slideLyrics = (matches !== null && matches[2]) ? $.trim(matches[2]).replace(_invisibles, "") : "";
+			var slideLyrics = (matches !== null && matches[2]) ? $.trim(matches[2].replace(_invisibles, "")) : "";
 			
 			//Save it to the array!
 			slideArray.push({

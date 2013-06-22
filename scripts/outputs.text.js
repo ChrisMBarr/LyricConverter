@@ -52,13 +52,17 @@
 		//Add the song lyrics
 		for (var i = 0; i < songData.slides.length; i++) {
 			var slide = songData.slides[i];
-
-			txtFile += slide.title;
-			txtFile += "\r\n";
-			txtFile += slide.lyrics;
-
-			if(i < songData.slides.length-1){
-				txtFile += "\r\n\r\n";
+			
+			//Skip blank slides for text files
+			if(slide.title.length > 0 || slide.lyrics.length > 0){
+				txtFile += slide.title;
+				txtFile += "\r\n";
+				txtFile += slide.lyrics;
+				
+				//Add line breaks afterwards, but not for the last slide
+				if(i < songData.slides.length-1){
+					txtFile += "\r\n\r\n";
+				}
 			}
 		};
 
