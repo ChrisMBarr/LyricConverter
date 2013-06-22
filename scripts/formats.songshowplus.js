@@ -61,8 +61,14 @@
 		}
 
 		//Make sure the title is filled in, if not use the filename
-		var songTitle = (infoArray[0].length > 0) ? infoArray[0] : fileName;
+		var songTitle = (infoArray.length > 0 && infoArray[0].length > 0) ? infoArray[0] : fileName;
 
+		//remove leading dollar signs for whatever reason...
+		songTitle = songTitle.indexOf("$")===1 ? songTitle.substring(1,songTitle.length) : songTitle;
+		
+		//remove trailing dollar signs for whatever reason...
+		songTitle = songTitle.substring(0, songTitle.length - +(songTitle.lastIndexOf('$')==songTitle.length-1));
+		
 		var songInfo = [];
 
 		songInfo.push({
@@ -115,10 +121,10 @@
 			var matches = sections[i].match(slidePattern);
 
 			//Remove whitespace from the title
-			var slideTitle = $.trim(matches[1]).replace(_invisibles, "");
+			var slideTitle = (matches !== null && matches[1]) ? $.trim(matches[1]).replace(_invisibles, "") : "";
 
 			//Remove any more invisibles from the lyrics and remove whitespace
-			var slideLyrics = $.trim(matches[2]).replace(_invisibles, "");
+			var slideLyrics = (matches !== null && matches[2]) ? $.trim(matches[2]).replace(_invisibles, "") : "";
 			
 			//Save it to the array!
 			slideArray.push({
@@ -131,8 +137,28 @@
 		var lastSlideObj = _getKeywordsFromLastSlide(sections.slice(-1)[0]);
 		var keywords = false;
 		if(lastSlideObj){
-			keywords = lastSlideObj.keywords;
-			slideArray.slice(-1)[0].lyrics = lastSlideObj.lastLyrics;
+
+			//If we have no slides, and what we think are keywords are longer than the lyrics...
+			//Then we might need to switch them for some reason...
+			if(slideArray.length === 0 && lastSlideObj.keywords.length > lastSlideObj.lastLyrics.length){
+				keywords = lastSlideObj.lastLyrics;
+				slideArray.push({
+					"title": "",
+					"lyrics": lastSlideObj.keywords
+				});
+			}else{
+				keywords = lastSlideObj.keywords;
+				if(slideArray.length > 0){
+					slideArray.slice(-1)[0].lyrics = lastSlideObj.lastLyrics;
+				}else{
+					slideArray.push({
+						"title": "",
+						"lyrics": lastSlideObj.lastLyrics
+					});
+				}
+			}
+
+			
 		}
 
 		return {

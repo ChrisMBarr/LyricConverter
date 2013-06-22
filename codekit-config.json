@@ -57,6 +57,19 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/styles\/bootstrap-assets\/grid.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/scripts\/bootstrap\/bootstrap-modal.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -78,19 +91,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-scrollspy.min.js",
       "fileType" : 64
-    },
-    "\/styles\/bootstrap-assets\/grid.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/grid.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/old\/css\/_styles.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -282,7 +282,7 @@
     },
     "\/styles\/bootstrap-assets\/forms.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/forms.less",
@@ -541,19 +541,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/variables.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/styles\/bootstrap-assets\/navbar.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -563,6 +550,19 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/navbar.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/styles\/bootstrap-assets\/variables.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.css",
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
@@ -692,16 +692,18 @@
       "initialSize" : 39575,
       "fileType" : 4096
     },
-    "\/scripts\/parser.js" : {
+    "\/styles\/bootstrap-assets\/alerts.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/parser.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/old\/js\/jquery.easing.js" : {
       "ignoreWasSetByUser" : 0,
@@ -736,14 +738,16 @@
       "initialSize" : 12622,
       "fileType" : 8192
     },
-    "\/old\/lib\/cron.php" : {
+    "\/scripts\/parser.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/cron.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/scripts\/parser.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
+      "fileType" : 64
     },
     "\/old\/lib\/includes\/ProPresenter.php" : {
       "ignoreWasSetByUser" : 0,
@@ -754,18 +758,14 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/alerts.less" : {
+    "\/old\/lib\/cron.php" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/old\/lib\/cron.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/bootstrap-assets\/progress-bars.less" : {
       "ignoreWasSetByUser" : 0,
@@ -1067,6 +1067,17 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-typeahead.min.js",
       "fileType" : 64
     },
+    "\/scripts\/bootstrap\/bootstrap-popover.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.min.js",
+      "fileType" : 64
+    },
     "\/styles\/_override-variables.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1090,17 +1101,6 @@
       "outputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings-white.png",
       "initialSize" : 8777,
       "fileType" : 8192
-    },
-    "\/scripts\/bootstrap\/bootstrap-popover.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.min.js",
-      "fileType" : 64
     },
     "\/old\/js\/main.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1247,28 +1247,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/scripts\/bootstrap\/bootstrap-button.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
-      "fileType" : 64
-    },
-    "\/styles\/img\/header-2.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
-      "initialSize" : 40187,
-      "fileType" : 4096
-    },
     "\/styles\/bootstrap-assets\/media.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1282,6 +1260,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/img\/header-2.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
+      "initialSize" : 40187,
+      "fileType" : 4096
+    },
     "\/old\/js\/modernizr.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1291,6 +1280,17 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/old\/js\/modernizr.min.js",
+      "fileType" : 64
+    },
+    "\/scripts\/bootstrap\/bootstrap-button.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
       "fileType" : 64
     },
     "\/styles\/img\/header-8.jpg" : {
@@ -1493,27 +1493,6 @@
     {
       "type" : 1,
       "position" : 0,
-      "linkedFileAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.js",
-      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 1,
-      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/jszip.js",
-      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 2,
-      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
-      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 0,
       "linkedFileAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
@@ -1544,6 +1523,27 @@
       "position" : 4,
       "linkedFileAbbreviatedPath" : "\/scripts\/outputs.display.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 0,
+      "linkedFileAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 1,
+      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/jszip.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 2,
+      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/site.js",
       "followForSyntaxChecking" : 1
     }
   ],
