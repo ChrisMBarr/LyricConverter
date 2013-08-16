@@ -350,6 +350,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
+      "fileType" : 64
+    },
     "\/old\/_DESIGN\/pro4.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -359,6 +370,17 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/old\/_DESIGN\/pro4.png",
       "initialSize" : 41468,
+      "fileType" : 8192
+    },
+    "\/styles\/img\/icons.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/img\/icons.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/icons.png",
+      "initialSize" : 1487,
       "fileType" : 8192
     },
     "\/scripts\/lib\/FileSaver.js" : {
@@ -372,31 +394,9 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/FileSaver.min.js",
       "fileType" : 64
     },
-    "\/styles\/img\/icons.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/img\/icons.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/styles\/img\/icons.png",
-      "initialSize" : 1487,
-      "fileType" : 8192
-    },
-    "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
-      "fileType" : 64
-    },
     "\/scripts\/plugins\/jquery.fileDragAndDrop.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.js",
@@ -509,6 +509,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/parser.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/parser.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/styles\/img\/header-5.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -519,15 +528,6 @@
       "outputAbbreviatedPath" : "\/styles\/img\/header-5.jpg",
       "initialSize" : 47885,
       "fileType" : 4096
-    },
-    "\/styles\/parser.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/parser.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/styles\/bootstrap-assets\/code.less" : {
       "ieCompatibility" : 1,
@@ -966,6 +966,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/formats.songshowplus.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
+      "fileType" : 64
+    },
     "\/old\/css\/main.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -978,17 +989,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/scripts\/formats.songshowplus.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
-      "fileType" : 64
-    },
     "\/old\/debug\/array.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -998,16 +998,22 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/scripts\/bootstrap\/bootstrap-affix.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/styles\/main-assets\/_header.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/styles\/main-assets\/_header.less",
+      "outputAbbreviatedPath" : "\/styles\/main-assets\/_header.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.js",
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
       "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.min.js",
-      "fileType" : 64
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/responsive-768px-979px.less" : {
       "ieCompatibility" : 1,
@@ -1026,22 +1032,16 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/main-assets\/_header.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/styles\/main-assets\/_header.less",
-      "outputAbbreviatedPath" : "\/styles\/main-assets\/_header.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
+    "\/scripts\/bootstrap\/bootstrap-affix.js" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.js",
       "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-affix.min.js",
+      "fileType" : 64
     },
     "\/scripts\/TextCleaner.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1427,16 +1427,16 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/js\/modernizr.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/styles\/img\/header-2.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/js\/modernizr.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/old\/js\/modernizr.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
+      "initialSize" : 40187,
+      "fileType" : 4096
     },
     "\/scripts\/bootstrap\/bootstrap-button.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1449,16 +1449,16 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
       "fileType" : 64
     },
-    "\/styles\/img\/header-2.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+    "\/old\/js\/modernizr.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/styles\/img\/header-2.jpg",
-      "initialSize" : 40187,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/old\/js\/modernizr.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/old\/js\/modernizr.min.js",
+      "fileType" : 64
     },
     "\/styles\/img\/header-8.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -1473,7 +1473,7 @@
     },
     "\/scripts\/lib\/jszip.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/scripts\/lib\/jszip.js",
@@ -1525,10 +1525,10 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/styles\/bootstrap-assets\/popovers.less" : {
+    "\/styles\/bootstrap-assets\/tooltip.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.less",
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.css",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.less",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1542,10 +1542,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/tooltip.less" : {
+    "\/styles\/bootstrap-assets\/popovers.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.less",
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tooltip.css",
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.less",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/popovers.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1570,6 +1570,17 @@
       "outputAbbreviatedPath" : "\/scripts\/site.min.js",
       "fileType" : 64
     },
+    "\/old\/img\/bg-input-focus.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
+      "initialSize" : 129,
+      "fileType" : 8192
+    },
     "\/styles\/bootstrap-assets\/responsive-1200px-min.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-1200px-min.less",
@@ -1586,17 +1597,6 @@
       "outputStyle" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/old\/img\/bg-input-focus.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
-      "initialSize" : 129,
-      "fileType" : 8192
     },
     "\/scripts\/bootstrap\/bootstrap-tab.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1688,34 +1688,55 @@
     {
       "type" : 1,
       "position" : 0,
-      "linkedFileAbbreviatedPath" : "\/scripts\/TextCleaner.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 1,
-      "linkedFileAbbreviatedPath" : "\/scripts\/formats.propresenter.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 2,
-      "linkedFileAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/lib\/jszip.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 3,
-      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/TextCleaner.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
       "position" : 4,
+      "linkedFileAbbreviatedPath" : "\/scripts\/formats.propresenter.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 5,
+      "linkedFileAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 6,
+      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
+      "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 7,
       "linkedFileAbbreviatedPath" : "\/scripts\/outputs.display.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
