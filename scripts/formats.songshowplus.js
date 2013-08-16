@@ -2,7 +2,6 @@
  * PARSER for SongShowPlus files
  * Extension: .sbsong
  * Site: http://www.songshowplus.com/
- * NOTE: This file MUST be saved in Windows 1252 character encoding or else it WILL NOT properly make use of the TextConverter!!!
 =======================================================*/
 
 (function () {
