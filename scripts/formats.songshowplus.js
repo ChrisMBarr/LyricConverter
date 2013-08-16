@@ -2,6 +2,7 @@
  * PARSER for SongShowPlus files
  * Extension: .sbsong
  * Site: http://www.songshowplus.com/
+ * NOTE: This file MUST be saved in Windows 1252 character encoding or else it WILL NOT properly make use of the TextConverter!!!
 =======================================================*/
 
 (function () {
@@ -71,10 +72,12 @@
 		
 		var songInfo = [];
 		
-		songInfo.push({
-			'name':'Artist/Author',
-			'value':infoArray[1]
-		});
+		if(infoArray[1]){
+			songInfo.push({
+				'name':'Artist/Author',
+				'value':infoArray[1]
+			});
+		}
 		
 		//If the copyright exists, add it
 		if(infoArray[2]){
@@ -99,6 +102,12 @@
 				'value':keywords
 			});
 		}
+
+		//Convert characters as needed - useful for non-english alphabets (Spanish)
+		songTitle = TextCleaner.ConvertWin1252ToUtf8(songTitle);
+		for (var i = 0; i < songInfo.length; i++) {
+			songInfo[i].value = TextCleaner.ConvertWin1252ToUtf8(songInfo[i].value);
+		};
 
 		return {
 			'info': songInfo,
@@ -125,7 +134,14 @@
 
 			//Remove any more invisibles from the lyrics and remove whitespace
 			var slideLyrics = (matches !== null && matches[2]) ? $.trim(matches[2].replace(_invisibles, "")) : "";
-			
+
+			//Convert characters as needed - useful for non-english alphabets (Spanish)
+			slideTitle = TextCleaner.ConvertWin1252ToUtf8(slideTitle);
+			slideLyrics = TextCleaner.ConvertWin1252ToUtf8(slideLyrics);
+
+			//Replace multiple slashes sometimes?
+			slideLyrics = slideLyrics.replace(/\/+/g,"");
+
 			//Save it to the array!
 			slideArray.push({
 				"title": slideTitle,
@@ -144,7 +160,7 @@
 				keywords = lastSlideObj.lastLyrics;
 				slideArray.push({
 					"title": "",
-					"lyrics": lastSlideObj.keywords
+					"lyrics": lastSlideObj.keywords.replace(/\/+/g,"")
 				});
 			}else{
 				keywords = lastSlideObj.keywords;
@@ -153,12 +169,10 @@
 				}else{
 					slideArray.push({
 						"title": "",
-						"lyrics": lastSlideObj.lastLyrics
+						"lyrics": lastSlideObj.lastLyrics.replace(/\/+/g,"")
 					});
 				}
 			}
-
-			
 		}
 
 		return {
@@ -184,6 +198,10 @@
 			//Return the last slide minus the keywords, then parse out the optional begining non-word character
 			var lastLyrics = infoArray[1].match(/^\W*([\s\S]+)/m)[1];
 
+			//Convert characters as needed - useful for non-english alphabets (Spanish)
+			keywords = TextCleaner.ConvertWin1252ToUtf8(keywords);
+			lastLyrics = TextCleaner.ConvertWin1252ToUtf8(lastLyrics);
+
 			return{
 				'keywords': keywords,
 				'lastLyrics': lastLyrics
@@ -194,5 +212,4 @@
 		return false;
 		
 	}
-
 })();
