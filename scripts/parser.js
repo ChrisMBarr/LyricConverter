@@ -28,8 +28,9 @@ var parser = (function(){
 		try{
 			//Find the file extention
 			var fileParts = fullFileName.split(".");
-			var fileName = fileParts[0];
 			var fileExt = fileParts.slice(-1)[0].toLowerCase();
+			var fileName = fullFileName.replace(fileExt, '');
+			
 
 			//Test the file extension with the test function registered with each format type
 			//When one matches, use that formats convert function
