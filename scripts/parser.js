@@ -30,13 +30,17 @@ var parser = (function(){
 			var fileParts = fullFileName.split(".");
 			var fileExt = fileParts.slice(-1)[0].toLowerCase();
 			var fileName = fullFileName.replace(fileExt, '');
+
+			//Browsers will add some unneeded text to the base64 encoding. Remove it.
+			var encodedSongData = data.replace(/^data:.*;base64,/,"");
+			var decodedSongData = utilities.decode(encodedSongData);
 			
 
 			//Test the file extension with the test function registered with each format type
 			//When one matches, use that formats convert function
 			var convertFn;
 			$.each(parser.formats, function(format, formatObj){
-				if(formatObj.testExtension(fileExt)){
+				if(formatObj.testFormat(fileExt, decodedSongData)){
 					convertFn = formatObj.convert;
 					return false;
 				}
@@ -44,10 +48,6 @@ var parser = (function(){
 
 			//Make sure the convert function exists...
 			if($.isFunction(convertFn)){
-				//Browsers will add some unneeded text to the base64 encoding. Remove it.
-				var encodedSongData = data.replace(/^data:.*;base64,/,"");
-				var decodedSongData = utilities.decode(encodedSongData);
-
 				//Pass the decoded song date to the convert function
 				//We will get back a normalized version of the song content for the supported file type
 				parser.songList.push({
@@ -59,7 +59,7 @@ var parser = (function(){
 				parser.errorList.push("The file <strong>"+fullFileName+"</strong> cannot be parsed because <strong>."+fileExt.toUpperCase()+"</strong> files are not supported!")
 			}
 		}catch(ex){
-			//console.error(ex);
+			console.error(ex);
 			parser.errorList.push("There was an error reading the file <strong>"+fullFileName+"</strong>");
 		}
 	}

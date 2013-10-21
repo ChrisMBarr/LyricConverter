@@ -16,7 +16,7 @@
 	var THIS_FORMAT = 'propresenter';
 	parser.formats[THIS_FORMAT] = {};
 
-	parser.formats[THIS_FORMAT].testExtension = function(fileExt){
+	parser.formats[THIS_FORMAT].testFormat = function(fileExt){
 		return /pro\d+/i.test(fileExt);
 	};
 
