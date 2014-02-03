@@ -24,11 +24,13 @@
 
 
 		//Return the filled in song object
-		return {
+		var songObj = {
 			title: songMetadata.title,
 			info: songMetadata.info,
 			slides: songLyrics
 		};
+		console.log(songObj);
+		return songObj;
 	};
 
 	//===================================
@@ -36,7 +38,7 @@
 	//===================================
 
 	function _getSongMetadata(songData, fileName){
-		var infoSections = songData.match(/{.+:\s*.*}/gmi);
+		var infoSections = songData.match(/{.+?:.+?}/gmi);
 		
 		var infoArr = [];
 		for (var i = 0; i < infoSections.length; i++) {
@@ -55,10 +57,24 @@
 	function _getLyrics(songData){
 		var slides = [];
 
-		var matches = songData.match(/^[\w\s]+:\s*[\s\S]+(?![\w\s]+:)/mgi);
+		//Find the parts that being with the title, a color, and then a block of single-spaced characters
+		var songParts = songData.match(/(\w+(\s\d)*:[\r\n]+)+(.+[\n\r])+/mgi);
 
-		console.log(matches);
+		//Loop over these parts
+		for (var i = 0; i < songParts.length; i++) {
+			var lines = songParts[i].split(/[\r\n]+/g);
 
+			//Get the first line from the array, and remove the colon. Now we have the title
+			var title = $.trim(lines.shift().replace(":",""));
+
+			//Join the remaining lines and remove all bracket groups
+			var lyrics = $.trim(lines.join("\n").replace(/\[.+?\]|{.+?}/g,""));
+
+			slides.push({
+				"title": title,
+				"lyrics": lyrics
+			});	
+		};
 		return slides;
 	}
 	
