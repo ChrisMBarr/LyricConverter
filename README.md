@@ -26,3 +26,10 @@ LyricConverter makes use of the following projects:
 
 ---
 I am not in any way affiliated with R-Technics' [SongShow Plus](http://songshowplus.com/) or Renewed Vision's [ProPresenter](http://www.renewedvision.com/propresenter.php).
+
+
+###TODO
+* ChordPro Import
+* ChordPro Export
+* ProPresenter 5 export
+* SongPro Import
