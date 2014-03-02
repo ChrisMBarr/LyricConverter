@@ -16,7 +16,7 @@
 	//Extend the formats object on the parser to allow for parsing SongShowPlus files
 	parser.formats[THIS_FORMAT].convert = function(songData, fileName){
 		//We don't want any properties XML tags which can sometimes begin the file.
-		//Splitting these out and then taking teh first array item can prevent this.
+		//Splitting these out and then taking the first array item can prevent this.
 		//Each song sections seems to be split up by a percent sign, so make an array by splitting on that
 		var sections = songData.split("<Properties>")[0].split("%");
 
@@ -24,7 +24,7 @@
 		//We will get out the slides and the keywords
 		var slideContent = _getSlides(sections);
 
-		//The info is all contained in the first section, so only pass that in and pass in teh keywords from above
+		//The info is all contained in the first section, so only pass that in and pass in the keywords from above
 		var parsedInfo = _getInfo(sections[0], slideContent.keywords, fileName);
 
 		//Return the filled in song object
