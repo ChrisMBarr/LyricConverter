@@ -45,14 +45,14 @@
     function _makeProPresenterFile(songData) {
 
         var ppDoc = _getPPDocBegin(songData);
-        ppDoc += _makeBlankSlide();
+        ppDoc += _makeBlankSlide(0);
 
         for (var i = 0; i < songData.slides.length; i++) {
             var slide = songData.slides[i];
 
-            ppDoc += _makeSlide(i, slide.title, slide.lyrics);
+            ppDoc += _makeSlide(i + 1, slide.title, slide.lyrics);
         };
-        ppDoc += _makeBlankSlide();
+        ppDoc += _makeBlankSlide(songData.slides.length + 1);
         ppDoc += ['',
             '   </groups>',
             '   <timeline timeOffSet="0" selectedMediaTrackIndex="0" unitOfMeasure="60" duration="0" loop="0">',
@@ -102,7 +102,8 @@
         //Return the document beginning string
         return [
             '<?xml version="1.0" encoding="UTF-8"?>',
-            '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0" creatorCode="1349676880" lastDateUsed="' + todaysDate + '" usedCount="0" category="Song" resourcesDirectory="" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes="' + keywords + '" artist="' + artist + '" author="' + author + '" album="" CCLIDisplay="0" CCLIArtistCredits="" CCLISongTitle="' + songData.title + '" CCLIPublisher="' + copyright + '" CCLICopyrightInfo="' + year + '" CCLILicenseNumber="' + ccli + '" chordChartPath=""><slides containerClass="NSMutableArray">',
+            '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0" creatorCode="1349676880" lastDateUsed="' + todaysDate + '" usedCount="0" category="Song" resourcesDirectory="" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes="' + keywords + '" artist="' + artist + '" author="' + author + '" album="" CCLIDisplay="0" CCLIArtistCredits="" CCLISongTitle="' + songData.title + '" CCLIPublisher="' + copyright + '" CCLICopyrightInfo="' + year + '" CCLILicenseNumber="' + ccli + '" chordChartPath="">',
+            '',
             '    <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1" motionEnabled="0" motionDuration="20" motionSpeed="100" />',
             '    <groups containerClass="NSMutableArray">'
         ].join('\n');
@@ -151,7 +152,7 @@
         var slideXML = ['',
             '<RVSlideGrouping name="' + label + '" uuid="' + _generateUniqueID() + '" color="0 0 0 0" serialization-array-index="' + order + '">',
             '    <slides containerClass="NSMutableArray">',
-            '        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="" hotKey="" label="" notes="" slideType="1" sort_index="' + order + '" UUID="' + _generateUniqueID() + '" drawingBackgroundColor="0" chordChartPath="" serialization-array-index="' + order + '">',
+            '        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="" hotKey="" label="" notes="" slideType="1" sort_index="' + order + '" UUID="' + _generateUniqueID() + '" drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">',
             '            <cues containerClass="NSMutableArray" />',
             '            <displayElements containerClass="NSMutableArray">',
             '                <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="0" drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="' + encodedRtf + '" revealType="0" serialization-array-index="0">',
