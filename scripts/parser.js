@@ -27,9 +27,9 @@ var parser = (function() {
 
         try {
             //Find the file extention
-            var fileParts = fullFileName.split(".");
+            var fileParts = fullFileName.split('.');
             var fileExt = fileParts.slice(-1)[0].toLowerCase();
-            var fileName = fullFileName.replace(fileExt, '');
+            var fileName = fullFileName.replace('.' + fileExt, '');
 
             //Browsers will add some unneeded text to the base64 encoding. Remove it.
             var encodedSongData = data.replace(/^data:.*;base64,/, "");
