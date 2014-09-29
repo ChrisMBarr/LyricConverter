@@ -13,17 +13,6 @@
       "outputAbbreviatedPath" : "\/old\/js\/jquery.uniform.min.js",
       "fileType" : 64
     },
-    "\/scripts\/outputs.propresenter.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/outputs.propresenter.min.js",
-      "fileType" : 64
-    },
     "\/old\/img\/bg-input.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -244,14 +233,22 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/lib\/HTMLParts\/Convert.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/styles\/bootstrap-assets\/tables.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.less",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/HTMLParts\/Convert.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 0,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/wells.less" : {
       "ieCompatibility" : 1,
@@ -270,22 +267,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/styles\/bootstrap-assets\/tables.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.less",
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/tables.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 0,
-      "strictImports" : 0,
+    "\/old\/lib\/HTMLParts\/Convert.php" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/lib\/HTMLParts\/Convert.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/scripts\/site.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -361,6 +350,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
+      "fileType" : 64
+    },
     "\/scripts\/lib\/jquery.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -371,17 +371,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/lib\/jquery.min.min.js",
       "fileType" : 64
-    },
-    "\/old\/_DESIGN\/pro4.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/_DESIGN\/pro4.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/_DESIGN\/pro4.png",
-      "initialSize" : 41468,
-      "fileType" : 8192
     },
     "\/styles\/img\/icons.png" : {
       "ignoreWasSetByUser" : 0,
@@ -394,15 +383,15 @@
       "initialSize" : 1487,
       "fileType" : 8192
     },
-    "\/scripts\/bootstrap\/bootstrap-tooltip.js" : {
+    "\/scripts\/lib\/FileSaver.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.js",
+      "inputAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-tooltip.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/lib\/FileSaver.min.js",
       "fileType" : 64
     },
     "\/scripts\/plugins\/jquery.fileDragAndDrop.js" : {
@@ -416,16 +405,16 @@
       "outputAbbreviatedPath" : "\/scripts\/plugins\/jquery.fileDragAndDrop.min.js",
       "fileType" : 64
     },
-    "\/scripts\/lib\/FileSaver.js" : {
+    "\/old\/_DESIGN\/pro4.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/lib\/FileSaver.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/lib\/FileSaver.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/old\/_DESIGN\/pro4.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/_DESIGN\/pro4.png",
+      "initialSize" : 41468,
+      "fileType" : 8192
     },
     "\/styles\/bootstrap-assets\/responsive-767px-max.less" : {
       "ieCompatibility" : 1,
@@ -614,27 +603,21 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/formats.pro4.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/formats.pro4.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/formats.pro4.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap-assets\/buttons.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/buttons.less",
       "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/buttons.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
-      "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
-      "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
-    "\/styles\/bootstrap-assets\/variables.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.less",
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -665,6 +648,23 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/bootstrap-assets\/variables.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.less",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/variables.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/scripts\/lib\/modernizr.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -674,6 +674,17 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/lib\/modernizr.min.js",
+      "fileType" : 64
+    },
+    "\/scripts\/bootstrap\/bootstrap-transition.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-transition.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-transition.min.js",
       "fileType" : 64
     },
     "\/old\/img\/split-arrow.png" : {
@@ -686,6 +697,15 @@
       "outputAbbreviatedPath" : "\/old\/img\/split-arrow.png",
       "initialSize" : 1061,
       "fileType" : 8192
+    },
+    "\/old\/lib\/HTMLParts\/Help.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/lib\/HTMLParts\/Help.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/bootstrap-assets\/responsive-utilities.less" : {
       "ieCompatibility" : 1,
@@ -704,15 +724,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/lib\/HTMLParts\/Help.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/HTMLParts\/Help.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/styles\/parser.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/parser.less",
@@ -730,17 +741,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/bootstrap\/bootstrap-transition.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-transition.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-transition.min.js",
-      "fileType" : 64
-    },
     "\/styles\/bootstrap-assets\/dropdowns.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/dropdowns.less",
@@ -757,17 +757,6 @@
       "outputStyle" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/scripts\/formats.propresenter.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/formats.propresenter.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/formats.propresenter.min.js",
-      "fileType" : 64
     },
     "\/scripts\/outputs.display.js" : {
       "ignoreWasSetByUser" : 0,
@@ -819,16 +808,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/parser.js" : {
+    "\/old\/lib\/cron.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/parser.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/old\/lib\/cron.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/scripts\/parser.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -852,14 +839,16 @@
       "initialSize" : 12622,
       "fileType" : 8192
     },
-    "\/old\/lib\/cron.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+    "\/old\/js\/jquery.easing.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/cron.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/old\/js\/jquery.easing.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/old\/js\/jquery.easing.min.js",
+      "fileType" : 64
     },
     "\/old\/lib\/includes\/ProPresenter.php" : {
       "ignoreWasSetByUser" : 0,
@@ -870,15 +859,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/old\/js\/jquery.easing.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/scripts\/parser.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/js\/jquery.easing.js",
-      "outputStyle" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/parser.js",
+      "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/old\/js\/jquery.easing.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
       "fileType" : 64
     },
     "\/styles\/bootstrap-assets\/progress-bars.less" : {
@@ -898,15 +887,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/old\/js\/jquery.iframe.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/scripts\/bootstrap\/bootstrap-dropdown.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/js\/jquery.iframe.js",
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/old\/js\/jquery.iframe.min.js",
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.min.js",
       "fileType" : 64
     },
     "\/scripts\/bootstrap\/bootstrap-alert.js" : {
@@ -920,15 +909,15 @@
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-alert.min.js",
       "fileType" : 64
     },
-    "\/scripts\/bootstrap\/bootstrap-dropdown.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+    "\/old\/js\/jquery.iframe.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.js",
+      "inputAbbreviatedPath" : "\/old\/js\/jquery.iframe.js",
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-dropdown.min.js",
+      "outputAbbreviatedPath" : "\/old\/js\/jquery.iframe.min.js",
       "fileType" : 64
     },
     "\/scripts\/outputs.text.js" : {
@@ -988,17 +977,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/scripts\/formats.songshowplus.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
-      "fileType" : 64
-    },
     "\/old\/css\/main.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1010,6 +988,17 @@
       "outputAbbreviatedPath" : "\/old\/css\/main.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/scripts\/formats.songshowplus.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
+      "fileType" : 64
     },
     "\/old\/debug\/array.php" : {
       "ignoreWasSetByUser" : 0,
@@ -1200,6 +1189,17 @@
       "outputAbbreviatedPath" : "\/old\/js\/main.min.js",
       "fileType" : 64
     },
+    "\/scripts\/outputs.pro4.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/outputs.pro4.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/outputs.pro4.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap-assets\/utilities.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/utilities.less",
@@ -1226,17 +1226,6 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-typeahead.min.js",
-      "fileType" : 64
-    },
-    "\/scripts\/bootstrap\/bootstrap-popover.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.min.js",
       "fileType" : 64
     },
     "\/styles\/_override-variables.less" : {
@@ -1266,6 +1255,17 @@
       "outputAbbreviatedPath" : "\/styles\/img\/glyphicons-halflings-white.png",
       "initialSize" : 8777,
       "fileType" : 8192
+    },
+    "\/scripts\/bootstrap\/bootstrap-popover.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-popover.min.js",
+      "fileType" : 64
     },
     "\/old\/js\/main.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1423,6 +1423,15 @@
       "outputAbbreviatedPath" : "\/No Output Path",
       "fileType" : 16
     },
+    "\/old\/lib\/includes\/rtf.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/lib\/includes\/rtf.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/scripts\/bootstrap\/bootstrap-button.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1433,15 +1442,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/scripts\/bootstrap\/bootstrap-button.min.js",
       "fileType" : 64
-    },
-    "\/old\/lib\/includes\/rtf.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/lib\/includes\/rtf.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/styles\/img\/header-2.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -1738,7 +1738,7 @@
     {
       "type" : 1,
       "position" : 4,
-      "linkedFileAbbreviatedPath" : "\/scripts\/formats.propresenter.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/formats.pro4.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
@@ -1752,7 +1752,7 @@
     {
       "type" : 1,
       "position" : 6,
-      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.propresenter.js",
+      "linkedFileAbbreviatedPath" : "\/scripts\/outputs.pro4.js",
       "baseFileAbbreviatedPath" : "\/scripts\/parser.js",
       "followForSyntaxChecking" : 1
     },
@@ -1896,16 +1896,16 @@
     },
     "jsLintFlags" : {
       "white" : 0,
-      "unparam" : 0,
-      "sub" : 0,
+      "continue" : 0,
+      "sloppy" : 0,
       "regexp" : 0,
       "vars" : 0,
-      "nomen" : 0,
+      "sub" : 0,
       "stupid" : 0,
-      "sloppy" : 0,
       "bitwise" : 0,
+      "nomen" : 0,
       "newcap" : 0,
-      "continue" : 0,
+      "unparam" : 0,
       "closure" : 0,
       "browser" : 1,
       "properties" : 0,
