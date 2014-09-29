@@ -29,7 +29,7 @@ I am not in any way affiliated with R-Technics' [SongShow Plus](http://songshowp
 
 
 ###TODO
-* ChordPro Import
+* ProPresenter 5 export - IN PROGRESS!
+* ChordPro Import - IN PROGRESS
 * ChordPro Export
-* ProPresenter 5 export
 * SongPro Import
