@@ -146,6 +146,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/outputs.pro5.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/outputs.pro5.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/outputs.pro5.min.js",
+      "fileType" : 64
+    },
     "\/old\/lib\/includes\/Library.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -205,6 +216,17 @@
       "initialSize" : 55079,
       "fileType" : 4096
     },
+    "\/scripts\/lib\/jszip-load.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap-assets\/button-groups.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/button-groups.less",
@@ -221,17 +243,6 @@
       "outputStyle" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/scripts\/lib\/jszip-load.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-load.min.js",
-      "fileType" : 64
     },
     "\/old\/lib\/HTMLParts\/Convert.php" : {
       "ignoreWasSetByUser" : 0,
@@ -520,6 +531,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/styles\/parser.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/parser.css",
+      "outputAbbreviatedPath" : "\/No Output Path",
+      "fileType" : 16
+    },
     "\/styles\/img\/header-5.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -530,15 +550,6 @@
       "outputAbbreviatedPath" : "\/styles\/img\/header-5.jpg",
       "initialSize" : 47885,
       "fileType" : 4096
-    },
-    "\/styles\/parser.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/parser.css",
-      "outputAbbreviatedPath" : "\/No Output Path",
-      "fileType" : 16
     },
     "\/styles\/bootstrap-assets\/code.less" : {
       "ieCompatibility" : 1,
@@ -791,22 +802,16 @@
       "initialSize" : 39575,
       "fileType" : 4096
     },
-    "\/styles\/bootstrap-assets\/alerts.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
-      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
+    "\/scripts\/parser.js" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/parser.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
+      "fileType" : 64
     },
     "\/old\/js\/jquery.easing.js" : {
       "ignoreWasSetByUser" : 1,
@@ -830,16 +835,16 @@
       "outputAbbreviatedPath" : "\/scripts\/parser.min.min.js",
       "fileType" : 64
     },
-    "\/scripts\/parser.js" : {
+    "\/old\/_DESIGN\/txt.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/parser.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/parser.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/old\/_DESIGN\/txt.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/_DESIGN\/txt.png",
+      "initialSize" : 12622,
+      "fileType" : 8192
     },
     "\/old\/lib\/cron.php" : {
       "ignoreWasSetByUser" : 0,
@@ -859,16 +864,22 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/old\/_DESIGN\/txt.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/styles\/bootstrap-assets\/alerts.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.less",
+      "outputAbbreviatedPath" : "\/styles\/bootstrap-assets\/alerts.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/_DESIGN\/txt.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/_DESIGN\/txt.png",
-      "initialSize" : 12622,
-      "fileType" : 8192
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/styles\/bootstrap-assets\/progress-bars.less" : {
       "ieCompatibility" : 1,
@@ -977,6 +988,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/scripts\/formats.songshowplus.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
+      "fileType" : 64
+    },
     "\/old\/css\/main.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -988,17 +1010,6 @@
       "outputAbbreviatedPath" : "\/old\/css\/main.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/scripts\/formats.songshowplus.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/formats.songshowplus.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/scripts\/formats.songshowplus.min.js",
-      "fileType" : 64
     },
     "\/old\/debug\/array.php" : {
       "ignoreWasSetByUser" : 0,
@@ -1161,6 +1172,17 @@
       "outputAbbreviatedPath" : "\/scripts\/lib\/jszip-deflate.min.js",
       "fileType" : 64
     },
+    "\/old\/js\/main.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/js\/main.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/old\/js\/main.min.js",
+      "fileType" : 64
+    },
     "\/styles\/bootstrap-assets\/responsive-navbar.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-navbar.less",
@@ -1177,17 +1199,6 @@
       "outputStyle" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/old\/js\/main.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/js\/main.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/old\/js\/main.min.js",
-      "fileType" : 64
     },
     "\/scripts\/outputs.pro4.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1592,6 +1603,17 @@
       "outputAbbreviatedPath" : "\/scripts\/site.min.js",
       "fileType" : 64
     },
+    "\/old\/img\/bg-input-focus.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
+      "initialSize" : 129,
+      "fileType" : 8192
+    },
     "\/styles\/bootstrap-assets\/responsive-1200px-min.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/styles\/bootstrap-assets\/responsive-1200px-min.less",
@@ -1608,17 +1630,6 @@
       "outputStyle" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/old\/img\/bg-input-focus.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/old\/img\/bg-input-focus.png",
-      "initialSize" : 129,
-      "fileType" : 8192
     },
     "\/scripts\/bootstrap\/bootstrap-tab.js" : {
       "ignoreWasSetByUser" : 0,

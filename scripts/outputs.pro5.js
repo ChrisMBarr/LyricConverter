@@ -7,12 +7,12 @@
 
 
 /*=====================================================
- * OUTPUT for converting to ProPresenter 4 format
+ * OUTPUT for converting to ProPresenter 5 format
 =======================================================*/
 
 (function() {
-    var THIS_OUTPUT = 'pro4';
-    var FILE_EXTENSION = ".pro4";
+    var THIS_OUTPUT = 'pro5';
+    var FILE_EXTENSION = ".pro5";
 
     //Extend the outputs object on the parser to allow for HTML output
     parser.outputs[THIS_OUTPUT] = function($container, songList) {
@@ -45,17 +45,26 @@
     function _makeProPresenterFile(songData) {
 
         var ppDoc = _getPPDocBegin(songData);
+        ppDoc += _makeBlankSlide();
 
         for (var i = 0; i < songData.slides.length; i++) {
             var slide = songData.slides[i];
 
             ppDoc += _makeSlide(i, slide.title, slide.lyrics);
         };
-
-        ppDoc += '</slides><timeline timeOffSet="0" selectedMediaTrackIndex="0" unitOfMeasure="60" duration="0" loop="0"><timeCues containerClass="NSMutableArray"></timeCues><mediaTracks containerClass="NSMutableArray"></mediaTracks></timeline><bibleReference containerClass="NSMutableDictionary"></bibleReference></RVPresentationDocument>';;
+        ppDoc += _makeBlankSlide();
+        ppDoc += ['',
+            '   </groups>',
+            '   <timeline timeOffSet="0" selectedMediaTrackIndex="0" unitOfMeasure="60" duration="0" loop="0">',
+            '      <timeCues containerClass="NSMutableArray" />',
+            '      <mediaTracks containerClass="NSMutableArray" />',
+            '   </timeline>',
+            '   <bibleReference containerClass="NSMutableDictionary" />',
+            '   <arrangements containerClass="NSMutableArray" />',
+            '</RVPresentationDocument>'
+        ].join("\n");
 
         return ppDoc;
-
     }
 
     function _getPPDocBegin(songData) {
@@ -90,9 +99,13 @@
                 author = info.value;
             }
         };
-
-        //Return the document beginning stringnew 
-        return '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0" creatorCode="1349676880" lastDateUsed="' + todaysDate + '" usedCount="0" category="Song" resourcesDirectory="" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes="' + keywords + '" artist="' + artist + '" author="' + author + '" album="" CCLIDisplay="0" CCLIArtistCredits="" CCLISongTitle="' + songData.title + '" CCLIPublisher="' + copyright + '" CCLICopyrightInfo="' + year + '" CCLILicenseNumber="' + ccli + '"><slides containerClass="NSMutableArray">';
+        //Return the document beginning string
+        return [
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0" creatorCode="1349676880" lastDateUsed="' + todaysDate + '" usedCount="0" category="Song" resourcesDirectory="" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes="' + keywords + '" artist="' + artist + '" author="' + author + '" album="" CCLIDisplay="0" CCLIArtistCredits="" CCLISongTitle="' + songData.title + '" CCLIPublisher="' + copyright + '" CCLICopyrightInfo="' + year + '" CCLILicenseNumber="' + ccli + '" chordChartPath=""><slides containerClass="NSMutableArray">',
+            '    <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1" motionEnabled="0" motionDuration="20" motionSpeed="100" />',
+            '    <groups containerClass="NSMutableArray">'
+        ].join('\n');
     }
 
     function _generateUniqueID() {
@@ -106,7 +119,17 @@
     }
 
     function _makeBlankSlide(order) {
-        return '<RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="' + order + '" UUID="' + _generateUniqueID() + '" drawingBackgroundColor="0" serialization-array-index="' + order + '"><cues containerClass="NSMutableArray"></cues><displayElements containerClass="NSMutableArray"></displayElements></RVDisplaySlide>';
+        return ['',
+            '<RVSlideGrouping name="" uuid="' + _generateUniqueID() + '" color="0 0 0 0" serialization-array-index="' + order + '">',
+            '    <slides containerClass="NSMutableArray">',
+            '        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="" hotKey="" label="" notes="" slideType="1" sort_index="0" UUID="' + _generateUniqueID() + '" drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">',
+            '            <cues containerClass="NSMutableArray" />',
+            '            <displayElements containerClass="NSMutableArray" />',
+            '            <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1" motionEnabled="0" motionDuration="20" motionSpeed="100" />',
+            '        </RVDisplaySlide>',
+            '    </slides>',
+            '</RVSlideGrouping>',
+        ].join('\n')
     }
 
     function _makeSlide(order, label, text) {
@@ -126,23 +149,28 @@
         //console.log(encodedRtf);
 
         var slideXML = ['',
-            '<RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="' + label + '" notes="" slideType="1" sort_index="' + order + '" UUID="' + _generateUniqueID() + '" drawingBackgroundColor="0" serialization-array-index="' + order + '">',
-            '	<cues containerClass="NSMutableArray"></cues>',
-            '	<displayElements containerClass="NSMutableArray">',
-            '		<RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="0" drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="' + encodedRtf + '" serialization-array-index="0">',
-            '			<_-RVRect3D-_position x="20" y="20" z="0" width="984" height="728"></_-RVRect3D-_position>',
-            '			<_-D-_serializedShadow containerClass="NSMutableDictionary">',
-            '				<NSCFNumber serialization-native-value="5" serialization-dictionary-key="shadowBlurRadius"></NSCFNumber>',
-            '				<NSCalibratedRGBColor serialization-native-value="0 0 0 0.5" serialization-dictionary-key="shadowColor"></NSCalibratedRGBColor>',
-            '				<NSCFString serialization-native-value="{3.53553, -3.53553}" serialization-dictionary-key="shadowOffset"></NSCFString>',
-            '			</_-D-_serializedShadow>',
-            '			<stroke containerClass="NSMutableDictionary">',
-            '				<NSCachedRGBColor serialization-native-value="0 0 0 1" serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSCachedRGBColor>',
-            '				<NSCFNumber serialization-native-value="1" serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSCFNumber>',
-            '			</stroke>',
-            '		</RVTextElement>',
-            '	</displayElements>',
-            '</RVDisplaySlide>'
+            '<RVSlideGrouping name="' + label + '" uuid="' + _generateUniqueID() + '" color="0 0 0 0" serialization-array-index="' + order + '">',
+            '    <slides containerClass="NSMutableArray">',
+            '        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="" hotKey="" label="" notes="" slideType="1" sort_index="' + order + '" UUID="' + _generateUniqueID() + '" drawingBackgroundColor="0" chordChartPath="" serialization-array-index="' + order + '">',
+            '            <cues containerClass="NSMutableArray" />',
+            '            <displayElements containerClass="NSMutableArray">',
+            '                <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="0" drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="' + encodedRtf + '" revealType="0" serialization-array-index="0">',
+            '                    <_-RVRect3D-_position x="20" y="20" z="0" width="984" height="728" />',
+            '                    <_-D-_serializedShadow containerClass="NSMutableDictionary">',
+            '                        <NSMutableString serialization-native-value="{3.5355301, -3.5355301}" serialization-dictionary-key="shadowOffset" />',
+            '                        <NSNumber serialization-native-value="5" serialization-dictionary-key="shadowBlurRadius" />',
+            '                        <NSColor serialization-native-value="0 0 0 0.5" serialization-dictionary-key="shadowColor" />',
+            '                    </_-D-_serializedShadow>',
+            '                    <stroke containerClass="NSMutableDictionary">',
+            '                        <NSColor serialization-native-value="0 0 0 1" serialization-dictionary-key="RVShapeElementStrokeColorKey" />',
+            '                        <NSNumber serialization-native-value="1" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />',
+            '                    </stroke>',
+            '                </RVTextElement>',
+            '            </displayElements>',
+            '            <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1" motionEnabled="0" motionDuration="20" motionSpeed="100" />',
+            '        </RVDisplaySlide>',
+            '    </slides>',
+            '</RVSlideGrouping>'
         ].join("\n");
 
         return slideXML;
