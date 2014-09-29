@@ -4,69 +4,71 @@
  * This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
- 
+
 
 /*=====================================================
  * OUTPUT for displaying slide content in the browser as HTML
 =======================================================*/
 
-(function(){
-	var THIS_OUTPUT = 'display';
+(function() {
+    var THIS_OUTPUT = 'display';
 
-	//Extend the outputs object on the parser to allow for HTML output
-	parser.outputs[THIS_OUTPUT] = function ($container, songList) {
-		
-		$.each(songList, function(i, song){
-			//Create some slides with the normalized song data
-			var $song = $(_createSlides(song.data))
-			$container.append($song);
+    //Extend the outputs object on the parser to allow for HTML output
+    parser.outputs[THIS_OUTPUT] = function($container, songList) {
 
-			//Now make all the slides have the same height
-			_equalSlideHeights($song);
-		});
-	}
+        $.each(songList, function(i, song) {
+            //Create some slides with the normalized song data
+            var $song = $(_createSlides(song.data))
+            $container.append($song);
 
-	//===================================
-	//PRIVATE FUNCTIONS
-	//===================================
-	function _createSlides(songData){
+            //Now make all the slides have the same height
+            _equalSlideHeights($song);
+        });
+    }
 
-		var htmlOutput = '<h3 class="song-title">'+songData.title+'</h3>';
-		htmlOutput += '<ul class="song-info">';
-		
+    //===================================
+    //PRIVATE FUNCTIONS
+    //===================================
+    function _createSlides(songData) {
 
-		//Add each info item
-		for (var i = 0; i < songData.info.length; i++) {
-			var s = songData.info[i];
-			htmlOutput += '<li><strong>'+s.name+':</strong> '+s.value+'</li>';
-		};
+        var htmlOutput = '<h3 class="song-title">' + songData.title + '</h3>';
+        htmlOutput += '<ul class="song-info">';
 
-		htmlOutput += '</ul><ul class="slides-container thumbnails">';
 
-		//Output the slides themselves
-		for (var i = 0; i < songData.slides.length; i++) {
-			var s = songData.slides[i];
-			//If the title is blank, add a space character so it look even
-			var title = s.title.length < 1 ? '&nbsp;' : s.title;
-			//Create a new HTML clide and add it to the DOM
-			htmlOutput += '<li class="span3"><div class="thumbnail slide-content"><p class="slide-lyrics">'+s.lyrics+'</p><h6 class="slide-label">'+title+'</h6></div></li>';
-		};
+        //Add each info item
+        for (var i = 0; i < songData.info.length; i++) {
+            var s = songData.info[i];
+            htmlOutput += '<li><strong>' + s.name + ':</strong> ' + s.value + '</li>';
+        };
 
-		htmlOutput += '</ul>'
+        htmlOutput += '</ul><ul class="slides-container thumbnails">';
 
-		return htmlOutput;
-	}
+        //Output the slides themselves
+        for (var i = 0; i < songData.slides.length; i++) {
+            var s = songData.slides[i];
+            //If the title is blank, add a space character so it look even
+            var title = s.title.length < 1 ? '&nbsp;' : s.title;
+            //Create a new HTML clide and add it to the DOM
+            htmlOutput += '<li class="span3"><div class="thumbnail slide-content"><p class="slide-lyrics">' + s.lyrics + '</p><h6 class="slide-label">' + title + '</h6></div></li>';
+        };
 
-	function _equalSlideHeights($scope){
-		var currentTallest = 0;
+        htmlOutput += '</ul>'
 
-		$scope
-			.find('.slide-lyrics')
-			.each(function(i){
-				if ($(this).height() > currentTallest) {
-					currentTallest = $(this).height();
-				}
-			})
-			.css({'min-height': currentTallest}); 
-	}
+        return htmlOutput;
+    }
+
+    function _equalSlideHeights($scope) {
+        var currentTallest = 0;
+
+        $scope
+            .find('.slide-lyrics')
+            .each(function(i) {
+                if ($(this).height() > currentTallest) {
+                    currentTallest = $(this).height();
+                }
+            })
+            .css({
+                'min-height': currentTallest
+            });
+    }
 })();
