@@ -43,7 +43,7 @@
     //Slashes are double escaped here so it can be in a string!
     var _patternInvisiblesStr = "[\\xA0\\x00-\\x09\\x0B\\x0C\\x0E-\\x1F\\x7F]";
     //Same pattern, but as a real RexExp object
-    var _invisibles = new RegExp(_patternInvisiblesStr);
+    var _invisibles = new RegExp(_patternInvisiblesStr, "g");
 
     function _getInfo(firstSection, keywords, fileName) {
         //Split the info up into an array by the invisible characters
