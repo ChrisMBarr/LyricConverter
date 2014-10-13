@@ -56,12 +56,13 @@
             var labelText = $.trim($thisSlide.attr("label"));
             var lyricsText = "";
 
-            //Grab the base64 encoded data from the slide element, decode it, the strip off the RTF formatting
-            var encodedRtfData = $thisSlide.find("rvtextelement").attr("rtfdata");
-            if (encodedRtfData) {
+            var $slideTextElement = $thisSlide.find("rvtextelement");
+            $.each($slideTextElement, function() {
+                //Grab the base64 encoded data from the slide element, decode it, the strip off the RTF formatting
+                var encodedRtfData = $(this).attr("rtfdata");
                 var decodedRtfData = parser.utilities.decode(encodedRtfData);
                 lyricsText += _stripRtf(decodedRtfData);
-            }
+            });
 
             songSlides.push({
                 "title": labelText,

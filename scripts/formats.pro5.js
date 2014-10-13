@@ -67,7 +67,7 @@
                 var $slideTextElement = $thisSlide.find("RVTextElement");
                 $.each($slideTextElement, function() {
                     //Grab the base64 encoded data from the slide element, decode it, the strip off the RTF formatting
-                    var encodedRtfData = $thisSlide.find("RVTextElement").attr("RTFData");
+                    var encodedRtfData = $(this).attr("RTFData");
                     var decodedRtfData = parser.utilities.decode(encodedRtfData);
                     lyricsText += _stripRtf(decodedRtfData);
                 });
