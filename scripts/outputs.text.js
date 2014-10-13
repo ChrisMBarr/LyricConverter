@@ -37,7 +37,7 @@
         }
 
         _displaySuccessHtml($container, convertedFileContents);
-    }
+    };
 
     //===================================
     //PRIVATE FUNCTIONS
@@ -47,8 +47,8 @@
         var txtFile = "Title: " + songData.title;
 
         //Loop through the song info attributes
-        for (var i = 0; i < songData.info.length; i++) {
-            var info = songData.info[i];
+        for (var infoIndex = 0; infoIndex < songData.info.length; infoIndex++) {
+            var info = songData.info[infoIndex];
             if (info.name && info.value) {
                 txtFile += "\r\n";
                 txtFile += info.name + ": " + info.value;
@@ -58,8 +58,8 @@
         txtFile += "\r\n\r\n";
 
         //Add the song lyrics
-        for (var i = 0; i < songData.slides.length; i++) {
-            var slide = songData.slides[i];
+        for (var slideIndex = 0; slideIndex < songData.slides.length; slideIndex++) {
+            var slide = songData.slides[slideIndex];
 
             //Skip blank slides for text files
             if (slide.title.length > 0 || slide.lyrics.length > 0) {
@@ -68,11 +68,11 @@
                 txtFile += slide.lyrics;
 
                 //Add line breaks afterwards, but not for the last slide
-                if (i < songData.slides.length - 1) {
+                if (slideIndex < songData.slides.length - 1) {
                     txtFile += "\r\n\r\n";
                 }
             }
-        };
+        }
 
         return txtFile;
 
@@ -105,7 +105,7 @@
 
                 //Go through and add each fiel to the zip
                 $.each(convertedFileContents, function(i, convertedSong) {
-                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data)
+                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data);
                 });
 
                 //Generate the zip file contents

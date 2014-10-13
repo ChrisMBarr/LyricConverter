@@ -574,8 +574,8 @@
 		},
 	"\/scripts\/formats.chordpro.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/formats.chordpro.js",
 		"outputAbbreviatedPath": "\/scripts\/formats.chordpro-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -585,8 +585,8 @@
 		},
 	"\/scripts\/formats.pro4.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/formats.pro4.js",
 		"outputAbbreviatedPath": "\/scripts\/formats.pro4-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -596,8 +596,8 @@
 		},
 	"\/scripts\/formats.songshowplus.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/formats.songshowplus.js",
 		"outputAbbreviatedPath": "\/scripts\/formats.songshowplus-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -607,7 +607,7 @@
 		},
 	"\/scripts\/lib\/FileSaver.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scripts\/lib\/FileSaver.js",
 		"outputAbbreviatedPath": "\/scripts\/lib\/FileSaver-min.js",
@@ -662,7 +662,7 @@
 		},
 	"\/scripts\/lib\/jszip.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scripts\/lib\/jszip.js",
 		"outputAbbreviatedPath": "\/scripts\/lib\/jszip-min.js",
@@ -684,8 +684,8 @@
 		},
 	"\/scripts\/outputs.display.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/outputs.display.js",
 		"outputAbbreviatedPath": "\/scripts\/outputs.display-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -695,8 +695,8 @@
 		},
 	"\/scripts\/outputs.pro4.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/outputs.pro4.js",
 		"outputAbbreviatedPath": "\/scripts\/outputs.pro4-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -706,8 +706,8 @@
 		},
 	"\/scripts\/outputs.pro5.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/outputs.pro5.js",
 		"outputAbbreviatedPath": "\/scripts\/outputs.pro5-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -717,10 +717,21 @@
 		},
 	"\/scripts\/outputs.text.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/outputs.text.js",
 		"outputAbbreviatedPath": "\/scripts\/outputs.text-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/scripts\/parser-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scripts\/parser-min.js",
+		"outputAbbreviatedPath": "\/scripts\/parser-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -732,17 +743,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scripts\/parser.js",
 		"outputAbbreviatedPath": "\/scripts\/parser-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/scripts\/parser.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/scripts\/parser.min.js",
-		"outputAbbreviatedPath": "\/scripts\/parser.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -770,6 +770,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/scripts\/site-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scripts\/site-min.js",
+		"outputAbbreviatedPath": "\/scripts\/site-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/scripts\/site.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -781,21 +792,10 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/scripts\/site.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/scripts\/site.min.js",
-		"outputAbbreviatedPath": "\/scripts\/site.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/scripts\/TextCleaner.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/TextCleaner.js",
 		"outputAbbreviatedPath": "\/scripts\/TextCleaner-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -1889,52 +1889,64 @@
 "manualImportLinks": {
 	"\/scripts\/parser.js": [
 		{
-			"followForSyntaxChecking": 1,
+			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/scripts\/TextCleaner.js",
 			"position": 0,
 			"type": 0
 			},
 		{
-			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/formats.chordpro.js",
+			"followForSyntaxChecking": 0,
+			"linkedFileAbbreviatedPath": "\/scripts\/lib\/FileSaver.js",
 			"position": 1,
 			"type": 0
 			},
 		{
-			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/formats.pro4.js",
+			"followForSyntaxChecking": 0,
+			"linkedFileAbbreviatedPath": "\/scripts\/lib\/jszip.js",
 			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/formats.songshowplus.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/formats.chordpro.js",
 			"position": 3,
-			"type": 0
+			"type": 1
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/scripts\/formats.pro4.js",
+			"position": 4,
+			"type": 1
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/scripts\/formats.songshowplus.js",
+			"position": 5,
+			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/scripts\/outputs.display.js",
-			"position": 4,
-			"type": 0
+			"position": 6,
+			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/scripts\/outputs.pro4.js",
-			"position": 5,
-			"type": 0
+			"position": 7,
+			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/scripts\/outputs.pro5.js",
-			"position": 6,
-			"type": 0
+			"position": 8,
+			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/scripts\/outputs.text.js",
-			"position": 7,
-			"type": 0
+			"position": 9,
+			"type": 1
 			}
 		]
 	},

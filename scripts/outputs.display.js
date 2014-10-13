@@ -16,15 +16,15 @@
     //Extend the outputs object on the parser to allow for HTML output
     parser.outputs[THIS_OUTPUT] = function($container, songList) {
 
-        $.each(songList, function(i, song) {
+        $.each(songList, function(index, song) {
             //Create some slides with the normalized song data
-            var $song = $(_createSlides(song.data))
+            var $song = $(_createSlides(song.data));
             $container.append($song);
 
             //Now make all the slides have the same height
             _equalSlideHeights($song);
         });
-    }
+    };
 
     //===================================
     //PRIVATE FUNCTIONS
@@ -36,23 +36,23 @@
 
 
         //Add each info item
-        for (var i = 0; i < songData.info.length; i++) {
-            var s = songData.info[i];
-            htmlOutput += '<li><strong>' + s.name + ':</strong> ' + s.value + '</li>';
-        };
+        for (var infoIndex = 0; infoIndex < songData.info.length; infoIndex++) {
+            var sInfo = songData.info[infoIndex];
+            htmlOutput += '<li><strong>' + sInfo.name + ':</strong> ' + sInfo.value + '</li>';
+        }
 
         htmlOutput += '</ul><ul class="slides-container thumbnails">';
 
         //Output the slides themselves
-        for (var i = 0; i < songData.slides.length; i++) {
-            var s = songData.slides[i];
+        for (var slideIndex = 0; slideIndex < songData.slides.length; slideIndex++) {
+            var slide = songData.slides[slideIndex];
             //If the title is blank, add a space character so it look even
-            var title = s.title.length < 1 ? '&nbsp;' : s.title;
+            var title = slide.title.length < 1 ? '&nbsp;' : slide.title;
             //Create a new HTML clide and add it to the DOM
-            htmlOutput += '<li class="span3"><div class="thumbnail slide-content"><p class="slide-lyrics">' + s.lyrics + '</p><h6 class="slide-label">' + title + '</h6></div></li>';
-        };
+            htmlOutput += '<li class="span3"><div class="thumbnail slide-content"><p class="slide-lyrics">' + slide.lyrics + '</p><h6 class="slide-label">' + title + '</h6></div></li>';
+        }
 
-        htmlOutput += '</ul>'
+        htmlOutput += '</ul>';
 
         return htmlOutput;
     }
@@ -62,7 +62,7 @@
 
         $scope
             .find('.slide-lyrics')
-            .each(function(i) {
+            .each(function() {
                 if ($(this).height() > currentTallest) {
                     currentTallest = $(this).height();
                 }

@@ -11,13 +11,13 @@ var parser = (function() {
         decode: function(str) {
             var decoded = window.atob(str);
             try {
-                return decodeURIComponent(escape(decoded));
+                return decodeURIComponent(window.escape(decoded));
             } catch (ex) {
                 return decoded;
             }
         },
         encode: function(str) {
-            return window.btoa(unescape(encodeURIComponent(str)));
+            return window.btoa(window.unescape(encodeURIComponent(str)));
         }
     };
 
@@ -56,10 +56,12 @@ var parser = (function() {
                 });
 
             } else {
-                parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported!")
+                parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported!");
             }
         } catch (ex) {
-            console.error(ex);
+            if (window.console) {
+                window.console.error(ex);
+            }
             parser.errorList.push("There was an error reading the file <strong>" + fullFileName + "</strong>");
         }
     }
@@ -86,5 +88,5 @@ var parser = (function() {
         //These objects will be filled in when formatter & output files are run
         formats: {},
         outputs: {}
-    }
+    };
 })();

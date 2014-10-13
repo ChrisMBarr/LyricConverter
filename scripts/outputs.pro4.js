@@ -37,7 +37,7 @@
         }
 
         _displaySuccessHtml($container, convertedFileContents);
-    }
+    };
 
     //===================================
     //PRIVATE FUNCTIONS
@@ -45,14 +45,16 @@
     function _makeProPresenterFile(songData) {
 
         var ppDoc = _getPPDocBegin(songData);
+        ppDoc += _makeBlankSlide(0);
 
         for (var i = 0; i < songData.slides.length; i++) {
             var slide = songData.slides[i];
+            ppDoc += _makeSlide(i + 1, slide.title, slide.lyrics);
+        }
 
-            ppDoc += _makeSlide(i, slide.title, slide.lyrics);
-        };
+        ppDoc += _makeBlankSlide(songData.slides.length + 1);
 
-        ppDoc += '</slides><timeline timeOffSet="0" selectedMediaTrackIndex="0" unitOfMeasure="60" duration="0" loop="0"><timeCues containerClass="NSMutableArray"></timeCues><mediaTracks containerClass="NSMutableArray"></mediaTracks></timeline><bibleReference containerClass="NSMutableDictionary"></bibleReference></RVPresentationDocument>';;
+        ppDoc += '</slides><timeline timeOffSet="0" selectedMediaTrackIndex="0" unitOfMeasure="60" duration="0" loop="0"><timeCues containerClass="NSMutableArray"></timeCues><mediaTracks containerClass="NSMutableArray"></mediaTracks></timeline><bibleReference containerClass="NSMutableDictionary"></bibleReference></RVPresentationDocument>';
 
         return ppDoc;
 
@@ -76,8 +78,12 @@
             if (/copyright/i.test(info.name)) {
                 var ccMatches = info.value.match(/(\d{4})(.*)/);
                 if (ccMatches) {
-                    if (ccMatches.length > 1) year = ccMatches[1];
-                    if (ccMatches.length > 2) copyright = ccMatches[2];
+                    if (ccMatches.length > 1) {
+                        year = ccMatches[1];
+                    }
+                    if (ccMatches.length > 2) {
+                        copyright = ccMatches[2];
+                    }
                 } else {
                     copyright = info.value;
                 }
@@ -89,7 +95,7 @@
                 artist = info.value;
                 author = info.value;
             }
-        };
+        }
 
         //Return the document beginning stringnew 
         return '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0" creatorCode="1349676880" lastDateUsed="' + todaysDate + '" usedCount="0" category="Song" resourcesDirectory="" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes="' + keywords + '" artist="' + artist + '" author="' + author + '" album="" CCLIDisplay="0" CCLIArtistCredits="" CCLISongTitle="' + songData.title + '" CCLIPublisher="' + copyright + '" CCLICopyrightInfo="' + year + '" CCLILicenseNumber="' + ccli + '"><slides containerClass="NSMutableArray">';
@@ -100,7 +106,7 @@
 
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-        };
+        }
 
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
@@ -121,7 +127,7 @@
             '\\f0\\fs96 \\cf1 ' + text.replace(/\r\n/g, "\\\n") + '}'
         ].join("\n");
 
-        var encodedRtf = parser.utilities.encode(fakeRTF)
+        var encodedRtf = parser.utilities.encode(fakeRTF);
 
         //console.log(encodedRtf);
 
@@ -175,7 +181,7 @@
 
                 //Go through and add each fiel to the zip
                 $.each(convertedFileContents, function(i, convertedSong) {
-                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data)
+                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data);
                 });
 
                 //Generate the zip file contents

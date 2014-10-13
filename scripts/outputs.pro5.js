@@ -37,7 +37,7 @@
         }
 
         _displaySuccessHtml($container, convertedFileContents);
-    }
+    };
 
     //===================================
     //PRIVATE FUNCTIONS
@@ -49,9 +49,9 @@
 
         for (var i = 0; i < songData.slides.length; i++) {
             var slide = songData.slides[i];
-
             ppDoc += _makeSlide(i + 1, slide.title, slide.lyrics);
-        };
+        }
+
         ppDoc += _makeBlankSlide(songData.slides.length + 1);
         ppDoc += ['',
             '   </groups>',
@@ -85,8 +85,12 @@
             if (/copyright/i.test(info.name)) {
                 var ccMatches = info.value.match(/(\d{4})(.*)/);
                 if (ccMatches) {
-                    if (ccMatches.length > 1) year = ccMatches[1];
-                    if (ccMatches.length > 2) copyright = ccMatches[2];
+                    if (ccMatches.length > 1) {
+                        year = ccMatches[1];
+                    }
+                    if (ccMatches.length > 2) {
+                        copyright = ccMatches[2];
+                    }
                 } else {
                     copyright = info.value;
                 }
@@ -98,7 +102,7 @@
                 artist = info.value;
                 author = info.value;
             }
-        };
+        }
         //Return the document beginning string
         return [
             '<?xml version="1.0" encoding="UTF-8"?>',
@@ -114,7 +118,7 @@
 
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-        };
+        }
 
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
@@ -129,8 +133,8 @@
             '            <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1" motionEnabled="0" motionDuration="20" motionSpeed="100" />',
             '        </RVDisplaySlide>',
             '    </slides>',
-            '</RVSlideGrouping>',
-        ].join('\n')
+            '</RVSlideGrouping>'
+        ].join('\n');
     }
 
     function _makeSlide(order, label, text) {
@@ -145,7 +149,7 @@
             '\\f0\\fs96 \\cf1 ' + text.replace(/\r\n/g, "\\\n") + '}'
         ].join("\n");
 
-        var encodedRtf = parser.utilities.encode(fakeRTF)
+        var encodedRtf = parser.utilities.encode(fakeRTF);
 
         //console.log(encodedRtf);
 
@@ -204,7 +208,7 @@
 
                 //Go through and add each fiel to the zip
                 $.each(convertedFileContents, function(i, convertedSong) {
-                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data)
+                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data);
                 });
 
                 //Generate the zip file contents

@@ -29,7 +29,7 @@
             info: songMetadata.info,
             slides: songLyrics
         };
-        console.log(songObj);
+        //console.log(songObj);
         return songObj;
     };
 
@@ -46,7 +46,7 @@
             var infoObj = {};
             infoObj[$.trim(sectionParts[0])] = $.trim(sectionParts[1]);
             infoArr.push(infoObj);
-        };
+        }
 
         return {
             title: infoArr.title || infoArr.Title || fileName.replace(".txt", ""),
@@ -74,7 +74,7 @@
                 "title": title,
                 "lyrics": lyrics
             });
-        };
+        }
         return slides;
     }
 

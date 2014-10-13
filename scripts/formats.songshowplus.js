@@ -67,7 +67,7 @@
         songTitle = songTitle.indexOf("$") === 1 ? songTitle.substring(1, songTitle.length) : songTitle;
 
         //remove trailing dollar signs for whatever reason...
-        songTitle = songTitle.substring(0, songTitle.length - +(songTitle.lastIndexOf('$') == songTitle.length - 1));
+        songTitle = songTitle.substring(0, songTitle.length - +(songTitle.lastIndexOf('$') === songTitle.length - 1));
 
         var songInfo = [];
 
@@ -106,7 +106,7 @@
         songTitle = TextCleaner.ConvertWin1252ToUtf8(songTitle);
         for (var i = 0; i < songInfo.length; i++) {
             songInfo[i].value = TextCleaner.ConvertWin1252ToUtf8(songInfo[i].value);
-        };
+        }
 
         return {
             'info': songInfo,
