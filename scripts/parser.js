@@ -26,7 +26,7 @@ var parser = (function() {
         var fullFileName = fileObj.name;
 
         try {
-            //Find the file extention
+            //Find the file extension
             var fileParts = fullFileName.split('.');
             var fileExt = fileParts.slice(-1)[0].toLowerCase();
             var fileName = fullFileName.replace('.' + fileExt, '');
