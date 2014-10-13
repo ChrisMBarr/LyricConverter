@@ -12,7 +12,7 @@
 
 (function() {
     var THIS_OUTPUT = 'pro5';
-    var FILE_EXTENSION = ".pro5";
+    var FILE_EXTENSION = "." + THIS_OUTPUT;
 
     //Extend the outputs object on the parser to allow for HTML output
     parser.outputs[THIS_OUTPUT] = function($container, songList) {
