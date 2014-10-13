@@ -594,6 +594,28 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/scripts\/formats.pro5-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scripts\/formats.pro5-min.js",
+		"outputAbbreviatedPath": "\/scripts\/formats.pro5-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/scripts\/formats.pro5.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scripts\/formats.pro5.js",
+		"outputAbbreviatedPath": "\/scripts\/formats.pro5-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/scripts\/formats.songshowplus.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1920,32 +1942,38 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/formats.songshowplus.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/formats.pro5.js",
 			"position": 5,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/outputs.display.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/formats.songshowplus.js",
 			"position": 6,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/outputs.pro4.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/outputs.display.js",
 			"position": 7,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/outputs.pro5.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/outputs.pro4.js",
 			"position": 8,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/outputs.text.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/outputs.pro5.js",
 			"position": 9,
+			"type": 1
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/scripts\/outputs.text.js",
+			"position": 10,
 			"type": 1
 			}
 		]
