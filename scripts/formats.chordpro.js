@@ -16,12 +16,8 @@
 
     //Extend the formats object on the parser to allow for parsing SongShowPlus files
     parser.formats[THIS_FORMAT].convert = function(songData, fileName) {
-
         var songMetadata = _getSongMetadata(songData, fileName);
         var songLyrics = _getLyrics(songData);
-        //console.log(songMetadata);
-        //console.log(songLyrics);
-
 
         //Return the filled in song object
         var songObj = {
@@ -29,7 +25,6 @@
             info: songMetadata.info,
             slides: songLyrics
         };
-        //console.log(songObj);
         return songObj;
     };
 
@@ -37,15 +32,18 @@
     //PRIVATE FUNCTIONS
     //===================================
 
-    function _getSongMetadata(songData, fileName) {
-        var infoSections = songData.match(/{.+?:.+?}/gmi);
+    var _infoRegex = new RegExp(/{.+?:.+?}/gmi);
 
+    function _getSongMetadata(songData, fileName) {
         var infoArr = [];
+        var infoSections = songData.match(_infoRegex);
+
         for (var i = 0; i < infoSections.length; i++) {
             var sectionParts = infoSections[i].replace(/^{(.*)}/, "$1").split(":");
-            var infoObj = {};
-            infoObj[$.trim(sectionParts[0])] = $.trim(sectionParts[1]);
-            infoArr.push(infoObj);
+            infoArr.push({
+                "name": $.trim(sectionParts[0]),
+                "value": $.trim(sectionParts[1])
+            });
         }
 
         return {
@@ -57,18 +55,24 @@
     function _getLyrics(songData) {
         var slides = [];
 
+        var songMinusInfo = songData.replace(_infoRegex, "");
+
         //Find the parts that being with the title, a color, and then a block of single-spaced characters
-        var songParts = songData.match(/(\w+(\s\d)*:[\r\n]+)+(.+[\n\r])+/mgi);
+        var songParts = songMinusInfo.match(/(\w+(\s\d)*:[\r\n]+)*(.+[\n\r])+/mgi);
 
         //Loop over these parts
         for (var i = 0; i < songParts.length; i++) {
-            var lines = songParts[i].split(/[\r\n]+/g);
+            // remove all bracket groups, then split the lines into an array
+            var lines = $.trim(songParts[i].replace(/\[.+?\]|{.+?}/g, "")).split(/[\r\n]+/g);
 
             //Get the first line from the array, and remove the colon. Now we have the title
-            var title = $.trim(lines.shift().replace(":", ""));
+            var title = "";
+            if (lines[0].indexOf(':') > 0) {
+                title = $.trim(lines.shift().replace(":", ""));
+            }
 
-            //Join the remaining lines and remove all bracket groups
-            var lyrics = $.trim(lines.join("\n").replace(/\[.+?\]|{.+?}/g, ""));
+            //Join the remaining lines together
+            var lyrics = $.trim(lines.join("\n"));
 
             slides.push({
                 "title": title,
