@@ -5,22 +5,19 @@ html{
 .drop-area{
 	background-color: @color-medium;
 	border: 1px solid @color-highlight;
-	border-radius: @radius-default;
+	border-radius: @border-radius-base;
 	color: @color-dark;
 	text-align: center;
 	padding:10px;
 	.transition(all 0.4s);
 	
-
 	.over &{
-		@shadow: 0 0 50px @color-highlight, inset 0 0 10px @color-highlight;
-		.box-shadow(@shadow);
+		box-shadow: 0 0 50px @color-highlight, inset 0 0 10px @color-highlight;
 		background-color: @color-light;
 		color: @color-text;
 	}
 
 	#begin-area &{
-		margin-top: 50px;
 		padding:0;
 
 		p{
@@ -35,21 +32,6 @@ html{
 			display:block;
 			margin-top: 50px;
 			margin-bottom: 10px;
-		}
-
-		// Tablets, small desktops, & smaller
-		@media (max-width: 979px) {
-			& {
-				p {
-					padding: 20px 10px;
-					font-size: 30px;
-					line-height: 30px;
-				}
-
-				small {
-					margin-top: 20px;
-				}
-			}
 		}
 	}
 }

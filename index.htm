@@ -3,38 +3,26 @@
 <head>
 	<title>Lyric Converter</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta description="Convert all of your song lyric files between different formats!">
+	<meta property="og:description" content="Convert all of your song lyric files between different formats!" />
+	<meta property="og:title" content="Lyric Converter" />
+	<meta property="og:url" content="http://LyricConverter.com" />
 	<link rel="stylesheet" type="text/css" href="styles/parser.css">
 	
 	<script src="scripts/lib/modernizr.js"></script>
 	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 	<script src="scripts/lib/jquery.min.js"></script>
-	<script src="scripts/bootstrap/bootstrap-affix.js"></script>
 	
-	<script src="scripts/plugins/jquery.fileDragAndDrop.js"></script>
-	<script src="scripts/lib/FileSaver.js"></script>
-	<script src="scripts/lib/jszip.js"></script>
-	<script src="scripts/TextCleaner.js"></script>
-
-	<script src="scripts/parser.js"></script>
-	<script src="scripts/formats.pro4.js"></script>
-	<script src="scripts/formats.pro5.js"></script>
-	<script src="scripts/formats.songshowplus.js"></script>
-	<script src="scripts/formats.chordpro.js"></script>
-	<script src="scripts/outputs.pro4.js"></script>
-	<script src="scripts/outputs.pro5.js"></script>
-	<script src="scripts/outputs.text.js"></script>
-	<script src="scripts/outputs.display.js"></script>
-
-	<script src="scripts/site.js"></script>
+	<script src="scripts/parser-min.js"></script>
+	<script src="scripts/site-min.js"></script>
 </head>
 <body>
 	<header id="header" class="container">
 		<h1 id="title">Lyric <span id="title-secondary">Converter</span></h1>
 		<nav id="main-nav">
-			<a href="#section-convert" class="nav-current">Convert</a>
+			<a href="#section-convert" class="active">Convert</a>
 			<a href="#section-about">About</a>
 			<a href="#section-help">Help</a>
 		</nav>
@@ -46,49 +34,43 @@
 
 			<div class="row">
 
-				<div class="span3">
-					<div id="affix-contents">
-						<nav class="nav-sidebar" id="nav-convert-type">
-							<a href="#" data-format="pro5" class="clearfix">
-								<i class="nav-icon-pro"></i>
-								Convert to <strong>ProPresenter 5</strong>
-							</a>
-							<a href="#" data-format="pro4" class="clearfix">
-								<i class="nav-icon-pro"></i>
-								Convert to <strong>ProPresenter 4</strong>
-							</a>
-							<a href="#" data-format="text" class="clearfix">
-								<i class="nav-icon-txt"></i>
-								Convert to <strong>Plain Text</strong>
-							</a>
-							<a href="#" data-format="display" class="clearfix">
-								<i class="nav-icon-slides"></i>
-								Display <strong>Slides</strong>
-							</a>
-						</nav>
-						
-						<div class='alert alert-info' id="announcement">
-							<a href="http://chris-barr.com/2013/06/lyric-converter-v2/">Read my blog post about LyricConverter!</a>
-						</div>
+				<div class="col-sm-4 col-md-3">
+					<nav class="list-group" id="js-convert-types">
+						<a href="#" data-format="pro5" class="list-group-item">
+							Convert to <strong>ProPresenter 5</strong>
+						</a>
+						<a href="#" data-format="pro4" class="list-group-item">
+							Convert to <strong>ProPresenter 4</strong>
+						</a>
+						<a href="#" data-format="text" class="list-group-item">
+							Convert to <strong>Plain Text</strong>
+						</a>
+						<a href="#" data-format="display" class="list-group-item">
+							Display <strong>Slides</strong>
+						</a>
+					</nav>
+					
+					<div class='alert alert-info' id="announcement">
+						<a href="http://chris-barr.com/2013/06/lyric-converter-v2/">Read my blog post about LyricConverter!</a>
+					</div>
 
-						<div class="drop-area hide" id="drop-area-more">
-							You can drag more songs into this window to convert them!
-						</div>
+					<div class="drop-area hidden" id="drop-area-more">
+						You can drag more songs into this window to convert them!
 					</div>
 				</div>
 
-				<div id="begin-area" class="span4 offset2">
+				<div id="begin-area" class="col-sm-6 col-sm-offset-2 col-md-5 col-lg-4">
 					<div class="drop-area">
 						<p>
 							Drag your <strong>Song Files</strong> here
 						</p>
-						<small>(Song Show Plus or ProPresenter)</small>
+						<small>(Song Show Plus 7, ProPresenter 4 or 5, or ChordPro)</small>
 					</div>
 				</div>
 
-				<div id="display-area" class="span9 hide">
+				<div id="display-area" class="col-sm-8 col-md-9 hidden">
 					<div id="output"></div>
-					<div id="many-songs-please-donate" class="alert alert-info hide">
+					<div id="many-songs-please-donate" class="alert alert-info hidden">
 						<p>Wow, you've converted a total of <strong><span id="total-song-count">0</span> songs</strong> with LyricConverter!</p>
 						<p>
 						I've spent a lot of time working on this and I would really appreciate a small donation if you've found this tool to be useful.</p>
@@ -98,7 +80,7 @@
 						<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 						">
 						<button type="submit" class="btn btn-success">Donate!</button>
-						<button type="button" class="btn btn-mini" id="donate-nag-no-thanks">No thanks&hellip;</button>
+						<button type="button" class="btn btn-default btn-sm" id="donate-nag-no-thanks">No thanks&hellip;</button>
 						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					</form>
 					</div>
@@ -108,9 +90,9 @@
 			</div>
 		</div>
 
-		<div id="section-about" class="js-main-section hide">
+		<div id="section-about" class="js-main-section hidden">
 			<div class="row">
-				<div class="span7">
+				<div class="col-sm-7">
 					<h4>Why Was This Made?</h4>
 					<p>
 						I'm the guy at my church who runs the lyric presentation software for a lot of the services. We used SongShow Plus for several years, and it worked pretty well for us. It did have a few key frustrations for us, plus the fact that we <em>really</em> wanted to switch over to a Mac.  After looking into it, ProPresenter seemed like a great choice.
@@ -132,7 +114,7 @@
 						<small class="muted">I am in no way associated with R-Technics'<a href="http://songshowplus.com/"> SongShow Plus</a> or Renewed Vision's<a href="http://www.renewedvision.com/propresenter.php"> ProPresenter</a>.</small>
 					</p>
 				</div>
-				<div class="span4 offset1">
+				<div class="col-sm-4 col-sm-offset-1">
 					<h4>Donations are welcome!</h4>
 					<p>If you find this service useful, please concider donating to this site to help support the cost!  A small $5 donation (or more!) would really help to support my efforts.</p>
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -147,29 +129,39 @@
 					<p>
 						This project is on GitHub!  Feel free to take a look at the code, or submit improvements &amp; changes to me.
 						<br /><br />
-							<a class="btn btn-large btn-block" href="https://github.com/chrismbarr/LyricConverter">Fork On GitHub!</a>
+							<a class="btn btn-default btn-large btn-block" href="https://github.com/chrismbarr/LyricConverter">Fork On GitHub!</a>
 					</p>
 				</div>
 			</div>
 		</div>
 
-		<div id="section-help" class="js-main-section hide">
+		<div id="section-help" class="js-main-section hidden">
 			<div class="row">
-				<div class="span8">
+				<div class="col-sm-8">
 					<h4>First, some things to note:</h4>
 					<ul>
-						<li>Only <strong>SongShow Plus files</strong> can be uploaded and converted at this time.</li>
-						<li>They can only be converted to <strong>ProPresenter</strong> or <strong>plain text</strong> files at this time.</li>
-						<li>This has only been tested with <strong>SongShow Plus version 7</strong> and <strong>ProPresenter version 4</strong>.</li>
-						<li>The majority of SongShow Plus files are fomatted in a similar manner which this tool can read, but occasionally there are files with odd formatting.  In these cases all the text should be extracted, but it cannot be organized in any way.</li>
+						<li>The SongShow Plus files have has only been tested with <strong>version 7</strong>.</li>
+						<li>The majority of SongShow Plus files are formatted in a similar manner which this tool can read, but occasionally there are files with odd formatting.  In these cases all the text <em>should</em> be extracted, but it cannot be organized in any way. All I can do in this case is dump all the text onto a single slide.  You might have better luck converting these problem files to text format instead.</li>
 					</ul>
+
+					<h4>Support Formats</h4>
+					<ul>
+						<li>Import from: SongShow Plus 7</li>
+						<li>Import from: ProPresenter 4</li>
+						<li>Import from: ProPresenter 5</li>
+						<li>Import from: ChordPro</li>
+						<li>Export to: ProPresenter 4</li>
+						<li>Export to: ProPresenter 5</li>
+						<li>Export to: Plain Text</li>
+					</ul>
+					<p class='text-info'>Eventually I would love for LyricConverter to convert between all of these formats and more, but for the time being this is what it does.</p>
 				</div>
-				<div class="span4">
+				<div class="col-sm-4">
 					<h4>Have a question or some other problem?</h4>
 					<p>
 						You can:
-						<a class="btn btn-large btn-block" href="https://github.com/chrismbarr/LyricConverter/issues">Open an issue on GitHub</a>
-						<a class="btn btn-large btn-block" href="http://twitter.com/ChrisMBarr">Contact me on Twitter</a>
+						<a class="btn btn-default btn-large btn-block" href="https://github.com/chrismbarr/LyricConverter/issues">Open an issue on GitHub</a>
+						<a class="btn btn-default btn-large btn-block" href="http://twitter.com/ChrisMBarr">Contact me on Twitter</a>
 					</p>
 				</div>
 			</div>

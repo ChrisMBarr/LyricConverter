@@ -5,6 +5,8 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
 
+/*global parser:false, Modernizr:false*/
+
 (function() {
     //Vars for this scope
     var $header;
@@ -14,7 +16,6 @@
     var $dropMore;
     var $output;
     var $parserErrorDisplay;
-    var fadeSpeed = 400;
     var isMobile = false;
 
     //Donation stuff
@@ -40,7 +41,7 @@
             _setupHeaderParrallax();
             _setupNav();
             _detectFeatures();
-            _setupDonationAndSongCounter()
+            _setupDonationAndSongCounter();
         }
     });
 
@@ -48,11 +49,12 @@
 
     var _cookie = {
         _create: function(name, value, days) {
+            var expires = "";
             if (days) {
                 var date = new Date();
                 date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                var expires = "; expires=" + date.toGMTString();
-            } else var expires = "";
+                expires = "; expires=" + date.toGMTString();
+            }
             document.cookie = name + "=" + value + expires + "; path=/";
         },
         _read: function(name) {
@@ -60,13 +62,14 @@
             var ca = document.cookie.split(';');
             for (var i = 0; i < ca.length; i++) {
                 var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1, c.length);
+                }
+                if (c.indexOf(nameEQ) === 0) {
+                    return c.substring(nameEQ.length, c.length);
+                }
             }
             return null;
-        },
-        _erase: function(name) {
-            createCookie(name, "", -1);
         }
     };
 
@@ -149,13 +152,13 @@
     //Do initial UI setup
     //======================================================================
     function _selectElements() {
-        //Fill in variables wil selected elements
+        //Fill in variables will selected elements
         $header = $('#header');
         $content = $('#main');
         $areaBegin = $("#begin-area");
         $areaDisplay = $("#display-area");
         $dropMore = $("#drop-area-more");
-        $output = $("#output")
+        $output = $("#output");
         $parserErrorDisplay = $('#parser-error-display');
         $donationNag = $("#many-songs-please-donate");
         $totalSongCountDisplay = $("#total-song-count");
@@ -197,11 +200,11 @@
                 //Get another random image
                 _replaceImg(true);
             }
-        })
+        });
     }
 
     function _setupHeaderParrallax() {
-        var $win = $(window)
+        var $win = $(window);
         var scrollSpeed = 2.4;
         var imgHeight = 350;
 
@@ -231,9 +234,9 @@
     }
 
     function _setupNav() {
-        var selectedClass = "nav-current";
+        var selectedClass = "active";
         var $sections = $content.children(".js-main-section");
-        var $sidebarLinks = $content.find(".nav-sidebar a");
+        var $sidebarLinks = $("#js-convert-types a");
 
         $("#main-nav")
             .children("a")
@@ -248,10 +251,10 @@
                     .removeClass(selectedClass);
 
                 //Hide all content containers
-                $sections.hide();
+                $sections.addClass('hidden');
 
                 //Show the one we care about
-                $("#" + contentIdToShow).show();
+                $("#" + contentIdToShow).removeClass('hidden');
 
                 ev.preventDefault();
             });
@@ -265,14 +268,14 @@
                 $self
                     .addClass(selectedClass)
                     .siblings()
-                    .removeClass(selectedClass)
+                    .removeClass(selectedClass);
 
                 //Tell the parser to change formats
                 var format = $self.data("format");
                 parser.outputFormat = format;
 
                 //Save this setting as a cookie stored for 1 year
-                _cookie._create(formatCookieName, format, cookieDuration)
+                _cookie._create(formatCookieName, format, cookieDuration);
 
                 ev.preventDefault();
             });
@@ -293,17 +296,6 @@
 
         //Trigger a click on this item
         $toSelect.triggerHandler("click");
-
-        //Affix the sidebar to the page on scroll	
-        var $toAffix = $("#affix-contents");
-        var topPos = $toAffix.offset().top - parseInt($header.css("margin-bottom"), 10);
-
-        $toAffix
-            .affix({
-                offset: {
-                    top: topPos
-                }
-            });
     }
 
     function _setupDonationAndSongCounter() {
@@ -318,7 +310,7 @@
 
         $("#donate-nag-no-thanks").one('click', function() {
             showDonationNag = false;
-            $donationNag.fadeOut(fadeSpeed);
+            $donationNag.addClass('hidden');
 
         });
     }
@@ -353,7 +345,7 @@
                 //Also display errors if there are any
                 if (parser.errorList.length) {
 
-                    var errorTitle = parser.errorList.length == 1 ? "One song ran into an error and could not be converted" : "We ran into errors with " + parser.errorList.length + " of the songs, and they were not converted";
+                    var errorTitle = parser.errorList.length === 1 ? "One song ran into an error and could not be converted" : "We ran into errors with " + parser.errorList.length + " of the songs, and they were not converted";
 
                     //Join all the error messages together
                     displayError(parser.errorList.join("<br/>"), errorTitle);
@@ -369,21 +361,21 @@
         _cookie._create(songCountCookieName, songCount, cookieDuration);
 
         if (showDonationNag && songCount > donationNagThreshhold) {
-            $donationNag.show();
+            $donationNag.removeClass('hidden');
             $("#total-song-count").text(songCount);
         }
     }
 
     function _resetUI() {
-        $areaBegin.hide();
-        $areaDisplay.fadeIn(fadeSpeed);
-        $dropMore.fadeIn(fadeSpeed);
+        $areaBegin.addClass('hidden');
+        $areaDisplay.removeClass('hidden');
+        $dropMore.removeClass('hidden');
         $output.empty();
 
         //Empty out the UI so we can put in new data...
         $parserErrorDisplay
             .empty()
-            .hide();
+            .addClass('hidden');
     }
 
     //Public function used to "fill in" the parser's error display requirement
@@ -395,7 +387,7 @@
         htmlString += "<p>" + msg + "</p>";
 
         $parserErrorDisplay
-            .show()
+            .removeClass('hidden')
             .html(htmlString);
     }
 

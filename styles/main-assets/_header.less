@@ -9,12 +9,12 @@ body{
 
 #header{
 	box-sizing: border-box;
-	color: @white;
+	color: #FFF;
 	background-image: url('img/header-1.jpg'); //default image, will be replaced later by JS
 	background-repeat: no-repeat;
 	background-position: 50% -20px;
 	height: @header-height;
-	padding: @paddingLarge;
+	padding: @padding-large-vertical;
 	margin-bottom: 20px;
 	
 	//Keep the header fluid width when below the max size
@@ -40,7 +40,7 @@ body{
 }
 
 //Phones only - make the title fit properly
-@media (max-width: 767px) {
+@media (max-width: @screen-sm-min) {
 	#title{
 		font-size: 80px;
 		line-height: 60px;
@@ -76,7 +76,7 @@ body{
 		}
 	}
 
-	.nav-current{
+	.active{
 		border-bottom-color: @color-highlight;
 	}
 }

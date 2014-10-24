@@ -6,13 +6,17 @@
 @color-dark: #807e74;
 @color-text: #1d1d1d;
 @color-highlight: #3ea8b2;
-@radius-default: 10px;
 
 //Override Bootstrap defaults
-@bodyBackground:        @color-background;
-@textColor:             @color-text;
-@linkColor:             @color-highlight;
-@linkColorHover:        darken(@linkColor, 15%);
-@baseFontSize:          16px;
-@sansFontFamily:        'Helvetica Neue', Helvetica, Arial, sans-serif;
-@baseLineHeight:        20px;
+@body-bg:        			@color-background;
+@text-color:             	@color-text;
+@link-color:             	@color-highlight;
+@link-hover-color:        	darken(@link-color, 15%);
+@font-family-sans-serif:    'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+//List Group Color Overrides
+@list-group-bg: 			@color-background;
+@list-group-link-color: 	@color-dark;
+@list-group-hover-bg: 		@color-medium;
+@list-group-active-color:   @color-background;
+@list-group-active-bg:      @color-highlight;
