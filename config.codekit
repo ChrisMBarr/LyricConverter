@@ -417,15 +417,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/README.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/README.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/README.md": {
 		"enableFootnoteSupport": 0,
 		"enableSmartyPants": 1,
@@ -444,17 +435,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scripts\/file-formats\/formats.chordpro.js",
 		"outputAbbreviatedPath": "\/scripts\/file-formats\/formats.chordpro-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/scripts\/file-formats\/formats.json-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/scripts\/file-formats\/formats.json-min.js",
-		"outputAbbreviatedPath": "\/scripts\/file-formats\/formats.json-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -499,6 +479,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scripts\/file-formats\/formats.songshowplus.js",
 		"outputAbbreviatedPath": "\/scripts\/file-formats\/formats.songshowplus-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/scripts\/file-formats\/outputs.chordpro.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scripts\/file-formats\/outputs.chordpro.js",
+		"outputAbbreviatedPath": "\/scripts\/file-formats\/outputs.chordpro-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1870,32 +1861,38 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.display.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.chordpro.js",
 			"position": 8,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro4.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.display.js",
 			"position": 9,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro5.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro4.js",
 			"position": 10,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.text.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro5.js",
 			"position": 11,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.json.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.text.js",
 			"position": 12,
+			"type": 1
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.json.js",
+			"position": 13,
 			"type": 1
 			}
 		],
