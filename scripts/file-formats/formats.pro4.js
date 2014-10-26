@@ -53,7 +53,7 @@
         $slides.each(function(i, el) {
             var $thisSlide = $(el);
 
-            var labelText = $.trim($thisSlide.attr("label"));
+            var labelText = $thisSlide.attr("label").trim();
             var lyricsText = "";
 
             var $slideTextElement = $thisSlide.find("rvtextelement");

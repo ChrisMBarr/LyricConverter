@@ -57,8 +57,8 @@
             $slides.each(function() {
                 var $thisSlide = $(this);
                 var lyricsText = "";
-                var labelText = $.trim($thisGroup.attr("name"));
-                var slideLabel = $.trim($thisSlide.attr("label"));
+                var labelText = $thisGroup.attr("name").trim();
+                var slideLabel = $thisSlide.attr("label").trim();
 
                 if (slideLabel.length) {
                     labelText += " - " + slideLabel;

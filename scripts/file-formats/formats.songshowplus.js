@@ -51,7 +51,7 @@
 
         //Now loop through the array and remove all empty items and items that are only 1 character long
         infoArray = $.grep(infoArray, function(n) {
-            var item = $.trim(n).replace(/\r\n\t/g, "");
+            var item = n.trim().replace(/\r\n\t/g, "");
             return item.length > 1 ? item : false;
         });
 
@@ -129,10 +129,10 @@
             var matches = sections[i].match(slidePattern);
 
             //Remove whitespace from the title
-            var slideTitle = (matches !== null && matches[1]) ? $.trim(matches[1].replace(_invisibles, "")) : "";
+            var slideTitle = (matches !== null && matches[1]) ? matches[1].replace(_invisibles, "").trim() : "";
 
             //Remove any more invisibles from the lyrics and remove whitespace
-            var slideLyrics = (matches !== null && matches[2]) ? $.trim(matches[2].replace(_invisibles, "")) : "";
+            var slideLyrics = (matches !== null && matches[2]) ? matches[2].replace(_invisibles, "").trim() : "";
 
             //Convert characters as needed - useful for non-english alphabets (Spanish)
             slideTitle = TextCleaner.ConvertWin1252ToUtf8(slideTitle);
@@ -185,7 +185,7 @@
         var infoArray = lastSlideRaw.split(_invisibles);
         //Now loop through the array and remove all empty items and items that are only 1 character long
         infoArray = $.grep(infoArray, function(n) {
-            var item = $.trim(n);
+            var item = n.trim();
             return item.length > 1 ? item : false;
         });
 

@@ -43,8 +43,8 @@
 
         for (var i = 0; i < infoSections.length; i++) {
             var sectionParts = infoSections[i].replace(/^{(.*)}/, "$1").split(":");
-            var name = $.trim(sectionParts[0]);
-            var val = $.trim(sectionParts[1]);
+            var name = sectionParts[0].trim();
+            var val = sectionParts[1].trim();
 
             if (/title/i.test(name)) {
                 //If we find the title in the info, use that instead of the filename
@@ -74,16 +74,16 @@
         //Loop over these parts
         for (var i = 0; i < songParts.length; i++) {
             // remove all bracket groups, then split the lines into an array
-            var lines = $.trim(songParts[i].replace(/\[.+?\]|{.+?}/g, "")).split(/[\r\n]+/g);
+            var lines = songParts[i].replace(/\[.+?\]|{.+?}/g, "").trim().split(/[\r\n]+/g);
 
             //Get the first line from the array, and remove the colon. Now we have the title
             var title = "";
             if (lines[0].indexOf(':') > 0) {
-                title = $.trim(lines.shift().replace(":", ""));
+                title = lines.shift().replace(":", "").trim();
             }
 
             //Join the remaining lines together
-            var lyrics = $.trim(lines.join("\n"));
+            var lyrics = lines.join("\n").trim();
 
             slides.push({
                 "title": title,
