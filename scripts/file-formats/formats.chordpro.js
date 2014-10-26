@@ -14,7 +14,7 @@
         return /txt/i.test(fileExt) && /^{.+:\s*.*}[\r\n]+/i.test(fileData);
     };
 
-    //Extend the formats object on the parser to allow for parsing SongShowPlus files
+    //Extend the formats object on the parser to allow for parsing ChordPro files
     parser.formats[THIS_FORMAT].convert = function(songData, fileName) {
         var songMetadata = _getSongMetadata(songData, fileName);
         var songLyrics = _getLyrics(songData);
@@ -38,16 +38,27 @@
         var infoArr = [];
         var infoSections = songData.match(_infoRegex);
 
+        //Get the title filename, but we will replace this later if we find a better source
+        var songTitle = fileName.replace(".txt", "");
+
         for (var i = 0; i < infoSections.length; i++) {
             var sectionParts = infoSections[i].replace(/^{(.*)}/, "$1").split(":");
-            infoArr.push({
-                "name": $.trim(sectionParts[0]),
-                "value": $.trim(sectionParts[1])
-            });
+            var name = $.trim(sectionParts[0]);
+            var val = $.trim(sectionParts[1]);
+
+            if (/title/i.test(name)) {
+                //If we find the title in the info, use that instead of the filename
+                songTitle = val;
+            } else {
+                infoArr.push({
+                    "name": name,
+                    "value": val
+                });
+            }
         }
 
         return {
-            title: infoArr.title || infoArr.Title || fileName.replace(".txt", ""),
+            title: songTitle,
             info: infoArr
         };
     }
