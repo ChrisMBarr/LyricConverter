@@ -8,7 +8,6 @@ Parses the song info &amp; lyrics in the browser from various lyric presentation
 ---
 ####TODO Items:
 * Plain Text Import
-* JSON Import
 * ChordPro Export (Import currently working)
 * SongPro Import/Export
 * MediaShout Import/Export
