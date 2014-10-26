@@ -17,7 +17,6 @@
         try {
             //If this JSON object was generated from LyricCOnverter
             //we should just be able to pass it right on through!
-            window.console.log(JSON.parse(songData));
             return JSON.parse(songData);
         } catch (ex) {
             return {};
