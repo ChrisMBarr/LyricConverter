@@ -74,7 +74,7 @@
         if (infoArray[1]) {
             songInfo.push({
                 'name': 'Artist/Author',
-                'value': infoArray[1]
+                'value': infoArray[1].trim()
             });
         }
 
@@ -82,7 +82,7 @@
         if (infoArray[2]) {
             songInfo.push({
                 'name': 'Copyright',
-                'value': infoArray[2].replace("$", "") //copyright info tends to end with a $ sign, so remove it
+                'value': infoArray[2].replace("$", "").trim() //copyright info tends to end with a $ sign, so remove it
             });
         }
 
@@ -90,7 +90,7 @@
         if (infoArray[3]) {
             songInfo.push({
                 'name': 'CCLI',
-                'value': infoArray[3]
+                'value': infoArray[3].trim()
             });
         }
 
@@ -98,7 +98,7 @@
         if (keywords) {
             songInfo.push({
                 'name': 'Keywords',
-                'value': keywords
+                'value': keywords.trim()
             });
         }
 
