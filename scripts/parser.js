@@ -69,7 +69,7 @@ var parser = (function() {
     function complete($outputContainer) {
         if (parser.songList.length) {
             //Pass the final song data to the selected output type
-            parser.outputs[parser.outputFormat]($outputContainer, parser.songList);
+            parser.outputs[parser.outputFormat](parser.songList, $outputContainer);
         }
     }
 
@@ -82,6 +82,7 @@ var parser = (function() {
 
         //UI properties should be filled in when this is run
         displayError: null,
+        displaySuccessHtml: null,
         songList: [],
         errorList: [],
 

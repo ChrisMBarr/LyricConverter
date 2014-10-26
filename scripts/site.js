@@ -5,7 +5,7 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
 
-/*global parser:false, Modernizr:false*/
+/*global parser:false, Modernizr:false, JSZip:false, saveAs:false*/
 
 (function() {
     //Vars for this scope
@@ -325,6 +325,9 @@
         //Extend the parser with the local displayError function
         parser.displayError = displayError;
 
+        //Extend the parser with the local displaySuccessHtml function
+        parser.displaySuccessHtml = displaySuccessHtml;
+
         $('html')
             .fileDragAndDrop(function(fileCollection) {
                 _resetUI();
@@ -389,6 +392,55 @@
         $parserErrorDisplay
             .removeClass('hidden')
             .html(htmlString);
+    }
+
+    function displaySuccessHtml(convertedFileContents, THIS_OUTPUT, FILE_EXTENSION) {
+        //Display any successes if we have them
+        if (convertedFileContents.length > 0) {
+            //Make some unique ID's we can select on later
+            var downloadZipId = "btn-" + THIS_OUTPUT + "-download-zip";
+            var downloadFilesId = "btn-" + THIS_OUTPUT + "-download-files";
+
+            //Build up some HTML to write out
+            var finalHtml = "<h1>Converted " + convertedFileContents.length + " Song File" + (convertedFileContents.length > 1 ? "s" : "") + "!</h1>";
+            if (convertedFileContents.length > 1) {
+                finalHtml += "<button id='" + downloadZipId + "' type='button' class='btn btn-lg btn-primary'>Download as .zip</button>";
+                finalHtml += " or <button id='" + downloadFilesId + "' type='button' class='btn btn-default'>Download " + convertedFileContents.length + " individual files</button>";
+            } else {
+                finalHtml += "<button id='" + downloadFilesId + "' type='button' class='btn btn-lg btn-primary'>Download file</button>";
+            }
+
+            //Write the HTML to the page
+            $output.html(finalHtml);
+
+            //Add click events to each button we added above
+            $("#" + downloadZipId).on("click", function() {
+
+                //Create a new .ZIP archive
+                var zip = new JSZip();
+
+                //Go through and add each file to the zip
+                $.each(convertedFileContents, function(i, convertedSong) {
+                    zip.file(convertedSong.name + FILE_EXTENSION, convertedSong.data);
+                });
+
+                //Generate the zip file contents
+                var zipContent = zip.generate({
+                    type: "blob"
+                });
+                //Download it!
+                saveAs(zipContent, "converted files.zip");
+            });
+
+            $("#" + downloadFilesId).on("click", function() {
+                $.each(convertedFileContents, function(i, convertedSong) {
+                    var fileBlob = new Blob([convertedSong.data], {
+                        type: "text/xml;charset=utf-8"
+                    });
+                    saveAs(fileBlob, convertedSong.name + FILE_EXTENSION);
+                });
+            });
+        }
     }
 
 })();
