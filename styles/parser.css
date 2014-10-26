@@ -2436,6 +2436,7 @@ html {
   color: #807e74;
   text-align: center;
   padding: 10px;
+  margin-bottom: 10px;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   transition: all 0.4s;
