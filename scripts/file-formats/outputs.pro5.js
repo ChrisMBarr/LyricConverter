@@ -5,6 +5,7 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
 
+/*global parser:false, JSZip:false, saveAs:false*/
 
 /*=====================================================
  * OUTPUT for converting to ProPresenter 5 format
