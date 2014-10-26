@@ -56,7 +56,7 @@ var parser = (function() {
                 });
 
             } else {
-                parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported!");
+                parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
             }
         } catch (ex) {
             if (window.console) {

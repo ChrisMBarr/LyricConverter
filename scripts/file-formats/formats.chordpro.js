@@ -11,7 +11,7 @@
 
     parser.formats[THIS_FORMAT].testFormat = function(fileExt, fileData) {
         //Make sure we have a .txt file and something at the beginning like {title: song title}
-        return /txt/i.test(fileExt) && /^{.+:\s*.*}[\r\n]+/i.test(fileData);
+        return /txt/i.test(fileExt) && /^.*{.+:.+}\s+/i.test(fileData);
     };
 
     //Extend the formats object on the parser to allow for parsing ChordPro files
