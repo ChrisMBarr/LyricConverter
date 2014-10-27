@@ -5,6 +5,7 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
 
+/*global parser:false*/
 
 /*=====================================================
  * OUTPUT for displaying slide content in the browser as HTML
@@ -34,7 +35,6 @@
         var htmlOutput = '<h3 class="song-title">' + songData.title + '</h3>';
         htmlOutput += '<ul class="song-info">';
 
-
         //Add each info item
         for (var infoIndex = 0; infoIndex < songData.info.length; infoIndex++) {
             var sInfo = songData.info[infoIndex];
@@ -48,11 +48,11 @@
             var slide = songData.slides[slideIndex];
             //If the title is blank, add a space character so it look even
             var title = slide.title.length < 1 ? '&nbsp;' : slide.title;
-            //Create a new HTML clide and add it to the DOM
-            htmlOutput += '<div class="col-xs-3"><div class="thumbnail slide-content"><p class="slide-lyrics">' + slide.lyrics + '</p><h6 class="slide-label">' + title + '</h6></div></div>';
+            //Create a new HTML slide and add it to the DOM
+            htmlOutput += '<div class="col-xs-6 col-sm-4 col-md-3"><div class="thumbnail slide-content"><p class="slide-lyrics">' + slide.lyrics + '</p><h6 class="slide-label">' + title + '</h6></div></div>';
         }
 
-        htmlOutput += '</ul>';
+        htmlOutput += '</div>';
 
         return htmlOutput;
     }
