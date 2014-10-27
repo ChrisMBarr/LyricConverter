@@ -7,10 +7,10 @@ Parses the song info &amp; lyrics in the browser from various lyric presentation
 
 ---
 ####TODO Items:
-* Plain Text Import
-* SongPro Import/Export
-* MediaShout Import/Export
-* EasyWorship Import/Export
+* Add support for **Plain Text** Import
+* Add support for **SongPro** Import/Export
+* Add support for **MediaShout** Import/Export
+* Add support for **EasyWorship** Import/Export
 * Better way for converters to tell the UI they are done
 * Can I use Zepto instead of jQuery? ProPresenter import needs the XML parsing.
 
