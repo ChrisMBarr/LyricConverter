@@ -4,6 +4,8 @@
  * Site: http://www.vromans.org/johan/projects/Chordii/chordpro/
 =======================================================*/
 
+/*global console:false*/
+
 (function() {
 
     var THIS_FORMAT = 'songpro';
@@ -11,7 +13,7 @@
 
     parser.formats[THIS_FORMAT].testFormat = function(fileExt, fileData) {
         //Make sure we have a .txt file and something at the beginning like {title: song title}
-        return /txt/i.test(fileExt) && /^.*{.+:.+}\s+/i.test(fileData);
+        return /txt/i.test(fileExt) && /^#T\s/i.test(fileData);
     };
 
     //Extend the formats object on the parser to allow for parsing ChordPro files
@@ -32,11 +34,20 @@
     //PRIVATE FUNCTIONS
     //===================================
 
+    var sectionRegex = new RegExp(/(#[A-Z0-9]+)([\s\S])+?(?:[\n\r]#)/ig);
+
     function _getSongMetadata(songData, fileName) {
         var infoArr = [];
 
+        var matches = songData.match(sectionRegex);
+
+        console.log(matches);
+
         //Temp
-        infoArr.push(songData.split(/\n/)[0]);
+        infoArr.push({
+            "name": "Sample Name",
+            "value": songData.split(/\n/)[0]
+        });
 
         //Get the title filename, but we will replace this later if we find a better source
         var songTitle = fileName.replace(".txt", "");
@@ -51,7 +62,10 @@
         var slides = [];
 
         //Temp
-        slides.push(songData.split(/\n/)[0]);
+        slides.push({
+            "title": "Sample Title",
+            "lyrics": songData.split(/\n/)[0]
+        });
 
         return slides;
     }

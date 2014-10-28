@@ -68,7 +68,7 @@
 
         var songMinusInfo = songData.replace(_infoRegex, "");
 
-        //Find the parts that being with the title, a color, and then a block of single-spaced characters
+        //Find the parts that being with the title, a colon, and then a block of single-spaced characters
         var songParts = songMinusInfo.match(/(\w+(\s\d)*:[\r\n]+)*(.+[\n\r])+/mgi);
 
         //Loop over these parts
