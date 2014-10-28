@@ -63,8 +63,8 @@
         $scope
             .find('.slide-lyrics')
             .each(function() {
-                if ($(this).height() > currentTallest) {
-                    currentTallest = $(this).height();
+                if ($(this).outerHeight() > currentTallest) {
+                    currentTallest = $(this).outerHeight();
                 }
             })
             .css({
