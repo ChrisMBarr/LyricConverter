@@ -69,8 +69,8 @@
 		},
 	"\/scripts\/file-formats\/formats.songpro.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/file-formats\/formats.songpro.js",
 		"outputAbbreviatedPath": "\/scripts\/file-formats\/formats.songpro-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -146,8 +146,8 @@
 		},
 	"\/scripts\/file-formats\/outputs.songpro.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/scripts\/file-formats\/outputs.songpro.js",
 		"outputAbbreviatedPath": "\/scripts\/file-formats\/outputs.songpro-min.js",
 		"outputPathIsOutsideProject": 0,
@@ -1465,50 +1465,62 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/formats.songshowplus.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/formats.songpro.js",
 			"position": 6,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/formats.json.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/formats.songshowplus.js",
 			"position": 7,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.chordpro.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/formats.json.js",
 			"position": 8,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.display.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.chordpro.js",
 			"position": 9,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro4.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.display.js",
 			"position": 10,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro5.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro4.js",
 			"position": 11,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.text.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.pro5.js",
 			"position": 12,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.json.js",
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.songpro.js",
 			"position": 13,
+			"type": 1
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.text.js",
+			"position": 14,
+			"type": 1
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/scripts\/file-formats\/outputs.json.js",
+			"position": 15,
 			"type": 1
 			}
 		],
