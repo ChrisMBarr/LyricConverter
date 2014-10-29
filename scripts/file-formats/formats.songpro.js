@@ -7,6 +7,12 @@
 /*global console:false*/
 /*exported console*/
 
+/* TODO
+ * Remove RTF Data
+ * Deal with multiple songs in an incoming file
+ * Use the order data to order the slides correctly
+ */
+
 (function() {
 
     var THIS_FORMAT = 'songpro';
