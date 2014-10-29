@@ -5,6 +5,7 @@
 =======================================================*/
 
 /*global console:false*/
+/*exported console*/
 
 (function() {
 
@@ -18,8 +19,9 @@
 
     //Extend the formats object on the parser to allow for parsing ChordPro files
     parser.formats[THIS_FORMAT].convert = function(songData, fileName) {
-        var songMetadata = _getSongMetadata(songData, fileName);
-        var songLyrics = _getLyrics(songData);
+        var parsedSongData = _getSongData(songData);
+        var songMetadata = _getMetadata(parsedSongData, fileName);
+        var songLyrics = _getLyrics(parsedSongData);
 
         //Return the filled in song object
         var songObj = {
@@ -31,75 +33,92 @@
     };
 
     //===================================
-    //PRIVATE FUNCTIONS
+    //PRIVATE
     //===================================
 
-    var sectionRegex = new RegExp(/#[A-Z0-9]+[\s\S]+?[^#]*/ig);
+    function _getSongData(songData) {
 
-    function _getSongMetadata(songData, fileName) {
+        var parsedSections = [];
+
+        //Split up all the sections
+        var sections = songData.match(/#[A-Z0-9]+[\s\S]+?[^#]*/ig);
+
+        //Loop through each section
+        for (var i = 0; i < sections.length; i++) {
+            //Separate the key form the data
+            var sectionKey = sections[i].match(/#[A-Z0-9]+/)[0];
+            //Remove the key form the data
+            var sectionData = sections[i].replace(sectionKey, "").trim();
+            //Clean up the key
+            sectionKey = sectionKey.trim().replace("#", "").toUpperCase();
+
+            //There are a few keys that we do not ever need to care about, so we skip them
+            if (!/F|FS|I|BD|BE|JL|JT|FC|BC|P|SB|SH|BM|E/.test(sectionKey)) {
+                //Add the other keys it to the array
+                parsedSections.push({
+                    key: sectionKey,
+                    val: sectionData
+                });
+            }
+        }
+
+        //return the array of parsed sections!
+        return parsedSections;
+    }
+
+    function _getMetadata(sections, fileName) {
         var infoArr = [];
 
         //Get the title filename, but we will replace this later if we find a better source
         var songTitle = fileName.replace(".txt", "");
 
-        //Split up all the sections
-        var sections = songData.match(sectionRegex);
+        for (var i = 0; i < sections.length; i++) {
+            var k = sections[i].key;
+            var v = sections[i].val;
 
-        //Loop through each section and
-        $.each(sections, function(k) {
-            //Separate the key form the data
-            var sectionKey = sections[k].match(/#[A-Z0-9]+/)[0];
-            //Remove the key form the data
-            var sectionData = sections[k].replace(sectionKey, "").trim();
-            //Clean up the key
-            sectionKey = sectionKey.trim().replace("#", "").toUpperCase();
-
-            //make sure this data isn't empty or a boolean value which we don't care about
-            if (sectionData !== "" && !/^(true|false)/i.test(sectionData)) {
-                if (sectionKey === "T") {
+            //make sure this data isn't empty
+            if (v !== "") {
+                if (k === "T") {
                     //If we have a title, use it instead of the filename
-                    songTitle = sectionData;
-                } else if (sectionKey === "A") {
+                    songTitle = v;
+                } else if (k === "A") {
                     infoArr.push({
                         "name": "Author",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (sectionKey === "R") {
+                } else if (k === "R") {
                     infoArr.push({
                         "name": "Copyright",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (sectionKey === "K") {
+                } else if (k === "K") {
                     infoArr.push({
                         "name": "Author",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (sectionKey === "M") {
+                } else if (k === "M") {
                     infoArr.push({
                         "name": "Music Source",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (sectionKey === "G") {
+                } else if (k === "G") {
                     infoArr.push({
                         "name": "Category",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (sectionKey === "O") {
+                } else if (k === "O") {
                     infoArr.push({
                         "name": "Order",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (sectionKey === "N") {
+                } else if (k === "N") {
                     infoArr.push({
                         "name": "Notes",
-                        "value": sectionData
+                        "value": v
                     });
-                } else if (!/F|FS|I|BD|BE|JL|JT|FC|BC|P|SB|SH|BM|E/.test(sectionKey)) {
-                    //We don't care about these, so if it's not one of these then it's probably lyrics!
-                    console.log(sectionKey, sectionData)
                 }
             }
-        });
+        }
 
         return {
             title: songTitle,
@@ -107,14 +126,26 @@
         };
     }
 
-    function _getLyrics(songData) {
+    function _getLyrics(sections) {
         var slides = [];
 
-        //Temp
-        slides.push({
-            "title": "Sample Title",
-            "lyrics": songData.split(/\n/)[0]
-        });
+        for (var i = 0; i < sections.length; i++) {
+            var k = sections[i].key;
+            var v = sections[i].val;
+
+            //Skip the metadata related keys
+            if (!/A|R|K|M|G|O|N/.test(k)) {
+
+                var slideTitle = k;
+                var slideContent = v;
+
+                //Temp
+                slides.push({
+                    "title": slideTitle,
+                    "lyrics": slideContent
+                });
+            }
+        }
 
         return slides;
     }
