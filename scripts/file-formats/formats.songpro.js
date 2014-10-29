@@ -34,23 +34,72 @@
     //PRIVATE FUNCTIONS
     //===================================
 
-    var sectionRegex = new RegExp(/(#[A-Z0-9]+)([\s\S])+?(?:[\n\r]#)/ig);
+    var sectionRegex = new RegExp(/#[A-Z0-9]+[\s\S]+?[^#]*/ig);
 
     function _getSongMetadata(songData, fileName) {
         var infoArr = [];
 
-        var matches = songData.match(sectionRegex);
-
-        console.log(matches);
-
-        //Temp
-        infoArr.push({
-            "name": "Sample Name",
-            "value": songData.split(/\n/)[0]
-        });
-
         //Get the title filename, but we will replace this later if we find a better source
         var songTitle = fileName.replace(".txt", "");
+
+        //Split up all the sections
+        var sections = songData.match(sectionRegex);
+
+        //Loop through each section and
+        $.each(sections, function(k) {
+            //Separate the key form the data
+            var sectionKey = sections[k].match(/#[A-Z0-9]+/)[0];
+            //Remove the key form the data
+            var sectionData = sections[k].replace(sectionKey, "").trim();
+            //Clean up the key
+            sectionKey = sectionKey.trim().replace("#", "").toUpperCase();
+
+
+            if (sectionKey === "T") {
+                //If we have a title, use it instead of the filename
+                songTitle = sectionData;
+            }
+            if (sectionData !== "") {
+                if (sectionKey === "A") {
+                    infoArr.push({
+                        "name": "Author",
+                        "value": sectionData
+                    });
+                } else if (sectionKey === "R") {
+                    infoArr.push({
+                        "name": "Copyright",
+                        "value": sectionData
+                    });
+                } else if (sectionKey === "K") {
+                    infoArr.push({
+                        "name": "Author",
+                        "value": sectionData
+                    });
+                } else if (sectionKey === "M") {
+                    infoArr.push({
+                        "name": "Music Source",
+                        "value": sectionData
+                    });
+                } else if (sectionKey === "G") {
+                    infoArr.push({
+                        "name": "Category",
+                        "value": sectionData
+                    });
+                } else if (sectionKey === "O") {
+                    infoArr.push({
+                        "name": "Order",
+                        "value": sectionData
+                    });
+                } else if (sectionKey === "N") {
+                    infoArr.push({
+                        "name": "Notes",
+                        "value": sectionData
+                    });
+                } else if (/F|FS|I|BD|BE|JL|JT|FC|BC|P|SB|SH|BM|E/.test(sectionKey)) {
+                    //We don't care about these.
+                }
+            }
+        });
 
         return {
             title: songTitle,
