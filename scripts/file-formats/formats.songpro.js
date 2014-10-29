@@ -54,13 +54,12 @@
             //Clean up the key
             sectionKey = sectionKey.trim().replace("#", "").toUpperCase();
 
-
-            if (sectionKey === "T") {
-                //If we have a title, use it instead of the filename
-                songTitle = sectionData;
-            }
-            if (sectionData !== "") {
-                if (sectionKey === "A") {
+            //make sure this data isn't empty or a boolean value which we don't care about
+            if (sectionData !== "" && !/^(true|false)/i.test(sectionData)) {
+                if (sectionKey === "T") {
+                    //If we have a title, use it instead of the filename
+                    songTitle = sectionData;
+                } else if (sectionKey === "A") {
                     infoArr.push({
                         "name": "Author",
                         "value": sectionData
@@ -95,8 +94,9 @@
                         "name": "Notes",
                         "value": sectionData
                     });
-                } else if (/F|FS|I|BD|BE|JL|JT|FC|BC|P|SB|SH|BM|E/.test(sectionKey)) {
-                    //We don't care about these.
+                } else if (!/F|FS|I|BD|BE|JL|JT|FC|BC|P|SB|SH|BM|E/.test(sectionKey)) {
+                    //We don't care about these, so if it's not one of these then it's probably lyrics!
+                    console.log(sectionKey, sectionData)
                 }
             }
         });
