@@ -2479,6 +2479,7 @@ html {
   margin: 0;
   padding: 3px;
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 .slide-label {
   padding-left: 3px;
