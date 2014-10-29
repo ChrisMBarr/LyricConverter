@@ -134,9 +134,20 @@
             var v = sections[i].val;
 
             //Skip the metadata related keys
-            if (!/A|R|K|M|G|O|N/.test(k)) {
+            if (!/T|A|R|K|M|G|O|N/.test(k)) {
 
                 var slideTitle = k;
+
+                if (k === "C") {
+                    slideTitle = "Chorus";
+                } else if (k === "B") {
+                    slideTitle = "Bridge";
+                } else if (k === "D") {
+                    slideTitle = "Coda";
+                } else if (/\d+/.test(k)) {
+                    slideTitle = "Verse " + k;
+                }
+
                 var slideContent = v;
 
                 //Temp
