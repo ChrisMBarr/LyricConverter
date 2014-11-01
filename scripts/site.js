@@ -6,6 +6,9 @@
  */
 
 /*global parser:false, Modernizr:false, JSZip:false, saveAs:false*/
+/*exported isDev*/
+
+var isDev = /\.local|localhost/i.test(document.location.hostname);
 
 (function() {
     //Vars for this scope
@@ -45,8 +48,6 @@
         }
     });
 
-
-
     var _cookie = {
         _create: function(name, value, days) {
             var expires = "";
@@ -72,8 +73,6 @@
             return null;
         }
     };
-
-
 
     //======================================================================
     //Detect unsupported features and or devices
