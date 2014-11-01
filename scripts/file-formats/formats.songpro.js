@@ -18,7 +18,7 @@
     parser.formats[THIS_FORMAT] = {};
 
     //When true, we will reorder the slides based on the "#O" metadata
-    var shouldOrderSlides = true;
+    var shouldOrderSlides = false;
 
     parser.formats[THIS_FORMAT].testFormat = function(fileExt, fileData) {
         //Make sure we have a .txt file and something at the beginning like {title: song title}
