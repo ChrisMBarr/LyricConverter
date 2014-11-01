@@ -5,7 +5,11 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
 
+/*globals isDev:false*/
+
 var parser = (function() {
+
+    var showDebugErrors = !isDev;
 
     var utilities = {
         decode: function(str) {
@@ -32,48 +36,57 @@ var parser = (function() {
         }
     };
 
-    function parseFile(i, fileObj) {
-        var data = fileObj.data;
+    function tryParseFile(i, fileObj) {
         var fullFileName = fileObj.name;
 
-        try {
-            //Find the file extension
-            var fileParts = fullFileName.split('.');
-            var fileExt = fileParts.slice(-1)[0].toLowerCase();
-            var fileName = fullFileName.replace('.' + fileExt, '');
-
-            //Browsers will add some unneeded text to the base64 encoding. Remove it.
-            var encodedSongData = data.replace(/^data:.*;base64,/, "");
-            var decodedSongData = utilities.decode(encodedSongData);
-
-
-            //Test the file extension with the test function registered with each format type
-            //When one matches, use that formats convert function
-            var convertFn;
-            $.each(parser.formats, function(format, formatObj) {
-                if (formatObj.testFormat(fileExt, decodedSongData)) {
-                    convertFn = formatObj.convert;
-                    return false;
+        if (showDebugErrors) {
+            parseFile(i, fileObj, fullFileName);
+        } else {
+            try {
+                parseFile(i, fileObj, fullFileName);
+            } catch (ex) {
+                if (window.console) {
+                    window.console.error(ex);
                 }
+                parser.errorList.push("There was an error reading the file <strong>" + fullFileName + "</strong>");
+            }
+        }
+    }
+
+    function parseFile(i, fileObj, fullFileName) {
+        var data = fileObj.data;
+
+        //Find the file extension
+        var fileParts = fullFileName.split('.');
+        var fileExt = fileParts.slice(-1)[0].toLowerCase();
+        var fileName = fullFileName.replace('.' + fileExt, '');
+
+        //Browsers will add some unneeded text to the base64 encoding. Remove it.
+        var encodedSongData = data.replace(/^data:.*;base64,/, "");
+        var decodedSongData = utilities.decode(encodedSongData);
+
+
+        //Test the file extension with the test function registered with each format type
+        //When one matches, use that formats convert function
+        var convertFn;
+        $.each(parser.formats, function(format, formatObj) {
+            if (formatObj.testFormat(fileExt, decodedSongData)) {
+                convertFn = formatObj.convert;
+                return false;
+            }
+        });
+
+        //Make sure the convert function exists...
+        if ($.isFunction(convertFn)) {
+            //Pass the decoded song date to the convert function
+            //We will get back a normalized version of the song content for the supported file type
+            parser.songList.push({
+                name: fileName,
+                data: convertFn(decodedSongData, fileName)
             });
 
-            //Make sure the convert function exists...
-            if ($.isFunction(convertFn)) {
-                //Pass the decoded song date to the convert function
-                //We will get back a normalized version of the song content for the supported file type
-                parser.songList.push({
-                    name: fileName,
-                    data: convertFn(decodedSongData, fileName)
-                });
-
-            } else {
-                parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
-            }
-        } catch (ex) {
-            if (window.console) {
-                window.console.error(ex);
-            }
-            parser.errorList.push("There was an error reading the file <strong>" + fullFileName + "</strong>");
+        } else {
+            parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
         }
     }
 
@@ -87,7 +100,7 @@ var parser = (function() {
     return {
         //Expose functions publicly
         utilities: utilities,
-        parseFile: parseFile,
+        parseFile: tryParseFile,
         complete: complete,
         outputFormat: null,
 
