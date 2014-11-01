@@ -37,32 +37,29 @@ var parser = (function() {
     };
 
     function tryParseFile(i, fileObj) {
-        var fullFileName = fileObj.name;
-
         if (showDebugErrors) {
-            parseFile(i, fileObj, fullFileName);
+            parseFile(i, fileObj);
         } else {
             try {
-                parseFile(i, fileObj, fullFileName);
+                parseFile(i, fileObj);
             } catch (ex) {
                 if (window.console) {
                     window.console.error(ex);
                 }
-                parser.errorList.push("There was an error reading the file <strong>" + fullFileName + "</strong>");
+                parser.errorList.push("There was an error reading the file <strong>" + fileObj.name + "</strong>");
             }
         }
     }
 
-    function parseFile(i, fileObj, fullFileName) {
-        var data = fileObj.data;
+    function parseFile(i, fileObj) {
 
         //Find the file extension
-        var fileParts = fullFileName.split('.');
+        var fileParts = fileObj.name.split('.');
         var fileExt = fileParts.slice(-1)[0].toLowerCase();
-        var fileName = fullFileName.replace('.' + fileExt, '');
+        var fileName = fileObj.name.replace('.' + fileExt, '');
 
         //Browsers will add some unneeded text to the base64 encoding. Remove it.
-        var encodedSongData = data.replace(/^data:.*;base64,/, "");
+        var encodedSongData = fileObj.data.replace(/^data:.*;base64,/, "");
         var decodedSongData = utilities.decode(encodedSongData);
 
 
@@ -98,7 +95,7 @@ var parser = (function() {
                 });
             }
         } else {
-            parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
+            parser.errorList.push("The file <strong>" + fileObj.name + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
         }
     }
 
