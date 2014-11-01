@@ -78,34 +78,7 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
     //Detect unsupported features and or devices
     //======================================================================
     function _displaySupportError(title, msg) {
-        //Build up an HTML string for a bootstrap modal window
-        var modalHtml = [
-            '<div style="width: 90%; margin-left: -45%;" class="modal" tabindex="-1" role="dialog" aria-labelledby="unsupportedModalLabel" aria-hidden="true">',
-            '   <div class="modal-header">',
-            '       <h2 id="unsupportedModalLabel" class="text-error">' + title + '</h2>',
-            '   </div>',
-            '   <div class="modal-body">',
-            '       <p style="font-size:22x;">' + msg + '</p>',
-            '   </div>',
-            '</div>'
-        ].join('');
-
-        //Load in the needed bootstrap components
-        Modernizr.load({
-            test: $.fn.modal,
-            load: [
-                'scripts/bootstrap/bootstrap-modal.js',
-                'styles/bootstrap-assets/modals.css'
-            ],
-            complete: function() {
-                //When loaded, launch the modal window
-                $(modalHtml)
-                    .modal({
-                        keyboard: false,
-                        backdrop: 'static'
-                    });
-            }
-        });
+        $("#section-convert").children().hide().end().append('<div class="alert alert-danger"><h2>' + title + '</h2><p style="font-size:22x;">' + msg + '</p></div>');
     }
 
     function _detectMobile() {
@@ -122,7 +95,7 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
 
     function _detectFeatures() {
 
-        //If the browser does not nativly support Base64 encode/decode,
+        //If the browser does not natively support Base64 encode/decode,
         //load in a file to add this support
         Modernizr.load({
             test: window.atob && window.btoa,
