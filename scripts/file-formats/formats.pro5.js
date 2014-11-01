@@ -69,7 +69,7 @@
                     //Grab the base64 encoded data from the slide element, decode it, the strip off the RTF formatting
                     var encodedRtfData = $(this).attr("RTFData");
                     var decodedRtfData = parser.utilities.decode(encodedRtfData);
-                    lyricsText += _stripRtf(decodedRtfData);
+                    lyricsText += parser.utilities.stripRtf(decodedRtfData);
                 });
 
                 songSlides.push({
@@ -111,17 +111,5 @@
         }
 
         return songInfo;
-    }
-
-    function _stripRtf(str) {
-        //var pattern = /\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-        var basicRtfPattern = /\{\*?\\[^{}]+}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-        var newLineSlashesPattern = /\\\n/g;
-
-        var stripped = str.replace(basicRtfPattern, "");
-        var removeNewlineSlashes = stripped.replace(newLineSlashesPattern, "\n");
-        var removeWhitespace = removeNewlineSlashes.trim();
-
-        return removeWhitespace;
     }
 })();
