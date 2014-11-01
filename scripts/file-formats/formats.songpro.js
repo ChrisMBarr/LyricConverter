@@ -136,30 +136,28 @@
         var slides = [];
 
         for (var i = 0; i < sections.length; i++) {
-            var k = sections[i].key;
-            var v = sections[i].val;
+            var key = sections[i].key;
 
-            //Skip the metadata related keys
-            if (!/T|A|R|K|M|G|O|N/.test(k)) {
+            //Skip the metadata related keys, they aren't needed here
+            if (!/T|A|R|K|M|G|O|N/.test(key)) {
 
-                var slideTitle = k;
+                var slideTitle = key;
 
-                if (k === "C") {
+                if (key === "C") {
                     slideTitle = "Chorus";
-                } else if (k === "B") {
+                } else if (key === "B") {
                     slideTitle = "Bridge";
-                } else if (k === "D") {
+                } else if (key === "D") {
                     slideTitle = "Coda";
-                } else if (/\d+/.test(k)) {
-                    slideTitle = "Verse " + k;
+                } else if (/\d+/.test(key)) {
+                    //Verses are just numbers, prefix it with "Verse "
+                    slideTitle = "Verse " + key;
                 }
-
-                var slideContent = v;
 
                 //Temp
                 slides.push({
                     "title": slideTitle,
-                    "lyrics": slideContent
+                    "lyrics": parser.utilities.stripRtf(sections[i].val)
                 });
             }
         }
