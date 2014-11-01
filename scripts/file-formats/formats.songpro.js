@@ -8,7 +8,6 @@
 /*exported console*/
 
 /* TODO
- * Remove RTF Data
  * Deal with multiple songs in an incoming file
  * Use the order data to order the slides correctly
  */
@@ -42,6 +41,28 @@
     //PRIVATE
     //===================================
 
+    var slideTitleDictionary = {
+        //Lyric props
+        "B": "Bridge",
+        "C": "Chorus",
+        "D": "Coda",
+        "V": "Verse", //Not actually in SongPro, but we'll put this here as a helper
+
+        //Info props
+        "A": "Author",
+        "G": "Category",
+        "K": "Key",
+        "T": "Title",
+        "M": "Music Source",
+        "N": "Notes",
+        "O": "Order",
+        "R": "Copyright"
+    };
+
+    function _keyIsInfoRelated(key) {
+        return /A|G|K|T|M|N|O|R/.test(key);
+    }
+
     function _getSongData(songData) {
 
         var parsedSections = [];
@@ -55,7 +76,7 @@
             var sectionKey = sections[i].match(/#[A-Z0-9]+/)[0];
             //Remove the key form the data
             var sectionData = sections[i].replace(sectionKey, "").trim();
-            //Clean up the key
+            //Clean up the key & make sure it's uppercase
             sectionKey = sectionKey.trim().replace("#", "").toUpperCase();
 
             //There are a few keys that we do not ever need to care about, so we skip them
@@ -87,39 +108,9 @@
                 if (k === "T") {
                     //If we have a title, use it instead of the filename
                     songTitle = v;
-                } else if (k === "A") {
+                } else if (_keyIsInfoRelated(k)) {
                     infoArr.push({
-                        "name": "Author",
-                        "value": v
-                    });
-                } else if (k === "R") {
-                    infoArr.push({
-                        "name": "Copyright",
-                        "value": v
-                    });
-                } else if (k === "K") {
-                    infoArr.push({
-                        "name": "Author",
-                        "value": v
-                    });
-                } else if (k === "M") {
-                    infoArr.push({
-                        "name": "Music Source",
-                        "value": v
-                    });
-                } else if (k === "G") {
-                    infoArr.push({
-                        "name": "Category",
-                        "value": v
-                    });
-                } else if (k === "O") {
-                    infoArr.push({
-                        "name": "Order",
-                        "value": v
-                    });
-                } else if (k === "N") {
-                    infoArr.push({
-                        "name": "Notes",
+                        "name": slideTitleDictionary[k],
                         "value": v
                     });
                 }
@@ -139,22 +130,20 @@
             var key = sections[i].key;
 
             //Skip the metadata related keys, they aren't needed here
-            if (!/T|A|R|K|M|G|O|N/.test(key)) {
+            if (!_keyIsInfoRelated(key)) {
 
+                //Use whatever the key is as the slide title
                 var slideTitle = key;
 
-                if (key === "C") {
-                    slideTitle = "Chorus";
-                } else if (key === "B") {
-                    slideTitle = "Bridge";
-                } else if (key === "D") {
-                    slideTitle = "Coda";
+                //If we have a replacement for the slide title, we'll use that instead
+                if (slideTitleDictionary.hasOwnProperty(key)) {
+                    slideTitle = slideTitleDictionary[key];
                 } else if (/\d+/.test(key)) {
                     //Verses are just numbers, prefix it with "Verse "
-                    slideTitle = "Verse " + key;
+                    slideTitle = slideTitleDictionary["V"] + " " + key;
                 }
 
-                //Temp
+                //Remove the RTF data & add the slide
                 slides.push({
                     "title": slideTitle,
                     "lyrics": parser.utilities.stripRtf(sections[i].val)
