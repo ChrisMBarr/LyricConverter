@@ -80,11 +80,23 @@ var parser = (function() {
         if ($.isFunction(convertFn)) {
             //Pass the decoded song date to the convert function
             //We will get back a normalized version of the song content for the supported file type
-            parser.songList.push({
-                name: fileName,
-                data: convertFn(decodedSongData, fileName)
-            });
+            var songData = convertFn(decodedSongData, fileName);
 
+            if ($.isArray(songData)) {
+                //If we get an array of song data back, add them all!
+                for (var j = 0; j < songData.length; j++) {
+                    parser.songList.push({
+                        name: fileName + "(" + songData[j].title + ")",
+                        data: songData[j]
+                    });
+                }
+            } else {
+                //If we just get a single song object back, just add it
+                parser.songList.push({
+                    name: fileName,
+                    data: songData
+                });
+            }
         } else {
             parser.errorList.push("The file <strong>" + fullFileName + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
         }
