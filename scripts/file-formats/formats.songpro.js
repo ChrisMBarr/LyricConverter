@@ -17,6 +17,9 @@
     var THIS_FORMAT = 'songpro';
     parser.formats[THIS_FORMAT] = {};
 
+    //When true, we will reorder the slides based on the "#O" metadata
+    var shouldOrderSlides = true;
+
     parser.formats[THIS_FORMAT].testFormat = function(fileExt, fileData) {
         //Make sure we have a .txt file and something at the beginning like {title: song title}
         return /txt/i.test(fileExt) && /^#T\s/i.test(fileData);
@@ -34,7 +37,8 @@
             info: songMetadata.info,
             slides: songLyrics
         };
-        return songObj;
+
+        return _reorderSlides(songObj);
     };
 
     //===================================
@@ -152,6 +156,59 @@
         }
 
         return slides;
+    }
+
+    function _reorderSlides(songObj) {
+        //Reorder the slides based on the order flag
+        if (shouldOrderSlides) {
+            //First we need to see if this song even has an order defined in the info
+            var hasOrder = false;
+            var theOrder = "";
+            for (var i = 0; i < songObj.info.length; i++) {
+                if (songObj.info[i].name === slideTitleDictionary.O) {
+                    hasOrder = true;
+                    //Save the order to a local var
+                    theOrder = songObj.info[i].value;
+                    //Remove the order from the info
+                    songObj.info.splice(i, 1);
+                    //Exit the loop
+                    break;
+                }
+            }
+
+            //If we have an order, then we can continue!
+            if (hasOrder) {
+
+                var originalSlides = songObj.slides;
+                var newSlides = [];
+
+                for (var j = 0; j < theOrder.length; j++) {
+                    var key = theOrder[j].toUpperCase();
+                    var name = "";
+
+                    //If the key is in the lookup table, use that name
+                    if (slideTitleDictionary.hasOwnProperty(key)) {
+                        name = slideTitleDictionary[key];
+                    } else if (/\d+/.test(key)) {
+                        //Verses are just numbers, so
+                        name = slideTitleDictionary.V + " " + key;
+                    }
+
+                    //Loop over all the existing slides to find the one with the matching name
+                    for (var jj = 0; jj < originalSlides.length; jj++) {
+                        if (originalSlides[jj].title === name) {
+                            newSlides.push(originalSlides[jj]);
+                            break;
+                        }
+                    }
+                }
+
+                //Re-write the slides in the new order
+                songObj.slides = newSlides;
+            }
+        }
+
+        return songObj;
     }
 
 })();
