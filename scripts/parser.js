@@ -9,7 +9,7 @@
 
 var parser = (function() {
 
-    var showDebugErrors = !isDev;
+    var showDebugErrors = isDev;
 
     var utilities = {
         decode: function(str) {
