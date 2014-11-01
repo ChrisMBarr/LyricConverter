@@ -8,8 +8,8 @@
 /*exported console*/
 
 /* TODO
- * Deal with multiple songs in an incoming file
- * Use the order data to order the slides correctly
+ * Make slide re-ordering more efficient.  Too many loops!
+ * Insert skipped slides after the reordering
  */
 
 (function() {
@@ -27,18 +27,39 @@
 
     //Extend the formats object on the parser to allow for parsing ChordPro files
     parser.formats[THIS_FORMAT].convert = function(songData, fileName) {
-        var parsedSongData = _getSongData(songData);
-        var songMetadata = _getMetadata(parsedSongData, fileName);
-        var songLyrics = _getLyrics(parsedSongData);
 
-        //Return the filled in song object
-        var songObj = {
-            title: songMetadata.title,
-            info: songMetadata.info,
-            slides: songLyrics
-        };
+        var allReturnedSongs = [];
 
-        return _reorderSlides(songObj);
+        //Each song ends with "#E", so we split on this to get each individual song!
+        var songs = songData.split("#E");
+        //Loop over each song
+        for (var i = 0; i < songs.length; i++) {
+            //Trim off any whitespace & make sure we aren't trying to parse empty strings
+            var thisSongData = songs[i].trim();
+            if (thisSongData) {
+                var parsedSongData = _getSongData(thisSongData);
+                var songMetadata = _getMetadata(parsedSongData, fileName);
+                var songLyrics = _getLyrics(parsedSongData);
+
+                //Fill in song object
+                var songObj = {
+                    title: songMetadata.title,
+                    info: songMetadata.info,
+                    slides: songLyrics
+                };
+
+                //Add the song to the array of songs to return
+                allReturnedSongs.push(_reorderSlides(songObj));
+            }
+        }
+
+        if (allReturnedSongs.length === 1) {
+            //Only one song was in this file, just return it as a single song object
+            return allReturnedSongs[0];
+        } else {
+            //Multiple songs were in this file!  Return it as an array of song objects
+            return allReturnedSongs;
+        }
     };
 
     //===================================
