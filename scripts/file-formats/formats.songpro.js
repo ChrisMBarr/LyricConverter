@@ -140,7 +140,7 @@
                     slideTitle = slideTitleDictionary[key];
                 } else if (/\d+/.test(key)) {
                     //Verses are just numbers, prefix it with "Verse "
-                    slideTitle = slideTitleDictionary["V"] + " " + key;
+                    slideTitle = slideTitleDictionary.V + " " + key;
                 }
 
                 //Remove the RTF data & add the slide
