@@ -2446,9 +2446,6 @@ html {
   background-color: #ccc9ba;
   color: #1d1d1d;
 }
-#begin-area .drop-area {
-  padding: 0;
-}
 #begin-area .drop-area p {
   font-size: 40px;
   line-height: 40px;
