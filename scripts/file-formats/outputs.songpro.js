@@ -73,9 +73,9 @@
         for (var i = 0; i < songData.slides.length; i++) {
             var slide = songData.slides[i];
             if (slideTitleDictionary.hasOwnProperty(slide.title)) {
-                content += _addProperty(slideTitleDictionary[slide.title], slide.lyrics);
+                content += _addProperty(slideTitleDictionary[slide.title], _addRtfData(slide.lyrics));
             } else if (/verse \d+/i.test(slide.title)) {
-                content += _addProperty(slide.title.replace(/verse/i, "").trim(), slide.lyrics);
+                content += _addProperty(slide.title.replace(/verse/i, "").trim(), _addRtfData(slide.lyrics));
             }
         }
 
@@ -121,6 +121,18 @@
             value = "";
         }
         return "#" + key + "\r\n" + value + "\r\n\r\n";
+    }
+
+    function _addRtfData(str) {
+        var out = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}\n";
+        out += "{\\colortbl ;\\red0\\green0\\blue0;}\n";
+        out += "\\viewkind4\\uc1\\pard\\cf1\\lang2057\\f0\\fs17 ";
+
+        out += str.split("\n").join("\n\\par ");
+
+        out += "\n\\par }";
+
+        return out;
     }
 
 })();
