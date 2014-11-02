@@ -8,7 +8,6 @@ Parses the song info &amp; lyrics in the browser from various lyric presentation
 ---
 ####TODO Items:
 * Add support for **Plain Text** Import
-* Add support for **SongPro** Export
 * Add support for **MediaShout** Import/Export
 * Add support for **EasyWorship** Import/Export
 * Better way for converters to tell the UI they are done
