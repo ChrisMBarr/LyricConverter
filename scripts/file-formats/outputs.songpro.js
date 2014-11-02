@@ -43,12 +43,73 @@
     };
 
     //===================================
-    //PRIVATE FUNCTIONS
+    //PRIVATE
     //===================================
 
+    var slideTitleDictionary = {
+        //Lyric props
+        "Bridge": "B",
+        "Chorus": "C",
+        "Coda": "D",
+        "Verse": "V", //Not actually in SongPro, but we'll put this here as a helper
+
+        //Info props
+        "Author": "A",
+        "Category": "G",
+        "Key": "K",
+        "Title": "T",
+        "Music Source": "M",
+        "Notes": "N",
+        "Order": "O",
+        "Copyright": "R"
+    };
+
     function _makeSongProFile(songData) {
+        window.console.log(songData);
         var content = "#T\r\n";
-        content += songData.title;
+        content += songData.title + "\r\n\r\n";
+
+        //Get all the lyrics out
+        for (var i = 0; i < songData.slides.length; i++) {
+            var slide = songData.slides[i];
+            if (slideTitleDictionary.hasOwnProperty(slide.title)) {
+                content += "#" + slideTitleDictionary[slide.title] + "\r\n";
+                content += slide.lyrics + "\r\n\r\n";
+            } else if (/verse \d+/i.test(slide.title)) {
+                content += "#" + slide.title.replace(/verse/i, "").trim() + "\r\n";
+                content += slide.lyrics + "\r\n\r\n";
+            }
+        }
+
+        var hasNotes = false;
+        for (var j = 0; j < songData.info.length; j++) {
+            var info = songData.info[j];
+            if (slideTitleDictionary.hasOwnProperty(info.name)) {
+                content += "#" + slideTitleDictionary[info.name] + "\r\n";
+                content += info.value + "\r\n\r\n";
+
+                if (info.name === "Notes") {
+                    hasNotes = true;
+                }
+            }
+        }
+
+        //Add some other data
+        content += "#F\r\nArial\r\n"; //Font
+        content += "#FS\r\n40\r\n"; //Font size
+        content += "#I\r\nFalse\r\n"; //Italics
+        content += "#BD\r\nTrue\r\n"; //Bold
+        content += "#BE\r\nTrue\r\n"; //???
+        content += "#JL\r\nTrue\r\n"; //Justify Left
+        content += "#JT\r\nFalse\r\n"; //Justify Top
+        content += "#FC\r\n0\r\n"; //Foreground Color
+        content += "#BC\r\n16777215\r\n"; //Background color
+        if (!hasNotes) {
+            content += "#N\r\n"; //Notes (none)
+        }
+        content += "#SB\r\nFalse\r\n"; //Favorites
+        content += "#SH\r\nFalse\r\n"; //Shadow/Outline
+        content += "#E"; //Flag the end of the song
 
         window.console.log(content);
 
