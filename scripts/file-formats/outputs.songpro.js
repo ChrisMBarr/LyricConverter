@@ -111,8 +111,6 @@
         //Trim off any whitespace
         content = content.trim();
 
-        window.console.log(content);
-
         return content;
     }
 
