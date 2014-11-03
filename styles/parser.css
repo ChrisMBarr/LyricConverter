@@ -2458,6 +2458,11 @@ html {
   margin-top: 50px;
   margin-bottom: 10px;
 }
+#convert-types-title {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: #e3e0cf;
+}
 #output {
   margin-bottom: 20px;
 }
