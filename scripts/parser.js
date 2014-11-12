@@ -58,7 +58,7 @@ var parser = (function() {
         var fileExt = fileParts.slice(-1)[0].toLowerCase();
         var fileName = fileObj.name.replace('.' + fileExt, '');
 
-        window.console.log(fileObj);
+        //window.console.log(fileObj);
 
         //Browsers will add some unneeded text to the base64 encoding. Remove it.
         var encodedSongData = fileObj.data.replace(/^data:.*;base64,/, "");
