@@ -5,7 +5,7 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
  */
 
-/*global parser:false, Modernizr:false, JSZip:false, saveAs:false*/
+/*global parser:false, Modernizr:false, JSZip:false, saveAs:false, ga:false*/
 /*exported isDev*/
 
 var isDev = /\.local|localhost/i.test(document.location.hostname);
@@ -324,6 +324,26 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
 
                     //Join all the error messages together
                     displayError(parser.errorList.join("<br/>"), errorTitle);
+
+                    if (!isDev) {
+                        //Send event to google analytics
+                        ga('send', {
+                            'hitType': 'event',
+                            'eventCategory': 'convert songs',
+                            'eventAction': parser.errorList.length + ' errors',
+                            'eventLabel': parser.outputFormat,
+                            'eventValue': parser.songList.length
+                        });
+                    }
+                } else if (!isDev) {
+                    //Send event to google analytics
+                    ga('send', {
+                        'hitType': 'event',
+                        'eventCategory': 'convert songs',
+                        'eventAction': 'success',
+                        'eventLabel': parser.outputFormat,
+                        'eventValue': parser.songList.length
+                    });
                 }
 
             });
