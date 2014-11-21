@@ -139,7 +139,8 @@
             slideLyrics = TextCleaner.ConvertWin1252ToUtf8(slideLyrics);
 
             //Replace multiple slashes sometimes?
-            slideLyrics = slideLyrics.replace(/\/+/g, "");
+            //Also remove some strange ugly characters...
+            slideLyrics = slideLyrics.replace(/\/+|¶/g, "");
 
             //Save it to the array!
             slideArray.push({
