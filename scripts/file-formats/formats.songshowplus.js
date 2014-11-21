@@ -102,7 +102,7 @@
             });
         }
 
-        //Convert characters as needed - useful for non-english alphabets (Spanish)
+        //Convert characters as needed - useful for non-English alphabets (Spanish)
         songTitle = TextCleaner.ConvertWin1252ToUtf8(songTitle);
         for (var i = 0; i < songInfo.length; i++) {
             songInfo[i].value = TextCleaner.ConvertWin1252ToUtf8(songInfo[i].value);
@@ -116,7 +116,7 @@
 
     function _getSlides(sections) {
         //Sections tend to begin with N number of control characters, a random print character, more control characters, and then the title "Verse 1" or something
-        //After that is the actual song lyrics, but it may be preceeded by one non-word character
+        //After that is the actual song lyrics, but it may be proceeded by one non-word character
         //Slashes are double escaped here so it can be in a string!
         var slidePattern = new RegExp("^" + _patternInvisiblesStr + "+.{1}" + _patternInvisiblesStr + "+(.+)" + _patternInvisiblesStr + "+\\W*([\\s\\S]+)", "m");
 
@@ -134,7 +134,7 @@
             //Remove any more invisibles from the lyrics and remove whitespace
             var slideLyrics = (matches !== null && matches[2]) ? matches[2].replace(_invisibles, "").trim() : "";
 
-            //Convert characters as needed - useful for non-english alphabets (Spanish)
+            //Convert characters as needed - useful for non-English alphabets (Spanish)
             slideTitle = TextCleaner.ConvertWin1252ToUtf8(slideTitle);
             slideLyrics = TextCleaner.ConvertWin1252ToUtf8(slideLyrics);
 
