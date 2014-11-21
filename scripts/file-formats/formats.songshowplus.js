@@ -175,8 +175,17 @@
             }
         }
 
+        //Only add it if the title and the lyrics don't match. Sometimes they do for some reason...
+        var finalArray = [];
+        for (var ii = 0; ii < slideArray.length; ii++) {
+            var s = slideArray[ii];
+            if (s.title.trim().toLowerCase() !== s.lyrics.trim().toLowerCase()) {
+                finalArray.push(s);
+            }
+        }
+
         return {
-            'slides': slideArray,
+            'slides': finalArray,
             'keywords': keywords
         };
     }
