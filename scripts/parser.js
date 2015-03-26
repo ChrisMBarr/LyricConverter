@@ -24,8 +24,10 @@ var parser = (function() {
             return window.btoa(window.unescape(encodeURIComponent(str)));
         },
         stripRtf: function(str) {
-            //var pattern = /\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-            var basicRtfPattern = /\{\*?\\[^{}]+}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
+            //var pattern =         /\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
+            //var basicRtfPattern = /\{\*?\\[^{}]+}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
+            var basicRtfPattern = /\{\*?\\[^{}]+;}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
+            
             var newLineSlashesPattern = /\\\n/g;
 
             var stripped = str.replace(basicRtfPattern, "");
