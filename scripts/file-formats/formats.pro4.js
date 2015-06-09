@@ -1,3 +1,4 @@
+/* global parser */
 /*!
  * LICENSE:
  * CC BY-NC-SA 3.0
