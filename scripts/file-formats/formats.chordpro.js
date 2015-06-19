@@ -39,7 +39,7 @@
     //PRIVATE FUNCTIONS
     //===================================
 
-    var _infoRegex = new RegExp(/{.+?:.+?}/gmi);
+    var _infoRegex = /{.+?:.+?}/gmi;
 
     function _getSongMetadata(songData, fileName) {
         var infoArr = [];
