@@ -61,45 +61,50 @@ var parser = (function() {
         var fileName = fileObj.name.replace('.' + fileExt, '');
 
         //window.console.log(fileObj);
+        
+        if(!fileObj.data){
+            parser.errorList.push("It looks like <strong>"+fileObj.name+"</strong> might be a folder, which LyricConverter can't read! Be sure to drop the actual files onto LyricConverter, <em>not a folder</em>!");
+        }else{
 
-        //Browsers will add some unneeded text to the base64 encoding. Remove it.
-        var encodedSongData = fileObj.data.replace(/^data:.*;base64,/, "");
-        var decodedSongData = utilities.decode(encodedSongData);
-
-
-        //Test the file extension with the test function registered with each format type
-        //When one matches, use that formats convert function
-        var convertFn;
-        $.each(parser.formats, function(format, formatObj) {
-            if (formatObj.testFormat(fileExt, decodedSongData)) {
-                convertFn = formatObj.convert;
-                return false;
-            }
-        });
-
-        //Make sure the convert function exists...
-        if ($.isFunction(convertFn)) {
-            //Pass the decoded song date to the convert function
-            //We will get back a normalized version of the song content for the supported file type
-            var songData = convertFn(decodedSongData, fileName);
-
-            if ($.isArray(songData)) {
-                //If we get an array of song data back, add them all!
-                for (var j = 0; j < songData.length; j++) {
+            //Browsers will add some unneeded text to the base64 encoding. Remove it.
+            var encodedSongData = fileObj.data.replace(/^data:.*;base64,/, "");
+            var decodedSongData = utilities.decode(encodedSongData);
+    
+    
+            //Test the file extension with the test function registered with each format type
+            //When one matches, use that formats convert function
+            var convertFn;
+            $.each(parser.formats, function(format, formatObj) {
+                if (formatObj.testFormat(fileExt, decodedSongData)) {
+                    convertFn = formatObj.convert;
+                    return false;
+                }
+            });
+    
+            //Make sure the convert function exists...
+            if ($.isFunction(convertFn)) {
+                //Pass the decoded song date to the convert function
+                //We will get back a normalized version of the song content for the supported file type
+                var songData = convertFn(decodedSongData, fileName);
+    
+                if ($.isArray(songData)) {
+                    //If we get an array of song data back, add them all!
+                    for (var j = 0; j < songData.length; j++) {
+                        parser.songList.push({
+                            name: fileName + "(" + songData[j].title + ")",
+                            data: songData[j]
+                        });
+                    }
+                } else {
+                    //If we just get a single song object back, just add it
                     parser.songList.push({
-                        name: fileName + "(" + songData[j].title + ")",
-                        data: songData[j]
+                        name: fileName,
+                        data: songData
                     });
                 }
             } else {
-                //If we just get a single song object back, just add it
-                parser.songList.push({
-                    name: fileName,
-                    data: songData
-                });
+                parser.errorList.push("The file <strong>" + fileObj.name + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
             }
-        } else {
-            parser.errorList.push("The file <strong>" + fileObj.name + "</strong> cannot be parsed either because <strong>." + fileExt.toUpperCase() + "</strong> files are not supported, or this file is improperly formatted!");
         }
     }
 
