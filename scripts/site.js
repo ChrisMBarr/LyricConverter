@@ -377,7 +377,7 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
     function displayError(msg, title) {
         var htmlString = "";
         if (title && title.length) {
-            htmlString += "<h3>" + title + "</h3>";
+            htmlString += "<h4>" + title + "</h4>";
         }
         htmlString += "<p>" + msg + "</p>";
 
