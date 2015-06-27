@@ -37,12 +37,13 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
     $(function() {
         _selectElements();
         _detectMobile();
-
+        _setupNav();
+        _setupHeaderImage();
+        _setupHeaderParrallax();
+            
         //Skip for mobile devices since they won't be seen anyway
         if (!isMobile) {
-            _setupHeaderImage();
-            _setupHeaderParrallax();
-            _setupNav();
+            
             _detectFeatures();
             _setupDonationAndSongCounter();
         }
@@ -77,8 +78,13 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
     //======================================================================
     //Detect unsupported features and or devices
     //======================================================================
-    function _displaySupportError(title, msg) {
-        $("#section-convert").children().hide().end().append('<div class="alert alert-danger"><h2>' + title + '</h2><p style="font-size:22x;">' + msg + '</p></div>');
+    function _displaySupportError(title, msg, preventUiInteraction) {
+       var $main =  $("#section-convert");
+        if(preventUiInteraction){
+            $main.children().hide();
+        }
+        var alertStyle = preventUiInteraction ? 'danger' : 'info';
+       $main.prepend('<div class="alert alert-'+alertStyle+'"><h4>' + title + '</h4><p style="font-size:22x;">' + msg + '</p></div>');
     }
 
     function _detectMobile() {
@@ -88,7 +94,8 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
         if (isMobile) {
             _displaySupportError(
                 'Unsupported Device!',
-                'Sorry, LyricConverter cannot be used on mobile devices!<br/><br/>Please use a desktop computer that supports file uploads and downloads.'
+                'Sorry, LyricConverter cannot be used on mobile devices!<br/><br/>Please use a desktop computer that supports file uploads and downloads.',
+                true
             );
         }
     }
@@ -107,12 +114,22 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
         if (Modernizr.draganddrop && window.FileReader) {
             //Yay! This browser can be used!
             //Init the parser
+            
+            if(!/chrome/i.test(navigator.userAgent)){
+                _displaySupportError(
+                    'Google Chrome is recommended!',
+                    "Sorry to say, but LyricConverter uses some technology that works best in the Google Chrome browser.  You can try using LyricConverter in your current browser, but if you run into any issues please <a href='www.google.com/chrome'>Download Google Chrome</a> and use that browser instead!",
+                    false
+                );
+            }
+            
             _setupParser();
         } else {
             //Boo! no drag-n-drop support!
             _displaySupportError(
                 "Unsupported Browser!",
-                "Sorry, you won't be able to use LyricConverter because your browser does not support file drag-n-drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!"
+                "Sorry, you won't be able to use LyricConverter because your browser does not support file drag-n-drop!<br/><br/>Try using a modern browser like <a href='www.google.com/chrome'>Google Chrome</a> instead!",
+                true
             );
         }
     }
@@ -389,6 +406,7 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
     function displaySuccessHtml(convertedFileContents, THIS_OUTPUT, FILE_EXTENSION) {
         //Display any successes if we have them
         if (convertedFileContents.length > 0) {
+            var zipFileName = "converted files.zip";
             //Make some unique ID's we can select on later
             var downloadZipId = "btn-" + THIS_OUTPUT + "-download-zip";
             var downloadFilesId = "btn-" + THIS_OUTPUT + "-download-files";
@@ -421,7 +439,7 @@ var isDev = /\.local|localhost/i.test(document.location.hostname);
                     type: "blob"
                 });
                 //Download it!
-                saveAs(zipContent, "converted files.zip");
+                saveAs(zipContent, zipFileName);
             });
 
             $("#" + downloadFilesId).on("click", function() {
