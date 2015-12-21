@@ -147,12 +147,12 @@
             '{\\colortbl;\\red255\\green255\\blue255;}',
             '\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural',
             '',
-            '\\f0\\fs96 \\cf1 ' + text.replace(/\r\n/g, "\\\n") + '}'
+            '\\f0\\fs96 \\cf1 \\\r' + text.replace(/\r|\n/g, "\\\r") + '}'
         ].join("\n");
 
         var encodedRtf = parser.utilities.encode(fakeRTF);
 
-        //console.log(encodedRtf);
+        //console.log(fakeRTF);
 
         var slideXML = ['',
             '<RVSlideGrouping name="' + label + '" uuid="' + _generateUniqueID() + '" color="0 0 0 0" serialization-array-index="' + order + '">',
