@@ -24,17 +24,16 @@ var parser = (function() {
             return window.btoa(window.unescape(encodeURIComponent(str)));
         },
         stripRtf: function(str) {
-            //var pattern =         /\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-            //var basicRtfPattern = /\{\*?\\[^{}]+}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
             var basicRtfPattern = /\{\*?\\[^{}]+;}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-            
             var newLineSlashesPattern = /\\\n/g;
+            var ctrlCharPattern = /\n\\f[0-9]\s/g;
 
-            var stripped = str.replace(basicRtfPattern, "");
-            var removeNewlineSlashes = stripped.replace(newLineSlashesPattern, "\n");
-            var removeWhitespace = removeNewlineSlashes.trim();
-
-            return removeWhitespace;
+            //Remove RTF Formatting, replace RTF new lines with real line breaks, and remove whitespace
+            return str
+                .replace(ctrlCharPattern, "")
+                .replace(basicRtfPattern, "")
+                .replace(newLineSlashesPattern, "\n")
+                .trim();
         }
     };
 
