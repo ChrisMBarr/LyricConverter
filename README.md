@@ -3,10 +3,10 @@ LyricConverter
 
 Parses the song info &amp; lyrics in the browser from various lyric presentation software file formats!
 
-###View it in action: http://LyricConverter.com
+### View it in action: http://LyricConverter.com
 
 ---
-####TODO Items:
+#### TODO Items:
 * :page_facing_up: 		Add support for **Plain Text** Import
 * :page_facing_up: 		Add support for **MediaShout** Import/Export (Binary files... yuk, not sure if this is possible :cry: )
 * :page_facing_up: 		Add support for **EasyWorship** Import/Export ([Issue #3](https://github.com/chrismbarr/LyricConverter/issues/3))
