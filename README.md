@@ -3,7 +3,8 @@ LyricConverter
 
 Parses the song info &amp; lyrics in the browser from various lyric presentation software file formats!
 
-### View it in action: http://LyricConverter.com
+### View it in action: http://chrismbarr.github.io/LyricConverter/
+(previously on LyricConverter.com but no more)
 
 ---
 #### TODO Items:
