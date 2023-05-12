@@ -1,0 +1,44 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/utilities";
+
+//============================================================
+//Custom Colors
+$color-background: #f0eddb;
+$color-light: #ccc9ba;
+$color-medium: #e3e0cf;
+$color-dark: #807e74;
+$color-text: #1d1d1d;
+$color-highlight: #3ea8b2;
+
+
+//============================================================
+//Override Bootstrap defaults
+$body-bg: $color-background;
+$text-color: $color-text;
+$blue: $color-highlight;
+$primary: $color-highlight;
+$link-color: $color-highlight;
+$link-hover-color: darken($link-color, 15%);
+
+$component-active-bg: $color-highlight;
+// $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//List Group Color Overrides
+$list-group-bg: $color-background;
+$list-group-border-color: $color-medium;
+$list-group-hover-bg: $color-medium;
+$list-group-active-color: $color-background;
+$list-group-active-border-color: $list-group-active-color;
+$list-group-active-bg: $color-highlight;
+
+
+//==================================================
+//Custom header sizes
+$header-height: 250px;
+$header-padding: $btn-padding-y-lg;
+$header-border-size: 5px;
+$header-img-height: 300px;
+$header-nav-font-size: 20px;

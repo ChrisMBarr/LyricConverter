@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { ConvertComponent } from './convert/convert.component';
+import { DonateButtonComponent } from './donate-button/donate-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelpComponent,
     AboutComponent,
-    ConvertComponent
+    ConvertComponent,
+    DonateButtonComponent
   ],
   imports: [
     BrowserModule,
