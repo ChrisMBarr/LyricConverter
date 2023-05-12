@@ -3,15 +3,16 @@ LyricConverter
 
 Parses the song info &amp; lyrics in the browser from various lyric presentation software file formats!
 
-###View it in action: http://LyricConverter.com
+### View it in action: http://FiniteLooper.github.io/LyricConverter/
+(previously on LyricConverter.com but no more)
 
 ---
-####TODO Items:
+#### TODO Items:
 * :page_facing_up: 		Add support for **Plain Text** Import
 * :page_facing_up: 		Add support for **MediaShout** Import/Export (Binary files... yuk, not sure if this is possible :cry: )
-* :page_facing_up: 		Add support for **EasyWorship** Import/Export ([Issue #3](https://github.com/chrismbarr/LyricConverter/issues/3))
-* :page_facing_up: 		Add support for **OpenLyrics** Import/Export ([Issue #4](https://github.com/chrismbarr/LyricConverter/issues/4))
-* :page_facing_up: 		Add support for **OpenSong** Import/Export ([Issue #5](https://github.com/chrismbarr/LyricConverter/issues/5))
+* :page_facing_up: 		Add support for **EasyWorship** Import/Export ([Issue #3](https://github.com/FiniteLooper/LyricConverter/issues/3))
+* :page_facing_up: 		Add support for **OpenLyrics** Import/Export ([Issue #4](https://github.com/FiniteLooper/LyricConverter/issues/4))
+* :page_facing_up: 		Add support for **OpenSong** Import/Export ([Issue #5](https://github.com/FiniteLooper/LyricConverter/issues/5))
 * :computer: 			Convert to TypeScript
 * :open_file_folder: 	Read directories, not just files
 * :telephone_receiver: 	Better way for converters to tell the UI they are done

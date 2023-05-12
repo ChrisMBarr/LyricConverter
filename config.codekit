@@ -65,6 +65,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/scripts\/file-formats\/formats.openlyrics.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scripts\/file-formats\/formats.openlyrics.js",
+		"outputAbbreviatedPath": "\/scripts\/file-formats\/formats.openlyrics-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/scripts\/file-formats\/formats.pro4.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -260,7 +271,7 @@
 		"outputAbbreviatedPath": "\/scripts\/parser-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 2,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
 	"\/scripts\/plugins\/base64.js": {
@@ -1411,7 +1422,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Chris Barr",
+"lastSavedByUser": "FiniteLooper",
 "manualImportLinks": {
 	"\/scripts\/parser.js": [
 		{
