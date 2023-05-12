@@ -30,7 +30,7 @@ export class DragAndDropFilesDirective {
     this.isDraggingOver = false;
   }
 
-  @HostListener('drop', ['$event']) public ondrop(evt: DragEvent) {
+  @HostListener('drop', ['$event']) public onDrop(evt: DragEvent) {
     evt.preventDefault();
     evt.stopPropagation();
     this.isDraggingOver = false;

@@ -8,10 +8,11 @@ import { IFileWithData } from '../shared/file.model';
   styleUrls: ['./convert.component.scss'],
 })
 export class ConvertComponent {
+  constructor(private parser: ParserService) {}
 
-  constructor(private parser: ParserService){}
-
-  onFileDrop(files: IFileWithData[]){
-    this.parser.parseFiles(files);
+  onFileDrop(files: IFileWithData[]): void {
+    if (files && files.length) {
+      this.parser.parseFiles(files);
+    }
   }
 }
