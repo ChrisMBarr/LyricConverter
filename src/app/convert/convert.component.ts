@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ParserService } from './parser/parser.service';
 
 @Component({
   selector: 'app-convert',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ConvertComponent {
 
+  constructor(private parser: ParserService){}
+
   onFileDrop(files: FileList){
-    console.log(files)
+    this.parser.parseFiles(files);
   }
 }
