@@ -10,14 +10,14 @@
   margin-bottom: 10px;
   transition: all 0.4s;
 
-  .over & {
+  &.drag-over {
     box-shadow: 0 0 50px $color-highlight, inset 0 0 10px $color-highlight;
     background-color: $color-light;
     color: $color-text;
   }
 }
 
-#begin-area & {
+#begin-area .drop-area {
   p {
     font-size: 40px;
     line-height: 40px;

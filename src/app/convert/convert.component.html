@@ -67,15 +67,12 @@
     </div>
   </div>
 
-  <div
-    id="begin-area"
-    class="col-xs-6 col-sm-6 offset-sm-2 col-md-6 col-lg-5"
-  >
-    <div class="drop-area">
+  <div id="begin-area" class="col-xs-6 col-sm-6 offset-sm-2 col-md-6 col-lg-5">
+    <div class="drop-area" appDragAndDropFiles (fileDrop)="onFileDrop($event)">
       <p>Drag your <strong>Song Files</strong> here</p>
-      <small
-        >(Song Show Plus 7, ProPresenter 4 or 5, SongPro, or ChordPro)</small
-      >
+      <small>
+        (Song Show Plus 7, ProPresenter 4 or 5, SongPro, or ChordPro)
+      </small>
     </div>
   </div>
 

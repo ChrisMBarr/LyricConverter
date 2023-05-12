@@ -7,6 +7,7 @@ import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { ConvertComponent } from './convert/convert.component';
 import { DonateButtonComponent } from './donate-button/donate-button.component';
+import { DragAndDropFilesDirective } from './drag-and-drop-files/drag-and-drop-files.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DonateButtonComponent } from './donate-button/donate-button.component';
     HelpComponent,
     AboutComponent,
     ConvertComponent,
-    DonateButtonComponent
+    DonateButtonComponent,
+    DragAndDropFilesDirective
   ],
   imports: [
     BrowserModule,

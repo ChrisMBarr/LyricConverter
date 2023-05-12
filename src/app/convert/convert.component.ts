@@ -5,4 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './convert.component.html',
   styleUrls: ['./convert.component.scss'],
 })
-export class ConvertComponent {}
+export class ConvertComponent {
+
+  onFileDrop(files: FileList){
+    console.log(files)
+  }
+}
