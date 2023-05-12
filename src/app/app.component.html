@@ -1,2 +1,13 @@
 
-<router-outlet></router-outlet>
+<header id="header" class="container">
+  <h1 id="title">Lyric <span id="title-secondary">Converter</span></h1>
+  <nav id="main-nav">
+    <a routerLinkActive="active" routerLink="/">Convert</a>
+    <a routerLinkActive="active" routerLink="/about">About</a>
+    <a routerLinkActive="active" routerLink="/help">Help</a>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-xs-6 col-sm-4 col-md-3">
+    <nav class="list-group" id="js-convert-types">
+      <strong id="convert-types-title" class="list-group-item text-center">
+        Convert To
+      </strong>
+      <a href="#" class="list-group-item" data-format="pro5">
+        ProPresenter 5 <span class="badge">.pro5</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="pro4">
+        ProPresenter 4 <span class="badge">.pro4</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="openlyrics">
+        OpenLyrics <span class="badge">.xml</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="chordpro">
+        ChordPro <span class="badge">.txt</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="songpro">
+        SongPro <span class="badge">.txt</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="text">
+        Plain Text <span class="badge">.txt</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="json">
+        LyricConverter JSON <span class="badge">.json</span>
+      </a>
+      <a href="#" class="list-group-item" data-format="display">
+        Just Display The Slides <span class="badge">:)</span>
+      </a>
+    </nav>
+
+    <div class="drop-area hidden" id="drop-area-more">
+      You can drag more songs into this window to convert them!
+    </div>
+  </div>
+
+  <div
+    id="begin-area"
+    class="col-xs-6 col-sm-6 col-sm-offset-2 col-md-5 col-lg-4"
+  >
+    <div class="drop-area">
+      <p>Drag your <strong>Song Files</strong> here</p>
+      <small
+        >(Song Show Plus 7, ProPresenter 4 or 5, SongPro, or ChordPro)</small
+      >
+    </div>
+  </div>
+
+  <div id="display-area" class="col-xs-6 col-sm-8 col-md-9 hidden">
+    <div id="output"></div>
+    <div id="many-songs-please-donate" class="alert alert-info hidden">
+      <p>
+        Wow, you've converted a total of
+        <strong><span id="total-song-count">0</span> songs</strong> with
+        LyricConverter!
+      </p>
+      <p>
+        I've spent a lot of time working on this and I would really appreciate a
+        small donation if you've found this tool to be useful.
+      </p>
+
+      <form
+        action="https://www.paypal.com/cgi-bin/webscr"
+        method="post"
+        target="_top"
+      >
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input
+          type="hidden"
+          name="encrypted"
+          value="-----BEGIN PKCS7-----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-----END PKCS7-----
+      "
+        />
+        <button type="submit" class="btn btn-success">Donate!</button>
+        <button
+          type="button"
+          class="btn btn-default btn-sm"
+          id="donate-nag-no-thanks"
+        >
+          No thanks&hellip;
+        </button>
+        <img
+          alt=""
+          border="0"
+          src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+          width="1"
+          height="1"
+        />
+      </form>
+    </div>
+    <div id="parser-error-display" class="alert alert-danger"></div>
+  </div>
+</div>
