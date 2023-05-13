@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Buffer } from 'buffer';
 import { IFileWithData } from '../../shared/file.model';
 
 @Injectable({
@@ -12,13 +11,8 @@ export class ParserService {
     console.log(files);
   }
 
-  decode(base64Str: string): string {
-    return Buffer.from(base64Str, 'base64').toString('utf8');
-  }
-
-  encode(str: string): string {
-    return Buffer.from(str, 'utf8').toString('base64');
-  }
+  decode = (base64Str: string) => window.atob(base64Str);
+  encode = (str: string) => window.btoa(str);
 
   stripRtf(str: string): string {
     const basicRtfPattern =
