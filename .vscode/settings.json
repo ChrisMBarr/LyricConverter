@@ -8,5 +8,8 @@
       ".angular": true,
       "node_modules": true,
       "coverage": true
-    }
+    },
+    "cSpell.words": [
+      "propresenter"
+    ]
 }
