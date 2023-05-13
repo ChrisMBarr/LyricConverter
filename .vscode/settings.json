@@ -6,6 +6,7 @@
       "**/.gitkeep": true,
       "package-lock.json": true,
       ".angular": true,
-      "node_modules": true
+      "node_modules": true,
+      "coverage": true
     }
 }
