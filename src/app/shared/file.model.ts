@@ -8,3 +8,10 @@ export interface IFileWithData {
   ext: string;
   data: string | ArrayBuffer | null | undefined;
 }
+
+export interface IRawDataFile {
+  name: string;
+  ext: string;
+  type: string;
+  data: string;
+}

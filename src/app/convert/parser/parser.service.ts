@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IFileWithData } from '../../shared/file.model';
+import { IFileWithData, IRawDataFile } from '../../shared/file.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,23 @@ export class ParserService {
   constructor() {}
 
   parseFiles(files: IFileWithData[]) {
-    console.log(files);
+    const rawDataFiles: IRawDataFile[] = [];
+    for (const f of files) {
+      let data = '';
+
+      if(typeof f.data === 'string'){
+        data = this.decode(f.data.replace(/^data:.*;base64,/, ''));
+      }
+
+      rawDataFiles.push({
+        name: f.nameWithoutExt,
+        ext: f.ext,
+        type: f.type,
+        data
+      });
+    }
+
+    console.log(rawDataFiles);
   }
 
   decode = (base64Str: string) => window.atob(base64Str);

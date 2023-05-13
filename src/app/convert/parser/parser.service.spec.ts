@@ -74,7 +74,5 @@ Give us pure hearts
 Let us not lift our
 Souls to another`);
     });
-
-    ;
   });
 });
