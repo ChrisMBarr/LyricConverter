@@ -2,8 +2,8 @@ import { IRawDataFile } from 'src/app/shared/file.model';
 import { IFormat } from './format.model';
 import { ISong } from 'src/app/shared/song.model';
 
-export class FormatJson implements IFormat {
-  friendlyName = 'LyricConverter JSON';
+export class FormatLyricConverter implements IFormat {
+  friendlyName = 'Lyric Converter';
   friendlyFileExt = 'json';
 
   constructor() {}

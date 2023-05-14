@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormatProPresenter } from './format-propresenter';
-import { FormatJson } from './format-json';
+import { FormatLyricConverter } from './format-lyric-converter';
 import { IRawDataFile } from 'src/app/shared/file.model';
 import { IFormat } from './format.model';
 import { FormatText } from './format-text';
@@ -9,21 +9,17 @@ import { FormatText } from './format-text';
   providedIn: 'root',
 })
 export class FormatterService {
-  constructor(
-    private fmtProPresenter: FormatProPresenter,
-    private fmtJson: FormatJson,
-    private fmtText: FormatText,
-  ) {}
-
   //List of all available formatters
-  private formatters: IFormat[] = [
-    this.fmtProPresenter,
-    this.fmtJson,
-    this.fmtText,
+  formatters: IFormat[] = [
+    new FormatProPresenter(),
+    new FormatLyricConverter(),
+    new FormatText(),
   ];
 
+  constructor() {}
+
   detectFormat(f: IRawDataFile): IFormat | undefined {
-    return this.formatters.find((formatter: IFormat )=>{
+    return this.formatters.find((formatter: IFormat) => {
       return formatter.testFormat(f);
     });
   }

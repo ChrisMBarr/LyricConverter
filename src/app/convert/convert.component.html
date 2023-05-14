@@ -5,66 +5,18 @@
         Convert To
       </strong>
       <a
-        href="#"
-        class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center"
-        data-format="pro5"
-      >
-        ProPresenter 5 <span class="badge rounded-pill">.pro5</span>
-      </a>
-      <a
-        href="#"
+        *ngFor="let fmt of formatsForMenu"
+        (click)="switchConversionType(fmt.name)"
+        [ngClass]="{'active': selectedConversionType === fmt.name}"
         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="pro4"
       >
-        ProPresenter 4 <span class="badge rounded-pill">.pro4</span>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="openlyrics"
-      >
-        OpenLyrics <span class="badge rounded-pill">.xml</span>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="chordpro"
-      >
-        ChordPro <span class="badge rounded-pill">.txt</span>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="songpro"
-      >
-        SongPro <span class="badge rounded-pill">.txt</span>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="text"
-      >
-        Plain Text <span class="badge rounded-pill">.txt</span>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="json"
-      >
-        JSON <span class="badge rounded-pill">.json</span>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        data-format="display"
-      >
-        Display The Slides <span class="badge rounded-pill">:)</span>
+        {{fmt.name}} <span class="badge rounded-pill" *ngIf="fmt.ext">.{{fmt.ext}}</span>
       </a>
     </nav>
 
-    <div class="drop-area d-none" id="drop-area-more">
+    <!-- <div class="drop-area d-none" id="drop-area-more">
       You can drag more songs into this window to convert them!
-    </div>
+    </div> -->
   </div>
 
   <div id="begin-area" class="col-xs-6 col-sm-6 offset-sm-2 col-md-6 col-lg-5">
@@ -77,8 +29,9 @@
   </div>
 
   <div id="display-area" class="col-xs-6 col-sm-8 col-md-9 d-none">
-    <div id="output" class="mb-4"></div>
-    <div id="many-songs-please-donate" class="alert alert-info d-none">
+    <!-- <div id="output" class="mb-4"></div> -->
+
+    <!-- <div id="many-songs-please-donate" class="alert alert-info d-none">
       <p>
         Wow, you've converted a total of
         <strong><span id="total-song-count">0</span> songs</strong> with
@@ -90,7 +43,8 @@
       </p>
 
       <app-donate-button></app-donate-button>
-    </div>
-    <div id="parser-error-display" class="alert alert-danger d-none"></div>
+    </div> -->
+
+    <!-- <div id="parser-error-display" class="alert alert-danger d-none"></div> -->
   </div>
 </div>

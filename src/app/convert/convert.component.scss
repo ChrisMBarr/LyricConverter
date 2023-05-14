@@ -40,6 +40,10 @@
     background-color: $color-medium;
   }
 
+  .list-group-item{
+    cursor: pointer;
+  }
+
   .badge {
     background-color: $color-light;
     color: $color-dark;
