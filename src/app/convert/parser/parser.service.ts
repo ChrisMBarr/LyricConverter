@@ -7,12 +7,12 @@ import { IFileWithData, IRawDataFile } from '../../shared/file.model';
 export class ParserService {
   constructor() {}
 
-  parseFiles(files: IFileWithData[]) {
+  parseFiles(files: IFileWithData[]): IRawDataFile[] {
     const rawDataFiles: IRawDataFile[] = [];
     for (const f of files) {
       let data = '';
 
-      if(typeof f.data === 'string'){
+      if (typeof f.data === 'string') {
         data = this.decode(f.data.replace(/^data:.*;base64,/, ''));
       }
 
@@ -20,15 +20,20 @@ export class ParserService {
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
-        data
+        data,
       });
     }
 
-    console.log(rawDataFiles);
+    return rawDataFiles;
   }
 
-  decode = (base64Str: string) => window.atob(base64Str);
-  encode = (str: string) => window.btoa(str);
+  decode(base64Str: string): string {
+    return window.atob(base64Str);
+  }
+
+  encode(str: string): string {
+    return window.btoa(str);
+  }
 
   stripRtf(str: string): string {
     const basicRtfPattern =

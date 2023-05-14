@@ -27,7 +27,7 @@ describe('FormatterService', () => {
         data: "\x89PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\b\x04\x00\x00\x00µ\x1C\f\x02\x00\x00\x00\vIDATxÚcdø\x0F\x00\x01\x05\x01\x01'\x18ãf\x00\x00\x00\x00IEND®B`\x82",
       };
 
-      expect(service.detectFormat(testFile)).toEqual(undefined);
+      expect(service.detectFormatAndGetFormatter(testFile)).toEqual(undefined);
     });
 
     it('should properly detect a plain text file', () => {
@@ -41,7 +41,7 @@ describe('FormatterService', () => {
       const expectedClass = service.formatters.find((c) => {
         return c instanceof FormatText;
       });
-      expect(service.detectFormat(testFile)).toEqual(expectedClass);
+      expect(service.detectFormatAndGetFormatter(testFile)).toEqual(expectedClass);
     });
 
     it('should properly detect a ProPresenter file', () => {
@@ -55,7 +55,7 @@ describe('FormatterService', () => {
       const expectedClass = service.formatters.find((c) => {
         return c instanceof FormatProPresenter;
       });
-      expect(service.detectFormat(testFile)).toEqual(expectedClass);
+      expect(service.detectFormatAndGetFormatter(testFile)).toEqual(expectedClass);
     });
 
     it('should properly detect a LyricConverter JSON file', () => {
@@ -69,7 +69,7 @@ describe('FormatterService', () => {
       const expectedClass = service.formatters.find((c) => {
         return c instanceof FormatLyricConverter;
       });
-      expect(service.detectFormat(testFile)).toEqual(expectedClass);
+      expect(service.detectFormatAndGetFormatter(testFile)).toEqual(expectedClass);
     });
   });
 });

@@ -15,11 +15,6 @@ Parses the song info &amp; lyrics in the browser from various lyric presentation
 * :page_facing_up: 		Add support for **OpenSong** Import/Export ([Issue #5](https://github.com/FiniteLooper/LyricConverter/issues/5))
 
 ---
-LyricConverter makes use of the following projects:
-
-* [Twitter Bootstrap](https://github.com/twbs/bootstrap/)
-
----
 I am not in any way affiliated with R-Technics' [SongShow Plus](http://songshowplus.com/) or Renewed Vision's [ProPresenter](http://www.renewedvision.com/propresenter.php).
 
 ----

@@ -10,7 +10,7 @@ import { FormatText } from './format-text';
 })
 export class FormatterService {
   //List of all available formatters
-  formatters: IFormat[] = [
+  readonly formatters: IFormat[] = [
     new FormatProPresenter(),
     new FormatLyricConverter(),
     new FormatText(),
@@ -18,7 +18,7 @@ export class FormatterService {
 
   constructor() {}
 
-  detectFormat(f: IRawDataFile): IFormat | undefined {
+  detectFormatAndGetFormatter(f: IRawDataFile): IFormat | undefined {
     return this.formatters.find((formatter: IFormat) => {
       return formatter.testFormat(f);
     });

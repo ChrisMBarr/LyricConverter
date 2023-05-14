@@ -11,27 +11,18 @@ describe('ConvertComponent', () => {
   let component: ConvertComponent;
   let fixture: ComponentFixture<ConvertComponent>;
   let parserSvc: ParserService;
+  let formatterSvc: FormatterService;
 
   beforeEach(() => {
-    const mockFormatterService = {
-      formatters: [
-        { friendlyName: 'First Item', friendlyFileExt: 'one' },
-        { friendlyName: 'Second Item', friendlyFileExt: 'two' },
-        { friendlyName: 'Third Item', friendlyFileExt: 'three' },
-      ],
-    };
-
     TestBed.configureTestingModule({
       declarations: [
         ConvertComponent,
         DonateButtonComponent,
         DragAndDropFilesDirective,
       ],
-      providers: [
-        { provide: FormatterService, useValue: mockFormatterService },
-      ],
     });
     parserSvc = TestBed.inject(ParserService);
+    formatterSvc = TestBed.inject(FormatterService);
 
     fixture = TestBed.createComponent(ConvertComponent);
     component = fixture.componentInstance;
@@ -42,31 +33,33 @@ describe('ConvertComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should build a list of all available types to convert to', () => {
-    expect(component.formatsForMenu).toEqual([
-      { name: 'First Item', ext: 'one' },
-      { name: 'Second Item', ext: 'two' },
-      { name: 'Third Item', ext: 'three' },
-      { name: 'Display Slides' }, //this is always added as the last item
-    ]);
-  });
+  describe('Output Menu UI', () => {
+    it('should build a list of all available types to convert to', () => {
+      expect(component.formatsForMenu).toEqual([
+        { name: 'Pro Presenter', ext: 'pro*' },
+        { name: 'Lyric Converter', ext: 'json' },
+        { name: 'Plain Text', ext: 'txt' },
+        { name: 'Display Slides' }, //this is always added as the last item
+      ]);
+    });
 
-  it('should auto-select the first type to convert to', () => {
-    expect(component.selectedConversionType).toEqual('First Item');
-  });
+    it('should auto-select the first type to convert to', () => {
+      expect(component.selectedConversionType).toEqual('Pro Presenter');
+    });
 
-  it('should change the conversion type when switchConversionType() is called', () => {
-    component.switchConversionType('FooBar');
-    expect(component.selectedConversionType).toEqual('FooBar');
-  });
+    it('should change the conversion type when switchConversionType() is called', () => {
+      component.onSwitchConversionType('FooBar');
+      expect(component.selectedConversionType).toEqual('FooBar');
+    });
 
-  it('should change the conversion type when a link in the menu is clicked', () => {
-    const x = fixture.debugElement
-      .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
-      .triggerEventHandler('click');
+    it('should change the conversion type when a link in the menu is clicked', () => {
+      const x = fixture.debugElement
+        .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+        .triggerEventHandler('click');
 
       fixture.detectChanges();
-    expect(component.selectedConversionType).toEqual('Second Item');
+      expect(component.selectedConversionType).toEqual('Lyric Converter');
+    });
   });
 
   it('should NOT call the parser when no files are passed to onFileDrop()', () => {
@@ -76,7 +69,7 @@ describe('ConvertComponent', () => {
   });
 
   it('should call the parser when files are passed to onFileDrop()', () => {
-    spyOn(parserSvc, 'parseFiles');
+    spyOn(parserSvc, 'parseFiles').and.callThrough();
 
     component.onFileDrop([
       {
