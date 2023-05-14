@@ -10,6 +10,7 @@ export class FormatText implements IFormat {
 
   testFormat = (rawFile: IRawDataFile): boolean => {
     //just test the file extension for now
+    //TODO: Test to make sure this is NOT ChordPro or SongPro!
     return /^txt$/.test(rawFile.ext);
   };
 
