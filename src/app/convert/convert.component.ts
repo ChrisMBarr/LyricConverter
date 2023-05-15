@@ -36,7 +36,7 @@ export class ConvertComponent implements OnInit {
     //auto-select the saved preference, but if none auto-select the first type
     this.selectedConversionType =
       localStorage.getItem(this.conversionTypeStorageKey) ||
-      this.outputTypesForMenu[0].name;
+      this.outputTypesForMenu[0]!.name;
   }
 
   onSwitchConversionType(newType: string): void {

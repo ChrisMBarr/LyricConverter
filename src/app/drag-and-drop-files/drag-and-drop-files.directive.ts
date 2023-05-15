@@ -1,10 +1,4 @@
-import {
-  Directive,
-  EventEmitter,
-  HostBinding,
-  HostListener,
-  Output,
-} from '@angular/core';
+import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@angular/core';
 import { IFileWithData } from '../convert/models/file.model';
 
 @Directive({
@@ -14,7 +8,7 @@ export class DragAndDropFilesDirective {
   @Output() fileDrop = new EventEmitter<IFileWithData[]>();
   @HostBinding('class.drag-over') isDraggingOver = false;
 
-  constructor(){}
+  constructor() {}
 
   //Dragover listener, when something is dragged over our host element
   @HostListener('dragover', ['$event']) onDragOver(evt: DragEvent) {
@@ -47,11 +41,14 @@ export class DragAndDropFilesDirective {
 
     for (var i = 0; i <= files.length - 1; i++) {
       const reader = new FileReader();
-      var completeFn = this.handleFile(files[i], loadedFiles, files.length);
-      reader.addEventListener('loadend', completeFn, false);
+      const f = files[i];
+      if (typeof f !== 'undefined') {
+        var completeFn = this.handleFile(f, loadedFiles, files.length);
+        reader.addEventListener('loadend', completeFn, false);
 
-      //Actually read the file
-      reader.readAsDataURL(files[i]);
+        //Actually read the file
+        reader.readAsDataURL(f);
+      }
     }
   }
 
@@ -64,11 +61,11 @@ export class DragAndDropFilesDirective {
       const newFile: IFileWithData = {
         name: theFile.name,
         nameWithoutExt: nameWithoutExt,
-        ext: fileExt.toLowerCase(),
+        ext: (fileExt || '').toLowerCase(),
         type: theFile.type,
         size: theFile.size,
         lastModified: theFile.lastModified,
-        data: ev.target?.result
+        data: ev.target?.result,
       };
 
       //Add the current file to the array
