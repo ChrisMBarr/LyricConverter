@@ -4,10 +4,14 @@
       "**/*.json": false,
       "**/.gitignore": true,
       "**/.gitkeep": true,
-      "package-lock.json": true,
       ".angular": true,
+      ".editorconfig": true,
       "node_modules": true,
       "coverage": true
+    },
+    "explorer.fileNesting.patterns": {
+      "tsconfig.json": "tsconfig.*.json",
+      "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml"
     },
     "cSpell.words": [
       "propresenter"
