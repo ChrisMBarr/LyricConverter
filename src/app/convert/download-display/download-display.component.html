@@ -1,0 +1,20 @@
+<h3>Converted {{ outputFileList.length }} {{ outputFileList.length === 1 ? "Song" : "Songs" }}</h3>
+
+<button
+  type="button"
+  class="btn btn-primary"
+  *ngIf="outputFileList.length === 1"
+  (click)="onClickDownloadFiles()"
+>
+  Download File
+</button>
+
+<div *ngIf="outputFileList.length > 1">
+  <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
+    Download as .zip
+  </button>
+  or
+  <button type="button" class="btn btn-light btn-sm" (click)="onClickDownloadFiles()">
+    Download {{ outputFileList.length }} individual files
+  </button>
+</div>

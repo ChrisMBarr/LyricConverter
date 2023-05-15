@@ -8,6 +8,8 @@ import { AboutComponent } from './about/about.component';
 import { ConvertComponent } from './convert/convert.component';
 import { DonateButtonComponent } from './donate-button/donate-button.component';
 import { DragAndDropFilesDirective } from './drag-and-drop-files/drag-and-drop-files.directive';
+import { SlideDisplayComponent } from './convert/slide-display/slide-display.component';
+import { DownloadDisplayComponent } from './convert/download-display/download-display.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { DragAndDropFilesDirective } from './drag-and-drop-files/drag-and-drop-f
     AboutComponent,
     ConvertComponent,
     DonateButtonComponent,
-    DragAndDropFilesDirective
+    DragAndDropFilesDirective,
+    SlideDisplayComponent,
+    DownloadDisplayComponent
   ],
   imports: [
     BrowserModule,

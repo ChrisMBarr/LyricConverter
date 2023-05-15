@@ -5,6 +5,10 @@ import { ConvertComponent } from './convert.component';
 import { DonateButtonComponent } from '../donate-button/donate-button.component';
 import { ParserService } from './parser/parser.service';
 import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
+import { SlideDisplayComponent } from './slide-display/slide-display.component';
+import { DownloadDisplayComponent } from './download-display/download-display.component';
+import { OutputTypeDisplaySlides } from './outputs/output-display-slides';
+import { OutputTypeText } from './outputs/output-text';
 
 describe('ConvertComponent', () => {
   let component: ConvertComponent;
@@ -17,6 +21,8 @@ describe('ConvertComponent', () => {
         ConvertComponent,
         DonateButtonComponent,
         DragAndDropFilesDirective,
+        SlideDisplayComponent,
+        DownloadDisplayComponent,
       ],
     });
     parserSvc = TestBed.inject(ParserService);
@@ -40,57 +46,145 @@ describe('ConvertComponent', () => {
       localStorage.clear();
     });
 
-    xit('should build a list of all available output types to convert to', () => {
+    it('should build a list of all available output types to convert to', () => {
       fixture.detectChanges();
 
       expect(component.outputTypesForMenu).toEqual([
-        { name: 'Pro Presenter', ext: 'pro*' },
-        { name: 'Lyric Converter', ext: 'json' },
-        { name: 'Plain Text', ext: 'txt' },
-        { name: 'Display Slides' }, //this is always added as the last item
+        new OutputTypeText(),
+        new OutputTypeDisplaySlides(),
       ]);
     });
 
-    xit('should auto-select the first type to convert to when no preference is saved', () => {
+    it('should auto-select the first type to convert to when no preference is saved', () => {
       fixture.detectChanges();
-      expect(component.selectedConversionType).toEqual('Pro Presenter');
+      expect(component.selectedOutputType.friendlyName).toEqual('Text');
     });
 
     it('should auto-select the saved type to convert to when a preference is saved', () => {
-      localStorage.setItem(prefKey, 'Custom Pref');
+      localStorage.setItem(prefKey, 'Text');
       fixture.detectChanges();
-      console.log('pref',localStorage.getItem(prefKey), component.selectedConversionType)
-      expect(component.selectedConversionType).toEqual('Custom Pref');
+      console.log('pref', localStorage.getItem(prefKey), component.selectedOutputType);
+      expect(component.selectedOutputType.friendlyName).toEqual('Text');
     });
 
     it('should change the conversion type when switchConversionType() is called', () => {
       fixture.detectChanges();
-      component.onSwitchConversionType('FooBar');
+      component.onSwitchConversionType(new OutputTypeDisplaySlides());
       fixture.detectChanges();
-      expect(component.selectedConversionType).toEqual('FooBar');
+      expect(component.selectedOutputType.friendlyName).toEqual('Display Slides');
     });
 
     xit('should change the conversion type when a link in the menu is clicked', () => {
       fixture.detectChanges();
 
       fixture.debugElement
-        .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+        .query(By.css('#convert-types .list-group-item:nth-of-type(1)'))
         .triggerEventHandler('click');
 
       fixture.detectChanges();
-      expect(component.selectedConversionType).toEqual('Lyric Converter');
+      expect(component.selectedOutputType.friendlyName).toEqual('Display Slides');
     });
 
     xit('should save the conversion type preference when a link in the menu is clicked', () => {
       fixture.detectChanges();
 
       fixture.debugElement
-        .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+        .query(By.css('#convert-types .list-group-item:nth-of-type(1)'))
         .triggerEventHandler('click');
 
       fixture.detectChanges();
-      expect(localStorage.getItem(prefKey)).toEqual('Lyric Converter');
+      expect(localStorage.getItem(prefKey)).toEqual('Display Slides');
     });
+  });
+
+  it('should show the initial UI', () => {
+    fixture.detectChanges();
+    expect(component.displayInitialUi).toBeTrue();
+    expect(fixture.debugElement.query(By.css('#begin-area'))).not.toBeNull();
+    expect(fixture.debugElement.query(By.css('#drop-area-more'))).toBeNull();
+    expect(fixture.debugElement.query(By.css('#display-area'))).toBeNull();
+  });
+
+  it('should show the display UI when the "display slides" output is selected after files are dropped', () => {
+    fixture.detectChanges();
+    component.selectedOutputType = new OutputTypeDisplaySlides();
+
+    component.onFileDrop([
+      {
+        name: 'UPPERCASE.WITH.DOTS.TXT',
+        nameWithoutExt: 'UPPERCASE.WITH.DOTS',
+        ext: 'txt',
+        type: 'text/plain',
+        size: 37,
+        lastModified: Date.now(),
+        data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
+      },
+      {
+        name: 'lowercase-file.pro5',
+        nameWithoutExt: 'lowercase-file',
+        ext: 'pro5',
+        type: '',
+        size: 19,
+        lastModified: Date.now(),
+        data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
+      },
+    ]);
+
+    fixture.detectChanges();
+
+    expect(component.displayInitialUi).toBeFalse();
+    expect(fixture.debugElement.query(By.css('#begin-area'))).toBeNull();
+    expect(fixture.debugElement.query(By.css('#drop-area-more'))).not.toBeNull();
+    expect(fixture.debugElement.query(By.css('#display-area'))).not.toBeNull();
+    expect(
+      fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent))
+    ).not.toBeNull();
+    expect(
+      fixture.debugElement
+        .query(By.css('#display-area'))
+        .query(By.directive(DownloadDisplayComponent))
+    ).toBeNull();
+  });
+
+  it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
+    fixture.detectChanges();
+    component.selectedOutputType = new OutputTypeText();
+
+    component.onFileDrop([
+      {
+        name: 'UPPERCASE.WITH.DOTS.TXT',
+        nameWithoutExt: 'UPPERCASE.WITH.DOTS',
+        ext: 'txt',
+        type: 'text/plain',
+        size: 37,
+        lastModified: Date.now(),
+        data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
+      },
+      {
+        name: 'lowercase-file.pro5',
+        nameWithoutExt: 'lowercase-file',
+        ext: 'pro5',
+        type: '',
+        size: 19,
+        lastModified: Date.now(),
+        data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
+      },
+    ]);
+
+    fixture.detectChanges();
+
+    expect(component.displayInitialUi).toBeFalse();
+    expect(fixture.debugElement.query(By.css('#begin-area'))).toBeNull();
+    expect(fixture.debugElement.query(By.css('#drop-area-more'))).not.toBeNull();
+    expect(fixture.debugElement.query(By.css('#display-area'))).not.toBeNull();
+    expect(
+      fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent))
+    ).toBeNull();
+    expect(
+      fixture.debugElement
+        .query(By.css('#display-area'))
+        .query(By.directive(DownloadDisplayComponent))
+    ).not.toBeNull();
   });
 
   it('should NOT call the parser when no files are passed to onFileDrop()', () => {
@@ -100,6 +194,8 @@ describe('ConvertComponent', () => {
   });
 
   it('should call the parser when files are passed to onFileDrop()', () => {
+    fixture.detectChanges();
+
     spyOn(parserSvc, 'parseFiles').and.callThrough();
 
     component.onFileDrop([
@@ -126,7 +222,7 @@ describe('ConvertComponent', () => {
     expect(parserSvc.parseFiles).toHaveBeenCalled();
   });
 
-  it('should call onFileDrop() when files are dropped onto the element with the directive', (done: DoneFn) => {
+  it('should call onFileDrop() when files are dropped onto the begin element with the directive', (done: DoneFn) => {
     const file = new File(['this is file content!'], 'dummy.txt');
     const dt = new DataTransfer();
     dt.items.add(file);
@@ -137,6 +233,7 @@ describe('ConvertComponent', () => {
       dataTransfer: dt,
     });
 
+    fixture.detectChanges();
     const dropEl = fixture.debugElement.query(By.css('#begin-area .drop-area'));
     const directiveInstance = dropEl.injector.get(DragAndDropFilesDirective);
 

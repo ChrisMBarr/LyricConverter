@@ -1,0 +1,17 @@
+<div class="song" *ngFor="let f of outputFileList">
+  <h3 class="song-title">{{ f.songData.title }}</h3>
+  <ul class="song-info">
+    <li *ngFor="let info of f.songData.info">
+      <strong>{{ info.name }}</strong
+      >: {{ info.value }}
+    </li>
+  </ul>
+  <div class="song-slides-container row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let slide of f.songData.slides">
+      <div class="song-slide card border-secondary h-100">
+        <div class="card-body">{{ slide.lyrics }}</div>
+        <div class="card-footer">{{ slide.title }}</div>
+      </div>
+    </div>
+  </div>
+</div>

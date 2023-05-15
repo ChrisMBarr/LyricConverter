@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParserService } from './parser/parser.service';
-import { IFileWithData, IRawDataFile } from './models/file.model';
+import { IFileWithData, IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
 
@@ -13,40 +13,32 @@ export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
   // private readonly convertedFileCount = 'CONVERT_COUNT';
 
-  outputTypesForMenu: { name: string; ext?: string }[] = [];
-  selectedConversionType: string = '';
+  displayInitialUi = true;
+  outputTypesForMenu: IOutputConverter[] = [];
+  selectedOutputType!: IOutputConverter;
+  convertedSongsForOutput: IOutputFile[] = [];
 
-  constructor(
-    private parserSvc: ParserService
-  ) {}
+  constructor(private parserSvc: ParserService) {}
 
   ngOnInit(): void {
-    this.outputTypesForMenu = [...this.parserSvc.outputConverters].map(
-      (outputConverter: IOutputConverter) => {
-        return {
-          name: outputConverter.friendlyName,
-          ext: outputConverter.friendlyFileExt,
-        };
-      }
-    );
-    this.outputTypesForMenu.push({
-      name: 'Display Slides',
-    });
+    this.outputTypesForMenu = [...this.parserSvc.outputConverters];
 
+    const savedOutputTypePrefName = localStorage.getItem(this.conversionTypeStorageKey);
     //auto-select the saved preference, but if none auto-select the first type
-    this.selectedConversionType =
-      localStorage.getItem(this.conversionTypeStorageKey) ||
-      this.outputTypesForMenu[0]!.name;
+    this.selectedOutputType =
+      this.parserSvc.outputConverters.find((c) => c.friendlyName === savedOutputTypePrefName) ||
+      this.outputTypesForMenu[0]!;
   }
 
-  onSwitchConversionType(newType: string): void {
-    this.selectedConversionType = newType;
+  onSwitchConversionType(newType: IOutputConverter): void {
+    this.selectedOutputType = newType;
 
-    localStorage.setItem(this.conversionTypeStorageKey, newType);
+    localStorage.setItem(this.conversionTypeStorageKey, newType.friendlyName);
   }
 
   onFileDrop(files: IFileWithData[]): void {
     if (files && files.length) {
+      this.displayInitialUi = false;
       const parsedFiles = this.parserSvc.parseFiles(files);
       this.getConvertersAndExtractData(parsedFiles);
     } else {
@@ -65,14 +57,10 @@ export class ConvertComponent implements OnInit {
       }
     });
 
-    console.log(convertedSongs);
-
     if (convertedSongs.length) {
-      if (this.selectedConversionType === 'display') {
-        //Show the slides in the UI
-      } else {
-        //A file download preference
-      }
+      this.convertedSongsForOutput = convertedSongs.map(s => {
+        return this.selectedOutputType.convertToType(s)
+      })
     } else {
       //no converted songs
     }

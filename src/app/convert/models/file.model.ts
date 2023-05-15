@@ -1,3 +1,5 @@
+import { ISong } from "./song.model";
+
 //Similar to File, but with some custom props & missing prototypes we don't need
 export interface IFileWithData {
   lastModified: number;
@@ -14,4 +16,9 @@ export interface IRawDataFile {
   ext: string;
   type: string;
   data: string;
+}
+
+export interface IOutputFile {
+  songData: ISong;
+  file: File;
 }
