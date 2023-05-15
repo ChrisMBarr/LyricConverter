@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ParserService } from './parser.service';
+import { dedent } from 'test/test-utils';
 
 describe('ParserService', () => {
   let service: ParserService;
@@ -51,17 +52,17 @@ describe('ParserService', () => {
           '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1343\\cocoasubrtf140\n\\cocoascreenfonts1{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\n\n\\f0\\fs260 \\cf1 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec0 Our Good }'
         )
       ).toEqual(`Our Good`);
-    })
+    });
 
     it('should get multiline plain text from an RTF string 1', () => {
       expect(
         service.stripRtf(
           '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320\n{\\fonttbl\\f0\\fswiss\\fcharset0 Impact;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural\n\n\\f0\\fs120 \\cf1 \\outl0\\strokewidth-40 \\strokec0 We bow our hearts we bend our knees\\\nOh Spirit come make us humble\\\nWe turn our eyes from evil things\\\nOh Lord we cast down our idols}'
         )
-      ).toEqual(`We bow our hearts we bend our knees
-Oh Spirit come make us humble
-We turn our eyes from evil things
-Oh Lord we cast down our idols`);
+      ).toEqual(dedent`We bow our hearts we bend our knees
+                       Oh Spirit come make us humble
+                       We turn our eyes from evil things
+                       Oh Lord we cast down our idols`);
     });
 
     it('should get multiline plain text from an RTF string 2', () => {
@@ -69,10 +70,10 @@ Oh Lord we cast down our idols`);
         service.stripRtf(
           '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1343\\cocoasubrtf140\n\\cocoascreenfonts1{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\n\n\\f0\\fs260 \\cf1 \\outl0\\strokewidth0 \\strokec1 Give us clean hands\\\nGive us pure hearts\\\nLet us not lift our\\\nSouls to another}'
         )
-      ).toEqual(`Give us clean hands
-Give us pure hearts
-Let us not lift our
-Souls to another`);
+      ).toEqual(dedent`Give us clean hands
+                       Give us pure hearts
+                       Let us not lift our
+                       Souls to another`);
     });
   });
 });
