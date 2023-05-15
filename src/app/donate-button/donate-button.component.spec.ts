@@ -19,16 +19,4 @@ describe('DonateButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  xit('should redirect to Paypal when the button is clicked', () => {
-    const btn = fixture.debugElement.query(By.css('.btn'));
-    const form: HTMLFormElement = fixture.debugElement.query(By.css('form')).nativeElement;
-
-    spyOn(form, 'submit');
-    btn.triggerEventHandler('click', {});
-
-    fixture.detectChanges();
-
-    expect(form.submit).toHaveBeenCalled();
-  });
 });
