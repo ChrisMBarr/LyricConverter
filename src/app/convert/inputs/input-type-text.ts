@@ -3,8 +3,8 @@ import { IInputConverter } from './input-converter.model';
 import { ISong } from 'src/app/convert/models/song.model';
 
 export class InputTypeText implements IInputConverter {
-  name = 'plain-text';
-  fileExt = 'txt';
+  readonly name = 'plain-text';
+  readonly fileExt = 'txt';
 
   constructor() {}
 

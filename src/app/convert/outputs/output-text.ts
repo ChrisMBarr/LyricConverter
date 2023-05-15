@@ -3,8 +3,8 @@ import { ISong } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypeText implements IOutputConverter {
-  friendlyName = 'Text';
-  friendlyFileExt = 'txt';
+  readonly friendlyName = 'Text';
+  readonly friendlyFileExt = 'txt';
 
   convertToType(song: ISong): IOutputFile {
     let fileContent = 'Title: ' + song.title;

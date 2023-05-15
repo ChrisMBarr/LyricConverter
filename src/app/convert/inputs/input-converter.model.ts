@@ -5,11 +5,11 @@ export declare interface IInputConverter {
   /**
    * @description A unique ID for the input type which should be written in kebab-case
    */
-  name: string;
+  readonly name: string;
   /**
    * @description The expected file extension for a file of this type
    */
-  fileExt: string;
+  readonly fileExt: string;
   /**
    * @description A test method to run against a file to detect the input type
    * @returns {true} if the passed file matches for this type

@@ -3,8 +3,8 @@ import { IInputConverter } from './input-converter.model';
 import { ISong } from 'src/app/convert/models/song.model';
 
 export class InputTypeLyricConverter implements IInputConverter {
-  name = 'lyric-converter';
-  fileExt = 'json';
+  readonly name = 'lyric-converter';
+  readonly fileExt = 'json';
 
   constructor() {}
 
