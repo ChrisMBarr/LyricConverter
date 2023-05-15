@@ -5,10 +5,9 @@ import { AboutComponent } from './about/about.component';
 import { ConvertComponent } from './convert/convert.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'convert', pathMatch: 'full' },
-  { path: 'convert', component: ConvertComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'help', component: HelpComponent },
+  { path: '', component: ConvertComponent },
+  { path: 'about', component: AboutComponent, pathMatch: 'full' },
+  { path: 'help', component: HelpComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];
 
