@@ -13,7 +13,7 @@ export class DownloadDisplayComponent {
 
   onClickDownloadFiles() {
     for (const outputFile of this.outputFileList) {
-      fileSaver.saveAs(outputFile.file);
+      fileSaver.saveAs(new File([outputFile.outputContent], outputFile.fileName));
     }
   }
 
@@ -21,7 +21,7 @@ export class DownloadDisplayComponent {
     const zip = new JSZip();
 
     for (const outputFile of this.outputFileList) {
-      zip.file(outputFile.file.name, outputFile.file);
+      zip.file(outputFile.fileName, new File([outputFile.outputContent], outputFile.fileName));
     }
 
     //Generate the zip file contents

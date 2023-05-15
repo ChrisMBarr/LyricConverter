@@ -20,5 +20,6 @@ export interface IRawDataFile {
 
 export interface IOutputFile {
   songData: ISong;
-  file: File;
+  fileName: string,
+  outputContent: string;
 }

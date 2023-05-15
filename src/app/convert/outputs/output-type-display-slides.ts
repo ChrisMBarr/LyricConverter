@@ -9,7 +9,8 @@ export class OutputTypeDisplaySlides implements IOutputConverter {
     //Nothing to do for this output, just pass it through and make an empty file
     return {
       songData: song,
-      file: new File([], '')
+      fileName: '',
+      outputContent: ''
     }
   };
 }

@@ -32,7 +32,8 @@ export class OutputTypeText implements IOutputConverter {
 
     return {
       songData: song,
-      file: new File([fileContent], `${song.fileName}.${this.friendlyFileExt}`),
+      fileName: `${song.fileName}.${this.friendlyFileExt}`,
+      outputContent: fileContent,
     };
   }
 }

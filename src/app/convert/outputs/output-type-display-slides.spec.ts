@@ -14,6 +14,10 @@ describe('OutputTypeDisplaySlides', () => {
 
   it('should return an identical input object on the output object', () => {
     const song = mockSongObjects[0]!;
-    expect(outputType.convertToType(song)).toEqual({ songData: song, file: new File([], '') });
+    expect(outputType.convertToType(song)).toEqual({
+      songData: song,
+      fileName: '',
+      outputContent: '',
+    });
   });
 });
