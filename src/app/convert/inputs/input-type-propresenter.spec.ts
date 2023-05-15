@@ -1,15 +1,15 @@
-import { IRawDataFile } from 'src/app/shared/file.model';
-import { FormatProPresenter } from './format-propresenter';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { InputTypeProPresenter } from './input-type-propresenter';
 
-describe('FormatProPresenter', () => {
-  let formatter: FormatProPresenter;
+describe('InputTypeProPresenter', () => {
+  let inputConverter: InputTypeProPresenter;
 
   beforeEach(() => {
-    formatter = new FormatProPresenter();
+    inputConverter = new InputTypeProPresenter();
   });
 
   it('should create an instance', () => {
-    expect(formatter).toBeTruthy();
+    expect(inputConverter).toBeTruthy();
   });
 
   it('should properly accept a ProPresenter 4 file when tested', () => {
@@ -19,7 +19,7 @@ describe('FormatProPresenter', () => {
       type:'',
       data: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>'
     }
-    expect(formatter.testFormat(testFile)).toBeTrue();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
   });
 
   it('should properly accept a ProPresenter 5 file when tested', () => {
@@ -29,7 +29,7 @@ describe('FormatProPresenter', () => {
       type:'',
       data: '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0"></RVPresentationDocument>'
     }
-    expect(formatter.testFormat(testFile)).toBeTrue();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
   });
 
   it('should properly reject a JSON file when tested', () => {
@@ -39,7 +39,7 @@ describe('FormatProPresenter', () => {
       type:'text/json',
       data: '{}'
     }
-    expect(formatter.testFormat(testFile)).toBeFalse();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
   });
 
   it('should properly reject plain text files when tested', () => {
@@ -49,7 +49,7 @@ describe('FormatProPresenter', () => {
       type:'text/plain',
       data: 'this is some plain text'
     }
-    expect(formatter.testFormat(testFile)).toBeFalse();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
   });
 
 

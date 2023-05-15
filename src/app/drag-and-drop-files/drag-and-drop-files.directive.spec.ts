@@ -1,7 +1,7 @@
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DragAndDropFilesDirective } from './drag-and-drop-files.directive';
-import { IFileWithData } from '../shared/file.model';
+import { IFileWithData } from '../convert/models/file.model';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { first } from 'rxjs';
 

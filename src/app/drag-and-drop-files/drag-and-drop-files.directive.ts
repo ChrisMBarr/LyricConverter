@@ -5,7 +5,7 @@ import {
   HostListener,
   Output,
 } from '@angular/core';
-import { IFileWithData } from '../shared/file.model';
+import { IFileWithData } from '../convert/models/file.model';
 
 @Directive({
   selector: '[appDragAndDropFiles]',

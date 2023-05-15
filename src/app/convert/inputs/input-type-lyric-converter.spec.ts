@@ -1,15 +1,15 @@
-import { IRawDataFile } from 'src/app/shared/file.model';
-import { FormatLyricConverter } from './format-lyric-converter';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { InputTypeLyricConverter } from './input-type-lyric-converter';
 
-describe('FormatLyricConverter', () => {
-  let formatter: FormatLyricConverter;
+describe('InputTypeLyricConverter', () => {
+  let inputConverter: InputTypeLyricConverter;
 
   beforeEach(() => {
-    formatter = new FormatLyricConverter();
+    inputConverter = new InputTypeLyricConverter();
   });
 
   it('should create an instance', () => {
-    expect(formatter).toBeTruthy();
+    expect(inputConverter).toBeTruthy();
   });
 
   it('should properly accept LyricConverter JSON files when tested', () => {
@@ -19,7 +19,7 @@ describe('FormatLyricConverter', () => {
       type:'text/json',
       data: '{}'
     }
-    expect(formatter.testFormat(testFile)).toBeTrue();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
   });
 
   it('should properly reject plain text files when tested', () => {
@@ -29,7 +29,7 @@ describe('FormatLyricConverter', () => {
       type:'text/plain',
       data: 'this is some plain text'
     }
-    expect(formatter.testFormat(testFile)).toBeFalse();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
   });
 
   it('should properly reject a ProPresenter file when tested', () => {
@@ -39,6 +39,6 @@ describe('FormatLyricConverter', () => {
       type:'',
       data: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>'
     }
-    expect(formatter.testFormat(testFile)).toBeFalse();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
   });
 });

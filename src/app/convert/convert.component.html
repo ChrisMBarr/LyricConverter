@@ -5,7 +5,7 @@
         Convert To
       </strong>
       <a
-        *ngFor="let fmt of formatsForMenu"
+        *ngFor="let fmt of outputTypesForMenu"
         (click)="onSwitchConversionType(fmt.name)"
         [ngClass]="{'active': selectedConversionType === fmt.name}"
         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"

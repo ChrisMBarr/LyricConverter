@@ -1,19 +1,19 @@
-import { IRawDataFile } from 'src/app/shared/file.model';
-import { IFormat } from './format.model';
-import { ISong } from 'src/app/shared/song.model';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { IInputConverter } from './input-converter.model';
+import { ISong } from 'src/app/convert/models/song.model';
 
-export class FormatLyricConverter implements IFormat {
-  friendlyName = 'Lyric Converter';
-  friendlyFileExt = 'json';
+export class InputTypeLyricConverter implements IInputConverter {
+  name = 'lyric-converter';
+  fileExt = 'json';
 
   constructor() {}
 
-  testFormat = (rawFile: IRawDataFile): boolean => {
+  doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
     //just test the file extension
     return /^json$/.test(rawFile.ext);
   };
 
-  convert = (rawFile: IRawDataFile): ISong => {
+  extractSongData = (rawFile: IRawDataFile): ISong => {
     try {
       //If this JSON object was generated from LyricConverter
       //we should just be able to pass it right on through!

@@ -2,6 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { ParserService } from './parser.service';
 import { dedent } from 'test/test-utils';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { InputTypeLyricConverter } from '../inputs/input-type-lyric-converter';
+import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
+import { InputTypeText } from '../inputs/input-type-text';
 
 describe('ParserService', () => {
   let service: ParserService;
@@ -13,6 +17,67 @@ describe('ParserService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  describe('detectInputTypeAndGetConverter()', () => {
+    it('should return undefined when a file type cannot be detected', () => {
+      const testFile: IRawDataFile = {
+        name: 'foo',
+        ext: 'png',
+        type: 'image/png',
+        data: "\x89PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\b\x04\x00\x00\x00µ\x1C\f\x02\x00\x00\x00\vIDATxÚcdø\x0F\x00\x01\x05\x01\x01'\x18ãf\x00\x00\x00\x00IEND®B`\x82",
+      };
+
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(undefined);
+    });
+
+    it('should properly detect a plain text file', () => {
+      const testFile: IRawDataFile = {
+        name: 'foo',
+        ext: 'txt',
+        type: 'text/plain',
+        data: 'this is some plain text',
+      };
+
+      const expectedClass = service.inputConverters.find((c) => {
+        return c instanceof InputTypeText;
+      });
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
+        expectedClass
+      );
+    });
+
+    it('should properly detect a ProPresenter file', () => {
+      const testFile: IRawDataFile = {
+        name: 'foo',
+        ext: 'pro5',
+        type: '',
+        data: '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0"></RVPresentationDocument>',
+      };
+
+      const expectedClass = service.inputConverters.find((c) => {
+        return c instanceof InputTypeProPresenter;
+      });
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
+        expectedClass
+      );
+    });
+
+    it('should properly detect a LyricConverter JSON file', () => {
+      const testFile: IRawDataFile = {
+        name: 'foo',
+        ext: 'json',
+        type: 'text/json',
+        data: '{}',
+      };
+
+      const expectedClass = service.inputConverters.find((c) => {
+        return c instanceof InputTypeLyricConverter;
+      });
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
+        expectedClass
+      );
+    });
   });
 
   describe('Encode/Decode', () => {

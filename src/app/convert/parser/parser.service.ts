@@ -1,10 +1,24 @@
 import { Injectable } from '@angular/core';
-import { IFileWithData, IRawDataFile } from '../../shared/file.model';
+import { IFileWithData, IRawDataFile } from '../models/file.model';
+import { IInputConverter } from '../inputs/input-converter.model';
+import { InputTypeLyricConverter } from '../inputs/input-type-lyric-converter';
+import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
+import { InputTypeText } from '../inputs/input-type-text';
+import { IOutputConverter } from '../outputs/output-converter.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ParserService {
+  //List of all available Input Converters
+  readonly inputConverters: IInputConverter[] = [
+    new InputTypeProPresenter(),
+    new InputTypeLyricConverter(),
+    new InputTypeText(),
+  ];
+
+  readonly outputConverters: IOutputConverter[] = [];
+
   constructor() {}
 
   parseFiles(files: IFileWithData[]): IRawDataFile[] {
@@ -25,6 +39,12 @@ export class ParserService {
     }
 
     return rawDataFiles;
+  }
+
+  detectInputTypeAndGetConverter(f: IRawDataFile): IInputConverter | undefined {
+    return this.inputConverters.find((c: IInputConverter) => {
+      return c.doesInputFileMatchThisType(f);
+    });
   }
 
   decode(base64Str: string): string {

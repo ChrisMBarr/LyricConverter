@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ParserService } from './parser/parser.service';
-import { IFileWithData, IRawDataFile } from '../shared/file.model';
-import { FormatterService } from './formatters/formatter.service';
-import { IFormat } from './formatters/format.model';
-import { ISong } from '../shared/song.model';
+import { IFileWithData, IRawDataFile } from './models/file.model';
+import { ISong } from './models/song.model';
+import { IOutputConverter } from './outputs/output-converter.model';
 
 @Component({
   selector: 'app-convert',
@@ -12,30 +11,32 @@ import { ISong } from '../shared/song.model';
 })
 export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
+  // private readonly convertedFileCount = 'CONVERT_COUNT';
 
-  formatsForMenu: { name: string; ext?: string }[] = [];
+  outputTypesForMenu: { name: string; ext?: string }[] = [];
   selectedConversionType: string = '';
 
   constructor(
-    private parserSvc: ParserService,
-    private formatterSvc: FormatterService
+    private parserSvc: ParserService
   ) {}
 
   ngOnInit(): void {
-    this.formatsForMenu = [...this.formatterSvc.formatters].map(
-      (fmt: IFormat) => {
+    this.outputTypesForMenu = [...this.parserSvc.outputConverters].map(
+      (outputConverter: IOutputConverter) => {
         return {
-          name: fmt.friendlyName,
-          ext: fmt.friendlyFileExt,
+          name: outputConverter.friendlyName,
+          ext: outputConverter.friendlyFileExt,
         };
       }
     );
-    this.formatsForMenu.push({
+    this.outputTypesForMenu.push({
       name: 'Display Slides',
     });
 
     //auto-select the saved preference, but if none auto-select the first type
-    this.selectedConversionType = localStorage.getItem(this.conversionTypeStorageKey) || this.formatsForMenu[0].name;
+    this.selectedConversionType =
+      localStorage.getItem(this.conversionTypeStorageKey) ||
+      this.outputTypesForMenu[0].name;
   }
 
   onSwitchConversionType(newType: string): void {
@@ -47,23 +48,33 @@ export class ConvertComponent implements OnInit {
   onFileDrop(files: IFileWithData[]): void {
     if (files && files.length) {
       const parsedFiles = this.parserSvc.parseFiles(files);
-      this.getFormattersAndConvert(parsedFiles);
+      this.getConvertersAndExtractData(parsedFiles);
     } else {
       //TODO: Show UI message
     }
   }
 
-  getFormattersAndConvert(parsedFiles: IRawDataFile[]) {
-    const converted: (ISong | undefined)[] = [];
+  getConvertersAndExtractData(parsedFiles: IRawDataFile[]) {
+    const convertedSongs: ISong[] = [];
     parsedFiles.forEach((f) => {
-      const formatter = this.formatterSvc.detectFormatAndGetFormatter(f);
+      const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
 
       //Skip formatters for unknown formats
-      if (formatter) {
-        converted.push(formatter.convert(f));
+      if (converter) {
+        convertedSongs.push(converter.extractSongData(f));
       }
     });
 
-    console.log(converted);
+    console.log(convertedSongs);
+
+    if (convertedSongs.length) {
+      if (this.selectedConversionType === 'display') {
+        //Show the slides in the UI
+      } else {
+        //A file download preference
+      }
+    } else {
+      //no converted songs
+    }
   }
 }

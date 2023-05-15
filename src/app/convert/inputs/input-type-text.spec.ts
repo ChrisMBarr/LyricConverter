@@ -1,15 +1,15 @@
-import { IRawDataFile } from 'src/app/shared/file.model';
-import { FormatText } from './format-text';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { InputTypeText } from './input-type-text';
 
-describe('FormatText', () => {
-  let formatter: FormatText;
+describe('InputTypeText', () => {
+  let inputConverter: InputTypeText;
 
   beforeEach(() => {
-    formatter = new FormatText();
+    inputConverter = new InputTypeText();
   });
 
   it('should create an instance', () => {
-    expect(formatter).toBeTruthy();
+    expect(inputConverter).toBeTruthy();
   });
 
   it('should properly accept plain text files when tested', () => {
@@ -19,7 +19,7 @@ describe('FormatText', () => {
       type:'text/plain',
       data: 'this is some plain text'
     }
-    expect(formatter.testFormat(testFile)).toBeTrue();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
   });
 
   it('should properly reject a JSON file when tested', () => {
@@ -29,7 +29,7 @@ describe('FormatText', () => {
       type:'text/json',
       data: '{}'
     }
-    expect(formatter.testFormat(testFile)).toBeFalse();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
   });
 
   it('should properly reject a ProPresenter file when tested', () => {
@@ -39,6 +39,6 @@ describe('FormatText', () => {
       type:'',
       data: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>'
     }
-    expect(formatter.testFormat(testFile)).toBeFalse();
+    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
   });
 });
