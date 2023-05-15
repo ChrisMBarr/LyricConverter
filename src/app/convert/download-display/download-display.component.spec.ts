@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import * as fileSaver from 'file-saver';
 import * as JSZip from 'jszip';
 import { mockOutputFiles } from 'test/mock-output-files';
+import { deepClone } from 'test/test-utils';
 
 describe('DownloadDisplayComponent', () => {
   let component: DownloadDisplayComponent;
@@ -25,7 +26,7 @@ describe('DownloadDisplayComponent', () => {
 
   describe('UI display & clicks', () => {
     it('should display a single button when one file is passed', () => {
-      const mockFilesCopy = [...mockOutputFiles][0]!;
+      const mockFilesCopy = deepClone(mockOutputFiles[0]!);
       component.outputFileList = [mockFilesCopy];
 
       fixture.detectChanges();
@@ -37,7 +38,7 @@ describe('DownloadDisplayComponent', () => {
     });
 
     it('should call onClickDownloadFiles() when the button for a single file is clicked', () => {
-      const mockFilesCopy = [...mockOutputFiles][0]!;
+      const mockFilesCopy = deepClone(mockOutputFiles[0]!);
       component.outputFileList = [mockFilesCopy];
 
       spyOn(component, 'onClickDownloadFiles');
@@ -49,7 +50,7 @@ describe('DownloadDisplayComponent', () => {
     });
 
     it('should display two buttons when multiple files are passed', () => {
-      component.outputFileList = [...mockOutputFiles];
+      component.outputFileList = deepClone(mockOutputFiles);
 
       fixture.detectChanges();
 
@@ -63,7 +64,7 @@ describe('DownloadDisplayComponent', () => {
     });
 
     it('should call onClickDownloadZipFile() when multiple files are passed and the "download as .zip" button is clicked', () => {
-      component.outputFileList = [...mockOutputFiles];
+      component.outputFileList = deepClone(mockOutputFiles);
 
       spyOn(component, 'onClickDownloadZipFile');
       fixture.detectChanges();
@@ -74,7 +75,7 @@ describe('DownloadDisplayComponent', () => {
     });
 
     it('should call onClickDownloadFiles() when multiple files are passed and the "download individual files" button is clicked', () => {
-      component.outputFileList = [...mockOutputFiles];
+      component.outputFileList = deepClone(mockOutputFiles);
 
       spyOn(component, 'onClickDownloadFiles');
       fixture.detectChanges();
@@ -87,7 +88,7 @@ describe('DownloadDisplayComponent', () => {
 
   describe('Download Functionality', () => {
     it('should call the fileSaver library once, to save a song file, when onClickDownloadFiles() is called with one passed in file', () => {
-      const mockFilesCopy = [...mockOutputFiles][0]!;
+      const mockFilesCopy = deepClone(mockOutputFiles[0]!);
       component.outputFileList = [mockFilesCopy];
 
       spyOn(fileSaver, 'saveAs');
@@ -97,7 +98,7 @@ describe('DownloadDisplayComponent', () => {
     });
 
     it('should call the fileSaver library multiple times, to save song files, when onClickDownloadFiles() is called with multiple passed in files', () => {
-      component.outputFileList = [...mockOutputFiles];
+      component.outputFileList = deepClone(mockOutputFiles);
 
       spyOn(fileSaver, 'saveAs');
       component.onClickDownloadFiles();
@@ -106,7 +107,7 @@ describe('DownloadDisplayComponent', () => {
     });
 
     it('should call the fileSaver library once, to save a ZIP file, when onClickDownloadZipFile() is called with multiple passed in files', fakeAsync(() => {
-      component.outputFileList = [...mockOutputFiles];
+      component.outputFileList = deepClone(mockOutputFiles);
 
       spyOn(JSZip.prototype, 'file').and.callThrough()
       spyOn(JSZip.prototype, 'generateAsync').and.returnValue(Promise.resolve('some blob'));

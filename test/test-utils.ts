@@ -10,3 +10,8 @@ export function dedent(inputStrings: TemplateStringsArray, ...values: any[]) {
     .map((line) => line.replace(/^[\t\s]*/, ''))
     .join('\n');
 }
+
+
+export function deepClone<T>(input: T): T{
+  return JSON.parse(JSON.stringify(input));
+}
