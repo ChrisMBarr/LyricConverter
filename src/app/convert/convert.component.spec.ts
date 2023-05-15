@@ -7,8 +7,8 @@ import { ParserService } from './parser/parser.service';
 import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
 import { DownloadDisplayComponent } from './download-display/download-display.component';
-import { OutputTypeDisplaySlides } from './outputs/output-display-slides';
-import { OutputTypeText } from './outputs/output-text';
+import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
+import { OutputTypeText } from './outputs/output-type-text';
 
 describe('ConvertComponent', () => {
   let component: ConvertComponent;

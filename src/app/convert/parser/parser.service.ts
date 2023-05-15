@@ -5,8 +5,8 @@ import { InputTypeLyricConverter } from '../inputs/input-type-lyric-converter';
 import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
 import { InputTypeText } from '../inputs/input-type-text';
 import { IOutputConverter } from '../outputs/output-converter.model';
-import { OutputTypeDisplaySlides } from '../outputs/output-display-slides';
-import { OutputTypeText } from '../outputs/output-text';
+import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
+import { OutputTypeText } from '../outputs/output-type-text';
 
 @Injectable({
   providedIn: 'root',
