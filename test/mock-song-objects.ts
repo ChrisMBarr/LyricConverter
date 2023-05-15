@@ -12,17 +12,17 @@ export const mockSongObjects: ISong[] = [
     slides: [
       {
         title: 'Chorus',
-        lyrics: 'Your grace is enough\r\nYour grace is enough\r\nYour grace is enough for me',
+        lyrics: 'Your grace is enough\nYour grace is enough\nYour grace is enough for me',
       },
       {
         title: 'Verse 1',
         lyrics:
-          'Great is your faithfulness O God\r\nYou wrestle with the sinners heart\r\nYou lead us by still waters and to mercy\r\nAnd nothing can keep us apart',
+          'Great is your faithfulness O God\nYou wrestle with the sinners heart\nYou lead us by still waters and to mercy\nAnd nothing can keep us apart',
       },
       {
         title: 'Verse 2',
         lyrics:
-          'Great is your love and justice God\r\nYou use the weak to lead the strong\r\nYou lead us in the song of your salvation\r\nAnd all your people sing along',
+          'Great is your love and justice God\nYou use the weak to lead the strong\nYou lead us in the song of your salvation\nAnd all your people sing along',
       },
     ],
   },
@@ -38,11 +38,11 @@ export const mockSongObjects: ISong[] = [
       {
         title: 'Verse',
         lyrics:
-          'I know a place\r\nA wonderful place\r\nWhere accused and condemned\r\nFind mercy and grace\r\nWhere the wrongs we have done\r\nAnd the wrongs done to us\r\nWere nailed there with him \r\nThere on the cross',
+          'I know a place\nA wonderful place\nWhere accused and condemned\nFind mercy and grace\nWhere the wrongs we have done\nAnd the wrongs done to us\nWere nailed there with him \nThere on the cross',
       },
       {
         title: 'Chorus',
-        lyrics: 'At the cross\r\nHe died for our sins\r\nAt the cross \r\nHe gave us life again',
+        lyrics: 'At the cross\nHe died for our sins\nAt the cross \nHe gave us life again',
       },
     ],
   },

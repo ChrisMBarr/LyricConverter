@@ -14,7 +14,7 @@ export class OutputTypeText implements IOutputConverter {
 
     //Loop through the song info attributes
     for (const info of song.info) {
-      if (info.name.trim().length > 0 && info.value.trim().length > 0) {
+      if (info.value.trim().length > 0) {
         fileContent += newLine;
         fileContent += info.name + ': ' + info.value;
       }
@@ -22,10 +22,9 @@ export class OutputTypeText implements IOutputConverter {
 
     fileContent += blankLine;
 
-    //Add the song lyrics
+    //Add the song lyrics, skipping sections with blank lyrics
     for (const slide of song.slides) {
-      //Skip blank slides for text files
-      if (slide.title.trim().length > 0 || slide.lyrics.trim().length > 0) {
+      if (slide.lyrics.trim().length > 0) {
         fileContent += slide.title;
         fileContent += newLine;
         fileContent += slide.lyrics.trim();
