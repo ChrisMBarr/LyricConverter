@@ -63,7 +63,6 @@ describe('ConvertComponent', () => {
     it('should auto-select the saved type to convert to when a preference is saved', () => {
       localStorage.setItem(prefKey, 'Text');
       fixture.detectChanges();
-      console.log('pref', localStorage.getItem(prefKey), component.selectedOutputType);
       expect(component.selectedOutputType.friendlyName).toEqual('Text');
     });
 
