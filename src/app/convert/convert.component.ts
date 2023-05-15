@@ -11,6 +11,8 @@ import { ISong } from '../shared/song.model';
   styleUrls: ['./convert.component.scss'],
 })
 export class ConvertComponent implements OnInit {
+  private readonly conversionTypeStorageKey = 'CONVERT_TO';
+
   formatsForMenu: { name: string; ext?: string }[] = [];
   selectedConversionType: string = '';
 
@@ -32,12 +34,14 @@ export class ConvertComponent implements OnInit {
       name: 'Display Slides',
     });
 
-    //auto-select the first type
-    this.selectedConversionType = this.formatsForMenu[0].name;
+    //auto-select the saved preference, but if none auto-select the first type
+    this.selectedConversionType = localStorage.getItem(this.conversionTypeStorageKey) || this.formatsForMenu[0].name;
   }
 
   onSwitchConversionType(newType: string): void {
     this.selectedConversionType = newType;
+
+    localStorage.setItem(this.conversionTypeStorageKey, newType);
   }
 
   onFileDrop(files: IFileWithData[]): void {

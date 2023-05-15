@@ -26,7 +26,6 @@ describe('ConvertComponent', () => {
 
     fixture = TestBed.createComponent(ConvertComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -34,7 +33,19 @@ describe('ConvertComponent', () => {
   });
 
   describe('Output Menu UI', () => {
+    const prefKey = 'CONVERT_TO';
+
+    beforeEach(() => {
+      localStorage.clear();
+    });
+
+    afterEach(() => {
+      localStorage.clear();
+    });
+
     it('should build a list of all available types to convert to', () => {
+      fixture.detectChanges();
+
       expect(component.formatsForMenu).toEqual([
         { name: 'Pro Presenter', ext: 'pro*' },
         { name: 'Lyric Converter', ext: 'json' },
@@ -43,22 +54,45 @@ describe('ConvertComponent', () => {
       ]);
     });
 
-    it('should auto-select the first type to convert to', () => {
+    it('should auto-select the first type to convert to when no preference is saved', () => {
+      fixture.detectChanges();
       expect(component.selectedConversionType).toEqual('Pro Presenter');
     });
 
+    it('should auto-select the saved type to convert to when a preference is saved', () => {
+      localStorage.setItem(prefKey, 'Custom Pref');
+      fixture.detectChanges();
+      console.log('pref',localStorage.getItem(prefKey), component.selectedConversionType)
+      expect(component.selectedConversionType).toEqual('Custom Pref');
+    });
+
     it('should change the conversion type when switchConversionType() is called', () => {
+      fixture.detectChanges();
       component.onSwitchConversionType('FooBar');
+      fixture.detectChanges();
       expect(component.selectedConversionType).toEqual('FooBar');
     });
 
     it('should change the conversion type when a link in the menu is clicked', () => {
-      const x = fixture.debugElement
+      fixture.detectChanges();
+
+      fixture.debugElement
         .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
         .triggerEventHandler('click');
 
       fixture.detectChanges();
       expect(component.selectedConversionType).toEqual('Lyric Converter');
+    });
+
+    it('should save the conversion type preference when a link in the menu is clicked', () => {
+      fixture.detectChanges();
+
+      fixture.debugElement
+        .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+        .triggerEventHandler('click');
+
+      fixture.detectChanges();
+      expect(localStorage.getItem(prefKey)).toEqual('Lyric Converter');
     });
   });
 
