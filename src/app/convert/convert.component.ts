@@ -61,8 +61,6 @@ export class ConvertComponent implements OnInit {
       this.convertedSongsForOutput = convertedSongs.map((s) => {
         return this.selectedOutputType.convertToType(s);
       });
-    } else {
-      //no converted songs
     }
   }
 }

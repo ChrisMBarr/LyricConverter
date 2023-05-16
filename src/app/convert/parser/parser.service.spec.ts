@@ -2,10 +2,11 @@ import { TestBed } from '@angular/core/testing';
 
 import { ParserService } from './parser.service';
 import { dedent } from 'test/test-utils';
-import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { IFileWithData, IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeLyricConverter } from '../inputs/input-type-lyric-converter';
 import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
 import { InputTypeText } from '../inputs/input-type-text';
+import * as mockRawFiles from 'test/mock-raw-files';
 
 describe('ParserService', () => {
   let service: ParserService;
@@ -19,30 +20,42 @@ describe('ParserService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('detectInputTypeAndGetConverter()', () => {
-    it('should return undefined when a file type cannot be detected', () => {
-      const testFile: IRawDataFile = {
-        name: 'foo',
-        ext: 'png',
-        type: 'image/png',
-        data: "\x89PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\b\x04\x00\x00\x00µ\x1C\f\x02\x00\x00\x00\vIDATxÚcdø\x0F\x00\x01\x05\x01\x01'\x18ãf\x00\x00\x00\x00IEND®B`\x82",
+  describe('parseFiles()', () => {
+    it('should return an empty array if an empty array is passed in', () => {
+      expect(service.parseFiles([])).toEqual([]);
+    });
+
+    it('should return a properly formatted RawDataFile with decoded content', () => {
+      const inputFile: IFileWithData = {
+        data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHRleHQgZm9yIHRlc3Rpbmch',
+        ext: 'txt',
+        lastModified: 1684251444527,
+        name: 'test-file.txt',
+        nameWithoutExt: 'test-file',
+        size: 30,
+        type: 'text/plain',
       };
 
-      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(undefined);
+      const expectedParsedFile: IRawDataFile = {
+        data: 'this is some text for testing!',
+        ext: 'txt',
+        name: 'test-file',
+        type: 'text/plain',
+      };
+      expect(service.parseFiles([inputFile])).toEqual([expectedParsedFile]);
+    });
+  });
+
+  describe('detectInputTypeAndGetConverter()', () => {
+    it('should return undefined when a file type cannot be detected', () => {
+      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockImageFile)).toEqual(undefined);
     });
 
     it('should properly detect a plain text file', () => {
-      const testFile: IRawDataFile = {
-        name: 'foo',
-        ext: 'txt',
-        type: 'text/plain',
-        data: 'this is some plain text',
-      };
-
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeText;
       });
-      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
+      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockSimpleTextFile)).toEqual(
         expectedClass
       );
     });
@@ -58,23 +71,14 @@ describe('ParserService', () => {
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeProPresenter;
       });
-      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
-        expectedClass
-      );
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });
 
     it('should properly detect a LyricConverter JSON file', () => {
-      const testFile: IRawDataFile = {
-        name: 'foo',
-        ext: 'json',
-        type: 'text/json',
-        data: '{}',
-      };
-
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeLyricConverter;
       });
-      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
+      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockEmptyJsonFile)).toEqual(
         expectedClass
       );
     });
