@@ -5,7 +5,7 @@
 //NOTE: Not all properties are listed here, a lot of junk is left off.  See console output if something more is needed
 export interface IProPresenter4Document {
   RVPresentationDocument: {
-    [index: string]: string | number | Object| undefined;
+    [index: string]: string | number | IProPresenter4Slides | undefined;
     CCLIArtistCredits: string;
     CCLICopyrightInfo?: number;
     CCLIDisplay: number;
@@ -24,13 +24,15 @@ export interface IProPresenter4Document {
     lastDateUsed: string;
     notes: string;
     resourcesDirectory: string;
-    slides: {
-      RVDisplaySlide: IProPresenter4DisplaySlide[];
-    };
+    slides: IProPresenter4Slides;
     usedCount: number;
     versionNumber: number;
     width: number;
   };
+}
+
+export interface IProPresenter4Slides {
+  RVDisplaySlide: IProPresenter4DisplaySlide[];
 }
 
 export interface IProPresenter4DisplaySlide {
@@ -83,7 +85,7 @@ export interface ProPresenterTextElementPosition {
 
 export interface IProPresenter5Document {
   RVPresentationDocument: {
-    [index: string]: string | number | Object | undefined;
+    [index: string]: string | number | undefined | IProPresenter5Arrangement | IProPresenter5Groups;
     CCLIArtistCredits: string;
     CCLICopyrightInfo: number;
     CCLIDisplay: number;
@@ -92,16 +94,7 @@ export interface IProPresenter5Document {
     CCLISongTitle: string;
     album: string;
     artist: string;
-    arrangements: {
-      RVSongArrangement: {
-        color: string;
-        groupIDs: {
-          NSMutableString: IProPresenter5ArrangementGroupItem[];
-        };
-        name: string;
-        uuid: string;
-      };
-    };
+    arrangements: IProPresenter5Arrangement;
     author: string;
     backgroundColor: string;
     category: string;
@@ -109,9 +102,7 @@ export interface IProPresenter5Document {
     creatorCode: number;
     docType: number;
     drawingBackgroundColor: number;
-    groups: {
-      RVSlideGrouping: IProPresenter5SlideGrouping[];
-    };
+    groups: IProPresenter5Groups;
     height: number;
     lastDateUsed: string;
     notes: string;
@@ -120,6 +111,21 @@ export interface IProPresenter5Document {
     versionNumber: number;
     width: number;
   };
+}
+
+export interface IProPresenter5Arrangement {
+  RVSongArrangement: {
+    color: string;
+    groupIDs: {
+      NSMutableString: IProPresenter5ArrangementGroupItem[];
+    };
+    name: string;
+    uuid: string;
+  };
+}
+
+export interface IProPresenter5Groups {
+  RVSlideGrouping: IProPresenter5SlideGrouping[];
 }
 
 export interface IProPresenter5SlideGrouping {

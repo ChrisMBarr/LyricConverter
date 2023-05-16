@@ -10,8 +10,6 @@ import {
 export class InputTypeProPresenter implements IInputConverter {
   readonly name = 'ProPresenter';
 
-  constructor() {}
-
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
     //just test the file extension for ProPresenter 4 or 5 file names
     return /^pro[45]$/.test(rawFile.ext);
@@ -27,8 +25,8 @@ export class InputTypeProPresenter implements IInputConverter {
       rawFile.data
     );
 
-    let title = parsedDoc.RVPresentationDocument.CCLISongTitle;
-    let info: ISongInfo[] = this.getInfo(parsedDoc);
+    const title = parsedDoc.RVPresentationDocument.CCLISongTitle;
+    const info: ISongInfo[] = this.getInfo(parsedDoc);
     let slides: ISongSlide[] = [];
 
     if (rawFile.ext === 'pro4') {

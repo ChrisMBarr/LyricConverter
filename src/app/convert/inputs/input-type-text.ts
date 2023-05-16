@@ -5,8 +5,6 @@ import { ISong } from 'src/app/convert/models/song.model';
 export class InputTypeText implements IInputConverter {
   readonly name = 'Plain Text';
 
-  constructor() {}
-
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
     //just test the file extension for now
     //TODO: Test to make sure this is NOT ChordPro or SongPro!

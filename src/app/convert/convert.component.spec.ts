@@ -10,7 +10,7 @@ import { DownloadDisplayComponent } from './download-display/download-display.co
 import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypeText } from './outputs/output-type-text';
 import { IOutputConverter } from './outputs/output-converter.model';
-import { IFileWithData, IOutputFile, IRawDataFile } from './models/file.model';
+import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import * as mockRawFiles from '../../../test/mock-raw-files';
 
@@ -31,7 +31,7 @@ describe('ConvertComponent', () => {
   let fixture: ComponentFixture<ConvertComponent>;
   let parserSvc: ParserService;
 
-  function configureTestBed(providers: any[]) {
+  function configureTestBed<T>(providers: T[]) {
     TestBed.configureTestingModule({
       declarations: [
         ConvertComponent,
@@ -40,7 +40,7 @@ describe('ConvertComponent', () => {
         SlideDisplayComponent,
         DownloadDisplayComponent,
       ],
-      providers: providers,
+      providers: <T[]>providers,
     });
     parserSvc = TestBed.inject(ParserService);
 
@@ -49,9 +49,9 @@ describe('ConvertComponent', () => {
   }
 
   describe('Needs a mocked ParserService', () => {
-    let mockParserService = {
+    const mockParserService = {
       outputConverters: <mockOutputConverter[]>[],
-      parseFiles: (_f: IFileWithData[]) => <IRawDataFile[]>[],
+      parseFiles: () => <IRawDataFile[]>[],
     };
 
     beforeEach(() => {

@@ -30,7 +30,8 @@ export class ConvertComponent implements OnInit {
       this.outputTypesForMenu[0]!;
   }
 
-  onSwitchConversionType(newType: IOutputConverter): void {
+  onSwitchConversionType(newType: IOutputConverter, event: Event): void {
+    event.preventDefault();
     this.selectedOutputType = newType;
 
     localStorage.setItem(this.conversionTypeStorageKey, newType.name);

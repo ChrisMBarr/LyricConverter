@@ -5,8 +5,6 @@ import { ISong } from 'src/app/convert/models/song.model';
 export class InputTypeLyricConverter implements IInputConverter {
   readonly name = 'LyricConverter';
 
-  constructor() {}
-
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
     //just test the file extension
     return /^json$/.test(rawFile.ext);

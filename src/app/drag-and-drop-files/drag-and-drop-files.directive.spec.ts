@@ -24,7 +24,7 @@ describe('DragAndDropFilesDirective', () => {
   });
 
   it('should create an instance', () => {
-    let directive = new DragAndDropFilesDirective();
+    const directive = new DragAndDropFilesDirective();
     expect(directive).toBeTruthy();
   });
 

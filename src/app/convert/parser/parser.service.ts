@@ -24,8 +24,6 @@ export class ParserService {
     new OutputTypeDisplaySlides(),
   ];
 
-  constructor() {}
-
   parseFiles(files: IFileWithData[]): IRawDataFile[] {
     const rawDataFiles: IRawDataFile[] = [];
     for (const f of files) {

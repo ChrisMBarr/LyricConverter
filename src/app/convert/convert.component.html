@@ -4,8 +4,9 @@
       <strong id="convert-types-title" class="list-group-item text-center"> Convert To </strong>
       <a
         *ngFor="let fmt of outputTypesForMenu"
-        (click)="onSwitchConversionType(fmt)"
+        (click)="onSwitchConversionType(fmt, $event)"
         [ngClass]="{ active: selectedOutputType === fmt }"
+        href="#"
         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
       >
         {{ fmt.name }}

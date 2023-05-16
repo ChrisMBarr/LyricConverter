@@ -8,8 +8,6 @@ export class DragAndDropFilesDirective {
   @Output() fileDrop = new EventEmitter<IFileWithData[]>();
   @HostBinding('class.drag-over') isDraggingOver = false;
 
-  constructor() {}
-
   //Dragover listener, when something is dragged over our host element
   @HostListener('dragover', ['$event']) onDragOver(evt: DragEvent): void {
     evt.preventDefault();
@@ -29,7 +27,7 @@ export class DragAndDropFilesDirective {
     evt.stopPropagation();
     this.isDraggingOver = false;
     if (evt.dataTransfer) {
-      let files = evt.dataTransfer.files;
+      const files = evt.dataTransfer.files;
       if (files.length > 0) {
         this.readFiles(files);
       }
@@ -39,11 +37,11 @@ export class DragAndDropFilesDirective {
   readFiles(files: FileList): void {
     const loadedFiles: IFileWithData[] = [];
 
-    for (var i = 0; i <= files.length - 1; i++) {
+    for (let i = 0; i <= files.length - 1; i++) {
       const reader = new FileReader();
       const f = files[i];
       if (typeof f !== 'undefined') {
-        var completeFn = this.handleFile(f, loadedFiles, files.length);
+        const completeFn = this.handleFile(f, loadedFiles, files.length);
         reader.addEventListener('loadend', completeFn, false);
 
         //Actually read the file

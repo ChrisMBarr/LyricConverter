@@ -12,5 +12,5 @@ export class OutputTypeDisplaySlides implements IOutputConverter {
       fileName: '',
       outputContent: ''
     }
-  };
+  }
 }
