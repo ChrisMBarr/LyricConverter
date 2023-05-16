@@ -3,7 +3,7 @@ import { ISong } from "../models/song.model";
 import { IOutputConverter } from "./output-converter.model";
 
 export class OutputTypeDisplaySlides implements IOutputConverter {
-  readonly friendlyName = 'Display Slides';
+  readonly name = 'Display Slides';
 
   convertToType(song: ISong): IOutputFile {
     //Nothing to do for this output, just pass it through and make an empty file

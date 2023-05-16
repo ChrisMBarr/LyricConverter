@@ -8,9 +8,9 @@
         [ngClass]="{ active: selectedOutputType === fmt }"
         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
       >
-        {{ fmt.friendlyName }}
-        <span class="badge rounded-pill" *ngIf="fmt.friendlyFileExt"
-          >.{{ fmt.friendlyFileExt }}</span
+        {{ fmt.name }}
+        <span class="badge rounded-pill" *ngIf="fmt.fileExt"
+          >.{{ fmt.fileExt }}</span
         >
       </a>
     </nav>
@@ -39,11 +39,11 @@
 
   <div id="display-area" class="col-xs-6 col-sm-8 col-md-9" *ngIf="!displayInitialUi">
     <app-slide-display
-      *ngIf="selectedOutputType.friendlyName === 'Display Slides'"
+      *ngIf="selectedOutputType.name === 'Display Slides'"
       [outputFileList]="convertedSongsForOutput"
     ></app-slide-display>
     <app-download-display
-      *ngIf="selectedOutputType.friendlyName !== 'Display Slides'"
+      *ngIf="selectedOutputType.name !== 'Display Slides'"
       [outputFileList]="convertedSongsForOutput"
     ></app-download-display>
     <!-- <div id="output" class="mb-4"></div> -->

@@ -3,20 +3,24 @@ import { ISong } from "src/app/convert/models/song.model";
 
 export declare interface IInputConverter {
   /**
-   * @description A unique ID for the input type which should be written in kebab-case
+   * @description A unique name for the input type which should match the name of a corresponding Output type if it exists
+   * @readonly
    */
   readonly name: string;
   /**
-   * @description The expected file extension for a file of this type
+   * @description The expected file extension for a file of this type. This might be used to determine the type of file when importing files
+   * @readonly
    */
   readonly fileExt: string;
   /**
    * @description A test method to run against a file to detect the input type
+   * @param rawFile
    * @returns {true} if the passed file matches for this type
    */
-  doesInputFileMatchThisType: (f: IRawDataFile) => boolean;
+  doesInputFileMatchThisType: (file: IRawDataFile) => boolean;
   /**
    * @description A method that will parse the input file and extract relevant data.
+   * @param rawFile
    * @returns {ISong} which is a generic format to later be used by an output formatter
    */
   extractSongData: (rawFile: IRawDataFile) => ISong;

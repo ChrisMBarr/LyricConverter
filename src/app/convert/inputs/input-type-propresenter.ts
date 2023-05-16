@@ -3,7 +3,7 @@ import { ISong } from 'src/app/convert/models/song.model';
 import { IInputConverter } from './input-converter.model';
 
 export class InputTypeProPresenter implements IInputConverter {
-  readonly name = 'pro-presenter';
+  readonly name = 'ProPresenter';
   readonly fileExt = 'pro*'
 
   constructor() {}

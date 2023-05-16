@@ -18,7 +18,7 @@ describe('OutputTypeText', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.friendlyFileExt}`,
+      fileName: `${song.fileName}.${outputType.fileExt}`,
       outputContent: dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
@@ -50,7 +50,7 @@ describe('OutputTypeText', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.friendlyFileExt}`,
+      fileName: `${song.fileName}.${outputType.fileExt}`,
       outputContent: dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
@@ -82,7 +82,7 @@ describe('OutputTypeText', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.friendlyFileExt}`,
+      fileName: `${song.fileName}.${outputType.fileExt}`,
       outputContent: dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music

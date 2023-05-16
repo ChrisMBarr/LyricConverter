@@ -3,8 +3,8 @@ import { ISong } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypeText implements IOutputConverter {
-  readonly friendlyName = 'Text';
-  readonly friendlyFileExt = 'txt';
+  readonly name = 'Text';
+  readonly fileExt = 'txt';
 
   convertToType(song: ISong): IOutputFile {
     const newLine = '\n';
@@ -34,7 +34,7 @@ export class OutputTypeText implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.fileName}.${this.friendlyFileExt}`,
+      fileName: `${song.fileName}.${this.fileExt}`,
       outputContent: fileContent.trim(), //remove any trailing whitespace
     };
   }

@@ -26,14 +26,14 @@ export class ConvertComponent implements OnInit {
     const savedOutputTypePrefName = localStorage.getItem(this.conversionTypeStorageKey);
     //auto-select the saved preference, but if none auto-select the first type
     this.selectedOutputType =
-      this.parserSvc.outputConverters.find((c) => c.friendlyName === savedOutputTypePrefName) ||
+      this.parserSvc.outputConverters.find((c) => c.name === savedOutputTypePrefName) ||
       this.outputTypesForMenu[0]!;
   }
 
   onSwitchConversionType(newType: IOutputConverter): void {
     this.selectedOutputType = newType;
 
-    localStorage.setItem(this.conversionTypeStorageKey, newType.friendlyName);
+    localStorage.setItem(this.conversionTypeStorageKey, newType.name);
   }
 
   onFileDrop(files: IFileWithData[]): void {

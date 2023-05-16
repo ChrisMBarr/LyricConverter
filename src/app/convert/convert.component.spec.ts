@@ -57,20 +57,20 @@ describe('ConvertComponent', () => {
 
     it('should auto-select the first type to convert to when no preference is saved', () => {
       fixture.detectChanges();
-      expect(component.selectedOutputType.friendlyName).toEqual('Text');
+      expect(component.selectedOutputType.name).toEqual('Text');
     });
 
     it('should auto-select the saved type to convert to when a preference is saved', () => {
       localStorage.setItem(prefKey, 'Text');
       fixture.detectChanges();
-      expect(component.selectedOutputType.friendlyName).toEqual('Text');
+      expect(component.selectedOutputType.name).toEqual('Text');
     });
 
     it('should change the conversion type when switchConversionType() is called', () => {
       fixture.detectChanges();
       component.onSwitchConversionType(new OutputTypeDisplaySlides());
       fixture.detectChanges();
-      expect(component.selectedOutputType.friendlyName).toEqual('Display Slides');
+      expect(component.selectedOutputType.name).toEqual('Display Slides');
     });
 
     xit('should change the conversion type when a link in the menu is clicked', () => {
@@ -81,7 +81,7 @@ describe('ConvertComponent', () => {
         .triggerEventHandler('click');
 
       fixture.detectChanges();
-      expect(component.selectedOutputType.friendlyName).toEqual('Display Slides');
+      expect(component.selectedOutputType.name).toEqual('Display Slides');
     });
 
     xit('should save the conversion type preference when a link in the menu is clicked', () => {
