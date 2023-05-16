@@ -142,6 +142,8 @@ describe('ConvertComponent', () => {
       });
 
       it('should show the display UI when the "display slides" output is selected after files are dropped', () => {
+        spyOn(component, 'getConvertersAndExtractData').and.callFake(() => []);
+
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypeDisplaySlides();
 
@@ -185,6 +187,8 @@ describe('ConvertComponent', () => {
       });
 
       it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
+        spyOn(component, 'getConvertersAndExtractData').and.callFake(() => []);
+
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypeText();
 

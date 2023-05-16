@@ -14,7 +14,7 @@ export class OutputTypeText implements IOutputConverter {
 
     //Loop through the song info attributes
     for (const info of song.info) {
-      if (info.value.trim().length > 0) {
+      if (info.value.toString().trim().length > 0) {
         fileContent += newLine;
         fileContent += info.name + ': ' + info.value;
       }

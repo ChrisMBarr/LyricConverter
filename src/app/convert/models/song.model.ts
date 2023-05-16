@@ -12,5 +12,5 @@ export interface ISongSlide {
 
 export interface ISongInfo {
   name: string;
-  value: string;
+  value: string | number;
 }
