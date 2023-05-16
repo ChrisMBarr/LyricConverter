@@ -11,13 +11,13 @@ import * as JSZip from 'jszip';
 export class DownloadDisplayComponent {
   @Input() outputFileList: IOutputFile[] = [];
 
-  onClickDownloadFiles() {
+  onClickDownloadFiles(): void {
     for (const outputFile of this.outputFileList) {
       fileSaver.saveAs(new File([outputFile.outputContent], outputFile.fileName));
     }
   }
 
-  onClickDownloadZipFile() {
+  onClickDownloadZipFile(): void {
     const zip = new JSZip();
 
     for (const outputFile of this.outputFileList) {

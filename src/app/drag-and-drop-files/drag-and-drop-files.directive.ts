@@ -11,20 +11,20 @@ export class DragAndDropFilesDirective {
   constructor() {}
 
   //Dragover listener, when something is dragged over our host element
-  @HostListener('dragover', ['$event']) onDragOver(evt: DragEvent) {
+  @HostListener('dragover', ['$event']) onDragOver(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
     this.isDraggingOver = true;
   }
 
   //Dragleave listener, when something is dragged away from our host element
-  @HostListener('dragleave', ['$event']) public onDragLeave(evt: DragEvent) {
+  @HostListener('dragleave', ['$event']) public onDragLeave(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
     this.isDraggingOver = false;
   }
 
-  @HostListener('drop', ['$event']) public onDrop(evt: DragEvent) {
+  @HostListener('drop', ['$event']) public onDrop(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
     this.isDraggingOver = false;
@@ -36,7 +36,7 @@ export class DragAndDropFilesDirective {
     }
   }
 
-  readFiles(files: FileList) {
+  readFiles(files: FileList): void {
     const loadedFiles: IFileWithData[] = [];
 
     for (var i = 0; i <= files.length - 1; i++) {
@@ -52,7 +52,11 @@ export class DragAndDropFilesDirective {
     }
   }
 
-  private handleFile(theFile: File, fileArray: IFileWithData[], fileCount: number) {
+  private handleFile(
+    theFile: File,
+    fileArray: IFileWithData[],
+    fileCount: number
+  ): (ev: ProgressEvent<FileReader>) => void {
     //When called, it has to return a function back up to the listener event
     return (ev: ProgressEvent<FileReader>) => {
       const fileExt = theFile.name.split('.').slice(-1)[0];

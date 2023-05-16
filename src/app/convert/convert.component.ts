@@ -46,7 +46,7 @@ export class ConvertComponent implements OnInit {
     }
   }
 
-  getConvertersAndExtractData(parsedFiles: IRawDataFile[]) {
+  getConvertersAndExtractData(parsedFiles: IRawDataFile[]): void {
     const convertedSongs: ISong[] = [];
     parsedFiles.forEach((f) => {
       const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
@@ -58,9 +58,9 @@ export class ConvertComponent implements OnInit {
     });
 
     if (convertedSongs.length) {
-      this.convertedSongsForOutput = convertedSongs.map(s => {
-        return this.selectedOutputType.convertToType(s)
-      })
+      this.convertedSongsForOutput = convertedSongs.map((s) => {
+        return this.selectedOutputType.convertToType(s);
+      });
     } else {
       //no converted songs
     }

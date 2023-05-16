@@ -220,7 +220,7 @@ describe('DragAndDropFilesDirective', () => {
   })
   class TestComponent {
     filesFromDirective: IFileWithData[] = [];
-    onFileDrop(files: IFileWithData[]) {
+    onFileDrop(files: IFileWithData[]): void {
       this.filesFromDirective = files;
     }
   }
