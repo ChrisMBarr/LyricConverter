@@ -59,7 +59,7 @@ export class DragAndDropFilesDirective {
   ): (ev: ProgressEvent<FileReader>) => void {
     //When called, it has to return a function back up to the listener event
     return (ev: ProgressEvent<FileReader>) => {
-      const fileExt = theFile.name.split('.').slice(-1)[0];
+      const fileExt = theFile.name.includes('.') ? theFile.name.split('.').slice(-1)[0] : '';
       const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
 
       const newFile: IFileWithData = {

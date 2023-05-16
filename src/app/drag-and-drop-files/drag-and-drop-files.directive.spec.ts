@@ -175,6 +175,12 @@ describe('DragAndDropFilesDirective', () => {
         })
       );
       dt.items.add(
+        new File(['this file has no extension!'], 'no-extension', {
+          lastModified: fileCreationTime,
+          type:''
+        })
+      );
+      dt.items.add(
         new File(['this is a PP5 file!'], 'lowercase-file.pro5', {
           lastModified: fileCreationTime,
           type:''
@@ -185,7 +191,6 @@ describe('DragAndDropFilesDirective', () => {
         .pipe(first())
         .subscribe((outputFiles: IFileWithData[]) => {
           expect(directiveInstance.fileDrop.emit).toHaveBeenCalled();
-          expect(outputFiles.length).toBe(2);
           expect(outputFiles).toEqual([
             {
               name: 'UPPERCASE.WITH.DOTS.TXT',
@@ -195,6 +200,15 @@ describe('DragAndDropFilesDirective', () => {
               size: 37,
               lastModified: fileCreationTime,
               data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
+            },
+            {
+              name: 'no-extension',
+              nameWithoutExt: 'no-extension',
+              ext: '',
+              type: '',
+              size: 27,
+              lastModified: fileCreationTime,
+              data: 'data:application/octet-stream;base64,dGhpcyBmaWxlIGhhcyBubyBleHRlbnNpb24h',
             },
             {
               name: 'lowercase-file.pro5',
