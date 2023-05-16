@@ -4,7 +4,6 @@ import { IInputConverter } from './input-converter.model';
 
 export class InputTypeProPresenter implements IInputConverter {
   readonly name = 'ProPresenter';
-  readonly fileExt = 'pro*'
 
   constructor() {}
 

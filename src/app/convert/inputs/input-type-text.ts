@@ -4,7 +4,6 @@ import { ISong } from 'src/app/convert/models/song.model';
 
 export class InputTypeText implements IInputConverter {
   readonly name = 'Plain Text';
-  readonly fileExt = 'txt';
 
   constructor() {}
 
