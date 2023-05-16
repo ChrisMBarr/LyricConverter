@@ -57,13 +57,13 @@ describe('ConvertComponent', () => {
 
     it('should auto-select the first type to convert to when no preference is saved', () => {
       fixture.detectChanges();
-      expect(component.selectedOutputType.name).toEqual('Text');
+      expect(component.selectedOutputType.name).toEqual('Plain Text');
     });
 
     it('should auto-select the saved type to convert to when a preference is saved', () => {
       localStorage.setItem(prefKey, 'Text');
       fixture.detectChanges();
-      expect(component.selectedOutputType.name).toEqual('Text');
+      expect(component.selectedOutputType.name).toEqual('Plain Text');
     });
 
     it('should change the conversion type when switchConversionType() is called', () => {
