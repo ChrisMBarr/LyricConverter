@@ -1,6 +1,8 @@
+@import "../../../variables";
+
 .song-slide{
   .card-body{
-    font-size: 80%;
+    font-size: $font-size-sm;
     white-space: pre;
   }
 }
