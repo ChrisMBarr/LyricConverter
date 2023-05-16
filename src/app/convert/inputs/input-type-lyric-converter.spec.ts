@@ -73,6 +73,22 @@ describe('InputTypeLyricConverter', () => {
     });
   });
 
+  it('should return empty data on a a song if data is missing when extractSongData() is called', () => {
+    const testFile: IRawDataFile = {
+      name: 'foo',
+      ext: 'json',
+      type: 'text/json',
+      data: '{}',
+    };
+
+    expect(inputConverter.extractSongData(testFile)).toEqual({
+      fileName: testFile.name,
+      title: '',
+      info: [],
+      slides: [],
+    });
+  });
+
   it('should return an empty song when bad data is passed to extractSongData()', () => {
     const testFile: IRawDataFile = {
       name: 'foo',
