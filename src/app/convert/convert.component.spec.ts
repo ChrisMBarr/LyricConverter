@@ -9,11 +9,36 @@ import { SlideDisplayComponent } from './slide-display/slide-display.component';
 import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypeText } from './outputs/output-type-text';
+import { IOutputConverter } from './outputs/output-converter.model';
+import { IOutputFile } from './models/file.model';
+import { ISong } from './models/song.model';
+
+class mockOutputConverter implements IOutputConverter {
+  constructor(public name: string, public fileExt?: string) {}
+
+  convertToType = (song: ISong): IOutputFile => {
+    return {
+      songData: song,
+      fileName: '',
+      outputContent: '',
+    };
+  };
+}
 
 describe('ConvertComponent', () => {
   let component: ConvertComponent;
   let fixture: ComponentFixture<ConvertComponent>;
   let parserSvc: ParserService;
+
+  const mockParserService = {
+    outputConverters: [
+      new mockOutputConverter('FooOut', 'foo'),
+      new mockOutputConverter('BarOut', 'bar'),
+      new mockOutputConverter('BazOut', 'baz'),
+      new mockOutputConverter('No File Ext'),
+    ],
+    parseFiles: () => [],
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,6 +49,7 @@ describe('ConvertComponent', () => {
         SlideDisplayComponent,
         DownloadDisplayComponent,
       ],
+      providers: [{ provide: ParserService, useValue: mockParserService }],
     });
     parserSvc = TestBed.inject(ParserService);
 
@@ -48,51 +74,47 @@ describe('ConvertComponent', () => {
 
     it('should build a list of all available output types to convert to', () => {
       fixture.detectChanges();
-
-      expect(component.outputTypesForMenu).toEqual([
-        new OutputTypeText(),
-        new OutputTypeDisplaySlides(),
-      ]);
+      expect(component.outputTypesForMenu).toEqual(mockParserService.outputConverters);
     });
 
     it('should auto-select the first type to convert to when no preference is saved', () => {
       fixture.detectChanges();
-      expect(component.selectedOutputType.name).toEqual('Plain Text');
+      expect(component.selectedOutputType.name).toEqual('FooOut');
     });
 
     it('should auto-select the saved type to convert to when a preference is saved', () => {
-      localStorage.setItem(prefKey, 'Text');
+      localStorage.setItem(prefKey, 'BazOut');
       fixture.detectChanges();
-      expect(component.selectedOutputType.name).toEqual('Plain Text');
+      expect(component.selectedOutputType.name).toEqual('BazOut');
     });
 
     it('should change the conversion type when switchConversionType() is called', () => {
       fixture.detectChanges();
-      component.onSwitchConversionType(new OutputTypeDisplaySlides());
+      component.onSwitchConversionType(mockParserService.outputConverters[3]!);
       fixture.detectChanges();
-      expect(component.selectedOutputType.name).toEqual('Display Slides');
+      expect(component.selectedOutputType.name).toEqual('No File Ext');
     });
 
-    xit('should change the conversion type when a link in the menu is clicked', () => {
+    it('should change the conversion type when a link in the menu is clicked', () => {
       fixture.detectChanges();
 
       fixture.debugElement
-        .query(By.css('#convert-types .list-group-item:nth-of-type(1)'))
+        .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
         .triggerEventHandler('click');
 
       fixture.detectChanges();
-      expect(component.selectedOutputType.name).toEqual('Display Slides');
+      expect(component.selectedOutputType.name).toEqual('BarOut');
     });
 
-    xit('should save the conversion type preference when a link in the menu is clicked', () => {
+    it('should save the conversion type preference when a link in the menu is clicked', () => {
       fixture.detectChanges();
 
       fixture.debugElement
-        .query(By.css('#convert-types .list-group-item:nth-of-type(1)'))
+        .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
         .triggerEventHandler('click');
 
       fixture.detectChanges();
-      expect(localStorage.getItem(prefKey)).toEqual('Display Slides');
+      expect(localStorage.getItem(prefKey)).toEqual('BarOut');
     });
   });
 
@@ -195,7 +217,7 @@ describe('ConvertComponent', () => {
   it('should call the parser when files are passed to onFileDrop()', () => {
     fixture.detectChanges();
 
-    spyOn(parserSvc, 'parseFiles').and.callThrough();
+    spyOn(parserSvc, 'parseFiles').and.callFake(() => []);
 
     component.onFileDrop([
       {
