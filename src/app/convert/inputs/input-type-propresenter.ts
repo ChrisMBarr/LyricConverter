@@ -4,6 +4,7 @@ import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model'
 import { IInputConverter } from './input-converter.model';
 import {
   IProPresenter4Document,
+  IProPresenter5DisplaySlide,
   IProPresenter5Document,
 } from '../models/propresenter-document.model';
 
@@ -43,6 +44,19 @@ export class InputTypeProPresenter implements IInputConverter {
     };
   };
 
+  stripRtf(str: string): string {
+    const basicRtfPattern = /\{\*?\\[^{}]+;}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
+    const newLineSlashesPattern = /\\\n/g;
+    const ctrlCharPattern = /\n\\f[0-9]\s/g;
+
+    //Remove RTF Formatting, replace RTF new lines with real line breaks, and remove whitespace
+    return str
+      .replace(ctrlCharPattern, '')
+      .replace(basicRtfPattern, '')
+      .replace(newLineSlashesPattern, '\n')
+      .trim();
+  }
+
   private getInfo(doc: IProPresenter4Document | IProPresenter5Document): ISongInfo[] {
     const skipKeys = [
       'CCLIDisplay',
@@ -73,11 +87,57 @@ export class InputTypeProPresenter implements IInputConverter {
     return info;
   }
 
-  private getV4Slides(_doc: IProPresenter4Document): ISongSlide[] {
-    return [];
+  private getV4Slides(doc: IProPresenter4Document): ISongSlide[] {
+    const slidesList: ISongSlide[] = [];
+    doc.RVPresentationDocument.slides.RVDisplaySlide.forEach((slide) => {
+      const title = slide.label;
+      const lyrics = this.stripRtf(window.atob(slide.displayElements.RVTextElement.RTFData));
+      if (title || lyrics) {
+        slidesList.push({ title, lyrics });
+        console.log(slide.displayElements.RVTextElement);
+      }
+    });
+
+    return slidesList;
   }
 
-  private getV5Slides(_doc: IProPresenter5Document): ISongSlide[] {
-    return [];
+  private getV5Slides(doc: IProPresenter5Document): ISongSlide[] {
+    const slidesList: ISongSlide[] = [];
+
+    doc.RVPresentationDocument.groups.RVSlideGrouping.forEach((group) => {
+      if (group.slides.RVDisplaySlide instanceof Array) {
+        //group contains multiple slides
+        group.slides.RVDisplaySlide.forEach((groupSlide, i) => {
+          const title = `${group.name} (${i})`;
+          const lyrics = this.getV5GroupSideLyrics(groupSlide);
+
+          if (title || lyrics) {
+            slidesList.push({ title, lyrics });
+          }
+        });
+      } else {
+        //Single slide in this group
+        const title = group.name;
+
+        const lyrics = this.getV5GroupSideLyrics(group.slides.RVDisplaySlide);
+        if (title || lyrics) {
+          slidesList.push({ title, lyrics });
+        }
+      }
+    });
+
+    return slidesList;
+  }
+
+  private getV5GroupSideLyrics(slide: IProPresenter5DisplaySlide): string {
+    let lyrics = '';
+
+    if (typeof slide.displayElements.RVTextElement !== 'undefined') {
+      lyrics = this.stripRtf(
+        window.atob(slide.displayElements.RVTextElement.RTFData)
+      );
+    }
+
+    return lyrics;
   }
 }

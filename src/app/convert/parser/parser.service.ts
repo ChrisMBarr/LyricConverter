@@ -30,7 +30,7 @@ export class ParserService {
       let data = '';
 
       if (typeof f.data === 'string') {
-        data = this.decode(f.data.replace(/^data:.*;base64,/, ''));
+        data = window.atob(f.data.replace(/^data:.*;base64,/, ''));
       }
 
       rawDataFiles.push({
@@ -48,26 +48,5 @@ export class ParserService {
     return this.inputConverters.find((c: IInputConverter) => {
       return c.doesInputFileMatchThisType(f);
     });
-  }
-
-  decode(base64Str: string): string {
-    return window.atob(base64Str);
-  }
-
-  encode(str: string): string {
-    return window.btoa(str);
-  }
-
-  stripRtf(str: string): string {
-    const basicRtfPattern = /\{\*?\\[^{}]+;}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-    const newLineSlashesPattern = /\\\n/g;
-    const ctrlCharPattern = /\n\\f[0-9]\s/g;
-
-    //Remove RTF Formatting, replace RTF new lines with real line breaks, and remove whitespace
-    return str
-      .replace(ctrlCharPattern, '')
-      .replace(basicRtfPattern, '')
-      .replace(newLineSlashesPattern, '\n')
-      .trim();
   }
 }

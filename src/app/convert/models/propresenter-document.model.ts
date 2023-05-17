@@ -36,41 +36,37 @@ export interface IProPresenter4Slides {
 }
 
 export interface IProPresenter4DisplaySlide {
+  UUID: string;
+  backgroundColor: string;
   displayElements: {
     RVTextElement: {
-      UUID: string;
-      backgroundColor: string;
-      displayElements: {
-        RVTextElement: {
-          RTFData: string;
-          adjustsHeightToFit: number;
-          bezelRadius: number;
-          displayDelay: number;
-          displayName: string;
-          drawingFill: number;
-          drawingShadow: number;
-          drawingStroke: number;
-          fillColor: string;
-          fromTemplate: string;
-          locked: string;
-          persistent: string;
-          rotation: number;
-          source: string;
-          typeID: string;
-          verticalAlignment: number;
-          '_-RVRect3D-_position': ProPresenterTextElementPosition;
-        };
-      };
-      drawingBackgroundColor: number;
-      enabled: number;
-      highlightColor: string;
-      hotKey: string;
-      label: string;
-      notes: string;
-      slideType: number;
-      sort_index: number;
+      RTFData: string;
+      adjustsHeightToFit: number;
+      bezelRadius: number;
+      displayDelay: number;
+      displayName: string;
+      drawingFill: number;
+      drawingShadow: number;
+      drawingStroke: number;
+      fillColor: string;
+      fromTemplate: string;
+      locked: string;
+      persistent: string;
+      rotation: number;
+      source: string;
+      typeID: string;
+      verticalAlignment: number;
+      '_-RVRect3D-_position': ProPresenterTextElementPosition;
     };
   };
+  drawingBackgroundColor: number;
+  enabled: number;
+  highlightColor: string;
+  hotKey: string;
+  label: string;
+  notes: string;
+  slideType: number;
+  sort_index: number;
 }
 
 export interface ProPresenterTextElementPosition {
@@ -129,48 +125,48 @@ export interface IProPresenter5Groups {
 }
 
 export interface IProPresenter5SlideGrouping {
-  slides: IProPresenter5DisplaySlide | IProPresenter5DisplaySlide[];
+  slides: {
+    RVDisplaySlide: IProPresenter5DisplaySlide | IProPresenter5DisplaySlide[];
+  };
   name: string;
   uuid: string;
   color: string;
 }
 
 export interface IProPresenter5DisplaySlide {
-  RVDisplaySlide: {
-    UUID: string;
-    backgroundColor: string;
-    chordChartPath: string;
-    displayElements: {
-      RVTextElement?: {
-        RTFData: string;
-        adjustsHeightToFit: number;
-        bezelRadius: number;
-        displayDelay: number;
-        displayName: string;
-        drawingFill: number;
-        drawingShadow: number;
-        drawingStroke: number;
-        fillColor: string;
-        fromTemplate: number;
-        locked: number;
-        persistent: number;
-        revealType: number;
-        rotation: number;
-        source: string;
-        typeID: number;
-        verticalAlignment: number;
-        '_-RVRect3D-_position': ProPresenterTextElementPosition;
-      };
+  UUID: string;
+  backgroundColor: string;
+  chordChartPath: string;
+  displayElements: {
+    RVTextElement?: {
+      RTFData: string;
+      adjustsHeightToFit: number;
+      bezelRadius: number;
+      displayDelay: number;
+      displayName: string;
+      drawingFill: number;
+      drawingShadow: number;
+      drawingStroke: number;
+      fillColor: string;
+      fromTemplate: number;
+      locked: number;
+      persistent: number;
+      revealType: number;
+      rotation: number;
+      source: string;
+      typeID: number;
+      verticalAlignment: number;
+      '_-RVRect3D-_position': ProPresenterTextElementPosition;
     };
-    drawingBackgroundColor: number;
-    enabled: number;
-    highlightColor: string;
-    hotKey: string;
-    label: string;
-    notes: string;
-    slideType: number;
-    sort_index: number;
   };
+  drawingBackgroundColor: number;
+  enabled: number;
+  highlightColor: string;
+  hotKey: string;
+  label: string;
+  notes: string;
+  slideType: number;
+  sort_index: number;
 }
 
 export interface IProPresenter5ArrangementGroupItem {
