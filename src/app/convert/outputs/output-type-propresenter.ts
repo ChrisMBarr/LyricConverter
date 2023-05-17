@@ -71,7 +71,7 @@ export class OutputTypeProPresenter implements IOutputConverter {
     ];
 
     //Overwrite any default attributes with ones tht came from the song
-    const mergedAttributes = Utils.mergeObjects<ISongInfo[]>(defaultAttributes, song.info);
+    const mergedAttributes = Utils.mergeArraysByProp<ISongInfo>(defaultAttributes, song.info, 'name');
 
     //Convert all pieces of song info into a string of XML attributes
     const documentAttributes = mergedAttributes.reduce((accumulator: string, obj: ISongInfo) => {

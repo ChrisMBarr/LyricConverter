@@ -64,17 +64,35 @@ describe('Utils', () => {
     });
   });
 
-  describe('mergeObjects()', () => {
-    it('should merge two objects together', () => {
-      const obj1 = {foo: 'fooVal'};
-      const obj2 = {bar: 'barVal'};
-      expect(Utils.mergeObjects(obj1, obj2)).toEqual({foo: 'fooVal', bar: 'barVal'})
+  describe('mergeArraysByProp()', () => {
+    it('should only combine arrays of objects together when all values of the same key are unique', () => {
+      const obj1 = [{ foo: 'fooVal' }];
+      const obj2 = [{ foo: 'barVal' }];
+      expect(Utils.mergeArraysByProp(obj1, obj2, 'foo')).toEqual([
+        { foo: 'fooVal' },
+        { foo: 'barVal' },
+      ]);
     });
 
-    it('should merge two objects together, using properties from the 2nd object if there are any matching keys', () => {
-      const obj1 = {foo: 'fooVal', other: 'originalValue'};
-      const obj2 = {bar: 'barVal', other: 'newValue'};
-      expect(Utils.mergeObjects(obj1, obj2)).toEqual({foo: 'fooVal', bar: 'barVal', other: 'newValue'})
+    it('should merge identical arrays of objects together, overwriting values for the same key', () => {
+      const obj1 = [{ foo: 'fooVal' }];
+      const obj2 = [{ foo: 'fooVal' }];
+      expect(Utils.mergeArraysByProp(obj1, obj2, 'foo')).toEqual([{ foo: 'fooVal' }]);
+    });
+
+    it('should merge different arrays of objects together, overwriting values for the same key', () => {
+      const obj1 = [
+        { foo: 'fooVal1', other: 'originalValue' },
+        { foo: 'fooVal2', other: 'newValue1' },
+        { foo: 'fooVal3', other: 'newValue2' },
+      ];
+      const obj2 = [{ foo: 'fooVal2', other: 'MyOverwrittenValue' }];
+
+      expect(Utils.mergeArraysByProp(obj1, obj2, 'foo')).toEqual([
+        { foo: 'fooVal1', other: 'originalValue' },
+        { foo: 'fooVal3', other: 'newValue2' },
+        { foo: 'fooVal2', other: 'MyOverwrittenValue' },
+      ]);
     });
   });
 });

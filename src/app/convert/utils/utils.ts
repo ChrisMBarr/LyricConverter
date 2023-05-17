@@ -20,13 +20,12 @@ export class Utils {
       .trim();
   }
 
-  //This rule is OK to disable here since we truly do not know what it could be used for
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public static mergeObjects<T>(destination: any, source: any): T {
-    //https://stackoverflow.com/a/171258/79677
-    for (const property in source) {
-      destination[property] = source[property];
-    }
-    return destination;
+  //https://stackoverflow.com/a/41919138/79677
+  public static mergeArraysByProp<T>(a: T[], b: T[], propName: string): T[] {
+    // We need to ignore the TS compile error since there's no good way to write a typedef for this!
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const reduced = a.filter((aItem) => !b.find((bItem) => aItem[propName] === bItem[propName]));
+    return reduced.concat(b);
   }
 }
