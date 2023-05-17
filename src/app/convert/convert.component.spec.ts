@@ -94,7 +94,7 @@ describe('ConvertComponent', () => {
 
       it('should change the conversion type when switchConversionType() is called', () => {
         fixture.detectChanges();
-        component.onSwitchConversionType(mockParserService.outputConverters[3]!);
+        component.onSwitchConversionType(mockParserService.outputConverters[3]!, new Event('click'));
         fixture.detectChanges();
         expect(component.selectedOutputType.name).toEqual('No File Ext');
       });
@@ -104,7 +104,7 @@ describe('ConvertComponent', () => {
 
         fixture.debugElement
           .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
-          .triggerEventHandler('click');
+          .triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
         expect(component.selectedOutputType.name).toEqual('BarOut');
@@ -115,7 +115,7 @@ describe('ConvertComponent', () => {
 
         fixture.debugElement
           .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
-          .triggerEventHandler('click');
+          .triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
         expect(localStorage.getItem(prefKey)).toEqual('BarOut');

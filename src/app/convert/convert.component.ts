@@ -25,8 +25,12 @@ export class ConvertComponent implements OnInit {
 
     const savedOutputTypePrefName = localStorage.getItem(this.conversionTypeStorageKey);
     //auto-select the saved preference, but if none auto-select the first type
+    //It's possible for this to be `undefined` but very unlikely
     this.selectedOutputType =
       this.parserSvc.outputConverters.find((c) => c.name === savedOutputTypePrefName) ||
+      //We know we weill always have output types in this array, so this is safe to assume here
+      //We need to disable this rule here to avoid complexity elsewhere with it being possibly undefined
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.outputTypesForMenu[0]!;
   }
 
