@@ -2,30 +2,32 @@
 # LyricConverter
 Parses the song info & lyrics from various lyric presentation software file formats. You can convert between different formats and download the converted files.
 
-> I am not in any way affiliated with R-Technics' [SongShow Plus](http://songshowplus.com/) or Renewed Vision's [ProPresenter](http://www.renewedvision.com/propresenter.php).
+### See it here: http://FiniteLooper.github.io/LyricConverter/
+(previously on LyricConverter.com but no more)
 
 
-## Supported Formats
-|                                                                    | Import | Export |
+## Formats
+|                                                                    | Input  | Output |
 | ------------------------------------------------------------------ |:------:| ------:|
 | **[ProPresenter](https://renewedvision.com/propresenter/) v4**     |   ✔️   |        |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✔️   |        |
-| **[SongShow Plus](https://www.songshowplus.com/) v7**              |         |       |
-| **[ChordPro](https://www.chordpro.org/)**                          |         |       |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✔️   |   ✔️  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v6***    |         |       |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v7***    |         |       |
+| **[SongShow Plus](https://songshowplus.com/) v7**                  |         |       |
+| **[MediaShout](https://mediashout.com/)**                          |         |       |
+| **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
+| **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |         |       |
+| **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
+| **[ChordPro](https://chordpro.org/)**                              |         |       |
 | **[SongPro](https://songpro.org/)**                                |         |       |
-| **Plain Text**                                                     |         |   ✔️  |
-| **LyricConverter JSON**                                            |   ✔️   |    ✔️ |
+| **Plain Text**                                                     |         |  ✔️   |
+| **LyricConverter JSON**                                            |   ✔️   |   ✔️  |
 
-### Currently Unsupported
-* **Plain Text** Import
-* **[MediaShout](https://mediashout.com/)** Import/Export
-* **[EasyWorship](https://www.easyworship.com/)** Import/Export ([Issue #3](https://github.com/FiniteLooper/LyricConverter/issues/3))
-* **[OpenLyrics](https://docs.openlyrics.org/en/latest/)** Import/Export ([Issue #4](https://github.com/FiniteLooper/LyricConverter/issues/4))
-* **[OpenSong](http://www.opensong.org/)** Import/Export ([Issue #5](https://github.com/FiniteLooper/LyricConverter/issues/5))
+  *Note: You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
 
-
-### View it in action: http://FiniteLooper.github.io/LyricConverter/
-(previously on LyricConverter.com but no more)
+[1]: https://github.com/FiniteLooper/LyricConverter/issues/3
+[2]: https://github.com/FiniteLooper/LyricConverter/issues/4
+[3]: https://github.com/FiniteLooper/LyricConverter/issues/5
 
 
 ### TODO Items:
@@ -36,7 +38,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 * Error message displays
 * Multiple header images
 * Redesign with TailWinds
-
+* Allow user-configurable options for output file (resolution, text size, etc)
 
 
 # Contributing
@@ -83,3 +85,6 @@ Anything added to this project will most likely be a new format for LyricConvert
 * Open the `ParserService` at `/app/convert/parser/parser.service.ts` and add this new input type to the `outputConverters` array
 * Look at other existing output types to get an idea of how these work. Basically you will need to take the incoming `ISong` object and create a `string` representation of whatever the file content of this format looks like and pass that off as an `IOutputFile` object.
    Add tests to verify that this new output type can take all kinds of `ISong` objects and convert them to the expected output `string`
+
+
+> I am not in any way affiliated with R-Technics' [SongShow Plus](http://songshowplus.com/) or Renewed Vision's [ProPresenter](http://www.renewedvision.com/propresenter.php).

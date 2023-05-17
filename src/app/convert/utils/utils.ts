@@ -1,3 +1,9 @@
+interface IRtfColor {
+  r: number;
+  g: number;
+  b: number;
+}
+
 export class Utils {
   public static decodeBase64(base64Str: string): string {
     return window.atob(base64Str);
@@ -18,6 +24,20 @@ export class Utils {
       .replace(basicRtfPattern, '')
       .replace(newLineSlashesPattern, '\n')
       .trim();
+  }
+
+  public static formatRtf(
+    text: string,
+    font = 'Arial',
+    color: IRtfColor = { r: 255, g: 255, b: 255 }
+  ): string {
+    //Text will be centered, white, 60pt
+    return `{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320',
+{\\fonttbl\\f0\\fswiss\\fcharset0 ${font};}
+{\\colortbl;\\red${color.r}\\green${color.g}\\blue${color.b};}
+\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural
+
+\\f0\\fs120 \\cf1 \\\r${text.replace(/\r|\n/g, '\\\r')}}`;
   }
 
   //https://stackoverflow.com/a/41919138/79677
