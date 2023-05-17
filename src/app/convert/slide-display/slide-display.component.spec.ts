@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SlideDisplayComponent } from './slide-display.component';
 import { By } from '@angular/platform-browser';
 import { mockOutputFiles } from 'test/mock-output-files';
-import { deepClone } from 'test/test-utils';
+import { TestUtils } from 'test/test-utils';
 
 describe('SlideDisplayComponent', () => {
   let component: SlideDisplayComponent;
@@ -23,7 +23,7 @@ describe('SlideDisplayComponent', () => {
   });
 
   it('should display the song data in the UI for a single song', () => {
-    const mockFilesCopy = deepClone(mockOutputFiles[0]!);
+    const mockFilesCopy = TestUtils.deepClone(mockOutputFiles[0]!);
     component.outputFileList = [mockFilesCopy];
 
     fixture.detectChanges();
@@ -62,7 +62,7 @@ describe('SlideDisplayComponent', () => {
   });
 
   it('should display the song data in the UI for multiple songs', () => {
-    const mockFiles = deepClone(mockOutputFiles);
+    const mockFiles = TestUtils.deepClone(mockOutputFiles);
     component.outputFileList = mockFiles;
 
     fixture.detectChanges();

@@ -1,7 +1,7 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeProPresenter } from './input-type-propresenter';
 import * as mockPpFiles from 'test/mock-propresenter-files';
-import { dedent, deepClone } from 'test/test-utils';
+import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeProPresenter', () => {
   let inputConverter: InputTypeProPresenter;
@@ -56,38 +56,6 @@ describe('InputTypeProPresenter', () => {
     });
   });
 
-  describe('stripRtf()', () => {
-    it('should get single line plain text from an RTF string', () => {
-      expect(
-        inputConverter.stripRtf(
-          '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1343\\cocoasubrtf140\n\\cocoascreenfonts1{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\n\n\\f0\\fs260 \\cf1 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec0 Our Good }'
-        )
-      ).toEqual(`Our Good`);
-    });
-
-    it('should get multiline plain text from an RTF string 1', () => {
-      expect(
-        inputConverter.stripRtf(
-          '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320\n{\\fonttbl\\f0\\fswiss\\fcharset0 Impact;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural\n\n\\f0\\fs120 \\cf1 \\outl0\\strokewidth-40 \\strokec0 We bow our hearts we bend our knees\\\nOh Spirit come make us humble\\\nWe turn our eyes from evil things\\\nOh Lord we cast down our idols}'
-        )
-      ).toEqual(dedent`We bow our hearts we bend our knees
-                       Oh Spirit come make us humble
-                       We turn our eyes from evil things
-                       Oh Lord we cast down our idols`);
-    });
-
-    it('should get multiline plain text from an RTF string 2', () => {
-      expect(
-        inputConverter.stripRtf(
-          '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1343\\cocoasubrtf140\n\\cocoascreenfonts1{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\n\n\\f0\\fs260 \\cf1 \\outl0\\strokewidth0 \\strokec1 Give us clean hands\\\nGive us pure hearts\\\nLet us not lift our\\\nSouls to another}'
-        )
-      ).toEqual(dedent`Give us clean hands
-                       Give us pure hearts
-                       Let us not lift our
-                       Souls to another`);
-    });
-  });
-
   describe('extractSongData()', () => {
     describe('ProPresenter V4 Files', () => {
       it('should get the expected TITLES from ProPresenter 4 files', () => {
@@ -100,7 +68,7 @@ describe('InputTypeProPresenter', () => {
       });
 
       it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
-        const fileCopy = deepClone(mockPpFiles.pp4File1);
+        const fileCopy = TestUtils.deepClone(mockPpFiles.pp4File1);
         fileCopy.data = fileCopy.data.replace('CCLISongTitle="Be Near" ', '');
         expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
       });
@@ -210,7 +178,7 @@ describe('InputTypeProPresenter', () => {
       });
 
       it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
-        const fileCopy = deepClone(mockPpFiles.pp5File1);
+        const fileCopy = TestUtils.deepClone(mockPpFiles.pp5File1);
         fileCopy.data = fileCopy.data.replace('CCLISongTitle="Be Near" ', '');
         expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
       });

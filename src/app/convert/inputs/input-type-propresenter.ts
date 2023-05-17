@@ -7,6 +7,7 @@ import {
   IProPresenter5DisplaySlide,
   IProPresenter5Document,
 } from '../models/propresenter-document.model';
+import { Utils } from '../utils/utils';
 
 export class InputTypeProPresenter implements IInputConverter {
   readonly name = 'ProPresenter';
@@ -55,19 +56,6 @@ export class InputTypeProPresenter implements IInputConverter {
     };
   };
 
-  stripRtf(str: string): string {
-    const basicRtfPattern = /\{\*?\\[^{}]+;}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
-    const newLineSlashesPattern = /\\\n/g;
-    const ctrlCharPattern = /\n\\f[0-9]\s/g;
-
-    //Remove RTF Formatting, replace RTF new lines with real line breaks, and remove whitespace
-    return str
-      .replace(ctrlCharPattern, '')
-      .replace(basicRtfPattern, '')
-      .replace(newLineSlashesPattern, '\n')
-      .trim();
-  }
-
   private getInfo(doc: IProPresenter4Document | IProPresenter5Document): ISongInfo[] {
     const skipKeys = [
       'CCLIDisplay',
@@ -102,7 +90,7 @@ export class InputTypeProPresenter implements IInputConverter {
     const slidesList: ISongSlide[] = [];
     doc.RVPresentationDocument.slides.RVDisplaySlide.forEach((slide) => {
       const title = slide.label;
-      const lyrics = this.stripRtf(window.atob(slide.displayElements.RVTextElement.RTFData));
+      const lyrics = Utils.stripRtf(Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData));
       if (title || lyrics) {
         slidesList.push({ title, lyrics });
       }
@@ -136,7 +124,7 @@ export class InputTypeProPresenter implements IInputConverter {
     let lyrics = '';
 
     if (typeof slide.displayElements.RVTextElement !== 'undefined') {
-      lyrics = this.stripRtf(window.atob(slide.displayElements.RVTextElement.RTFData));
+      lyrics = Utils.stripRtf(Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData));
     }
 
     return lyrics;

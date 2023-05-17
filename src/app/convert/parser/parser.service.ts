@@ -7,6 +7,7 @@ import { InputTypeText } from '../inputs/input-type-text';
 import { IOutputConverter } from '../outputs/output-converter.model';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypeText } from '../outputs/output-type-text';
+import { Utils } from '../utils/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,7 @@ export class ParserService {
       let data = '';
 
       if (typeof f.data === 'string') {
-        data = window.atob(f.data.replace(/^data:.*;base64,/, ''));
+        data = Utils.decodeBase64(f.data.replace(/^data:.*;base64,/, ''));
       }
 
       rawDataFiles.push({

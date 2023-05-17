@@ -1,5 +1,5 @@
 import { mockSongObjects } from 'test/mock-song-objects';
-import { dedent, deepClone } from 'test/test-utils';
+import { TestUtils } from 'test/test-utils';
 import { OutputTypeText } from './output-type-text';
 
 describe('OutputTypeText', () => {
@@ -14,12 +14,12 @@ describe('OutputTypeText', () => {
   });
 
   it('should convert a song to a text file', () => {
-    const song = deepClone(mockSongObjects[0]!);
+    const song = TestUtils.deepClone(mockSongObjects[0]!);
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
       fileName: `${song.fileName}.${outputType.fileExt}`,
-      outputContent: dedent`Title: Your Grace is Enough
+      outputContent: TestUtils.dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
                             key: G
@@ -44,14 +44,14 @@ describe('OutputTypeText', () => {
   });
 
   it('should not include info with blank values', () => {
-    const song = deepClone(mockSongObjects[0]!);
+    const song = TestUtils.deepClone(mockSongObjects[0]!);
 
     song.info.push({name: 'Test Blank', value: ''})
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
       fileName: `${song.fileName}.${outputType.fileExt}`,
-      outputContent: dedent`Title: Your Grace is Enough
+      outputContent: TestUtils.dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
                             key: G
@@ -76,14 +76,14 @@ describe('OutputTypeText', () => {
   });
 
   it('should not include slides with blank lyrics', () => {
-    const song = deepClone(mockSongObjects[0]!);
+    const song = TestUtils.deepClone(mockSongObjects[0]!);
 
     song.slides.push({title: 'Test Blank', lyrics: ''})
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
       fileName: `${song.fileName}.${outputType.fileExt}`,
-      outputContent: dedent`Title: Your Grace is Enough
+      outputContent: TestUtils.dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
                             key: G

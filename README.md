@@ -34,6 +34,8 @@ Parses the song info & lyrics from various lyric presentation software file form
 * folder drop?
 * Count how may files processes
 * Error message displays
+* Multiple header images
+* Redesign with TailWinds
 
 
 
