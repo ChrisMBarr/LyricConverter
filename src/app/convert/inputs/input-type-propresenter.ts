@@ -44,7 +44,17 @@ export class InputTypeProPresenter implements IInputConverter {
   };
 
   private getInfo(doc: IProPresenter4Document | IProPresenter5Document): ISongInfo[] {
-    const skipKeys = ['docType', 'versionNumber', 'backgroundColor', 'drawingBackgroundColor', 'usedCount'];
+    const skipKeys = [
+      'CCLIDisplay',
+      'backgroundColor',
+      'docType',
+      'drawingBackgroundColor',
+      'height',
+      'lastDateUsed',
+      'usedCount',
+      'versionNumber',
+      'width',
+    ];
     const info: ISongInfo[] = [];
 
     //Loop through all top-level object properties, skipping over a few hard-coded ones
