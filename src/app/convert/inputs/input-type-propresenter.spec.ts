@@ -314,6 +314,15 @@ describe('InputTypeProPresenter', () => {
           },
         ]);
       });
+
+      it('should get the expected SLIDES from a ProPresenter 5 file2 when a slide has a title but no lyrics', () => {
+        expect(inputConverter.extractSongData(mockPpFiles.pp5File3OneSlideWithLyricsAndNoName).slides).toEqual([
+          {
+            title: '',
+            lyrics: 'We bow our hearts\nWe bend our knees\nOh Spirit come\nMake us humble',
+          },
+        ]);
+      });
     });
   });
 });

@@ -17,10 +17,21 @@ export class InputTypeProPresenter implements IInputConverter {
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {
+    //When certain XML nodes only have one item the parser will convert them into objects
+    //Here we maintain a list of node paths to always keep as arrays
+    //This keeps our code structure and typedefs more sane and normalized
+    const alwaysArray = [
+      'RVPresentationDocument.groups.RVSlideGrouping',
+      'RVPresentationDocument.slides.RVDisplaySlide',
+      'RVPresentationDocument.groups.RVSlideGrouping.slides.RVDisplaySlide'
+    ];
+
     const xmlParser = new XMLParser({
+      //https://github.com/NaturalIntelligence/fast-xml-parser/blob/master/docs/v4/2.XMLparseOptions.md
       ignoreAttributes: false,
       attributeNamePrefix: '',
       parseAttributeValue: true,
+      isArray: (_name, jPath: string) => alwaysArray.indexOf(jPath) !== -1,
     });
     const parsedDoc: IProPresenter4Document | IProPresenter5Document = xmlParser.parse(
       rawFile.data
@@ -94,7 +105,6 @@ export class InputTypeProPresenter implements IInputConverter {
       const lyrics = this.stripRtf(window.atob(slide.displayElements.RVTextElement.RTFData));
       if (title || lyrics) {
         slidesList.push({ title, lyrics });
-        console.log(slide.displayElements.RVTextElement);
       }
     });
 
@@ -105,25 +115,18 @@ export class InputTypeProPresenter implements IInputConverter {
     const slidesList: ISongSlide[] = [];
 
     doc.RVPresentationDocument.groups.RVSlideGrouping.forEach((group) => {
-      if (group.slides.RVDisplaySlide instanceof Array) {
-        //group contains multiple slides
-        group.slides.RVDisplaySlide.forEach((groupSlide, i) => {
-          const title = `${group.name} (${i + 1})`;
-          const lyrics = this.getV5GroupSideLyrics(groupSlide);
+      group.slides.RVDisplaySlide.forEach((groupSlide, i) => {
+        let title = group.name || '';
+        if (group.slides.RVDisplaySlide.length > 1) {
+          //Add number suffix to every slide in the group if that group has more than one slide
+          title += ` (${i + 1})`;
+        }
+        const lyrics = this.getV5GroupSideLyrics(groupSlide);
 
-          if (title || lyrics) {
-            slidesList.push({ title, lyrics });
-          }
-        });
-      } else {
-        //Single slide in this group
-        const title = group.name;
-
-        const lyrics = this.getV5GroupSideLyrics(group.slides.RVDisplaySlide);
         if (title || lyrics) {
           slidesList.push({ title, lyrics });
         }
-      }
+      });
     });
 
     return slidesList;
@@ -133,9 +136,7 @@ export class InputTypeProPresenter implements IInputConverter {
     let lyrics = '';
 
     if (typeof slide.displayElements.RVTextElement !== 'undefined') {
-      lyrics = this.stripRtf(
-        window.atob(slide.displayElements.RVTextElement.RTFData)
-      );
+      lyrics = this.stripRtf(window.atob(slide.displayElements.RVTextElement.RTFData));
     }
 
     return lyrics;

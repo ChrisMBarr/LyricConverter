@@ -126,7 +126,7 @@ export interface IProPresenter5Groups {
 
 export interface IProPresenter5SlideGrouping {
   slides: {
-    RVDisplaySlide: IProPresenter5DisplaySlide | IProPresenter5DisplaySlide[];
+    RVDisplaySlide: IProPresenter5DisplaySlide[];
   };
   name: string;
   uuid: string;
