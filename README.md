@@ -14,7 +14,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[ChordPro](https://www.chordpro.org/)**                          |         |       |
 | **[SongPro](https://songpro.org/)**                                |         |       |
 | **Plain Text**                                                     |         |   ✔️  |
-| **LyricConverter JSON**                                            |   ✔️   |        |
+| **LyricConverter JSON**                                            |   ✔️   |    ✔️ |
 
 ### Currently Unsupported
 * **Plain Text** Import

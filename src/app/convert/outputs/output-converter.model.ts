@@ -17,5 +17,5 @@ export declare interface IOutputConverter {
    * @param song
    * @returns {IOutputFile}
    */
-  convertToType: (song: ISong) => IOutputFile;
+  convertToType(song: ISong): IOutputFile;
 }

@@ -1,19 +1,19 @@
-import { mockSongObjects } from 'test/mock-song-objects';
 import { TestUtils } from 'test/test-utils';
-import { OutputTypeProPresenter } from './output-type-propresenter';
+import { OutputTypeLyricConverter } from './output-type-lyric-converter';
+import { mockSongObjects } from 'test/mock-song-objects';
 
-describe('OutputTypePropresenter', () => {
-  let outputType: OutputTypeProPresenter;
+describe('OutputTypeLyricConverter', () => {
+  let outputType: OutputTypeLyricConverter;
 
   beforeEach(() => {
-    outputType = new OutputTypeProPresenter();
+    outputType = new OutputTypeLyricConverter();
   });
 
   it('should create an instance', () => {
     expect(outputType).toBeTruthy();
   });
 
-  xit('should convert a song to a ProPresenter file', () => {
+  it('should output a JSON object identical to the input, but without the filename property', () => {
     const song = TestUtils.deepClone(mockSongObjects[0]!);
 
     const expectedJsonString = JSON.stringify(

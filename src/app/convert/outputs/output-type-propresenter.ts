@@ -3,7 +3,7 @@ import { ISong, ISongInfo } from '../models/song.model';
 import { Utils } from '../utils/utils';
 import { IOutputConverter } from './output-converter.model';
 
-export class OutputTypePropresenter implements IOutputConverter {
+export class OutputTypeProPresenter implements IOutputConverter {
   readonly name = 'ProPresenter';
   readonly fileExt = 'pro5';
 
