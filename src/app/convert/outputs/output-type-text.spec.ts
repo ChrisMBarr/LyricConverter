@@ -1,6 +1,6 @@
 import { mockSongObjects } from 'test/mock-song-objects';
-import { OutputTypeText } from './output-type-text';
 import { dedent, deepClone } from 'test/test-utils';
+import { OutputTypeText } from './output-type-text';
 
 describe('OutputTypeText', () => {
   let outputType: OutputTypeText;
@@ -14,7 +14,7 @@ describe('OutputTypeText', () => {
   });
 
   it('should convert a song to a text file', () => {
-    const song = mockSongObjects[0]!;
+    const song = deepClone(mockSongObjects[0]!);
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,

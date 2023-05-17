@@ -1,7 +1,7 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeProPresenter } from './input-type-propresenter';
 import * as mockPpFiles from 'test/mock-propresenter-files';
-import { dedent } from 'test/test-utils';
+import { dedent, deepClone } from 'test/test-utils';
 
 describe('InputTypeProPresenter', () => {
   let inputConverter: InputTypeProPresenter;
@@ -100,7 +100,7 @@ describe('InputTypeProPresenter', () => {
       });
 
       it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
-        const fileCopy = { ...mockPpFiles.pp4File1 };
+        const fileCopy = deepClone(mockPpFiles.pp4File1);
         fileCopy.data = fileCopy.data.replace('CCLISongTitle="Be Near" ', '');
         expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
       });
@@ -210,7 +210,7 @@ describe('InputTypeProPresenter', () => {
       });
 
       it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
-        const fileCopy = { ...mockPpFiles.pp5File1 };
+        const fileCopy = deepClone(mockPpFiles.pp5File1);
         fileCopy.data = fileCopy.data.replace('CCLISongTitle="Be Near" ', '');
         expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
       });
@@ -316,7 +316,9 @@ describe('InputTypeProPresenter', () => {
       });
 
       it('should get the expected SLIDES from a ProPresenter 5 file2 when a slide has a title but no lyrics', () => {
-        expect(inputConverter.extractSongData(mockPpFiles.pp5File3OneSlideWithLyricsAndNoName).slides).toEqual([
+        expect(
+          inputConverter.extractSongData(mockPpFiles.pp5File3OneSlideWithLyricsAndNoName).slides
+        ).toEqual([
           {
             title: '',
             lyrics: 'We bow our hearts\nWe bend our knees\nOh Spirit come\nMake us humble',
