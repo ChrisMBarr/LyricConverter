@@ -25,7 +25,7 @@ export class InputTypeProPresenter implements IInputConverter {
       rawFile.data
     );
 
-    const title = parsedDoc.RVPresentationDocument.CCLISongTitle;
+    const title = parsedDoc.RVPresentationDocument.CCLISongTitle || rawFile.name;
     const info: ISongInfo[] = this.getInfo(parsedDoc);
     let slides: ISongSlide[] = [];
 

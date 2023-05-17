@@ -6,12 +6,12 @@
 export interface IProPresenter4Document {
   RVPresentationDocument: {
     [index: string]: string | number | IProPresenter4Slides | undefined;
-    CCLIArtistCredits: string;
+    CCLIArtistCredits?: string;
     CCLICopyrightInfo?: number;
-    CCLIDisplay: number;
+    CCLIDisplay?: number;
     CCLILicenseNumber?: string;
-    CCLIPublisher: string;
-    CCLISongTitle: string;
+    CCLIPublisher?: string;
+    CCLISongTitle?: string;
     album: string;
     artist: string;
     author: string;
@@ -86,12 +86,12 @@ export interface ProPresenterTextElementPosition {
 export interface IProPresenter5Document {
   RVPresentationDocument: {
     [index: string]: string | number | undefined | IProPresenter5Arrangement | IProPresenter5Groups;
-    CCLIArtistCredits: string;
-    CCLICopyrightInfo: number;
-    CCLIDisplay: number;
+    CCLIArtistCredits?: string;
+    CCLICopyrightInfo?: number;
+    CCLIDisplay?: number;
     CCLILicenseNumber?: string;
-    CCLIPublisher: string;
-    CCLISongTitle: string;
+    CCLIPublisher?: string;
+    CCLISongTitle?: string;
     album: string;
     artist: string;
     arrangements: IProPresenter5Arrangement;

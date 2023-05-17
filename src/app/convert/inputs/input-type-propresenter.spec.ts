@@ -63,6 +63,12 @@ describe('InputTypeProPresenter', () => {
       expect(inputConverter.extractSongData(mockPpFiles.pp4File4).title).toEqual('You Are');
     });
 
+    it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
+      const fileCopy = {...mockPpFiles.pp4File1};
+      fileCopy.data = fileCopy.data.replace('CCLISongTitle="Be Near" ', '');
+      expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
+    });
+
     it('should get the expected INFO from a ProPresenter 4 file1', () => {
       expect(inputConverter.extractSongData(mockPpFiles.pp4File1).info).toEqual([
         { name: 'height', value: 768 },
