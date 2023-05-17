@@ -108,7 +108,7 @@ export class InputTypeProPresenter implements IInputConverter {
       if (group.slides.RVDisplaySlide instanceof Array) {
         //group contains multiple slides
         group.slides.RVDisplaySlide.forEach((groupSlide, i) => {
-          const title = `${group.name} (${i})`;
+          const title = `${group.name} (${i + 1})`;
           const lyrics = this.getV5GroupSideLyrics(groupSlide);
 
           if (title || lyrics) {

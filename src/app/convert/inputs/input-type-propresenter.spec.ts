@@ -245,11 +245,11 @@ describe('InputTypeProPresenter', () => {
             lyrics: '',
           },
           {
-            title: 'Verse 1 (0)',
+            title: 'Verse 1 (1)',
             lyrics: 'You are all\nBig and small\nBeautiful',
           },
           {
-            title: 'Verse 1 (1)',
+            title: 'Verse 1 (2)',
             lyrics: "And wonderful to \nTrust in grace\nThrough faith\nBut I'm asking to taste",
           },
           {
@@ -266,11 +266,11 @@ describe('InputTypeProPresenter', () => {
             lyrics: 'Our Good',
           },
           {
-            title: 'Verse 2 (0)',
+            title: 'Verse 2 (1)',
             lyrics: 'Your fullness is mine\nRevelation Divine',
           },
           {
-            title: 'Verse 2 (1)',
+            title: 'Verse 2 (2)',
             lyrics: 'But oh to taste\nTo know much\nMore than a page\nTo feel Your embrace',
           },
           {
@@ -291,11 +291,11 @@ describe('InputTypeProPresenter', () => {
             lyrics: '',
           },
           {
-            title: 'Verse 1 (0)',
+            title: 'Verse 1 (1)',
             lyrics: 'We bow our hearts\nWe bend our knees\nOh Spirit come\nMake us humble',
           },
           {
-            title: 'Verse 1 (1)',
+            title: 'Verse 1 (2)',
             lyrics: 'We turn our eyes\nFrom evil things\nOh Lord we cast\nDown our idols',
           },
           {
