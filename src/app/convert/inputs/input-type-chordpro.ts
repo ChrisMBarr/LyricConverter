@@ -89,20 +89,19 @@ export class InputTypeChordPro implements IInputConverter {
         if (directiveContent.includes(':')) {
           //Split anything with a colon into an array, then remove any empty string from the array
           const pair = directiveContent.split(':').filter((s) => s.trim() !== '');
-          const pairName = (pair[0] || '').trim();
-          const pairVal = (pair[1] || '').trim();
-
-          if (this.patternDirectiveStartMarkers.test(directiveContent)) {
-            foundDirectives.singles.push({
-              name: pairName,
-              position: pos,
-              sectionLabel: pairVal,
-            });
-          } else {
-            foundDirectives.keyValuePairs.push({
-              name: pairName,
-              value: pairVal,
-            });
+          if (pair[0] && pair[1]) {
+            if (this.patternDirectiveStartMarkers.test(directiveContent)) {
+              foundDirectives.singles.push({
+                name: pair[0].trim(),
+                position: pos,
+                sectionLabel: pair[1].trim(),
+              });
+            } else {
+              foundDirectives.keyValuePairs.push({
+                name: pair[0].trim(),
+                value: pair[1].trim(),
+              });
+            }
           }
         } else {
           foundDirectives.singles.push({
