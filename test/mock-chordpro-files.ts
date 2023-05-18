@@ -149,5 +149,76 @@ Let He[D]aven [G]come
 Let Heaven c[C]ome, let Heaven[Em] come
 Let Heaven c[C]ome, let Heaven[Em] come
 {eob}
+
+{start_of_verse}
+Our Fa[G]ther in Heaven
+Hal[C]lowed be Your [D]name
+Your Kin[G]gdom come quickly
+Your w[C]ill be done the s[D]ame
+{end_of_verse}
+
+{start_of_chorus}
+On E[C]arth a[G/B]s it[Am] is in [Em]Heaven
+Let He[D]aven come to
+[C]Earth [G/B]as i[Am]t is in[Em] Heaven
+Let He[D]aven [G]come
+{end_of_chorus}
+
+{start_of_bridge}
+Let Heaven c[C]ome, let Heaven[Em] come
+Let Heaven c[C]ome, let Heaven[Em] come
+{end_of_bridge}
+`,
+};
+
+export const mockChordProFile5DirectivesWithInlineLabels: IRawDataFile = {
+  name: 'Our Father',
+  ext: 'chopro',
+  type: '',
+  data: `{title: Our Father}
+{artist: Bethel Music}
+{key: G}
+{comment: Words and Music by Marcus Meier}
+
+{gc:Intro:}
+[G]  [C/E]  [C]
+
+{sov: Verse 1}
+Our Fa[G]ther in Heaven
+Hal[C]lowed be Your [D]name
+Your Kin[G]gdom come quickly
+Your w[C]ill be done the s[D]ame
+{eov}
+
+{soc: Chorus 1}
+On E[C]arth a[G/B]s it[Am] is in [Em]Heaven
+Let He[D]aven come to
+[C]Earth [G/B]as i[Am]t is in[Em] Heaven
+Let He[D]aven [G]come
+{eoc}
+
+{sob: Bridge 1}
+Let Heaven c[C]ome, let Heaven[Em] come
+Let Heaven c[C]ome, let Heaven[Em] come
+{eob}
+
+{start_of_verse: Verse 2}
+Our Fa[G]ther in Heaven
+Hal[C]lowed be Your [D]name
+Your Kin[G]gdom come quickly
+Your w[C]ill be done the s[D]ame
+{end_of_verse}
+
+{start_of_chorus: Chorus 2}
+On E[C]arth a[G/B]s it[Am] is in [Em]Heaven
+Let He[D]aven come to
+[C]Earth [G/B]as i[Am]t is in[Em] Heaven
+Let He[D]aven [G]come
+{end_of_chorus}
+
+{start_of_bridge: Bridge 2}
+Let Heaven c[C]ome, let Heaven[Em] come
+Let Heaven c[C]ome, let Heaven[Em] come
+{end_of_bridge}
 `,
 };

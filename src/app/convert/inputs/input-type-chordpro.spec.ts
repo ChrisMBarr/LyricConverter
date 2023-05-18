@@ -7,7 +7,7 @@ import {
 } from 'test/mock-raw-files';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeChordPro } from './input-type-chordpro';
-import { mockChordProFile1, mockChordProFile2, mockChordProFile3, mockChordProFile4DirectivesWithoutLabels } from 'test/mock-chordpro-files';
+import { mockChordProFile1, mockChordProFile2, mockChordProFile3, mockChordProFile4DirectivesWithoutLabels, mockChordProFile5DirectivesWithInlineLabels } from 'test/mock-chordpro-files';
 import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeChordPro', () => {
@@ -255,6 +255,88 @@ describe('InputTypeChordPro', () => {
           },
           {
             title: 'Bridge',
+            lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
+                                     Let Heaven come, let Heaven come`,
+          },
+          {
+            title: 'Verse',
+            lyrics: TestUtils.dedent`Our Father in Heaven
+                                     Hallowed be Your name
+                                     Your Kingdom come quickly
+                                     Your will be done the same`,
+          },
+          {
+            title: 'Chorus',
+            lyrics: TestUtils.dedent`On Earth as it is in Heaven
+                                     Let Heaven come to
+                                     Earth as it is in Heaven
+                                     Let Heaven come`,
+          },
+          {
+            title: 'Bridge',
+            lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
+                                     Let Heaven come, let Heaven come`,
+          },
+        ],
+      });
+    });
+
+    it('should return a song for test file 5 that only uses paired directives with internal labels', () => {
+      const testFile: IRawDataFile = { ...mockChordProFile5DirectivesWithInlineLabels };
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Our Father',
+        info: [
+          {
+            name: 'artist',
+            value: 'Bethel Music',
+          },
+          {
+            name: 'key',
+            value: 'G',
+          },
+          {
+            name: 'comment',
+            value: 'Words and Music by Marcus Meier',
+          },
+        ],
+        slides: [
+          {
+            title: 'Verse 1',
+            lyrics: TestUtils.dedent`Our Father in Heaven
+                                     Hallowed be Your name
+                                     Your Kingdom come quickly
+                                     Your will be done the same`,
+          },
+          {
+            title: 'Chorus 1',
+            lyrics: TestUtils.dedent`On Earth as it is in Heaven
+                                     Let Heaven come to
+                                     Earth as it is in Heaven
+                                     Let Heaven come`,
+          },
+          {
+            title: 'Bridge 1',
+            lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
+                                     Let Heaven come, let Heaven come`,
+          },
+          {
+            title: 'Verse 2',
+            lyrics: TestUtils.dedent`Our Father in Heaven
+                                     Hallowed be Your name
+                                     Your Kingdom come quickly
+                                     Your will be done the same`,
+          },
+          {
+            title: 'Chorus 2',
+            lyrics: TestUtils.dedent`On Earth as it is in Heaven
+                                     Let Heaven come to
+                                     Earth as it is in Heaven
+                                     Let Heaven come`,
+          },
+          {
+            title: 'Bridge 2',
             lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
                                      Let Heaven come, let Heaven come`,
           },

@@ -10,6 +10,7 @@ interface IChordProDirectives {
 interface IChordProSingleDirective {
   name: string;
   position: number;
+  sectionLabel?: string;
 }
 
 interface IChordProMatchingDirectivePairs {
@@ -20,7 +21,6 @@ interface IChordProMatchingDirectivePairs {
 
 /**
  * @description ChordPro File Official Docs: https://chordpro.org/chordpro/
- * @todo: Paired directives can have titles, this needs to be supported! https://www.chordpro.org/chordpro/directives-env_verse/
  */
 export class InputTypeChordPro implements IInputConverter {
   readonly name = 'ChordPro';
@@ -61,6 +61,8 @@ export class InputTypeChordPro implements IInputConverter {
   //Directives appear between curly brackets. Some have a name:value pair, others just mark something
   private readonly patternDirectives = /{(.+?)}/gm;
 
+  private readonly patternDirectiveStartMarkers = /^((?:so)|(?:start_of_))([a-z]+)/;
+
   private stripCommentsAndChords(content: string): string {
     //Replaces all comment lines and chord markers with nothing
     return content.replace(this.patternComments, '').replace(this.patternChords, '');
@@ -79,25 +81,37 @@ export class InputTypeChordPro implements IInputConverter {
     };
 
     for (const match of directiveMatches) {
-      if (match[1]) {
-        if (match[1].includes(':')) {
+      const directiveContent = match[1];
+      if (directiveContent) {
+        const pos = match.index || /* istanbul ignore next */ 0;
+
+        //Anything with a colon we treat as info, EXCEPT FOR labeled directive start markers
+        if (directiveContent.includes(':')) {
           //Split anything with a colon into an array, then remove any empty string from the array
-          const pair = match[1].split(':').filter((s) => s.trim() !== '');
-          if (pair[0] && pair[1]) {
+          const pair = directiveContent.split(':').filter((s) => s.trim() !== '');
+          const pairName = (pair[0] || '').trim();
+          const pairVal = (pair[1] || '').trim();
+
+          if (this.patternDirectiveStartMarkers.test(directiveContent)) {
+            foundDirectives.singles.push({
+              name: pairName,
+              position: pos,
+              sectionLabel: pairVal,
+            });
+          } else {
             foundDirectives.keyValuePairs.push({
-              name: pair[0].trim(),
-              value: pair[1].trim(),
+              name: pairName,
+              value: pairVal,
             });
           }
         } else {
           foundDirectives.singles.push({
-            name: match[1].trim(),
-            position: match.index || /* istanbul ignore next */ 0,
+            name: directiveContent.trim(),
+            position: pos,
           });
         }
       }
     }
-
     return foundDirectives;
   }
 
@@ -130,10 +144,9 @@ export class InputTypeChordPro implements IInputConverter {
   private getMatchedDirectivePairs(
     singleDirectives: IChordProSingleDirective[]
   ): IChordProMatchingDirectivePairs[] {
-    const patternPairedDirectiveStart = /^((?:so)|(?:start_of_))([a-z]+)/;
     const pairs: IChordProMatchingDirectivePairs[] = [];
     for (const dir of singleDirectives) {
-      const foundStart = dir.name.match(patternPairedDirectiveStart);
+      const foundStart = dir.name.match(this.patternDirectiveStartMarkers);
       if (foundStart) {
         let matchingEnd;
         if (foundStart[1] === 'so') {
@@ -164,13 +177,17 @@ export class InputTypeChordPro implements IInputConverter {
     //Here we want to extract the content between them for the types we care about
     //and then remove ALL paired directives and the content between them
 
+    type ISavedContent = { full: string; content: string; type: string; sectionLabel?: string };
+
     //The ones we want to find and keep:
     //  Chorus: {soc} and {eoc} OR {start_of_chorus} and {end_of_chorus}
     //  Verse:  {sov} and {eov} OR {start_of_verse}  and {end_of_verse}
     //  Bridge: {sob} and {eob} OR {start_of_bridge} and {end_of_bridge}
+    //All of the start tags from the above example can possibly contain section labels
+    //  {soc: Chorus 2} OR {start_of_chorus: Chorus 3}
     const pairs = this.getMatchedDirectivePairs(singleDirectives);
     const contentToRemove = [];
-    const contentToSaveAndReformat: { full: string; content: string; type: string }[] = [];
+    const contentToSaveAndReformat: ISavedContent[] = [];
     const typesToSave = ['c', 'v', 'b', 'chorus', 'verse', 'bridge'];
     for (const p of pairs) {
       //we have the positions for the begin/end tags.
@@ -183,15 +200,17 @@ export class InputTypeChordPro implements IInputConverter {
       );
 
       if (typesToSave.includes(p.type)) {
-        const pairContent = content.substring(
-          p.begin.position + p.begin.name.length + 3,
-          p.end.position
-        );
+        let beginPos = p.begin.position + p.begin.name.length + 3;
+        if (p.begin.sectionLabel) {
+          beginPos += p.begin.sectionLabel.length + 1;
+        }
+        const pairContent = content.substring(beginPos, p.end.position);
 
         contentToSaveAndReformat.push({
           full: contentAndTags,
           content: pairContent,
           type: p.type,
+          sectionLabel: p.begin.sectionLabel,
         });
       } else {
         //Strings of the tag pairs and content we want to remove
@@ -210,14 +229,18 @@ export class InputTypeChordPro implements IInputConverter {
     //Here we want to replace the tags and the content with just the content
     //If a title needs to be added, we will add it
     const contentWithNormalizedLyricPairs = contentToSaveAndReformat.reduce(
-      (accumulator: string, toReplace: { full: string; content: string; type: string }) => {
+      (accumulator: string, toReplace: ISavedContent) => {
         let title = '';
-        if (/^c(horus)?$/.test(toReplace.type) && !/^chorus/i.test(toReplace.content)) {
-          title = 'Chorus:\n';
-        } else if (/^v(erse)?$/.test(toReplace.type) && !/^verse/i.test(toReplace.content)) {
-          title = 'Verse:\n';
-        } else if (/^b(ridge)?$/.test(toReplace.type) && !/^bridge/i.test(toReplace.content)) {
-          title = 'Bridge:\n';
+        if (toReplace.sectionLabel) {
+          title = toReplace.sectionLabel;
+        } else {
+          if (/^c(horus)?$/.test(toReplace.type) && !/^chorus/i.test(toReplace.content)) {
+            title = 'Chorus:\n';
+          } else if (/^v(erse)?$/.test(toReplace.type) && !/^verse/i.test(toReplace.content)) {
+            title = 'Verse:\n';
+          } else if (/^b(ridge)?$/.test(toReplace.type) && !/^bridge/i.test(toReplace.content)) {
+            title = 'Bridge:\n';
+          }
         }
 
         return accumulator.replace(toReplace.full, title + toReplace.content);
