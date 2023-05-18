@@ -33,6 +33,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 ### TODO Items:
 * Drag & drop over entire document
 * Click to allow file selection
+* Del with possibly duplicated info keys
 * folder drop?
 * Count how may files processes
 * Error message displays

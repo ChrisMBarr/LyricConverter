@@ -7,7 +7,7 @@ import {
 } from 'test/mock-raw-files';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeChordPro } from './input-type-chordpro';
-import { mockChordProFile1, mockChordProFile2 } from 'test/mock-chordpro-files';
+import { mockChordProFile1, mockChordProFile2, mockChordProFile3, mockChordProFile4DirectivesWithoutLabels } from 'test/mock-chordpro-files';
 import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeChordPro', () => {
@@ -30,22 +30,22 @@ describe('InputTypeChordPro', () => {
 
     it('should properly accept a ChordPro file with a .crd extension', () => {
       const testFile: IRawDataFile = { ...mockSimpleChordProFile };
-      testFile.ext = 'crd'
+      testFile.ext = 'crd';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
     it('should properly accept a ChordPro file with a .chopro extension', () => {
       const testFile: IRawDataFile = { ...mockSimpleChordProFile };
-      testFile.ext = 'chopro'
+      testFile.ext = 'chopro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
     it('should properly accept a ChordPro file with a .chord extension', () => {
       const testFile: IRawDataFile = { ...mockSimpleChordProFile };
-      testFile.ext = 'chord'
+      testFile.ext = 'chord';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
     it('should properly accept a ChordPro file with a .pro extension', () => {
       const testFile: IRawDataFile = { ...mockSimpleChordProFile };
-      testFile.ext = 'pro'
+      testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
@@ -71,7 +71,33 @@ describe('InputTypeChordPro', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return a song when extractSongData() is called for test file 1', () => {
+    it('should return a song for a simple test file', () => {
+      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'This is a title',
+        info: [
+          {
+            name: 'artist',
+            value: 'Hymn',
+          },
+          {
+            name: 'key',
+            value: 'E',
+          },
+        ],
+        slides: [
+          {
+            title: 'Verse1',
+            lyrics: TestUtils.dedent`I know a place
+                                     A wonderful place`,
+          },
+        ],
+      });
+    });
+
+    it('should return a song for test file 1', () => {
       const testFile: IRawDataFile = { ...mockChordProFile1 };
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -115,7 +141,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    xit('should return a song when extractSongData() is called for test file 2', () => {
+    it('should return a song for test file 2', () => {
       const testFile: IRawDataFile = { ...mockChordProFile2 };
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -164,6 +190,82 @@ describe('InputTypeChordPro', () => {
           },
         ],
       });
+    });
+
+    it('should return a song for test file 3', () => {
+      const testFile: IRawDataFile = { ...mockChordProFile3 };
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Swing Low Sweet Chariot',
+        info: [ ],
+        slides: [
+          {
+            title: 'Chorus',
+            lyrics: TestUtils.dedent`Swing low, sweet chariot,
+                                     Comin’ for to carry me home.
+                                     Swing low, sweet chariot,
+                                     Comin’ for to carry me home.`,
+          },
+          {
+            title: 'Verse',
+            lyrics: TestUtils.dedent`I looked over Jordan, and what did I see,
+                                     Comin’ for to carry me home.
+                                     A band of angels comin’ after me,
+                                     Comin’ for to carry me home.`,
+          },
+        ],
+      });
+    });
+
+    it('should return a song for test file 4 that only uses unlabeled paired directives', () => {
+      const testFile: IRawDataFile = { ...mockChordProFile4DirectivesWithoutLabels };
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Our Father',
+        info: [
+          {
+            name: 'artist',
+            value: 'Bethel Music',
+          },
+          {
+            name: 'key',
+            value: 'G',
+          },
+          {
+            name: 'comment',
+            value: 'Words and Music by Marcus Meier',
+          },
+        ],
+        slides: [
+          {
+            title: 'Verse',
+            lyrics: TestUtils.dedent`Our Father in Heaven
+                                     Hallowed be Your name
+                                     Your Kingdom come quickly
+                                     Your will be done the same`,
+          },
+          {
+            title: 'Chorus',
+            lyrics: TestUtils.dedent`On Earth as it is in Heaven
+                                     Let Heaven come to
+                                     Earth as it is in Heaven
+                                     Let Heaven come`,
+          },
+          {
+            title: 'Bridge',
+            lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
+                                     Let Heaven come, let Heaven come`,
+          },
+        ],
+      });
+    });
+
+    it('should use the filename as a fallback title when the song has no title', () => {
+      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      testFile.data = testFile.data.replace('{title: This is a title}', '')
+      expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
   });
 });
