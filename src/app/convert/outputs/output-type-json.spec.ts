@@ -1,12 +1,12 @@
 import { TestUtils } from 'test/test-utils';
-import { OutputTypeLyricConverter } from './output-type-lyric-converter';
+import { OutputTypeJSON } from './output-type-json';
 import { mockSongObjects } from 'test/mock-song-objects';
 
-describe('OutputTypeLyricConverter', () => {
-  let outputType: OutputTypeLyricConverter;
+describe('OutputTypeJSON', () => {
+  let outputType: OutputTypeJSON;
 
   beforeEach(() => {
-    outputType = new OutputTypeLyricConverter();
+    outputType = new OutputTypeJSON();
   });
 
   it('should create an instance', () => {

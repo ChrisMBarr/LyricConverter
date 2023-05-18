@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ParserService } from './parser.service';
 import { IFileWithData, IRawDataFile } from 'src/app/convert/models/file.model';
-import { InputTypeLyricConverter } from '../inputs/input-type-lyric-converter';
+import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
 import { InputTypeText } from '../inputs/input-type-text';
 import * as mockRawFiles from 'test/mock-raw-files';
@@ -73,9 +73,9 @@ describe('ParserService', () => {
       expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });
 
-    it('should properly detect a LyricConverter JSON file', () => {
+    it('should properly detect a JSON file', () => {
       const expectedClass = service.inputConverters.find((c) => {
-        return c instanceof InputTypeLyricConverter;
+        return c instanceof InputTypeJSON;
       });
       expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockEmptyJsonFile)).toEqual(
         expectedClass

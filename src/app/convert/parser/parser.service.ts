@@ -1,14 +1,14 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IFileWithData, IRawDataFile } from '../models/file.model';
 import { Utils } from '../utils/utils';
 import { IInputConverter } from '../inputs/input-converter.model';
-import { InputTypeLyricConverter } from '../inputs/input-type-lyric-converter';
+import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
 import { InputTypeText } from '../inputs/input-type-text';
 import { IOutputConverter } from '../outputs/output-converter.model';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypeText } from '../outputs/output-type-text';
-import { OutputTypeLyricConverter } from '../outputs/output-type-lyric-converter';
+import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeProPresenter } from '../outputs/output-type-propresenter';
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 
@@ -20,22 +20,16 @@ export class ParserService {
   readonly inputConverters: IInputConverter[] = [
     new InputTypeProPresenter(),
     new InputTypeChordPro(),
-    new InputTypeText()
+    new InputTypeText(),
+    new InputTypeJSON()
   ];
 
   readonly outputConverters: IOutputConverter[] = [
     new OutputTypeProPresenter(),
     new OutputTypeText(),
     new OutputTypeDisplaySlides(),
+    new OutputTypeJSON()
   ];
-
-  constructor() {
-    //Only allow LyricConverter JSON input/output when in development mode!
-    if (isDevMode()) {
-      this.inputConverters.push(new InputTypeLyricConverter());
-      this.outputConverters.push(new OutputTypeLyricConverter());
-    }
-  }
 
   parseFiles(files: IFileWithData[]): IRawDataFile[] {
     const rawDataFiles: IRawDataFile[] = [];

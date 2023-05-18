@@ -1,11 +1,11 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { InputTypeLyricConverter } from './input-type-lyric-converter';
+import { InputTypeJSON } from './input-type-json';
 
-describe('InputTypeLyricConverter', () => {
-  let inputConverter: InputTypeLyricConverter;
+describe('InputTypeJSON', () => {
+  let inputConverter: InputTypeJSON;
 
   beforeEach(() => {
-    inputConverter = new InputTypeLyricConverter();
+    inputConverter = new InputTypeJSON();
   });
 
   it('should create an instance', () => {
@@ -13,7 +13,7 @@ describe('InputTypeLyricConverter', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly accept LyricConverter JSON files when tested', () => {
+    it('should properly accept JSON files when tested', () => {
       const testFile: IRawDataFile = {
         name: 'foo',
         ext: 'json',

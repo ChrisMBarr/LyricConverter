@@ -1,9 +1,8 @@
 import { ISong } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
 
-//NOTE: This Output Type will only be available when built in Development mode!
-export class OutputTypeLyricConverter implements IOutputConverter {
-  name = 'LyricConverter';
+export class OutputTypeJSON implements IOutputConverter {
+  name = 'JSON';
   fileExt = 'json';
   convertToType = (song: ISong) => {
     //Just convert the object to a string, but leave off the fileName property

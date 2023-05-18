@@ -2,9 +2,8 @@ import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { IInputConverter } from './input-converter.model';
 import { ISong } from 'src/app/convert/models/song.model';
 
-//NOTE: This Input Type will only be available when built in Development mode!
-export class InputTypeLyricConverter implements IInputConverter {
-  readonly name = 'LyricConverter';
+export class InputTypeJSON implements IInputConverter {
+  readonly name = 'JSON';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
     //just test the file extension
