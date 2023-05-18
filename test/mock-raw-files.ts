@@ -1,4 +1,4 @@
-import { IRawDataFile } from "src/app/convert/models/file.model";
+import { IRawDataFile } from 'src/app/convert/models/file.model';
 
 export const mockImageFile: IRawDataFile = {
   name: 'foo',
@@ -19,4 +19,18 @@ export const mockEmptyJsonFile: IRawDataFile = {
   ext: 'json',
   type: 'text/json',
   data: '{}',
+};
+
+export const mockEmptyProPresenter5File: IRawDataFile = {
+  name: 'foo',
+  ext: 'pro5',
+  type: '',
+  data: '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0"></RVPresentationDocument>',
+};
+
+export const mockSimpleChordProFile: IRawDataFile = {
+  name: 'foo',
+  ext: 'txt',
+  type: 'text/plain',
+  data: '{title: This is a title}\n{artist: Hymn}\n{key: E}\n\nVerse1\n[E]I know a p[Bm7]lace\nA w[A]onderful p[E]lace',
 };

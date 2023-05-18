@@ -1,5 +1,11 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeText } from './input-type-text';
+import {
+  mockEmptyJsonFile,
+  mockEmptyProPresenter5File,
+  mockSimpleChordProFile,
+  mockSimpleTextFile,
+} from 'test/mock-raw-files';
 
 describe('InputTypeText', () => {
   let inputConverter: InputTypeText;
@@ -12,33 +18,25 @@ describe('InputTypeText', () => {
     expect(inputConverter).toBeTruthy();
   });
 
-  it('should properly accept plain text files when tested', () => {
-    const testFile: IRawDataFile = {
-      name: 'foo',
-      ext: 'txt',
-      type:'text/plain',
-      data: 'this is some plain text'
-    }
-    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
-  });
+  describe('doesInputFileMatchThisType()', () => {
+    it('should properly accept a plain text file when tested', () => {
+      const testFile: IRawDataFile = { ...mockSimpleTextFile };
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+    });
 
-  it('should properly reject a JSON file when tested', () => {
-    const testFile: IRawDataFile = {
-      name: 'foo',
-      ext: 'json',
-      type:'text/json',
-      data: '{}'
-    }
-    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
-  });
+    it('should properly reject a ChordPro file when tested', () => {
+      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    });
 
-  it('should properly reject a ProPresenter file when tested', () => {
-    const testFile: IRawDataFile = {
-      name: 'foo',
-      ext: 'pro5',
-      type:'',
-      data: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>'
-    }
-    expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly reject a JSON file when tested', () => {
+      const testFile: IRawDataFile = { ...mockEmptyJsonFile };
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    });
+
+    it('should properly reject a ProPresenter file when tested', () => {
+      const testFile: IRawDataFile = { ...mockEmptyProPresenter5File };
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    });
   });
 });

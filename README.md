@@ -18,7 +18,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
 | **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |         |       |
 | **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
-| **[ChordPro](https://chordpro.org/)**                              |         |       |
+| **[ChordPro](https://chordpro.org/)**                              |   ✔️   |       |
 | **[SongPro](https://songpro.org/)**                                |         |       |
 | **Plain Text**                                                     |         |  ✔️   |
 | **LyricConverter JSON**                                            |   ✔️   |   ✔️  |

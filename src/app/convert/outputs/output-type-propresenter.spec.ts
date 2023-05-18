@@ -2,11 +2,9 @@ import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
 import { TestUtils } from 'test/test-utils';
 import { OutputTypeProPresenter } from './output-type-propresenter';
 import { pp5File4, pp5FileEmptySong } from 'test/mock-propresenter-files';
-import { XMLParser } from 'fast-xml-parser';
 
 describe('OutputTypePropresenter', () => {
   let outputType: OutputTypeProPresenter;
-  const xmlParser = new XMLParser();
 
   beforeEach(() => {
     outputType = new OutputTypeProPresenter();

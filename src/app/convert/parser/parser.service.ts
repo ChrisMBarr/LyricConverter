@@ -10,6 +10,7 @@ import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypeText } from '../outputs/output-type-text';
 import { OutputTypeLyricConverter } from '../outputs/output-type-lyric-converter';
 import { OutputTypeProPresenter } from '../outputs/output-type-propresenter';
+import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class ParserService {
   //List of all available Input Converters
   readonly inputConverters: IInputConverter[] = [
     new InputTypeProPresenter(),
+    new InputTypeChordPro(),
     new InputTypeText()
   ];
 
