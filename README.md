@@ -33,10 +33,13 @@ Parses the song info & lyrics from various lyric presentation software file form
 ### TODO Items:
 * Drag & drop over entire document
 * Click to allow file selection
-* Del with possibly duplicated info keys
+* Deal with possibly duplicated info keys
+* Split out ProPresenter 4 & 5 imports to be separate
+* Drop area message should be dynamic
 * folder drop?
 * Count how may files processes
 * Error message displays
+* Fix design for wide screens
 * Multiple header images
 * Redesign with TailWinds
 * Allow user-configurable options for output file (resolution, text size, etc)
