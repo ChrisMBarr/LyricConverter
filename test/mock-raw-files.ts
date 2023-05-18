@@ -21,6 +21,13 @@ export const mockEmptyJsonFile: IRawDataFile = {
   data: '{}',
 };
 
+export const mockEmptyProPresenter4File: IRawDataFile = {
+  name: 'foo',
+  ext: 'pro4',
+  type: '',
+  data: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>',
+};
+
 export const mockEmptyProPresenter5File: IRawDataFile = {
   name: 'foo',
   ext: 'pro5',
@@ -30,7 +37,7 @@ export const mockEmptyProPresenter5File: IRawDataFile = {
 
 export const mockSimpleChordProFile: IRawDataFile = {
   name: 'foo',
-  ext: 'txt',
+  ext: 'cho',
   type: 'text/plain',
   data: '{title: This is a title}\n{artist: Hymn}\n{key: E}\n\nVerse1\n[E]I know a p[Bm7]lace\nA w[A]onderful p[E]lace',
 };

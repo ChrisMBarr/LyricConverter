@@ -2,12 +2,16 @@ import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
 
+/**
+ * @description Official docs: https://www.chordpro.org/chordpro/chordpro-introduction/
+ */
 export class InputTypeChordPro implements IInputConverter {
   readonly name = 'ChordPro';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
-    //Make sure we have a .txt file and something at the beginning like {title: song title}
-    return /txt/i.test(rawFile.ext) && /^.*{.+:.+}\s+/i.test(rawFile.data);
+    //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/
+    //Possibles: .cho, .crd, .chopro, .chord, .pro
+    return /^cho|crd|chopro|chord|pro$/i.test(rawFile.ext);
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

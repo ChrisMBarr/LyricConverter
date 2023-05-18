@@ -6,9 +6,8 @@ export class InputTypeText implements IInputConverter {
   readonly name = 'Plain Text';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
-    //Test the file extension, and make sure the content is NOT formatter like ChordPro
     //TODO: Test to make sure this is NOT SongPro!
-    return /^txt$/.test(rawFile.ext)&& !/^.*{.+:.+}\s+/i.test(rawFile.data);
+    return /^txt$/.test(rawFile.ext);
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {
