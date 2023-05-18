@@ -19,8 +19,8 @@ export class InputTypeJSON implements IInputConverter {
       return {
         fileName: rawFile.name,
         title: parsed.title || '',
-        info: parsed.info && parsed.info.length ? parsed.info : [],
-        slides: parsed.slides && parsed.slides.length ? parsed.slides : [],
+        info: parsed.info || [],
+        slides: parsed.slides || [],
       };
     } catch (ex) {
       return {
