@@ -1,18 +1,19 @@
 import {
+  mockEmptySongShowPlusFile,
   mockEmptySongProFile,
   mockEmptyTextFile,
   mockSimpleChordProFile,
 } from 'test/mock-raw-files';
 import { TestUtils } from 'test/test-utils';
 import { IRawDataFile } from '../models/file.model';
-import { InputTypeSongPro } from './input-type-songpro';
-import { mockSongProFile1 } from 'test/mock-songpro-files';
+import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
+import { mockSongShowPlusFile1 } from 'test/mock-songshowplus7-files';
 
-describe('InputTypeSongPro', () => {
-  let inputConverter: InputTypeSongPro;
+describe('InputTypeSongShowPlus7', () => {
+  let inputConverter: InputTypeSongShowPlus7;
 
   beforeEach(() => {
-    inputConverter = new InputTypeSongPro();
+    inputConverter = new InputTypeSongShowPlus7();
   });
 
   it('should create an instance', () => {
@@ -21,8 +22,13 @@ describe('InputTypeSongPro', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a SongPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptySongProFile);
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptySongShowPlusFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+    });
+
+    it('should properly REJECT a SongPro file when tested', () => {
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptySongProFile);
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a plain text file when tested', () => {
@@ -36,9 +42,9 @@ describe('InputTypeSongPro', () => {
     });
   });
 
-  xdescribe('extractSongData()', () => {
-    xit('should return a song for a SongPro file1', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongProFile1);
+  fdescribe('extractSongData()', () => {
+    it('should return a song for a SongShow Plus 7 file1', () => {
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusFile1);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -47,12 +53,5 @@ describe('InputTypeSongPro', () => {
         slides: []
       });
     });
-
-    // xit('should use the filename as the title when a title is not present in the file', () => {
-    //   const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile2);
-    //   testFile.name = 'My Test Title';
-    //   testFile.data = testFile.data.replace(/^title:.+/i, '');
-    //   expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
-    // });
   });
 });

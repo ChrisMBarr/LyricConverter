@@ -42,6 +42,13 @@ export const mockEmptySongProFile: IRawDataFile = {
   data: '',
 };
 
+export const mockEmptySongShowPlusFile: IRawDataFile = {
+  name: 'foo',
+  ext: 'sbsong',
+  type: '',
+  data: '',
+};
+
 export const mockSimpleChordProFile: IRawDataFile = {
   name: 'foo',
   ext: 'cho',
