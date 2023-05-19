@@ -1,13 +1,13 @@
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
 import { TestUtils } from 'test/test-utils';
-import { OutputTypeProPresenter } from './output-type-propresenter';
+import { OutputTypeProPresenter5 } from './output-type-propresenter5';
 import { pp5File4, pp5FileEmptySong } from 'test/mock-propresenter-files';
 
-describe('OutputTypePropresenter', () => {
-  let outputType: OutputTypeProPresenter;
+describe('OutputTypePropresenter5', () => {
+  let outputType: OutputTypeProPresenter5;
 
   beforeEach(() => {
-    outputType = new OutputTypeProPresenter();
+    outputType = new OutputTypeProPresenter5();
   });
 
   it('should create an instance', () => {

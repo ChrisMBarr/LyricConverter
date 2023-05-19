@@ -7,7 +7,7 @@ export class InputTypeText implements IInputConverter {
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
     //TODO: Test to make sure this is NOT SongPro!
-    return /^txt$/.test(rawFile.ext);
+    return rawFile.ext.toLowerCase() === 'txt'
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {

@@ -6,8 +6,7 @@ export class InputTypeJSON implements IInputConverter {
   readonly name = 'JSON';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
-    //just test the file extension
-    return /^json$/.test(rawFile.ext);
+    return rawFile.ext.toLowerCase() === 'json'
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {

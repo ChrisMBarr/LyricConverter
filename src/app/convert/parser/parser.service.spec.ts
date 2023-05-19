@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ParserService } from './parser.service';
 import { IFileWithData, IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from '../inputs/input-type-json';
-import { InputTypeProPresenter } from '../inputs/input-type-propresenter';
+import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypeText } from '../inputs/input-type-text';
 import * as mockRawFiles from 'test/mock-raw-files';
 
@@ -59,7 +59,7 @@ describe('ParserService', () => {
       );
     });
 
-    it('should properly detect a ProPresenter file', () => {
+    it('should properly detect a ProPresenter5 file', () => {
       const testFile: IRawDataFile = {
         name: 'foo',
         ext: 'pro5',
@@ -68,7 +68,7 @@ describe('ParserService', () => {
       };
 
       const expectedClass = service.inputConverters.find((c) => {
-        return c instanceof InputTypeProPresenter;
+        return c instanceof InputTypeProPresenter5;
       });
       expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });

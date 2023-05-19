@@ -3,8 +3,8 @@ import { ISong, ISongInfo } from '../models/song.model';
 import { Utils } from '../utils/utils';
 import { IOutputConverter } from './output-converter.model';
 
-export class OutputTypeProPresenter implements IOutputConverter {
-  readonly name = 'ProPresenter';
+export class OutputTypeProPresenter5 implements IOutputConverter {
+  readonly name = 'Pro Presenter 5';
   readonly fileExt = 'pro5';
 
   convertToType(song: ISong): IOutputFile {

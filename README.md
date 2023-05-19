@@ -9,10 +9,10 @@ Parses the song info & lyrics from various lyric presentation software file form
 ## Formats
 |                                                                    | Input  | Output |
 | ------------------------------------------------------------------ |:------:| ------:|
-| **[ProPresenter](https://renewedvision.com/propresenter/) v4**     |   ✔️   |        |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✔️   |   ✔️  |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v6***    |         |       |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v7***    |         |       |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✔️   |        |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✔️   |   ✔️  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v6***   |         |       |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v7***   |         |       |
 | **[SongShow Plus](https://songshowplus.com/) v7**                  |         |       |
 | **[MediaShout](https://mediashout.com/)**                          |         |       |
 | **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
@@ -34,7 +34,6 @@ Parses the song info & lyrics from various lyric presentation software file form
 * Drag & drop over entire document
 * Click to allow file selection
 * Deal with possibly duplicated info keys
-* Split out ProPresenter 4 & 5 imports to be separate
 * Drop area message should be dynamic
 * folder drop?
 * Count how may files processes

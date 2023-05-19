@@ -2,19 +2,14 @@ import { XMLParser } from 'fast-xml-parser';
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
 import { IInputConverter } from './input-converter.model';
-import {
-  IProPresenter4Document,
-  IProPresenter5DisplaySlide,
-  IProPresenter5Document,
-} from '../models/propresenter-document.model';
+import { IProPresenter4Document } from '../models/propresenter-document.model';
 import { Utils } from '../utils/utils';
 
-export class InputTypeProPresenter implements IInputConverter {
-  readonly name = 'ProPresenter';
+export class InputTypeProPresenter4 implements IInputConverter {
+  readonly name = 'Pro Presenter 4';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
-    //just test the file extension for ProPresenter 4 or 5 file names
-    return /^pro[45]$/.test(rawFile.ext);
+    return rawFile.ext.toLowerCase() === 'pro4';
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {
@@ -24,7 +19,7 @@ export class InputTypeProPresenter implements IInputConverter {
     const alwaysArray = [
       'RVPresentationDocument.groups.RVSlideGrouping',
       'RVPresentationDocument.slides.RVDisplaySlide',
-      'RVPresentationDocument.groups.RVSlideGrouping.slides.RVDisplaySlide'
+      'RVPresentationDocument.groups.RVSlideGrouping.slides.RVDisplaySlide',
     ];
 
     const xmlParser = new XMLParser({
@@ -34,19 +29,11 @@ export class InputTypeProPresenter implements IInputConverter {
       parseAttributeValue: true,
       isArray: (_name, jPath: string) => alwaysArray.indexOf(jPath) !== -1,
     });
-    const parsedDoc: IProPresenter4Document | IProPresenter5Document = xmlParser.parse(
-      rawFile.data
-    );
+    const parsedDoc: IProPresenter4Document = xmlParser.parse(rawFile.data);
 
     const title = parsedDoc.RVPresentationDocument.CCLISongTitle || rawFile.name;
     const info: ISongInfo[] = this.getInfo(parsedDoc);
-    let slides: ISongSlide[] = [];
-
-    if (rawFile.ext === 'pro4') {
-      slides = this.getV4Slides(<IProPresenter4Document>parsedDoc);
-    } else if (rawFile.ext === 'pro5') {
-      slides = this.getV5Slides(<IProPresenter5Document>parsedDoc);
-    }
+    const slides: ISongSlide[] = this.getSlides(parsedDoc);
 
     return {
       fileName: rawFile.name,
@@ -56,7 +43,7 @@ export class InputTypeProPresenter implements IInputConverter {
     };
   };
 
-  private getInfo(doc: IProPresenter4Document | IProPresenter5Document): ISongInfo[] {
+  private getInfo(doc: IProPresenter4Document): ISongInfo[] {
     const skipKeys = [
       'CCLIDisplay',
       'backgroundColor',
@@ -86,47 +73,18 @@ export class InputTypeProPresenter implements IInputConverter {
     return info;
   }
 
-  private getV4Slides(doc: IProPresenter4Document): ISongSlide[] {
+  private getSlides(doc: IProPresenter4Document): ISongSlide[] {
     const slidesList: ISongSlide[] = [];
     doc.RVPresentationDocument.slides.RVDisplaySlide.forEach((slide) => {
       const title = slide.label;
-      const lyrics = Utils.stripRtf(Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData));
+      const lyrics = Utils.stripRtf(
+        Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData)
+      );
       if (title || lyrics) {
         slidesList.push({ title, lyrics });
       }
     });
 
     return slidesList;
-  }
-
-  private getV5Slides(doc: IProPresenter5Document): ISongSlide[] {
-    const slidesList: ISongSlide[] = [];
-
-    doc.RVPresentationDocument.groups.RVSlideGrouping.forEach((group) => {
-      group.slides.RVDisplaySlide.forEach((groupSlide, i) => {
-        let title = group.name || '';
-        if (group.slides.RVDisplaySlide.length > 1) {
-          //Add number suffix to every slide in the group if that group has more than one slide
-          title += ` (${i + 1})`;
-        }
-        const lyrics = this.getV5GroupSideLyrics(groupSlide);
-
-        if (title || lyrics) {
-          slidesList.push({ title, lyrics });
-        }
-      });
-    });
-
-    return slidesList;
-  }
-
-  private getV5GroupSideLyrics(slide: IProPresenter5DisplaySlide): string {
-    let lyrics = '';
-
-    if (typeof slide.displayElements.RVTextElement !== 'undefined') {
-      lyrics = Utils.stripRtf(Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData));
-    }
-
-    return lyrics;
   }
 }
