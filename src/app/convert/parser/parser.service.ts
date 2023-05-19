@@ -11,6 +11,7 @@ import { OutputTypeText } from '../outputs/output-type-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeProPresenter } from '../outputs/output-type-propresenter';
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
+import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,7 @@ export class ParserService {
 
   readonly outputConverters: IOutputConverter[] = [
     new OutputTypeProPresenter(),
+    new OutputTypeChordpro(),
     new OutputTypeText(),
     new OutputTypeDisplaySlides(),
     new OutputTypeJSON()
