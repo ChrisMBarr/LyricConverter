@@ -10,6 +10,7 @@ import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
+import { InputTypeSongPro } from '../inputs/input-type-songpro';
 
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypePlainText } from '../outputs/output-type-plain-text';
@@ -26,6 +27,7 @@ export class ParserService {
     new InputTypeProPresenter4(),
     new InputTypeProPresenter5(),
     new InputTypeChordPro(),
+    new InputTypeSongPro(),
     new InputTypePlainText(),
     new InputTypeJSON()
   ];
