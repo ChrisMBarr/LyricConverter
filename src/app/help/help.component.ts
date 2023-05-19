@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParserService } from '../convert/parser/parser.service';
+import { Utils } from '../convert/utils/utils';
 
 interface ICombinedFormatItem {
   name: string;
@@ -14,6 +15,15 @@ interface ICombinedFormatItem {
 })
 export class HelpComponent implements OnInit {
   combinedFormatsList: ICombinedFormatItem[] = [];
+
+  unsupportedFormatsList: ICombinedFormatItem[] = [
+    { name: 'ProPresenter 6', canImport: false, canExport: false },
+    { name: 'ProPresenter 7', canImport: false, canExport: false },
+    { name: 'MediaShout', canImport: false, canExport: false },
+    { name: 'EasyWorship', canImport: false, canExport: false },
+    { name: 'OpenSong', canImport: false, canExport: false },
+    { name: 'SongPro', canImport: false, canExport: false },
+  ];
 
   constructor(private parserSvc: ParserService) {}
 
@@ -39,5 +49,16 @@ export class HelpComponent implements OnInit {
           this.combinedFormatsList.push({ name: t, canImport: false, canExport: true });
         }
       });
+
+    //Now append the list of all the unsupported formats that might one day be added
+    this.combinedFormatsList = Utils.mergeArraysByProp(
+      this.combinedFormatsList,
+      this.unsupportedFormatsList,
+      'name'
+    ).sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
   }
 }

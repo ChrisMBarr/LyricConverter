@@ -20,6 +20,11 @@ describe('HelpComponent', () => {
     });
     fixture = TestBed.createComponent(HelpComponent);
     component = fixture.componentInstance;
+
+    component.unsupportedFormatsList = [
+      { name: 'Not Supported', canImport: false, canExport: false },
+    ];
+
     fixture.detectChanges();
   });
 
@@ -27,64 +32,85 @@ describe('HelpComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should build a supported formats list of all inputs and outputs from the ParserService', () => {
+  it('should build an alphabetized list of supported formats from the ParserService, and unsupported formats local to the component', () => {
     expect(component.combinedFormatsList).toEqual([
-      {
-        name: 'Foo',
-        canImport: true,
-        canExport: true,
-      },
-      {
-        name: 'Bar',
-        canImport: true,
-        canExport: true,
-      },
-      {
-        name: 'InputOnly',
-        canImport: true,
-        canExport: false,
-      },
-      {
-        name: 'OutputOnly',
-        canImport: false,
-        canExport: true,
-      },
+      { name: 'Bar', canImport: true, canExport: true },
+      { name: 'Foo', canImport: true, canExport: true },
+      { name: 'InputOnly', canImport: true, canExport: false },
+      { name: 'Not Supported', canImport: false, canExport: false },
+      { name: 'OutputOnly', canImport: false, canExport: true },
     ]);
   });
 
   it('should display a table in the UI to match the supported formats list', () => {
-    expect(fixture.debugElement.queryAll(By.css('table tbody tr')).length).toEqual(4);
+
+    expect(fixture.debugElement.queryAll(By.css('table tbody tr')).length)
+      .withContext('Number of table rows')
+      .toEqual(5);
+    //---------------------------------
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(1) td:nth-of-type(1)'))
         .nativeElement.textContent
-    ).toEqual('✓');
+    )
+      .withContext('Row 1, cell 1')
+      .toEqual('✓');
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(1) td:nth-of-type(2)'))
         .nativeElement.textContent
-    ).toEqual('✓');
+    )
+      .withContext('Row 1, cell 2')
+      .toEqual('✓');
+    //---------------------------------
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(2) td:nth-of-type(1)'))
         .nativeElement.textContent
-    ).toEqual('✓');
+    )
+      .withContext('Row 2, cell 1')
+      .toEqual('✓');
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(2) td:nth-of-type(2)'))
         .nativeElement.textContent
-    ).toEqual('✓');
+    )
+      .withContext('Row 2, cell 2')
+      .toEqual('✓');
+    //---------------------------------
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(3) td:nth-of-type(1)'))
         .nativeElement.textContent
-    ).toEqual('✓');
+    )
+      .withContext('Row 3, cell 1')
+      .toEqual('✓');
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(3) td:nth-of-type(2)'))
         .nativeElement.textContent
-    ).toEqual('');
+    )
+      .withContext('Row 3, cell 2')
+      .toEqual('');
+    //---------------------------------
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(4) td:nth-of-type(1)'))
         .nativeElement.textContent
-    ).toEqual('');
+    )
+      .withContext('Row 4, cell 1')
+      .toEqual('');
     expect(
       fixture.debugElement.query(By.css('table tbody tr:nth-of-type(4) td:nth-of-type(2)'))
         .nativeElement.textContent
-    ).toEqual('✓');
+    )
+      .withContext('Row 4, cell 2')
+      .toEqual('');
+    //---------------------------------
+    expect(
+      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(5) td:nth-of-type(1)'))
+        .nativeElement.textContent
+    )
+      .withContext('Row 5, cell 1')
+      .toEqual('');
+    expect(
+      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(5) td:nth-of-type(2)'))
+        .nativeElement.textContent
+    )
+      .withContext('Row 5, cell 2')
+      .toEqual('✓');
   });
 });

@@ -9,19 +9,19 @@ Parses the song info & lyrics from various lyric presentation software file form
 ## Formats
 |                                                                    | Input  | Output |
 | ------------------------------------------------------------------ |:------:| ------:|
+| **[ChordPro](https://chordpro.org/)**                              |   ✔️   |   ✔️  |
+| **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
+| **JSON**                                                           |   ✔️   |   ✔️  |
+| **[MediaShout](https://mediashout.com/)**                          |         |       |
+| **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
+| **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |         |       |
+| **Plain Text**                                                     |   ✔️   |   ✔️  |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✔️   |        |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✔️   |   ✔️  |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v6***   |         |       |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v7***   |         |       |
-| **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✔️   |       |
-| **[MediaShout](https://mediashout.com/)**                          |         |       |
-| **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
-| **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |         |       |
-| **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
-| **[ChordPro](https://chordpro.org/)**                              |   ✔️   |   ✔️  |
 | **[SongPro](https://songpro.org/)**                                |         |       |
-| **Plain Text**                                                     |   ✔️   |   ✔️  |
-| **LyricConverter JSON**                                            |   ✔️   |   ✔️  |
+| **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✔️   |       |
 
   *Note: You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
 
@@ -42,6 +42,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 * Multiple header images
 * Redesign with TailWinds
 * Allow user-configurable options for output file (resolution, text size, etc)
+* Split out each format input/output into its' own NPM package
 
 
 # Contributing
