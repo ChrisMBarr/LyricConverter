@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.272273">
+  <properties>
+    <titles>
+      <title>How Firm A Foundation</title>
+    </titles>
+    <copyright>Public Domain</copyright>
+    <released>1787</released>
+    <verseOrder>v1 v2 v3 v4 v5</verseOrder>
+    <songbooks>
+      <songbook name="Rippon's Selection of Hymns"/>
+    </songbooks>
+    <themes>
+      <theme>Guidance</theme>
+      <theme>Care</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        How <chord root="G"/>firm <chord root="C"/>a foun<chord root="G"/>dation, ye <chord root="G"/>saints of the <chord root="D"/>Lord,<br/>
+        Is <chord root="G"/>laid <chord root="C"/>for your <chord root="G"/>faith <chord root="E" structure="min"/>in His <chord root="G" bass="D"/>ex<chord root="D" structure="dom7"/>cellent <chord root="G"/>word!<br/>
+        What <chord root="G"/>more can He <chord root="E" structure="min"/>say than to <chord root="G"/>you He hath <chord root="D"/>said,<br/>
+        To <chord root="G"/>you <chord root="C"/>who for <chord root="G"/>re<chord root="E" structure="min"/>fuge to <chord root="G" bass="D"/>Je<chord root="D" structure="dom7"/>sus hath <chord root="G"/>fled.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        "Fear <chord root="G"/>not, <chord root="C"/>I am <chord root="G"/>with thee, O <chord root="G"/>be not dis<chord root="D"/>mayed,<br/>
+        For <chord root="G"/>I <chord root="C"/>am your <chord root="G"/>God, <chord root="E" structure="min"/>and will <chord root="G" bass="D"/>still <chord root="D" structure="dom7"/>give thee <chord root="G"/>aid;<br/>
+        I'll <chord root="G"/>strengthen thee, <chord root="E" structure="min"/>help thee and <chord root="G"/>cause thee to <chord root="D"/>stand,<br/>
+        Up<chord root="G"/>held <chord root="C"/>by My <chord root="G"/>right<chord root="E" structure="min"/>eous, om<chord root="G" bass="D"/>ni<chord root="D" structure="dom7"/>potent <chord root="G"/>hand."
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        "When <chord root="G"/>through <chord root="C"/>the deep <chord root="G"/>waters I <chord root="G"/>call thee to <chord root="D"/>go,<br/>
+        The <chord root="G"/>ri<chord root="C"/>vers of <chord root="G"/>sor<chord root="E" structure="min"/>row shall <chord root="G" bass="D"/>not <chord root="D" structure="dom7"/>over<chord root="G"/>flow;<br/>
+        For I<chord root="G"/> will be <chord root="E" structure="min"/>with thee, thy <chord root="G"/>troubles to <chord root="D"/>bless,<br/>
+        And <chord root="G"/>sanc<chord root="C"/>tify <chord root="G"/>to <chord root="E" structure="min"/>thee thy <chord root="G" bass="D"/>deep<chord root="D" structure="dom7"/>est dis<chord root="G"/>tress."
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        "When <chord root="G"/>through <chord root="C"/>fiery <chord root="G"/>trials thy <chord root="G"/>pathway shall <chord root="D"/>lie,<br/>
+        My <chord root="G"/>grace, <chord root="C"/>all suf<chord root="G"/>fi<chord root="E" structure="min"/>cient shall <chord root="G" bass="D"/>be <chord root="D" structure="dom7"/>thy sup<chord root="G"/>ply;<br/>
+        The f<chord root="G"/>lame shall not <chord root="E" structure="min"/>hurt thee; I <chord root="G"/>only de<chord root="D"/>sign<br/>
+        Thy <chord root="G"/>dross <chord root="C"/>to con<chord root="G"/>sume, <chord root="E" structure="min"/>and thy <chord root="G" bass="D"/>gold <chord root="D" structure="dom7"/>to re<chord root="G"/>fine."
+      </lines>
+    </verse>
+    <verse name="v5">
+      <lines>
+        "The <chord root="G"/>soul <chord root="C"/>that on <chord root="G"/>Jesus hath <chord root="G"/>leaned for re<chord root="D"/>pose,<br/>
+        I <chord root="G"/>will <chord root="C"/>not, I <chord root="G"/>will <chord root="E" structure="min"/>not de<chord root="G" bass="D"/>sert <chord root="D" structure="dom7"/>to his <chord root="G"/>foes;<br/>
+        That <chord root="G"/>soul, though all <chord root="E" structure="min"/>hell should en<chord root="G"/>deavor to <chord root="D"/>shake,<br/>
+        I'll <chord root="G"/>ne<chord root="C"/>ver, no <chord root="G"/>ne<chord root="E" structure="min"/>ver, no <chord root="G" bass="D"/>ne<chord root="D" structure="dom7"/>ver for<chord root="G"/>sake!"
+      </lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,399 @@
+<RVPresentationDocument height="1050" width="1680" versionNumber="500" docType="0"
+  creatorCode="1349676880" lastDateUsed="2014-10-12T20:44:32" usedCount="0" category="Song"
+  resourcesDirectory="" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes=""
+  artist="Shane Bernard" author="" album="" CCLIDisplay="0" CCLIArtistCredits=""
+  CCLISongTitle="Be Near" CCLIPublisher="Waiting Room Music" CCLICopyrightInfo="2003"
+  CCLILicenseNumber="" chordChartPath="">
+  <timeline timeOffSet="0" selectedMediaTrackIndex="0" unitOfMeasure="60" duration="0" loop="0">
+    <timeCues containerClass="NSMutableArray"></timeCues>
+    <mediaTracks containerClass="NSMutableArray"></mediaTracks>
+  </timeline>
+  <bibleReference containerClass="NSMutableDictionary"></bibleReference>
+  <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+    motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+  <groups containerClass="NSMutableArray">
+    <RVSlideGrouping name="Background" uuid="72801056-2a83-7531-0a6b-c038601f3a57" color="0 0 0 0"
+      serialization-array-index="0">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="0" UUID="56c44c88-cfb9-196f-a5fa-40d1b478bb8a"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray">
+            <RVMediaCue displayName="VideoSample.mov" delayTime="0" timeStamp="0" enabled="1"
+              UUID="1E6852F0-5276-46AA-927B-A843E195B2AE"
+              parentUUID="AFB57D38-6F2E-419F-AF17-7395234FF223" elementClassName="RVVideoElement"
+              behavior="1" alignment="4" serialization-array-index="0">
+              <element displayDelay="0" displayName="VideoSample.mov" locked="0" persistent="0"
+                typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="0"
+                drawingStroke="0" fillColor="1 1 1 1" rotation="0"
+                source="file://localhost/Users/FiniteLooper/Renewed%20Vision%20Media/Video/VideoSample.mov"
+                flippedHorizontally="0" flippedVertically="0" scaleFactor="1"
+                serializedImageOffset="0.000000@0.000000"
+                serializedFilters="YnBsaXN0MDDUAQIDBAUIFhdUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLRBgdUcm9vdIABowkKD1UkbnVsbNILDA0OViRjbGFzc1pOUy5vYmplY3RzgAKg0hAREhNYJGNsYXNzZXNaJGNsYXNzbmFtZaMTFBVeTlNNdXRhYmxlQXJyYXlXTlNBcnJheVhOU09iamVjdBIAAYagXxAPTlNLZXllZEFyY2hpdmVyCBEWHygyNTo8QEZLUl1fYGVueX2MlJ2iAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ="
+                scaleBehavior="3" brightness="0.01" contrast="1" saturation="1" hue="0.01"
+                manufactureURL="" manufactureName="" format="H.264" enableColorFilter="0"
+                colorFilter="1 0 0 1" enableBlur="0" blurRadius="0" enableEdgeBlur="0"
+                edgeBlurRadius="0" edgeBlurArea="0" enableSepia="0" enableColorInvert="0"
+                enableGrayInvert="0" enableHeatSignature="0" audioVolume="1" inPoint="0"
+                outPoint="11992" playRate="1" playbackBehavior="1" timeScale="600" endPoint="11992">
+                <_-RVRect3D-_position x="0" y="0" z="0" width="1024" height="768"></_-RVRect3D-_position>
+                <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                  <NSMutableString serialization-native-value="{5, -5}"
+                    serialization-dictionary-key="shadowOffset"></NSMutableString>
+                  <NSNumber serialization-native-value="0"
+                    serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                  <NSColor serialization-native-value="0 0 0 0.3333333432674408"
+                    serialization-dictionary-key="shadowColor"></NSColor>
+                </_-D-_serializedShadow>
+                <stroke containerClass="NSMutableDictionary">
+                  <NSColor serialization-native-value="0 0 0 1"
+                    serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                  <NSNumber serialization-native-value="1"
+                    serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+                </stroke>
+              </element>
+              <_-RVProTransitionObject-_transitionObject></_-RVProTransitionObject-_transitionObject>
+            </RVMediaCue>
+          </cues>
+          <displayElements containerClass="NSMutableArray"></displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="Verse 1" uuid="879b9305-3db4-7632-b826-715a1c7284cd" color="0 0 1 1"
+      serialization-array-index="1">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="1" UUID="349b10c2-362d-06b9-ea34-2b938900f526"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgwIFxzdHJva2VjMSBZb3UgYXJlIGFsbFwKQmlnIGFuZCBzbWFsbFwKQmVhdXRpZnVsfQ=="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="32.8125" y="27.34375" z="0" width="1614.375"
+                height="995.3125"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="1"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="2" UUID="b458c19d-19c5-9ca1-0730-34dc0d5de9fa"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="1">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgwIFxzdHJva2VjMSBBbmQgd29uZGVyZnVsIHRvIFwKVHJ1c3QgaW4gZ3JhY2VcClRocm91Z2ggZmFpdGhcClxwYXJkXHR4NTYwXHR4MTEyMFx0eDE2ODBcdHgyMjQwXHR4MjgwMFx0eDMzNjBcdHgzOTIwXHR4NDQ4MFx0eDUwNDBcdHg1NjAwXHR4NjE2MFx0eDY3MjBccGFyZGlybmF0dXJhbFxxYwpcY2YxIFxvdXRsMFxzdHJva2V3aWR0aDAgXHN0cm9rZWMxIEJ1dCBJJ20gYXNraW5nIHRvIHRhc3RlfQ=="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="32.8125" y="27.34375" z="0" width="1614.375"
+                height="995.3125"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="1"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="Bridge 1" uuid="A8499FCB-AF89-40D8-9671-E85706B8EA0B" color="0 1 1 1"
+      serialization-array-index="2">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 1" enabled="1" highlightColor="" hotKey="" label=""
+          notes="" slideType="1" sort_index="3" UUID="E952B056-FF18-4CE6-8911-C1424EDEF86A"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcZXhwbmQwXGV4cG5kdHcwXGtlcm5pbmcwClxvdXRsMFxzdHJva2V3aWR0aDAgXHN0cm9rZWMwIEZvciBkYXJrIGlzIGxpZ2h0IHRvIFlvdVwKRGVwdGhzIGFyZSBIZWlnaHQgdG8geW91XApGYXIgaXMgbmVhclwKQnV0IExvcmQgSSBuZWVkIHRvIGhlYXIgZnJvbSBZb3UgfQ=="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="49.21875" y="41.01562" z="0" width="1581.562"
+                height="967.9688"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 0"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="0"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="Chorus" uuid="319f1463-3c59-9268-623b-be2da570f476" color="1 0 0 1"
+      serialization-array-index="3">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="4" UUID="88d6773f-ce06-db85-49d6-914bef01fee3"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgwIFxzdHJva2VjMSBCZSBuZWFyIE8gR29kXApCZSBuZWFyIE8gR29kIG9mIHVzXApZb3VyIG5lYXJuZXNzIGlzXApUbyB1cyBvdXIgZ29vZH0="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="32.8125" y="27.34375" z="0" width="1614.375"
+                height="995.3125"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="1"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="Post-Chorus" uuid="E5052FF3-7B57-42A7-A348-E5C52C770AED"
+      color="0.5 0 0.5 1" serialization-array-index="4">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 1" enabled="1" highlightColor="" hotKey="" label=""
+          notes="" slideType="1" sort_index="5" UUID="C7EECDD4-DD7B-48B2-A67A-8FAA86CB5D0C"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcZXhwbmQwXGV4cG5kdHcwXGtlcm5pbmcwClxvdXRsMFxzdHJva2V3aWR0aDAgXHN0cm9rZWMwIE91ciBHb29kIH0="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="49.21875" y="41.01562" z="0" width="1581.562"
+                height="967.9688"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 0"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="0"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="Verse 2" uuid="0173b2d0-7137-58b2-1903-67def417faac" color="0 1 0 1"
+      serialization-array-index="5">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="6" UUID="f33a84de-2def-d59b-f989-c777daaa3807"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgwIFxzdHJva2VjMSBZb3VyIGZ1bGxuZXNzIGlzIG1pbmVcClJldmVsYXRpb24gRGl2aW5lfQ=="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="32.8125" y="27.34375" z="0" width="1614.375"
+                height="995.3125"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="1"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="7" UUID="d16e1cad-12f2-53b1-d259-7a0e5bf4a57c"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="1">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgwIFxzdHJva2VjMSBCdXQgb2ggdG8gdGFzdGVcb3V0bDBcc3Ryb2tld2lkdGgwIFxzdHJva2VjMSBcClRvIGtub3cgbXVjaFwKTW9yZSB0aGFuIGEgcGFnZVwKVG8gZmVlbCBZb3VyIGVtYnJhY2V9"
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="32.8125" y="27.34375" z="0" width="1614.375"
+                height="995.3125"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="1"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="Ending" uuid="26520F92-9B90-4CB6-BBB6-65958B7AECDA" color="1 0.5 0 1"
+      serialization-array-index="6">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 1" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="8" UUID="1B38B80D-C0EA-4680-806D-92126655A963"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray">
+            <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0"
+              typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1"
+              drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" adjustsHeightToFit="0"
+              verticalAlignment="0"
+              RTFData="e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQzXGNvY29hc3VicnRmMTQwClxjb2NvYXNjcmVlbmZvbnRzMXtcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHFjCgpcZjBcZnMyNjAgXGNmMSBcZXhwbmQwXGV4cG5kdHcwXGtlcm5pbmcwClxvdXRsMFxzdHJva2V3aWR0aDAgXHN0cm9rZWMwIE15IEdvb2QgfQ=="
+              revealType="0" serialization-array-index="0">
+              <_-RVRect3D-_position x="49.21875" y="41.01562" z="0" width="1581.562"
+                height="967.9688"></_-RVRect3D-_position>
+              <_-D-_serializedShadow containerClass="NSMutableDictionary">
+                <NSMutableString serialization-native-value="{3.4641016, -2}"
+                  serialization-dictionary-key="shadowOffset"></NSMutableString>
+                <NSNumber serialization-native-value="4"
+                  serialization-dictionary-key="shadowBlurRadius"></NSNumber>
+                <NSColor serialization-native-value="0 0 0 1"
+                  serialization-dictionary-key="shadowColor"></NSColor>
+              </_-D-_serializedShadow>
+              <stroke containerClass="NSMutableDictionary">
+                <NSColor serialization-native-value="0 0 0 0"
+                  serialization-dictionary-key="RVShapeElementStrokeColorKey"></NSColor>
+                <NSNumber serialization-native-value="0"
+                  serialization-dictionary-key="RVShapeElementStrokeWidthKey"></NSNumber>
+              </stroke>
+            </RVTextElement>
+          </displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+    <RVSlideGrouping name="*blank*" uuid="cba67af7-515f-5048-79f8-155a2f1ca390" color="0 0 0 0"
+      serialization-array-index="7">
+      <slides containerClass="NSMutableArray">
+        <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey=""
+          label="" notes="" slideType="1" sort_index="9" UUID="f6b2050c-8255-f69d-20d3-39b6611de714"
+          drawingBackgroundColor="0" chordChartPath="" serialization-array-index="0">
+          <cues containerClass="NSMutableArray"></cues>
+          <displayElements containerClass="NSMutableArray"></displayElements>
+          <_-RVProTransitionObject-_transitionObject transitionType="-1" transitionDuration="1"
+            motionEnabled="0" motionDuration="20" motionSpeed="100"></_-RVProTransitionObject-_transitionObject>
+        </RVDisplaySlide>
+      </slides>
+    </RVSlideGrouping>
+  </groups>
+  <arrangements containerClass="NSMutableArray">
+    <RVSongArrangement name="Worship" uuid="F0E4E8E3-185A-47B6-A121-7A2C45F76299" color="0 0 0 0"
+      serialization-array-index="0">
+      <groupIDs containerClass="NSMutableArray">
+        <NSMutableString serialization-native-value="72801056-2a83-7531-0a6b-c038601f3a57"
+          serialization-array-index="0"></NSMutableString>
+        <NSMutableString serialization-native-value="879b9305-3db4-7632-b826-715a1c7284cd"
+          serialization-array-index="1"></NSMutableString>
+        <NSMutableString serialization-native-value="A8499FCB-AF89-40D8-9671-E85706B8EA0B"
+          serialization-array-index="2"></NSMutableString>
+        <NSMutableString serialization-native-value="319f1463-3c59-9268-623b-be2da570f476"
+          serialization-array-index="3"></NSMutableString>
+        <NSMutableString serialization-native-value="319f1463-3c59-9268-623b-be2da570f476"
+          serialization-array-index="4"></NSMutableString>
+        <NSMutableString serialization-native-value="E5052FF3-7B57-42A7-A348-E5C52C770AED"
+          serialization-array-index="5"></NSMutableString>
+        <NSMutableString serialization-native-value="0173b2d0-7137-58b2-1903-67def417faac"
+          serialization-array-index="6"></NSMutableString>
+        <NSMutableString serialization-native-value="A8499FCB-AF89-40D8-9671-E85706B8EA0B"
+          serialization-array-index="7"></NSMutableString>
+        <NSMutableString serialization-native-value="319f1463-3c59-9268-623b-be2da570f476"
+          serialization-array-index="8"></NSMutableString>
+        <NSMutableString serialization-native-value="319f1463-3c59-9268-623b-be2da570f476"
+          serialization-array-index="9"></NSMutableString>
+        <NSMutableString serialization-native-value="319f1463-3c59-9268-623b-be2da570f476"
+          serialization-array-index="10"></NSMutableString>
+        <NSMutableString serialization-native-value="319f1463-3c59-9268-623b-be2da570f476"
+          serialization-array-index="11"></NSMutableString>
+        <NSMutableString serialization-native-value="26520F92-9B90-4CB6-BBB6-65958B7AECDA"
+          serialization-array-index="12"></NSMutableString>
+        <NSMutableString serialization-native-value="cba67af7-515f-5048-79f8-155a2f1ca390"
+          serialization-array-index="13"></NSMutableString>
+      </groupIDs>
+    </RVSongArrangement>
+  </arrangements>
+</RVPresentationDocument>

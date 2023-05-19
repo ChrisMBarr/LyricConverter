@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.499155">
+  <properties>
+    <titles>
+      <title>Be Thou My Vision</title>
+    </titles>
+    <authors>
+      <author>Elanor H. Hull</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>248328</ccliNo>
+    <variant>Irish Folk Hymn</variant>
+    <themes>
+      <theme>Commitment</theme>
+      <theme>Obedience</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <chord root="D"/>Be Thou my <chord root="B" structure="min7"/>Vision, O <chord root="G"/>Lord of my <chord root="D"/>heart,<br/>
+        <chord root="A"/>Naught be all <chord root="B" structure="min7"/>else to me <chord root="G"/>save that Thou <chord root="A"/>art;<br/>
+        <chord root="G" structure="maj7"/>Thou my best <chord root="F#" structure="min7"/>thought by <chord root="D"/>day or by <chord root="G"/>night<chord root="A"/>,<br/>
+        <chord root="D"/>Waking or <chord root="B" structure="min7"/>sleeping, Thy <chord root="G" structure="add9"/>presence my <chord root="D"/>light.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <chord root="D"/>Be Thou my <chord root="B" structure="min7"/>wisdom, be <chord root="G"/>Thou my true <chord root="D"/>Word,<br/>
+        <chord root="A"/>I ever <chord root="B" structure="min7"/>with Thee and <chord root="G"/>Thou with me, <chord root="A"/>Lord;<br/>
+        <chord root="G" structure="maj7"/>Thou my great <chord root="F#" structure="min7"/>Father, and <chord root="D"/>I thy true <chord root="G"/>son<chord root="A"/>,<br/>
+        <chord root="D"/>Thou in me <chord root="B" structure="min7"/>dwelling, and <chord root="G" structure="add9"/>I with Thee <chord root="D"/>one.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <chord root="E"/>Riches I <chord root="C#" structure="min7"/>heed not, nor <chord root="A"/>man's empty <chord root="E"/>praise,<br/>
+        <chord root="B"/>Thou mine In<chord root="C#" structure="min7"/>heritance <chord root="A"/>now and al<chord root="B"/>ways;<br/>
+        <chord root="A" structure="maj7"/>Thou and Thou <chord root="G#" structure="min7"/>only, <chord root="E"/>first in my <chord root="A"/>heart<chord root="B"/>,<br/>
+        <chord root="E"/>High King of <chord root="C#" structure="min7"/>heaven, my <chord root="A" structure="add9"/>Treasure Thou <chord root="E"/>art.
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <chord root="E"/>High King of <chord root="C#" structure="min7"/>heaven my <chord root="A"/>victory <chord root="E"/>won,<br/>
+        <chord root="B"/>May I reach <chord root="C#" structure="min7"/>heaven's joys, <chord root="A"/>O bright heav'n's <chord root="B"/>Sun;<br/>
+        <chord root="A" structure="maj7"/>Heart of my <chord root="G#" structure="min7"/>own heart, what<chord root="E"/>ever be<chord root="A"/>fall<chord root="B"/>,<br/>
+        <chord root="E"/>Still be my <chord root="C#" structure="min7"/>Vision, O <chord root="A" structure="add9"/>Ruler of <chord root="E"/>all.
+      </lines>
+    </verse>
+  </lyrics>
+</song>
