@@ -54,7 +54,7 @@ describe('ParserService', () => {
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeText;
       });
-      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockSimpleTextFile)).toEqual(
+      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockEmptyTextFile)).toEqual(
         expectedClass
       );
     });

@@ -1,7 +1,7 @@
 import {
   mockEmptyJsonFile,
   mockSimpleChordProFile,
-  mockSimpleTextFile,
+  mockEmptyTextFile,
   mockEmptyProPresenter5File,
   mockEmptyProPresenter4File,
 } from 'test/mock-raw-files';
@@ -50,7 +50,7 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should properly reject a plain text file', () => {
-      const testFile: IRawDataFile = { ...mockSimpleTextFile };
+      const testFile: IRawDataFile = { ...mockEmptyTextFile };
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
