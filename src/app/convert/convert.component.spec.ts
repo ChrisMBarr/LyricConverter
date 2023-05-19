@@ -8,7 +8,7 @@ import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
 import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
-import { OutputTypeText } from './outputs/output-type-text';
+import { OutputTypePlainText } from './outputs/output-type-plain-text';
 import { IOutputConverter } from './outputs/output-converter.model';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
@@ -190,7 +190,7 @@ describe('ConvertComponent', () => {
         spyOn(component, 'getConvertersAndExtractData').and.callFake(() => []);
 
         fixture.detectChanges();
-        component.selectedOutputType = new OutputTypeText();
+        component.selectedOutputType = new OutputTypePlainText();
 
         component.onFileDrop([
           {
@@ -346,13 +346,13 @@ describe('ConvertComponent', () => {
       };
 
       it('should get converters for passed in raw files and list them for Text Type Output', () => {
-        component.selectedOutputType = new OutputTypeText();
+        component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile]);
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
 
       it('should NOT get converters for passed in raw files of an unknown type', () => {
-        component.selectedOutputType = new OutputTypeText();
+        component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile, mockRawFiles.mockImageFile]);
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });

@@ -2,7 +2,7 @@ import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { IInputConverter } from './input-converter.model';
 import { ISong } from 'src/app/convert/models/song.model';
 
-export class InputTypeText implements IInputConverter {
+export class InputTypePlainText implements IInputConverter {
   readonly name = 'Plain Text';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {

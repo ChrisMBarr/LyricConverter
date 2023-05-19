@@ -4,7 +4,7 @@ import { ParserService } from './parser.service';
 import { IFileWithData, IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
-import { InputTypeText } from '../inputs/input-type-text';
+import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import * as mockRawFiles from 'test/mock-raw-files';
 
 describe('ParserService', () => {
@@ -52,7 +52,7 @@ describe('ParserService', () => {
 
     it('should properly detect a plain text file', () => {
       const expectedClass = service.inputConverters.find((c) => {
-        return c instanceof InputTypeText;
+        return c instanceof InputTypePlainText;
       });
       expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockEmptyTextFile)).toEqual(
         expectedClass

@@ -1,17 +1,18 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { InputTypeText } from './input-type-text';
+import { InputTypePlainText } from './input-type-plain-text';
 import {
   mockEmptyJsonFile,
   mockEmptyProPresenter5File,
   mockSimpleChordProFile,
   mockEmptyTextFile,
 } from 'test/mock-raw-files';
+import { TestUtils } from 'test/test-utils';
 
-describe('InputTypeText', () => {
-  let inputConverter: InputTypeText;
+describe('InputTypePlainText', () => {
+  let inputConverter: InputTypePlainText;
 
   beforeEach(() => {
-    inputConverter = new InputTypeText();
+    inputConverter = new InputTypePlainText();
   });
 
   it('should create an instance', () => {
@@ -39,4 +40,5 @@ describe('InputTypeText', () => {
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
+
 });

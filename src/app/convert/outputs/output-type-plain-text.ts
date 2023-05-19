@@ -2,7 +2,7 @@ import { IOutputFile } from '../models/file.model';
 import { ISong } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
 
-export class OutputTypeText implements IOutputConverter {
+export class OutputTypePlainText implements IOutputConverter {
   readonly name = 'Plain Text';
   readonly fileExt = 'txt';
 

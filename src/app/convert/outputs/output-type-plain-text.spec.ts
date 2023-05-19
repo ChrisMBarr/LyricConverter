@@ -1,12 +1,12 @@
 import { mockSongObjects } from 'test/mock-song-objects';
 import { TestUtils } from 'test/test-utils';
-import { OutputTypeText } from './output-type-text';
+import { OutputTypePlainText } from './output-type-plain-text';
 
-describe('OutputTypeText', () => {
-  let outputType: OutputTypeText;
+describe('OutputTypePlainText', () => {
+  let outputType: OutputTypePlainText;
 
   beforeEach(() => {
-    outputType = new OutputTypeText();
+    outputType = new OutputTypePlainText();
   });
 
   it('should create an instance', () => {

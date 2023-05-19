@@ -8,11 +8,11 @@ import { IOutputConverter } from '../outputs/output-converter.model';
 import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
-import { InputTypeText } from '../inputs/input-type-text';
+import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
-import { OutputTypeText } from '../outputs/output-type-text';
+import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
@@ -26,14 +26,14 @@ export class ParserService {
     new InputTypeProPresenter4(),
     new InputTypeProPresenter5(),
     new InputTypeChordPro(),
-    new InputTypeText(),
+    new InputTypePlainText(),
     new InputTypeJSON()
   ];
 
   readonly outputConverters: IOutputConverter[] = [
     new OutputTypeProPresenter5(),
     new OutputTypeChordpro(),
-    new OutputTypeText(),
+    new OutputTypePlainText(),
     new OutputTypeDisplaySlides(),
     new OutputTypeJSON()
   ];
