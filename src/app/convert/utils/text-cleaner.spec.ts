@@ -18,17 +18,19 @@ describe('TextCleaner', () => {
     );
   });
 
-  it('convertWin1252ToUtf8() should keep standard characters as is', () => {
+  it('convertWin1252ToUtf8() should keep standard English characters as they are', () => {
     expect(
       TextCleaner.convertWin1252ToUtf8('The quick brown dog jumped over the lazy fox')
     ).toEqual('The quick brown dog jumped over the lazy fox');
     expect(TextCleaner.convertWin1252ToUtf8('0123456789')).toEqual('0123456789');
-    expect(TextCleaner.convertWin1252ToUtf8('`~!@#$%^&*()_+[]\\{}|;\':",./<>?')).toEqual('`~!@#$%^&*()_+[]\\{}|;\':",./<>?');
+    expect(TextCleaner.convertWin1252ToUtf8('`~!@#$%^&*()_+[]\\{}|;\':",./<>?')).toEqual(
+      '`~!@#$%^&*()_+[]\\{}|;\':",./<>?'
+    );
   });
 
-  xit('convertWin1252ToUtf8() should replace all Win1252 characters to Utf8 characters in a given string', () => {
-    expect(
-      TextCleaner.convertWin1252ToUtf8('salvaciÃ³n')
-    ).toEqual('salvación');
+  it('convertWin1252ToUtf8() should replace all Win1252 encoded characters with Utf8 characters in a given string', () => {
+    expect(TextCleaner.convertWin1252ToUtf8('salvaciÃ³n')).toEqual('salvación');
+    expect(TextCleaner.convertWin1252ToUtf8('enseÃ±as')).toEqual('enseñas');
+    expect(TextCleaner.convertWin1252ToUtf8('perdÃ­ ­')).toEqual('perdí ­');
   });
 });

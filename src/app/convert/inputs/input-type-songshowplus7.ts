@@ -71,17 +71,8 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
         infoArray.splice(0, 1);
       }
 
-      songTitle = infoArray[0];
-
-      //remove leading dollar signs for whatever reason...
-      songTitle =
-        songTitle.indexOf('$') === 1 ? songTitle.substring(1, songTitle.length) : songTitle;
-
-      //remove trailing dollar signs for whatever reason...
-      songTitle = songTitle.substring(
-        0,
-        songTitle.length - +(songTitle.lastIndexOf('$') === songTitle.length - 1)
-      );
+      //Remove dollar signs from the title
+      songTitle = infoArray[0].replace(/\$/g, '');
     }
 
     //Convert characters as needed - useful for non-English alphabets (Spanish)
@@ -93,7 +84,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     };
   }
 
-  private getSongInfo(infoArray: string[], keywords: string): ISongInfo[]{
+  private getSongInfo(infoArray: string[], keywords: string): ISongInfo[] {
     const songInfo = [];
 
     if (infoArray[1]) {
@@ -134,7 +125,34 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     return songInfo;
   }
 
-  private createInitialSlidesArray(sections: string[]): ISongSlide[]{
+  private cleanOddCharsFromSlideTitles(lyrics: string): string {
+    //Convert character encodings - useful for non-English alphabets (Spanish)
+    return (
+      TextCleaner.convertWin1252ToUtf8(lyrics)
+        //Sometime slide titles will end with an odd character
+        //If the last character isn't a letter, number, or closing parenthesis then remove it
+        .replace(/[^a-z0-9)]$/i, '')
+    );
+  }
+
+  private cleanOddCharsFromSlideLyrics(lyrics: string): string {
+    return (
+      //Convert character encodings - useful for non-English alphabets (Spanish)
+      TextCleaner.convertWin1252ToUtf8(lyrics)
+        //Replace multiple slashes sometimes?
+        //Also remove some strange ugly characters...
+        .replace(/\/+|¶/g, '')
+        //remove beginning/ending whitespace
+        .trim()
+        //Sometimes the first character of lyrics is a random lowercase letter
+        //If we have a lowercase letter first and then an uppercase letter, remove that first character
+        .replace(/^[a-z]([A-Z])/, '$1')
+        //If the last characters are newlines followed by a non-letter character, remove them
+        .replace(/[\n\r]+[^a-z]$/i,'')
+    );
+  }
+
+  private createInitialSlidesArray(sections: string[]): ISongSlide[] {
     const slideArray = [];
 
     //Sections tend to begin with N number of control characters, a random print character, more control characters, and then the title "Verse 1" or something
@@ -154,7 +172,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     //Loop through the sections
     //But SKIP the first one since it contains the song info we don't need here
     for (let i = 1; i < sections.length; i++) {
-      const thisSection = sections[i] || '';
+      const thisSection = sections[i] || /* istanbul ignore next */ '';
       //Run the regex on each section to split out the slide title from the lyrics
       const matches = thisSection.match(slidePattern);
       let slideTitle = '';
@@ -171,26 +189,23 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
         }
       }
 
-      //Convert characters as needed - useful for non-English alphabets (Spanish)
-      slideTitle = TextCleaner.convertWin1252ToUtf8(slideTitle);
-      slideLyrics = TextCleaner.convertWin1252ToUtf8(slideLyrics);
+      slideTitle = this.cleanOddCharsFromSlideTitles(slideTitle);
+      slideLyrics = this.cleanOddCharsFromSlideLyrics(slideLyrics);
 
-      //Replace multiple slashes sometimes?
-      //Also remove some strange ugly characters...
-      slideLyrics = slideLyrics.replace(/\/+|¶/g, '');
-
-      //Save it to the array!
-      slideArray.push({
-        title: slideTitle,
-        lyrics: slideLyrics,
-      });
+      //don't add slides with empty lyrics
+      if (slideLyrics !== '') {
+        slideArray.push({
+          title: slideTitle,
+          lyrics: slideLyrics,
+        });
+      }
     }
 
     return slideArray;
   }
 
   private getSlidesAndKeywords(sections: string[]): { slides: ISongSlide[]; keywords: string } {
-    const slideArray = this.createInitialSlidesArray(sections)
+    const slideArray = this.createInitialSlidesArray(sections);
 
     //The last slide also contains the keywords, we need to parse these out separately
     const lastSlideObj = this.getKeywordsFromLastSlide(sections.slice(-1)[0]);
@@ -203,6 +218,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
         lastSlideObj.keywords.length > lastSlideObj.lastLyrics.length
       ) {
         keywords = lastSlideObj.lastLyrics;
+
         slideArray.push({
           title: '',
           lyrics: lastSlideObj.keywords.replace(/\/+/g, ''),
@@ -255,8 +271,8 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
         //The keywords are the entire array except for the first two items
         keywords = infoArray
           .splice(2)
-          .join(', ')
-          .replace(/\r\n\t/g, '');
+          .map((x) => x.replace(/[\r\n\t]*/g, ''))
+          .join(', ');
 
         if (infoArray && infoArray[1]) {
           //Return the last slide minus the keywords, then parse out the optional beginning non-word character
@@ -269,7 +285,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
 
         //Convert characters as needed - useful for non-english alphabets (Spanish)
         keywords = TextCleaner.convertWin1252ToUtf8(keywords);
-        lastLyrics = TextCleaner.convertWin1252ToUtf8(lastLyrics);
+        lastLyrics = this.cleanOddCharsFromSlideLyrics(lastLyrics);
       }
     }
 

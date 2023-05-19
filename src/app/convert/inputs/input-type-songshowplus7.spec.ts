@@ -69,32 +69,28 @@ describe('InputTypeSongShowPlus7', () => {
               'Be near O God\r\nBe near O God of us\r\nYour nearness is to us our good\r\nBe near O God\r\nBe near O God of us\r\nYour nearness is to us our good\r\nOur good',
           },
           {
-            title: 'Other',
-            lyrics: '',
-          },
-          {
             title: 'Verse 1',
             lyrics:
-              "oYou are all big and small\r\nBeautiful\r\nAnd wonderful\r\nTo trust in grace through faith\r\nBut I'm asking to taste",
+              "You are all big and small\r\nBeautiful\r\nAnd wonderful\r\nTo trust in grace through faith\r\nBut I'm asking to taste",
           },
           {
             title: 'Verse 2',
             lyrics:
-              'eFor dark is light to You\r\nDepths are height to You\r\nFar is near\r\nBut Lord I need to hear from You',
+              'For dark is light to You\r\nDepths are height to You\r\nFar is near\r\nBut Lord I need to hear from You',
           },
           {
             title: 'Verse 3',
             lyrics:
-              'pYour fullness is mine\r\nRevelation divine\r\nBut oh to taste\r\nTo know much more than a page\r\nTo feel Your embrace',
+              'Your fullness is mine\r\nRevelation divine\r\nBut oh to taste\r\nTo know much more than a page\r\nTo feel Your embrace',
           },
           {
             title: 'Verse 4',
             lyrics:
-              'cFor dark is light to You\r\nDepths are height to You\r\nFar is near\r\nBut Lord I need to hear from You',
+              'For dark is light to You\r\nDepths are height to You\r\nFar is near\r\nBut Lord I need to hear from You',
           },
           {
             title: 'Ending',
-            lyrics: 'My good\r\n',
+            lyrics: 'My good',
           },
         ],
       });
@@ -121,7 +117,7 @@ describe('InputTypeSongShowPlus7', () => {
           },
           {
             name: 'Keywords',
-            value: 'Prayer, \nRepentance',
+            value: 'Prayer, Repentance',
           },
         ],
         slides: [
@@ -138,7 +134,7 @@ describe('InputTypeSongShowPlus7', () => {
           {
             title: 'Verse 1',
             lyrics:
-              'We bow our hearts\r\nwe bend our knees\r\nOh Spirit come\r\nmake us humble\r\nWe turn our eyes\r\nfrom evil things\r\nOh Lord we cast\r\ndown our idols\r\n',
+              'We bow our hearts\r\nwe bend our knees\r\nOh Spirit come\r\nmake us humble\r\nWe turn our eyes\r\nfrom evil things\r\nOh Lord we cast\r\ndown our idols',
           },
         ],
       });
@@ -157,7 +153,7 @@ describe('InputTypeSongShowPlus7', () => {
           },
           {
             name: 'Copyright',
-            value: 'Â© Fresh Wine Publishing',
+            value: '© Fresh Wine Publishing',
           },
         ],
         slides: [
@@ -247,7 +243,7 @@ describe('InputTypeSongShowPlus7', () => {
           {
             title: 'Bridge',
             lyrics:
-              "I'm not ashamed of who You are\r\nYour love broke through\r\nAnd grace has made me Yours\r\nNow upon this Rock I stand\r\nIn victory in victory\r\n(REPEAT 3X)\r\n",
+              "I'm not ashamed of who You are\r\nYour love broke through\r\nAnd grace has made me Yours\r\nNow upon this Rock I stand\r\nIn victory in victory\r\n(REPEAT 3X)",
           },
         ],
       });
@@ -267,14 +263,14 @@ describe('InputTypeSongShowPlus7', () => {
         ],
         slides: [
           {
-            title: 'Verse 1©',
+            title: 'Verse 1',
             lyrics:
-              'En medio del dolor \r\nEn medio de la aflicciÃ³n\r\nTu me das paz y \r\nMe enseÃ±as tu amor \r\nTodo lo que perdÃ­ \r\nLo restauras SeÃ±or en mi \r\nMe das las fuerza para seguir',
+              'En medio del dolor \r\nEn medio de la aflicción\r\nTu me das paz y \r\nMe enseñas tu amor \r\nTodo lo que perdí \r\nLo restauras Señor en mi \r\nMe das las fuerza para seguir',
           },
           {
-            title: 'Chorus',
+            title: 'Chorus',
             lyrics:
-              'Devuelve me el gozo \r\nDe Tu salvaciÃ³n y\r\nTu EspÃ­ritu noble me sustente \r\nTe necesito Dios \r\nSin ti no soy nada \r\nTe necesito Dios \r\nDame un nuevo corazÃ³n\r\n"',
+              'Devuelve me el gozo \r\nDe Tu salvación y\r\nTu Espíritu noble me sustente \r\nTe necesito Dios \r\nSin ti no soy nada \r\nTe necesito Dios \r\nDame un nuevo corazón',
           },
         ],
       });
