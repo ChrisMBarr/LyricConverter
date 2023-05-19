@@ -24,18 +24,19 @@ describe('OutputTypeText', () => {
                             artist: Bethel Music
                             key: G
 
-                            Chorus
+
+                            Chorus:
                             Your grace is enough
                             Your grace is enough
                             Your grace is enough for me
 
-                            Verse 1
+                            Verse 1:
                             Great is your faithfulness O God
                             You wrestle with the sinners heart
                             You lead us by still waters and to mercy
                             And nothing can keep us apart
 
-                            Verse 2
+                            Verse 2:
                             Great is your love and justice God
                             You use the weak to lead the strong
                             You lead us in the song of your salvation
@@ -56,18 +57,19 @@ describe('OutputTypeText', () => {
                             artist: Bethel Music
                             key: G
 
-                            Chorus
+
+                            Chorus:
                             Your grace is enough
                             Your grace is enough
                             Your grace is enough for me
 
-                            Verse 1
+                            Verse 1:
                             Great is your faithfulness O God
                             You wrestle with the sinners heart
                             You lead us by still waters and to mercy
                             And nothing can keep us apart
 
-                            Verse 2
+                            Verse 2:
                             Great is your love and justice God
                             You use the weak to lead the strong
                             You lead us in the song of your salvation
@@ -88,18 +90,19 @@ describe('OutputTypeText', () => {
                             artist: Bethel Music
                             key: G
 
-                            Chorus
+
+                            Chorus:
                             Your grace is enough
                             Your grace is enough
                             Your grace is enough for me
 
-                            Verse 1
+                            Verse 1:
                             Great is your faithfulness O God
                             You wrestle with the sinners heart
                             You lead us by still waters and to mercy
                             And nothing can keep us apart
 
-                            Verse 2
+                            Verse 2:
                             Great is your love and justice God
                             You use the weak to lead the strong
                             You lead us in the song of your salvation

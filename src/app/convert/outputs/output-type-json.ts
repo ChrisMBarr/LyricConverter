@@ -1,10 +1,12 @@
+import { IOutputFile } from '../models/file.model';
 import { ISong } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypeJSON implements IOutputConverter {
-  name = 'JSON';
-  fileExt = 'json';
-  convertToType = (song: ISong) => {
+  readonly name = 'JSON';
+  readonly fileExt = 'json';
+
+  convertToType(song: ISong): IOutputFile {
     //Just convert the object to a string, but leave off the fileName property
     const jsonString = JSON.stringify(
       {
@@ -21,5 +23,5 @@ export class OutputTypeJSON implements IOutputConverter {
       fileName: `${song.fileName}.${this.fileExt}`,
       outputContent: jsonString,
     };
-  };
+  }
 }

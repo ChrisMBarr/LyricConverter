@@ -20,12 +20,12 @@ export class OutputTypeText implements IOutputConverter {
       }
     }
 
-    fileContent += blankLine;
+    fileContent += newLine + blankLine;
 
     //Add the song lyrics, skipping sections with blank lyrics
     for (const slide of song.slides) {
       if (slide.lyrics.trim().length > 0) {
-        fileContent += slide.title;
+        fileContent += slide.title + ':';
         fileContent += newLine;
         fileContent += slide.lyrics.trim();
         fileContent += blankLine;
