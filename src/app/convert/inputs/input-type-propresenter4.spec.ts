@@ -23,32 +23,32 @@ describe('InputTypeProPresenter4', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a ProPresenter 4 file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyProPresenter4File };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter4File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a ProPresenter 5 file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyProPresenter5File };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter5File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a JSON file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyJsonFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyJsonFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a plain text file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyTextFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file with a .cho extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file with a .pro extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });

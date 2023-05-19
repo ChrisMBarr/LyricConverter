@@ -7,7 +7,13 @@ import {
 } from 'test/mock-raw-files';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeChordPro } from './input-type-chordpro';
-import { mockChordProFile1, mockChordProFile2, mockChordProFile3, mockChordProFile4DirectivesWithoutLabels, mockChordProFile5DirectivesWithInlineLabels } from 'test/mock-chordpro-files';
+import {
+  mockChordProFile1,
+  mockChordProFile2,
+  mockChordProFile3,
+  mockChordProFile4DirectivesWithoutLabels,
+  mockChordProFile5DirectivesWithInlineLabels,
+} from 'test/mock-chordpro-files';
 import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeChordPro', () => {
@@ -24,55 +30,55 @@ describe('InputTypeChordPro', () => {
   describe('doesInputFileMatchThisType()', () => {
     //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/
     it('should properly accept a ChordPro file with a .cho extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly accept a ChordPro file with a .crd extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       testFile.ext = 'crd';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
     it('should properly accept a ChordPro file with a .chopro extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       testFile.ext = 'chopro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
     it('should properly accept a ChordPro file with a .chord extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       testFile.ext = 'chord';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
     it('should properly accept a ChordPro file with a .pro extension', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
       testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly reject a plain text file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyTextFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly reject a JSON file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyJsonFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyJsonFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly reject a ProPresenter 4 file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyProPresenter4File };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter4File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly reject a ProPresenter 5 file', () => {
-      const testFile: IRawDataFile = { ...mockEmptyProPresenter5File };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter5File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
 
   describe('extractSongData()', () => {
     it('should return a song for a simple test file', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -98,7 +104,7 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should return a song for test file 1', () => {
-      const testFile: IRawDataFile = { ...mockChordProFile1 };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockChordProFile1);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -142,7 +148,7 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should return a song for test file 2', () => {
-      const testFile: IRawDataFile = { ...mockChordProFile2 };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockChordProFile2);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -193,12 +199,12 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should return a song for test file 3', () => {
-      const testFile: IRawDataFile = { ...mockChordProFile3 };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockChordProFile3);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
         title: 'Swing Low Sweet Chariot',
-        info: [ ],
+        info: [],
         slides: [
           {
             title: 'Chorus',
@@ -219,7 +225,7 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should return a song for test file 4 that only uses unlabeled paired directives', () => {
-      const testFile: IRawDataFile = { ...mockChordProFile4DirectivesWithoutLabels };
+      const testFile: IRawDataFile = TestUtils.deepClone(mockChordProFile4DirectivesWithoutLabels);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -282,7 +288,9 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should return a song for test file 5 that only uses paired directives with internal labels', () => {
-      const testFile: IRawDataFile = { ...mockChordProFile5DirectivesWithInlineLabels };
+      const testFile: IRawDataFile = TestUtils.deepClone(
+        mockChordProFile5DirectivesWithInlineLabels
+      );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -345,8 +353,8 @@ describe('InputTypeChordPro', () => {
     });
 
     it('should use the filename as a fallback title when the song has no title', () => {
-      const testFile: IRawDataFile = { ...mockSimpleChordProFile };
-      testFile.data = testFile.data.replace('{title: This is a title}', '')
+      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
+      testFile.data = testFile.data.replace('{title: This is a title}', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
   });

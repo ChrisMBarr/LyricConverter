@@ -46,7 +46,7 @@ describe('OutputTypeChordpro', () => {
   it('should not include info with blank values', () => {
     const song = TestUtils.deepClone(mockSongObjects[0]!);
 
-    song.info.push({name: 'Test Blank', value: ''})
+    song.info.push({ name: 'Test Blank', value: '' });
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
@@ -78,7 +78,7 @@ describe('OutputTypeChordpro', () => {
   it('should not include slides with blank lyrics', () => {
     const song = TestUtils.deepClone(mockSongObjects[0]!);
 
-    song.slides.push({title: 'Test Blank', lyrics: ''})
+    song.slides.push({ title: 'Test Blank', lyrics: '' });
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
