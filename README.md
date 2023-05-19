@@ -20,7 +20,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
 | **[ChordPro](https://chordpro.org/)**                              |   ✔️   |   ✔️  |
 | **[SongPro](https://songpro.org/)**                                |         |       |
-| **Plain Text**                                                     |         |  ✔️   |
+| **Plain Text**                                                     |   ✔️   |   ✔️  |
 | **LyricConverter JSON**                                            |   ✔️   |   ✔️  |
 
   *Note: You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
