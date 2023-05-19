@@ -27,6 +27,7 @@
             "style": "kebab-case"
           }
         ],
+        "@typescript-eslint/explicit-function-return-type": "warn",
         "array-callback-return": "error",
         "complexity": ["error", { "max": 8 }],
         "eqeqeq": ["error", "always", { "null": "ignore" }]
@@ -43,7 +44,8 @@
     {
       "files": ["*.spec.ts", "test/**/*.ts"],
       "rules": {
-        "@typescript-eslint/no-non-null-assertion": ["off"]
+        "@typescript-eslint/no-non-null-assertion": ["off"],
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
   ]

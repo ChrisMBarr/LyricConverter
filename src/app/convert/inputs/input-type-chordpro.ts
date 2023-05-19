@@ -170,7 +170,7 @@ export class InputTypeChordPro implements IInputConverter {
   private getLyricContentWithoutDirectives(
     singleDirectives: IChordProSingleDirective[],
     content: string
-  ) {
+  ): string {
     //ChordPro Environment directives should always have a beginning and an ending tag
     //https://www.chordpro.org/chordpro/chordpro-directives/
     //Here we want to extract the content between them for the types we care about

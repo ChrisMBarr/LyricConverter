@@ -92,7 +92,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
 
   private generateUniqueID(): string {
     //Native PP ID Example: 26AAF905-8F45-4252-BFAB-4C10CCFE1476
-    function s4() {
+    function s4(): string {
       return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);
