@@ -14,7 +14,7 @@ import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import * as mockRawFiles from '../../../test/mock-raw-files';
 
-class mockOutputConverter implements IOutputConverter {
+class MockOutputConverter implements IOutputConverter {
   constructor(public name: string, public fileExt?: string) {}
 
   convertToType = (song: ISong): IOutputFile => {
@@ -40,7 +40,7 @@ describe('ConvertComponent', () => {
         SlideDisplayComponent,
         DownloadDisplayComponent,
       ],
-      providers: <T[]>providers,
+      providers: providers as T[],
     });
     parserSvc = TestBed.inject(ParserService);
 
@@ -50,16 +50,16 @@ describe('ConvertComponent', () => {
 
   describe('Needs a mocked ParserService', () => {
     const mockParserService = {
-      outputConverters: <mockOutputConverter[]>[],
-      parseFiles: () => <IRawDataFile[]>[],
+      outputConverters: [] as MockOutputConverter[],
+      parseFiles: () => [] as IRawDataFile[],
     };
 
     beforeEach(() => {
       mockParserService.outputConverters = [
-        new mockOutputConverter('FooOut', 'foo'),
-        new mockOutputConverter('BarOut', 'bar'),
-        new mockOutputConverter('BazOut', 'baz'),
-        new mockOutputConverter('No File Ext'),
+        new MockOutputConverter('FooOut', 'foo'),
+        new MockOutputConverter('BarOut', 'bar'),
+        new MockOutputConverter('BazOut', 'baz'),
+        new MockOutputConverter('No File Ext'),
       ];
 
       configureTestBed([{ provide: ParserService, useValue: mockParserService }]);

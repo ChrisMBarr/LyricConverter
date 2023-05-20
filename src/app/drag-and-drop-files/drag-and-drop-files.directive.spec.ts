@@ -6,6 +6,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { first } from 'rxjs';
 
 describe('DragAndDropFilesDirective', () => {
+  //---------------------------------------------
+  @Component({
+    template: `<div appDragAndDropFiles (fileDrop)="onFileDrop($event)"></div>`,
+  })
+  class TestComponent {
+    filesFromDirective: IFileWithData[] = [];
+    onFileDrop(files: IFileWithData[]): void {
+      this.filesFromDirective = files;
+    }
+  }
+  //---------------------------------------------
+
   let fixture: ComponentFixture<TestComponent>;
   let debugEl: DebugElement;
   let directiveInstance: DragAndDropFilesDirective;
@@ -15,9 +27,7 @@ describe('DragAndDropFilesDirective', () => {
       declarations: [DragAndDropFilesDirective, TestComponent],
     }).createComponent(TestComponent);
 
-    debugEl = fixture.debugElement.query(
-      By.directive(DragAndDropFilesDirective)
-    );
+    debugEl = fixture.debugElement.query(By.directive(DragAndDropFilesDirective));
 
     directiveInstance = debugEl.injector.get(DragAndDropFilesDirective);
     fixture.detectChanges();
@@ -41,9 +51,7 @@ describe('DragAndDropFilesDirective', () => {
     });
 
     it('should prevent dragleave event', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
       const eventLeave = new DragEvent('dragleave', { cancelable: true });
@@ -54,9 +62,7 @@ describe('DragAndDropFilesDirective', () => {
     });
 
     it('should prevent drop event', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
       const eventDrop = new DragEvent('drop', { cancelable: true });
@@ -69,35 +75,25 @@ describe('DragAndDropFilesDirective', () => {
 
   describe('Drag in/out - add/remove CSS class', () => {
     it('should add a class when dragged over', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
       expect(debugEl.attributes['class']).toContain('drag-over');
     });
 
     it('should remove a class when drag leave', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragleave', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragleave', { cancelable: true }));
       fixture.detectChanges();
 
       expect(debugEl.attributes['class']).not.toContain('drag-over');
     });
 
     it('should remove a class when files dropped', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('drop', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('drop', { cancelable: true }));
       fixture.detectChanges();
 
       expect(debugEl.attributes['class']).not.toContain('drag-over');
@@ -106,37 +102,27 @@ describe('DragAndDropFilesDirective', () => {
 
   describe('Drag in/out - isDraggingOver', () => {
     it('should be true when dragged over', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
       expect(directiveInstance.isDraggingOver).toBeTrue();
     });
 
     it('should remove a class when drag leave', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragleave', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragleave', { cancelable: true }));
       fixture.detectChanges();
 
       expect(directiveInstance.isDraggingOver).toBeFalse();
     });
 
     it('should remove a class when files dropped', () => {
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('dragover', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
-      debugEl.nativeElement.dispatchEvent(
-        new DragEvent('drop', { cancelable: true })
-      );
+      debugEl.nativeElement.dispatchEvent(new DragEvent('drop', { cancelable: true }));
       fixture.detectChanges();
 
       expect(directiveInstance.isDraggingOver).toBeFalse();
@@ -171,71 +157,59 @@ describe('DragAndDropFilesDirective', () => {
       dt.items.add(
         new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', {
           lastModified: fileCreationTime,
-          type:'text/plain'
+          type: 'text/plain',
         })
       );
       dt.items.add(
         new File(['this file has no extension!'], 'no-extension', {
           lastModified: fileCreationTime,
-          type:''
+          type: '',
         })
       );
       dt.items.add(
         new File(['this is a PP5 file!'], 'lowercase-file.pro5', {
           lastModified: fileCreationTime,
-          type:''
+          type: '',
         })
       );
 
-      directiveInstance.fileDrop
-        .pipe(first())
-        .subscribe((outputFiles: IFileWithData[]) => {
-          expect(directiveInstance.fileDrop.emit).toHaveBeenCalled();
-          expect(outputFiles).toEqual([
-            {
-              name: 'UPPERCASE.WITH.DOTS.TXT',
-              nameWithoutExt: 'UPPERCASE.WITH.DOTS',
-              ext: 'txt',
-              type: 'text/plain',
-              size: 37,
-              lastModified: fileCreationTime,
-              data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
-            },
-            {
-              name: 'no-extension',
-              nameWithoutExt: 'no-extension',
-              ext: '',
-              type: '',
-              size: 27,
-              lastModified: fileCreationTime,
-              data: 'data:application/octet-stream;base64,dGhpcyBmaWxlIGhhcyBubyBleHRlbnNpb24h',
-            },
-            {
-              name: 'lowercase-file.pro5',
-              nameWithoutExt: 'lowercase-file',
-              ext: 'pro5',
-              type: '',
-              size: 19,
-              lastModified: fileCreationTime,
-              data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
-            },
-          ]);
+      directiveInstance.fileDrop.pipe(first()).subscribe((outputFiles: IFileWithData[]) => {
+        expect(directiveInstance.fileDrop.emit).toHaveBeenCalled();
+        expect(outputFiles).toEqual([
+          {
+            name: 'UPPERCASE.WITH.DOTS.TXT',
+            nameWithoutExt: 'UPPERCASE.WITH.DOTS',
+            ext: 'txt',
+            type: 'text/plain',
+            size: 37,
+            lastModified: fileCreationTime,
+            data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
+          },
+          {
+            name: 'no-extension',
+            nameWithoutExt: 'no-extension',
+            ext: '',
+            type: '',
+            size: 27,
+            lastModified: fileCreationTime,
+            data: 'data:application/octet-stream;base64,dGhpcyBmaWxlIGhhcyBubyBleHRlbnNpb24h',
+          },
+          {
+            name: 'lowercase-file.pro5',
+            nameWithoutExt: 'lowercase-file',
+            ext: 'pro5',
+            type: '',
+            size: 19,
+            lastModified: fileCreationTime,
+            data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
+          },
+        ]);
 
-          done();
-        });
+        done();
+      });
 
       directiveInstance.readFiles(dt.files);
       fixture.detectChanges();
     });
   });
-
-  @Component({
-    template: `<div appDragAndDropFiles (fileDrop)="onFileDrop($event)"></div>`,
-  })
-  class TestComponent {
-    filesFromDirective: IFileWithData[] = [];
-    onFileDrop(files: IFileWithData[]): void {
-      this.filesFromDirective = files;
-    }
-  }
 });

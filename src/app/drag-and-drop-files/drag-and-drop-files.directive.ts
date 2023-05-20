@@ -62,8 +62,8 @@ export class DragAndDropFilesDirective {
 
       const newFile: IFileWithData = {
         name: theFile.name,
-        nameWithoutExt: nameWithoutExt,
-        ext: (fileExt || '').toLowerCase(),
+        nameWithoutExt,
+        ext: (fileExt ?? '').toLowerCase(),
         type: theFile.type,
         size: theFile.size,
         lastModified: theFile.lastModified,

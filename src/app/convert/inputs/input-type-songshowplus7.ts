@@ -20,16 +20,16 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     //Splitting these out and then taking the first array item can prevent this.
     //Each song sections seems to be split up by a percent sign, so make an array by splitting on that
     const propSections = rawFile.data.split('<Properties>');
-    if (propSections[0]) {
+    if (propSections[0] != null) {
       const sections = propSections[0].split('%');
 
-      if (sections) {
+      if (sections.length > 0) {
         //Pass all the sections in here to get the lyrics
         //We will get out the slides and the keywords
         const slideContent = this.getSlidesAndKeywords(sections);
         slides = slideContent.slides;
 
-        if (sections[0]) {
+        if (sections[0] != null) {
           //The info is all contained in the first section, so only pass that in and pass in the keywords from above
           const parsedInfo = this.getTitleAndInfo(sections[0], slideContent.keywords, rawFile.name);
           title = parsedInfo.title;
@@ -65,7 +65,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
 
     let songTitle = fileName; //Fallback title
 
-    if (infoArray && infoArray[0]) {
+    if (infoArray.length > 0 && (infoArray[0] != null)) {
       //If the first items is a number between 1 and 4 digits, remove it
       if (/[0-9]{1,4}/.test(infoArray[0])) {
         infoArray.splice(0, 1);
@@ -87,7 +87,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
   private getSongInfo(infoArray: string[], keywords: string): ISongInfo[] {
     const songInfo = [];
 
-    if (infoArray[1]) {
+    if (infoArray[1] != null) {
       songInfo.push({
         name: 'Artist/Author',
         value: infoArray[1].trim(),
@@ -95,7 +95,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     }
 
     //If the copyright exists, add it
-    if (infoArray[2]) {
+    if (infoArray[2] != null) {
       songInfo.push({
         name: 'Copyright',
         value: infoArray[2].replace('$', '').trim(), //copyright info tends to end with a $ sign, so remove it
@@ -103,7 +103,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     }
 
     //If the CCLI exists, add it
-    if (infoArray[3]) {
+    if (infoArray[3] != null) {
       songInfo.push({
         name: 'CCLI',
         value: infoArray[3].trim(),
@@ -172,18 +172,18 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     //Loop through the sections
     //But SKIP the first one since it contains the song info we don't need here
     for (let i = 1; i < sections.length; i++) {
-      const thisSection = sections[i] || /* istanbul ignore next */ '';
+      const thisSection = sections[i] ?? /* istanbul ignore next */ '';
       //Run the regex on each section to split out the slide title from the lyrics
       const matches = thisSection.match(slidePattern);
       let slideTitle = '';
       let slideLyrics = '';
 
       //Remove whitespace from the title
-      if (matches) {
-        if (matches[1]) {
+      if (matches != null) {
+        if (matches[1] != null) {
           slideTitle = matches[1].replace(this.patternInvisibleChars, '').trim();
         }
-        if (matches[2]) {
+        if (matches[2] != null) {
           //Remove any more invisible chars from the lyrics and remove whitespace
           slideLyrics = matches[2].replace(this.patternInvisibleChars, '').trim();
         }
@@ -249,7 +249,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
 
     return {
       slides: finalArray,
-      keywords: keywords,
+      keywords,
     };
   }
 
@@ -260,7 +260,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     let keywords = '';
     let lastLyrics = '';
 
-    if (lastSlideRaw) {
+    if (lastSlideRaw != null) {
       //Remove all empty items and items that are only 1 character long
       const infoArray = lastSlideRaw
         .split(this.patternInvisibleChars)
@@ -274,11 +274,11 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
           .map((x) => x.replace(/[\r\n\t]*/g, ''))
           .join(', ');
 
-        if (infoArray && infoArray[1]) {
+        if (infoArray.length > 0 && (infoArray[1] != null)) {
           //Return the last slide minus the keywords, then parse out the optional beginning non-word character
-          const lastSlideNonWordsRemoved = infoArray[1].match(/^\W*([\s\S]+)/m);
+          const lastSlideNonWordsRemoved = /^\W*([\s\S]+)/m.exec(infoArray[1]);
 
-          if (lastSlideNonWordsRemoved && lastSlideNonWordsRemoved[1]) {
+          if (lastSlideNonWordsRemoved?.[1] != null) {
             lastLyrics = lastSlideNonWordsRemoved[1];
           }
         }

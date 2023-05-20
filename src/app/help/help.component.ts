@@ -25,7 +25,7 @@ export class HelpComponent implements OnInit {
     { name: 'SongPro', canImport: false, canExport: false },
   ];
 
-  constructor(private parserSvc: ParserService) {}
+  constructor(private readonly parserSvc: ParserService) {}
 
   ngOnInit(): void {
     //Add all input/import types to the list

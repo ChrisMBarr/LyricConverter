@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 //A representation of an OpenLyrics document as a JSON object parsed by fast-xml-parser
 //OpenLyrics Format Docs: https://docs.openlyrics.org/en/latest/dataformat.html
 //The below data model relies on the following options being set:

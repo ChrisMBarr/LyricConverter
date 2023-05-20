@@ -6,7 +6,6 @@ import {
   IOpenLyricsDocLyrics,
   IOpenLyricsDocProperties,
   IOpenLyricsDocRoot,
-  IOpenLyricsDocSong,
   IOpenLyricsDocTitles,
 } from '../models/openlyrics-document.model';
 
@@ -34,12 +33,11 @@ export class InputTypeOpenLyrics implements IInputConverter {
       attributeNamePrefix: '',
       parseAttributeValue: true,
       stopNodes: ['song.lyrics.verse.lines'],
-      isArray: (_name, jPath: string) => alwaysArray.indexOf(jPath) !== -1,
-      tagValueProcessor: (_tagName, tagValue, jPath) => {
+      isArray: (_name, jPath: string) => alwaysArray.includes(jPath),
+      tagValueProcessor: (_tagName, tagValue, jPath): string | null => {
         if (jPath === 'song.lyrics.verse.lines') {
           return tagValue;
         }
-
         return null;
       },
     });

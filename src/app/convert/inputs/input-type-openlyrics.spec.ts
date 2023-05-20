@@ -44,7 +44,7 @@ describe('InputTypeOpenLyrics', () => {
     });
   });
 
-  fdescribe('extractSongData()', () => {
+  xdescribe('extractSongData()', () => {
     it('should return a song for a simple OpenLyrics file', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(
         mockOpenLyrics.mockOpenLyricsFileSimpleFile

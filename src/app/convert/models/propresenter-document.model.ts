@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 //A representation of a ProPresenter document as a JSON object parsed by fast-xml-parser
 //The below data model relies on the following options being set:
 //  { ignoreAttributes: false, attributeNamePrefix: '', parseAttributeValue: true }

@@ -82,14 +82,14 @@ export class InputTypeChordPro implements IInputConverter {
 
     for (const match of directiveMatches) {
       const directiveContent = match[1];
-      if (directiveContent) {
-        const pos = match.index || /* istanbul ignore next */ 0;
+      if (directiveContent != null) {
+        const pos = match.index ?? /* istanbul ignore next */ 0;
 
         //Anything with a colon we treat as info, EXCEPT FOR labeled directive start markers
         if (directiveContent.includes(':')) {
           //Split anything with a colon into an array, then remove any empty string from the array
           const pair = directiveContent.split(':').filter((s) => s.trim() !== '');
-          if (pair[0] && pair[1]) {
+          if ((pair[0] != null) && (pair[1] != null)) {
             if (this.patternDirectiveStartMarkers.test(directiveContent)) {
               foundDirectives.singles.push({
                 name: pair[0].trim(),
@@ -145,7 +145,7 @@ export class InputTypeChordPro implements IInputConverter {
   ): IChordProMatchingDirectivePairs[] {
     const pairs: IChordProMatchingDirectivePairs[] = [];
     for (const dir of singleDirectives) {
-      const foundStart = dir.name.match(this.patternDirectiveStartMarkers);
+      const foundStart = this.patternDirectiveStartMarkers.exec(dir.name);
       if (foundStart) {
         let matchingEnd;
         if (foundStart[1] === 'so') {
@@ -154,7 +154,7 @@ export class InputTypeChordPro implements IInputConverter {
           matchingEnd = singleDirectives.find((d) => d.name === 'end_of_' + foundStart[2]);
         }
 
-        if (foundStart[2] && matchingEnd) {
+        if ((foundStart[2] != null) && matchingEnd) {
           pairs.push({
             begin: dir,
             end: matchingEnd,
@@ -176,7 +176,7 @@ export class InputTypeChordPro implements IInputConverter {
     //Here we want to extract the content between them for the types we care about
     //and then remove ALL paired directives and the content between them
 
-    type ISavedContent = { full: string; content: string; type: string; sectionLabel?: string };
+    interface ISavedContent { full: string; content: string; type: string; sectionLabel?: string }
 
     //The ones we want to find and keep:
     //  Chorus: {soc} and {eoc} OR {start_of_chorus} and {end_of_chorus}
@@ -200,7 +200,7 @@ export class InputTypeChordPro implements IInputConverter {
 
       if (typesToSave.includes(p.type)) {
         let beginPos = p.begin.position + p.begin.name.length + 3;
-        if (p.begin.sectionLabel) {
+        if (p.begin.sectionLabel != null) {
           beginPos += p.begin.sectionLabel.length + 1;
         }
         const pairContent = content.substring(beginPos, p.end.position);
@@ -230,7 +230,7 @@ export class InputTypeChordPro implements IInputConverter {
     const contentWithNormalizedLyricPairs = contentToSaveAndReformat.reduce(
       (accumulator: string, toReplace: ISavedContent) => {
         let title = '';
-        if (toReplace.sectionLabel) {
+        if (toReplace.sectionLabel != null) {
           title = toReplace.sectionLabel;
         } else {
           if (/^c(horus)?$/.test(toReplace.type) && !/^chorus/i.test(toReplace.content)) {
@@ -264,7 +264,7 @@ export class InputTypeChordPro implements IInputConverter {
       //If so we will use that as a title with the colon removed
       //If not we will just use "Verse"
       const lines = s.trim().split('\n');
-      if (lines[0]) {
+      if (lines[0] != null) {
         let title = lines[0].trim();
         let lyrics = s.trim();
 

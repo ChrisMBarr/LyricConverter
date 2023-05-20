@@ -11,7 +11,7 @@ class TextCleanerCharacterMapper {
   expression: RegExp;
 
   //Create an object map to associate the two arrays so we can look up a string and find it's replacement
-  map: { [key: string]: string } = {};
+  map: Record<string, string> = {};
 
   constructor() {
     for (let i = 0; i < this.toReplace.length; i++) {
@@ -56,7 +56,7 @@ export class TextCleaner {
     return source.replace(TextCleaner.charMapper.expression, (m) => {
       const unicodeVal = TextCleaner.toUnicode(m);
       // console.log(m, unicodeVal, TextCleaner.map[unicodeVal]);
-      return TextCleaner.charMapper.map[unicodeVal] || /* istanbul ignore next */ '';
+      return TextCleaner.charMapper.map[unicodeVal] ?? /* istanbul ignore next */ '';
     });
   }
 }

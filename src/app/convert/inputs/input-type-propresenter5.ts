@@ -11,11 +11,11 @@ import { Utils } from '../utils/utils';
 export class InputTypeProPresenter5 implements IInputConverter {
   readonly name = 'Pro Presenter 5';
 
-  doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
+  doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     return rawFile.ext.toLowerCase() === 'pro5';
-  };
+  }
 
-  extractSongData = (rawFile: IRawDataFile): ISong => {
+  extractSongData(rawFile: IRawDataFile): ISong {
     //When certain XML nodes only have one item the parser will convert them into objects
     //Here we maintain a list of node paths to always keep as arrays
     //This keeps our code structure and typedefs more sane and normalized
@@ -30,21 +30,21 @@ export class InputTypeProPresenter5 implements IInputConverter {
       ignoreAttributes: false,
       attributeNamePrefix: '',
       parseAttributeValue: true,
-      isArray: (_name, jPath: string) => alwaysArray.indexOf(jPath) !== -1,
+      isArray: (_name, jPath: string) => alwaysArray.includes(jPath),
     });
     const parsedDoc: IProPresenter5Document = xmlParser.parse(rawFile.data);
 
-    const title = parsedDoc.RVPresentationDocument.CCLISongTitle || rawFile.name;
+    const title = parsedDoc.RVPresentationDocument.CCLISongTitle ?? rawFile.name;
     const info: ISongInfo[] = this.getInfo(parsedDoc);
-    const slides: ISongSlide[] = this.getV5Slides(parsedDoc);
+    const slides: ISongSlide[] = this.getSlides(parsedDoc);
 
     return {
       fileName: rawFile.name,
-      title: title,
-      info: info,
-      slides: slides,
+      title,
+      info,
+      slides,
     };
-  };
+  }
 
   private getInfo(doc: IProPresenter5Document): ISongInfo[] {
     const skipKeys = [
@@ -76,7 +76,7 @@ export class InputTypeProPresenter5 implements IInputConverter {
     return info;
   }
 
-  private getV5Slides(doc: IProPresenter5Document): ISongSlide[] {
+  private getSlides(doc: IProPresenter5Document): ISongSlide[] {
     const slidesList: ISongSlide[] = [];
 
     doc.RVPresentationDocument.groups.RVSlideGrouping.forEach((group) => {
@@ -86,7 +86,7 @@ export class InputTypeProPresenter5 implements IInputConverter {
           //Add number suffix to every slide in the group if that group has more than one slide
           title += ` (${i + 1})`;
         }
-        const lyrics = this.getV5GroupSideLyrics(groupSlide);
+        const lyrics = this.getGroupSideLyrics(groupSlide);
 
         if (title || lyrics) {
           slidesList.push({ title, lyrics });
@@ -97,7 +97,7 @@ export class InputTypeProPresenter5 implements IInputConverter {
     return slidesList;
   }
 
-  private getV5GroupSideLyrics(slide: IProPresenter5DisplaySlide): string {
+  private getGroupSideLyrics(slide: IProPresenter5DisplaySlide): string {
     let lyrics = '';
 
     if (typeof slide.displayElements.RVTextElement !== 'undefined') {

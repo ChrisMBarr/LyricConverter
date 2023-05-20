@@ -4,9 +4,12 @@
   "overrides": [
     {
       "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.(app|spec).json"]
+      },
       "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/strict",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
@@ -28,9 +31,31 @@
           }
         ],
         "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/method-signature-style": ["warn"],
+        "@typescript-eslint/naming-convention": "warn",
+        "@typescript-eslint/no-extraneous-class": "off",
+        "no-invalid-this": "off",
+        "@typescript-eslint/no-invalid-this": "error",
+        "no-loop-func": "off",
+        "@typescript-eslint/no-loop-func": "error",
+        "no-redeclare": "off",
+        "@typescript-eslint/no-redeclare": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/no-unnecessary-qualifier": "warn",
+        "@typescript-eslint/prefer-readonly": "warn",
+        "@typescript-eslint/prefer-regexp-exec": "error",
+        "no-return-await": "off",
+        "@typescript-eslint/return-await": "error",
+        "@typescript-eslint/strict-boolean-expressions": "error",
+
         "array-callback-return": "error",
         "complexity": ["error", { "max": 8 }],
-        "eqeqeq": ["error", "always", { "null": "ignore" }]
+        "eqeqeq": ["error", "always", { "null": "ignore" }],
+        "no-unused-vars": "warn",
+        "object-shorthand": ["warn", "always"]
       }
     },
     {

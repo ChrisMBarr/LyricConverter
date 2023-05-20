@@ -12,11 +12,11 @@ export declare interface IInputConverter {
    * @param rawFile
    * @returns {true} if the passed file matches for this type
    */
-  doesInputFileMatchThisType(file: IRawDataFile): boolean;
+  doesInputFileMatchThisType: (file: IRawDataFile) => boolean;
   /**
    * @description A method that will parse the input file and extract relevant data.
    * @param rawFile
    * @returns {ISong} which is a generic format to later be used by an output formatter
    */
-  extractSongData(rawFile: IRawDataFile): ISong;
+  extractSongData: (rawFile: IRawDataFile) => ISong;
 }

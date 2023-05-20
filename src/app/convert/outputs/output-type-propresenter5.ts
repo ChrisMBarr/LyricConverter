@@ -17,9 +17,9 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
     };
   }
 
-  private slideWidth = 1920;
-  private slideHeight = 1080;
-  private slideTextPadding = 20;
+  private readonly slideWidth = 1920;
+  private readonly slideHeight = 1080;
+  private readonly slideTextPadding = 20;
 
   private generateProPresenterDocument(song: ISong): string {
     let slides = '';

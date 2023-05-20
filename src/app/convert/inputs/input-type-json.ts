@@ -6,28 +6,39 @@ export class InputTypeJSON implements IInputConverter {
   readonly name = 'JSON';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
-    return rawFile.ext.toLowerCase() === 'json'
+    return rawFile.ext.toLowerCase() === 'json';
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {
-    try {
-      //If this JSON object was generated from LyricConverter
-      //we should just be able to pass it right on through!
-      const parsed: ISong = JSON.parse(rawFile.data);
+    const returnSong: ISong = {
+      fileName: rawFile.name,
+      title: '',
+      info: [],
+      slides: [],
+    };
 
-      return {
-        fileName: rawFile.name,
-        title: parsed.title || '',
-        info: parsed.info || [],
-        slides: parsed.slides || [],
-      };
+    try {
+      //This JSON object was probably generated from LyricConverter
+      //we should just be able to pass it right on through!
+      const parsed: ISong | object = JSON.parse(rawFile.data);
+
+      if (this.isSongObject(parsed)) {
+        returnSong.title = parsed.title;
+        returnSong.info = parsed.info;
+        returnSong.slides = parsed.slides;
+      }
+
+      return returnSong;
     } catch (ex) {
-      return {
-        fileName: rawFile.name,
-        title: '',
-        info: [],
-        slides: [],
-      };
+      return returnSong;
     }
   };
+
+  private isSongObject(possibleSong: ISong | object): possibleSong is ISong {
+    return (
+      Object.prototype.hasOwnProperty.call(possibleSong, 'title') &&
+      Object.prototype.hasOwnProperty.call(possibleSong, 'info') &&
+      Object.prototype.hasOwnProperty.call(possibleSong, 'slides')
+    );
+  }
 }

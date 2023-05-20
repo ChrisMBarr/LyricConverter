@@ -18,7 +18,7 @@ export class ConvertComponent implements OnInit {
   selectedOutputType!: IOutputConverter;
   convertedSongsForOutput: IOutputFile[] = [];
 
-  constructor(private parserSvc: ParserService) {}
+  constructor(private readonly parserSvc: ParserService) {}
 
   ngOnInit(): void {
     this.outputTypesForMenu = [...this.parserSvc.outputConverters];
@@ -27,7 +27,7 @@ export class ConvertComponent implements OnInit {
     //auto-select the saved preference, but if none auto-select the first type
     //It's possible for this to be `undefined` but very unlikely
     this.selectedOutputType =
-      this.parserSvc.outputConverters.find((c) => c.name === savedOutputTypePrefName) ||
+      this.parserSvc.outputConverters.find((c) => c.name === savedOutputTypePrefName) ??
       //We know we weill always have output types in this array, so this is safe to assume here
       //We need to disable this rule here to avoid complexity elsewhere with it being possibly undefined
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -42,7 +42,7 @@ export class ConvertComponent implements OnInit {
   }
 
   onFileDrop(files: IFileWithData[]): void {
-    if (files && files.length) {
+    if (files.length) {
       this.displayInitialUi = false;
       const parsedFiles = this.parserSvc.parseFiles(files);
       this.getConvertersAndExtractData(parsedFiles);
