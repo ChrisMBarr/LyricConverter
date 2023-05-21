@@ -56,7 +56,7 @@ export interface IOpenLyricsDocLyrics {
   verse?: IOpenLyricsDocVerse[];
 }
 export interface IOpenLyricsDocVerse {
-  lines: (string | { '#text': string; part?: string })[];
+  lines: (string | { '#text': string; part?: string; repeat?: number })[];
   name: string;
   lang?: string;
   translit?: string;

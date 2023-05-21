@@ -10,6 +10,8 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   readonly fileExt = 'xml';
 
   convertToType(song: ISong): IOutputFile {
+    console.group(song.title);
+
     const fileContent = `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
@@ -22,12 +24,13 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
       <title>${song.title}</title>
     </titles>${this.buildPropertiesXmlNodes(song.info)}
   </properties>
-  <lyrics>
-    ${this.buildLyricsXmlNodes(song.slides)}
+  <lyrics>${this.buildLyricsXmlNodes(song.slides)}
   </lyrics>
 </song>`;
 
-    console.log(song, fileContent);
+    // console.log(song);
+    console.log(fileContent);
+    console.groupEnd();
 
     return {
       songData: song,
@@ -57,30 +60,67 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     //We will take the info values and split each comma separated value into a new child-node
     const authorsInfo = info.filter((i) => /(artist)|(author)/i.test(i.name));
     if (authorsInfo.length > 0) {
-      const combined = authorsInfo.map((a) => a.value).join(STRING_LIST_SEPARATOR_JOIN);
-      propertiesXml += this.createXmlNodeAndChildren('authors', 'author', combined);
+      //Each found value might contain a multi-value string.
+      //We combine all of these with the same separator into a single string,
+      //and then split it all back out into an array
+      const combined = authorsInfo
+        .map((a) => a.value)
+        .join(STRING_LIST_SEPARATOR_JOIN)
+        .split(STRING_LIST_SEPARATOR_SPLIT);
+      propertiesXml += '\n' + this.createXmlNodeAndChildren('authors', 4, 'author', 6, combined);
     }
 
     const themesInfo = info.find((i) => i.name.toLowerCase().startsWith('theme'));
     if (themesInfo) {
-      propertiesXml += this.createXmlNodeAndChildren(
-        'themes',
-        'theme',
-        themesInfo.value.toString()
-      );
+      propertiesXml +=
+        '\n' +
+        this.createXmlNodeAndChildren(
+          'themes',
+          4,
+          'theme',
+          6,
+          themesInfo.value.toString().split(STRING_LIST_SEPARATOR_SPLIT)
+        );
     }
 
     const commentsInfo = info.filter((i) => i.name.toLowerCase().startsWith('comment'));
     if (commentsInfo.length > 0) {
-      const combined = commentsInfo.map((a) => a.value).join(STRING_LIST_SEPARATOR_JOIN);
-      propertiesXml += this.createXmlNodeAndChildren('comments', 'comment', combined);
+      //Each found value might contain a multi-value string.
+      //We combine all of these with the same separator into a single string,
+      //and then split it all back out into an array
+      const combined = commentsInfo
+        .map((a) => a.value)
+        .join(STRING_LIST_SEPARATOR_JOIN)
+        .split(STRING_LIST_SEPARATOR_SPLIT);
+      propertiesXml += '\n' + this.createXmlNodeAndChildren('comments', 4, 'comment', 6, combined);
     }
 
     return propertiesXml;
   }
 
-  private buildLyricsXmlNodes(_slides: ISongSlide[]): string {
-    return '';
+  private buildLyricsXmlNodes(slidesList: ISongSlide[]): string {
+    let lyricsXmlStr = '';
+    const linesTextIndent = ' '.repeat(8);
+    console.log(slidesList);
+
+    //We will only create a <verse> tag that contains one <lines> element
+    //The line breaks in the lyrics will be converted to HTML <br> tags
+    for (const slide of slidesList) {
+      const linesContent =
+        '\n' + linesTextIndent + slide.lyrics.split('\n').join('<br/>\n' + linesTextIndent) + '\n      ' ;
+      lyricsXmlStr +=
+        '\n' +
+        this.createXmlNodeAndChildren(
+          'verse',
+          4,
+          'lines',
+          6,
+          [linesContent],
+          [{ name: 'name', value: slide.title }]
+        );
+    }
+
+    return lyricsXmlStr;
   }
 
   private findInfoAndMakeXmlProperty(
@@ -101,34 +141,44 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
         attrs = [{ name: attrName, value: val }];
       }
 
-      return '\n    ' + this.createXmlNode(tagName, infoMatch.value.toString(), attrs);
+      return '\n' + this.createXmlNode(tagName, 4, infoMatch.value.toString(), false, attrs);
     }
     return '';
   }
 
-  private createXmlNode(tagName: string, content: string, attrs?: ISongInfo[]): string {
+  private createXmlNode(
+    tagName: string,
+    indentLevel: number,
+    content: string,
+    indentClosingTag = false,
+    attrs?: ISongInfo[]
+  ): string {
     let attrString = '';
     if (attrs) {
       attrString = attrs.map((a) => ` ${a.name}="${a.value}"`).join(' ');
     }
-    return `<${tagName}${attrString}>${content}</${tagName}>\n`;
+    const indent = ' '.repeat(indentLevel);
+    const closingIndent = indentClosingTag ? indent : '';
+    return `${indent}<${tagName}${attrString}>${content}${closingIndent}</${tagName}>`;
   }
 
   private createXmlNodeAndChildren(
     parentTag: string,
+    parentIndentLevel: number,
     childTag: string,
-    multiValueString: string
+    childIndentLevel: number,
+    childTagsContent: string[],
+    attrs?: ISongInfo[]
   ): string {
     //Creates an XML node wrapper, and child nodes for one or multiple properties in a string separated by commas
     let xml = '';
-    if (multiValueString) {
-      const innerTags = multiValueString
-        //Multiple values in a string lists might be separated pipes
-        .split(STRING_LIST_SEPARATOR_SPLIT)
-        .map((a) => `\n      ${this.createXmlNode(childTag, a.trim())}`)
-        .join('');
+    if (childTagsContent.length) {
+      const innerTags =
+        childTagsContent
+          .map((a) => `\n${this.createXmlNode(childTag, childIndentLevel, a)}`)
+          .join('') + '\n';
 
-      xml += this.createXmlNode(parentTag, innerTags);
+      xml += this.createXmlNode(parentTag, parentIndentLevel, innerTags, true, attrs);
     }
     return xml;
   }

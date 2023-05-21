@@ -22,7 +22,49 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>\n<song xmlns="http://openlyrics.info/namespace/2009/song"\n      version="0.9"\n      createdIn="LyricConverter 3.0.0"\n      modifiedIn="LyricConverter 3.0.0"\n      modifiedDate="2023-05-21T18:19:52">\n  <properties>\n    <titles>\n      <title>Your Grace is Enough</title>\n    </titles>\n    <ccliNo>1234</ccliNo>\n\n    <key>G</key>\n<authors>\n      <author>Bethel Music</author>\n</authors>\n\n  </properties>\n  <lyrics>\n    \n  </lyrics>\n</song>`
+      `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.9"
+      createdIn="LyricConverter 3.0.0"
+      modifiedIn="LyricConverter 3.0.0"
+      modifiedDate="2023-05-21T20:27:32">
+  <properties>
+    <titles>
+      <title>Your Grace is Enough</title>
+    </titles>
+    <ccliNo>1234</ccliNo>
+    <key>G</key>
+    <authors>
+      <author>Bethel Music</author>
+    </authors>
+  </properties>
+  <lyrics>
+    <verse name="Chorus">
+      <lines>
+        Your grace is enough<br/>
+        Your grace is enough<br/>
+        Your grace is enough for me
+      </lines>
+    </verse>
+    <verse name="Verse 1">
+      <lines>
+        Great is your faithfulness O God<br/>
+        You wrestle with the sinners heart<br/>
+        You lead us by still waters and to mercy<br/>
+        And nothing can keep us apart
+      </lines>
+    </verse>
+    <verse name="Verse 2">
+      <lines>
+        Great is your love and justice God<br/>
+        You use the weak to lead the strong<br/>
+        You lead us in the song of your salvation<br/>
+        And all your people sing along
+      </lines>
+    </verse>
+  </lyrics>
+</song>`
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
@@ -39,7 +81,48 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>\n<song xmlns="http://openlyrics.info/namespace/2009/song"\n      version="0.9"\n      createdIn="LyricConverter 3.0.0"\n      modifiedIn="LyricConverter 3.0.0"\n      modifiedDate="2023-05-21T19:01:06">\n  <properties>\n    <titles>\n      <title>At the Cross</title>\n    </titles>\n    <key>E</key>\n<authors>\n      <author>Hymn</author>\n</authors>\n<comments>\n      <comment>Words and Music by Randy & Terry Butler</comment>\n</comments>\n\n  </properties>\n  <lyrics>\n    \n  </lyrics>\n</song>`
+      `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.9"
+      createdIn="LyricConverter 3.0.0"
+      modifiedIn="LyricConverter 3.0.0"
+      modifiedDate="2023-05-21T20:27:32">
+  <properties>
+    <titles>
+      <title>At the Cross</title>
+    </titles>
+    <key>E</key>
+    <authors>
+      <author>Hymn</author>
+    </authors>
+    <comments>
+      <comment>Words and Music by Randy & Terry Butler</comment>
+    </comments>
+  </properties>
+  <lyrics>
+    <verse name="Verse">
+      <lines>
+        I know a place<br/>
+        A wonderful place<br/>
+        Where accused and condemned<br/>
+        Find mercy and grace<br/>
+        Where the wrongs we have done<br/>
+        And the wrongs done to us<br/>
+        Were nailed there with him <br/>
+        There on the cross
+      </lines>
+    </verse>
+    <verse name="Chorus">
+      <lines>
+        At the cross<br/>
+        He died for our sins<br/>
+        At the cross <br/>
+        He gave us life again
+      </lines>
+    </verse>
+  </lyrics>
+</song>`
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
