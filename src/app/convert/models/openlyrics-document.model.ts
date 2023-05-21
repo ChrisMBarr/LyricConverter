@@ -7,10 +7,10 @@
 //  All options here: https://github.com/NaturalIntelligence/fast-xml-parser/blob/master/docs/v4/2.XMLparseOptions.md
 
 export interface IOpenLyricsDocRoot {
-  "?xml-stylesheet": {
+  '?xml-stylesheet': {
     href: string;
     type: string;
-  }
+  };
   song: IOpenLyricsDocSong;
 }
 export interface IOpenLyricsDocSong {
@@ -23,10 +23,34 @@ export interface IOpenLyricsDocSong {
   modifiedDate: string;
 }
 export interface IOpenLyricsDocProperties {
-  titles: IOpenLyricsDocTitles;
+  [key: string]: any;
+  //Lots of properties can exist here, so only the bigger & more common objects will be described
+  titles?: IOpenLyricsDocTitles;
+  authors?: IOpenLyricsDocAuthors;
+  comments?: IOpenLyricsDocComments;
+  songbooks?: IOpenLyricsDocSongBooks;
+  tempo?: IOpenLyricsDocTempo;
+  themes?: IOpenLyricsDocThemes;
 }
+
 export interface IOpenLyricsDocTitles {
-  title: string[];
+  title: (string | { '#text': string; lang?: string })[];
+}
+export interface IOpenLyricsDocAuthors {
+  author: (string | { '#text': string; lang?: string; type?: string })[];
+}
+export interface IOpenLyricsDocComments {
+  comment: (string | { '#text': string })[];
+}
+export interface IOpenLyricsDocSongBooks {
+  songbook: { name: string; entry?: string | number }[];
+}
+export interface IOpenLyricsDocThemes {
+  theme: (string | { '#text': string; lang?: string })[];
+}
+export interface IOpenLyricsDocTempo {
+  '#text': string;
+  type: string;
 }
 export interface IOpenLyricsDocLyrics {
   verse: IOpenLyricsDocVerse[];
