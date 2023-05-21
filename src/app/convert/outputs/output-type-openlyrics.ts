@@ -63,8 +63,25 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /order/i, 'verseOrder');
 
     //These next properties can have multiple values.
-    //We will take the info values and split each comma separated value into a new child-node
-    const authorsInfo = info.filter((i) => /(artist)|(author)/i.test(i.name));
+    //Instead of looping over all the info properties once per property we are looking for
+    // we just do it once and pull everything we need out for all the below nested property nodes
+    const authorsInfo: ISongInfo[] = [];
+    let themesInfo: ISongInfo | undefined;
+    const commentsInfo: ISongInfo[] = [];
+    const songBookInfo: ISongInfo[] = [];
+    info.forEach((i) => {
+      if (/(artist)|(author)/i.test(i.name)) {
+        authorsInfo.push(i);
+      } else if (i.name.toLowerCase().startsWith('theme')) {
+        //there should only be one of these, an array is not needed for themes
+        themesInfo = i;
+      } else if (i.name.toLowerCase().startsWith('comment')) {
+        commentsInfo.push(i);
+      } else if (/^song ?book/i.test(i.name)) {
+        songBookInfo.push(i);
+      }
+    });
+
     if (authorsInfo.length > 0) {
       //Each found value might contain a multi-value string.
       //We combine all of these with the same separator into a single string,
@@ -76,7 +93,6 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
       propertiesXml += '\n' + this.createXmlNodeAndChildren('authors', 4, 'author', 6, combined);
     }
 
-    const themesInfo = info.find((i) => i.name.toLowerCase().startsWith('theme'));
     if (themesInfo) {
       propertiesXml +=
         '\n' +
@@ -89,7 +105,6 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
         );
     }
 
-    const commentsInfo = info.filter((i) => i.name.toLowerCase().startsWith('comment'));
     if (commentsInfo.length > 0) {
       //Each found value might contain a multi-value string.
       //We combine all of these with the same separator into a single string,
@@ -101,7 +116,6 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
       propertiesXml += '\n' + this.createXmlNodeAndChildren('comments', 4, 'comment', 6, combined);
     }
 
-    const songBookInfo = info.filter((i) => /^song ?book/i.test(i.name));
     if (songBookInfo.length > 0) {
       const songbooksContent =
         '\n' +
@@ -118,7 +132,8 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
 
             return `      <songbook name="${nameAttrValue}"${entryAttr} />`;
           })
-          .join('\n') + '\n      ';
+          .join('\n') +
+        '\n      ';
       propertiesXml += '\n' + this.createXmlNode('songbooks', 4, songbooksContent);
     }
 
