@@ -74,7 +74,7 @@ describe('InputTypeOpenLyrics', () => {
         info: [
           {
             name: 'Authors',
-            value: 'John Newton, Chris Rice, Richard Wagner, František Foo',
+            value: 'John Newton | Chris Rice | Richard Wagner | František Foo',
           },
           {
             name: 'Comment',
@@ -95,7 +95,7 @@ describe('InputTypeOpenLyrics', () => {
           { name: 'Tempo', value: '90bpm' },
           {
             name: 'Themes',
-            value: 'Adoration, Grace, Praise, Salvation, Graça, Adoração, Salvação',
+            value: 'Adoration | Grace | Praise | Salvation | Graça | Adoração | Salvação',
           },
           { name: 'copyright', value: 'public domain' },
           { name: 'ccliNo', value: '4639462' },
@@ -188,8 +188,8 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'It Is Well With My Soul',
         info: [
-          { name: 'Authors', value: 'Horatio Spafford, Philip Bliss' },
-          { name: 'Themes', value: 'Peace, Assurance, Trust' },
+          { name: 'Authors', value: 'Horatio Spafford | Philip Bliss' },
+          { name: 'Themes', value: 'Peace | Assurance | Trust' },
           { name: 'copyright', value: 'Public Domain' },
           { name: 'ccliNo', value: '25376' },
           { name: 'verseOrder', value: 'v1 c v2 c v3 c v4 c' },
@@ -248,7 +248,7 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'הבה נגילה',
         info: [
-          { name: 'Themes', value: 'הבה נגילה, Hava Nagila, Rejoice' },
+          { name: 'Themes', value: 'הבה נגילה | Hava Nagila | Rejoice' },
           { name: 'copyright', value: 'public domain' },
           { name: 'variant', value: 'Hebrew folk song' },
         ],

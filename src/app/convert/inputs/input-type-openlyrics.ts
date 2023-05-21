@@ -13,6 +13,7 @@ import {
   IOpenLyricsDocThemes,
   IOpenLyricsDocTitles,
 } from '../models/openlyrics-document.model';
+import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
 
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';
@@ -165,7 +166,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
     let name = 'Author';
     if (authors.author.length > 1) name += 's';
     const authorNamesArr = authors.author.map(this.getStringOrTextProp);
-    return { name, value: authorNamesArr.join(', ') };
+    return { name, value: authorNamesArr.join(STRING_LIST_SEPARATOR_JOIN) };
   }
 
   private getSpecialPropComments(comments: IOpenLyricsDocComments): ISongInfo[] {
@@ -217,7 +218,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
   private getSpecialPropsThemes(themes: IOpenLyricsDocThemes): ISongInfo {
     const name = 'Themes';
     const themesArr = themes.theme.map(this.getStringOrTextProp);
-    return { name, value: themesArr.join(', ') };
+    return { name, value: themesArr.join(STRING_LIST_SEPARATOR_JOIN) };
   }
 
   private getRegularProps(properties: IOpenLyricsDocProperties): ISongInfo[] {

@@ -1,6 +1,7 @@
 import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { Utils } from '../utils/utils';
+import { STRING_LIST_SEPARATOR_JOIN, STRING_LIST_SEPARATOR_SPLIT } from '../shared/constants';
+import { Utils } from '../shared/utils';
 import { IOutputConverter } from './output-converter.model';
 const packageFile = require('/package.json');
 
@@ -56,7 +57,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     //We will take the info values and split each comma separated value into a new child-node
     const authorsInfo = info.filter((i) => /(artist)|(author)/i.test(i.name));
     if (authorsInfo.length > 0) {
-      const combined = authorsInfo.map((a) => a.value).join(', ');
+      const combined = authorsInfo.map((a) => a.value).join(STRING_LIST_SEPARATOR_JOIN);
       propertiesXml += this.createXmlNodeAndChildren('authors', 'author', combined);
     }
 
@@ -71,7 +72,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
 
     const commentsInfo = info.filter((i) => i.name.toLowerCase().startsWith('comment'));
     if (commentsInfo.length > 0) {
-      const combined = commentsInfo.map((a) => a.value).join(', ');
+      const combined = commentsInfo.map((a) => a.value).join(STRING_LIST_SEPARATOR_JOIN);
       propertiesXml += this.createXmlNodeAndChildren('comments', 'comment', combined);
     }
 
@@ -116,14 +117,14 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   private createXmlNodeAndChildren(
     parentTag: string,
     childTag: string,
-    commaSeparatedString: string
+    multiValueString: string
   ): string {
     //Creates an XML node wrapper, and child nodes for one or multiple properties in a string separated by commas
     let xml = '';
-    if (commaSeparatedString) {
-      const innerTags = commaSeparatedString
-        //String lists might be separated by commas or pipes
-        .split(/[,|]/)
+    if (multiValueString) {
+      const innerTags = multiValueString
+        //Multiple values in a string lists might be separated pipes
+        .split(STRING_LIST_SEPARATOR_SPLIT)
         .map((a) => `\n      ${this.createXmlNode(childTag, a.trim())}`)
         .join('');
 

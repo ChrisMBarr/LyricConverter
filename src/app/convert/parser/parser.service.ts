@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 //Helpers & Types
-import { Utils } from '../utils/utils';
+import { Utils } from '../shared/utils';
 import { IFileWithData, IRawDataFile } from '../models/file.model';
 import { IInputConverter } from '../inputs/input-converter.model';
 import { IOutputConverter } from '../outputs/output-converter.model';

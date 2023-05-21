@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParserService } from '../convert/parser/parser.service';
-import { Utils } from '../convert/utils/utils';
+import { Utils } from '../convert/shared/utils';
 
 interface ICombinedFormatItem {
   name: string;

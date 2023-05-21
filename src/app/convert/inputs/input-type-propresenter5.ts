@@ -6,7 +6,7 @@ import {
   IProPresenter5DisplaySlide,
   IProPresenter5Document,
 } from '../models/propresenter-document.model';
-import { Utils } from '../utils/utils';
+import { Utils } from '../shared/utils';
 
 export class InputTypeProPresenter5 implements IInputConverter {
   readonly name = 'Pro Presenter 5';

@@ -1,6 +1,7 @@
 import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { TextCleaner } from '../utils/text-cleaner';
+import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+import { TextCleaner } from '../shared/text-cleaner';
 import { IInputConverter } from './input-converter.model';
 
 export class InputTypeSongShowPlus7 implements IInputConverter {
@@ -272,7 +273,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
         keywords = infoArray
           .splice(2)
           .map((x) => x.replace(/[\r\n\t]*/g, ''))
-          .join(', ');
+          .join(STRING_LIST_SEPARATOR_JOIN);
 
         if (infoArray.length > 0 && (infoArray[1] != null)) {
           //Return the last slide minus the keywords, then parse out the optional beginning non-word character

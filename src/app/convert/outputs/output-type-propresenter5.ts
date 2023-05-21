@@ -1,6 +1,6 @@
 import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo } from '../models/song.model';
-import { Utils } from '../utils/utils';
+import { Utils } from '../shared/utils';
 import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypeProPresenter5 implements IOutputConverter {

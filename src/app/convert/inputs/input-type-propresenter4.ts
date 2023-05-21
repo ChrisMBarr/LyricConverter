@@ -3,7 +3,7 @@ import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
 import { IInputConverter } from './input-converter.model';
 import { IProPresenter4Document } from '../models/propresenter-document.model';
-import { Utils } from '../utils/utils';
+import { Utils } from '../shared/utils';
 
 export class InputTypeProPresenter4 implements IInputConverter {
   readonly name = 'Pro Presenter 4';

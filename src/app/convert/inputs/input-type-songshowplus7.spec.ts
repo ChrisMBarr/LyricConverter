@@ -60,7 +60,7 @@ describe('InputTypeSongShowPlus7', () => {
           { name: 'Artist/Author', value: 'Barnard, Shane' },
           { name: 'Copyright', value: '2003 Waiting Room Music' },
           { name: 'CCLI', value: '4090362' },
-          { name: 'Keywords', value: "Longing, Security'" },
+          { name: 'Keywords', value: "Longing | Security'" },
         ],
         slides: [
           {
@@ -117,7 +117,7 @@ describe('InputTypeSongShowPlus7', () => {
           },
           {
             name: 'Keywords',
-            value: 'Prayer, Repentance',
+            value: 'Prayer | Repentance',
           },
         ],
         slides: [
@@ -221,7 +221,7 @@ describe('InputTypeSongShowPlus7', () => {
           },
           {
             name: 'Keywords',
-            value: "Appreciation, Breakthrough, Christ, Declaration, Jesus'",
+            value: "Appreciation | Breakthrough | Christ | Declaration | Jesus'",
           },
         ],
         slides: [
@@ -258,7 +258,7 @@ describe('InputTypeSongShowPlus7', () => {
         info: [
           {
             name: 'Keywords',
-            value: 'Tahoma, ?',
+            value: 'Tahoma | ?',
           },
         ],
         slides: [

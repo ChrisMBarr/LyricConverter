@@ -31,7 +31,7 @@ export const mockSongObjects: ISong[] = [
     title: 'At the Cross',
     info: [
       { name: 'artist', value: 'Hymn' },
-      { name: 'key', value: 'Hymn' },
+      { name: 'key', value: 'E' },
       { name: 'comment', value: 'Words and Music by Randy & Terry Butler' },
     ],
     slides: [
