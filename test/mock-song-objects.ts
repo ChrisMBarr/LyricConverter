@@ -119,6 +119,69 @@ export const mockSongObjects: ISong[] = [
       },
     ],
   },
+  {
+    fileName: 'Amazing Grace',
+    title: 'Amazing Grace',
+    info: [
+      {
+        name: 'Authors',
+        value: 'John Newton | Chris Rice | Richard Wagner | František Foo',
+      },
+      {
+        name: 'Comment',
+        value: 'This is one of the most popular songs in our congregation.',
+      },
+      {
+        name: 'Song Book 1',
+        value: 'Songbook without Number',
+      },
+      {
+        name: 'Song Book 2',
+        value: 'Songbook with Number (entry 48)',
+      },
+      {
+        name: 'Song Book 3',
+        value: 'Songbook with Letters in Entry Name (entry 153c)',
+      },
+      { name: 'Tempo', value: '90bpm' },
+      {
+        name: 'Themes',
+        value: 'Adoration | Grace | Praise | Salvation | Graça | Adoração | Salvação',
+      },
+      { name: 'copyright', value: 'public domain' },
+      { name: 'ccliNo', value: '4639462' },
+      { name: 'released', value: '1779' },
+      { name: 'transposition', value: '2' },
+      { name: 'key', value: 'C#' },
+      { name: 'variant', value: 'Newsboys' },
+      { name: 'publisher', value: 'Sparrow Records' },
+      { name: 'keywords', value: 'something to help with more accurate results' },
+      { name: 'verseOrder', value: 'v1 v2  v3 c v4 c1 c2 b b1 b2' },
+    ],
+    slides: [
+      {
+        title: 'v1 (en)',
+        lyrics: 'Amazing grace how sweet the sound that saved a wretch like me;\nA b c\nD e f',
+      },
+      {
+        title: 'v1 (de)',
+        lyrics: 'Erstaunliche Ahmut, wie',
+      },
+      {
+        title: 'c',
+        lyrics: 'any comment\nLine content.',
+      },
+      {
+        title: 'v2 (en-US)',
+        lyrics:
+          'any text\nAmazing grace how sweet the sound that saved a wretch like me;\nany text\nAmazing grace how sweet the sound that saved a wretch like me;\nAmazing grace how sweet the sound that saved a wretch like me;\nA b c\n\nD e f',
+      },
+      {
+        title: 'e (de)',
+        lyrics: 'This is text of ending.',
+      },
+    ],
+  }
 ];
 
 export const mockEmptySong: ISong = {

@@ -10,8 +10,6 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   readonly fileExt = 'xml';
 
   convertToType(song: ISong): IOutputFile {
-    console.group(song.title);
-
     const fileContent = `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
@@ -28,9 +26,10 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   </lyrics>
 </song>`;
 
+    // console.groupCollapsed(song.title);
     // console.log(song);
-    console.log(fileContent);
-    console.groupEnd();
+    // console.log(fileContent);
+    // console.groupEnd();
 
     return {
       songData: song,
@@ -50,7 +49,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /(ccliNo)|(CCLI ?Number)/i, 'ccliNo');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^transposition$/i, 'transposition');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^key$/i, 'key');
-    propertiesXml += this.findInfoAndMakeXmlProperty(info, /^tempo$/i, 'tempo', 'bpm', /bpm/i);
+    propertiesXml += this.findInfoAndMakeXmlProperty(info, /^tempo$/i, 'tempo', 'type', /\d+/i, /\D+/);
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^variant$/i, 'variant');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^publisher$/i, 'publisher');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^keywords$/i, 'keywords');
@@ -101,23 +100,28 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   private buildLyricsXmlNodes(slidesList: ISongSlide[]): string {
     let lyricsXmlStr = '';
     const linesTextIndent = ' '.repeat(8);
-    console.log(slidesList);
 
     //We will only create a <verse> tag that contains one <lines> element
     //The line breaks in the lyrics will be converted to HTML <br> tags
     for (const slide of slidesList) {
-      const linesContent =
-        '\n' + linesTextIndent + slide.lyrics.split('\n').join('<br/>\n' + linesTextIndent) + '\n      ' ;
-      lyricsXmlStr +=
-        '\n' +
-        this.createXmlNodeAndChildren(
-          'verse',
-          4,
-          'lines',
-          6,
-          [linesContent],
-          [{ name: 'name', value: slide.title }]
-        );
+      //Don't add slides/verses with empty lyrics
+      if (slide.lyrics !== '') {
+        const linesContent =
+          '\n' +
+          linesTextIndent +
+          slide.lyrics.split('\n').join('<br/>\n' + linesTextIndent) +
+          '\n      ';
+        lyricsXmlStr +=
+          '\n' +
+          this.createXmlNodeAndChildren(
+            'verse',
+            4,
+            'lines',
+            6,
+            [linesContent],
+            [{ name: 'name', value: slide.title }]
+          );
+      }
     }
 
     return lyricsXmlStr;
@@ -128,20 +132,26 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     namePattern: RegExp,
     tagName: string,
     attrName?: string,
-    attrValueReplacePattern?: RegExp
+    attrValueReplacePattern?: RegExp,
+    contentReplacePattern?: RegExp
   ): string {
     const infoMatch = info.find((i) => namePattern.test(i.name));
     let attrs: ISongInfo[] | undefined;
     if (infoMatch !== undefined) {
       if (attrName !== undefined) {
-        let val = infoMatch.value.toString();
+        let attrValue = infoMatch.value.toString();
         if (attrValueReplacePattern) {
-          val = val.replace(attrValueReplacePattern, '');
+          attrValue = attrValue.replace(attrValueReplacePattern, '');
         }
-        attrs = [{ name: attrName, value: val }];
+        attrs = [{ name: attrName, value: attrValue }];
       }
 
-      return '\n' + this.createXmlNode(tagName, 4, infoMatch.value.toString(), false, attrs);
+      let tagContent = infoMatch.value.toString();
+      if(contentReplacePattern){
+        tagContent = tagContent.replace(contentReplacePattern, '');
+      }
+
+      return '\n' + this.createXmlNode(tagName, 4, tagContent, false, attrs);
     }
     return '';
   }

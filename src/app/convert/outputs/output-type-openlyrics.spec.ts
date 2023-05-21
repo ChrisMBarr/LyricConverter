@@ -1,8 +1,8 @@
 import { TestUtils } from 'test/test-utils';
 import { OutputTypeOpenLyrics } from './output-type-openlyrics';
-import { mockSongObjects } from 'test/mock-song-objects';
+import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
 
-describe('OutputTypeOpenLyrics', () => {
+fdescribe('OutputTypeOpenLyrics', () => {
   let outputType: OutputTypeOpenLyrics;
 
   beforeEach(() => {
@@ -11,6 +11,37 @@ describe('OutputTypeOpenLyrics', () => {
 
   it('should create an instance', () => {
     expect(outputType).toBeTruthy();
+  });
+
+  it('should convert an empty song to an empty OpenLyrics XML file', () => {
+    const song = TestUtils.deepClone(mockEmptySong);
+    const outputFile = outputType.convertToType(song);
+
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
+      outputFile.outputContent
+    );
+
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
+      `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.9"
+      createdIn="LyricConverter 3.0.0"
+      modifiedIn="LyricConverter 3.0.0"
+      modifiedDate="2023-05-21T20:27:32">
+  <properties>
+    <titles>
+      <title>Empty Title</title>
+    </titles>
+  </properties>
+  <lyrics>
+  </lyrics>
+</song>`
+    );
+
+    expect(outputFile.songData).withContext('original song data').toEqual(song);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (1) to a OpenLyrics XML file', () => {
@@ -119,6 +150,190 @@ describe('OutputTypeOpenLyrics', () => {
         He died for our sins<br/>
         At the cross <br/>
         He gave us life again
+      </lines>
+    </verse>
+  </lyrics>
+</song>`
+    );
+
+    expect(outputFile.songData).withContext('original song data').toEqual(song);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+  });
+
+  it('should convert a song (3) to a OpenLyrics XML file', () => {
+    const song = TestUtils.deepClone(mockSongObjects[2]!);
+    const outputFile = outputType.convertToType(song);
+
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
+      outputFile.outputContent
+    );
+
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
+      `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.9"
+      createdIn="LyricConverter 3.0.0"
+      modifiedIn="LyricConverter 3.0.0"
+      modifiedDate="2023-05-21T20:40:24">
+  <properties>
+    <titles>
+      <title>Be Near</title>
+    </titles>
+    <copyright>2003</copyright>
+    <authors>
+      <author>Shane Bernard</author>
+    </authors>
+  </properties>
+  <lyrics>
+    <verse name="Verse 1 (1)">
+      <lines>
+        You are all<br/>
+        Big and small<br/>
+        Beautiful
+      </lines>
+    </verse>
+    <verse name="Verse 1 (2)">
+      <lines>
+        And wonderful to <br/>
+        Trust in grace<br/>
+        Through faith<br/>
+        But I'm asking to taste
+      </lines>
+    </verse>
+    <verse name="Bridge 1">
+      <lines>
+        For dark is light to You<br/>
+        Depths are Height to you<br/>
+        Far is near<br/>
+        But Lord I need to hear from You
+      </lines>
+    </verse>
+    <verse name="Chorus">
+      <lines>
+        Be near O God<br/>
+        Be near O God of us<br/>
+        Your nearness is<br/>
+        To us our good
+      </lines>
+    </verse>
+    <verse name="Post-Chorus">
+      <lines>
+        Our Good
+      </lines>
+    </verse>
+    <verse name="Verse 2 (1)">
+      <lines>
+        Your fullness is mine<br/>
+        Revelation Divine
+      </lines>
+    </verse>
+    <verse name="Verse 2 (2)">
+      <lines>
+        But oh to taste<br/>
+        To know much<br/>
+        More than a page<br/>
+        To feel Your embrace
+      </lines>
+    </verse>
+    <verse name="Ending">
+      <lines>
+        My Good
+      </lines>
+    </verse>
+  </lyrics>
+</song>`
+    );
+
+    expect(outputFile.songData).withContext('original song data').toEqual(song);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+  });
+
+  it('should convert a song (4) to a OpenLyrics XML file', () => {
+    const song = TestUtils.deepClone(mockSongObjects[3]!);
+    const outputFile = outputType.convertToType(song);
+
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
+      outputFile.outputContent
+    );
+
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
+      `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.9"
+      createdIn="LyricConverter 3.0.0"
+      modifiedIn="LyricConverter 3.0.0"
+      modifiedDate="2023-05-21T20:47:42">
+  <properties>
+    <titles>
+      <title>Amazing Grace</title>
+    </titles>
+    <copyright>public domain</copyright>
+    <released>1779</released>
+    <ccliNo>4639462</ccliNo>
+    <transposition>2</transposition>
+    <key>C#</key>
+    <tempo type="bpm">90</tempo>
+    <variant>Newsboys</variant>
+    <publisher>Sparrow Records</publisher>
+    <keywords>something to help with more accurate results</keywords>
+    <verseOrder>v1 v2  v3 c v4 c1 c2 b b1 b2</verseOrder>
+    <authors>
+      <author>John Newton </author>
+      <author> Chris Rice </author>
+      <author> Richard Wagner </author>
+      <author> František Foo</author>
+    </authors>
+    <themes>
+      <theme>Adoration </theme>
+      <theme> Grace </theme>
+      <theme> Praise </theme>
+      <theme> Salvation </theme>
+      <theme> Graça </theme>
+      <theme> Adoração </theme>
+      <theme> Salvação</theme>
+    </themes>
+    <comments>
+      <comment>This is one of the most popular songs in our congregation.</comment>
+    </comments>
+  </properties>
+  <lyrics>
+    <verse name="v1 (en)">
+      <lines>
+        Amazing grace how sweet the sound that saved a wretch like me;<br/>
+        A b c<br/>
+        D e f
+      </lines>
+    </verse>
+    <verse name="v1 (de)">
+      <lines>
+        Erstaunliche Ahmut, wie
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        any comment<br/>
+        Line content.
+      </lines>
+    </verse>
+    <verse name="v2 (en-US)">
+      <lines>
+        any text<br/>
+        Amazing grace how sweet the sound that saved a wretch like me;<br/>
+        any text<br/>
+        Amazing grace how sweet the sound that saved a wretch like me;<br/>
+        Amazing grace how sweet the sound that saved a wretch like me;<br/>
+        A b c<br/>
+        <br/>
+        D e f
+      </lines>
+    </verse>
+    <verse name="e (de)">
+      <lines>
+        This is text of ending.
       </lines>
     </verse>
   </lyrics>
