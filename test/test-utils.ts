@@ -23,7 +23,7 @@ export class TestUtils {
     return str.replace(/uuid="([a-z0-9-]+?)"/gi, `uuid="fake-uuid-for-testing"`);
   }
 
-  public static normalizeDateAttribute(str: string, attrName = 'lastDateUsed'): string {
+  public static normalizeDateAttribute(attrName: string, str: string): string {
     //Replace the single instance of a date value in an XML string so the strings can be compared for testing
     //Example: `lastDateUsed="2023-05-17T20:53:32"`
 
@@ -36,9 +36,16 @@ export class TestUtils {
   public static normalizeProPresenterStringForTesting(str: string): string {
     //A helper method to do all of our replacements in one for comparing ProPresenter files
     return TestUtils.normalizeDateAttribute(
+      'lastDateUsed',
       TestUtils.normalizeUuidAttributes(TestUtils.normalizeWhitespace(str))
     );
   }
+
+  public static normalizeOpenLyricsStringForTesting(str: string): string {
+    //A helper method to do all of our replacements in one for comparing OpenLyrics files
+    return TestUtils.normalizeDateAttribute('modifiedDate', TestUtils.normalizeWhitespace(str));
+  }
+
   public static deepClone<T>(input: T): T {
     return JSON.parse(JSON.stringify(input));
   }
