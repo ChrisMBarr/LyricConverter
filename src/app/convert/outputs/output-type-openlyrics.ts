@@ -49,7 +49,14 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /(ccliNo)|(CCLI ?Number)/i, 'ccliNo');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^transposition$/i, 'transposition');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^key$/i, 'key');
-    propertiesXml += this.findInfoAndMakeXmlProperty(info, /^tempo$/i, 'tempo', 'type', /\d+/i, /\D+/);
+    propertiesXml += this.findInfoAndMakeXmlProperty(
+      info,
+      /^tempo$/i,
+      'tempo',
+      'type',
+      /\d+/i,
+      /\D+/
+    );
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^variant$/i, 'variant');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^publisher$/i, 'publisher');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^keywords$/i, 'keywords');
@@ -92,6 +99,27 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
         .join(STRING_LIST_SEPARATOR_JOIN)
         .split(STRING_LIST_SEPARATOR_SPLIT);
       propertiesXml += '\n' + this.createXmlNodeAndChildren('comments', 4, 'comment', 6, combined);
+    }
+
+    const songBookInfo = info.filter((i) => /^song ?book/i.test(i.name));
+    if (songBookInfo.length > 0) {
+      const songbooksContent =
+        '\n' +
+        songBookInfo
+          .map((sb) => {
+            let nameAttrValue = sb.value;
+            let entryAttr = '';
+            const sbMatch = /^([\w\s]+)(\(:?entry ([0-9a-z]+)\))?$/i.exec(sb.value.toString());
+
+            if (sbMatch?.[1] != null && sbMatch[3] != null) {
+              nameAttrValue = sbMatch[1].trim();
+              entryAttr = ` entry="${sbMatch[3]}"`;
+            }
+
+            return `      <songbook name="${nameAttrValue}"${entryAttr} />`;
+          })
+          .join('\n') + '\n      ';
+      propertiesXml += '\n' + this.createXmlNode('songbooks', 4, songbooksContent);
     }
 
     return propertiesXml;
@@ -147,7 +175,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
       }
 
       let tagContent = infoMatch.value.toString();
-      if(contentReplacePattern){
+      if (contentReplacePattern) {
         tagContent = tagContent.replace(contentReplacePattern, '');
       }
 
@@ -185,7 +213,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     if (childTagsContent.length) {
       const innerTags =
         childTagsContent
-          .map((a) => `\n${this.createXmlNode(childTag, childIndentLevel, a)}`)
+          .map((content) => `\n${this.createXmlNode(childTag, childIndentLevel, content)}`)
           .join('') + '\n';
 
       xml += this.createXmlNode(parentTag, parentIndentLevel, innerTags, true, attrs);

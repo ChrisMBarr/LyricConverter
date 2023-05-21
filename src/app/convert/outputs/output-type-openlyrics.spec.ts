@@ -2,7 +2,7 @@ import { TestUtils } from 'test/test-utils';
 import { OutputTypeOpenLyrics } from './output-type-openlyrics';
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
 
-fdescribe('OutputTypeOpenLyrics', () => {
+describe('OutputTypeOpenLyrics', () => {
   let outputType: OutputTypeOpenLyrics;
 
   beforeEach(() => {
@@ -266,7 +266,7 @@ fdescribe('OutputTypeOpenLyrics', () => {
       version="0.9"
       createdIn="LyricConverter 3.0.0"
       modifiedIn="LyricConverter 3.0.0"
-      modifiedDate="2023-05-21T20:47:42">
+      modifiedDate="2023-05-21T21:57:12">
   <properties>
     <titles>
       <title>Amazing Grace</title>
@@ -299,6 +299,11 @@ fdescribe('OutputTypeOpenLyrics', () => {
     <comments>
       <comment>This is one of the most popular songs in our congregation.</comment>
     </comments>
+    <songbooks>
+      <songbook name="Songbook without Number" />
+      <songbook name="Songbook with Number" entry="48" />
+      <songbook name="Songbook with Letters in Entry Name" entry="153c" />
+      </songbooks>
   </properties>
   <lyrics>
     <verse name="v1 (en)">
