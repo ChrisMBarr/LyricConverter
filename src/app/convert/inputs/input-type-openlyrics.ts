@@ -44,10 +44,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
       stopNodes: ['song.lyrics.verse.lines'],
       isArray: (_name, jPath: string) => alwaysArray.includes(jPath),
       tagValueProcessor: (_tagName, tagValue, jPath): string | null => {
-        if (jPath === 'song.lyrics.verse.lines') {
-          return tagValue;
-        }
-        return null;
+        return jPath === 'song.lyrics.verse.lines' ? tagValue : null;
       },
     });
 
@@ -64,7 +61,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
     };
   }
 
-  private stripTags(str: string): string {
+  private convertHtmlLineBreaksAndStripTags(str: string): string {
     //replace correctly and incorrectly formatted <br> </br> and </br> tags with new lines
     //Then remove all HTML/XML tags
     return str.replace(/<\/?br\/?>/gi, '\n').replace(/<.+?>/g, '');
@@ -85,6 +82,61 @@ export class InputTypeOpenLyrics implements IInputConverter {
       }
     }
     return fallbackFileName;
+  }
+
+  private getInfo(properties: IOpenLyricsDocProperties): ISongInfo[] {
+    let info: ISongInfo[] = [];
+
+    //Special parsing for a few different kinds of properties that might exist
+    if (properties.authors) {
+      info.push(this.getSpecialPropAuthors(properties.authors));
+    }
+    if (properties.comments) {
+      info = info.concat(this.getSpecialPropComments(properties.comments));
+    }
+    if (properties.songbooks) {
+      info = info.concat(this.getSpecialPropSongBooks(properties.songbooks));
+    }
+    if (properties.tempo) {
+      info.push(this.getSpecialPropsTempo(properties.tempo));
+    }
+    if (properties.themes) {
+      info.push(this.getSpecialPropsThemes(properties.themes));
+    }
+
+    //Now we just add the rest of the properties to the info,
+    info = info.concat(this.getRegularProps(properties));
+
+    return info;
+  }
+
+  private getSlides(lyrics: IOpenLyricsDocLyrics): ISongSlide[] {
+    const slides: ISongSlide[] = [];
+
+    for (const verse of lyrics.verse) {
+      let title = verse.name;
+
+      //If we have a language, mark the slide title with it
+      if (verse.lang !== undefined) {
+        title += ` (${verse.lang})`;
+      }
+
+      //Each verse has multiple lines.
+      //We combine all lines and strip out any XML tags (chord markers, comments, )
+      const slideLyrics = verse.lines
+        .map((l) => {
+          return this.convertHtmlLineBreaksAndStripTags(this.getStringOrTextProp(l));
+        })
+        .join('\n')
+        .trim();
+
+      //Don't add empty slides
+      if (slideLyrics !== '') {
+        slides.push({ title, lyrics: slideLyrics });
+      }
+    }
+
+    return slides;
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -169,39 +221,5 @@ export class InputTypeOpenLyrics implements IInputConverter {
     }
 
     return regularProps;
-  }
-
-  private getInfo(properties: IOpenLyricsDocProperties): ISongInfo[] {
-    let info: ISongInfo[] = [];
-    console.log(properties);
-
-    //Special parsing for a few different kinds of properties that might exist
-    if (properties.authors) {
-      info.push(this.getSpecialPropAuthors(properties.authors));
-    }
-    if (properties.comments) {
-      info = info.concat(this.getSpecialPropComments(properties.comments));
-    }
-    if (properties.songbooks) {
-      info = info.concat(this.getSpecialPropSongBooks(properties.songbooks));
-    }
-    if (properties.tempo) {
-      info.push(this.getSpecialPropsTempo(properties.tempo));
-    }
-    if (properties.themes) {
-      info.push(this.getSpecialPropsThemes(properties.themes));
-    }
-
-    //Now we just add the rest of the properties to the info,
-    info = info.concat(this.getRegularProps(properties));
-
-    console.log(info);
-    return info;
-  }
-
-  private getSlides(_lyrics: IOpenLyricsDocLyrics): ISongSlide[] {
-    const slides: ISongSlide[] = [];
-    console.log(_lyrics.verse);
-    return slides;
   }
 }

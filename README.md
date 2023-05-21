@@ -14,7 +14,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **JSON**                                                           |   ✔️   |   ✔️  |
 | **[MediaShout](https://mediashout.com/)**                          |         |       |
 | **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
-| **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |         |       |
+| **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |   ✔️   |       |
 | **Plain Text**                                                     |   ✔️   |   ✔️  |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✔️   |        |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✔️   |   ✔️  |
@@ -34,12 +34,10 @@ Parses the song info & lyrics from various lyric presentation software file form
 * Drag & drop over entire document
 * Click to allow file selection
 * Deal with possibly duplicated info keys
-* Drop area message should be dynamic
+* Drop area message about accepted files should be dynamic
 * folder drop?
-* Count how may files processes
+* Count how may files processed
 * Error message displays
-* Fix design for wide screens
-* Multiple header images
 * Redesign with TailWinds
 * Allow user-configurable options for output file (resolution, text size, etc)
 * Split out each format input/output into its' own NPM package

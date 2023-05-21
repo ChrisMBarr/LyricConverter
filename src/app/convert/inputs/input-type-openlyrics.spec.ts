@@ -54,7 +54,12 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'Amazing Grace',
         info: [],
-        slides: [],
+        slides: [
+          {
+            title: 'v1',
+            lyrics: 'Amazing grace how sweet the sound\nthat saved a wretch like me;',
+          },
+        ],
       });
     });
 
@@ -132,7 +137,29 @@ describe('InputTypeOpenLyrics', () => {
             value: 'v1 v2  v3 c v4 c1 c2 b b1 b2',
           },
         ],
-        slides: [],
+        slides: [
+          {
+            title: 'v1 (en)',
+            lyrics: 'Amazing grace how sweet the sound that saved a wretch like me;\nA b c\nD e f',
+          },
+          {
+            title: 'v1 (de)',
+            lyrics: 'Erstaunliche Ahmut, wie',
+          },
+          {
+            title: 'c',
+            lyrics: 'any comment\nLine content.',
+          },
+          {
+            title: 'v2 (en-US)',
+            lyrics:
+              'any text\nAmazing grace how sweet the sound that saved a wretch like me;\nany text\nAmazing grace how sweet the sound that saved a wretch like me;\nAmazing grace how sweet the sound that saved a wretch like me;\nA b c\n\nD e f',
+          },
+          {
+            title: 'e (de)',
+            lyrics: 'This is text of ending.',
+          },
+        ],
       });
     });
 
