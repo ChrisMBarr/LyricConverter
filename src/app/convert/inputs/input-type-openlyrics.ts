@@ -53,6 +53,11 @@ export class InputTypeOpenLyrics implements IInputConverter {
     const info: ISongInfo[] = this.getInfo(parsedDoc.song.properties);
     const slides: ISongSlide[] = this.getSlides(parsedDoc.song.lyrics);
 
+    // console.group(title);
+    // console.log(info);
+    // console.log(slides);
+    // console.groupEnd();
+
     return {
       fileName: rawFile.name,
       title,
@@ -113,26 +118,35 @@ export class InputTypeOpenLyrics implements IInputConverter {
   private getSlides(lyrics: IOpenLyricsDocLyrics): ISongSlide[] {
     const slides: ISongSlide[] = [];
 
-    for (const verse of lyrics.verse) {
-      let title = verse.name;
+    if (lyrics.verse) {
+      for (const verse of lyrics.verse) {
+        let title = verse.name;
 
-      //If we have a language, mark the slide title with it
-      if (verse.lang !== undefined) {
-        title += ` (${verse.lang})`;
-      }
+        //If we have a language, mark the slide title with it
+        if (verse.lang !== undefined && verse.translit !== undefined) {
+          //Both a Language and a Transliteration language set, use both
+          title += ` (${verse.lang} - transliterated in ${verse.translit})`;
+        } else if (verse.lang !== undefined) {
+          //Only a language set
+          title += ` (${verse.lang})`;
+        }
 
-      //Each verse has multiple lines.
-      //We combine all lines and strip out any XML tags (chord markers, comments, )
-      const slideLyrics = verse.lines
-        .map((l) => {
-          return this.convertHtmlLineBreaksAndStripTags(this.getStringOrTextProp(l));
-        })
-        .join('\n')
-        .trim();
+        //Each verse has multiple lines.
+        //We combine all lines and strip out any XML tags (chord markers, comments, )
+        const slideLyrics = verse.lines
+          .map((l) => {
+            return this.convertHtmlLineBreaksAndStripTags(this.getStringOrTextProp(l));
+          })
+          //Combine all lines into a single string
+          .join('\n')
+          //Then remove all whitespace after a new line (these were indentations in the XML)
+          .replace(/\n[\t ]+/g, '\n')
+          .trim();
 
-      //Don't add empty slides
-      if (slideLyrics !== '') {
-        slides.push({ title, lyrics: slideLyrics });
+        //Don't add empty slides
+        if (slideLyrics !== '') {
+          slides.push({ title, lyrics: slideLyrics });
+        }
       }
     }
 

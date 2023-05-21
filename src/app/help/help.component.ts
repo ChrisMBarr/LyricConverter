@@ -58,7 +58,7 @@ export class HelpComponent implements OnInit {
     ).sort((a, b) => {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
-      return 0;
+      /* istanbul ignore next */ return 0;
     });
   }
 }

@@ -239,6 +239,29 @@ export const mockOpenLyricsSongFile2: IRawDataFile = {
 </song>`,
 };
 
+export const mockOpenLyricsSongFile3: IRawDataFile = {
+  name: 'It Is Well With My Soul',
+  ext: 'xml',
+  type: 'application/xml',
+  data: `<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.643833">
+  <properties>
+    <titles>
+      <title>It Is Well With My Soul</title>
+    </titles>
+    <songbooks>
+      <songbook name="Single" entry="48"/>
+    </songbooks>
+    <comments>
+      <comment>First</comment>
+      <comment>Second</comment>
+    </comments>
+  </properties>
+  <lyrics></lyrics>
+</song>`,
+};
+
 export const mockOpenLyricsSongFileHebrew: IRawDataFile = {
   name: 'Hava Nagila',
   ext: 'xml',

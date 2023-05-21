@@ -53,10 +53,11 @@ export interface IOpenLyricsDocTempo {
   type: string;
 }
 export interface IOpenLyricsDocLyrics {
-  verse: IOpenLyricsDocVerse[];
+  verse?: IOpenLyricsDocVerse[];
 }
 export interface IOpenLyricsDocVerse {
   lines: (string | { '#text': string; part?: string })[];
   name: string;
   lang?: string;
+  translit?: string;
 }
