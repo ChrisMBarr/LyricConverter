@@ -13,8 +13,8 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
 | **JSON**                                                           |   ✔️   |   ✔️  |
 | **[MediaShout](https://mediashout.com/)**                          |         |       |
-| **[OpenSong](https://opensong.org/)** - [Issue #5][3]              |         |       |
-| **[OpenLyrics](https://docs.openlyrics.org)** - [Issue #4][2]      |   ✔️   |       |
+| **[OpenSong](https://opensong.org/)** - [Issue #5][2]              |         |       |
+| **[OpenLyrics](https://docs.openlyrics.org)**                      |   ✔️   |   ✔️  |
 | **Plain Text**                                                     |   ✔️   |   ✔️  |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✔️   |        |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✔️   |   ✔️  |
@@ -26,8 +26,7 @@ Parses the song info & lyrics from various lyric presentation software file form
   *Note: You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
 
 [1]: https://github.com/FiniteLooper/LyricConverter/issues/3
-[2]: https://github.com/FiniteLooper/LyricConverter/issues/4
-[3]: https://github.com/FiniteLooper/LyricConverter/issues/5
+[2]: https://github.com/FiniteLooper/LyricConverter/issues/5
 
 
 ### TODO Items:

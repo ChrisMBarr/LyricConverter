@@ -40,6 +40,11 @@ export class Utils {
 \\f0\\fs120 \\cf1 \\\r${text.replace(/\r|\n/g, '\\\r')}}`;
   }
 
+  public static getIsoDateString(): string{
+    //Remove the ending milliseconds: '2023-05-17T16:02:23.245Z' --> '2023-05-17T16:02:23'
+    return new Date().toISOString().replace(/\.\d{3}Z$/, '')
+  }
+
   //https://stackoverflow.com/a/41919138/79677
   public static mergeArraysByProp<T>(a: T[], b: T[], propName: string): T[] {
     // We need to ignore the TS compile error since there's no good way to write a typedef for this!

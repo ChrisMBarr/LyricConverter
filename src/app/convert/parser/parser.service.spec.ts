@@ -43,6 +43,26 @@ describe('ParserService', () => {
       };
       expect(service.parseFiles([inputFile])).toEqual([expectedParsedFile]);
     });
+
+    it('should return correctly with a unicode file name', () => {
+      const inputFile: IFileWithData = {
+        data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHRleHQgZm9yIHRlc3Rpbmch',
+        ext: 'txt',
+        lastModified: 1684251444527,
+        name: 'ěščřžýáíé åäö.txt',
+        nameWithoutExt: 'ěščřžýáíé åäö',
+        size: 30,
+        type: 'text/plain',
+      };
+
+      const expectedParsedFile: IRawDataFile = {
+        data: 'this is some text for testing!',
+        ext: 'txt',
+        name: 'ěščřžýáíé åäö',
+        type: 'text/plain',
+      };
+      expect(service.parseFiles([inputFile])).toEqual([expectedParsedFile]);
+    });
   });
 
   describe('detectInputTypeAndGetConverter()', () => {

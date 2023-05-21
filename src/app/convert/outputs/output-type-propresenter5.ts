@@ -58,8 +58,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
       { name: 'creatorCode', value: '1349676880' },
       {
         name: 'lastDateUsed',
-        //Remove the ending milliseconds: '2023-05-17T16:02:23.245Z' --> '2023-05-17T16:02:23'
-        value: new Date().toISOString().replace(/\.\d{3}Z$/, ''),
+        value: Utils.getIsoDateString(),
       },
       { name: 'usedCount', value: '0' },
       { name: 'category', value: 'Song' },

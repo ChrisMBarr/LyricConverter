@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { IFileWithData, IRawDataFile } from '../models/file.model';
-import { Utils } from '../utils/utils';
 
+//Helpers & Types
+import { Utils } from '../utils/utils';
+import { IFileWithData, IRawDataFile } from '../models/file.model';
 import { IInputConverter } from '../inputs/input-converter.model';
 import { IOutputConverter } from '../outputs/output-converter.model';
 
+//Input Types
 import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
@@ -13,11 +15,13 @@ import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 import { InputTypeSongShowPlus7 } from '../inputs/input-type-songshowplus7';
 import { InputTypeOpenLyrics } from '../inputs/input-type-openlyrics';
 
+//Output Types
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
+import { OutputTypeOpenLyrics } from '../outputs/output-type-openlyrics';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +42,7 @@ export class ParserService {
   readonly outputConverters: IOutputConverter[] = [
     new OutputTypeProPresenter5(),
     new OutputTypeChordpro(),
+    new OutputTypeOpenLyrics(),
     new OutputTypePlainText(),
     new OutputTypeDisplaySlides(),
     new OutputTypeJSON()
