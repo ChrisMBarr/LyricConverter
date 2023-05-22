@@ -53,6 +53,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^publisher$/i, 'publisher');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^keywords$/i, 'keywords');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /order/i, 'verseOrder');
+    propertiesXml += this.findInfoAndMakeXmlProperty(info, /time ?signature/i, 'timeSignature');
 
     //Many of these next properties can have multiple values.
     //Instead of looping over all the info properties once per property we are looking for

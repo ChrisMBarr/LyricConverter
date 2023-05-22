@@ -75,6 +75,14 @@ export const mockSongObjects: ISong[] = [
         name: 'CCLICopyrightInfo',
         value: 2003,
       },
+      {
+        name: 'Keywords',
+        value: 'Grace, Peace, Nearness',
+      },
+      {
+        name: 'Time Signature',
+        value: '3/4',
+      },
     ],
     slides: [
       {

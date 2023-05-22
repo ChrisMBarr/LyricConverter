@@ -79,7 +79,16 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
     ];
 
     //Overwrite any default attributes with ones tht came from the song
-    const mergedAttributes = Utils.mergeArraysByProp<ISongInfo>(defaultAttributes, song.info, 'name');
+    const mergedAttributes = Utils.mergeArraysByProp<ISongInfo>(
+      defaultAttributes,
+      song.info,
+      'name'
+    )
+      //Remove any attributes that were not in the original default list
+      //to prevent weird stuff from other file types comes through to here
+      .filter((a) => {
+        return defaultAttributes.some((d: ISongInfo) => d.name === a.name);
+      });
 
     //Convert all pieces of song info into a string of XML attributes
     const documentAttributes = mergedAttributes.reduce((accumulator: string, obj: ISongInfo) => {
@@ -114,14 +123,16 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
 
   private makeSlide(order: number, label: string, text: string): string {
     const encodedRtf = Utils.encodeBase64(Utils.formatRtf(text));
-    const txtElWidth = this.slideWidth - this.slideTextPadding*2;
-    const txtElHeight = this.slideHeight - this.slideTextPadding*2;
-    return  `
+    const txtElWidth = this.slideWidth - this.slideTextPadding * 2;
+    const txtElHeight = this.slideHeight - this.slideTextPadding * 2;
+    return `
         <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="" hotKey="" label="${label}" notes="" slideType="1" sort_index="${order}" UUID="${this.generateUniqueID()}" drawingBackgroundColor="0" chordChartPath="" serialization-array-index="${order}">
           <cues containerClass="NSMutableArray" />
           <displayElements containerClass="NSMutableArray">
             <RVTextElement displayDelay="0" displayName="Default" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="0" drawingStroke="0" fillColor="1 1 1 1" rotation="0" source="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="${encodedRtf}" revealType="0" serialization-array-index="0">
-              <_-RVRect3D-_position x="${this.slideTextPadding}" y="${this.slideTextPadding}" z="0" width="${txtElWidth}" height="${txtElHeight}" />
+              <_-RVRect3D-_position x="${this.slideTextPadding}" y="${
+      this.slideTextPadding
+    }" z="0" width="${txtElWidth}" height="${txtElHeight}" />
               <_-D-_serializedShadow containerClass="NSMutableDictionary">
                 <NSMutableString serialization-native-value="{3.5355301, -3.5355301}" serialization-dictionary-key="shadowOffset" />
                 <NSNumber serialization-native-value="5" serialization-dictionary-key="shadowBlurRadius" />

@@ -183,6 +183,8 @@ describe('OutputTypeOpenLyrics', () => {
       <title>Be Near</title>
     </titles>
     <copyright>2003</copyright>
+    <keywords>Grace, Peace, Nearness</keywords>
+    <timeSignature>3/4</timeSignature>
     <authors>
       <author>Shane Bernard</author>
     </authors>
