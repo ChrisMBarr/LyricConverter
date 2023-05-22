@@ -127,6 +127,7 @@ describe('OutputTypeOpenLyrics', () => {
     <authors>
       <author>Hymn</author>
     </authors>
+    <tempo type="text">Moderate</tempo>
     <comments>
       <comment>Words and Music by Randy & Terry Butler</comment>
     </comments>
@@ -276,7 +277,6 @@ describe('OutputTypeOpenLyrics', () => {
     <ccliNo>4639462</ccliNo>
     <transposition>2</transposition>
     <key>C#</key>
-    <tempo type="bpm">90</tempo>
     <variant>Newsboys</variant>
     <publisher>Sparrow Records</publisher>
     <keywords>something to help with more accurate results</keywords>
@@ -296,6 +296,7 @@ describe('OutputTypeOpenLyrics', () => {
       <theme> Adoração </theme>
       <theme> Salvação</theme>
     </themes>
+    <tempo type="bpm">90</tempo>
     <comments>
       <comment>This is one of the most popular songs in our congregation.</comment>
     </comments>

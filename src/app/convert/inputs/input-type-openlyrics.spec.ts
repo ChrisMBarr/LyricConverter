@@ -189,6 +189,7 @@ describe('InputTypeOpenLyrics', () => {
         title: 'It Is Well With My Soul',
         info: [
           { name: 'Authors', value: 'Horatio Spafford | Philip Bliss' },
+          { name: 'Tempo', value: 'Moderate' },
           { name: 'Themes', value: 'Peace | Assurance | Trust' },
           { name: 'copyright', value: 'Public Domain' },
           { name: 'ccliNo', value: '25376' },

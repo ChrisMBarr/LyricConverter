@@ -189,6 +189,7 @@ export const mockOpenLyricsSongFile2: IRawDataFile = {
     <copyright>Public Domain</copyright>
     <ccliNo>25376</ccliNo>
     <verseOrder>v1 c v2 c v3 c v4 c</verseOrder>
+    <tempo type="text">Moderate</tempo>
     <themes>
       <theme>Peace</theme>
       <theme>Assurance</theme>

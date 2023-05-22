@@ -49,24 +49,17 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /(ccliNo)|(CCLI ?Number)/i, 'ccliNo');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^transposition$/i, 'transposition');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^key$/i, 'key');
-    propertiesXml += this.findInfoAndMakeXmlProperty(
-      info,
-      /^tempo$/i,
-      'tempo',
-      'type',
-      /\d+/i,
-      /\D+/
-    );
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^variant$/i, 'variant');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^publisher$/i, 'publisher');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /^keywords$/i, 'keywords');
     propertiesXml += this.findInfoAndMakeXmlProperty(info, /order/i, 'verseOrder');
 
-    //These next properties can have multiple values.
+    //Many of these next properties can have multiple values.
     //Instead of looping over all the info properties once per property we are looking for
     // we just do it once and pull everything we need out for all the below nested property nodes
     const authorsInfo: ISongInfo[] = [];
     let themesInfo: ISongInfo | undefined;
+    let tempoInfo: ISongInfo | undefined;
     const commentsInfo: ISongInfo[] = [];
     const songBookInfo: ISongInfo[] = [];
     info.forEach((i) => {
@@ -75,6 +68,9 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
       } else if (i.name.toLowerCase().startsWith('theme')) {
         //there should only be one of these, an array is not needed for themes
         themesInfo = i;
+      } else if (i.name.toLowerCase() === 'tempo') {
+        //there should only be one of these, an array is not needed for themes
+        tempoInfo = i;
       } else if (i.name.toLowerCase().startsWith('comment')) {
         commentsInfo.push(i);
       } else if (/^song ?book/i.test(i.name)) {
@@ -103,6 +99,24 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
           6,
           themesInfo.value.toString().split(STRING_LIST_SEPARATOR_SPLIT)
         );
+    }
+
+    if (tempoInfo) {
+      //Tempo can be two different types: 'bpm' or 'text'
+      //'90bpm' --> '<tempo type="bpm">90</tempo>'
+      //'moderate' --> '<tempo type="text">moderate</tempo>'
+      let attrValue = 'text'
+      let tagContent = tempoInfo.value.toString();
+
+      if(tagContent.includes('bpm')){
+        attrValue = 'bpm';
+        tagContent = tagContent.replace('bpm', '')
+      }
+
+      propertiesXml += (
+        '\n' +
+        this.createXmlNode('tempo', 4, tagContent, false, [{ name: 'type', value: attrValue }])
+      );
     }
 
     if (commentsInfo.length > 0) {
@@ -174,26 +188,17 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     info: ISongInfo[],
     namePattern: RegExp,
     tagName: string,
-    attrName?: string,
-    attrValueReplacePattern?: RegExp,
-    contentReplacePattern?: RegExp
+    attrName?: string
   ): string {
     const infoMatch = info.find((i) => namePattern.test(i.name));
     let attrs: ISongInfo[] | undefined;
     if (infoMatch !== undefined) {
       if (attrName !== undefined) {
-        let attrValue = infoMatch.value.toString();
-        if (attrValueReplacePattern) {
-          attrValue = attrValue.replace(attrValueReplacePattern, '');
-        }
+        const attrValue = infoMatch.value.toString();
         attrs = [{ name: attrName, value: attrValue }];
       }
 
-      let tagContent = infoMatch.value.toString();
-      if (contentReplacePattern) {
-        tagContent = tagContent.replace(contentReplacePattern, '');
-      }
-
+      const tagContent = infoMatch.value.toString();
       return '\n' + this.createXmlNode(tagName, 4, tagContent, false, attrs);
     }
     return '';

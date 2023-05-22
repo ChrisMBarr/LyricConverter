@@ -212,7 +212,10 @@ export class InputTypeOpenLyrics implements IInputConverter {
   }
 
   private getSpecialPropsTempo(tempo: IOpenLyricsDocTempo): ISongInfo {
-    return { name: 'Tempo', value: tempo['#text'] + tempo.type };
+    //Tempo type can be either "bpm" or "text"
+    //Include "bpm" in the value (ie: 90bpm), but not if text (ie: "Moderate")
+    const tempoValue = tempo['#text'] + (tempo.type.toLowerCase() === 'bpm' ? tempo.type : '');
+    return { name: 'Tempo', value: tempoValue };
   }
 
   private getSpecialPropsThemes(themes: IOpenLyricsDocThemes): ISongInfo {
