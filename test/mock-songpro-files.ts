@@ -1,111 +1,96 @@
-import { IRawDataFile } from "src/app/convert/models/file.model";
+import { IRawDataFile } from 'src/app/convert/models/file.model';
 
 export const mockSongProFile1: IRawDataFile = {
-  name: 'Great is your faithfulness O God',
+  name: 'Escape Capsule',
   ext: 'md',
   type: '',
-  data:`#T
-Great is your faithfulness O God
-#C
-{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-{\\colortbl ;\\red0\\green0\\blue0;}
-\\viewkind4\\uc1\\pard\\cf1\\lang2057\\f0\\fs17 Your grace is enough
-\\par Your grace is enough
-\\par Your grace is enough for me
-\\par }
+  data: `@title=Escape Capsule
+@artist=Brian Kelly
+!bandcamp=https://spilth.bandcamp.com/track/escape-capsule
 
-#1
-{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-{\\colortbl ;\\red0\\green0\\blue0;}
-\\viewkind4\\uc1\\pard\\cf1\\lang2057\\f0\\fs17 Great is your faithfulness O God
-\\par You wrestle with the sinners heart
-\\par You lead us by still waters and to mercy
-\\par And nothing can keep us apart
-\\par }
+# Verse 1
 
-#2
-{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-{\\colortbl ;\\red0\\green0\\blue0;}
-\\viewkind4\\uc1\\pard\\cf1\\lang2057\\f0\\fs17 Great is your love and justice God
-\\par You use the weak to lead the strong
-\\par You lead us in the song of your salvation
-\\par And all your people sing along
-\\par }
+Climb a-[D]board [A]
+I've been [Bm]waiting for you [F#m]
+Climb a-[G]board [D]
+You'll be [Asus4]safe in [A7]here
 
-#3
-{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2057{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-\\viewkind4\\uc1\\pard\\f0\\fs17
-\\par }
+# Chorus 1
 
-#4
-{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2057{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-\\viewkind4\\uc1\\pard\\f0\\fs17
-\\par }
+[G] I'm a [D]rocket [F#]made for your pro-[Bm]tection
+You're [G]safe with me, un-[A]til you leave
 
-#5
-{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2057{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-\\viewkind4\\uc1\\pard\\f0\\fs17
-\\par }
+# Solo
 
-#6
-{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2057{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-\\viewkind4\\uc1\\pard\\f0\\fs17
-\\par }
+| [Em] | [D] | [Em] | [D] |
+| [Em] | [D] | [Em] | [F#] |
+| [B] | [B] | [Bm] | [Bm] |
+`,
+};
 
-#7
-{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2057{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-\\viewkind4\\uc1\\pard\\f0\\fs17
-\\par }
+export const mockSongProFile2: IRawDataFile = {
+  name: 'Bad Moon Rising',
+  ext: 'sng',
+  type: '',
+  data: `@title=Bad Moon Rising
+@artist=Creedence Clearwater Revival
+@capo=1
+!difficulty=Easy
+!spotify_url=https://open.spotify.com/track/20OFwXhEXf12DzwXmaV7fj?si=cE76lY5TT26fyoNmXEjNpA
 
-#D
-{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-{\\colortbl ;\\red0\\green0\\blue0;}
-\\viewkind4\\uc1\\pard\\cf1\\lang2057\\f0\\fs17 (Chorus 2.)
-\\par
-\\par Your grace is enough
-\\par Heaven reaching down to us
-\\par Your grace is enough for me
-\\par God, I see your grace is enough
-\\par I'm covered in your love
-\\par Your grace is enough for me
-\\par For me
-\\par }
+# Intro
 
-#B
-{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
-{\\colortbl ;\\red0\\green0\\blue0;}
-\\viewkind4\\uc1\\pard\\cf1\\lang2057\\f0\\fs17 So remember you people
-\\par Remember your children
-\\par Remember your promise
-\\par Oh God
-\\par }
+| [D] | [A] [G] | [D] | [D] |
 
-#G
-#O
-1C2CBC
-#F
-Arial
-#FS
-40
-#I
-False
-#BD
-True
-#BE
-True
-#JL
-True
-#JT
-False
-#FC
-0
-#BC
-16777215
-#N
-#SB
-True
-#SH
-False
-#E
-`
-}
+# Verse 1
+
+[D]I see a [A]bad [G]moon a-[D]rising
+[D]I see [A]trouble [G]on the [D]way
+[D]I see [A]earth-[G]quakes and [D]lightnin'
+[D]I see [A]bad [G]times to-[D]day
+
+# Riff
+
+|-3---5-|
+|---4---|
+
+# Chorus
+
+[G]Don't go 'round tonight
+It's [D]bound to take your life
+[A7]There's a [G]bad moon on the [D]rise
+
+# Verse 2
+
+[D]I hear [A]hurri-[G]canes a-[D]blowing
+[D]I know the [A]end is [G]coming [D]soon
+[D]I fear [A]rivers [G]over [D]flowing
+[D]I hear the [A]voice of [G]rage and [D]ruin
+
+# Chorus
+
+[G]Don't go 'round tonight
+It's [D]bound to take your life
+[A7]There's a [G]bad moon on the [D]rise
+
+# Solo
+
+| [D] | [A] [G] | [D] | [D] |
+| [D] | [A] [G] | [D] | [D] |
+| [G] | [G] | [D] | [D] |
+| [A7] | [G] | [D] | [D] |
+
+# Verse 3
+
+[D]I hope you [A]got your [G]things to-[D]gether
+[D]Hope you are [A]quite pre-[G]pared to [D]die
+[D]Look's like we're [A]in for [G]nasty [D]weather
+[D]One eye is [A]taken [G]for an [D]eye
+
+# Chorus
+
+Oh [G]don't go 'round tonight
+It's [D]bound to take your life
+[A7]There's a [G]bad moon on the [D]rise
+[A7]There's a [G]bad moon on the [D]rise`,
+};
