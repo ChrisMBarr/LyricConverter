@@ -39,11 +39,11 @@ export const mockSongObjects: ISong[] = [
       {
         title: 'Verse',
         lyrics:
-          'I know a place\nA wonderful place\nWhere accused and condemned\nFind mercy and grace\nWhere the wrongs we have done\nAnd the wrongs done to us\nWere nailed there with him \nThere on the cross',
+          'I know a place\nA wonderful place\nWhere accused and condemned\nFind mercy and grace\nWhere the wrongs we have done\nAnd the wrongs done to us\nWere nailed there with him\nThere on the cross',
       },
       {
         title: 'Chorus',
-        lyrics: 'At the cross\nHe died for our sins\nAt the cross \nHe gave us life again',
+        lyrics: 'At the cross\nHe died for our sins\nAt the cross\nHe gave us life again',
       },
     ],
   },
@@ -95,7 +95,7 @@ export const mockSongObjects: ISong[] = [
       },
       {
         title: 'Verse 1 (2)',
-        lyrics: "And wonderful to \nTrust in grace\nThrough faith\nBut I'm asking to taste",
+        lyrics: "And wonderful to\nTrust in grace\nThrough faith\nBut I'm asking to taste",
       },
       {
         title: 'Bridge 1',

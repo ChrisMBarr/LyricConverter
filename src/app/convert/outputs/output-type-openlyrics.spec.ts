@@ -141,7 +141,7 @@ describe('OutputTypeOpenLyrics', () => {
         Find mercy and grace<br/>
         Where the wrongs we have done<br/>
         And the wrongs done to us<br/>
-        Were nailed there with him <br/>
+        Were nailed there with him<br/>
         There on the cross
       </lines>
     </verse>
@@ -149,7 +149,7 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>
         At the cross<br/>
         He died for our sins<br/>
-        At the cross <br/>
+        At the cross<br/>
         He gave us life again
       </lines>
     </verse>
@@ -199,7 +199,7 @@ describe('OutputTypeOpenLyrics', () => {
     </verse>
     <verse name="Verse 1 (2)">
       <lines>
-        And wonderful to <br/>
+        And wonderful to<br/>
         Trust in grace<br/>
         Through faith<br/>
         But I'm asking to taste

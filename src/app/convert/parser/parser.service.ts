@@ -7,22 +7,23 @@ import { IInputConverter } from '../inputs/input-converter.model';
 import { IOutputConverter } from '../outputs/output-converter.model';
 
 //Input Types
-import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
-import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 import { InputTypeSongPro } from '../inputs/input-type-songpro';
 import { InputTypeSongShowPlus7 } from '../inputs/input-type-songshowplus7';
 import { InputTypeOpenLyrics } from '../inputs/input-type-openlyrics';
+import { InputTypePlainText } from '../inputs/input-type-plain-text';
+import { InputTypeJSON } from '../inputs/input-type-json';
 
 //Output Types
-import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
-import { OutputTypePlainText } from '../outputs/output-type-plain-text';
-import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
 import { OutputTypeOpenLyrics } from '../outputs/output-type-openlyrics';
+import { OutputTypeSongPro } from '../outputs/output-type-songpro';
+import { OutputTypePlainText } from '../outputs/output-type-plain-text';
+import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
+import { OutputTypeJSON } from '../outputs/output-type-json';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +45,7 @@ export class ParserService {
     new OutputTypeProPresenter5(),
     new OutputTypeChordpro(),
     new OutputTypeOpenLyrics(),
+    new OutputTypeSongPro(),
     new OutputTypePlainText(),
     new OutputTypeDisplaySlides(),
     new OutputTypeJSON()
