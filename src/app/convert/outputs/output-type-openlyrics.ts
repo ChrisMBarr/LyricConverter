@@ -106,18 +106,17 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
       //Tempo can be two different types: 'bpm' or 'text'
       //'90bpm' --> '<tempo type="bpm">90</tempo>'
       //'moderate' --> '<tempo type="text">moderate</tempo>'
-      let attrValue = 'text'
+      let attrValue = 'text';
       let tagContent = tempoInfo.value.toString();
 
-      if(tagContent.includes('bpm')){
+      if (tagContent.includes('bpm')) {
         attrValue = 'bpm';
-        tagContent = tagContent.replace('bpm', '')
+        tagContent = tagContent.replace('bpm', '');
       }
 
-      propertiesXml += (
+      propertiesXml +=
         '\n' +
-        this.createXmlNode('tempo', 4, tagContent, false, [{ name: 'type', value: attrValue }])
-      );
+        this.createXmlNode('tempo', 4, tagContent, false, [{ name: 'type', value: attrValue }]);
     }
 
     if (commentsInfo.length > 0) {
@@ -188,17 +187,11 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   private findInfoAndMakeXmlProperty(
     info: ISongInfo[],
     namePattern: RegExp,
-    tagName: string,
-    attrName?: string
+    tagName: string
   ): string {
     const infoMatch = info.find((i) => namePattern.test(i.name));
     let attrs: ISongInfo[] | undefined;
     if (infoMatch !== undefined) {
-      if (attrName !== undefined) {
-        const attrValue = infoMatch.value.toString();
-        attrs = [{ name: attrName, value: attrValue }];
-      }
-
       const tagContent = infoMatch.value.toString();
       return '\n' + this.createXmlNode(tagName, 4, tagContent, false, attrs);
     }
