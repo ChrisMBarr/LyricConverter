@@ -9,20 +9,25 @@ Parses the song info & lyrics from various lyric presentation software file form
 ## Formats
 |                                                                    | Input  | Output |
 | ------------------------------------------------------------------ |:------:| ------:|
-| **[ChordPro](https://chordpro.org/)**                              |   ✔️   |   ✔️  |
-| **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |         |       |
-| **JSON**                                                           |   ✔️   |   ✔️  |
-| **[MediaShout](https://mediashout.com/)**                          |         |       |
-| **[OpenSong](https://opensong.org/)** - [Issue #5][2]              |         |       |
-| **[OpenLyrics](https://docs.openlyrics.org)**                      |   ✔️   |   ✔️  |
-| **Plain Text**                                                     |   ✔️   |   ✔️  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✔️   |        |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✔️   |   ✔️  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v6***   |         |       |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v7***   |         |       |
-| **[SongPro](https://songpro.org/)**                                |   ✔️   |   ✔️  |
-| **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✔️   |        |
+| **[ChordPro](https://chordpro.org/)**                              |   ✅   |   ✅  |
+| **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |   ⚫   |   ⚫  |
+| **JSON**                                                           |   ✅   |   ✅  |
+| **[MediaShout](https://mediashout.com/)**                          |   ⚫   |   ⚫  |
+| **[OpenSong](https://opensong.org/)** - [Issue #5][2]              |   ⚫   |   ⚫  |
+| **[OpenLyrics](https://docs.openlyrics.org)**                      |   ✅   |   ✅  |
+| **Plain Text**                                                     |   ✅   |   ✅  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✅   |   ⚫  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✅   |   ✅  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v6***   |   ⚫    |  ⚫  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v7***   |   ⚫    |  ⚫  |
+| **[SongPro](https://songpro.org/)**                                |   ✅   |   ✅  |
+| **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✅   |   ⚫  |
+| **[SongShow Plus](https://songshowplus.com/) v8**                  |   ❓   |   ⚫  |
+| **[SongShow Plus](https://songshowplus.com/) v9**                  |   ❓   |   ⚫  |
 
+✅ = Supported
+⚫ = Not supported
+❓ = Unknown/Untested
   *Note: You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
 
 [1]: https://github.com/FiniteLooper/LyricConverter/issues/3

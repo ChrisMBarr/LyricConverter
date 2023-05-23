@@ -1,15 +1,14 @@
+// This has been manually added to this project temporarily.
+// Awaiting this PR to be merged in so the 'songpro' NPM package can be used instead
+// https://github.com/SongProOrg/songpro-javascript/pull/35
+
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SongPro = void 0;
-//No need to export this class, the interface is exported.
 class Line {
     constructor() {
         this.parts = [];
     }
-    //These methods use TypeScript type predicates
-    // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
-    // When these functions are used it will assure the compiler that these types do exist
-    // without the developer having to add manual checks
     hasTablature() {
         return this.tablature !== undefined;
     }
@@ -130,8 +129,6 @@ class SongPro {
     }
     static getComment(text) {
         const matches = this.COMMENT_REGEX.exec(text);
-        //If we got to this point, the regex will always match and have the first capture group
-        //We can confidently tell typescript that these values will never be null, even with empty comment sections
         return matches[1].trim();
     }
     static getPart(inputChord, inputLyric) {
@@ -153,15 +150,12 @@ class SongPro {
         return part;
     }
     static chunk(arr, chunkSize, cache = []) {
-        //Adapted from https://youmightnotneed.com/lodash/#chunk
-        //Chunk size must be greater than 1
         const tmp = [...arr];
         while (tmp.length)
             cache.push(tmp.splice(0, chunkSize));
         return cache;
     }
     static scan(str, pattern) {
-        //Note: all patterns used here must have the 'global' flag set");
         return [...str.matchAll(pattern)].flatMap((m) => m.slice(1));
     }
 }
