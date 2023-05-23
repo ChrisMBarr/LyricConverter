@@ -22,8 +22,8 @@ import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
 import { OutputTypeOpenLyrics } from '../outputs/output-type-openlyrics';
 import { OutputTypeSongPro } from '../outputs/output-type-songpro';
 import { OutputTypePlainText } from '../outputs/output-type-plain-text';
-import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypeJSON } from '../outputs/output-type-json';
+import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +38,7 @@ export class ParserService {
     new InputTypeSongShowPlus7(),
     new InputTypeOpenLyrics(),
     new InputTypePlainText(),
-    new InputTypeJSON()
+    new InputTypeJSON(),
   ];
 
   readonly outputConverters: IOutputConverter[] = [
@@ -47,8 +47,8 @@ export class ParserService {
     new OutputTypeOpenLyrics(),
     new OutputTypeSongPro(),
     new OutputTypePlainText(),
+    new OutputTypeJSON(),
     new OutputTypeDisplaySlides(),
-    new OutputTypeJSON()
   ];
 
   parseFiles(files: IFileWithData[]): IRawDataFile[] {

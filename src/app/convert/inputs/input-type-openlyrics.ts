@@ -17,9 +17,10 @@ import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
 
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';
+  readonly fileExt = 'xml';
 
   doesInputFileMatchThisType(file: IRawDataFile): boolean {
-    return file.ext.toLowerCase() === 'xml';
+    return file.ext.toLowerCase() === this.fileExt;
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

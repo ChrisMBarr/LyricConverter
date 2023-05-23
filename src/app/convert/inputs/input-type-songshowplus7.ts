@@ -6,10 +6,11 @@ import { IInputConverter } from './input-converter.model';
 
 export class InputTypeSongShowPlus7 implements IInputConverter {
   name = 'SongShow Plus 7';
+  readonly fileExt = 'sbsong';
 
   doesInputFileMatchThisType(file: IRawDataFile): boolean {
     //TODO: Determine a way to check the version or if that's even important!
-    return file.ext.toLowerCase() === 'sbsong';
+    return file.ext.toLowerCase() === this.fileExt;
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

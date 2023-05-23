@@ -4,10 +4,10 @@ import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model'
 
 export class InputTypePlainText implements IInputConverter {
   readonly name = 'Plain Text';
+  readonly fileExt = 'txt';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
-    //TODO: Test to make sure this is NOT SongPro!
-    return rawFile.ext.toLowerCase() === 'txt';
+    return rawFile.ext.toLowerCase() === this.fileExt;
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

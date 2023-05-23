@@ -14,7 +14,7 @@ import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import * as mockRawFiles from '../../../test/mock-raw-files';
 
-class MockOutputConverter implements IOutputConverter {
+class MockConverter implements IOutputConverter {
   constructor(public name: string, public fileExt?: string) {}
 
   convertToType = (song: ISong): IOutputFile => {
@@ -50,16 +50,23 @@ describe('ConvertComponent', () => {
 
   describe('Needs a mocked ParserService', () => {
     const mockParserService = {
-      outputConverters: [] as MockOutputConverter[],
+      outputConverters: [] as MockConverter[],
+      inputConverters: [] as MockConverter[],
       parseFiles: () => [] as IRawDataFile[],
     };
 
     beforeEach(() => {
       mockParserService.outputConverters = [
-        new MockOutputConverter('FooOut', 'foo'),
-        new MockOutputConverter('BarOut', 'bar'),
-        new MockOutputConverter('BazOut', 'baz'),
-        new MockOutputConverter('No File Ext'),
+        new MockConverter('FooOut', 'foo'),
+        new MockConverter('BarOut', 'bar'),
+        new MockConverter('BazOut', 'baz'),
+        new MockConverter('No File Ext'),
+      ];
+
+      mockParserService.inputConverters = [
+        new MockConverter('FooIn', 'foo'),
+        new MockConverter('BarIn', 'bar'),
+        new MockConverter('BazIn', 'baz'),
       ];
 
       configureTestBed([{ provide: ParserService, useValue: mockParserService }]);
@@ -94,7 +101,10 @@ describe('ConvertComponent', () => {
 
       it('should change the conversion type when switchConversionType() is called', () => {
         fixture.detectChanges();
-        component.onSwitchConversionType(mockParserService.outputConverters[3]!, new Event('click'));
+        component.onSwitchConversionType(
+          mockParserService.outputConverters[3]!,
+          new Event('click')
+        );
         fixture.detectChanges();
         expect(component.selectedOutputType.name).toEqual('No File Ext');
       });
@@ -121,6 +131,16 @@ describe('ConvertComponent', () => {
         expect(localStorage.getItem(prefKey)).toEqual('BarOut');
       });
     });
+
+    describe('Drop Area Text', ()=>{
+      it('should list out all available input type names for accepted file formats', () => {
+        fixture.detectChanges();
+
+        expect(
+          fixture.debugElement.query(By.css('#accepted-input-formats')).nativeElement.textContent
+        ).toContain('FooIn, BarIn, or BazIn');
+      });
+    })
   });
 
   describe('Needs a real ParserService', () => {

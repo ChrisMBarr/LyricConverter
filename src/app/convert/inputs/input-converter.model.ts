@@ -8,6 +8,11 @@ export declare interface IInputConverter {
    */
   readonly name: string;
   /**
+   * @description The primary file extension for this file type which should match the ext of a corresponding Output type if it exists
+   * @readonly
+   */
+  readonly fileExt: string;
+  /**
    * @description A test method to run against a file to detect the input type
    * @param rawFile
    * @returns {true} if the passed file matches for this type

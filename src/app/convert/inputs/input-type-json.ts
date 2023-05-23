@@ -4,9 +4,10 @@ import { ISong } from 'src/app/convert/models/song.model';
 
 export class InputTypeJSON implements IInputConverter {
   readonly name = 'JSON';
+  readonly fileExt = 'json';
 
   doesInputFileMatchThisType = (rawFile: IRawDataFile): boolean => {
-    return rawFile.ext.toLowerCase() === 'json';
+    return rawFile.ext.toLowerCase() === this.fileExt;
   };
 
   extractSongData = (rawFile: IRawDataFile): ISong => {

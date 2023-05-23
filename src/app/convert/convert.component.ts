@@ -15,12 +15,18 @@ export class ConvertComponent implements OnInit {
 
   displayInitialUi = true;
   outputTypesForMenu: IOutputConverter[] = [];
+  inputTypesList: { name: string; ext: string }[] = [];
   selectedOutputType!: IOutputConverter;
   convertedSongsForOutput: IOutputFile[] = [];
 
   constructor(private readonly parserSvc: ParserService) {}
 
   ngOnInit(): void {
+    this.buildOutputTypesList();
+    this.buildInputTypesList();
+  }
+
+  private buildOutputTypesList(): void {
     this.outputTypesForMenu = [...this.parserSvc.outputConverters];
 
     const savedOutputTypePrefName = localStorage.getItem(this.conversionTypeStorageKey);
@@ -32,6 +38,12 @@ export class ConvertComponent implements OnInit {
       //We need to disable this rule here to avoid complexity elsewhere with it being possibly undefined
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.outputTypesForMenu[0]!;
+  }
+
+  private buildInputTypesList(): void {
+    this.inputTypesList = this.parserSvc.inputConverters.map((ic) => {
+      return { name: ic.name, ext: ic.fileExt };
+    });
   }
 
   onSwitchConversionType(newType: IOutputConverter, event: Event): void {

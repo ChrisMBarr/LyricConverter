@@ -38,7 +38,6 @@ Parses the song info & lyrics from various lyric presentation software file form
 * Drag & drop over entire document
 * Click to allow file selection
 * Deal with possibly duplicated info keys
-* Drop area message about accepted files should be dynamic
 * folder drop?
 * Count how may files processed
 * Error message displays

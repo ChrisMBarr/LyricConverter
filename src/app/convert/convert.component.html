@@ -10,9 +10,7 @@
         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
       >
         {{ fmt.name }}
-        <span class="badge rounded-pill" *ngIf="fmt.fileExt"
-          >.{{ fmt.fileExt }}</span
-        >
+        <span class="badge rounded-pill" *ngIf="fmt.fileExt">.{{ fmt.fileExt }}</span>
       </a>
     </nav>
 
@@ -34,7 +32,14 @@
   >
     <div class="drop-area" appDragAndDropFiles (fileDrop)="onFileDrop($event)">
       <p>Drag your <strong>Song Files</strong> here</p>
-      <small> (Song Show Plus 7, ProPresenter 4 or 5, SongPro, or ChordPro) </small>
+
+      <!-- Weirdness below is to preserve how whitespace is rendered -->
+      <small id="accepted-input-formats"
+        >(<span *ngFor="let inputType of inputTypesList; let i = index"
+          >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
+          }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
+        >)</small
+      >
     </div>
   </div>
 

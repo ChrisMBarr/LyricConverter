@@ -7,9 +7,10 @@ import { Utils } from '../shared/utils';
 
 export class InputTypeProPresenter4 implements IInputConverter {
   readonly name = 'Pro Presenter 4';
+  readonly fileExt = 'pro4';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
-    return rawFile.ext.toLowerCase() === 'pro4';
+    return rawFile.ext.toLowerCase() === this.fileExt;
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

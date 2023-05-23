@@ -5,6 +5,7 @@ import { ISongProSong, SongPro, ISongProLine } from '../../../lib/songpro';
 
 export class InputTypeSongPro implements IInputConverter {
   readonly name = 'SongPro';
+  readonly fileExt = 'sng';
 
   doesInputFileMatchThisType(file: IRawDataFile): boolean {
     //There are not a lot of examples of this file format online,
@@ -12,7 +13,7 @@ export class InputTypeSongPro implements IInputConverter {
     // but since there's no overlap with other formats in this
     // project we can just check for either one
     const lowerCaseExt = file.ext.toLowerCase();
-    return lowerCaseExt === 'sng' || lowerCaseExt === 'md';
+    return lowerCaseExt === this.fileExt || lowerCaseExt === 'md';
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
