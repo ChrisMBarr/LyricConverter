@@ -55,31 +55,47 @@
   margin-bottom: $spacer;
 }
 
-#begin-area .drop-instructions {
-  p {
-    font-size: 30px;
-    line-height: 30px;
-    margin: 0;
-    padding: 20px;
-    vertical-align: middle;
+#primary-instructions,
+#secondary-instructions {
+  margin: 0;
+  padding: 20px;
+  vertical-align: middle;
+}
+
+#primary-instructions {
+  font-size: 30px;
+  line-height: 30px;
+  padding-bottom: 10px;
+}
+
+#secondary-instructions {
+  padding-top: 0;
+}
+
+#accepted-input-formats {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+@include media-breakpoint-up(lg) {
+  #primary-instructions,
+  #secondary-instructions {
+    padding: 50px;
   }
 
-  small {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  #primary-instructions {
+    font-size: 40px;
+    line-height: 40px;
+    padding-bottom: 10px;
   }
 
-  @include media-breakpoint-up(lg) {
-    p {
-      font-size: 40px;
-      line-height: 40px;
-      padding: 50px;
-    }
+  #secondary-instructions {
+    padding-top: 0;
+  }
 
-    small {
-      margin-top: 50px;
-    }
+  #accepted-input-formats {
+    margin-top: 50px;
   }
 }
 

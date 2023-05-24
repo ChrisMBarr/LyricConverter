@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ParserService } from './parser/parser.service';
 import { IFileWithData, IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
@@ -13,6 +13,8 @@ import { IOutputConverter } from './outputs/output-converter.model';
 export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
   // private readonly convertedFileCount = 'CONVERT_COUNT';
+
+  @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
 
   displayInitialUi = true;
   outputTypesForMenu: IOutputConverter[] = [];
@@ -54,14 +56,69 @@ export class ConvertComponent implements OnInit {
     localStorage.setItem(this.conversionTypeStorageKey, newType.name);
   }
 
-  onFileDrop(files: IFileWithData[]): void {
-    if (files.length) {
-      this.displayInitialUi = false;
-      const parsedFiles = this.parserSvc.parseFiles(files);
-      this.getConvertersAndExtractData(parsedFiles);
-    } else {
-      //TODO: Show UI message
+  onSelectFilesClick(evt: Event): void {
+    //This happens when a link is clicked to manually browse for files
+    evt.preventDefault();
+    this.fileInput.nativeElement.click();
+  }
+
+  onFileSelect(evt: Event): void {
+    //This happens when the invisible <input type="file"> element is fake-clicked
+    const fileList = (evt.target as HTMLInputElement).files;
+    if (fileList) {
+      this.onReceiveFiles(fileList);
     }
+  }
+
+  onReceiveFiles(files: FileList): void {
+    //This happens when either called by .onFileSelect() above,
+    // or from the appDragAndDrop directive in the template
+    const loadedFiles: IFileWithData[] = [];
+
+    for (let i = 0; i <= files.length - 1; i++) {
+      const reader = new FileReader();
+      const f = files[i];
+      if (typeof f !== 'undefined') {
+        const completeFn = this.handleFile(f, loadedFiles, files.length);
+        reader.addEventListener('loadend', completeFn, false);
+
+        //Actually read the file
+        reader.readAsDataURL(f);
+      }
+    }
+  }
+
+  private handleFile(
+    theFile: File,
+    fileArray: IFileWithData[],
+    fileCount: number
+  ): (ev: ProgressEvent<FileReader>) => void {
+    //When called, it has to return a function back up to the listener event
+    return (ev: ProgressEvent<FileReader>) => {
+      const fileNameParts = theFile.name.split('.');
+      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : '';
+      const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
+
+      const newFile: IFileWithData = {
+        name: theFile.name,
+        nameWithoutExt,
+        ext: fileExt.toLowerCase(),
+        type: theFile.type,
+        size: theFile.size,
+        lastModified: theFile.lastModified,
+        data: ev.target?.result,
+      };
+
+      //Add the current file to the array
+      fileArray.push(newFile);
+
+      //Once the correct number of items have been put in the array, call the completion function
+      if (fileArray.length === fileCount) {
+        this.displayInitialUi = false;
+        const parsedFiles = this.parserSvc.parseFiles(fileArray);
+        this.getConvertersAndExtractData(parsedFiles);
+      }
+    };
   }
 
   getConvertersAndExtractData(parsedFiles: IRawDataFile[]): void {

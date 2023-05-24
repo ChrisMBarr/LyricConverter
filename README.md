@@ -35,9 +35,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 
 
 ### TODO Items:
-* Click to allow file selection
 * Deal with possibly duplicated info keys
-* folder drop?
 * Count how may files processed
 * Error message displays
 * Redesign with TailWinds

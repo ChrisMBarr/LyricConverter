@@ -1,5 +1,4 @@
 import { Directive, EventEmitter, HostListener, Output, Inject, OnDestroy } from '@angular/core';
-import { IFileWithData } from '../convert/models/file.model';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
@@ -7,7 +6,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class DragAndDropFilesDirective implements OnDestroy {
   private readonly dragOverClass = 'drag-over';
-  @Output() fileDrop = new EventEmitter<IFileWithData[]>();
+  @Output() fileDrop = new EventEmitter<FileList>();
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
@@ -43,26 +42,12 @@ export class DragAndDropFilesDirective implements OnDestroy {
     if (evt.dataTransfer) {
       const files = evt.dataTransfer.files;
       if (files.length > 0) {
-        this.readFiles(files);
+        this.fileDrop.emit(files);
       }
     }
   }
 
-  readFiles(files: FileList): void {
-    const loadedFiles: IFileWithData[] = [];
 
-    for (let i = 0; i <= files.length - 1; i++) {
-      const reader = new FileReader();
-      const f = files[i];
-      if (typeof f !== 'undefined') {
-        const completeFn = this.handleFile(f, loadedFiles, files.length);
-        reader.addEventListener('loadend', completeFn, false);
-
-        //Actually read the file
-        reader.readAsDataURL(f);
-      }
-    }
-  }
 
   private toggleDragOver(isOver: boolean): void {
     if (isOver) {
@@ -70,36 +55,5 @@ export class DragAndDropFilesDirective implements OnDestroy {
     } else {
       this.document.body.classList.remove(this.dragOverClass);
     }
-  }
-
-  private handleFile(
-    theFile: File,
-    fileArray: IFileWithData[],
-    fileCount: number
-  ): (ev: ProgressEvent<FileReader>) => void {
-    //When called, it has to return a function back up to the listener event
-    return (ev: ProgressEvent<FileReader>) => {
-      const fileNameParts = theFile.name.split('.');
-      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : '';
-      const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
-
-      const newFile: IFileWithData = {
-        name: theFile.name,
-        nameWithoutExt,
-        ext: fileExt.toLowerCase(),
-        type: theFile.type,
-        size: theFile.size,
-        lastModified: theFile.lastModified,
-        data: ev.target?.result,
-      };
-
-      //Add the current file to the array
-      fileArray.push(newFile);
-
-      //Once the correct number of items have been put in the array, call the completion function
-      if (fileArray.length === fileCount) {
-        this.fileDrop.emit(fileArray);
-      }
-    };
   }
 }

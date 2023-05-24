@@ -1,6 +1,8 @@
-<div id="drop-area" appDragAndDropFiles (fileDrop)="onFileDrop($event)">
+<div id="drop-area" appDragAndDropFiles (fileDrop)="onReceiveFiles($event)">
   <div id="drop-area-message">Drop Your Song Files Here</div>
 </div>
+
+<input class="d-none" type="file" multiple (change)="onFileSelect($event)" #fileInput>
 
 <div class="row">
   <div class="col-6 col-sm-5 col-md-4 col-lg-3 ">
@@ -19,13 +21,13 @@
     </nav>
 
     <div class="drop-instructions mt-3 d-none d-md-block" *ngIf="!displayInitialUi">
-      You can drag more songs into this window to convert them!
+      You can drag more songs into this window to convert them, or <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
     </div>
   </div>
 
   <div class="col-6 d-block d-md-none" *ngIf="!displayInitialUi">
     <div class="drop-instructions">
-      You can drag more songs into this window to convert them!
+      You can drag more songs into this window to convert them, or <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
     </div>
   </div>
 
@@ -35,7 +37,9 @@
     *ngIf="displayInitialUi"
   >
     <div class="drop-instructions">
-      <p>Drag your <strong>Song Files</strong> into this window</p>
+      <p id="primary-instructions">Drag your <strong>Song Files</strong> into this window</p>
+
+      <p id="secondary-instructions">or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
 
       <!-- Weirdness below is to preserve how whitespace is rendered -->
       <small id="accepted-input-formats"
