@@ -43,6 +43,16 @@ describe('InputTypePlainText', () => {
   });
 
   describe('extractSongData()', () => {
+    it('should return an empty song for a empty text file', () => {
+      const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
+      testFile.data = '';
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Your Grace is Enough',
+        info: [],
+        slides: [],
+      });
+    });
     it('should return a song for a plain text file1', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
 

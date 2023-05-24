@@ -53,9 +53,10 @@ export class InputTypePlainText implements IInputConverter {
       const lines = section.split('\n');
       let title = '';
       let lyrics = section;
-      if ((lines[0] != null) && (lines[0]?.endsWith(':') ?? false)) {
-        title = lines[0].replace(':', '').trim();
-        lyrics = lyrics.replace(lines[0] + '\n', '').trim();
+      const firstLine = lines[0]!; // the first line always exists, even in an empty file!
+      if (firstLine.endsWith(':')) {
+        title = firstLine.replace(':', '').trim();
+        lyrics = lyrics.replace(firstLine + '\n', '').trim();
       }
 
       slides.push({
