@@ -1,5 +1,9 @@
+<div id="drop-area" appDragAndDropFiles (fileDrop)="onFileDrop($event)">
+  <div id="drop-area-message">Drop Your Song Files Here</div>
+</div>
+
 <div class="row">
-  <div class="col-xs-6 col-sm-4 col-md-3">
+  <div class="col-6 col-sm-5 col-md-4 col-lg-3 ">
     <nav class="list-group" id="convert-types">
       <strong id="convert-types-title" class="list-group-item text-center"> Convert To </strong>
       <a
@@ -14,24 +18,24 @@
       </a>
     </nav>
 
-    <div
-      class="drop-area"
-      id="drop-area-more"
-      *ngIf="!displayInitialUi"
-      appDragAndDropFiles
-      (fileDrop)="onFileDrop($event)"
-    >
+    <div class="drop-instructions mt-3 d-none d-md-block" *ngIf="!displayInitialUi">
+      You can drag more songs into this window to convert them!
+    </div>
+  </div>
+
+  <div class="col-6 d-block d-md-none" *ngIf="!displayInitialUi">
+    <div class="drop-instructions">
       You can drag more songs into this window to convert them!
     </div>
   </div>
 
   <div
     id="begin-area"
-    class="col-xs-6 col-sm-6 offset-sm-2 col-md-6 col-lg-5"
+    class="col-6 col-sm-7 col-md-8 offset-md-0 col-lg-7 offset-lg-1 col-xl-6 offset-xl-2"
     *ngIf="displayInitialUi"
   >
-    <div class="drop-area" appDragAndDropFiles (fileDrop)="onFileDrop($event)">
-      <p>Drag your <strong>Song Files</strong> here</p>
+    <div class="drop-instructions">
+      <p>Drag your <strong>Song Files</strong> into this window</p>
 
       <!-- Weirdness below is to preserve how whitespace is rendered -->
       <small id="accepted-input-formats"
@@ -43,7 +47,8 @@
     </div>
   </div>
 
-  <div id="display-area" class="col-xs-6 col-sm-8 col-md-9" *ngIf="!displayInitialUi">
+  <div id="display-area" class="col col-md-8" *ngIf="!displayInitialUi">
+    <hr class="d-block d-md-none">
     <app-slide-display
       *ngIf="selectedOutputType.name === 'Display Slides'"
       [outputFileList]="convertedSongsForOutput"

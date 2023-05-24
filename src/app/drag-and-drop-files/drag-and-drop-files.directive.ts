@@ -1,31 +1,45 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output, Inject, OnDestroy } from '@angular/core';
 import { IFileWithData } from '../convert/models/file.model';
+import { DOCUMENT } from '@angular/common';
 
 @Directive({
   selector: '[appDragAndDropFiles]',
 })
-export class DragAndDropFilesDirective {
+export class DragAndDropFilesDirective implements OnDestroy {
+  private readonly dragOverClass = 'drag-over';
   @Output() fileDrop = new EventEmitter<IFileWithData[]>();
-  @HostBinding('class.drag-over') isDraggingOver = false;
+
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+
+  ngOnDestroy(): void {
+    this.toggleDragOver(false);
+  }
 
   //Dragover listener, when something is dragged over our host element
-  @HostListener('dragover', ['$event']) onDragOver(evt: DragEvent): void {
+  @HostListener('document:dragover', ['$event']) onDragOver(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.isDraggingOver = true;
+    this.toggleDragOver(true);
   }
 
   //Dragleave listener, when something is dragged away from our host element
-  @HostListener('dragleave', ['$event']) public onDragLeave(evt: DragEvent): void {
+  @HostListener('document:dragleave', ['$event']) public onDragLeave(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.isDraggingOver = false;
+
+    //This event fires too often, when changing which element you are hovered over,
+    // which causes the CSS animation to flash as it partially transitions
+    // By checking the mouse coordinates now it will only fire when the cursor has truly left the page
+    if (evt.x === 0 && evt.y === 0) {
+      this.toggleDragOver(false);
+    }
   }
 
-  @HostListener('drop', ['$event']) public onDrop(evt: DragEvent): void {
+  @HostListener('document:drop', ['$event']) public onDrop(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.isDraggingOver = false;
+    this.toggleDragOver(false);
+
     if (evt.dataTransfer) {
       const files = evt.dataTransfer.files;
       if (files.length > 0) {
@@ -47,6 +61,14 @@ export class DragAndDropFilesDirective {
         //Actually read the file
         reader.readAsDataURL(f);
       }
+    }
+  }
+
+  private toggleDragOver(isOver: boolean): void {
+    if (isOver) {
+      this.document.body.classList.add(this.dragOverClass);
+    } else {
+      this.document.body.classList.remove(this.dragOverClass);
     }
   }
 

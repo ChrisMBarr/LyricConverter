@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ParserService } from './parser/parser.service';
 import { IFileWithData, IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
 
 @Component({
+  encapsulation: ViewEncapsulation.None,
   selector: 'app-convert',
   templateUrl: './convert.component.html',
   styleUrls: ['./convert.component.scss'],
