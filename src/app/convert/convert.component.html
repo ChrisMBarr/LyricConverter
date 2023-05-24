@@ -53,20 +53,11 @@
 
   <div id="display-area" class="col col-md-8" *ngIf="!displayInitialUi">
     <hr class="d-block d-md-none">
-    <app-slide-display
-      *ngIf="selectedOutputType.name === 'Display Slides'"
-      [outputFileList]="convertedSongsForOutput"
-    ></app-slide-display>
-    <app-download-display
-      *ngIf="selectedOutputType.name !== 'Display Slides'"
-      [outputFileList]="convertedSongsForOutput"
-    ></app-download-display>
-    <!-- <div id="output" class="mb-4"></div> -->
 
-    <!-- <div id="many-songs-please-donate" class="alert alert-info d-none">
+    <div id="test-donate" class="alert alert-info" *ngIf="convertedFileCount >= convertedCountMessageThreshold">
       <p>
         Wow, you've converted a total of
-        <strong><span id="total-song-count">0</span> songs</strong> with
+        <strong>{{convertedFileCount}} songs</strong> with
         LyricConverter!
       </p>
       <p>
@@ -75,7 +66,16 @@
       </p>
 
       <app-donate-button></app-donate-button>
-    </div> -->
+    </div>
+
+    <app-slide-display
+      *ngIf="selectedOutputType.name === 'Display Slides'"
+      [outputFileList]="convertedSongsForOutput"
+    ></app-slide-display>
+    <app-download-display
+      *ngIf="selectedOutputType.name !== 'Display Slides'"
+      [outputFileList]="convertedSongsForOutput"
+    ></app-download-display>
 
     <!-- <div id="parser-error-display" class="alert alert-danger d-none"></div> -->
   </div>

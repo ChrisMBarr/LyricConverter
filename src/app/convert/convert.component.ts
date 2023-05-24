@@ -12,11 +12,13 @@ import { IOutputConverter } from './outputs/output-converter.model';
 })
 export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
-  // private readonly convertedFileCount = 'CONVERT_COUNT';
+  private readonly convertedFileCountStorageKey = 'CONVERT_COUNT';
 
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
 
   displayInitialUi = true;
+  convertedFileCount = 0;
+  readonly convertedCountMessageThreshold = 5;
   outputTypesForMenu: IOutputConverter[] = [];
   inputTypesList: { name: string; ext: string }[] = [];
   selectedOutputType!: IOutputConverter;
@@ -27,6 +29,15 @@ export class ConvertComponent implements OnInit {
   ngOnInit(): void {
     this.buildOutputTypesList();
     this.buildInputTypesList();
+
+    //Restore the saved file count from any previous session
+    const savedConvertedFileCount = parseInt(
+      localStorage.getItem(this.convertedFileCountStorageKey) ?? '',
+      10
+    );
+    if (!isNaN(savedConvertedFileCount) && savedConvertedFileCount > 0) {
+      this.convertedFileCount = savedConvertedFileCount;
+    }
 
     //When files have finished parsing we will handle them here
     this.parserSvc.filesParsed$.subscribe((rawFiles: IRawDataFile[]) => {
@@ -96,6 +107,12 @@ export class ConvertComponent implements OnInit {
     });
 
     if (convertedSongs.length) {
+      //Update the converted file count and save it
+      this.convertedFileCount += convertedSongs.length;
+      localStorage.setItem(this.convertedFileCountStorageKey, this.convertedFileCount.toString());
+
+      //Convert the songs to the specified type and save them to an array
+      //The array is used in template components to allow display in the UI or download
       this.convertedSongsForOutput = convertedSongs.map((s) => {
         return this.selectedOutputType.convertToType(s);
       });

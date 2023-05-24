@@ -17,9 +17,9 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[OpenLyrics](https://docs.openlyrics.org)**                      |   ✅   |   ✅  |
 | **Plain Text**                                                     |   ✅   |   ✅  |
 | **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✅   |   ⚫  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✅   |   ✅  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v6***   |   ⚫    |  ⚫  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v7***   |   ⚫    |  ⚫  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✅   | ✅💾 |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v6**💾 |   ⚫    |  ⚫  |
+| **[Pro Presenter](https://renewedvision.com/propresenter/) v7**💾 |   ⚫    |  ⚫  |
 | **[SongPro](https://songpro.org/)**                                |   ✅   |   ✅  |
 | **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✅   |   ⚫  |
 | **[SongShow Plus](https://songshowplus.com/) v8**                  |   ❓   |   ⚫  |
@@ -28,7 +28,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 ✅ = Supported
 ⚫ = Not supported
 ❓ = Unknown/Untested
-  *Note: You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
+💾 = You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
 
 [1]: https://github.com/FiniteLooper/LyricConverter/issues/3
 [2]: https://github.com/FiniteLooper/LyricConverter/issues/5
@@ -36,8 +36,8 @@ Parses the song info & lyrics from various lyric presentation software file form
 
 ### TODO Items:
 * Deal with possibly duplicated info keys
-* Count how may files processed
 * Error message displays
+* character encoding on Display Slides Component
 * Redesign with TailWinds
 * Allow user-configurable options for output file (resolution, text size, etc)
 * Split out each format input/output into its' own NPM package

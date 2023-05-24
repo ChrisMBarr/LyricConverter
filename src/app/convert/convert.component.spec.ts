@@ -134,7 +134,7 @@ describe('ConvertComponent', () => {
       });
     });
 
-    describe('Drop Area Text', () => {
+    describe('Drop Instructions Text', () => {
       it('should list out all available input type names for accepted file formats', () => {
         fixture.detectChanges();
 
@@ -354,7 +354,7 @@ describe('ConvertComponent', () => {
 
         const inputEl: HTMLInputElement = fixture.debugElement.query(
           By.css('input[type="file"]')
-        ).nativeElement
+        ).nativeElement;
 
         spyOn(inputEl, 'click').and.callFake(() => {});
 
@@ -440,6 +440,88 @@ describe('ConvertComponent', () => {
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile, mockRawFiles.mockImageFile]);
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
+      });
+    });
+
+    describe('File Conversion Count Tracking & Donation Nag', () => {
+      const prefKey = 'CONVERT_COUNT';
+
+      beforeEach(() => {
+        localStorage.clear();
+      });
+
+      afterEach(() => {
+        localStorage.clear();
+      });
+
+      it('should increase the count when a song of a known type is converted', () => {
+        fixture.detectChanges();
+        expect(component.convertedFileCount).toEqual(0);
+
+        const fakeParsedFiles: IRawDataFile[] = [
+          {
+            data: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
+            ext: 'json',
+            name: 'JSON - Your Grace Is Enough',
+            type: 'application/json',
+          },
+        ];
+        component.getConvertersAndExtractData(fakeParsedFiles);
+        fixture.detectChanges();
+        expect(component.convertedFileCount).toEqual(1);
+      });
+
+      it('should NOT increase the count when a song of an unknown type is converted', () => {
+        fixture.detectChanges();
+        expect(component.convertedFileCount).toEqual(0);
+
+        const fakeParsedFiles: IRawDataFile[] = [
+          {
+            data: 'blah blah whatever',
+            ext: 'notreal',
+            name: 'fake file',
+            type: 'application/madeup',
+          },
+        ];
+        component.getConvertersAndExtractData(fakeParsedFiles);
+        fixture.detectChanges();
+        expect(component.convertedFileCount).toEqual(0);
+      });
+
+      it('should update the saved value in localStorage when converting a song', () => {
+        fixture.detectChanges();
+
+        const fakeParsedFiles: IRawDataFile[] = [
+          {
+            data: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
+            ext: 'json',
+            name: 'JSON - Your Grace Is Enough',
+            type: 'application/json',
+          },
+        ];
+        component.getConvertersAndExtractData(fakeParsedFiles);
+        fixture.detectChanges();
+        expect(localStorage.getItem(prefKey)).toEqual('1');
+      });
+
+      it('start the count at a previously saved value from localStorage', () => {
+        localStorage.setItem(prefKey, '5');
+        fixture.detectChanges();
+        expect(component.convertedFileCount).toEqual(5);
+      });
+
+      it('should NOT display the donation nag UI when the total converted amount is less than the threshold', () => {
+        component.convertedFileCount = component.convertedCountMessageThreshold - 1;
+        component.displayInitialUi = false;
+        fixture.detectChanges();
+        expect(fixture.debugElement.query(By.css('#test-donate'))).toBeNull();
+      });
+
+      it('should display the donation nag UI when the total converted amount equals the threshold', () => {
+        component.convertedFileCount = component.convertedCountMessageThreshold;
+        component.displayInitialUi = false;
+        fixture.detectChanges();
+        expect(fixture.debugElement.query(By.css('#test-donate'))).not.toBeNull();
       });
     });
   });
