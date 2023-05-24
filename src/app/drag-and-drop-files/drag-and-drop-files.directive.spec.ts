@@ -1,9 +1,10 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, Inject } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DragAndDropFilesDirective } from './drag-and-drop-files.directive';
 import { IFileWithData } from '../convert/models/file.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { first } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 describe('DragAndDropFilesDirective', () => {
   //---------------------------------------------
@@ -18,6 +19,7 @@ describe('DragAndDropFilesDirective', () => {
   }
   //---------------------------------------------
 
+  let injectedDocument: Document;
   let fixture: ComponentFixture<TestComponent>;
   let debugEl: DebugElement;
   let directiveInstance: DragAndDropFilesDirective;
@@ -27,6 +29,7 @@ describe('DragAndDropFilesDirective', () => {
       declarations: [DragAndDropFilesDirective, TestComponent],
     }).createComponent(TestComponent);
 
+    injectedDocument = Inject(DOCUMENT);
     debugEl = fixture.debugElement.query(By.directive(DragAndDropFilesDirective));
 
     directiveInstance = debugEl.injector.get(DragAndDropFilesDirective);
@@ -34,7 +37,7 @@ describe('DragAndDropFilesDirective', () => {
   });
 
   it('should create an instance', () => {
-    const directive = new DragAndDropFilesDirective();
+    const directive = new DragAndDropFilesDirective(injectedDocument);
     expect(directive).toBeTruthy();
   });
 
@@ -44,29 +47,29 @@ describe('DragAndDropFilesDirective', () => {
     it('should prevent dragover event', () => {
       const event = new DragEvent('dragover', { cancelable: true });
 
-      debugEl.nativeElement.dispatchEvent(event);
+      directiveInstance.document.dispatchEvent(event);
       fixture.detectChanges();
 
       expect(event.defaultPrevented).toBeTruthy();
     });
 
     it('should prevent dragleave event', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
+      directiveInstance.document.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
       const eventLeave = new DragEvent('dragleave', { cancelable: true });
-      debugEl.nativeElement.dispatchEvent(eventLeave);
+      directiveInstance.document.dispatchEvent(eventLeave);
       fixture.detectChanges();
 
       expect(eventLeave.defaultPrevented).toBeTruthy();
     });
 
     it('should prevent drop event', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
+      directiveInstance.document.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
       const eventDrop = new DragEvent('drop', { cancelable: true });
-      debugEl.nativeElement.dispatchEvent(eventDrop);
+      directiveInstance.document.dispatchEvent(eventDrop);
       fixture.detectChanges();
 
       expect(eventDrop.defaultPrevented).toBeTruthy();
@@ -74,81 +77,33 @@ describe('DragAndDropFilesDirective', () => {
   });
 
   describe('Drag in/out - add/remove CSS class', () => {
-    it('should add a class when dragged over', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
+    it('should add a class to the document body when dragged over', () => {
+      directiveInstance.document.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
 
-      expect(debugEl.attributes['class']).toContain('drag-over');
+      expect(directiveInstance.document.body.attributes.getNamedItem('class')?.value).toContain('drag-over');
     });
 
     it('should remove a class when drag leave', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
+      directiveInstance.document.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragleave', { cancelable: true }));
+      directiveInstance.document.dispatchEvent(new DragEvent('dragleave', { cancelable: true }));
       fixture.detectChanges();
 
-      expect(debugEl.attributes['class']).not.toContain('drag-over');
+      expect(directiveInstance.document.body.attributes.getNamedItem('class')?.value).not.toContain('drag-over');
     });
 
     it('should remove a class when files dropped', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
+      directiveInstance.document.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
       fixture.detectChanges();
-      debugEl.nativeElement.dispatchEvent(new DragEvent('drop', { cancelable: true }));
-      fixture.detectChanges();
-
-      expect(debugEl.attributes['class']).not.toContain('drag-over');
-    });
-  });
-
-  describe('Drag in/out - isDraggingOver', () => {
-    it('should be true when dragged over', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
+      directiveInstance.document.dispatchEvent(new DragEvent('drop', { cancelable: true }));
       fixture.detectChanges();
 
-      expect(directiveInstance.isDraggingOver).toBeTrue();
-    });
-
-    it('should remove a class when drag leave', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
-      fixture.detectChanges();
-
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragleave', { cancelable: true }));
-      fixture.detectChanges();
-
-      expect(directiveInstance.isDraggingOver).toBeFalse();
-    });
-
-    it('should remove a class when files dropped', () => {
-      debugEl.nativeElement.dispatchEvent(new DragEvent('dragover', { cancelable: true }));
-      fixture.detectChanges();
-
-      debugEl.nativeElement.dispatchEvent(new DragEvent('drop', { cancelable: true }));
-      fixture.detectChanges();
-
-      expect(directiveInstance.isDraggingOver).toBeFalse();
+      expect(directiveInstance.document.body.attributes.getNamedItem('class')?.value).not.toContain('drag-over');
     });
   });
 
   describe('File Dropping', () => {
-    it('should call readFile() when dropping a file', () => {
-      spyOn(directiveInstance, 'readFiles');
-
-      const file = new File(['this is file content!'], 'dummy.txt');
-      const dt = new DataTransfer();
-      dt.items.add(file);
-      dt.items.add(file);
-
-      const fakeEvent = new DragEvent('drop', {
-        cancelable: true,
-        dataTransfer: dt,
-      });
-
-      debugEl.nativeElement.dispatchEvent(fakeEvent);
-      fixture.detectChanges();
-
-      expect(directiveInstance.readFiles).toHaveBeenCalled();
-    });
-
     it('should emit the list of files', (done: DoneFn) => {
       spyOn(directiveInstance.fileDrop, 'emit').and.callThrough();
 
@@ -173,42 +128,20 @@ describe('DragAndDropFilesDirective', () => {
         })
       );
 
-      directiveInstance.fileDrop.pipe(first()).subscribe((outputFiles: IFileWithData[]) => {
+      directiveInstance.fileDrop.pipe(first()).subscribe((outputFiles: FileList) => {
         expect(directiveInstance.fileDrop.emit).toHaveBeenCalled();
-        expect(outputFiles).toEqual([
-          {
-            name: 'UPPERCASE.WITH.DOTS.TXT',
-            nameWithoutExt: 'UPPERCASE.WITH.DOTS',
-            ext: 'txt',
-            type: 'text/plain',
-            size: 37,
-            lastModified: fileCreationTime,
-            data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
-          },
-          {
-            name: 'no-extension',
-            nameWithoutExt: 'no-extension',
-            ext: '',
-            type: '',
-            size: 27,
-            lastModified: fileCreationTime,
-            data: 'data:application/octet-stream;base64,dGhpcyBmaWxlIGhhcyBubyBleHRlbnNpb24h',
-          },
-          {
-            name: 'lowercase-file.pro5',
-            nameWithoutExt: 'lowercase-file',
-            ext: 'pro5',
-            type: '',
-            size: 19,
-            lastModified: fileCreationTime,
-            data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
-          },
-        ]);
+
+        //It'd difficult to test the specific properties of a File object,
+        // so as long as we have the correct number of files with the correct names we are good to go
+        expect(outputFiles.length).withContext('Number of emitted files').toEqual(3)
+        expect(outputFiles.item(0)?.name).withContext('Emitted file #1 name').toEqual('UPPERCASE.WITH.DOTS.TXT')
+        expect(outputFiles.item(1)?.name).withContext('Emitted file #2 name').toEqual('no-extension')
+        expect(outputFiles.item(2)?.name).withContext('Emitted file #3 name').toEqual('lowercase-file.pro5')
 
         done();
       });
 
-      directiveInstance.readFiles(dt.files);
+      directiveInstance.document.dispatchEvent(new DragEvent('drop', { cancelable: true, dataTransfer: dt }))
       fixture.detectChanges();
     });
   });

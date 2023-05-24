@@ -8,7 +8,7 @@ export class DragAndDropFilesDirective implements OnDestroy {
   private readonly dragOverClass = 'drag-over';
   @Output() fileDrop = new EventEmitter<FileList>();
 
-  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+  constructor(@Inject(DOCUMENT) public readonly document: Document) {}
 
   ngOnDestroy(): void {
     this.toggleDragOver(false);
@@ -46,8 +46,6 @@ export class DragAndDropFilesDirective implements OnDestroy {
       }
     }
   }
-
-
 
   private toggleDragOver(isOver: boolean): void {
     if (isOver) {

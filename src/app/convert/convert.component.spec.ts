@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { Subject } from 'rxjs';
 
 import { ConvertComponent } from './convert.component';
 import { DonateButtonComponent } from '../donate-button/donate-button.component';
@@ -52,7 +53,8 @@ describe('ConvertComponent', () => {
     const mockParserService = {
       outputConverters: [] as MockConverter[],
       inputConverters: [] as MockConverter[],
-      parseFiles: () => [] as IRawDataFile[],
+      filesParsed$: new Subject<IRawDataFile[]>(),
+      parseFiles: () => {},
     };
 
     beforeEach(() => {
@@ -132,7 +134,7 @@ describe('ConvertComponent', () => {
       });
     });
 
-    describe('Drop Area Text', ()=>{
+    describe('Drop Area Text', () => {
       it('should list out all available input type names for accepted file formats', () => {
         fixture.detectChanges();
 
@@ -140,7 +142,7 @@ describe('ConvertComponent', () => {
           fixture.debugElement.query(By.css('#accepted-input-formats')).nativeElement.textContent
         ).toContain('FooIn, BarIn, or BazIn');
       });
-    })
+    });
   });
 
   describe('Needs a real ParserService', () => {
@@ -152,143 +154,157 @@ describe('ConvertComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    describe('Drop area UI', () => {
+    describe('User Interface', () => {
       it('should show the initial UI', () => {
         fixture.detectChanges();
-        expect(component.displayInitialUi).toBeTrue();
-        expect(fixture.debugElement.query(By.css('#begin-area'))).not.toBeNull();
-        expect(fixture.debugElement.query(By.css('#drop-area-more'))).toBeNull();
-        expect(fixture.debugElement.query(By.css('#display-area'))).toBeNull();
+        expect(component.displayInitialUi).withContext('The displayInitialUi property').toBeTrue();
+        expect(fixture.debugElement.query(By.css('#begin-area')))
+          .withContext('#begin-area Element')
+          .not.toBeNull();
+        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more1')))
+          .withContext('#test-drop-instructions-more1 Element')
+          .toBeNull();
+        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more2')))
+          .withContext('#test-drop-instructions-more2 Element')
+          .toBeNull();
+        expect(fixture.debugElement.query(By.css('#display-area')))
+          .withContext('#display-area Element')
+          .toBeNull();
       });
 
-      it('should show the display UI when the "display slides" output is selected after files are dropped', () => {
-        spyOn(component, 'getConvertersAndExtractData').and.callFake(() => []);
-
+      it('should show the display UI when the "display slides" output is selected after files are dropped', (done: DoneFn) => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypeDisplaySlides();
 
-        component.onFileDrop([
-          {
-            name: 'UPPERCASE.WITH.DOTS.TXT',
-            nameWithoutExt: 'UPPERCASE.WITH.DOTS',
-            ext: 'txt',
-            type: 'text/plain',
-            size: 37,
-            lastModified: Date.now(),
-            data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
-          },
-          {
-            name: 'lowercase-file.pro5',
-            nameWithoutExt: 'lowercase-file',
-            ext: 'pro5',
-            type: '',
-            size: 19,
-            lastModified: Date.now(),
-            data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
-          },
-        ]);
+        parserSvc.filesParsed$.subscribe(() => {
+          fixture.detectChanges();
 
-        fixture.detectChanges();
+          expect(component.displayInitialUi)
+            .withContext('The displayInitialUi property')
+            .toBeFalse();
+          expect(fixture.debugElement.query(By.css('#begin-area')))
+            .withContext('#begin-area Element')
+            .toBeNull();
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more1')))
+            .withContext('#test-drop-instructions-more1 Element')
+            .not.toBeNull();
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more2')))
+            .withContext('#test-drop-instructions-more2 Element')
+            .not.toBeNull();
+          expect(fixture.debugElement.query(By.css('#display-area')))
+            .withContext('#display-area Element')
+            .not.toBeNull();
+          expect(
+            fixture.debugElement
+              .query(By.css('#display-area'))
+              .query(By.directive(SlideDisplayComponent))
+          )
+            .withContext('The SlideDisplayComponent inside of the #display-area Element')
+            .not.toBeNull();
+          expect(
+            fixture.debugElement
+              .query(By.css('#display-area'))
+              .query(By.directive(DownloadDisplayComponent))
+          )
+            .withContext('The DownloadDisplayComponent inside of the #display-area Element')
+            .toBeNull();
 
-        expect(component.displayInitialUi).toBeFalse();
-        expect(fixture.debugElement.query(By.css('#begin-area'))).toBeNull();
-        expect(fixture.debugElement.query(By.css('#drop-area-more'))).not.toBeNull();
-        expect(fixture.debugElement.query(By.css('#display-area'))).not.toBeNull();
-        expect(
-          fixture.debugElement
-            .query(By.css('#display-area'))
-            .query(By.directive(SlideDisplayComponent))
-        ).not.toBeNull();
-        expect(
-          fixture.debugElement
-            .query(By.css('#display-area'))
-            .query(By.directive(DownloadDisplayComponent))
-        ).toBeNull();
+          done();
+        });
+
+        const file = new File(['this is file content!'], 'dummy.txt');
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        dt.items.add(file);
+
+        component.onReceiveFiles(dt.files);
       });
 
-      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
-        spyOn(component, 'getConvertersAndExtractData').and.callFake(() => []);
-
+      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', (done: DoneFn) => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypePlainText();
 
-        component.onFileDrop([
-          {
-            name: 'UPPERCASE.WITH.DOTS.TXT',
-            nameWithoutExt: 'UPPERCASE.WITH.DOTS',
-            ext: 'txt',
-            type: 'text/plain',
-            size: 37,
-            lastModified: Date.now(),
-            data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
-          },
-          {
-            name: 'lowercase-file.pro5',
-            nameWithoutExt: 'lowercase-file',
-            ext: 'pro5',
-            type: '',
-            size: 19,
-            lastModified: Date.now(),
-            data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
-          },
-        ]);
+        parserSvc.filesParsed$.subscribe(() => {
+          fixture.detectChanges();
+          expect(component.displayInitialUi)
+            .withContext('The displayInitialUi property')
+            .toBeFalse();
+          expect(fixture.debugElement.query(By.css('#begin-area')))
+            .withContext('#begin-area Element')
+            .toBeNull();
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more1')))
+            .withContext('#test-drop-instructions-more1 Element')
+            .not.toBeNull();
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more2')))
+            .withContext('#test-drop-instructions-more2 Element')
+            .not.toBeNull();
+          expect(fixture.debugElement.query(By.css('#display-area')))
+            .withContext('#display-area Element')
+            .not.toBeNull();
+          expect(
+            fixture.debugElement
+              .query(By.css('#display-area'))
+              .query(By.directive(SlideDisplayComponent))
+          )
+            .withContext('The SlideDisplayComponent inside of the #display-area Element')
+            .toBeNull();
+          expect(
+            fixture.debugElement
+              .query(By.css('#display-area'))
+              .query(By.directive(DownloadDisplayComponent))
+          )
+            .withContext('The DownloadDisplayComponent inside of the #display-area Element')
+            .not.toBeNull();
 
-        fixture.detectChanges();
+          done();
+        });
 
-        expect(component.displayInitialUi).toBeFalse();
-        expect(fixture.debugElement.query(By.css('#begin-area'))).toBeNull();
-        expect(fixture.debugElement.query(By.css('#drop-area-more'))).not.toBeNull();
-        expect(fixture.debugElement.query(By.css('#display-area'))).not.toBeNull();
-        expect(
-          fixture.debugElement
-            .query(By.css('#display-area'))
-            .query(By.directive(SlideDisplayComponent))
-        ).toBeNull();
-        expect(
-          fixture.debugElement
-            .query(By.css('#display-area'))
-            .query(By.directive(DownloadDisplayComponent))
-        ).not.toBeNull();
+        const file = new File(['this is file content!'], 'dummy.txt');
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        dt.items.add(file);
+
+        component.onReceiveFiles(dt.files);
       });
     });
 
-    describe('Drop area interaction & fileDrop()', () => {
-      it('should NOT call the parser when no files are passed to onFileDrop()', () => {
+    describe('Drop area interaction, file chooser interaction, and onReceiveFiles()', () => {
+      it('should NOT call the parser when no files are passed to onReceiveFiles()', () => {
         spyOn(parserSvc, 'parseFiles');
-        component.onFileDrop([]);
+        const dt = new DataTransfer();
+
+        component.onReceiveFiles(dt.files);
         expect(parserSvc.parseFiles).not.toHaveBeenCalled();
       });
 
-      it('should call the parser when files are passed to onFileDrop()', () => {
-        fixture.detectChanges();
-
+      it('should call the parser when files are passed to onReceiveFiles()', () => {
         spyOn(parserSvc, 'parseFiles').and.callFake(() => []);
 
-        component.onFileDrop([
-          {
-            name: 'UPPERCASE.WITH.DOTS.TXT',
-            nameWithoutExt: 'UPPERCASE.WITH.DOTS',
-            ext: 'txt',
-            type: 'text/plain',
-            size: 37,
-            lastModified: Date.now(),
-            data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHBsYWluIHRleHQgZmlsZSBjb250ZW50IQ==',
-          },
-          {
-            name: 'lowercase-file.pro5',
-            nameWithoutExt: 'lowercase-file',
-            ext: 'pro5',
-            type: '',
-            size: 19,
-            lastModified: Date.now(),
-            data: 'data:application/octet-stream;base64,dGhpcyBpcyBhIFBQNSBmaWxlIQ==',
-          },
-        ]);
+        fixture.detectChanges();
 
+        const fileCreationTime = Date.now();
+        const dt = new DataTransfer();
+        dt.items.add(
+          new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', {
+            lastModified: fileCreationTime,
+            type: 'text/plain',
+          })
+        );
+        dt.items.add(
+          new File(['this file has no extension!'], 'no-extension', {
+            lastModified: fileCreationTime,
+            type: '',
+          })
+        );
+
+        component.onReceiveFiles(dt.files);
         expect(parserSvc.parseFiles).toHaveBeenCalled();
       });
 
-      it('should call onFileDrop() when files are dropped onto the begin element with the directive', (done: DoneFn) => {
+      it('should call onReceiveFiles() when files are dropped onto the begin element with the directive', (done: DoneFn) => {
+        fixture.detectChanges();
+        spyOn(component, 'onReceiveFiles').and.callThrough();
+
         const file = new File(['this is file content!'], 'dummy.txt');
         const dt = new DataTransfer();
         dt.items.add(file);
@@ -299,19 +315,68 @@ describe('ConvertComponent', () => {
           dataTransfer: dt,
         });
 
-        fixture.detectChanges();
-        const dropEl = fixture.debugElement.query(By.css('#begin-area .drop-area'));
+        const dropEl = fixture.debugElement.query(By.css('#drop-area'));
         const directiveInstance = dropEl.injector.get(DragAndDropFilesDirective);
 
-        spyOn(component, 'onFileDrop').and.callThrough();
-
         directiveInstance.fileDrop.subscribe(() => {
-          expect(component.onFileDrop).toHaveBeenCalled();
+          expect(component.onReceiveFiles).toHaveBeenCalled();
           done();
         });
 
-        dropEl.nativeElement.dispatchEvent(dropEvent);
+        directiveInstance.document.dispatchEvent(dropEvent);
         fixture.detectChanges();
+      });
+
+      it('should call onReceiveFiles() when files manually selected with the file input', () => {
+        spyOn(component, 'onReceiveFiles').and.callThrough();
+        fixture.detectChanges();
+
+        const file = new File(['this is file content!'], 'dummy.txt');
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        dt.items.add(file);
+
+        const inputElDebug = fixture.debugElement.query(By.css('input[type="file"]'));
+        const inputEl: HTMLInputElement = inputElDebug.nativeElement;
+        inputEl.files = dt.files;
+
+        const changeEvent = new Event('change');
+        inputEl.dispatchEvent(changeEvent);
+
+        fixture.detectChanges();
+
+        expect(component.onReceiveFiles).toHaveBeenCalledWith(dt.files);
+      });
+
+      it('should trigger a click event on the file chooser when the "select files" link is clicked', () => {
+        component.displayInitialUi = false;
+        fixture.detectChanges();
+
+        const inputEl: HTMLInputElement = fixture.debugElement.query(
+          By.css('input[type="file"]')
+        ).nativeElement
+
+        spyOn(inputEl, 'click').and.callFake(() => {});
+
+        const selectFilesLinkEl1 = fixture.debugElement.query(
+          By.css('#test-drop-instructions-more1 a')
+        );
+        const clickEvent1 = new Event('click');
+        selectFilesLinkEl1.nativeElement.dispatchEvent(clickEvent1);
+        fixture.detectChanges();
+        expect(inputEl.click)
+          .withContext('The 1st "select files" link that triggers the file input')
+          .toHaveBeenCalledTimes(1);
+
+        const selectFilesLinkEl2 = fixture.debugElement.query(
+          By.css('#test-drop-instructions-more2 a')
+        );
+        const clickEvent2 = new Event('click');
+        selectFilesLinkEl2.nativeElement.dispatchEvent(clickEvent2);
+        fixture.detectChanges();
+        expect(inputEl.click)
+          .withContext('The 2nd "select files" link that triggers the file input')
+          .toHaveBeenCalledTimes(2);
       });
     });
 

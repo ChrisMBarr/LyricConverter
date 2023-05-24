@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 //Helpers & Types
 import { Utils } from '../shared/utils';
@@ -51,7 +52,63 @@ export class ParserService {
     new OutputTypeDisplaySlides(),
   ];
 
-  parseFiles(files: IFileWithData[]): IRawDataFile[] {
+  filesParsed$ = new Subject<IRawDataFile[]>();
+
+  parseFiles(files: FileList): void {
+    const loadedFiles: IFileWithData[] = [];
+
+    for (let i = 0; i <= files.length - 1; i++) {
+      const reader = new FileReader();
+      const f = files[i];
+      if (typeof f !== 'undefined') {
+        //File reading happens async
+        const completeFn = this.handleFile(f, loadedFiles, files.length);
+        reader.addEventListener('loadend', completeFn, false);
+
+        //Actually read the file
+        reader.readAsDataURL(f);
+      }
+    }
+  }
+
+  detectInputTypeAndGetConverter(f: IRawDataFile): IInputConverter | undefined {
+    return this.inputConverters.find((c: IInputConverter) => {
+      return c.doesInputFileMatchThisType(f);
+    });
+  }
+
+  private handleFile(
+    theFile: File,
+    fileArray: IFileWithData[],
+    fileCount: number
+  ): (ev: ProgressEvent<FileReader>) => void {
+    //When called, it has to return a function back up to the listener event
+    return (ev: ProgressEvent<FileReader>) => {
+      const fileNameParts = theFile.name.split('.');
+      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : '';
+      const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
+
+      const newFile: IFileWithData = {
+        name: theFile.name,
+        nameWithoutExt,
+        ext: fileExt.toLowerCase(),
+        type: theFile.type,
+        size: theFile.size,
+        lastModified: theFile.lastModified,
+        data: ev.target?.result,
+      };
+
+      //Add the current file to the array
+      fileArray.push(newFile);
+
+      //Once all the files have been read and converted should we continue
+      if (fileArray.length === fileCount) {
+        this.emitRawFiles(fileArray);
+      }
+    };
+  }
+
+  private emitRawFiles(files: IFileWithData[]): void {
     const rawDataFiles: IRawDataFile[] = [];
     for (const f of files) {
       let data = '';
@@ -68,12 +125,6 @@ export class ParserService {
       });
     }
 
-    return rawDataFiles;
-  }
-
-  detectInputTypeAndGetConverter(f: IRawDataFile): IInputConverter | undefined {
-    return this.inputConverters.find((c: IInputConverter) => {
-      return c.doesInputFileMatchThisType(f);
-    });
+    this.filesParsed$.next(rawDataFiles);
   }
 }

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ParserService } from './parser.service';
-import { IFileWithData, IRawDataFile } from 'src/app/convert/models/file.model';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
@@ -20,48 +20,52 @@ describe('ParserService', () => {
   });
 
   describe('parseFiles()', () => {
-    it('should return an empty array if an empty array is passed in', () => {
-      expect(service.parseFiles([])).toEqual([]);
+    it('should emit a properly formatted RawDataFile with decoded content', (done: DoneFn) => {
+      service.filesParsed$.subscribe((value) => {
+        const expectedParsedFile: IRawDataFile = {
+          data: 'this is some text for testing!',
+          ext: '',
+          name: 'no-extension',
+          type: 'text/plain',
+        };
+
+        expect(value).toEqual([expectedParsedFile]);
+        done();
+      });
+
+      const dt = new DataTransfer();
+      const file = new File(['this is some text for testing!'], 'no-extension', {
+        lastModified: 1684251444527,
+        type: 'text/plain',
+      });
+      dt.items.add(file);
+      service.parseFiles(dt.files);
     });
 
-    it('should return a properly formatted RawDataFile with decoded content', () => {
-      const inputFile: IFileWithData = {
-        data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHRleHQgZm9yIHRlc3Rpbmch',
-        ext: 'txt',
-        lastModified: 1684251444527,
-        name: 'test-file.txt',
-        nameWithoutExt: 'test-file',
-        size: 30,
-        type: 'text/plain',
-      };
+    it('should return correctly with a unicode file name', (done: DoneFn) => {
+      service.filesParsed$.subscribe((value) => {
+        const expectedParsedFile: IRawDataFile = {
+          data: 'this is some other text for testing!',
+          ext: 'txt',
+          name: 'ěščřžýáíé åäö',
+          type: 'text/plain',
+        };
 
-      const expectedParsedFile: IRawDataFile = {
-        data: 'this is some text for testing!',
-        ext: 'txt',
-        name: 'test-file',
-        type: 'text/plain',
-      };
-      expect(service.parseFiles([inputFile])).toEqual([expectedParsedFile]);
-    });
+        expect(value).toEqual([expectedParsedFile]);
+        done();
+      });
 
-    it('should return correctly with a unicode file name', () => {
-      const inputFile: IFileWithData = {
-        data: 'data:text/plain;base64,dGhpcyBpcyBzb21lIHRleHQgZm9yIHRlc3Rpbmch',
-        ext: 'txt',
-        lastModified: 1684251444527,
-        name: 'ěščřžýáíé åäö.txt',
-        nameWithoutExt: 'ěščřžýáíé åäö',
-        size: 30,
-        type: 'text/plain',
-      };
-
-      const expectedParsedFile: IRawDataFile = {
-        data: 'this is some text for testing!',
-        ext: 'txt',
-        name: 'ěščřžýáíé åäö',
-        type: 'text/plain',
-      };
-      expect(service.parseFiles([inputFile])).toEqual([expectedParsedFile]);
+      const dt = new DataTransfer();
+      const file = new File(
+        ['this is some other text for testing!'],
+        'ěščřžýáíé åäö.txt',
+        {
+          lastModified: 1684251444527,
+          type: 'text/plain',
+        }
+      );
+      dt.items.add(file);
+      service.parseFiles(dt.files);
     });
   });
 
@@ -102,5 +106,4 @@ describe('ParserService', () => {
       );
     });
   });
-
 });

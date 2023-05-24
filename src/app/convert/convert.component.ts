@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ParserService } from './parser/parser.service';
-import { IFileWithData, IOutputFile, IRawDataFile } from './models/file.model';
+import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
 
@@ -27,6 +27,11 @@ export class ConvertComponent implements OnInit {
   ngOnInit(): void {
     this.buildOutputTypesList();
     this.buildInputTypesList();
+
+    //When files have finished parsing we will handle them here
+    this.parserSvc.filesParsed$.subscribe((rawFiles: IRawDataFile[]) => {
+      this.getConvertersAndExtractData(rawFiles);
+    });
   }
 
   private buildOutputTypesList(): void {
@@ -71,57 +76,15 @@ export class ConvertComponent implements OnInit {
   }
 
   onReceiveFiles(files: FileList): void {
-    //This happens when either called by .onFileSelect() above,
-    // or from the appDragAndDrop directive in the template
-    const loadedFiles: IFileWithData[] = [];
-
-    for (let i = 0; i <= files.length - 1; i++) {
-      const reader = new FileReader();
-      const f = files[i];
-      if (typeof f !== 'undefined') {
-        const completeFn = this.handleFile(f, loadedFiles, files.length);
-        reader.addEventListener('loadend', completeFn, false);
-
-        //Actually read the file
-        reader.readAsDataURL(f);
-      }
+    //This is either called by the appDragAndDrop directive, or by the .onFileSelect() method above
+    if (files.length > 0) {
+      this.parserSvc.parseFiles(files);
     }
   }
 
-  private handleFile(
-    theFile: File,
-    fileArray: IFileWithData[],
-    fileCount: number
-  ): (ev: ProgressEvent<FileReader>) => void {
-    //When called, it has to return a function back up to the listener event
-    return (ev: ProgressEvent<FileReader>) => {
-      const fileNameParts = theFile.name.split('.');
-      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : '';
-      const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
-
-      const newFile: IFileWithData = {
-        name: theFile.name,
-        nameWithoutExt,
-        ext: fileExt.toLowerCase(),
-        type: theFile.type,
-        size: theFile.size,
-        lastModified: theFile.lastModified,
-        data: ev.target?.result,
-      };
-
-      //Add the current file to the array
-      fileArray.push(newFile);
-
-      //Once the correct number of items have been put in the array, call the completion function
-      if (fileArray.length === fileCount) {
-        this.displayInitialUi = false;
-        const parsedFiles = this.parserSvc.parseFiles(fileArray);
-        this.getConvertersAndExtractData(parsedFiles);
-      }
-    };
-  }
-
   getConvertersAndExtractData(parsedFiles: IRawDataFile[]): void {
+    this.displayInitialUi = false;
+
     const convertedSongs: ISong[] = [];
     parsedFiles.forEach((f) => {
       const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
