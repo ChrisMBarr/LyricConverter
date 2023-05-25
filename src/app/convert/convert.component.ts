@@ -81,6 +81,7 @@ export class ConvertComponent implements OnInit {
 
   onSwitchConversionType(newType: IOutputConverter, event: Event): void {
     event.preventDefault();
+    this.displayInitialUi = true;
     this.selectedOutputType = newType;
 
     localStorage.setItem(this.conversionTypeStorageKey, newType.name);
