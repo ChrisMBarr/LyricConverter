@@ -160,22 +160,22 @@ describe('InputTypeOpenLyrics', () => {
           {
             title: 'v1',
             lyrics:
-              "Amazing grace how sweet the sound that saved a wretch like me;\n\nI once was lost but now I'm found, was blind but now I see.",
+              "Amazing grace how sweet the sound that saved a wretch like me;\nI once was lost but now I'm found, was blind but now I see.",
           },
           {
             title: 'v2',
             lyrics:
-              'Twas grace that taught my heart to fear, and grace my fears relieved;\n\nHow precious did that grace appear the hour I first believed!',
+              'Twas grace that taught my heart to fear, and grace my fears relieved;\nHow precious did that grace appear the hour I first believed!',
           },
           {
             title: 'v3',
             lyrics:
-              "Through many dangers, toils, and snares I have already come;\n\n'Tis grace that brought me safe thus far and grace will lead me home.",
+              "Through many dangers, toils, and snares I have already come;\n'Tis grace that brought me safe thus far and grace will lead me home.",
           },
           {
             title: 'v4',
             lyrics:
-              "When we've been there ten thousand years bright shining as the sun;\n\nWe've no less days to sing God's praise than when we'd first begun!",
+              "When we've been there ten thousand years bright shining as the sun;\nWe've no less days to sing God's praise than when we'd first begun!",
           },
         ],
       });
@@ -199,27 +199,27 @@ describe('InputTypeOpenLyrics', () => {
           {
             title: 'v1',
             lyrics:
-              'When peace like a river attendeth my way,\n\nWhen sorrows like sea billows roll;\n\nWhatever my lot, Thou hast taught me to say,\n\n“It is well, it is well with my soul.”',
+              'When peace like a river attendeth my way,\nWhen sorrows like sea billows roll;\nWhatever my lot, Thou hast taught me to say,\n“It is well, it is well with my soul.”',
           },
           {
             title: 'c',
             lyrics:
-              'It is well, (it is well,)\n\nWith my soul, (with my soul,)\n\nIt is well, it is well with my soul.',
+              'It is well, (it is well,)\nWith my soul, (with my soul,)\nIt is well, it is well with my soul.',
           },
           {
             title: 'v2',
             lyrics:
-              'Though Satan should buffet, though trials should come,\n\nLet this blest assurance control,\n\nThat Christ has regarded my helpless estate,\n\nAnd hath shed his own blood for my soul.',
+              'Though Satan should buffet, though trials should come,\nLet this blest assurance control,\nThat Christ has regarded my helpless estate,\nAnd hath shed his own blood for my soul.',
           },
           {
             title: 'v3',
             lyrics:
-              'My sin, oh the bliss of this glorious thought!\n\nMy sin, not in part but the whole\n\nIs nailed to the cross, and I bear it no more,\n\nPraise the Lord, praise the Lord, O my soul!',
+              'My sin, oh the bliss of this glorious thought!\nMy sin, not in part but the whole\nIs nailed to the cross, and I bear it no more,\nPraise the Lord, praise the Lord, O my soul!',
           },
           {
             title: 'v4',
             lyrics:
-              'And, Lord, haste the day when my faith shall be sight,\n\nThe clouds be rolled back as a scroll;\n\nThe trump shall resound, and the Lord shall descend,\n\nEven so, it is well with my soul.',
+              'And, Lord, haste the day when my faith shall be sight,\nThe clouds be rolled back as a scroll;\nThe trump shall resound, and the Lord shall descend,\nEven so, it is well with my soul.',
           },
         ],
       });
@@ -256,41 +256,41 @@ describe('InputTypeOpenLyrics', () => {
         slides: [
           {
             title: 'v1 (he)',
-            lyrics: 'הבה נגילה\n\nהבה נגילה\n\nהבה נגילה ונשמחה',
+            lyrics: 'הבה נגילה\nהבה נגילה\nהבה נגילה ונשמחה',
           },
           {
             title: 'v1 (he - transliterated in en)',
-            lyrics: "Hava nagila\n\nHava nagila\n\nHava nagila vi nis'mecha",
+            lyrics: "Hava nagila\nHava nagila\nHava nagila vi nis'mecha",
           },
           {
             title: 'v1 (en)',
-            lyrics: "Let's rejoice\n\nLet's rejoice\n\nLet's rejoice and be happy",
+            lyrics: "Let's rejoice\nLet's rejoice\nLet's rejoice and be happy",
           },
           {
             title: 'c (he)',
-            lyrics: 'הבה נרננה\n\nהבה נרננה\n\nהבה נרננה ונשמחה',
+            lyrics: 'הבה נרננה\nהבה נרננה\nהבה נרננה ונשמחה',
           },
           {
             title: 'c (he - transliterated in en)',
-            lyrics: "Hava neranenah\n\nHava neranenah\n\nHava neranenah vi nis'mecha",
+            lyrics: "Hava neranenah\nHava neranenah\nHava neranenah vi nis'mecha",
           },
           {
             title: 'c (en)',
-            lyrics: "Let's sing\n\nLet's sing\n\nLet's sing and be happy",
+            lyrics: "Let's sing\nLet's sing\nLet's sing and be happy",
           },
           {
             title: 'b (he)',
-            lyrics: '!עורו, עורו אחים\n\nעורו אחים בלב שמח\n\n!עורו אחים, עורו אחים\n\nבלב שמח',
+            lyrics: '!עורו, עורו אחים\nעורו אחים בלב שמח\n!עורו אחים, עורו אחים\nבלב שמח',
           },
           {
             title: 'b (he - transliterated in en)',
             lyrics:
-              "Uru, uru achim!\n\nUru achim b'lev sameach\n\n\nUru achim, uru achim!\n\nB'lev sameach",
+              "Uru, uru achim!\nUru achim b'lev sameach\n\nUru achim, uru achim!\nB'lev sameach",
           },
           {
             title: 'b (en)',
             lyrics:
-              'Awake, awake, brothers!\n\nAwake brothers with a happy heart\n\nAwake, brothers, awake, brothers!\n\nWith a happy heart',
+              'Awake, awake, brothers!\nAwake brothers with a happy heart\nAwake, brothers, awake, brothers!\nWith a happy heart',
           },
         ],
       });

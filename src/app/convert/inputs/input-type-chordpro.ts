@@ -1,5 +1,6 @@
 import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
+import { Utils } from '../shared/utils';
 import { IInputConverter } from './input-converter.model';
 
 interface IChordProDirectives {
@@ -35,7 +36,8 @@ export class InputTypeChordPro implements IInputConverter {
   extractSongData(rawFile: IRawDataFile): ISong {
     //For the purposes of LyricConverter, we do not need any comments or chord markers
     //We can just strip those out and focus on getting the song info and lyrics extracted
-    const simplifiedContent = this.stripCommentsAndChords(rawFile.data);
+    const normalizedLineEndings = Utils.normalizeLineEndings(rawFile.data);
+    const simplifiedContent = this.stripCommentsAndChords(normalizedLineEndings);
     const directives = this.gatherDirectives(simplifiedContent);
     const songTitle = this.getSongTitle(directives, rawFile.name);
     const songInfo = this.getSongInfo(directives.keyValuePairs);
@@ -90,7 +92,7 @@ export class InputTypeChordPro implements IInputConverter {
         if (directiveContent.includes(':')) {
           //Split anything with a colon into an array, then remove any empty string from the array
           const pair = directiveContent.split(':').filter((s) => s.trim() !== '');
-          if ((pair[0] != null) && (pair[1] != null)) {
+          if (pair[0] != null && pair[1] != null) {
             if (this.patternDirectiveStartMarkers.test(directiveContent)) {
               foundDirectives.singles.push({
                 name: pair[0].trim(),
@@ -155,7 +157,7 @@ export class InputTypeChordPro implements IInputConverter {
           matchingEnd = singleDirectives.find((d) => d.name === 'end_of_' + foundStart[2]);
         }
 
-        if ((foundStart[2] != null) && matchingEnd) {
+        if (foundStart[2] != null && matchingEnd) {
           pairs.push({
             begin: dir,
             end: matchingEnd,
@@ -177,7 +179,12 @@ export class InputTypeChordPro implements IInputConverter {
     //Here we want to extract the content between them for the types we care about
     //and then remove ALL paired directives and the content between them
 
-    interface ISavedContent { full: string; content: string; type: string; sectionLabel?: string }
+    interface ISavedContent {
+      full: string;
+      content: string;
+      type: string;
+      sectionLabel?: string;
+    }
 
     //The ones we want to find and keep:
     //  Chorus: {soc} and {eoc} OR {start_of_chorus} and {end_of_chorus}

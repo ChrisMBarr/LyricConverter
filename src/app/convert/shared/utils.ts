@@ -40,6 +40,11 @@ export class Utils {
 \\f0\\fs120 \\cf1 \\\r${text.replace(/\r|\n/g, '\\\r')}}`;
   }
 
+  public static normalizeLineEndings(inputStr: string): string{
+    //replace all adjacent \n\r or \r\n characters with just \n to simplify
+    return inputStr.replace(/(\r\n)|(\n\r)/g, '\n')
+  }
+
   public static getIsoDateString(): string{
     //Remove the ending milliseconds: '2023-05-17T16:02:23.245Z' --> '2023-05-17T16:02:23'
     return new Date().toISOString().replace(/\.\d{3}Z$/, '')

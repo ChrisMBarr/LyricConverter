@@ -2,6 +2,7 @@ import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
 import { ISongProSong, SongPro, ISongProLine } from '../../../lib/songpro';
+import { Utils } from '../shared/utils';
 
 export class InputTypeSongPro implements IInputConverter {
   readonly name = 'SongPro';
@@ -17,7 +18,7 @@ export class InputTypeSongPro implements IInputConverter {
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
-    const song = SongPro.parse(rawFile.data);
+    const song = SongPro.parse(Utils.normalizeLineEndings(rawFile.data));
 
     const title = song.attrs.title ?? rawFile.name;
     const info: ISongInfo[] = this.getSongInfo(song);

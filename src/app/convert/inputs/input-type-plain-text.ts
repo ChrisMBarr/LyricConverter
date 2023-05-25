@@ -1,6 +1,7 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { IInputConverter } from './input-converter.model';
 import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
+import { Utils } from '../shared/utils';
 
 export class InputTypePlainText implements IInputConverter {
   readonly name = 'Plain Text';
@@ -15,7 +16,7 @@ export class InputTypePlainText implements IInputConverter {
     let info: ISongInfo[] = [];
     let slides: ISongSlide[] = [];
     //The info and the lyrics are separated by 3 newline characters
-    const parts = rawFile.data.split('\n\n\n');
+    const parts = Utils.normalizeLineEndings(rawFile.data).split('\n\n\n');
     if (parts.length === 2 && (parts[0] != null) && (parts[1] != null)) {
       info = this.getSongInfo(parts[0]);
       if (info[0]?.name.toLowerCase() === 'title') {

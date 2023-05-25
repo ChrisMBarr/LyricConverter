@@ -14,6 +14,7 @@ import {
   IOpenLyricsDocTitles,
 } from '../models/openlyrics-document.model';
 import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+import { Utils } from '../shared/utils';
 
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';
@@ -50,7 +51,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
       },
     });
 
-    const parsedDoc: IOpenLyricsDocRoot = xmlParser.parse(rawFile.data);
+    const normalizedLineEndings = Utils.normalizeLineEndings(rawFile.data);
+    const parsedDoc: IOpenLyricsDocRoot = xmlParser.parse(normalizedLineEndings);
     const title = this.getTitle(parsedDoc.song.properties.titles, rawFile.name);
     const info: ISongInfo[] = this.getInfo(parsedDoc.song.properties);
     const slides: ISongSlide[] = this.getSlides(parsedDoc.song.lyrics);
@@ -69,9 +71,14 @@ export class InputTypeOpenLyrics implements IInputConverter {
   }
 
   private convertHtmlLineBreaksAndStripTags(str: string): string {
-    //replace correctly and incorrectly formatted <br> </br> and </br> tags with new lines
-    //Then remove all HTML/XML tags
-    return str.replace(/<\/?br\/?>/gi, '\n').replace(/<.+?>/g, '');
+    return (
+      str
+        //replace correctly and incorrectly formatted <br> </br> and </br> tags with new lines
+        //Sometimes these will already have a newline after them, remove that so that newlines aren't doubled
+        .replace(/<\/?br\/?>(\n)?/gi, '\n')
+        //Then remove all HTML/XML tags
+        .replace(/<.+?>/g, '')
+    );
   }
 
   private getTitle(titles: IOpenLyricsDocTitles | undefined, fallbackFileName: string): string {

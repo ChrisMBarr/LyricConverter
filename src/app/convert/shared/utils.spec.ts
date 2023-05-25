@@ -95,4 +95,24 @@ describe('Utils', () => {
       ]);
     });
   });
+
+  describe('normalizeLineEndings()', () => {
+    it('should replace all line ending combinations with \\n', () => {
+      //Single instances
+      expect(Utils.normalizeLineEndings('\n\r')).withContext('\\n\\r => \\n').toEqual('\n');
+      expect(Utils.normalizeLineEndings('\r\n')).withContext('\\r\\n => \\n').toEqual('\n');
+
+      //Multiple instances
+      expect(Utils.normalizeLineEndings('\n\r\n\r'))
+        .withContext('\\n\\r\\n\\r => \\n\\n')
+        .toEqual('\n\n');
+      expect(Utils.normalizeLineEndings('\r\n\r\n'))
+        .withContext('\\r\\n\\r\\n => \\n\\n')
+        .toEqual('\n\n');
+
+      //No chages expected here
+      expect(Utils.normalizeLineEndings('\n')).withContext('\\n => \\n').toEqual('\n');
+      expect(Utils.normalizeLineEndings('\n\n')).withContext('\\n\\n => \\n\\n').toEqual('\n\n');
+    });
+  });
 });
