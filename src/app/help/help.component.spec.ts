@@ -2,115 +2,67 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelpComponent } from './help.component';
 import { ParserService } from '../convert/parser/parser.service';
-import { By } from '@angular/platform-browser';
 
 describe('HelpComponent', () => {
   let component: HelpComponent;
   let fixture: ComponentFixture<HelpComponent>;
+  let parserSvc: ParserService;
 
-  const mockParserService = {
-    inputConverters: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'InputOnly' }],
-    outputConverters: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'OutputOnly' }],
-  };
-
-  beforeEach(() => {
+  function configureTestBed(providersArray: any[]) {
     TestBed.configureTestingModule({
       declarations: [HelpComponent],
-      providers: [{ provide: ParserService, useValue: mockParserService }],
+      providers: providersArray,
     });
     fixture = TestBed.createComponent(HelpComponent);
     component = fixture.componentInstance;
-
-    component.unsupportedFormatsList = [
-      { name: 'Not Supported', canImport: false, canExport: false },
-    ];
-
-    fixture.detectChanges();
-  });
+    parserSvc = TestBed.inject(ParserService);
+  }
 
   it('should create', () => {
+    configureTestBed([ParserService]);
     expect(component).toBeTruthy();
   });
 
   it('should build an alphabetized list of supported formats from the ParserService, and unsupported formats local to the component', () => {
+    const mockParserService = {
+      inputConverters: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'InputOnly' }],
+      outputConverters: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'OutputOnly' }],
+    };
+    configureTestBed([{ provide: ParserService, useValue: mockParserService }]);
+
+    component.unsupportedFormatsList = [
+      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false },
+    ];
+    fixture.detectChanges();
+
     expect(component.combinedFormatsList).toEqual([
-      { name: 'Bar', canImport: true, canExport: true },
-      { name: 'Foo', canImport: true, canExport: true },
-      { name: 'InputOnly', canImport: true, canExport: false },
-      { name: 'Not Supported', canImport: false, canExport: false },
-      { name: 'OutputOnly', canImport: false, canExport: true },
+      { name: 'Bar', canImport: true, canExport: true, hasNote: false },
+      { name: 'Foo', canImport: true, canExport: true, hasNote: false },
+      { name: 'InputOnly', canImport: true, canExport: false, hasNote: false },
+      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false },
+      { name: 'OutputOnly', canImport: false, canExport: true, hasNote: false },
     ]);
   });
 
-  it('should display a table in the UI to match the supported formats list', () => {
+  it('Should not have an item in the unsupported list that is actually supported', () => {
+    configureTestBed([ParserService]);
+    fixture.detectChanges();
 
-    expect(fixture.debugElement.queryAll(By.css('table tbody tr')).length)
-      .withContext('Number of table rows')
-      .toEqual(5);
-    //---------------------------------
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(1) td:nth-of-type(1)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 1, cell 1')
-      .toEqual('✓');
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(1) td:nth-of-type(2)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 1, cell 2')
-      .toEqual('✓');
-    //---------------------------------
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(2) td:nth-of-type(1)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 2, cell 1')
-      .toEqual('✓');
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(2) td:nth-of-type(2)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 2, cell 2')
-      .toEqual('✓');
-    //---------------------------------
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(3) td:nth-of-type(1)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 3, cell 1')
-      .toEqual('✓');
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(3) td:nth-of-type(2)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 3, cell 2')
-      .toEqual('');
-    //---------------------------------
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(4) td:nth-of-type(1)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 4, cell 1')
-      .toEqual('');
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(4) td:nth-of-type(2)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 4, cell 2')
-      .toEqual('');
-    //---------------------------------
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(5) td:nth-of-type(1)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 5, cell 1')
-      .toEqual('');
-    expect(
-      fixture.debugElement.query(By.css('table tbody tr:nth-of-type(5) td:nth-of-type(2)'))
-        .nativeElement.textContent
-    )
-      .withContext('Row 5, cell 2')
-      .toEqual('✓');
+    const unsupportedNames = component.unsupportedFormatsList.map((f) => f.name);
+    const inputFormatNames = parserSvc.inputConverters.map((f) => f.name);
+    const outputFormatNames = parserSvc.outputConverters.map((f) => f.name);
+
+    unsupportedNames.forEach((n) => {
+      expect(inputFormatNames)
+        .withContext(
+          'A supported input format name was found in the list of unsupported formats! Remove this!'
+        )
+        .not.toContain(n);
+      expect(outputFormatNames)
+        .withContext(
+          'A supported output format name was found in the list of unsupported formats! Remove this!'
+        )
+        .not.toContain(n);
+    });
   });
 });

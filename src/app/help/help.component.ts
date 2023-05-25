@@ -6,6 +6,7 @@ interface ICombinedFormatItem {
   name: string;
   canImport: boolean;
   canExport: boolean;
+  hasNote: boolean;
 }
 
 @Component({
@@ -17,12 +18,11 @@ export class HelpComponent implements OnInit {
   combinedFormatsList: ICombinedFormatItem[] = [];
 
   unsupportedFormatsList: ICombinedFormatItem[] = [
-    { name: 'ProPresenter 6', canImport: false, canExport: false },
-    { name: 'ProPresenter 7', canImport: false, canExport: false },
-    { name: 'MediaShout', canImport: false, canExport: false },
-    { name: 'EasyWorship', canImport: false, canExport: false },
-    { name: 'OpenSong', canImport: false, canExport: false },
-    { name: 'SongPro', canImport: false, canExport: false },
+    { name: 'ProPresenter 6', canImport: false, canExport: false, hasNote: true },
+    { name: 'ProPresenter 7', canImport: false, canExport: false, hasNote: true },
+    { name: 'MediaShout', canImport: false, canExport: false, hasNote: false },
+    { name: 'EasyWorship', canImport: false, canExport: false, hasNote: false },
+    { name: 'OpenSong', canImport: false, canExport: false, hasNote: false },
   ];
 
   constructor(private readonly parserSvc: ParserService) {}
@@ -32,7 +32,12 @@ export class HelpComponent implements OnInit {
     this.parserSvc.inputConverters
       .map((t) => t.name)
       .forEach((t) => {
-        this.combinedFormatsList.push({ name: t, canImport: true, canExport: false });
+        this.combinedFormatsList.push({
+          name: t,
+          canImport: true,
+          canExport: false,
+          hasNote: false,
+        });
       });
 
     //Add all output/export types to the list, but exclude 'Display Slides'
@@ -46,7 +51,12 @@ export class HelpComponent implements OnInit {
         if (matchedToInput) {
           matchedToInput.canExport = true;
         } else {
-          this.combinedFormatsList.push({ name: t, canImport: false, canExport: true });
+          this.combinedFormatsList.push({
+            name: t,
+            canImport: false,
+            canExport: true,
+            hasNote: false,
+          });
         }
       });
 

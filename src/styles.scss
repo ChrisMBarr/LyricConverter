@@ -44,3 +44,17 @@
 body {
   overflow-y: scroll; //make sure scrollbar always shows to prevent page jump
 }
+
+.bi {
+  //Bootstrap SVG icons
+  //Defaults to match text size and color
+  width: 1em;
+  height: 1em;
+  fill: currentcolor;
+
+  &-lg {
+    //fixed larger size when this class is added
+    width: 32px;
+    height: 32px;
+  }
+}
