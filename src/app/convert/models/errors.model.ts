@@ -1,3 +1,5 @@
+import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
+
 export interface ISongError {
   /**
    * @description A friendly error message to show in the UI
@@ -21,6 +23,6 @@ export interface ISongError {
 export class LyricConverterError extends Error {
   constructor(message: string) {
     super();
-    return new Error(message, { cause: 'LyricConverter Custom Error' });
+    return new Error(message, { cause: CUSTOM_ERROR_IDENTIFIER });
   }
 }

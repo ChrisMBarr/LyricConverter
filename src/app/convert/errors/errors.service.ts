@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ISongError } from '../models/errors.model';
 import { Subject } from 'rxjs';
+import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,7 @@ export class ErrorsService {
     return (
       thrownError != null &&
       Object.hasOwn(thrownError, 'cause') &&
-      (thrownError as Error).cause === 'LyricConverter Custom Error'
+      (thrownError as Error).cause === CUSTOM_ERROR_IDENTIFIER
     );
   }
 }
