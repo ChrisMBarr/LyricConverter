@@ -78,7 +78,8 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
       songTitle = infoArray[0].replace(/\$/g, '');
     }
 
-    //Convert characters as needed - useful for non-English alphabets (Spanish)
+    //Convert characters as needed - useful for non-UTF8 character (like accented characters in Spanish)
+    //This is partially needed due to the binary file format that we are scraping for text
     songTitle = TextCleaner.convertWin1252ToUtf8(songTitle);
 
     return {
@@ -235,7 +236,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
           }
         } else {
           slideArray.push({
-            title: '',
+            title: 'All Found Lyrics',
             lyrics: lastSlideObj.lastLyrics.replace(/\/+/g, ''),
           });
         }

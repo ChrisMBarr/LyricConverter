@@ -77,7 +77,7 @@ describe('InputTypeJSON', () => {
       });
     });
 
-    it('should throw an error if data is missing when extractSongData() is called', () => {
+    it('should throw a custom error if data is missing when extractSongData() is called', () => {
       const testFile: IRawDataFile = {
         name: 'foo',
         ext: 'json',
@@ -91,7 +91,7 @@ describe('InputTypeJSON', () => {
       expect(() => inputConverter.extractSongData(testFile)).toThrow(err);
     });
 
-    it('should throw an error when bad data is passed to extractSongData()', () => {
+    it('should throw a native error when bad data is passed to extractSongData()', () => {
       const testFile: IRawDataFile = {
         name: 'foo',
         ext: 'json',
@@ -99,7 +99,8 @@ describe('InputTypeJSON', () => {
         data: 'bad data',
       };
 
-      expect(() => inputConverter.extractSongData(testFile)).toThrowError();
+      const expectedErr = new SyntaxError(`Unexpected token 'b', "bad data" is not valid JSON`);
+      expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedErr);
     });
   });
 });

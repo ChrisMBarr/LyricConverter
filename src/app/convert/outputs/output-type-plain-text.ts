@@ -20,6 +20,8 @@ export class OutputTypePlainText implements IOutputConverter {
       }
     }
 
+    //These 3 line breaks separate the info from the lyrics
+    //This is needed if they are imported back into LyricConverter
     fileContent += newLine + blankLine;
 
     //Add the song lyrics, skipping sections with blank lyrics

@@ -8,6 +8,7 @@ import {
   mockEmptyTextFile,
 } from 'test/mock-raw-files';
 import { mockPlainTextFile1, mockPlainTextFile2 } from 'test/mock-plain-text-files';
+import { LyricConverterError } from '../models/errors.model';
 
 describe('InputTypePlainText', () => {
   let inputConverter: InputTypePlainText;
@@ -43,16 +44,16 @@ describe('InputTypePlainText', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return an empty song for a empty text file', () => {
+    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
-      testFile.data = '';
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
-        title: 'Your Grace is Enough',
-        info: [],
-        slides: [],
-      });
+      testFile.data = testFile.data.replace('\n\n\n', '\n');
+
+      const expectedError = new LyricConverterError(
+        `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`
+      );
+      expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedError);
     });
+
     it('should return a song for a plain text file1', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
 

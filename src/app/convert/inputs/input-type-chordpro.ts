@@ -147,6 +147,10 @@ export class InputTypeChordPro implements IInputConverter {
   private getMatchedDirectivePairs(
     singleDirectives: IChordProSingleDirective[]
   ): IChordProMatchingDirectivePairs[] {
+    //The matched directives are tags like:
+    // {start_of_chorus} and {end_of_chorus}
+    // {soc} and {eoc}
+    //This method will find each pair of opening/closing directives and get their positions in the file
     const pairs: IChordProMatchingDirectivePairs[] = [];
     for (const dir of singleDirectives) {
       const foundStart = this.patternDirectiveStartMarkers.exec(dir.name);
