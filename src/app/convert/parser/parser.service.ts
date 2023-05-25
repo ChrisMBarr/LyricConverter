@@ -70,7 +70,7 @@ export class ParserService {
         reader.addEventListener('loadend', completeFn, false);
 
         //Actually read the file
-        reader.readAsDataURL(f);
+        reader.readAsText(f);
       }
     } catch (err: unknown) {
       this.errorsSvc.add({
@@ -126,7 +126,7 @@ export class ParserService {
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
-        data: Utils.decodeBase64(f.data.replace(/^data:.*;base64,/, ''))
+        data: f.data
       });
     }
 

@@ -13,7 +13,9 @@ export class DownloadDisplayComponent {
 
   onClickDownloadFiles(): void {
     for (const outputFile of this.outputFileList) {
-      fileSaver.saveAs(new File([outputFile.outputContent], outputFile.fileName));
+      fileSaver.saveAs(
+        new File(['\ufeff' + outputFile.outputContent], outputFile.fileName, { type: 'text/plain' })
+      );
     }
   }
 

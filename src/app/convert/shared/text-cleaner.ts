@@ -55,7 +55,6 @@ export class TextCleaner {
     //Use the RegEx to search the string for matches, then replace any of them with the corresponding replacement string
     return source.replace(TextCleaner.charMapper.expression, (m) => {
       const unicodeVal = TextCleaner.toUnicode(m);
-      // console.log(m, unicodeVal, TextCleaner.map[unicodeVal]);
       return TextCleaner.charMapper.map[unicodeVal] ?? /* istanbul ignore next */ '';
     });
   }
