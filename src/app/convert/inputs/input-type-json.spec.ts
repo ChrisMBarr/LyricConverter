@@ -1,5 +1,6 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from './input-type-json';
+import { LyricConverterError } from '../models/errors.model';
 
 describe('InputTypeJSON', () => {
   let inputConverter: InputTypeJSON;
@@ -76,7 +77,7 @@ describe('InputTypeJSON', () => {
       });
     });
 
-    it('should return empty data on a a song if data is missing when extractSongData() is called', () => {
+    it('should throw an error if data is missing when extractSongData() is called', () => {
       const testFile: IRawDataFile = {
         name: 'foo',
         ext: 'json',
@@ -84,15 +85,13 @@ describe('InputTypeJSON', () => {
         data: '{}',
       };
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
-        title: '',
-        info: [],
-        slides: [],
-      });
+      const err = new LyricConverterError(
+        `This file is not formatted as a LyricConverter JSON file`
+      );
+      expect(() => inputConverter.extractSongData(testFile)).toThrow(err);
     });
 
-    it('should return an empty song when bad data is passed to extractSongData()', () => {
+    it('should throw an error when bad data is passed to extractSongData()', () => {
       const testFile: IRawDataFile = {
         name: 'foo',
         ext: 'json',
@@ -100,12 +99,7 @@ describe('InputTypeJSON', () => {
         data: 'bad data',
       };
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
-        title: '',
-        info: [],
-        slides: [],
-      });
+      expect(() => inputConverter.extractSongData(testFile)).toThrowError();
     });
   });
 });

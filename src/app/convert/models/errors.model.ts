@@ -14,3 +14,13 @@ export interface ISongError {
    */
   thrownError?: unknown;
 }
+
+/**
+ * @description A custom error type to throw when a known error is triggered. This way we can show a specific error message instead of a generic or overly technical message
+ */
+export class LyricConverterError extends Error {
+  constructor(message: string) {
+    super();
+    return new Error(message, { cause: 'LyricConverter Custom Error' });
+  }
+}

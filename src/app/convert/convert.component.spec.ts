@@ -15,6 +15,7 @@ import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import * as mockRawFiles from '../../../test/mock-raw-files';
 import { ErrorsService } from './errors/errors.service';
+import { LyricConverterError } from './models/errors.model';
 
 class MockConverter implements IOutputConverter {
   constructor(public name: string, public fileExt?: string) {}
@@ -531,7 +532,7 @@ describe('ConvertComponent', () => {
     describe('Errors', () => {
       it('should add an error to the ErrorsService when an unknown file type fails to match with an Output Converter', () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add');
+        spyOn(errorsSvc, 'add').and.callThrough();
 
         //Once with a regular file name that has an extension
         component.getConvertersAndExtractData([
@@ -544,7 +545,7 @@ describe('ConvertComponent', () => {
         ]);
 
         expect(errorsSvc.add).toHaveBeenCalledWith({
-          message: `This is not a file type that LyricConverter knows how to parse!`,
+          message: `This is not a file type that LyricConverter knows how to convert!`,
           fileName: 'cat.jpg',
         });
 
@@ -559,8 +560,54 @@ describe('ConvertComponent', () => {
         ]);
 
         expect(errorsSvc.add).toHaveBeenCalledWith({
-          message: `This is not a file type that LyricConverter knows how to parse!`,
+          message: `This is not a file type that LyricConverter knows how to convert!`,
           fileName: 'no-extension',
+        });
+      });
+
+      it('should call the ErrorService when something downstream (like the JSON parser) throws a custom error for a known error case', () => {
+        fixture.detectChanges();
+        spyOn(errorsSvc, 'add').and.callThrough();
+
+        component.getConvertersAndExtractData([
+          {
+            name: 'bad-file',
+            ext: 'json',
+            type: 'text/json',
+            data: '{}',
+          },
+        ]);
+
+        const expectedErr = new LyricConverterError(
+          'This file is not formatted as a LyricConverter JSON file'
+        );
+        expect(errorsSvc.add).toHaveBeenCalledWith({
+          message: expectedErr.message,
+          fileName: 'bad-file.json',
+          thrownError: expectedErr,
+        });
+      });
+
+      it("should call the ErrorService when something downstream (like the JSON parser) throws a native error for something we can't control", () => {
+        fixture.detectChanges();
+        spyOn(errorsSvc, 'add').and.callThrough();
+
+        component.getConvertersAndExtractData([
+          {
+            name: 'malformed-file',
+            ext: 'json',
+            type: 'text/json',
+            data: '{{{{{',
+          },
+        ]);
+
+        const expectedError = new SyntaxError(
+          `Expected property name or '}' in JSON at position 1`
+        );
+        expect(errorsSvc.add).toHaveBeenCalledWith({
+          message: `There was a problem converting this file!`,
+          fileName: 'malformed-file.json',
+          thrownError: expectedError,
         });
       });
 

@@ -114,17 +114,26 @@ export class ConvertComponent implements OnInit {
 
     const convertedSongs: ISong[] = [];
     parsedFiles.forEach((f) => {
+      const fileName = f.ext !== '' ? `${f.name}.${f.ext}` : f.name;
+
       const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
 
       //Skip formatters for unknown formats
       if (converter) {
-        convertedSongs.push(converter.extractSongData(f));
+        try {
+          convertedSongs.push(converter.extractSongData(f));
+        } catch (err: unknown) {
+          this.errorsSvc.add({
+            message: `There was a problem converting this file!`,
+            fileName,
+            thrownError: err,
+          });
+        }
       } else {
-        const fileName = f.ext !=='' ? `${f.name}.${f.ext}` : f.name;
         this.errorsSvc.add({
-          message: `This is not a file type that LyricConverter knows how to parse!`,
-          fileName
-        })
+          message: `This is not a file type that LyricConverter knows how to convert!`,
+          fileName,
+        });
       }
     });
 
