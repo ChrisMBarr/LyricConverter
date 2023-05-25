@@ -40,7 +40,7 @@ export class ConvertComponent implements OnInit {
     }
 
     //When files have finished parsing we will handle them here
-    this.parserSvc.filesParsed$.subscribe((rawFiles: IRawDataFile[]) => {
+    this.parserSvc.parsedFilesChanged$.subscribe((rawFiles: IRawDataFile[]) => {
       this.getConvertersAndExtractData(rawFiles);
     });
   }

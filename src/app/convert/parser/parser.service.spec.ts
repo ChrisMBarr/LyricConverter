@@ -21,7 +21,7 @@ describe('ParserService', () => {
 
   describe('parseFiles()', () => {
     it('should emit a properly formatted RawDataFile with decoded content', (done: DoneFn) => {
-      service.filesParsed$.subscribe((value) => {
+      service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
           data: 'this is some text for testing!',
           ext: '',
@@ -43,7 +43,7 @@ describe('ParserService', () => {
     });
 
     it('should return correctly with a unicode file name', (done: DoneFn) => {
-      service.filesParsed$.subscribe((value) => {
+      service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
           data: 'this is some other text for testing!',
           ext: 'txt',

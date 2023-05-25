@@ -53,7 +53,7 @@ describe('ConvertComponent', () => {
     const mockParserService = {
       outputConverters: [] as MockConverter[],
       inputConverters: [] as MockConverter[],
-      filesParsed$: new Subject<IRawDataFile[]>(),
+      parsedFilesChanged$: new Subject<IRawDataFile[]>(),
       parseFiles: () => {},
     };
 
@@ -176,7 +176,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypeDisplaySlides();
 
-        parserSvc.filesParsed$.subscribe(() => {
+        parserSvc.parsedFilesChanged$.subscribe(() => {
           fixture.detectChanges();
 
           expect(component.displayInitialUi)
@@ -224,7 +224,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypePlainText();
 
-        parserSvc.filesParsed$.subscribe(() => {
+        parserSvc.parsedFilesChanged$.subscribe(() => {
           fixture.detectChanges();
           expect(component.displayInitialUi)
             .withContext('The displayInitialUi property')

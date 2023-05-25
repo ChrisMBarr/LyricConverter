@@ -52,7 +52,7 @@ export class ParserService {
     new OutputTypeDisplaySlides(),
   ];
 
-  filesParsed$ = new Subject<IRawDataFile[]>();
+  parsedFilesChanged$ = new Subject<IRawDataFile[]>();
 
   parseFiles(files: FileList): void {
     const loadedFiles: IFileWithData[] = [];
@@ -125,6 +125,6 @@ export class ParserService {
       });
     }
 
-    this.filesParsed$.next(rawDataFiles);
+    this.parsedFilesChanged$.next(rawDataFiles);
   }
 }
