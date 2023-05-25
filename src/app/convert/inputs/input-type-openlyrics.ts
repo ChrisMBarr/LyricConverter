@@ -91,7 +91,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
       if (firstTitle !== undefined) {
         if (typeof firstTitle === 'string') {
           return firstTitle;
-        } else if (Object.prototype.hasOwnProperty.call(firstTitle, '#text')) {
+        } else if (Object.hasOwn(firstTitle, '#text')) {
           return firstTitle['#text'];
         }
       }

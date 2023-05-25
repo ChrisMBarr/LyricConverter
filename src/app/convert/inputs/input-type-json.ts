@@ -38,9 +38,9 @@ export class InputTypeJSON implements IInputConverter {
 
   private isSongObject(possibleSong: ISong | object): possibleSong is ISong {
     return (
-      Object.prototype.hasOwnProperty.call(possibleSong, 'title') &&
-      Object.prototype.hasOwnProperty.call(possibleSong, 'info') &&
-      Object.prototype.hasOwnProperty.call(possibleSong, 'slides')
+      Object.hasOwn(possibleSong, 'title') &&
+      Object.hasOwn(possibleSong, 'info') &&
+      Object.hasOwn(possibleSong, 'slides')
     );
   }
 }
