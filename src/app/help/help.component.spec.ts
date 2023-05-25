@@ -25,22 +25,30 @@ describe('HelpComponent', () => {
 
   it('should build an alphabetized list of supported formats from the ParserService, and unsupported formats local to the component', () => {
     const mockParserService = {
-      inputConverters: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'InputOnly' }],
-      outputConverters: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'OutputOnly' }],
+      inputConverters: [
+        { name: 'Foo', url: undefined },
+        { name: 'Bar', url: 'http://google.com' },
+        { name: 'InputOnly', url: 'http://yahoo.com' },
+      ],
+      outputConverters: [
+        { name: 'Foo', url: undefined },
+        { name: 'Bar', url: 'http://google.com' },
+        { name: 'OutputOnly', url: 'http://bing.com' },
+      ],
     };
     configureTestBed([{ provide: ParserService, useValue: mockParserService }]);
 
     component.unsupportedFormatsList = [
-      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false },
+      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false, url: 'http://askjeeves.com' },
     ];
     fixture.detectChanges();
 
     expect(component.combinedFormatsList).toEqual([
-      { name: 'Bar', canImport: true, canExport: true, hasNote: false },
-      { name: 'Foo', canImport: true, canExport: true, hasNote: false },
-      { name: 'InputOnly', canImport: true, canExport: false, hasNote: false },
-      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false },
-      { name: 'OutputOnly', canImport: false, canExport: true, hasNote: false },
+      { name: 'Bar', canImport: true, canExport: true, hasNote: false, url: 'http://google.com' },
+      { name: 'Foo', canImport: true, canExport: true, hasNote: false, url: undefined },
+      { name: 'InputOnly', canImport: true, canExport: false, hasNote: false, url: 'http://yahoo.com' },
+      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false, url: 'http://askjeeves.com' },
+      { name: 'OutputOnly', canImport: false, canExport: true, hasNote: false, url: 'http://bing.com' },
     ]);
   });
 

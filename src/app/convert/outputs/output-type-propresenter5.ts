@@ -6,6 +6,7 @@ import { IOutputConverter } from './output-converter.model';
 export class OutputTypeProPresenter5 implements IOutputConverter {
   readonly name = 'Pro Presenter 5';
   readonly fileExt = 'pro5';
+  readonly url = 'https://renewedvision.com/propresenter/';
 
   convertToType(song: ISong): IOutputFile {
     const fileContent = this.generateProPresenterDocument(song);

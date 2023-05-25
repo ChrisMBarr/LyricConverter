@@ -5,6 +5,7 @@ import { IOutputFile } from "../models/file.model";
 export class OutputTypeChordpro implements IOutputConverter {
   readonly name = 'ChordPro';
   readonly fileExt = 'cho';
+  readonly url = 'https://chordpro.org/';
 
   convertToType(song: ISong): IOutputFile {
     const newLine = '\n';

@@ -8,6 +8,7 @@ const packageFile = require('/package.json');
 export class OutputTypeOpenLyrics implements IOutputConverter {
   readonly name = 'OpenLyrics';
   readonly fileExt = 'xml';
+  readonly url = 'http://openlyrics.org/';
 
   convertToType(song: ISong): IOutputFile {
     const fileContent = `<?xml version="1.0" encoding="UTF-8"?>

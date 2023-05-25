@@ -25,10 +25,11 @@
       <tbody>
         <tr *ngFor="let format of combinedFormatsList">
           <th scope="row">
-            {{ format.name }}
+            <a *ngIf="format.url" [href]="format.url" target="_blank">{{ format.name }}</a>
+            <span *ngIf="!format.url">{{ format.name }}</span>
             <svg
               *ngIf="format.hasNote"
-              class="bi text-info"
+              class="bi ms-1 text-info"
               role="img"
               aria-label="Info: about this format"
             >

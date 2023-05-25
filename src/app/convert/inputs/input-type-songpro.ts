@@ -7,6 +7,7 @@ import { Utils } from '../shared/utils';
 export class InputTypeSongPro implements IInputConverter {
   readonly name = 'SongPro';
   readonly fileExt = 'sng';
+  readonly url = 'https://songpro.org/';
 
   doesInputFileMatchThisType(file: IRawDataFile): boolean {
     //There are not a lot of examples of this file format online,

@@ -5,6 +5,7 @@ import { IOutputConverter } from './output-converter.model';
 export class OutputTypeSongPro implements IOutputConverter {
   readonly name = 'SongPro';
   readonly fileExt = 'sng';
+  readonly url = 'https://songpro.org/';
 
   convertToType(song: ISong): IOutputFile {
     const fileContent = this.generateSongProDocument(song);

@@ -26,6 +26,7 @@ interface IChordProMatchingDirectivePairs {
 export class InputTypeChordPro implements IInputConverter {
   readonly name = 'ChordPro';
   readonly fileExt = 'cho';
+  readonly url = 'https://chordpro.org/';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/

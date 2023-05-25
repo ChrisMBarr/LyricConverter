@@ -3,15 +3,20 @@ import { ISong } from "src/app/convert/models/song.model";
 
 export declare interface IInputConverter {
   /**
-   * @description A unique name for the input type which should match the name of a corresponding Output type if it exists
+   * @description A unique name for the Input type. This should match the name of a corresponding Output type if it exists
    * @readonly
    */
   readonly name: string;
   /**
-   * @description The primary file extension for this file type which should match the ext of a corresponding Output type if it exists
+   * @description The primary file extension for this file type. This should match the fileExt of a corresponding Output type if it exists
    * @readonly
    */
   readonly fileExt: string;
+  /**
+   * @description A web address for the software or file format. This should match the url of a corresponding Output type if it exists
+   * @readonly
+   */
+  readonly url?: string;
   /**
    * @description A test method to run against a file to detect the input type
    * @param rawFile

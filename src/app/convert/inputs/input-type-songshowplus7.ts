@@ -5,8 +5,9 @@ import { TextCleaner } from '../shared/text-cleaner';
 import { IInputConverter } from './input-converter.model';
 
 export class InputTypeSongShowPlus7 implements IInputConverter {
-  name = 'SongShow Plus 7';
+  readonly name = 'SongShow Plus 7';
   readonly fileExt = 'sbsong';
+  readonly url = 'https://songshowplus.com/';
 
   doesInputFileMatchThisType(file: IRawDataFile): boolean {
     //TODO: Determine a way to check the version or if that's even important!

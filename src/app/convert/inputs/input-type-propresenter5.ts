@@ -11,6 +11,7 @@ import { Utils } from '../shared/utils';
 export class InputTypeProPresenter5 implements IInputConverter {
   readonly name = 'Pro Presenter 5';
   readonly fileExt = 'pro5';
+  readonly url = 'https://renewedvision.com/propresenter/';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     return rawFile.ext.toLowerCase() === this.fileExt;

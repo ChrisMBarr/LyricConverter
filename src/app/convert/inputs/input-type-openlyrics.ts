@@ -19,6 +19,7 @@ import { Utils } from '../shared/utils';
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';
   readonly fileExt = 'xml';
+  readonly url = 'http://openlyrics.org/';
 
   doesInputFileMatchThisType(file: IRawDataFile): boolean {
     return file.ext.toLowerCase() === this.fileExt;
