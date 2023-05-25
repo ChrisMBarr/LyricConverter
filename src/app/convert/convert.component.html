@@ -2,10 +2,10 @@
   <div id="drop-area-message">Drop Your Song Files Here</div>
 </div>
 
-<input class="d-none" type="file" multiple (change)="onFileSelect($event)" #fileInput>
+<input class="d-none" type="file" multiple (change)="onFileSelect($event)" #fileInput />
 
 <div class="row">
-  <div class="col-6 col-sm-5 col-md-4 col-lg-3 ">
+  <div class="col-6 col-sm-5 col-md-4 col-lg-3">
     <nav class="list-group" id="convert-types">
       <strong id="convert-types-title" class="list-group-item text-center"> Convert To </strong>
       <a
@@ -20,14 +20,20 @@
       </a>
     </nav>
 
-    <div id="test-drop-instructions-more1" class="drop-instructions mt-3 d-none d-md-block" *ngIf="!displayInitialUi">
-      You can drag more songs into this window to convert them, or <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+    <div
+      id="test-drop-instructions-more1"
+      class="drop-instructions mt-3 d-none d-md-block"
+      *ngIf="!displayInitialUi"
+    >
+      You can drag more songs into this window to convert them, or
+      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
     </div>
   </div>
 
   <div id="test-drop-instructions-more2" class="col-6 d-block d-md-none" *ngIf="!displayInitialUi">
     <div class="drop-instructions">
-      You can drag more songs into this window to convert them, or <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+      You can drag more songs into this window to convert them, or
+      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
     </div>
   </div>
 
@@ -39,7 +45,9 @@
     <div class="drop-instructions">
       <p id="primary-instructions">Drag your <strong>Song Files</strong> into this window</p>
 
-      <p id="secondary-instructions">or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
+      <p id="secondary-instructions">
+        or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a>
+      </p>
 
       <!-- Weirdness below is to preserve how whitespace is rendered -->
       <small id="accepted-input-formats"
@@ -52,20 +60,56 @@
   </div>
 
   <div id="display-area" class="col col-md-8" *ngIf="!displayInitialUi">
-    <hr class="d-block d-md-none">
+    <hr class="d-block d-md-none" />
 
-    <div id="test-donate" class="alert alert-info" *ngIf="convertedFileCount >= convertedCountMessageThreshold">
+    <div
+      id="test-donate"
+      class="alert alert-info"
+      *ngIf="convertedFileCount >= convertedCountMessageThreshold"
+    >
       <p>
         Wow, you've converted a total of
-        <strong>{{convertedFileCount}} songs</strong> with
-        LyricConverter!
+        <strong>{{ convertedFileCount }} songs</strong> with LyricConverter!
       </p>
       <p>
-        I've spent a lot of time working on this and I would really appreciate a
-        small donation if you've found this tool to be useful.
+        I've spent a lot of time working on this and I would really appreciate a small donation if
+        you've found this tool to be useful.
       </p>
 
       <app-donate-button></app-donate-button>
+    </div>
+
+    <div
+      id="test-error-message-display"
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="errorsList.length > 0"
+    >
+      <h4 class="alert-heading">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          role="img"
+          focusable="false"
+          aria-label="Error:"
+        >
+          <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+          />
+        </svg>
+        File Conversion Errors
+      </h4>
+      <ul class="mb-0">
+        <li *ngFor="let err of errorsList">
+          <span *ngIf="err.fileName"
+            ><strong>{{ err.fileName }}</strong> -
+          </span>
+          {{ err.message }}
+        </li>
+      </ul>
     </div>
 
     <app-slide-display

@@ -36,7 +36,6 @@ Parses the song info & lyrics from various lyric presentation software file form
 
 ### TODO Items:
 * Deal with possibly duplicated info keys
-* Error message displays
 * character encoding on Display Slides Component
 * Redesign with TailWinds
 * Allow user-configurable options for output file (resolution, text size, etc)

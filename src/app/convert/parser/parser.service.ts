@@ -25,6 +25,7 @@ import { OutputTypeSongPro } from '../outputs/output-type-songpro';
 import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
+import { ErrorsService } from '../errors/errors.service';
 
 @Injectable({
   providedIn: 'root',
@@ -54,20 +55,28 @@ export class ParserService {
 
   parsedFilesChanged$ = new Subject<IRawDataFile[]>();
 
-  parseFiles(files: FileList): void {
-    const loadedFiles: IFileWithData[] = [];
+  constructor(private readonly errorsSvc: ErrorsService) {}
 
-    for (let i = 0; i <= files.length - 1; i++) {
-      const reader = new FileReader();
-      const f = files[i];
-      if (typeof f !== 'undefined') {
+  parseFiles(files: FileList): void {
+    try {
+      const loadedFiles: IFileWithData[] = [];
+
+      for (let i = 0; i <= files.length - 1; i++) {
+        const reader = new FileReader();
+        const f = files[i]!; //This cannot be null since it's in the list that came here
         //File reading happens async
+        //Set up an event for what to do when the file has finished being read
         const completeFn = this.handleFile(f, loadedFiles, files.length);
         reader.addEventListener('loadend', completeFn, false);
 
         //Actually read the file
         reader.readAsDataURL(f);
       }
+    } catch (err: unknown) {
+      this.errorsSvc.add({
+        message: `There was a problem reading one of the files`,
+        thrownError: err,
+      });
     }
   }
 
@@ -95,7 +104,9 @@ export class ParserService {
         type: theFile.type,
         size: theFile.size,
         lastModified: theFile.lastModified,
-        data: ev.target?.result,
+        //I've tried to force this to return data that isn't a string, but I can't get it to happen.
+        //The process of using FileReader seems to convert the file content to a string no matter what
+        data: ev.target?.result?.toString() ??  /* istanbul ignore next */ '',
       };
 
       //Add the current file to the array
@@ -111,17 +122,11 @@ export class ParserService {
   private emitRawFiles(files: IFileWithData[]): void {
     const rawDataFiles: IRawDataFile[] = [];
     for (const f of files) {
-      let data = '';
-
-      if (typeof f.data === 'string') {
-        data = Utils.decodeBase64(f.data.replace(/^data:.*;base64,/, ''));
-      }
-
       rawDataFiles.push({
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
-        data,
+        data: Utils.decodeBase64(f.data.replace(/^data:.*;base64,/, ''))
       });
     }
 

@@ -6,13 +6,18 @@ import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import * as mockRawFiles from 'test/mock-raw-files';
+import { ErrorsService } from '../errors/errors.service';
 
 describe('ParserService', () => {
   let service: ParserService;
+  let injectedErrorsSvc: ErrorsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ErrorsService],
+    });
     service = TestBed.inject(ParserService);
+    injectedErrorsSvc = TestBed.inject(ErrorsService);
   });
 
   it('should be created', () => {
@@ -56,16 +61,21 @@ describe('ParserService', () => {
       });
 
       const dt = new DataTransfer();
-      const file = new File(
-        ['this is some other text for testing!'],
-        'ěščřžýáíé åäö.txt',
-        {
-          lastModified: 1684251444527,
-          type: 'text/plain',
-        }
-      );
+      const file = new File(['this is some other text for testing!'], 'ěščřžýáíé åäö.txt', {
+        lastModified: 1684251444527,
+        type: 'text/plain',
+      });
       dt.items.add(file);
       service.parseFiles(dt.files);
+    });
+
+    it('should call the ErrorService when a weird file fails to be read', () => {
+      spyOn(injectedErrorsSvc, 'add');
+      //Purposely pass bad data that would otherwise break things to test this
+      //@ts-expect-error
+      service.parseFiles(['🚫👎🏼⛔🙅🏼‍♀️'] as FileList);
+
+      expect(injectedErrorsSvc.add).toHaveBeenCalled();
     });
   });
 

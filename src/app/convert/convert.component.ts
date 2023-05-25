@@ -3,6 +3,8 @@ import { ParserService } from './parser/parser.service';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
+import { ErrorsService } from './errors/errors.service';
+import { ISongError } from './models/errors.model';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -18,30 +20,31 @@ export class ConvertComponent implements OnInit {
 
   displayInitialUi = true;
   convertedFileCount = 0;
-  readonly convertedCountMessageThreshold = 5;
+  readonly convertedCountMessageThreshold = 50;
+  errorsList: ISongError[] = [];
   outputTypesForMenu: IOutputConverter[] = [];
   inputTypesList: { name: string; ext: string }[] = [];
   selectedOutputType!: IOutputConverter;
   convertedSongsForOutput: IOutputFile[] = [];
 
-  constructor(private readonly parserSvc: ParserService) {}
+  constructor(
+    private readonly parserSvc: ParserService,
+    private readonly errorsSvc: ErrorsService
+  ) {}
 
   ngOnInit(): void {
     this.buildOutputTypesList();
     this.buildInputTypesList();
-
-    //Restore the saved file count from any previous session
-    const savedConvertedFileCount = parseInt(
-      localStorage.getItem(this.convertedFileCountStorageKey) ?? '',
-      10
-    );
-    if (!isNaN(savedConvertedFileCount) && savedConvertedFileCount > 0) {
-      this.convertedFileCount = savedConvertedFileCount;
-    }
+    this.getSavedConvertedFileCount();
 
     //When files have finished parsing we will handle them here
     this.parserSvc.parsedFilesChanged$.subscribe((rawFiles: IRawDataFile[]) => {
       this.getConvertersAndExtractData(rawFiles);
+    });
+
+    //Updates from the error service
+    this.errorsSvc.errorsChanged$.subscribe((errorsList: ISongError[]) => {
+      this.errorsList = errorsList;
     });
   }
 
@@ -63,6 +66,17 @@ export class ConvertComponent implements OnInit {
     this.inputTypesList = this.parserSvc.inputConverters.map((ic) => {
       return { name: ic.name, ext: ic.fileExt };
     });
+  }
+
+  private getSavedConvertedFileCount(): void {
+    //Restore the saved file count from any previous session
+    const savedConvertedFileCount = parseInt(
+      localStorage.getItem(this.convertedFileCountStorageKey) ?? '',
+      10
+    );
+    if (!isNaN(savedConvertedFileCount) && savedConvertedFileCount > 0) {
+      this.convertedFileCount = savedConvertedFileCount;
+    }
   }
 
   onSwitchConversionType(newType: IOutputConverter, event: Event): void {
@@ -89,6 +103,8 @@ export class ConvertComponent implements OnInit {
   onReceiveFiles(files: FileList): void {
     //This is either called by the appDragAndDrop directive, or by the .onFileSelect() method above
     if (files.length > 0) {
+      //Clear out any old errors when parsing new files
+      this.errorsSvc.clear();
       this.parserSvc.parseFiles(files);
     }
   }
@@ -103,6 +119,12 @@ export class ConvertComponent implements OnInit {
       //Skip formatters for unknown formats
       if (converter) {
         convertedSongs.push(converter.extractSongData(f));
+      } else {
+        const fileName = f.ext !=='' ? `${f.name}.${f.ext}` : f.name;
+        this.errorsSvc.add({
+          message: `This is not a file type that LyricConverter knows how to parse!`,
+          fileName
+        })
       }
     });
 

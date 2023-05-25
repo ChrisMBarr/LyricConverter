@@ -14,6 +14,7 @@ import { IOutputConverter } from './outputs/output-converter.model';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import * as mockRawFiles from '../../../test/mock-raw-files';
+import { ErrorsService } from './errors/errors.service';
 
 class MockConverter implements IOutputConverter {
   constructor(public name: string, public fileExt?: string) {}
@@ -31,6 +32,7 @@ describe('ConvertComponent', () => {
   let component: ConvertComponent;
   let fixture: ComponentFixture<ConvertComponent>;
   let parserSvc: ParserService;
+  let errorsSvc: ErrorsService;
 
   function configureTestBed<T>(providers: T[]) {
     TestBed.configureTestingModule({
@@ -44,6 +46,7 @@ describe('ConvertComponent', () => {
       providers: providers as T[],
     });
     parserSvc = TestBed.inject(ParserService);
+    errorsSvc = TestBed.inject(ErrorsService);
 
     fixture = TestBed.createComponent(ConvertComponent);
     component = fixture.componentInstance;
@@ -71,7 +74,7 @@ describe('ConvertComponent', () => {
         new MockConverter('BazIn', 'baz'),
       ];
 
-      configureTestBed([{ provide: ParserService, useValue: mockParserService }]);
+      configureTestBed([{ provide: ParserService, useValue: mockParserService }, ErrorsService]);
     });
 
     describe('Output Menu UI', () => {
@@ -147,7 +150,7 @@ describe('ConvertComponent', () => {
 
   describe('Needs a real ParserService', () => {
     beforeEach(() => {
-      configureTestBed([ParserService]);
+      configureTestBed([ParserService, ErrorsService]);
     });
 
     it('should create', () => {
@@ -522,6 +525,99 @@ describe('ConvertComponent', () => {
         component.displayInitialUi = false;
         fixture.detectChanges();
         expect(fixture.debugElement.query(By.css('#test-donate'))).not.toBeNull();
+      });
+    });
+
+    describe('Errors', () => {
+      it('should add an error to the ErrorsService when an unknown file type fails to match with an Output Converter', () => {
+        fixture.detectChanges();
+        spyOn(errorsSvc, 'add');
+
+        //Once with a regular file name that has an extension
+        component.getConvertersAndExtractData([
+          {
+            name: 'cat',
+            ext: 'jpg',
+            type: 'image/jpeg',
+            data: 'pretend this is image data',
+          },
+        ]);
+
+        expect(errorsSvc.add).toHaveBeenCalledWith({
+          message: `This is not a file type that LyricConverter knows how to parse!`,
+          fileName: 'cat.jpg',
+        });
+
+        //Again with a file name that does not have an extension
+        component.getConvertersAndExtractData([
+          {
+            name: 'no-extension',
+            ext: '',
+            type: '',
+            data: 'junk data here',
+          },
+        ]);
+
+        expect(errorsSvc.add).toHaveBeenCalledWith({
+          message: `This is not a file type that LyricConverter knows how to parse!`,
+          fileName: 'no-extension',
+        });
+      });
+
+      it('should update the local errorList property from the subscription when a new error is added', (done: DoneFn) => {
+        fixture.detectChanges();
+
+        errorsSvc.errorsChanged$.subscribe((errorsList) => {
+          expect(component.errorsList).toEqual(errorsList);
+          done();
+        });
+
+        errorsSvc.add({ message: '[[TEST:convert.component.spec.ts]] test message' });
+      });
+
+      it('should tell the ErrorsService to clear out error messages when receiving new files to parse', () => {
+        spyOn(errorsSvc, 'clear');
+
+        const dt = new DataTransfer();
+        dt.items.add(new File(['foo'], 'foo.txt'));
+        component.onReceiveFiles(dt.files);
+
+        expect(errorsSvc.clear).toHaveBeenCalled();
+      });
+
+      it('should NOT show the errors list in the UI when there are no errors', () => {
+        component.displayInitialUi = false;
+        fixture.detectChanges();
+        expect(fixture.debugElement.query(By.css('#test-error-message-display')))
+          .withContext('The #test-error-message-display Element')
+          .toBeNull();
+      });
+
+      it('should display the errors in the UI properly when there are errors', () => {
+        component.displayInitialUi = false;
+        component.errorsList = [
+          { message: '[[TEST:convert.component.spec.ts]] Just a message' },
+          {
+            message: '[[TEST:convert.component.spec.ts]] A message with a file name',
+            fileName: 'not-a-virus.exe',
+          },
+        ];
+        fixture.detectChanges();
+
+        const errorListEl = fixture.debugElement.query(By.css('#test-error-message-display'));
+        expect(errorListEl).withContext('The #test-error-message-display Element').not.toBeNull();
+
+        expect(errorListEl.queryAll(By.css('ul li')).length)
+          .withContext('The count of displayed error messages')
+          .toEqual(2);
+        expect(errorListEl.query(By.css('ul li:nth-of-type(1)')).nativeElement.innerText.trim())
+          .withContext('The 1st error message in the list')
+          .toEqual('[[TEST:convert.component.spec.ts]] Just a message');
+        expect(errorListEl.query(By.css('ul li:nth-of-type(2)')).nativeElement.innerText.trim())
+          .withContext('The 2nd error message in the list')
+          .toEqual(
+            'not-a-virus.exe - [[TEST:convert.component.spec.ts]] A message with a file name'
+          );
       });
     });
   });

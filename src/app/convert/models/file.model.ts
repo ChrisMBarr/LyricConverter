@@ -8,7 +8,7 @@ export interface IFileWithData {
   name: string;
   nameWithoutExt: string;
   ext: string;
-  data: string | ArrayBuffer | null | undefined;
+  data: string;
 }
 
 export interface IRawDataFile {
