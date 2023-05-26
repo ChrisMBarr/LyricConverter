@@ -15,10 +15,10 @@ jobs:
       - name: Install 📦
         run: |
           npm ci
-      - name: Lint ✅
+      - name: Lint ✔️
         run: |
           npm run lint
-      - name: Test ✅
+      - name: Test 🧪
         run: |
           npm run test-coverage-headless
       - name: Build 🔧
