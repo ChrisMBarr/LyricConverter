@@ -1,8 +1,11 @@
 @title=Bad Moon Rising
 @artist=Creedence Clearwater Revival
-@capo=1
-!difficulty=Easy
-!spotify_url=https://open.spotify.com/track/20OFwXhEXf12DzwXmaV7fj?si=cE76lY5TT26fyoNmXEjNpA
+@year=1969
+@tempo=92
+@key=D Major
+!difficulty=0
+!spotify=https://open.spotify.com/track/66FSV5dLK5sNLZ00IfHxfD?si=rQq390e7TcKTxdP9yofslw
+!order=4
 
 # Intro
 
@@ -15,12 +18,7 @@
 [D]I see [A]earth-[G]quakes and [D]lightnin'
 [D]I see [A]bad [G]times to-[D]day
 
-# Riff
-
-|-3---5-|
-|---4---|
-
-# Chorus
+# Chorus 1
 
 [G]Don't go 'round tonight
 It's [D]bound to take your life
@@ -33,7 +31,7 @@ It's [D]bound to take your life
 [D]I fear [A]rivers [G]over [D]flowing
 [D]I hear the [A]voice of [G]rage and [D]ruin
 
-# Chorus
+# Chorus 2
 
 [G]Don't go 'round tonight
 It's [D]bound to take your life
@@ -53,9 +51,15 @@ It's [D]bound to take your life
 [D]Look's like we're [A]in for [G]nasty [D]weather
 [D]One eye is [A]taken [G]for an [D]eye
 
-# Chorus
+# Chorus 3
 
-Oh [G]don't go 'round tonight
+Well [G]don't go 'round tonight
 It's [D]bound to take your life
 [A7]There's a [G]bad moon on the [D]rise
+
+# Chorus 4
+
+[G]Don't go 'round tonight
+It's [D]bound to take your life
 [A7]There's a [G]bad moon on the [D]rise
+[D]
