@@ -1,10 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ParserService } from './parser/parser.service';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
 import { ErrorsService } from './errors/errors.service';
 import { ISongError } from './models/errors.model';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -15,6 +16,7 @@ import { ISongError } from './models/errors.model';
 export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
   private readonly convertedFileCountStorageKey = 'CONVERT_COUNT';
+  private readonly window: Window = this.document.defaultView as Window;
 
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
 
@@ -28,6 +30,8 @@ export class ConvertComponent implements OnInit {
   convertedSongsForOutput: IOutputFile[] = [];
 
   constructor(
+    @Inject(DOCUMENT) private readonly document: Document,
+    private readonly elementRef: ElementRef,
     private readonly parserSvc: ParserService,
     private readonly errorsSvc: ErrorsService
   ) {}
@@ -79,6 +83,12 @@ export class ConvertComponent implements OnInit {
     }
   }
 
+  private scrollBackToTop(): void {
+    const thisComponentEl: HTMLElement = this.elementRef.nativeElement;
+    const elTop = thisComponentEl.offsetTop;
+    this.window.scrollTo({ top: elTop, behavior: 'smooth' });
+  }
+
   onSwitchConversionType(newType: IOutputConverter, event: Event): void {
     event.preventDefault();
     this.displayInitialUi = true;
@@ -112,6 +122,7 @@ export class ConvertComponent implements OnInit {
 
   getConvertersAndExtractData(parsedFiles: IRawDataFile[]): void {
     this.displayInitialUi = false;
+    this.scrollBackToTop();
 
     const convertedSongs: ISong[] = [];
     parsedFiles.forEach((f) => {

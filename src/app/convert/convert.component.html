@@ -6,28 +6,30 @@
 
 <div class="row">
   <div class="col-6 col-sm-5 col-md-4 col-lg-3">
-    <nav class="list-group" id="convert-types">
-      <strong id="convert-types-title" class="list-group-item text-center"> Convert To </strong>
-      <a
-        *ngFor="let fmt of outputTypesForMenu"
-        (click)="onSwitchConversionType(fmt, $event)"
-        [ngClass]="{ active: selectedOutputType === fmt }"
-        href="#"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-      >
-        {{ fmt.name }}
-        <span class="badge rounded-pill" *ngIf="fmt.fileExt">.{{ fmt.fileExt }}</span>
-      </a>
-    </nav>
+    <aside id="sidebar">
+      <nav class="list-group" id="convert-types">
+        <strong id="convert-types-title" class="list-group-item text-center"> Convert To </strong>
+        <a
+          *ngFor="let fmt of outputTypesForMenu"
+          (click)="onSwitchConversionType(fmt, $event)"
+          [ngClass]="{ active: selectedOutputType === fmt }"
+          href="#"
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+        >
+          {{ fmt.name }}
+          <span class="badge rounded-pill" *ngIf="fmt.fileExt">.{{ fmt.fileExt }}</span>
+        </a>
+      </nav>
 
-    <div
-      id="test-drop-instructions-more1"
-      class="drop-instructions mt-3 d-none d-md-block"
-      *ngIf="!displayInitialUi"
-    >
-      You can drag more songs into this window to convert them, or
-      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
-    </div>
+      <div
+        id="test-drop-instructions-more1"
+        class="drop-instructions mt-3 d-none d-md-block"
+        *ngIf="!displayInitialUi"
+      >
+        You can drag more songs into this window to convert them, or
+        <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+      </div>
+    </aside>
   </div>
 
   <div id="test-drop-instructions-more2" class="col-6 d-block d-md-none" *ngIf="!displayInitialUi">

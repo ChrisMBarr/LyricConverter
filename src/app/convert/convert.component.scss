@@ -99,6 +99,14 @@
   }
 }
 
+@include media-breakpoint-up(md) {
+  #sidebar {
+    //The wrapping element around #convert-types and the .drop-instructions that appears after converting
+    position: sticky;
+    top: $header-bottom-margin;
+  }
+}
+
 //The list menu of types we can convert to
 #convert-types {
   &-title {

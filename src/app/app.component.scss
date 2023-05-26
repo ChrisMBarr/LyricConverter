@@ -8,7 +8,7 @@
   background-position: 50% -20px;
   height: $header-height + $header-border-size;
   padding: $header-padding;
-  margin-bottom: 20px;
+  margin-bottom: $header-bottom-margin;
 
   //Keep the header fluid width when below the max size
   // @media (max-width: 1200px) {
