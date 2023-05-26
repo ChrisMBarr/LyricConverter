@@ -1,0 +1,28 @@
+{
+  "files.exclude": {
+      "**/*.tsx": true,
+      "**/*.json": false,
+      "**/.gitignore": true,
+      "**/.gitkeep": true,
+      ".angular": true,
+      ".editorconfig": true,
+      ".prettierrc": true,
+      "node_modules": true,
+      "coverage": true,
+      "design": true
+    },
+    "explorer.fileNesting.patterns": {
+      "tsconfig.json": "tsconfig.*.json",
+      "package.json": "package-lock.json"
+    },
+    "explorer.fileNesting.expand": false,
+    "cSpell.words": [
+      "CCLI",
+      "chordpro",
+      "openlyrics",
+      "propresenter",
+      "sbsong",
+      "songpro",
+      "songshowplus"
+    ]
+}

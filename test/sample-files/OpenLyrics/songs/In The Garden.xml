@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.555644">
+  <properties>
+    <titles>
+      <title>In The Garden</title>
+    </titles>
+    <authors>
+      <author>C. Austin Miles</author>
+    </authors>
+    <ccliNo>62858</ccliNo>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+    <themes>
+      <theme>Intimacy</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        I <chord root="G"/>come to the garden alone, While the <chord root="C"/>dew is still on the <chord root="G"/>roses;<br/>
+        And the <chord root="D"/>voice I hear falling <chord root="G"/>on my ear, The <chord root="A" structure="dom7"/>Son of God dis<chord root="D"/>closes.
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        And He <chord root="G"/>walks with me, and He <chord root="D"/>talks with me,<br/>
+        And He <chord root="C"/>tells me <chord root="D" structure="dom7"/>I am His <chord root="G"/>own;<br/>
+        And the <chord root="G"/>joy we <chord root="B" structure="dom7"/>share as we <chord root="E" structure="min"/>tarry <chord root="C"/>there,<br/>
+        None <chord root="G"/>other has <chord root="D" structure="dom7"/>ever <chord root="G"/>known.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        He <chord root="G"/>speaks, and the sound of His voice Is so <chord root="C"/>sweet the birds hush their <chord root="G"/>singing;<br/>
+        And the <chord root="D"/>melody that He <chord root="G"/>gave to me, With<chord root="A" structure="dom7"/>in my heart is <chord root="D"/>ringing.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        I'd <chord root="G"/>stay in the garden with Him, Though the <chord root="C"/>night around me be <chord root="G"/>falling;<br/>
+        But He <chord root="D"/>bids me go; thru the <chord root="G"/>voice of woe, His <chord root="A" structure="dom7"/>voice to me is <chord root="D"/>calling.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.322812">
+  <properties>
+    <titles>
+      <title>And Can It Be</title>
+    </titles>
+    <authors>
+      <author>Lindell Cooley</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+    <themes>
+      <theme>God's Attributes / Love</theme>
+      <theme>God's Attributes / Mercy</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <chord root="G"/>And can be that <chord root="A" structure="min" bass="C"/>I <chord root="D"/>should <chord root="G"/>gain,<br/>
+        an <chord root="C"/>in<chord root="D"/>terest <chord root="G"/>in my <chord root="D"/>Sa<chord root="A"/>vior's <chord root="D"/>blood?<br/>
+        <chord root="D"/>Died He for <chord root="G" bass="D"/>me, who <chord root="G" bass="B"/>caused His <chord root="D"/>pain?<br/>
+        For <chord root="C"/>me, who <chord root="G"/>Him to <chord root="D"/>death pur<chord root="G"/>sued?<br/>
+        <chord root="G"/>Amazing <chord root="G" bass="D"/>love, how <chord root="C"/>can <chord root="A"/>it <chord root="D"/>be<br/>
+        That <chord root="G"/>thou my <chord root="C"/>Lord should <chord root="D"/>die for <chord root="G"/>me?
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        A<chord root="G"/>mazing <chord root="D"/>love, how <chord root="C"/>can it <chord root="G"/>be<br/>
+        That <chord root="C"/>thou my <chord root="G"/>God <chord root="A" structure="min"/>should <chord root="C"/>die <chord root="D"/>for <chord root="G"/>me?
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <chord root="G"/>Long my imprisoned <chord root="A" structure="min" bass="C"/>spi<chord root="D"/>rit <chord root="G"/>lay,<br/>
+        Fast <chord root="C"/>bound <chord root="D"/>in <chord root="G"/>sin and <chord root="D"/>na<chord root="A"/>ture's <chord root="D"/>night,<br/>
+        <chord root="D"/>Thine eye dif<chord root="G" bass="D"/>fused a <chord root="G" bass="B"/>quickening <chord root="D"/>ray,<br/>
+        I <chord root="C"/>woke, the <chord root="G"/>dungeon <chord root="D"/>flamed with <chord root="G"/>light;<br/>
+        <chord root="G"/>My chains fell <chord root="G" bass="D"/>off, my <chord root="C"/>heart <chord root="A"/>was <chord root="D"/>free,<br/>
+        I <chord root="G"/>rose, went <chord root="C"/>forth and <chord root="D"/>followed <chord root="G"/>thee.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <chord root="G"/>No condemnation <chord root="A" structure="min" bass="C"/>now <chord root="D"/>I <chord root="G"/>dread,<br/>
+        Je<chord root="C"/>sus, <chord root="D"/>and <chord root="G"/>all in <chord root="D"/>Him, <chord root="A"/>is <chord root="D"/>mine;<br/>
+        <chord root="D"/>Alive in <chord root="G" bass="D"/>Him, my <chord root="G" bass="B"/>living <chord root="D"/>Head<br/>
+        and <chord root="C"/>clothed with <chord root="G"/>righteous<chord root="D"/>ness di<chord root="G"/>vine,<br/>
+        <chord root="G"/>Bold I ap<chord root="G" bass="D"/>proach the e<chord root="C"/>ter<chord root="A"/>nal <chord root="D"/>throne,<br/>
+        And <chord root="G"/>claim the <chord root="C"/>crown through <chord root="D"/>Christ, my <chord root="G"/>own.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

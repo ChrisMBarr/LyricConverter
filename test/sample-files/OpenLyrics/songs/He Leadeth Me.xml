@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.095641">
+  <properties>
+    <titles>
+      <title>He Leadeth Me</title>
+    </titles>
+    <authors>
+      <author>Joseph Gilmore</author>
+      <author>William B. Bradbury</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+    <themes>
+      <theme>Guidance</theme>
+      <theme>Care</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        He <chord root="D"/>leadeth me! <chord root="D" bass="F#"/>O <chord root="G"/>blessed thought! O <chord root="D"/>words with heavenly comfort <chord root="A"/>fraught!<br/>
+        What<chord root="D"/>e'er I do, <chord root="D" bass="F#"/>where'<chord root="G"/>er I be, Still <chord root="D"/>'tis God's <chord root="B" structure="min"/>hand that <chord root="D"/>lea<chord root="A"/>deth <chord root="D"/>me.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        Lord, <chord root="D"/>I would clasp <chord root="D" bass="F#"/>Thy <chord root="G"/>hand in mine, Nor <chord root="D"/>ever murmur nor re<chord root="A"/>pine,<br/>
+        Con<chord root="D"/>tent, what<chord root="D" bass="F#"/>ever <chord root="G"/>lot I see, Since <chord root="D"/>God through <chord root="B" structure="min"/>Jordan <chord root="D"/>lea<chord root="A"/>deth <chord root="D"/>me.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        And <chord root="D"/>when my task o<chord root="D" bass="F#"/>n <chord root="G"/>earth is done, When <chord root="D"/>by Thy grace the victory's <chord root="A"/>won,<br/>
+        E'en <chord root="D"/>death's cold wave <chord root="D" bass="F#"/>I <chord root="G"/>will not flee, Since <chord root="D"/>God through <chord root="B" structure="min"/>Jordan <chord root="D"/>lea<chord root="A"/>deth <chord root="D"/>me.
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        He <chord root="D"/>leadeth <chord root="A"/>me, He <chord root="D"/>lead<chord root="G"/>eth <chord root="D"/>me; By His own <chord root="B" structure="min"/>hand He <chord root="D"/>leadeth <chord root="A"/>me:<br/>
+        His <chord root="D"/>faithful <chord root="A"/>follower <chord root="D"/>I <chord root="G"/>would <chord root="D"/>be, For <chord root="B" structure="min"/>by His <chord root="D"/>hand He <chord root="A"/>leadeth <chord root="D"/>me.
+      </lines>
+    </verse>
+  </lyrics>
+</song>
