@@ -1,6 +1,5 @@
-name: Build and Deploy to GH Pages
+name: Lint, Test, Build Pull Request
 on:
-  push:
   pull_request:
     types: [ opened, edited, reopened, review_requested ]
 permissions:
