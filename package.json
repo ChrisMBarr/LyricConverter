@@ -12,6 +12,7 @@
     "test-browser-edge": "ng test --browsers=Edge",
     "test-browsers-all": "ng test --browsers=Edge,Firefox,Chrome",
     "test-coverage": "ng test --code-coverage --no-watch",
+    "test-coverage-headless": "ng test --code-coverage --no-watch --browsers=ChromeHeadless",
     "lint": "ng lint"
   },
   "private": true,
