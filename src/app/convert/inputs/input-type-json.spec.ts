@@ -99,8 +99,8 @@ describe('InputTypeJSON', () => {
         data: 'bad data',
       };
 
-      const expectedErr = new SyntaxError(`Unexpected token 'b', "bad data" is not valid JSON`);
-      expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedErr);
+      //We can't test against specific error messages thrown due to error message text differences in how browsers report them
+      expect(() => inputConverter.extractSongData(testFile)).toThrowError();
     });
   });
 });

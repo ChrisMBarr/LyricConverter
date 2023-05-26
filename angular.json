@@ -82,7 +82,8 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
             "scripts": [],
-            "codeCoverageExclude": ["src/lib/**/*"]
+            "codeCoverageExclude": ["src/lib/**/*"],
+            "karmaConfig": "karma.conf.js"
           }
         },
         "lint": {
