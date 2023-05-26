@@ -35,8 +35,9 @@ Parses the song info & lyrics from various lyric presentation software file form
 
 
 ### TODO Items:
+* Angular prerender templates
 * Deal with possibly duplicated info keys
-* Redesign with TailWinds
+* Redesign
 * Allow user-configurable options for output file (resolution, text size, etc)
 * Split out each format input/output into its' own NPM package
 
