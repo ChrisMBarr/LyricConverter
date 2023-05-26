@@ -77,8 +77,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
         //replace correctly and incorrectly formatted <br> </br> and </br> tags with new lines
         //Sometimes these will already have a newline after them, remove that so that newlines aren't doubled
         .replace(/<\/?br\/?>(\n)?/gi, '\n')
-        //Then remove all HTML/XML tags
-        .replace(/<.+?>/g, '')
+        //Then remove all remaining HTML/XML tags and their content
+        .replace(/(<[^/]+?>.+?<\/.+?>)|(<[^/]+?\/>)/g, '')
     );
   }
 
@@ -142,7 +142,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
         }
 
         //Each verse has multiple lines.
-        //We combine all lines and strip out any XML tags (chord markers, comments, )
+        //We combine all lines, replace <br> tags with newline characters, and remove other XML nodes
         const slideLyrics = verse.lines
           .map((l) => {
             return this.convertHtmlLineBreaksAndStripTags(this.getStringOrTextProp(l));

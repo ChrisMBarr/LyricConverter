@@ -118,12 +118,12 @@ describe('InputTypeOpenLyrics', () => {
           },
           {
             title: 'c',
-            lyrics: 'any comment\nLine content.',
+            lyrics: 'Line content.',
           },
           {
             title: 'v2 (en-US)',
             lyrics:
-              'any text\nAmazing grace how sweet the sound that saved a wretch like me;\nany text\nAmazing grace how sweet the sound that saved a wretch like me;\nAmazing grace how sweet the sound that saved a wretch like me;\nA b c\n\nD e f',
+              'Amazing grace how sweet the sound that saved a wretch like me;\n\nAmazing grace how sweet the sound that saved a wretch like me;\nAmazing grace how sweet the sound that saved a wretch like me;\nA b c\n\nD e f',
           },
           {
             title: 'e (de)',
