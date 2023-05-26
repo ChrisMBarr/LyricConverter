@@ -1,7 +1,7 @@
 import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
-import { ISongProSong, SongPro, ISongProLine } from '../../../lib/songpro';
+import { ISongProSong, SongPro, ISongProLine } from 'songpro';
 import { Utils } from '../shared/utils';
 
 export class InputTypeSongPro implements IInputConverter {
