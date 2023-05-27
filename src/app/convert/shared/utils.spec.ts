@@ -2,36 +2,6 @@ import { TestUtils } from 'test/test-utils';
 import { Utils } from './utils';
 
 describe('Utils', () => {
-  describe('Base64 Encode/Decode', () => {
-    it('should base64Decode simple strings', () => {
-      expect(Utils.decodeBase64('aGVsbG8gd29ybGQ=')).toEqual('hello world');
-    });
-
-    it('should base64Decode RTF strings', () => {
-      expect(
-        Utils.decodeBase64(
-          'e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMDM4XGNvY29hc3VicnRmMzIwCntcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEltcGFjdDt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxxY1xwYXJkaXJuYXR1cmFsCgpcZjBcZnMxMjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgtNDAgXHN0cm9rZWMwIFdlIGJvdyBvdXIgaGVhcnRzIHdlIGJlbmQgb3VyIGtuZWVzXApPaCBTcGlyaXQgY29tZSBtYWtlIHVzIGh1bWJsZVwKV2UgdHVybiBvdXIgZXllcyBmcm9tIGV2aWwgdGhpbmdzXApPaCBMb3JkIHdlIGNhc3QgZG93biBvdXIgaWRvbHN9'
-        )
-      ).toEqual(
-        '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320\n{\\fonttbl\\f0\\fswiss\\fcharset0 Impact;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural\n\n\\f0\\fs120 \\cf1 \\outl0\\strokewidth-40 \\strokec0 We bow our hearts we bend our knees\\\nOh Spirit come make us humble\\\nWe turn our eyes from evil things\\\nOh Lord we cast down our idols}'
-      );
-    });
-
-    it('should base64Encode simple strings', () => {
-      expect(Utils.encodeBase64('hello world')).toEqual('aGVsbG8gd29ybGQ=');
-    });
-
-    it('should base64Encode RTF strings', () => {
-      expect(
-        Utils.encodeBase64(
-          '{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320\n{\\fonttbl\\f0\\fswiss\\fcharset0 Impact;}\n{\\colortbl;\\red255\\green255\\blue255;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural\n\n\\f0\\fs120 \\cf1 \\outl0\\strokewidth-40 \\strokec0 We bow our hearts we bend our knees\\\nOh Spirit come make us humble\\\nWe turn our eyes from evil things\\\nOh Lord we cast down our idols}'
-        )
-      ).toEqual(
-        'e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMDM4XGNvY29hc3VicnRmMzIwCntcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQwIEltcGFjdDt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxxY1xwYXJkaXJuYXR1cmFsCgpcZjBcZnMxMjAgXGNmMSBcb3V0bDBcc3Ryb2tld2lkdGgtNDAgXHN0cm9rZWMwIFdlIGJvdyBvdXIgaGVhcnRzIHdlIGJlbmQgb3VyIGtuZWVzXApPaCBTcGlyaXQgY29tZSBtYWtlIHVzIGh1bWJsZVwKV2UgdHVybiBvdXIgZXllcyBmcm9tIGV2aWwgdGhpbmdzXApPaCBMb3JkIHdlIGNhc3QgZG93biBvdXIgaWRvbHN9'
-      );
-    });
-  });
-
   describe('stripRtf()', () => {
     it('should get single line plain text from an RTF string', () => {
       expect(

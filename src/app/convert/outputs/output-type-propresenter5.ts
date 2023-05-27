@@ -8,6 +8,8 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
   readonly fileExt = 'pro5';
   readonly url = 'https://renewedvision.com/propresenter/';
 
+  constructor(private readonly window: Window) {}
+
   convertToType(song: ISong): IOutputFile {
     const fileContent = this.generateProPresenterDocument(song);
 
@@ -123,7 +125,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
   }
 
   private makeSlide(order: number, label: string, text: string): string {
-    const encodedRtf = Utils.encodeBase64(Utils.formatRtf(text));
+    const encodedRtf = this.window.btoa(Utils.formatRtf(text));
     const txtElWidth = this.slideWidth - this.slideTextPadding * 2;
     const txtElHeight = this.slideHeight - this.slideTextPadding * 2;
     return `

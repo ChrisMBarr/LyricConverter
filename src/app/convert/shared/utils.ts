@@ -5,14 +5,6 @@ interface IRtfColor {
 }
 
 export class Utils {
-  public static decodeBase64(base64Str: string): string {
-    return window.atob(base64Str);
-  }
-
-  public static encodeBase64(str: string): string {
-    return window.btoa(str);
-  }
-
   public static stripRtf(str: string): string {
     const basicRtfPattern = /\{\*?\\[^{}]+;}|[{}]|\\[A-Za-z]+\n?(?:-?\d+)?[ ]?/g;
     const newLineSlashesPattern = /\\\n/g;

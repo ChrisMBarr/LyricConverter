@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { DOCUMENT } from '@angular/common';
 
 import { ParserService } from './parser.service';
 import { IRawDataFile } from 'src/app/convert/models/file.model';
@@ -14,7 +15,7 @@ describe('ParserService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ErrorsService],
+      providers: [ErrorsService, { provider: DOCUMENT, useValue: document }],
     });
     service = TestBed.inject(ParserService);
     injectedErrorsSvc = TestBed.inject(ErrorsService);

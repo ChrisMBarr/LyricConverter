@@ -10,6 +10,8 @@ export class InputTypeProPresenter4 implements IInputConverter {
   readonly fileExt = 'pro4';
   readonly url = 'https://renewedvision.com/propresenter/';
 
+  constructor(private readonly window: Window) {}
+
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     return rawFile.ext.toLowerCase() === this.fileExt;
   }
@@ -79,9 +81,7 @@ export class InputTypeProPresenter4 implements IInputConverter {
     const slidesList: ISongSlide[] = [];
     doc.RVPresentationDocument.slides.RVDisplaySlide.forEach((slide) => {
       const title = slide.label;
-      const lyrics = Utils.stripRtf(
-        Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData)
-      );
+      const lyrics = Utils.stripRtf(this.window.atob(slide.displayElements.RVTextElement.RTFData));
       if (title || lyrics) {
         slidesList.push({ title, lyrics });
       }

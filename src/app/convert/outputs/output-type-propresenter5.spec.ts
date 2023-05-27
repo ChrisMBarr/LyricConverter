@@ -7,7 +7,7 @@ describe('OutputTypePropresenter5', () => {
   let outputType: OutputTypeProPresenter5;
 
   beforeEach(() => {
-    outputType = new OutputTypeProPresenter5();
+    outputType = new OutputTypeProPresenter5(window);
   });
 
   it('should create an instance', () => {

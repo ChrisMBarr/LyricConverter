@@ -13,6 +13,8 @@ export class InputTypeProPresenter5 implements IInputConverter {
   readonly fileExt = 'pro5';
   readonly url = 'https://renewedvision.com/propresenter/';
 
+  constructor(private readonly window: Window) {}
+
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     return rawFile.ext.toLowerCase() === this.fileExt;
   }
@@ -103,7 +105,7 @@ export class InputTypeProPresenter5 implements IInputConverter {
     let lyrics = '';
 
     if (typeof slide.displayElements.RVTextElement !== 'undefined') {
-      lyrics = Utils.stripRtf(Utils.decodeBase64(slide.displayElements.RVTextElement.RTFData));
+      lyrics = Utils.stripRtf(this.window.atob(slide.displayElements.RVTextElement.RTFData));
     }
 
     return lyrics;
