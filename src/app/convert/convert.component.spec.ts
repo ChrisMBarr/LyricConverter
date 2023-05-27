@@ -530,7 +530,7 @@ describe('ConvertComponent', () => {
     });
 
     describe('Errors', () => {
-      it('should add an error to the ErrorsService when an unknown file type fails to match with an Output Converter', () => {
+      it('should add an error to the ErrorsService when an unknown file type fails to match with an InputConverter', () => {
         fixture.detectChanges();
         spyOn(errorsSvc, 'add').and.callThrough();
 
@@ -565,7 +565,7 @@ describe('ConvertComponent', () => {
         });
       });
 
-      it('should call the ErrorService when something downstream (like the JSON parser) throws a custom error for a known error case', () => {
+      it('should call the ErrorService when an InputConverter downstream throws a custom error for a known error case', () => {
         fixture.detectChanges();
         spyOn(errorsSvc, 'add').and.callThrough();
 
@@ -588,7 +588,7 @@ describe('ConvertComponent', () => {
         });
       });
 
-      it("should call the ErrorService when something downstream (like the JSON parser) throws a native error for something we can't control", () => {
+      it("should call the ErrorService when an InputConverter downstream throws a native error for something we can't control", () => {
         fixture.detectChanges();
         spyOn(errorsSvc, 'add').and.callThrough();
 
@@ -600,6 +600,40 @@ describe('ConvertComponent', () => {
             data: '{{{{{',
           },
         ]);
+
+        //We can't test against specific error messages thrown due to error message text differences in how browsers report them
+        expect(errorsSvc.add).toHaveBeenCalled();
+      });
+
+      it("should call the ErrorService when an OutputConverter downstream throws a native error for something we can't control", () => {
+        fixture.detectChanges();
+        spyOn(errorsSvc, 'add').and.callThrough();
+
+        component.selectedOutputType = {
+          name: 'Mock Output File Type',
+          fileExt: 'fake',
+          convertToType(song): IOutputFile {
+            throw SyntaxError();
+
+            //@ts-expect-error
+            return {
+              fileName: `${song.fileName}.${this.fileExt}`,
+              outputContent: '',
+              songData: song,
+            };
+          },
+        };
+
+        const fakeParsedFiles: IRawDataFile[] = [
+          {
+            data: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
+            ext: 'json',
+            name: 'Your Grace Is Enough',
+            type: 'application/json',
+          },
+        ];
+
+        component.getConvertersAndExtractData(fakeParsedFiles);
 
         //We can't test against specific error messages thrown due to error message text differences in how browsers report them
         expect(errorsSvc.add).toHaveBeenCalled();

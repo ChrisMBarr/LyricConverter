@@ -125,7 +125,7 @@ export class ConvertComponent implements OnInit {
     this.scrollBackToTop();
 
     const convertedSongs: ISong[] = [];
-    parsedFiles.forEach((f) => {
+    for (const f of parsedFiles) {
       const fileName = f.ext !== '' ? `${f.name}.${f.ext}` : f.name;
 
       const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
@@ -135,30 +135,43 @@ export class ConvertComponent implements OnInit {
         try {
           convertedSongs.push(converter.extractSongData(f));
         } catch (err: unknown) {
+          //Handle any errors that happen downstream on the IInputConverter for this file
           this.errorsSvc.add({
-            message: `There was a problem converting this file!`,
+            message: `There was a problem extracting the song data from this file!`,
             fileName,
             thrownError: err,
           });
         }
       } else {
+        //Show a message if this file type cannot be converted because we don't have a way to read it
         this.errorsSvc.add({
           message: `This is not a file type that LyricConverter knows how to convert!`,
           fileName,
         });
       }
-    });
+    }
 
     if (convertedSongs.length) {
       //Update the converted file count and save it
       this.convertedFileCount += convertedSongs.length;
       localStorage.setItem(this.convertedFileCountStorageKey, this.convertedFileCount.toString());
 
-      //Convert the songs to the specified type and save them to an array
-      //The array is used in template components to allow display in the UI or download
-      this.convertedSongsForOutput = convertedSongs.map((s) => {
-        return this.selectedOutputType.convertToType(s);
-      });
+      const convertedSongsArr: IOutputFile[] = [];
+      for (const s of convertedSongs) {
+        try {
+          //Convert the songs to the specified type and save them to an array
+          //The array is used in template components to allow display in the UI or download
+          convertedSongsArr.push(this.selectedOutputType.convertToType(s));
+        } catch (err: unknown) {
+          //Handle any errors that happen downstream on the selected IOutputConverter
+          this.errorsSvc.add({
+            message: `There was a problem converting this song to the ${this.selectedOutputType.name} format`,
+            fileName: s.fileName,
+            thrownError: err,
+          });
+        }
+      }
+      this.convertedSongsForOutput = convertedSongsArr;
     }
   }
 }
