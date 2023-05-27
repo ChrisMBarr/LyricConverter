@@ -2,9 +2,9 @@
 # LyricConverter
 Parses the song info & lyrics from various lyric presentation software file formats. You can convert between different formats and download the converted files.
 
-### See it here: http://FiniteLooper.github.io/LyricConverter/
-(previously on LyricConverter.com but no more)
+### Use it here: http://FiniteLooper.github.io/LyricConverter/
 
+![Lyric Converter Screen Recording](https://github.com/FiniteLooper/LyricConverter/blob/master/lyric-converter-demo.gif?raw=true)
 
 ## Formats
 |                                                                    | Input  | Output |
