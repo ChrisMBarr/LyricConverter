@@ -34,6 +34,13 @@ Parses the song info & lyrics from various lyric presentation software file form
 [2]: https://github.com/FiniteLooper/LyricConverter/issues/5
 
 
+### LyricConverter relies heavily on these projects
+* [Microsoft/TypeScript](https://github.com/microsoft/typescript)
+* [Angular/angular](https://github.com/angular/angular)
+* [SongProOrg/songpro-javascript](https://github.com/SongProOrg/songpro-javascript)
+* [NaturalIntelligence/fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser/)
+* [eligrey/FileSaver.js](https://github.com/eligrey/FileSaver.js)
+
 ### TODO Items:
 * Angular prerender templates
 * Deal with possibly duplicated info keys
