@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 //Helpers & Types
@@ -25,43 +25,36 @@ import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { ErrorsService } from '../errors/errors.service';
-import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ParserService {
-  readonly inputConverters: IInputConverter[];
-  readonly outputConverters: IOutputConverter[];
+  //List of all available Input Converters
+  readonly inputConverters: IInputConverter[] = [
+    new InputTypeProPresenter4(),
+    new InputTypeProPresenter5(),
+    new InputTypeChordPro(),
+    new InputTypeSongPro(),
+    new InputTypeSongShowPlus7(),
+    new InputTypeOpenLyrics(),
+    new InputTypePlainText(),
+    new InputTypeJSON(),
+  ];
+
+  readonly outputConverters: IOutputConverter[] = [
+    new OutputTypeProPresenter5(),
+    new OutputTypeChordpro(),
+    new OutputTypeOpenLyrics(),
+    new OutputTypeSongPro(),
+    new OutputTypePlainText(),
+    new OutputTypeJSON(),
+    new OutputTypeDisplaySlides(),
+  ];
+
   parsedFilesChanged$ = new Subject<IRawDataFile[]>();
 
-  constructor(
-    private readonly errorsSvc: ErrorsService,
-    @Inject(DOCUMENT) private readonly document: Document
-  ) {
-    const injectedWindow = this.document.defaultView as Window;
-
-    this.inputConverters= [
-      new InputTypeProPresenter4(injectedWindow),
-      new InputTypeProPresenter5(injectedWindow),
-      new InputTypeChordPro(),
-      new InputTypeSongPro(),
-      new InputTypeSongShowPlus7(),
-      new InputTypeOpenLyrics(),
-      new InputTypePlainText(),
-      new InputTypeJSON(),
-    ];
-
-    this.outputConverters = [
-      new OutputTypeProPresenter5(injectedWindow),
-      new OutputTypeChordpro(),
-      new OutputTypeOpenLyrics(),
-      new OutputTypeSongPro(),
-      new OutputTypePlainText(),
-      new OutputTypeJSON(),
-      new OutputTypeDisplaySlides(),
-    ];
-  }
+  constructor(private readonly errorsSvc: ErrorsService) {}
 
   parseFiles(files: FileList): void {
     try {
@@ -112,7 +105,7 @@ export class ParserService {
         lastModified: theFile.lastModified,
         //I've tried to force this to return data that isn't a string, but I can't get it to happen.
         //The process of using FileReader seems to convert the file content to a string no matter what
-        data: ev.target?.result?.toString() ?? /* istanbul ignore next */ '',
+        data: ev.target?.result?.toString() ??  /* istanbul ignore next */ '',
       };
 
       //Add the current file to the array
@@ -132,7 +125,7 @@ export class ParserService {
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
-        data: f.data,
+        data: f.data
       });
     }
 

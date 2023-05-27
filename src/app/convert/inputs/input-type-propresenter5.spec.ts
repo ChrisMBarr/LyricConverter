@@ -14,7 +14,7 @@ describe('InputTypeProPresenter5', () => {
   let inputConverter: InputTypeProPresenter5;
 
   beforeEach(() => {
-    inputConverter = new InputTypeProPresenter5(window);
+    inputConverter = new InputTypeProPresenter5();
   });
 
   it('should create an instance', () => {

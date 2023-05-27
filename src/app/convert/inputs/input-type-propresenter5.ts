@@ -7,13 +7,12 @@ import {
   IProPresenter5Document,
 } from '../models/propresenter-document.model';
 import { Utils } from '../shared/utils';
+import { Base64 } from 'js-base64';
 
 export class InputTypeProPresenter5 implements IInputConverter {
   readonly name = 'Pro Presenter 5';
   readonly fileExt = 'pro5';
   readonly url = 'https://renewedvision.com/propresenter/';
-
-  constructor(private readonly window: Window) {}
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     return rawFile.ext.toLowerCase() === this.fileExt;
@@ -105,7 +104,7 @@ export class InputTypeProPresenter5 implements IInputConverter {
     let lyrics = '';
 
     if (typeof slide.displayElements.RVTextElement !== 'undefined') {
-      lyrics = Utils.stripRtf(this.window.atob(slide.displayElements.RVTextElement.RTFData));
+      lyrics = Utils.stripRtf(Base64.decode(slide.displayElements.RVTextElement.RTFData));
     }
 
     return lyrics;

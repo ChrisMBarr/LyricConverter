@@ -1,3 +1,4 @@
+import { Base64 } from 'js-base64';
 import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo } from '../models/song.model';
 import { Utils } from '../shared/utils';
@@ -7,8 +8,6 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
   readonly name = 'Pro Presenter 5';
   readonly fileExt = 'pro5';
   readonly url = 'https://renewedvision.com/propresenter/';
-
-  constructor(private readonly window: Window) {}
 
   convertToType(song: ISong): IOutputFile {
     const fileContent = this.generateProPresenterDocument(song);
@@ -125,7 +124,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
   }
 
   private makeSlide(order: number, label: string, text: string): string {
-    const encodedRtf = this.window.btoa(Utils.formatRtf(text));
+    const encodedRtf = Base64.encode(Utils.formatRtf(text));
     const txtElWidth = this.slideWidth - this.slideTextPadding * 2;
     const txtElHeight = this.slideHeight - this.slideTextPadding * 2;
     return `
