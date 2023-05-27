@@ -8,7 +8,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 
 ## Formats
 |                                                                    | Input  | Output |
-| ------------------------------------------------------------------ |:------:| ------:|
+|:-------------------------------------------------------------------|:------:|:------:|
 | **[ChordPro](https://chordpro.org/)**                              |   ✅   |   ✅  |
 | **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |   ⭕   |   ⭕  |
 | **JSON**                                                           |   ✅   |   ✅  |
