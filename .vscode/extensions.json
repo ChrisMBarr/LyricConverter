@@ -1,10 +1,14 @@
 {
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
   "recommendations": [
+    "PKief.material-icon-theme",
     "angular.ng-template",
-    "johnpapa.angular2",
-    "streetsidesoftware.code-spell-checker",
     "christian-kohler.path-intellisense",
-    "esbenp.prettier-vscode"
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "johnpapa.angular2",
+    "redhat.vscode-xml",
+    "streetsidesoftware.code-spell-checker",
+    "yoavbls.pretty-ts-errors",
   ]
 }

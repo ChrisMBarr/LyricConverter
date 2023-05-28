@@ -15,7 +15,7 @@
     "test-coverage-headless": "ng test --code-coverage --no-watch --browsers=ChromeHeadless",
     "lint": "ng lint"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^16.0.2",
     "@angular/common": "^16.0.2",
