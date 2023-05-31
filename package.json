@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-gh-pages": "ng build --base-href=http://finitelooper.github.io/LyricConverter/",
+    "build-gh-pages": "ng build --base-href=http://lyricconverter.net/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-browsers-all": "ng test --browsers=Edge,Firefox,Chrome",
