@@ -2,46 +2,46 @@
   <div id="drop-area-message">Drop Your Song Files Here</div>
 </div>
 
-<input class="d-none" type="file" multiple (change)="onFileSelect($event)" #fileInput />
+<input class="hidden" type="file" multiple (change)="onFileSelect($event)" #fileInput />
 
-<div class="row">
-  <div class="col-6 col-sm-5 col-md-4 col-lg-3">
+<div class="flex flex-row space-x-4">
+  <div class="basis-1/4">
     <aside id="sidebar">
-      <nav class="list-group" id="convert-types">
+      <nav class="content-card p-0 grid grid-cols-1 divide-y" id="convert-types">
         <strong id="convert-types-title" class="list-group-item text-center"> Convert To </strong>
         <a
           *ngFor="let fmt of outputTypesForMenu"
           (click)="onSwitchConversionType(fmt, $event)"
           [ngClass]="{ active: selectedOutputType === fmt }"
           href="#"
-          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+          class="flex justify-between items-center py-2 px-4"
         >
           {{ fmt.name }}
-          <span class="badge rounded-pill" *ngIf="fmt.fileExt">.{{ fmt.fileExt }}</span>
+          <span class="bg-lc-highlight text-white p-1 rounded text-xs font-mono" *ngIf="fmt.fileExt">.{{ fmt.fileExt }}</span>
         </a>
       </nav>
 
       <div
         id="test-drop-instructions-more1"
-        class="drop-instructions mt-3 d-none d-md-block"
+        class="drop-instructions mt-3 hidden md:visible"
         *ngIf="!displayInitialUi"
       >
         You can drag more songs into this window to convert them, or
         <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
       </div>
     </aside>
-  </div>
 
-  <div id="test-drop-instructions-more2" class="col-6 d-block d-md-none" *ngIf="!displayInitialUi">
-    <div class="drop-instructions">
-      You can drag more songs into this window to convert them, or
-      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+    <div id="test-drop-instructions-more2" class="md:hidden" *ngIf="!displayInitialUi">
+      <div class="drop-instructions">
+        You can drag more songs into this window to convert them, or
+        <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+      </div>
     </div>
   </div>
 
   <div
     id="begin-area"
-    class="col-6 col-sm-7 col-md-8 offset-md-0 col-lg-7 offset-lg-1 col-xl-6 offset-xl-2"
+    class="basis-3/4 content-card"
     *ngIf="displayInitialUi"
   >
     <div class="drop-instructions">
@@ -61,20 +61,20 @@
     </div>
   </div>
 
-  <div id="display-area" class="col col-md-8" *ngIf="!displayInitialUi">
-    <hr class="d-block d-md-none" />
+  <div id="display-area" class="basis-3/4" *ngIf="!displayInitialUi">
+    <hr class="d-block md:hidden" />
 
     <div
       id="test-donate"
-      class="alert alert-info"
+      class="content-card"
       role="alert"
       *ngIf="convertedFileCount >= convertedCountMessageThreshold"
     >
-      <div class="d-flex align-items-center mb-1">
+      <div class="flex items-center mb-1">
         <svg class="icon icon-lg me-2" role="img" aria-label="Info:">
           <use xlink:href="#info-fill" />
         </svg>
-        <p class="mb-0">
+        <p>
           Wow, you've converted a total of
           <strong>{{ convertedFileCount }} songs</strong> with LyricConverter!
         </p>
@@ -89,17 +89,17 @@
 
     <div
       id="test-error-message-display"
-      class="alert alert-danger"
+      class="content-card bg-red-300 text-red-700"
       role="alert"
       *ngIf="errorsList.length > 0"
     >
-      <h4 class="alert-heading d-flex align-items-center">
-        <svg class="icon icon-lg me-2" role="img" aria-label="Alert:">
+      <h4 class="flex items-center">
+        <svg class="icon icon-lg mr-2" role="img" aria-label="Alert:">
           <use xlink:href="#exclamation-triangle-fill" />
         </svg>
         File Conversion Errors
       </h4>
-      <ul class="mb-0">
+      <ul>
         <li *ngFor="let err of errorsList">
           <span *ngIf="err.fileName"
             ><strong>{{ err.fileName }}</strong> -
@@ -110,14 +110,14 @@
     </div>
 
     <app-slide-display
+      class="content-card"
       *ngIf="selectedOutputType.name === 'Display Slides'"
       [outputFileList]="convertedSongsForOutput"
     ></app-slide-display>
     <app-download-display
+      class="content-card"
       *ngIf="selectedOutputType.name !== 'Display Slides'"
       [outputFileList]="convertedSongsForOutput"
     ></app-download-display>
-
-    <!-- <div id="parser-error-display" class="alert alert-danger d-none"></div> -->
   </div>
 </div>

@@ -1,7 +1,7 @@
-<div class="container">
-  <header id="header">
+<div class="container mx-auto p-4">
+  <header class="content-card mb-4">
     <h1 id="title">
-      <svg role="img" aria-label="Lyric Converter">
+      <svg class="fill-white" role="img" aria-label="Lyric Converter">
         <use xlink:href="#lyric-converter-logo" />
       </svg>
     </h1>
@@ -18,9 +18,7 @@
     </nav>
   </header>
 
-  <main id="main">
-    <router-outlet></router-outlet>
-  </main>
+  <router-outlet></router-outlet>
 </div>
 <!--
   Icons and SVG logo for use anywhere needed.

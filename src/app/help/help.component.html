@@ -1,35 +1,23 @@
-<div class="row">
-  <div class="col-md-5">
-    <h4>Supported Formats</h4>
-    <table class="mb-2">
-      <caption>
-        <p>
-          <svg class="icon text-info" role="img" aria-label="Tip:">
-            <use xlink:href="#info-fill" />
-          </svg>
-          You can import the ProPresenter 5 files made by LyricConverter into ProPresenter 6 &amp;
-          7!
-        </p>
-        <p class="mb-0">
-          Eventually I would love for LyricConverter to convert between all of these formats and
-          more, but for the time being this is all it can do.
-        </p>
-      </caption>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+  <div class="content-card md:col-span-2">
+    <h4 class="font-bold text-xl mb-2">Supported Formats</h4>
+    <table class="table-auto border-collapse rounded-lg">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col" class="text-center">Import</th>
-          <th scope="col" class="text-center">Export</th>
+          <th scope="col border-b border-slate-600"></th>
+          <th scope="col border-b border-slate-600" class="text-center">Import</th>
+          <th scope="col border-b border-slate-600" class="text-center">Export</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let format of combinedFormatsList">
-          <th scope="row">
+          <th scope="row" class="text-left">
             <a *ngIf="format.url" [href]="format.url" target="_blank">{{ format.name }}</a>
             <span *ngIf="!format.url">{{ format.name }}</span>
             <svg
               *ngIf="format.hasNote"
-              class="icon ms-1 text-info"
+              class="icon ml-1 text-sm text-orange-300"
               role="img"
               aria-label="Info: about this format"
             >
@@ -39,7 +27,7 @@
           <td class="text-center">
             <svg
               *ngIf="format.canImport"
-              class="icon text-success"
+              class="icon text-green-500 drop-shadow-md"
               role="img"
               aria-label="Import is supported"
             >
@@ -47,7 +35,7 @@
             </svg>
             <svg
               *ngIf="!format.canImport"
-              class="icon text-muted"
+              class="icon text-red-400 drop-shadow-md"
               role="img"
               aria-label="Export is not supported"
             >
@@ -57,7 +45,7 @@
           <td class="text-center">
             <svg
               *ngIf="format.canExport"
-              class="icon text-success"
+              class="icon text-green-500 drop-shadow-md"
               role="img"
               aria-label="Export is supported"
             >
@@ -65,7 +53,7 @@
             </svg>
             <svg
               *ngIf="!format.canExport"
-              class="icon text-muted"
+              class="icon text-red-400 drop-shadow-md"
               role="img"
               aria-label="Export is not supported"
             >
@@ -75,12 +63,24 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="col offset-md-1">
 
-    <h4>Have a question or some other problem?</h4>
+    <p class="my-2 text-sm">
+      <svg class="icon text-orange-300" role="img" aria-label="Tip:">
+        <use xlink:href="#info-fill" />
+      </svg>
+      You can import the ProPresenter 5 files made by LyricConverter into ProPresenter 6 &amp;
+      7!
+    </p>
+    <p>
+      Eventually I would love for LyricConverter to convert between all of these formats and
+      more, but for the time being this is all it can do.
+    </p>
+  </div>
+
+  <div class="content-card">
+    <h4 class="font-bold text-xl">Have a question or some other problem?</h4>
     <a
-      class="btn btn-light btn-large d-inline-flex align-items-center"
+      class="btn btn-secondary btn-lg"
       target="_blank"
       href="https://github.com/FiniteLooper/LyricConverter/issues"
     >
@@ -90,14 +90,14 @@
       Open an issue on GitHub
     </a>
 
-    <h4 class="mt-4">SongShow Plus Notes</h4>
+    <h4 class="font-bold text-xl mt-4">SongShow Plus Notes</h4>
     <p>
       SongShow Plus files are in a binary format, which can make them difficult to extract song
       lyrics from sometimes. The majority of SongShow Plus files are formatted in a similar manner
-      which LyricConverter can figure out, but occasionally there are files with odd formatting. In these
-      cases all the lyrics <em>should</em> be extracted, but it cannot be organized in any way. All I
-      can do in this case is dump all the text onto a single slide. You might have better luck
-      exporting these problem files from SongShow Plus into other formats.
+      which LyricConverter can figure out, but occasionally there are files with odd formatting. In
+      these cases all the lyrics <em>should</em> be extracted, but it cannot be organized in any
+      way. All I can do in this case is dump all the text onto a single slide. You might have better
+      luck exporting these problem files from SongShow Plus into other formats.
     </p>
   </div>
 </div>

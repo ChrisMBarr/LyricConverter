@@ -2,17 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* #3ea8b2 */
-.icon {
-  /* Bootstrap SVG icons
-  Defaults to match text size and color */
-  width: 1em;
-  height: 1em;
-  fill: currentcolor;
+@layer base {
+  a {
+    @apply hover:underline text-lc-highlight;
+  }
 }
 
-.icon-lg {
-  /* fixed larger size when this class is added */
-  width: 32px;
-  height: 32px;
+@layer components {
+  .content-card {
+    @apply rounded-lg p-4 bg-lc-highlight/10 backdrop-blur-lg border border-lc-highlight/10;
+  }
+
+  .btn {
+    @apply rounded-md inline-flex items-center p-2 hover:no-underline;
+  }
+
+  .btn-primary {
+    @apply text-white bg-blue-400 hover:bg-blue-500;
+  }
+
+  .btn-secondary {
+    @apply text-slate-800 bg-slate-400 hover:bg-slate-500;
+  }
+
+  .btn-success {
+    @apply text-white bg-green-800 hover:bg-green-900;
+  }
+
+  .btn-large {
+    @apply p-3 text-lg;
+  }
+
+  .icon {
+    /* Bootstrap SVG icons
+    Defaults to match text size and color */
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentcolor;
+  }
+
+  .icon-lg {
+    /* fixed larger size when this class is added */
+    width: 32px;
+    height: 32px;
+  }
 }

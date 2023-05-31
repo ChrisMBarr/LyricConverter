@@ -1,8 +1,10 @@
-/* //View Encapsulation is DISABLED for this component so that styles from
-// the body tag applied via the dragAndDropFiles directive can be edited here
+/*
+View Encapsulation is DISABLED for this component so that styles from
+the body tag applied via the dragAndDropFiles directive can be edited here
+*/
 
 #drop-area {
-  //Take up the entire size of the screen
+  /* Take up the entire size of the screen */
   position: fixed;
   top: 0;
   right: 0;
@@ -10,49 +12,52 @@
   bottom: 0;
   z-index: 100;
 
-  //Setup flex container so the message can be centered
+  /* Setup flex container so the message can be centered */
   display: flex;
   justify-content: center;
   align-items: center;
 
-  //Allow clicks to pass through since this covered the entre document
+  /* Allow clicks to pass through since this covered the entre document */
   pointer-events: none;
 
-  //Style
+  /* Style */
   background: rgba(0, 0, 0, 0.6);
 
-  //Setup to allow fade in when
+  /* Setup to allow fade in when */
   opacity: 0;
   transition: opacity 300ms;
-
-  body.drag-over & {
-    // This class is added to the body by the dragAndDropFiles directive
-    opacity: 1;
-  }
-
-  &-message {
-    font-size: $font-size-lg;
-    font-weight: bold;
-    box-shadow: 0 0 50px $color-highlight, inset 0 0 5px $color-highlight;
-    background-color: $color-light;
-
-    border: 1px solid $color-highlight;
-    border-radius: $border-radius;
-    color: $color-dark;
-    padding: $spacer;
-  }
 }
 
+body.drag-over #drop-area {
+  /* This class is added to the body by the dragAndDropFiles directive */
+  opacity: 1;
+}
+
+#drop-area-message {
+  /* font-size: $font-size-lg;
+  font-weight: bold;
+  box-shadow: 0 0 50px $color-highlight, inset 0 0 5px $color-highlight;
+  background-color: $color-light;
+
+  border: 1px solid $color-highlight;
+  border-radius: $border-radius;
+  color: $color-dark;
+  padding: $spacer; */
+}
+
+
 .drop-instructions {
-  background-color: $color-medium;
+  /* background-color: $color-medium;
   border: 1px solid $color-highlight;
   border-radius: $border-radius;
   color: $color-dark;
   text-align: center;
   padding: $spacer;
-  margin-bottom: $spacer;
+  margin-bottom: $spacer; */
 }
 
+
+/*
 #primary-instructions,
 #secondary-instructions {
   margin: 0;
