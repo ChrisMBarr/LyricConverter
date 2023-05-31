@@ -6,7 +6,7 @@ import * as JSZip from 'jszip';
 @Component({
   selector: 'app-download-display',
   templateUrl: './download-display.component.html',
-  styleUrls: ['./download-display.component.scss'],
+  styleUrls: ['./download-display.component.css'],
 })
 export class DownloadDisplayComponent {
   @Input() outputFileList: IOutputFile[] = [];

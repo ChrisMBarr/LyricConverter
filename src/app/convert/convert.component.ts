@@ -11,7 +11,7 @@ import { DOCUMENT } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
   selector: 'app-convert',
   templateUrl: './convert.component.html',
-  styleUrls: ['./convert.component.scss'],
+  styleUrls: ['./convert.component.css'],
 })
 export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';

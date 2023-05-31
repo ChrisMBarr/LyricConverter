@@ -1,6 +1,4 @@
-@import "../../variables";
-
-//View Encapsulation is DISABLED for this component so that styles from
+/* //View Encapsulation is DISABLED for this component so that styles from
 // the body tag applied via the dragAndDropFiles directive can be edited here
 
 #drop-area {
@@ -127,4 +125,4 @@
   .active .badge {
     background-color: $color-background;
   }
-}
+} */

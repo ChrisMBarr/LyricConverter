@@ -4,7 +4,7 @@
     <table class="mb-2">
       <caption>
         <p>
-          <svg class="bi text-info" role="img" aria-label="Tip:">
+          <svg class="icon text-info" role="img" aria-label="Tip:">
             <use xlink:href="#info-fill" />
           </svg>
           You can import the ProPresenter 5 files made by LyricConverter into ProPresenter 6 &amp;
@@ -29,7 +29,7 @@
             <span *ngIf="!format.url">{{ format.name }}</span>
             <svg
               *ngIf="format.hasNote"
-              class="bi ms-1 text-info"
+              class="icon ms-1 text-info"
               role="img"
               aria-label="Info: about this format"
             >
@@ -39,7 +39,7 @@
           <td class="text-center">
             <svg
               *ngIf="format.canImport"
-              class="bi text-success"
+              class="icon text-success"
               role="img"
               aria-label="Import is supported"
             >
@@ -47,7 +47,7 @@
             </svg>
             <svg
               *ngIf="!format.canImport"
-              class="bi text-muted"
+              class="icon text-muted"
               role="img"
               aria-label="Export is not supported"
             >
@@ -57,7 +57,7 @@
           <td class="text-center">
             <svg
               *ngIf="format.canExport"
-              class="bi text-success"
+              class="icon text-success"
               role="img"
               aria-label="Export is supported"
             >
@@ -65,7 +65,7 @@
             </svg>
             <svg
               *ngIf="!format.canExport"
-              class="bi text-muted"
+              class="icon text-muted"
               role="img"
               aria-label="Export is not supported"
             >
@@ -84,7 +84,7 @@
       target="_blank"
       href="https://github.com/FiniteLooper/LyricConverter/issues"
     >
-      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Github:">
+      <svg class="icon flex-shrink-0 me-2" role="img" aria-label="Github:">
         <use xlink:href="#github" />
       </svg>
       Open an issue on GitHub

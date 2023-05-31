@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* #3ea8b2 */
+.icon {
+  /* Bootstrap SVG icons
+  Defaults to match text size and color */
+  width: 1em;
+  height: 1em;
+  fill: currentcolor;
+}
+
+.icon-lg {
+  /* fixed larger size when this class is added */
+  width: 32px;
+  height: 32px;
+}
