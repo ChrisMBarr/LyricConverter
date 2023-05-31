@@ -1,3 +1,6 @@
+table {
+  @apply table-auto border-collapse;
+}
 tbody tr {
   @apply bg-slate-700/40 hover:bg-slate-700/50;
 }
