@@ -24,7 +24,7 @@
   }
 
   .card .card-content {
-    @apply p-4;
+    @apply p-4 h-full;
   }
 
   .card .card-content + .card-content {
