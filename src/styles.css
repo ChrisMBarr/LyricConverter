@@ -33,7 +33,8 @@
 
   .card h3.card-title + .card-content,
   .card h4.card-title + .card-content,
-  .card h5.card-title + .card-content  {
+  .card h5.card-title + .card-content,
+  .card .card-content + .card-content  {
     @apply pt-2;
   }
 
