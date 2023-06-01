@@ -1,5 +1,4 @@
-<div class="content-card">
-<div class="song mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
+<div class="song content-card mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
   <h3 class="song-title text-xl">{{ f.songData.title }}</h3>
   <ul class="song-info">
     <li *ngFor="let info of f.songData.info">
@@ -7,13 +6,13 @@
       >: {{ info.value }}
     </li>
   </ul>
-  <div class="song-slides-container grid grid-cols-3 gap-1">
-    <div class="col" *ngFor="let slide of f.songData.slides">
-      <div class="song-slide bg-white/80 text-black">
-        <div class="card-body">{{ slide.lyrics }}</div>
-        <div class="card-footer">{{ slide.title }}</div>
-      </div>
+  <div class="song-slides-container grid gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+    <div
+      class="song-slide bg-white/80 text-black p-1 rounded-md border border-slate-300"
+      *ngFor="let slide of f.songData.slides"
+    >
+      <div class="card-body">{{ slide.lyrics }}</div>
+      <div class="card-footer">{{ slide.title }}</div>
     </div>
   </div>
-</div>
 </div>

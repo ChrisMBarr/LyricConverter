@@ -10,27 +10,27 @@
 
 @layer components {
   .content-card {
-    @apply rounded-lg p-4 bg-lc-highlight/10 backdrop-blur-lg border border-lc-highlight/10;
+    @apply rounded-lg p-4 bg-slate-900/40 backdrop-blur-lg border border-lc-highlight/10;
   }
 
   .btn {
-    @apply rounded-md inline-flex items-center p-2 hover:no-underline;
+    @apply font-bold py-2 px-4 rounded shadow inline-flex items-center hover:no-underline;
   }
 
   .btn-primary {
-    @apply text-white bg-blue-400 hover:bg-blue-500;
+    @apply text-white bg-blue-600 hover:bg-blue-700;
   }
 
   .btn-secondary {
-    @apply text-slate-800 bg-slate-400 hover:bg-slate-500;
+    @apply bg-slate-300 hover:bg-slate-400 text-slate-800;
   }
 
   .btn-success {
-    @apply text-white bg-green-800 hover:bg-green-900;
+    @apply text-white bg-green-600 hover:bg-green-700;
   }
 
-  .btn-large {
-    @apply p-3 text-lg;
+  .btn-small {
+    @apply py-1 px-2 text-sm;
   }
 
   .icon {
@@ -46,5 +46,9 @@
     /* fixed larger size when this class is added */
     width: 32px;
     height: 32px;
+  }
+
+  .btn .icon {
+    @apply mr-1;
   }
 }

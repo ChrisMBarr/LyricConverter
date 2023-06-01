@@ -9,15 +9,24 @@
     *ngIf="outputFileList.length === 1"
     (click)="onClickDownloadFiles()"
   >
+    <svg class="icon" role="img">
+      <use xlink:href="#file-text-fill" />
+    </svg>
     Download File
   </button>
 
   <div *ngIf="outputFileList.length > 1">
     <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
+      <svg class="icon" role="img">
+        <use xlink:href="#file-zip-fill" />
+      </svg>
       Download as .zip
     </button>
     or
-    <button type="button" class="btn btn-secondary" (click)="onClickDownloadFiles()">
+    <button type="button" class="btn btn-secondary btn-small" (click)="onClickDownloadFiles()">
+      <svg class="icon" role="img">
+        <use xlink:href="#files" />
+      </svg>
       Download {{ outputFileList.length }} individual files
     </button>
   </div>

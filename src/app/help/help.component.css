@@ -2,11 +2,11 @@ table {
   @apply table-auto border-collapse;
 }
 tbody tr {
-  @apply bg-slate-700/40 hover:bg-slate-700/50;
+  @apply bg-gray-800/70 hover:bg-gray-700/90;
 }
 
 tbody tr:nth-child(odd) {
-  @apply bg-slate-700/30 hover:bg-slate-700/50;
+  @apply bg-gray-800/60 hover:bg-gray-700/90;
 }
 
 td,
