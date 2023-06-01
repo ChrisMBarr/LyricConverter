@@ -77,8 +77,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
         //replace correctly and incorrectly formatted <br> </br> and </br> tags with new lines
         //Sometimes these will already have a newline after them, remove that so that newlines aren't doubled
         .replace(/<\/?br\/?>(\n)?/gi, '\n')
-        //Then remove all remaining HTML/XML tags and their content
-        .replace(/(<[^/]+?>.+?<\/.+?>)|(<[^/]+?\/>)/g, '')
+        //Then remove all remaining HTML/XML tags and comments, and their content
+        .replace(/(<[^/!]+?>.+?<\/.+?>)|(<[^/!]+?\/>)|(<!--.+?-->)/g, '')
     );
   }
 
