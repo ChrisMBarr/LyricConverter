@@ -1,14 +1,19 @@
-import { TestBed } from '@angular/core/testing';
+import { DOCUMENT } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
-import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
+import { AppComponent } from './app.component';
 import { ConvertComponent } from './convert/convert.component';
 import { DonateButtonComponent } from './donate-button/donate-button.component';
 import { DragAndDropFilesDirective } from './drag-and-drop-files/drag-and-drop-files.directive';
+import { HelpComponent } from './help/help.component';
 
 describe('AppComponent', () => {
-  beforeEach(() =>
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+  let injectedDocument: Document;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [
@@ -19,19 +24,23 @@ describe('AppComponent', () => {
         DonateButtonComponent,
         DragAndDropFilesDirective,
       ],
-    })
-  );
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+    injectedDocument = fixture.debugElement.injector.get(DOCUMENT);
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'Lyric Converter'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app.title).toEqual('Lyric Converter');
   });
 
+  it('should set a random background image on the <body> element', () => {
+    fixture.detectChanges();
+    expect(injectedDocument.body.getAttribute('style')).toMatch(/background-image: url\("\/assets\/bg\d+.jpg"\);/)
+  });
 });

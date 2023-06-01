@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   private readonly backgroundImagesCount = 8;
-  randomBackgroundImagePath = `/assets/bg1.jpg`; //default just in case
   title = 'Lyric Converter';
+
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
   ngOnInit(): void {
     const randomNum = Math.floor(Math.random() * this.backgroundImagesCount + 1);
-    this.randomBackgroundImagePath = `/assets/bg${randomNum}.jpg`;
+    this.document.body.style.backgroundImage = `url('/assets/bg${randomNum}.jpg')`;
   }
 }
