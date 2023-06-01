@@ -24,7 +24,16 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
             "allowedCommonJsDependencies": ["jszip", "file-saver", "fast-xml-parser"],
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/assets",
+              "src/android-chrome-192x192.png",
+              "src/android-chrome-512x512.png",
+              "src/apple-touch-icon.png",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
+              "src/favicon.ico",
+              "src/site.webmanifest"
+            ],
             "styles": ["src/styles.css"],
             "scripts": []
           },
@@ -79,7 +88,16 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "css",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/assets",
+              "src/android-chrome-192x192.png",
+              "src/android-chrome-512x512.png",
+              "src/apple-touch-icon.png",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
+              "src/favicon.ico",
+              "src/site.webmanifest"
+            ],
             "styles": ["src/styles.css"],
             "scripts": [],
             "codeCoverageExclude": ["src/lib/**/*"],
