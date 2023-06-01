@@ -144,6 +144,26 @@ describe('InputTypeOpenLyrics', () => {
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
+    it('should ignore/exclude comments from the song lyrics', () => {
+      const testFile: IRawDataFile = TestUtils.deepClone(
+        mockOpenLyrics.mockOpenLyricsFileSimpleFile
+      );
+
+      testFile.data = testFile.data.replace('how sweet the sound','how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound')
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Amazing Grace',
+        info: [],
+        slides: [
+          {
+            title: 'v1',
+            lyrics: 'Amazing grace how sweet the sound\nthat saved a wretch like me;',
+          },
+        ],
+      });
+    });
+
     it('should return a song for a OpenLyrics example file 1', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockOpenLyrics.mockOpenLyricsSongFile1);
 
