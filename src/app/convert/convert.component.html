@@ -5,37 +5,36 @@
 <input class="hidden" type="file" multiple (change)="onFileSelect($event)" #fileInput />
 
 <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-  <div class="">
-    <aside id="sidebar" class="sticky md:top-4">
-      <nav class="content-card p-0 grid grid-cols-1 divide-y" id="convert-types">
-        <strong id="convert-types-title" class="list-group-item text-center py-2"> Convert To </strong>
-        <a
-          *ngFor="let fmt of outputTypesForMenu"
-          (click)="onSwitchConversionType(fmt, $event)"
-          [ngClass]="{ 'bg-lc-highlight text-white': selectedOutputType === fmt }"
-          href="#"
-          class="flex justify-between items-center p-2"
-        >
-          {{ fmt.name }}
-          <span
-            class="bg-lc-highlight text-white p-1 rounded text-xs font-mono"
-            [ngClass]="{ 'bg-white text-lc-highlight': selectedOutputType === fmt }"
-            *ngIf="fmt.fileExt"
-            >.{{ fmt.fileExt }}</span
-          >
-        </a>
-      </nav>
-
-      <div
-        id="test-drop-instructions-more1"
-        class="drop-instructions content-card mt-3 hidden md:block"
-        *ngIf="!displayInitialUi"
+  <aside class="sticky md:top-4">
+    <nav class="content-card p-0 grid grid-cols-1 overflow-hidden" id="test-convert-types-nav">
+      <strong class="list-group-item text-center py-2 border-b border-lc-highlight/10">
+        Convert To
+      </strong>
+      <a
+        *ngFor="let fmt of outputTypesForMenu"
+        (click)="onSwitchConversionType(fmt, $event)"
+        [ngClass]="{ 'font-bold bg-lc-highlight/10 border-l-2 border-l-lc-highlight': selectedOutputType === fmt }"
+        class="flex justify-between items-center p-2 text-white border-b border-b-lc-highlight/10 hover:no-underline hover:bg-lc-highlight/20"
+        href="#"
       >
-        You can drag more songs into this window to convert them, or
-        <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
-      </div>
-    </aside>
-  </div>
+        {{ fmt.name }}
+        <span
+          class="bg-lc-highlight text-white px-1 rounded text-xs font-mono"
+          *ngIf="fmt.fileExt"
+          >.{{ fmt.fileExt }}</span
+        >
+      </a>
+    </nav>
+
+    <div
+      id="test-drop-instructions-more1"
+      class="drop-instructions content-card mt-3 hidden md:block"
+      *ngIf="!displayInitialUi"
+    >
+      You can drag more songs into this window to convert them, or
+      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+    </div>
+  </aside>
 
   <div id="begin-area" class="content-card md:col-span-3" *ngIf="displayInitialUi">
     <div class="drop-instructions">

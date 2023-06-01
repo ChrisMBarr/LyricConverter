@@ -101,33 +101,4 @@ body.drag-over #drop-area {
     margin-top: 50px;
   }
 }
-
-@include media-breakpoint-up(md) {
-  #sidebar {
-    //The wrapping element around #convert-types and the .drop-instructions that appears after converting
-    position: sticky;
-    top: $header-bottom-margin;
-  }
-}
-
-//The list menu of types we can convert to
-#convert-types {
-  &-title {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    background-color: $color-medium;
-  }
-
-  .list-group-item {
-    cursor: pointer;
-  }
-
-  .badge {
-    background-color: $color-light;
-    color: $color-dark;
-  }
-
-  .active .badge {
-    background-color: $color-background;
-  }
-} */
+*/

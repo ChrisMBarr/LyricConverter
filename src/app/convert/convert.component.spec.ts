@@ -119,7 +119,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         fixture.debugElement
-          .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+          .query(By.css('#test-convert-types-nav a:nth-of-type(2)'))
           .triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
@@ -130,7 +130,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         fixture.debugElement
-          .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+          .query(By.css('#test-convert-types-nav a:nth-of-type(2)'))
           .triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
