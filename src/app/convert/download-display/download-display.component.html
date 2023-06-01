@@ -1,33 +1,34 @@
-<div class="content-card">
-  <h3>
+<div class="card">
+  <h3 class="card-title">
     Converted {{ outputFileList.length }} {{ outputFileList.length === 1 ? "Song" : "Songs" }}
   </h3>
-
-  <button
-    type="button"
-    class="btn btn-primary"
-    *ngIf="outputFileList.length === 1"
-    (click)="onClickDownloadFiles()"
-  >
-    <svg class="icon" role="img">
-      <use xlink:href="#file-text-fill" />
-    </svg>
-    Download File
-  </button>
-
-  <div *ngIf="outputFileList.length > 1">
-    <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
+  <div class="card-content">
+    <button
+      type="button"
+      class="btn btn-primary"
+      *ngIf="outputFileList.length === 1"
+      (click)="onClickDownloadFiles()"
+    >
       <svg class="icon" role="img">
-        <use xlink:href="#file-zip-fill" />
+        <use xlink:href="#file-text-fill" />
       </svg>
-      Download as .zip
+      Download File
     </button>
-    or
-    <button type="button" class="btn btn-secondary btn-small" (click)="onClickDownloadFiles()">
-      <svg class="icon" role="img">
-        <use xlink:href="#files" />
-      </svg>
-      Download {{ outputFileList.length }} individual files
-    </button>
+
+    <div *ngIf="outputFileList.length > 1">
+      <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
+        <svg class="icon" role="img">
+          <use xlink:href="#file-zip-fill" />
+        </svg>
+        Download as .zip
+      </button>
+      or
+      <button type="button" class="btn btn-secondary btn-small" (click)="onClickDownloadFiles()">
+        <svg class="icon" role="img">
+          <use xlink:href="#files" />
+        </svg>
+        Download {{ outputFileList.length }} individual files
+      </button>
+    </div>
   </div>
 </div>

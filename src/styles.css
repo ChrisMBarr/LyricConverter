@@ -9,8 +9,32 @@
 }
 
 @layer components {
-  .content-card {
-    @apply rounded-lg p-4 bg-slate-900/40 backdrop-blur-lg border border-lc-highlight/10;
+  .card {
+    @apply rounded-lg bg-slate-900/40 backdrop-blur-lg border border-lc-highlight/10;
+  }
+
+  .card .card-title {
+    @apply border-b border-b-lc-highlight/10;
+  }
+
+  .card h3.card-title,
+  .card h4.card-title,
+  .card h5.card-title    {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  .card .card-content {
+    @apply p-4;
+  }
+
+  .card .card-content + .card-content {
+    @apply border-t border-t-lc-highlight/10;
+  }
+
+  .card h3.card-title + .card-content,
+  .card h4.card-title + .card-content,
+  .card h5.card-title + .card-content  {
+    @apply pt-2;
   }
 
   .btn {

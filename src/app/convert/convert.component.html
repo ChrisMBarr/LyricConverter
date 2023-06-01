@@ -25,10 +25,8 @@
         'sm:grid sm:grid-cols-2 sm:gap-4 md:block md:grid-cols-none': !displayInitialUi
       }"
     >
-      <nav class="content-card p-0 grid grid-cols-1 overflow-hidden" id="test-convert-types-nav">
-        <strong class="list-group-item text-center py-2 border-b border-lc-highlight/10">
-          Convert To
-        </strong>
+      <nav class="card p-0 grid grid-cols-1 overflow-hidden" id="test-convert-types-nav">
+        <strong class="card-title text-center py-2"> Convert To </strong>
         <a
           *ngFor="let fmt of outputTypesForMenu"
           (click)="onSwitchConversionType(fmt, $event)"
@@ -50,27 +48,32 @@
 
       <div
         id="test-drop-instructions-more"
-        class="content-card mt-4 sm:mt-0 md:mt-4"
+        class="card mt-4 sm:mt-0 md:mt-4"
         *ngIf="!displayInitialUi"
       >
-        You can drag more songs into this window to convert them, or
-        <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+        <div class="card-content">
+          You can drag more songs into this window to convert them, or
+          <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+        </div>
       </div>
     </aside>
   </div>
 
-  <div id="begin-area" class="content-card text-center md:col-span-3 flex flex-col items-center justify-center" *ngIf="displayInitialUi">
-    <p class="mb-4 mt-auto">Choose what file type you want to convert to, then&hellip;</p>
-    <p class="text-3xl">Drag your <strong>Song Files</strong> into this window</p>
-    <p>or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
+  <div id="begin-area" class="card md:col-span-3" *ngIf="displayInitialUi">
+    <div class="card-content text-center flex flex-col items-center justify-center">
+      <p class="mb-4 mt-auto">Choose what file type you want to convert to, then&hellip;</p>
+      <h2 class="text-3xl">Drag your <strong>Song Files</strong> into this window</h2>
+      <p>or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
 
-    <!-- Weirdness below is to preserve how whitespace is rendered -->
-    <small id="test-accepted-input-formats" class="mt-auto"
-      ><strong>Accepted Formats: </strong><span *ngFor="let inputType of inputTypesList; let i = index"
-        >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
-        }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
-      ></small
-    >
+      <!-- Weirdness below is to preserve how whitespace is rendered -->
+      <small id="test-accepted-input-formats" class="mt-auto"
+        ><strong>Accepted Formats: </strong
+        ><span *ngFor="let inputType of inputTypesList; let i = index"
+          >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
+          }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
+        ></small
+      >
+    </div>
   </div>
 
   <div id="display-area" class="sm:col-span-2 md:col-span-3" *ngIf="!displayInitialUi">
@@ -78,47 +81,51 @@
 
     <div
       id="test-donate"
-      class="content-card bg-blue-100/70 text-blue-900 border-blue-800/80 mb-4"
+      class="card bg-blue-100/70 text-blue-900 border-blue-800/80 mb-4"
       role="alert"
       *ngIf="convertedFileCount >= convertedCountMessageThreshold"
     >
-      <div class="flex items-center mb-2">
-        <svg class="icon icon-lg me-2" role="img" aria-label="Info:">
-          <use xlink:href="#info-fill" />
-        </svg>
-        <h4 class="text-lg">
-          Wow, you've converted a total of
-          <strong>{{ convertedFileCount }} songs</strong> with LyricConverter!
-        </h4>
-      </div>
-      <p class="mb-2">
-        I've spent a lot of time working on this and I would really appreciate a small donation if
-        you've found this tool to be useful.
-      </p>
+      <div class="card-content">
+        <div class="flex items-center mb-2">
+          <svg class="icon icon-lg me-2" role="img" aria-label="Info:">
+            <use xlink:href="#info-fill" />
+          </svg>
+          <h4 class="text-lg">
+            Wow, you've converted a total of
+            <strong>{{ convertedFileCount }} songs</strong> with LyricConverter!
+          </h4>
+        </div>
+        <p class="mb-2">
+          I've spent a lot of time working on this and I would really appreciate a small donation if
+          you've found this tool to be useful.
+        </p>
 
-      <app-donate-button></app-donate-button>
+        <app-donate-button></app-donate-button>
+      </div>
     </div>
 
     <div
       id="test-error-message-display"
-      class="content-card bg-red-200/80 text-red-700 border-red-700/80 mb-4"
+      class="card bg-red-200/80 text-red-700 border-red-700/80 mb-4"
       role="alert"
       *ngIf="errorsList.length > 0"
     >
-      <h4 class="flex items-center text-xl font-bold mb-2">
-        <svg class="icon icon-lg mr-2" role="img" aria-label="Alert:">
-          <use xlink:href="#exclamation-triangle-fill" />
-        </svg>
-        File Conversion Errors
-      </h4>
-      <ul>
-        <li *ngFor="let err of errorsList">
-          <span *ngIf="err.fileName"
-            ><strong>{{ err.fileName }}</strong> -
-          </span>
-          {{ err.message }}
-        </li>
-      </ul>
+      <div class="card-content">
+        <h4 class="flex items-center text-xl font-bold mb-2">
+          <svg class="icon icon-lg mr-2" role="img" aria-label="Alert:">
+            <use xlink:href="#exclamation-triangle-fill" />
+          </svg>
+          File Conversion Errors
+        </h4>
+        <ul>
+          <li *ngFor="let err of errorsList">
+            <span *ngIf="err.fileName"
+              ><strong>{{ err.fileName }}</strong> -
+            </span>
+            {{ err.message }}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <app-slide-display

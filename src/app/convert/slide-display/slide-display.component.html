@@ -1,14 +1,16 @@
-<div class="song content-card mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
-  <h3 class="text-2xl mb-4">{{ f.songData.title }}</h3>
-
-  <ul class="text-sm mb-4 flex flex-wrap gap-1">
-    <li class="inline-flex" *ngFor="let info of f.songData.info">
-      <span class="bg-slate-500 text-white px-1 rounded-l">{{ info.name }}</span>
-      <span class="bg-white text-slate-600 px-1 rounded-r" >{{ info.value }}</span>
-    </li>
-  </ul>
-
-  <div class="test-song-slides-container grid gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+<div class="song card mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
+  <h3 class="card-title">{{ f.songData.title }}</h3>
+  <div class="card-content">
+    <ul class="text-sm flex flex-wrap gap-1">
+      <li class="inline-flex" *ngFor="let info of f.songData.info">
+        <span class="bg-slate-500 text-white px-1 rounded-l">{{ info.name }}</span>
+        <span class="bg-white text-slate-600 px-1 rounded-r">{{ info.value }}</span>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="test-song-slides-container card-content grid gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+  >
     <div
       class="bg-white/80 text-black rounded-md border border-slate-500 overflow-hidden flex flex-col"
       *ngFor="let slide of f.songData.slides"
@@ -17,5 +19,4 @@
       <footer class="bg-white p-1 font-bold">{{ slide.title }}</footer>
     </div>
   </div>
-
 </div>
