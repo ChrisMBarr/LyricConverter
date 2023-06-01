@@ -1,11 +1,15 @@
-<div class="song card mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
+<div class="card mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
   <h3 class="card-title">{{ f.songData.title }}</h3>
 
   <div class="card-content !pb-2">
     <ul class="text-sm flex flex-wrap gap-1">
-      <li class="inline-flex rounded overflow-hidden bg-slate-700 hover:bg-slate-600" *ngFor="let info of f.songData.info">
+      <li
+        class="inline-flex rounded overflow-hidden bg-slate-700 hover:bg-slate-600"
+        *ngFor="let info of f.songData.info"
+      >
         <span class="text-white px-1">{{ info.name }}</span>
-        <span class="bg-white text-slate-600 px-1">{{ info.value }}</span>
+        <!-- &#32; is a space character. We need to keep it here for copy/paste and for testing -->
+        <span class="bg-white text-slate-600 px-1">&#32;{{ info.value }}</span>
       </li>
     </ul>
   </div>
@@ -21,5 +25,4 @@
       <footer class="bg-white text-slate-900 px-1 font-bold">{{ slide.title }}</footer>
     </div>
   </div>
-
 </div>
