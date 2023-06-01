@@ -4,12 +4,12 @@
   <div class="card-content !pb-2">
     <ul class="text-sm flex flex-wrap gap-1">
       <li
-        class="inline-flex rounded overflow-hidden bg-slate-700 hover:bg-slate-600"
+        class="inline-flex rounded overflow-hidden text-slate-800 cursor-default border border-slate-500 hover:border-slate-600 bg-slate-300 hover:bg-slate-400"
         *ngFor="let info of f.songData.info"
       >
-        <span class="text-white px-1">{{ info.name }}</span>
+        <strong class="px-1">{{ info.name }}</strong>
         <!-- &#32; is a space character. We need to keep it here for copy/paste and for testing -->
-        <span class="bg-white text-slate-600 px-1">&#32;{{ info.value }}</span>
+        <span class="bg-slate-50  px-1">&#32;{{ info.value }}</span>
       </li>
     </ul>
   </div>
@@ -18,11 +18,11 @@
     class="test-song-slides-container card-content grid gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
   >
     <div
-      class="bg-gray-800/80 hover:bg-gray-700/90 rounded-md border border-slate-700 overflow-hidden flex flex-col"
+      class="flex flex-col rounded-md overflow-hidden text-slate-800 cursor-default border border-slate-500 hover:border-slate-600 bg-slate-300 hover:bg-slate-400"
       *ngFor="let slide of f.songData.slides"
     >
-      <p class="mb-auto p-1 leading-4 text-sm">{{ slide.lyrics }}</p>
-      <footer class="bg-white text-slate-900 px-1 font-bold">{{ slide.title }}</footer>
+      <p class="grow p-1 leading-4 text-sm bg-slate-50">{{ slide.lyrics }}</p>
+      <footer class=" px-1 font-bold">{{ slide.title }}</footer>
     </div>
   </div>
 </div>
