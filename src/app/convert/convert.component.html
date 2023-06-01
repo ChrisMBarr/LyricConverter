@@ -1,64 +1,76 @@
-<div id="drop-area" appDragAndDropFiles (fileDrop)="onReceiveFiles($event)">
-  <div id="drop-area-message">Drop Your Song Files Here</div>
+<div
+  id="drop-area"
+  class="pointer-events-none fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center backdrop-blur-sm bg-slate-600/50"
+  appDragAndDropFiles
+  (fileDrop)="onReceiveFiles($event)"
+>
+  <div
+    class="bg-slate-50/90 text-slate-800 rounded-xl shadow-lg text-3xl font-bold p-8 border-2 border-slate-600 flex items-center"
+  >
+    <svg class="icon mr-2" role="img">
+      <use xlink:href="#files" />
+    </svg>
+    <span>Drop Your Song Files Here</span>
+  </div>
 </div>
 
 <input class="hidden" type="file" multiple (change)="onFileSelect($event)" #fileInput />
 
 <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-  <aside class="sticky md:top-4">
-    <nav class="content-card p-0 grid grid-cols-1 overflow-hidden" id="test-convert-types-nav">
-      <strong class="list-group-item text-center py-2 border-b border-lc-highlight/10">
-        Convert To
-      </strong>
-      <a
-        *ngFor="let fmt of outputTypesForMenu"
-        (click)="onSwitchConversionType(fmt, $event)"
-        [ngClass]="{ 'font-bold bg-lc-highlight/10 border-l-2 border-l-lc-highlight': selectedOutputType === fmt }"
-        class="flex justify-between items-center p-2 text-white border-b border-b-lc-highlight/10 hover:no-underline hover:bg-lc-highlight/20"
-        href="#"
-      >
-        {{ fmt.name }}
-        <span
-          class="bg-lc-highlight text-white px-1 rounded text-xs font-mono"
-          *ngIf="fmt.fileExt"
-          >.{{ fmt.fileExt }}</span
-        >
-      </a>
-    </nav>
-
-    <div
-      id="test-drop-instructions-more1"
-      class="drop-instructions content-card mt-3 hidden md:block"
-      *ngIf="!displayInitialUi"
+  <div [ngClass]="{ 'sm:col-span-2 md:col-span-1': !displayInitialUi }">
+    <!-- wrapping div needed to make sticky work inside a grid layout -->
+    <aside
+      class="sticky md:top-4"
+      [ngClass]="{
+        'sm:grid sm:grid-cols-2 sm:gap-4 md:block md:grid-cols-none': !displayInitialUi
+      }"
     >
-      You can drag more songs into this window to convert them, or
-      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
-    </div>
-  </aside>
+      <nav class="content-card p-0 grid grid-cols-1 overflow-hidden" id="test-convert-types-nav">
+        <strong class="list-group-item text-center py-2 border-b border-lc-highlight/10">
+          Convert To
+        </strong>
+        <a
+          *ngFor="let fmt of outputTypesForMenu"
+          (click)="onSwitchConversionType(fmt, $event)"
+          [ngClass]="{
+            'font-bold bg-lc-highlight/10 border-l-2 border-l-lc-highlight':
+              selectedOutputType === fmt
+          }"
+          class="flex justify-between items-center p-2 text-white border-b border-b-lc-highlight/10 hover:no-underline hover:bg-lc-highlight/20"
+          href="#"
+        >
+          {{ fmt.name }}
+          <span
+            class="bg-lc-highlight text-white px-1 rounded text-xs font-mono"
+            *ngIf="fmt.fileExt"
+            >.{{ fmt.fileExt }}</span
+          >
+        </a>
+      </nav>
 
-  <div id="begin-area" class="content-card md:col-span-3" *ngIf="displayInitialUi">
-    <div class="drop-instructions">
-      <p id="primary-instructions">Drag your <strong>Song Files</strong> into this window</p>
-
-      <p id="secondary-instructions">
-        or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a>
-      </p>
-
-      <!-- Weirdness below is to preserve how whitespace is rendered -->
-      <small id="accepted-input-formats"
-        >(<span *ngFor="let inputType of inputTypesList; let i = index"
-          >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
-          }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
-        >)</small
+      <div
+        id="test-drop-instructions-more"
+        class="content-card mt-4 sm:mt-0 md:mt-4"
+        *ngIf="!displayInitialUi"
       >
-    </div>
+        You can drag more songs into this window to convert them, or
+        <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+      </div>
+    </aside>
   </div>
 
-  <div id="test-drop-instructions-more2" class="content-card md:hidden" *ngIf="!displayInitialUi">
-    <div class="drop-instructions">
-      You can drag more songs into this window to convert them, or
-      <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
-    </div>
+  <div id="begin-area" class="content-card text-center md:col-span-3 flex flex-col items-center justify-center" *ngIf="displayInitialUi">
+    <p class="mb-4 mt-auto">Choose what file type you want to convert to, then&hellip;</p>
+    <p class="text-3xl">Drag your <strong>Song Files</strong> into this window</p>
+    <p>or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
+
+    <!-- Weirdness below is to preserve how whitespace is rendered -->
+    <small id="test-accepted-input-formats" class="mt-auto"
+      ><strong>Accepted Formats: </strong><span *ngFor="let inputType of inputTypesList; let i = index"
+        >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
+        }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
+      ></small
+    >
   </div>
 
   <div id="display-area" class="sm:col-span-2 md:col-span-3" *ngIf="!displayInitialUi">

@@ -4,7 +4,7 @@
 
 @layer base {
   a {
-    @apply hover:underline text-lc-highlight;
+    @apply hover:underline text-lc-light;
   }
 }
 
@@ -34,8 +34,7 @@
   }
 
   .icon {
-    /* Bootstrap SVG icons
-    Defaults to match text size and color */
+    /* Bootstrap SVG icons - defaults to match text size and color */
     width: 1em;
     height: 1em;
     display: inline-block;
