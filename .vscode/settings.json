@@ -15,6 +15,12 @@
       "tsconfig.json": "tsconfig.*.json",
       "package.json": "package-lock.json"
     },
+    "files.associations": {
+      "*.sng": "chordpro",
+      "*.pro4": "xml",
+      "*.pro5": "xml",
+      "*.pro6": "xml",
+    },
     "explorer.fileNesting.expand": false,
     "cSpell.words": [
       "CCLI",
