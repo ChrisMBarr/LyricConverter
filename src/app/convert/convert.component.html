@@ -34,12 +34,12 @@
             'font-bold bg-lc-highlight/10 border-l-2 border-l-lc-highlight':
               selectedOutputType === fmt
           }"
-          class="flex justify-between items-center p-2 text-white border-b border-b-lc-highlight/10 hover:no-underline hover:bg-lc-highlight/20"
+          class="flex items-center p-2 text-white border-b border-b-lc-highlight/10 hover:no-underline hover:bg-lc-highlight/20"
           href="#"
         >
           {{ fmt.name }}
           <span
-            class="bg-lc-highlight text-white px-1 rounded text-xs font-mono"
+            class="bg-slate-300 text-slate-800 border border-white/30 p-0.5 pl-0 leading-none rounded text-xs font-mono ml-1"
             *ngIf="fmt.fileExt"
             >.{{ fmt.fileExt }}</span
           >
