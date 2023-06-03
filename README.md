@@ -16,10 +16,10 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[OpenSong](https://opensong.org/)** - [Issue #5][2]              |   ⭕   |   ⭕  |
 | **[OpenLyrics](https://docs.openlyrics.org)**                      |   ✅   |   ✅  |
 | **Plain Text**                                                     |   ✅   |   ✅  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v4**    |   ✅   |   ⭕  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v5**    |   ✅   |   ✅  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v6**💾 |   ⭕    |  ⭕  |
-| **[Pro Presenter](https://renewedvision.com/propresenter/) v7**💾 |   ⭕    |  ⭕  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v4**     |   ✅   |   ⭕  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✅   |   ✅  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v6**💾  |   ⭕    |  ⭕  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v7**💾  |   ⭕    |  ⭕  |
 | **[SongPro](https://songpro.org/)**                                |   ✅   |   ✅  |
 | **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✅   |   ⭕  |
 | **[SongShow Plus](https://songshowplus.com/) v8**                  |   ❓   |   ⭕  |

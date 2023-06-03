@@ -7,7 +7,7 @@ import { Utils } from '../shared/utils';
 import { Base64 } from 'js-base64';
 
 export class InputTypeProPresenter4 implements IInputConverter {
-  readonly name = 'Pro Presenter 4';
+  readonly name = 'ProPresenter 4';
   readonly fileExt = 'pro4';
   readonly url = 'https://renewedvision.com/propresenter/';
 

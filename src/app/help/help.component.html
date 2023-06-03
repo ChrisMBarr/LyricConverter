@@ -1,103 +1,113 @@
-<div class="row">
-  <div class="col-md-5">
-    <h4>Supported Formats</h4>
-    <table class="mb-2">
-      <caption>
-        <p>
-          <svg class="bi text-info" role="img" aria-label="Tip:">
-            <use xlink:href="#info-fill" />
-          </svg>
-          You can import the ProPresenter 5 files made by LyricConverter into ProPresenter 6 &amp;
-          7!
-        </p>
-        <p class="mb-0">
-          Eventually I would love for LyricConverter to convert between all of these formats and
-          more, but for the time being this is all it can do.
-        </p>
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col" class="text-center">Import</th>
-          <th scope="col" class="text-center">Export</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let format of combinedFormatsList">
-          <th scope="row">
-            <a *ngIf="format.url" [href]="format.url" target="_blank">{{ format.name }}</a>
-            <span *ngIf="!format.url">{{ format.name }}</span>
-            <svg
-              *ngIf="format.hasNote"
-              class="bi ms-1 text-info"
-              role="img"
-              aria-label="Info: about this format"
-            >
-              <use xlink:href="#info-fill" />
-            </svg>
-          </th>
-          <td class="text-center">
-            <svg
-              *ngIf="format.canImport"
-              class="bi text-success"
-              role="img"
-              aria-label="Import is supported"
-            >
-              <use xlink:href="#check-circle-fill" />
-            </svg>
-            <svg
-              *ngIf="!format.canImport"
-              class="bi text-muted"
-              role="img"
-              aria-label="Export is not supported"
-            >
-              <use xlink:href="#x-circle" />
-            </svg>
-          </td>
-          <td class="text-center">
-            <svg
-              *ngIf="format.canExport"
-              class="bi text-success"
-              role="img"
-              aria-label="Export is supported"
-            >
-              <use xlink:href="#check-circle-fill" />
-            </svg>
-            <svg
-              *ngIf="!format.canExport"
-              class="bi text-muted"
-              role="img"
-              aria-label="Export is not supported"
-            >
-              <use xlink:href="#x-circle" />
-            </svg>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="grid sm:grid-cols-2 gap-4">
+  <div class="card">
+    <h3 class="card-title">Supported Formats</h3>
+    <div class="card-content">
+      <p class="text-sm mb-2">
+        Eventually I would love for LyricConverter to convert between all of these formats and more,
+        but for the time being this is all it can do.
+      </p>
+
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th scope="col" class="w-1/2"></th>
+            <th scope="col" class="w-1/4 text-center">Import</th>
+            <th scope="col" class="w-1/4 text-center">Export</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let format of combinedFormatsList">
+            <th scope="row" class="text-left">
+              <a *ngIf="format.url" [href]="format.url" target="_blank">{{ format.name }}</a>
+              <span *ngIf="!format.url">{{ format.name }}</span>
+              <svg
+                *ngIf="format.hasNote"
+                class="icon ml-1 text-sm text-blue-400"
+                role="img"
+                aria-label="Info: about this format"
+              >
+                <use xlink:href="#info-fill" />
+              </svg>
+            </th>
+            <td class="text-center">
+              <svg
+                *ngIf="format.canImport"
+                class="icon text-green-400 drop-shadow-md"
+                role="img"
+                aria-label="Import is supported"
+              >
+                <use xlink:href="#check-circle-fill" />
+              </svg>
+              <svg
+                *ngIf="!format.canImport"
+                class="icon text-red-400 drop-shadow-md"
+                role="img"
+                aria-label="Export is not supported"
+              >
+                <use xlink:href="#x-circle" />
+              </svg>
+            </td>
+            <td class="text-center">
+              <svg
+                *ngIf="format.canExport"
+                class="icon text-green-400 drop-shadow-md"
+                role="img"
+                aria-label="Export is supported"
+              >
+                <use xlink:href="#check-circle-fill" />
+              </svg>
+              <svg
+                *ngIf="!format.canExport"
+                class="icon text-red-400 drop-shadow-md"
+                role="img"
+                aria-label="Export is not supported"
+              >
+                <use xlink:href="#x-circle" />
+              </svg>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="my-2 text-sm">
+        <svg class="icon text-blue-400" role="img" aria-label="Tip:">
+          <use xlink:href="#info-fill" />
+        </svg>
+        You can import the ProPresenter 5 files made by LyricConverter into ProPresenter 6 &amp; 7!
+      </p>
+    </div>
   </div>
-  <div class="col offset-md-1">
 
-    <h4>Have a question or some other problem?</h4>
-    <a
-      class="btn btn-light btn-large d-inline-flex align-items-center"
-      target="_blank"
-      href="https://github.com/FiniteLooper/LyricConverter/issues"
-    >
-      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Github:">
-        <use xlink:href="#github" />
-      </svg>
-      Open an issue on GitHub
-    </a>
+  <div>
+    <div class="card mb-4">
+      <h3 class="card-title">Have a question or some other problem?</h3>
+      <div class="card-content">
+        <a
+          class="btn btn-secondary btn-lg"
+          target="_blank"
+          href="https://github.com/FiniteLooper/LyricConverter/issues"
+        >
+          <svg class="icon flex-shrink-0 me-2" role="img" aria-label="Github:">
+            <use xlink:href="#github" />
+          </svg>
+          Open an issue on GitHub
+        </a>
+      </div>
+    </div>
 
-    <h4 class="mt-4">SongShow Plus Notes</h4>
-    <p>
-      SongShow Plus files are in a binary format, which can make them difficult to extract song
-      lyrics from sometimes. The majority of SongShow Plus files are formatted in a similar manner
-      which LyricConverter can figure out, but occasionally there are files with odd formatting. In these
-      cases all the lyrics <em>should</em> be extracted, but it cannot be organized in any way. All I
-      can do in this case is dump all the text onto a single slide. You might have better luck
-      exporting these problem files from SongShow Plus into other formats.
-    </p>
+    <div class="card">
+      <h3 class="card-title">SongShow Plus Notes</h3>
+      <div class="card-content">
+        <p>
+          SongShow Plus files are in a binary format, which can make them difficult to extract song
+          lyrics from sometimes. The majority of SongShow Plus files are formatted in a similar
+          manner which LyricConverter can figure out, but occasionally there are files with odd
+          formatting. In these cases all the lyrics <em>should</em> be extracted, but it cannot be
+          organized in any way. All I can do in this case is dump all the text onto a single slide.
+          You might have better luck exporting these problem files from SongShow Plus into other
+          formats.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
