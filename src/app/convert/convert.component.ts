@@ -1,4 +1,12 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+  OnDestroy,
+} from '@angular/core';
 import { ParserService } from './parser/parser.service';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
@@ -6,19 +14,22 @@ import { IOutputConverter } from './outputs/output-converter.model';
 import { ErrorsService } from './errors/errors.service';
 import { ISongError } from './models/errors.model';
 import { DOCUMENT } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'app-convert',
   templateUrl: './convert.component.html',
-  styleUrls: ['./convert.component.scss'],
+  styleUrls: ['./convert.component.css'],
 })
-export class ConvertComponent implements OnInit {
+export class ConvertComponent implements OnInit, OnDestroy {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
   private readonly convertedFileCountStorageKey = 'CONVERT_COUNT';
   private readonly window: Window = this.document.defaultView as Window;
 
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
+  private filesChangedSub$: Subscription = Subscription.EMPTY;
+  private errorsChangedSub$: Subscription = Subscription.EMPTY;
 
   displayInitialUi = true;
   convertedFileCount = 0;
@@ -42,14 +53,21 @@ export class ConvertComponent implements OnInit {
     this.getSavedConvertedFileCount();
 
     //When files have finished parsing we will handle them here
-    this.parserSvc.parsedFilesChanged$.subscribe((rawFiles: IRawDataFile[]) => {
-      this.getConvertersAndExtractData(rawFiles);
-    });
+    this.filesChangedSub$ = this.parserSvc.parsedFilesChanged$.subscribe(
+      (rawFiles: IRawDataFile[]) => {
+        this.getConvertersAndExtractData(rawFiles);
+      }
+    );
 
     //Updates from the error service
-    this.errorsSvc.errorsChanged$.subscribe((errorsList: ISongError[]) => {
+    this.errorsChangedSub$ = this.errorsSvc.errorsChanged$.subscribe((errorsList: ISongError[]) => {
       this.errorsList = errorsList;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.filesChangedSub$.unsubscribe();
+    this.errorsChangedSub$.unsubscribe();
   }
 
   private buildOutputTypesList(): void {

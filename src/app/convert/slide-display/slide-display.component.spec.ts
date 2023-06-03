@@ -28,18 +28,27 @@ describe('SlideDisplayComponent', () => {
 
     fixture.detectChanges();
 
-    expect(fixture.debugElement.queryAll(By.css('.song')).length).toEqual(1);
-    expect(fixture.debugElement.query(By.css('.song-title')).nativeElement.textContent).toEqual(
+    expect(fixture.debugElement.queryAll(By.css('.card')).length).toEqual(1);
+    expect(fixture.debugElement.query(By.css('h3')).nativeElement.textContent).toEqual(
       mockFilesCopy.songData.title
     );
 
     //Song Info
     mockFilesCopy.songData.info.forEach((info, idx) => {
+      const a = `${info.name} ${info.value}`;
+      const b: string = fixture.debugElement
+      .query(By.css(`ul li:nth-of-type(${idx + 1})`))
+      .nativeElement.textContent.trim();
+
+      console.group(a)
+      a.split('').forEach((c, i)=>{
+        console.log(c, c.charCodeAt(0), b[i], b.charCodeAt(i));
+      })
+      console.groupEnd()
+
       expect(
-        fixture.debugElement
-          .query(By.css(`.song-info li:nth-of-type(${idx + 1})`))
-          .nativeElement.textContent.trim()
-      ).toEqual(`${info.name}: ${info.value}`);
+        a
+      ).toEqual(b);
     });
 
     //Song Lyrics/Slides
@@ -47,14 +56,14 @@ describe('SlideDisplayComponent', () => {
       expect(
         fixture.debugElement
           .query(
-            By.css(`.song-slides-container .col:nth-of-type(${idx + 1}) .song-slide .card-body`)
+            By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) p`)
           )
           .nativeElement.textContent.trim()
       ).toEqual(slide.lyrics);
       expect(
         fixture.debugElement
           .query(
-            By.css(`.song-slides-container .col:nth-of-type(${idx + 1}) .song-slide .card-footer`)
+            By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) footer`)
           )
           .nativeElement.textContent.trim()
       ).toEqual(slide.title);
@@ -67,11 +76,11 @@ describe('SlideDisplayComponent', () => {
 
     fixture.detectChanges();
 
-    expect(fixture.debugElement.queryAll(By.css('.song')).length).toEqual(2);
+    expect(fixture.debugElement.queryAll(By.css('.card')).length).toEqual(2);
 
     mockFiles.forEach((f, fileIdx) => {
       expect(
-        fixture.debugElement.query(By.css(`.song:nth-of-type(${fileIdx + 1}) .song-title`))
+        fixture.debugElement.query(By.css(`.card:nth-of-type(${fileIdx + 1}) h3`))
           .nativeElement.textContent
       ).toEqual(f.songData.title);
 
@@ -80,10 +89,10 @@ describe('SlideDisplayComponent', () => {
         expect(
           fixture.debugElement
             .query(
-              By.css(`.song:nth-of-type(${fileIdx + 1}) .song-info li:nth-of-type(${idx + 1})`)
+              By.css(`.card:nth-of-type(${fileIdx + 1}) ul li:nth-of-type(${idx + 1})`)
             )
             .nativeElement.textContent.trim()
-        ).toEqual(`${info.name}: ${info.value}`);
+        ).toEqual(`${info.name} ${info.value}`);
       });
 
       //Song Lyrics/Slides
@@ -92,9 +101,9 @@ describe('SlideDisplayComponent', () => {
           fixture.debugElement
             .query(
               By.css(
-                `.song:nth-of-type(${fileIdx + 1}) .song-slides-container .col:nth-of-type(${
+                `.card:nth-of-type(${fileIdx + 1}) .test-song-slides-container > div:nth-of-type(${
                   idx + 1
-                }) .song-slide .card-body`
+                }) p`
               )
             )
             .nativeElement.textContent.trim()
@@ -103,9 +112,9 @@ describe('SlideDisplayComponent', () => {
           fixture.debugElement
             .query(
               By.css(
-                `.song:nth-of-type(${fileIdx + 1}) .song-slides-container .col:nth-of-type(${
+                `.card:nth-of-type(${fileIdx + 1}) .test-song-slides-container > div:nth-of-type(${
                   idx + 1
-                }) .song-slide .card-footer`
+                }) footer`
               )
             )
             .nativeElement.textContent.trim()

@@ -13,17 +13,47 @@ interface ICombinedFormatItem {
 @Component({
   selector: 'app-help',
   templateUrl: './help.component.html',
-  styleUrls: ['./help.component.scss'],
+  styleUrls: ['./help.component.css'],
 })
 export class HelpComponent implements OnInit {
   combinedFormatsList: ICombinedFormatItem[] = [];
 
   unsupportedFormatsList: ICombinedFormatItem[] = [
-    { name: 'ProPresenter 6', canImport: false, canExport: false, hasNote: true, url: 'https://renewedvision.com/propresenter/' },
-    { name: 'ProPresenter 7', canImport: false, canExport: false, hasNote: true, url: 'https://renewedvision.com/propresenter/' },
-    { name: 'MediaShout', canImport: false, canExport: false, hasNote: false, url: 'https://mediashout.com/' },
-    { name: 'EasyWorship', canImport: false, canExport: false, hasNote: false, url: 'https://easyworship.com/' },
-    { name: 'OpenSong', canImport: false, canExport: false, hasNote: false, url: 'http://opensong.org/' },
+    {
+      name: 'ProPresenter 6',
+      canImport: false,
+      canExport: false,
+      hasNote: true,
+      url: 'https://renewedvision.com/propresenter/',
+    },
+    {
+      name: 'ProPresenter 7',
+      canImport: false,
+      canExport: false,
+      hasNote: true,
+      url: 'https://renewedvision.com/propresenter/',
+    },
+    {
+      name: 'MediaShout',
+      canImport: false,
+      canExport: false,
+      hasNote: false,
+      url: 'https://mediashout.com/',
+    },
+    {
+      name: 'EasyWorship',
+      canImport: false,
+      canExport: false,
+      hasNote: false,
+      url: 'https://easyworship.com/',
+    },
+    {
+      name: 'OpenSong',
+      canImport: false,
+      canExport: false,
+      hasNote: false,
+      url: 'http://opensong.org/',
+    },
   ];
 
   constructor(private readonly parserSvc: ParserService) {}

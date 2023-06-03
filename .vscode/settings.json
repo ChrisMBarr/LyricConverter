@@ -7,9 +7,10 @@
       ".angular": true,
       ".editorconfig": true,
       ".prettierrc": true,
-      "node_modules": true,
       "coverage": true,
-      "design": true
+      "design": true,
+      "dist": true,
+      "node_modules": true,
     },
     "explorer.fileNesting.patterns": {
       "tsconfig.json": "tsconfig.*.json",

@@ -119,7 +119,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         fixture.debugElement
-          .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+          .query(By.css('#test-convert-types-nav a:nth-of-type(2)'))
           .triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
@@ -130,7 +130,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         fixture.debugElement
-          .query(By.css('#convert-types .list-group-item:nth-of-type(2)'))
+          .query(By.css('#test-convert-types-nav a:nth-of-type(2)'))
           .triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
@@ -143,7 +143,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         expect(
-          fixture.debugElement.query(By.css('#accepted-input-formats')).nativeElement.textContent
+          fixture.debugElement.query(By.css('#test-accepted-input-formats')).nativeElement.textContent
         ).toContain('FooIn, BarIn, or BazIn');
       });
     });
@@ -165,11 +165,8 @@ describe('ConvertComponent', () => {
         expect(fixture.debugElement.query(By.css('#begin-area')))
           .withContext('#begin-area Element')
           .not.toBeNull();
-        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more1')))
-          .withContext('#test-drop-instructions-more1 Element')
-          .toBeNull();
-        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more2')))
-          .withContext('#test-drop-instructions-more2 Element')
+        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')))
+          .withContext('#test-drop-instructions-more Element')
           .toBeNull();
         expect(fixture.debugElement.query(By.css('#display-area')))
           .withContext('#display-area Element')
@@ -189,11 +186,8 @@ describe('ConvertComponent', () => {
           expect(fixture.debugElement.query(By.css('#begin-area')))
             .withContext('#begin-area Element')
             .toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more1')))
-            .withContext('#test-drop-instructions-more1 Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more2')))
-            .withContext('#test-drop-instructions-more2 Element')
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')))
+            .withContext('#test-drop-instructions-more Element')
             .not.toBeNull();
           expect(fixture.debugElement.query(By.css('#display-area')))
             .withContext('#display-area Element')
@@ -236,11 +230,8 @@ describe('ConvertComponent', () => {
           expect(fixture.debugElement.query(By.css('#begin-area')))
             .withContext('#begin-area Element')
             .toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more1')))
-            .withContext('#test-drop-instructions-more1 Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more2')))
-            .withContext('#test-drop-instructions-more2 Element')
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')))
+            .withContext('#test-drop-instructions-more Element')
             .not.toBeNull();
           expect(fixture.debugElement.query(By.css('#display-area')))
             .withContext('#display-area Element')
@@ -352,7 +343,27 @@ describe('ConvertComponent', () => {
         expect(component.onReceiveFiles).toHaveBeenCalledWith(dt.files);
       });
 
-      it('should trigger a click event on the file chooser when the "select files" link is clicked', () => {
+      it('should trigger a click event on the file chooser when the "select some files" link is clicked', () => {
+        fixture.detectChanges();
+
+        const inputEl: HTMLInputElement = fixture.debugElement.query(
+          By.css('input[type="file"]')
+        ).nativeElement;
+
+        spyOn(inputEl, 'click').and.callFake(() => {});
+
+        const selectFilesLinkEl = fixture.debugElement.query(
+          By.css('#begin-area a')
+        );
+        const clickEvent = new Event('click');
+        selectFilesLinkEl.nativeElement.dispatchEvent(clickEvent);
+        fixture.detectChanges();
+        expect(inputEl.click)
+          .withContext('The "select some files" link that triggers the file input')
+          .toHaveBeenCalledTimes(1);
+      });
+
+      it('should trigger a click event on the file chooser when the "select some more files" link is clicked', () => {
         component.displayInitialUi = false;
         fixture.detectChanges();
 
@@ -362,25 +373,15 @@ describe('ConvertComponent', () => {
 
         spyOn(inputEl, 'click').and.callFake(() => {});
 
-        const selectFilesLinkEl1 = fixture.debugElement.query(
-          By.css('#test-drop-instructions-more1 a')
+        const selectFilesLinkEl = fixture.debugElement.query(
+          By.css('#test-drop-instructions-more a')
         );
-        const clickEvent1 = new Event('click');
-        selectFilesLinkEl1.nativeElement.dispatchEvent(clickEvent1);
+        const clickEvent = new Event('click');
+        selectFilesLinkEl.nativeElement.dispatchEvent(clickEvent);
         fixture.detectChanges();
         expect(inputEl.click)
-          .withContext('The 1st "select files" link that triggers the file input')
+          .withContext('The "select some more files" link that triggers the file input')
           .toHaveBeenCalledTimes(1);
-
-        const selectFilesLinkEl2 = fixture.debugElement.query(
-          By.css('#test-drop-instructions-more2 a')
-        );
-        const clickEvent2 = new Event('click');
-        selectFilesLinkEl2.nativeElement.dispatchEvent(clickEvent2);
-        fixture.detectChanges();
-        expect(inputEl.click)
-          .withContext('The 2nd "select files" link that triggers the file input')
-          .toHaveBeenCalledTimes(2);
       });
     });
 

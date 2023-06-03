@@ -1,6 +1,6 @@
 {
   "name": "lyric-converter",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -25,7 +25,6 @@
     "@angular/platform-browser": "^16.0.4",
     "@angular/platform-browser-dynamic": "^16.0.4",
     "@angular/router": "^16.0.4",
-    "bootstrap": "^5.2.3",
     "fast-xml-parser": "^4.2.2",
     "file-saver": "^2.0.5",
     "js-base64": "^3.7.5",
@@ -33,7 +32,7 @@
     "rxjs": "~7.8.1",
     "songpro": "^0.1.2",
     "timers-browserify": "^2.0.12",
-    "tslib": "^2.5.2",
+    "tslib": "^2.5.3",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -50,7 +49,8 @@
     "@types/jasmine": "~4.3.2",
     "@typescript-eslint/eslint-plugin": "~5.59.8",
     "@typescript-eslint/parser": "~5.59.8",
-    "eslint": "~8.41.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "~8.42.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.2.0",
@@ -58,6 +58,8 @@
     "karma-firefox-launcher": "~2.1.2",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
     "typescript": "~5.0.4"
   }
 }

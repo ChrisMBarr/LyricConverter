@@ -1,65 +1,72 @@
-<div class="row">
-  <div class="col-md-7">
-    <h4>Why Was This Made?</h4>
-    <p>
-      I'm the guy at my church who runs the lyric presentation software for a lot of the services.
-      We used SongShow Plus for several years, and it worked pretty well for us. It did have a few
-      key frustrations for us, plus the fact that we <em>really</em> wanted to switch over to a Mac.
-      After looking into it, ProPresenter seemed like a great choice.
-    </p>
+<div class="grid md:grid-cols-3 gap-4">
+  <div class="card md:col-span-2">
+    <h3 class="card-title">Why Was This Made?</h3>
+    <div class="card-content">
+      <p class="mb-2">
+        I'm the guy at my church who runs the lyric presentation software for a lot of the services.
+        We used SongShow Plus for several years, and it worked pretty well for us. It did have a few
+        key frustrations for us, plus the fact that we <em>really</em> wanted to switch over to a
+        Mac. After looking into it, ProPresenter seemed like a great choice.
+      </p>
 
-    <p>
-      After making the leap, we quickly realized that SongShow Plus had absolutely
-      <strong>no way to export</strong> our songs, and ProPresenter had absolutely no way of getting
-      these songs from SongShow Plus! Sure, there are a few half-baked solutions out there, or the
-      good old copy-n-paste-every-slide-of-every-song method, but none of those are really ideal.
-    </p>
-    <p>
-      After talking to the media director at another church, he told me that they were holding off
-      making the same software switch that we had made because they were uncertain of how to
-      transfer all of their songs over. This got me thinking&hellip; It seemed as if enough people
-      had the need for a tool like this and yet one didn&#39;t exist!
-    </p>
+      <p class="mb-2">
+        After making the leap, we quickly realized that SongShow Plus had absolutely
+        <strong>no way to export</strong> our songs, and ProPresenter had absolutely no way of
+        getting these songs from SongShow Plus! Sure, there are a few half-baked solutions out
+        there, or the good old copy-n-paste-every-slide-of-every-song method, but none of those are
+        really ideal.
+      </p>
+      <p class="mb-2">
+        After talking to the media director at another church, he told me that they were holding off
+        making the same software switch that we had made because they were uncertain of how to
+        transfer all of their songs over. This got me thinking&hellip; It seemed as if enough people
+        had the need for a tool like this and yet one didn&#39;t exist!
+      </p>
 
-    <p>
-      In my non-church time during the week I&#39;m a full time web designer/developer, so I decided
-      to take a look at the file formats for each program and determined that it wouldn&#39;t be
-      that hard to do! Well&hellip; There ended up being a bit more complexities than I anticipated,
-      and it did take quite a while to get it to the point where I felt comfortable releasing it.
-      <strong>BUT</strong>, here it is. I hope you find it useful.
-    </p>
+      <p>
+        In my non-church time during the week I&#39;m a full time web designer/developer, so I
+        decided to take a look at the file formats for each program and determined that it
+        wouldn&#39;t be that hard to do! Well&hellip; There ended up being a bit more complexities
+        than I anticipated, and it did take quite a while to get it to the point where I felt
+        comfortable releasing it.
+        <strong>BUT</strong>, here it is. I hope you find it useful.
+      </p>
+    </div>
   </div>
-  <div class="col-md-5">
-    <h4>Donations are welcome!</h4>
-    <p>
-      If you find this service useful, please consider donating to this site to help support the
-      cost! A small $5 donation (or more!) would really help to support my efforts.
-    </p>
 
-    <app-donate-button></app-donate-button>
+  <div>
+    <div class="card mb-4">
+      <h3 class="card-title">Donations are welcome!</h3>
+      <div class="card-content">
+        <p class="mb-2">
+          If you find this service useful, please consider donating to this site to help support the
+          cost! A small $5 donation (or more!) would really help to support my efforts.
+        </p>
 
-    <h4 class="mt-4">Want To Make This Better?</h4>
-    <p>
-      This project is on GitHub! Feel free to take a look at the code, or submit improvements &amp;
-      changes.
-      <br /><br />
-      <a
-        class="btn btn-light btn-large d-inline-flex align-items-center"
-        href="https://github.com/FiniteLooper/LyricConverter"
-      >
-        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Github:">
-          <use xlink:href="#github" />
-        </svg>
-        Fork On GitHub!
-      </a>
-    </p>
+        <app-donate-button></app-donate-button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Want To Make This Better?</h3>
+      <div class="card-content">
+        <p class="mb-2">
+          This project is on GitHub! Feel free to take a look at the code, or submit improvements
+          &amp; changes.
+        </p>
+        <a class="btn btn-secondary btn-lg" href="https://github.com/FiniteLooper/LyricConverter" target="_blank">
+          <svg class="icon" role="img" aria-label="Github:">
+            <use xlink:href="#github" />
+          </svg>
+          Fork On GitHub!
+        </a>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-7">
-    <div class="alert alert-secondary">
-      <p class="mb-0">
+  <div class="card md:col-span-2">
+    <div class="card-content">
+      <p>
         I am in no way associated with R-Technics'
         <a target="_blank" href="http://songshowplus.com/">SongShow Plus</a>
         or Renewed Vision's
