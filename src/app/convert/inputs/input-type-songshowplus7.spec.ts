@@ -57,7 +57,7 @@ describe('InputTypeSongShowPlus7', () => {
         fileName: testFile.name,
         title: 'Be Near',
         info: [
-          { name: 'Artist/Author', value: 'Barnard, Shane' },
+          { name: 'Artist', value: 'Barnard, Shane' },
           { name: 'Copyright', value: '2003 Waiting Room Music' },
           { name: 'CCLI', value: '4090362' },
           { name: 'Keywords', value: "Longing | Security'" },
@@ -104,7 +104,7 @@ describe('InputTypeSongShowPlus7', () => {
         title: 'Give Us Clean Hands',
         info: [
           {
-            name: 'Artist/Author',
+            name: 'Artist',
             value: 'Hall, Charlie',
           },
           {
@@ -148,7 +148,7 @@ describe('InputTypeSongShowPlus7', () => {
         title: 'Jesus Saves (2)',
         info: [
           {
-            name: 'Artist/Author',
+            name: 'Artist',
             value: 'Eddie James',
           },
           {
@@ -208,7 +208,7 @@ describe('InputTypeSongShowPlus7', () => {
         title: 'You Are (2)',
         info: [
           {
-            name: 'Artist/Author',
+            name: 'Artist',
             value: '8Jobe, Caleb | Cohen, Ezra | Hesami, Josh | Trimble, Paul',
           },
           {
