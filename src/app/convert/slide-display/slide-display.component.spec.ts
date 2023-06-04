@@ -37,34 +37,22 @@ describe('SlideDisplayComponent', () => {
     mockFilesCopy.songData.info.forEach((info, idx) => {
       const a = `${info.name} ${info.value}`;
       const b: string = fixture.debugElement
-      .query(By.css(`ul li:nth-of-type(${idx + 1})`))
-      .nativeElement.textContent.trim();
+        .query(By.css(`ul li:nth-of-type(${idx + 1})`))
+        .nativeElement.textContent.trim();
 
-      console.group(a)
-      a.split('').forEach((c, i)=>{
-        console.log(c, c.charCodeAt(0), b[i], b.charCodeAt(i));
-      })
-      console.groupEnd()
-
-      expect(
-        a
-      ).toEqual(b);
+      expect(a).toEqual(b);
     });
 
     //Song Lyrics/Slides
     mockFilesCopy.songData.slides.forEach((slide, idx) => {
       expect(
         fixture.debugElement
-          .query(
-            By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) p`)
-          )
+          .query(By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) p`))
           .nativeElement.textContent.trim()
       ).toEqual(slide.lyrics);
       expect(
         fixture.debugElement
-          .query(
-            By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) footer`)
-          )
+          .query(By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) footer`))
           .nativeElement.textContent.trim()
       ).toEqual(slide.title);
     });
@@ -80,17 +68,15 @@ describe('SlideDisplayComponent', () => {
 
     mockFiles.forEach((f, fileIdx) => {
       expect(
-        fixture.debugElement.query(By.css(`.card:nth-of-type(${fileIdx + 1}) h3`))
-          .nativeElement.textContent
+        fixture.debugElement.query(By.css(`.card:nth-of-type(${fileIdx + 1}) h3`)).nativeElement
+          .textContent
       ).toEqual(f.songData.title);
 
       //Song Info
       f.songData.info.forEach((info, idx) => {
         expect(
           fixture.debugElement
-            .query(
-              By.css(`.card:nth-of-type(${fileIdx + 1}) ul li:nth-of-type(${idx + 1})`)
-            )
+            .query(By.css(`.card:nth-of-type(${fileIdx + 1}) ul li:nth-of-type(${idx + 1})`))
             .nativeElement.textContent.trim()
         ).toEqual(`${info.name} ${info.value}`);
       });
