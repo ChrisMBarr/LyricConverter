@@ -35,6 +35,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 
 
 ### LyricConverter uses these projects for extracting song information
+* [FiniteLooper/OpenLyrics-Parser](https://github.com/FiniteLooper/OpenLyrics-Parser)
 * [FiniteLooper/SongShowPlus-Parser](https://github.com/FiniteLooper/SongShowPlus-Parser)
 * [SongProOrg/songpro-javascript](https://github.com/SongProOrg/songpro-javascript)
 

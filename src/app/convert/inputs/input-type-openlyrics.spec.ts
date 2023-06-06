@@ -72,9 +72,19 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'Amazing Grace',
         info: [
+          { name: 'ccliNo', value: '4639462' },
+          { name: 'copyright', value: 'public domain' },
+          { name: 'key', value: 'C#' },
+          { name: 'keywords', value: 'something to help with more accurate results' },
+          { name: 'publisher', value: 'Sparrow Records' },
+          { name: 'released', value: '1779' },
+          { name: 'Tempo', value: '90bpm' },
+          { name: 'transposition', value: '2' },
+          { name: 'variant', value: 'Newsboys' },
+          { name: 'verseOrder', value: 'v1 v2  v3 c v4 c1 c2 b b1 b2' },
           {
             name: 'Authors',
-            value: 'John Newton | Chris Rice | Richard Wagner | František Foo',
+            value: 'John Newton | Chris Rice (words) | Richard Wagner (music) | František Foo (translation)',
           },
           {
             name: 'Comment',
@@ -92,20 +102,11 @@ describe('InputTypeOpenLyrics', () => {
             name: 'Song Book 3',
             value: 'Songbook with Letters in Entry Name (entry 153c)',
           },
-          { name: 'Tempo', value: '90bpm' },
+
           {
             name: 'Themes',
             value: 'Adoration | Grace | Praise | Salvation | Graça | Adoração | Salvação',
           },
-          { name: 'copyright', value: 'public domain' },
-          { name: 'ccliNo', value: '4639462' },
-          { name: 'released', value: '1779' },
-          { name: 'transposition', value: '2' },
-          { name: 'key', value: 'C#' },
-          { name: 'variant', value: 'Newsboys' },
-          { name: 'publisher', value: 'Sparrow Records' },
-          { name: 'keywords', value: 'something to help with more accurate results' },
-          { name: 'verseOrder', value: 'v1 v2  v3 c v4 c1 c2 b b1 b2' },
         ],
         slides: [
           {
@@ -171,10 +172,10 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'Amazing Grace',
         info: [
+          { name: 'ccliNo', value: '1037882' },
+          { name: 'copyright', value: '1982 Jubilate Hymns Limited' },
           { name: 'Author', value: 'John Newton' },
           { name: 'Themes', value: `God's Attributes` },
-          { name: 'copyright', value: '1982 Jubilate Hymns Limited' },
-          { name: 'ccliNo', value: '1037882' },
         ],
         slides: [
           {
@@ -208,12 +209,12 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'It Is Well With My Soul',
         info: [
-          { name: 'Authors', value: 'Horatio Spafford | Philip Bliss' },
-          { name: 'Tempo', value: 'Moderate' },
-          { name: 'Themes', value: 'Peace | Assurance | Trust' },
-          { name: 'copyright', value: 'Public Domain' },
           { name: 'ccliNo', value: '25376' },
+          { name: 'copyright', value: 'Public Domain' },
+          { name: 'Tempo', value: 'Moderate' },
           { name: 'verseOrder', value: 'v1 c v2 c v3 c v4 c' },
+          { name: 'Authors', value: 'Horatio Spafford | Philip Bliss' },
+          { name: 'Themes', value: 'Peace | Assurance | Trust' },
         ],
         slides: [
           {
@@ -269,9 +270,9 @@ describe('InputTypeOpenLyrics', () => {
         fileName: testFile.name,
         title: 'הבה נגילה',
         info: [
-          { name: 'Themes', value: 'הבה נגילה | Hava Nagila | Rejoice' },
           { name: 'copyright', value: 'public domain' },
           { name: 'variant', value: 'Hebrew folk song' },
+          { name: 'Themes', value: 'הבה נגילה | Hava Nagila | Rejoice' },
         ],
         slides: [
           {

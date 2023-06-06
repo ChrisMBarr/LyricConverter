@@ -29,6 +29,7 @@
     "file-saver": "^2.0.5",
     "js-base64": "^3.7.5",
     "jszip": "^3.10.1",
+    "openlyrics-parser": "^1.0.0",
     "rxjs": "~7.8.1",
     "songpro": "^0.1.2",
     "songshowplus-parser": "^1.0.0",
