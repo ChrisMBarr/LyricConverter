@@ -1,3 +1,5 @@
+[![GitHub - release](https://img.shields.io/github/v/release/FiniteLooper/LyricConverter?style=flat)](https://github.com/FiniteLooper/LyricConverter/releases/latest)
+[![GitHub - build](https://img.shields.io/github/actions/workflow/status/FiniteLooper/LyricConverter/publish-to-gh-pages.yml?logo=github&style=flat)](https://github.com/FiniteLooper/LyricConverter/actions/workflows/publish-to-gh-pages.yml)
 
 # LyricConverter
 Parses the song info & lyrics from various lyric presentation software file formats. You can convert between different formats and download the converted files.
