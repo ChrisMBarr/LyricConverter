@@ -1,7 +1,7 @@
 import { TestUtils } from 'test/test-utils';
 import { OutputTypeOpenLyrics } from './output-type-openlyrics';
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
-const packageFile = require('/package.json');
+import { version } from '../../version';
 
 describe('OutputTypeOpenLyrics', () => {
   let outputType: OutputTypeOpenLyrics;
@@ -27,8 +27,8 @@ describe('OutputTypeOpenLyrics', () => {
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.9"
-      createdIn="LyricConverter ${packageFile.version}"
-      modifiedIn="LyricConverter ${packageFile.version}"
+      createdIn="LyricConverter ${version}"
+      modifiedIn="LyricConverter ${version}"
       modifiedDate="2023-05-21T20:27:32">
   <properties>
     <titles>
@@ -41,7 +41,9 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName)
+      .withContext('file name')
+      .toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -58,8 +60,8 @@ describe('OutputTypeOpenLyrics', () => {
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.9"
-      createdIn="LyricConverter ${packageFile.version}"
-      modifiedIn="LyricConverter ${packageFile.version}"
+      createdIn="LyricConverter ${version}"
+      modifiedIn="LyricConverter ${version}"
       modifiedDate="2023-05-21T20:27:32">
   <properties>
     <titles>
@@ -100,7 +102,9 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName)
+      .withContext('file name')
+      .toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -117,8 +121,8 @@ describe('OutputTypeOpenLyrics', () => {
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.9"
-      createdIn="LyricConverter ${packageFile.version}"
-      modifiedIn="LyricConverter ${packageFile.version}"
+      createdIn="LyricConverter ${version}"
+      modifiedIn="LyricConverter ${version}"
       modifiedDate="2023-05-21T20:27:32">
   <properties>
     <titles>
@@ -159,7 +163,9 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName)
+      .withContext('file name')
+      .toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -176,8 +182,8 @@ describe('OutputTypeOpenLyrics', () => {
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.9"
-      createdIn="LyricConverter ${packageFile.version}"
-      modifiedIn="LyricConverter ${packageFile.version}"
+      createdIn="LyricConverter ${version}"
+      modifiedIn="LyricConverter ${version}"
       modifiedDate="2023-05-21T20:40:24">
   <properties>
     <titles>
@@ -251,7 +257,9 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName)
+      .withContext('file name')
+      .toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -268,8 +276,8 @@ describe('OutputTypeOpenLyrics', () => {
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.9"
-      createdIn="LyricConverter ${packageFile.version}"
-      modifiedIn="LyricConverter ${packageFile.version}"
+      createdIn="LyricConverter ${version}"
+      modifiedIn="LyricConverter ${version}"
       modifiedDate="2023-05-21T21:57:12">
   <properties>
     <titles>
@@ -350,7 +358,9 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName)
+      .withContext('file name')
+      .toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 });

@@ -3,7 +3,7 @@ import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { STRING_LIST_SEPARATOR_JOIN, STRING_LIST_SEPARATOR_SPLIT } from '../shared/constants';
 import { Utils } from '../shared/utils';
 import { IOutputConverter } from './output-converter.model';
-const packageFile = require('/package.json');
+import { version } from '../../version';
 
 export class OutputTypeOpenLyrics implements IOutputConverter {
   readonly name = 'OpenLyrics';
@@ -15,8 +15,8 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.9"
-      createdIn="LyricConverter ${packageFile.version}"
-      modifiedIn="LyricConverter ${packageFile.version}"
+      createdIn="LyricConverter ${version}"
+      modifiedIn="LyricConverter ${version}"
       modifiedDate="${Utils.getIsoDateString()}">
   <properties>
     <titles>
