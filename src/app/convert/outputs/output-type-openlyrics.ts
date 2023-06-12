@@ -1,5 +1,11 @@
-import { OpenLyricsBuilder } from 'openlyrics-parser';
-import { INewOpenLyricsSong } from 'openlyrics-parser/dist/main/builder.model';
+import {
+  OpenLyricsBuilder,
+  IBuilderOptions,
+  IBuilderAuthor,
+  IBuilderTheme,
+  IBuilderSongBook,
+  IBuilderVerse,
+} from 'openlyrics-parser';
 import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { STRING_LIST_SEPARATOR_JOIN, STRING_LIST_SEPARATOR_SPLIT } from '../shared/constants';
@@ -12,7 +18,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
   readonly url = 'http://openlyrics.org/';
 
   convertToType(song: ISong): IOutputFile {
-    const songBuildData: INewOpenLyricsSong.IOptions = {
+    const songBuildData: IBuilderOptions = {
       meta: {
         createdIn: `LyricConverter ${version}`,
         modifiedIn: `LyricConverter ${version}`,
@@ -60,7 +66,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertyAuthors(info: ISongInfo[]): INewOpenLyricsSong.IAuthor[] | undefined {
+  private findSpecialPropertyAuthors(info: ISongInfo[]): IBuilderAuthor[] | undefined {
     const foundAuthors = info.filter((i) => /(artist)|(author)/i.test(i.name));
 
     if (foundAuthors.length > 0) {
@@ -91,7 +97,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertyThemes(info: ISongInfo[]): INewOpenLyricsSong.ITheme[] | undefined {
+  private findSpecialPropertyThemes(info: ISongInfo[]): IBuilderTheme[] | undefined {
     //There should only be one theme item in the info
     const foundTheme = info.find((i) => i.name.toLowerCase().startsWith('theme'));
     if (foundTheme) {
@@ -120,9 +126,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertySongBooks(
-    info: ISongInfo[]
-  ): INewOpenLyricsSong.ISongBook[] | undefined {
+  private findSpecialPropertySongBooks(info: ISongInfo[]): IBuilderSongBook[] | undefined {
     const foundSongBooks = info.filter((sb) => /^song ?book/i.test(sb.name));
 
     if (foundSongBooks.length > 0) {
@@ -143,27 +147,29 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findVerses(songSlides: ISongSlide[]): INewOpenLyricsSong.IVerse[] {
-    return songSlides
+  private findVerses(songSlides: ISongSlide[]): IBuilderVerse[] {
+    return (
+      songSlides
         //Ignore the slides with no lyrics
-      .filter((s) => s.lyrics.trim() !== '')
-      .map((s) => {
-        let name = s.title;
-        let lang: string | undefined;
+        .filter((s) => s.lyrics.trim() !== '')
+        .map((s) => {
+          let name = s.title;
+          let lang: string | undefined;
 
-        //Slides with specified languages have titles like "v1 (de)" or "v2 (en-US)"
-        //When we find this pattern we want to extract the language and put it on the correct attribute
-        const langMatch = /^(.+?)(?: \(([a-z]{2}(?:-[a-z]{2})?)\))?$/i.exec(s.title);
-        if (langMatch?.[1] != null && langMatch[2] != null) {
-          name = langMatch[1];
-          lang = langMatch[2];
-        }
+          //Slides with specified languages have titles like "v1 (de)" or "v2 (en-US)"
+          //When we find this pattern we want to extract the language and put it on the correct attribute
+          const langMatch = /^(.+?)(?: \(([a-z]{2}(?:-[a-z]{2})?)\))?$/i.exec(s.title);
+          if (langMatch?.[1] != null && langMatch[2] != null) {
+            name = langMatch[1];
+            lang = langMatch[2];
+          }
 
-        return {
-          name,
-          lang,
-          lines: [s.lyrics],
-        };
-      });
+          return {
+            name,
+            lang,
+            lines: [s.lyrics],
+          };
+        })
+    );
   }
 }

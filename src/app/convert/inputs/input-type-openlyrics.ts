@@ -1,5 +1,11 @@
-import { OpenLyricsParser } from 'openlyrics-parser';
-import { IOpenLyricsSong } from 'openlyrics-parser/dist/main/parser.model';
+import {
+  IParserAuthor,
+  IParserProperties,
+  IParserSongBook,
+  IParserTitle,
+  IParserVerse,
+  OpenLyricsParser,
+} from 'openlyrics-parser';
 import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
@@ -34,17 +40,17 @@ export class InputTypeOpenLyrics implements IInputConverter {
     };
   }
 
-  private getTitle(titlesArr: IOpenLyricsSong.ITitle[], fallbackName: string): string {
+  private getTitle(titlesArr: IParserTitle[], fallbackName: string): string {
     let title = fallbackName;
 
     //OpenLyrics songs can have multiple titles. We'll just take the first one if it's there
-    if (titlesArr[0]) {
+    if (titlesArr[0] != null) {
       title = titlesArr[0].value;
     }
     return title;
   }
 
-  private getInfo(properties: IOpenLyricsSong.IProperties): ISongInfo[] {
+  private getInfo(properties: IParserProperties): ISongInfo[] {
     let info: ISongInfo[] = [];
 
     //Add all string properties, skipping a few, and special handling for Tempo
@@ -88,7 +94,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return info;
   }
 
-  private getSpecialPropAuthors(authors: IOpenLyricsSong.IAuthor[]): ISongInfo[] {
+  private getSpecialPropAuthors(authors: IParserAuthor[]): ISongInfo[] {
     const authorsArr: ISongInfo[] = [];
     const key = authors.length === 1 ? 'Author' : 'Authors';
     const val = authors
@@ -117,7 +123,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return commentsArr;
   }
 
-  private getSpecialPropSongBooks(songBooks: IOpenLyricsSong.ISongBook[]): ISongInfo[] {
+  private getSpecialPropSongBooks(songBooks: IParserSongBook[]): ISongInfo[] {
     const songBookInfoArr: ISongInfo[] = [];
     const name = 'Song Book';
     if (songBooks.length === 1) {
@@ -142,7 +148,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return songBookInfoArr;
   }
 
-  private getSlides(verses: IOpenLyricsSong.IVerse[]): ISongSlide[] {
+  private getSlides(verses: IParserVerse[]): ISongSlide[] {
     const slides: ISongSlide[] = [];
 
     for (const v of verses) {
