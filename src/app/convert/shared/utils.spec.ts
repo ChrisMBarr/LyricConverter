@@ -34,6 +34,39 @@ describe('Utils', () => {
     });
   });
 
+  describe('formatRtf', () => {
+    it('should use the defaults', () => {
+      expect(Utils.formatRtf(`test\ninput\nstring with some words`))
+        .toEqual(`{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320',
+{\\fonttbl\\f0\\fswiss\\fcharset0 Arial;}
+{\\colortbl;\\red255\\green255\\blue255;}
+\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural
+
+\\f0\\fs120 \\cf1 \\\rtest\\\rinput\\\rstring with some words}`);
+    });
+
+    it('should use the options provided', () => {
+      expect(
+        Utils.formatRtf(`test\ninput\nstring with some words`, 'Helvetica', {
+          r: 50,
+          g: 100,
+          b: 150,
+        })
+      ).toEqual(`{\\rtf1\\ansi\\ansicpg1252\\cocoartf1038\\cocoasubrtf320',
+{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}
+{\\colortbl;\\red50\\green100\\blue150;}
+\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\qc\\pardirnatural
+
+\\f0\\fs120 \\cf1 \\\rtest\\\rinput\\\rstring with some words}`);
+    });
+  });
+
+  describe('getIsoDateString', () => {
+    it('should return a date string without milliseconds', () => {
+      expect(Utils.getIsoDateString()).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/);
+    });
+  });
+
   describe('mergeArraysByProp()', () => {
     it('should only combine arrays of objects together when all values of the same key are unique', () => {
       const obj1 = [{ foo: 'fooVal' }];
