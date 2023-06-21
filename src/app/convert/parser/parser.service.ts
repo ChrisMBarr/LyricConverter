@@ -25,6 +25,7 @@ import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { ErrorsService } from '../errors/errors.service';
+import { InputTypeProPresenter6 } from '../inputs/input-type-propresenter6';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,7 @@ export class ParserService {
   readonly inputConverters: IInputConverter[] = [
     new InputTypeProPresenter4(),
     new InputTypeProPresenter5(),
+    new InputTypeProPresenter6(),
     new InputTypeChordPro(),
     new InputTypeSongPro(),
     new InputTypeSongShowPlus7(),

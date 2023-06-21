@@ -35,6 +35,13 @@ export const mockEmptyProPresenter5File: IRawDataFile = {
   data: '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0"></RVPresentationDocument>',
 };
 
+export const mockEmptyProPresenter6File: IRawDataFile = {
+  name: 'foo',
+  ext: 'pro6',
+  type: '',
+  data: '<RVPresentationDocument height="768" width="1024" versionNumber="600" docType="0"></RVPresentationDocument>',
+};
+
 export const mockEmptySongProFile: IRawDataFile = {
   name: 'foo',
   ext: 'md',

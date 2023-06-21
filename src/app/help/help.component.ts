@@ -20,13 +20,6 @@ export class HelpComponent implements OnInit {
 
   unsupportedFormatsList: ICombinedFormatItem[] = [
     {
-      name: 'ProPresenter 6',
-      canImport: false,
-      canExport: false,
-      hasNote: true,
-      url: 'https://renewedvision.com/propresenter/',
-    },
-    {
       name: 'ProPresenter 7',
       canImport: false,
       canExport: false,

@@ -20,7 +20,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **Plain Text**                                                     |   ✅   |   ✅  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v4**     |   ✅   |   ⭕  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✅   |   ✅  |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v6**💾  |   ⭕    |  ⭕  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v6**     |   ✅    |  ⭕  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v7**💾  |   ⭕    |  ⭕  |
 | **[SongPro](https://songpro.org/)**                                |   ✅   |   ✅  |
 | **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✅   |   ⭕  |
@@ -36,7 +36,8 @@ Parses the song info & lyrics from various lyric presentation software file form
 [2]: https://github.com/FiniteLooper/LyricConverter/issues/5
 
 
-### LyricConverter uses these projects for extracting song information
+### LyricConverter uses these projects for extracting from and/or creating song files
+* [FiniteLooper/ProPresenter-Parser](https://github.com/FiniteLooper/ProPresenter-Parser)
 * [FiniteLooper/OpenLyrics-Parser](https://github.com/FiniteLooper/OpenLyrics-Parser)
 * [FiniteLooper/SongShowPlus-Parser](https://github.com/FiniteLooper/SongShowPlus-Parser)
 * [SongProOrg/songpro-javascript](https://github.com/SongProOrg/songpro-javascript)
@@ -51,7 +52,6 @@ Parses the song info & lyrics from various lyric presentation software file form
 * Angular prerender templates
 * Deal with possibly duplicated info keys
 * Allow user-configurable options for output file (resolution, text size, etc)
-* Split out each format input/output into its' own NPM package
 
 
 # Contributing
