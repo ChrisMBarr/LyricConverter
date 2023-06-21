@@ -26,7 +26,6 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
-    "fast-xml-parser": "^4.2.4",
     "file-saver": "^2.0.5",
     "js-base64": "^3.7.5",
     "jszip": "^3.10.1",

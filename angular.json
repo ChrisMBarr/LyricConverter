@@ -23,7 +23,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "allowedCommonJsDependencies": ["jszip", "file-saver", "fast-xml-parser"],
+            "allowedCommonJsDependencies": ["jszip", "file-saver"],
             "assets": [
               "src/assets",
               "src/android-chrome-192x192.png",
