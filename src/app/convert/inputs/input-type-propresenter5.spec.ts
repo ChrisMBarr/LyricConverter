@@ -70,24 +70,22 @@ describe('InputTypeProPresenter5', () => {
 
     it('should get the expected INFO from a ProPresenter 5 file1', () => {
       expect(inputConverter.extractSongData(mockPpFiles.pp5File1).info).toEqual([
-        { name: 'creatorCode', value: 1349676880 },
-        { name: 'category', value: 'Song' },
-        { name: 'artist', value: 'Shane Bernard' },
-        { name: 'CCLISongTitle', value: 'Be Near' },
-        { name: 'CCLIPublisher', value: 'Waiting Room Music' },
-        { name: 'CCLICopyrightInfo', value: 2003 },
+        { name: 'Artist', value: 'Shane Bernard' },
+        { name: 'Category', value: 'Song' },
+        { name: 'Copyright', value: 2003 },
+        { name: 'Creator Code', value: 1349676880 },
+        { name: 'Publisher', value: 'Waiting Room Music' },
       ]);
     });
 
     it('should get the expected INFO from a ProPresenter 5 file2', () => {
       expect(inputConverter.extractSongData(mockPpFiles.pp5File2).info).toEqual([
-        { name: 'creatorCode', value: 1349676880 },
-        { name: 'category', value: 'Song' },
-        { name: 'artist', value: 'Charlie Hall' },
-        { name: 'author', value: 'Charlie Hall' },
-        { name: 'CCLISongTitle', value: 'Give Us Clean Hands' },
-        { name: 'CCLICopyrightInfo', value: 2000 },
-        { name: 'CCLILicenseNumber', value: 2060208 },
+        { name: 'Artist', value: 'Charlie Hall' },
+        { name: 'Author', value: 'Charlie Hall' },
+        { name: 'CCLI Number', value: 2060208 },
+        { name: 'Category', value: 'Song' },
+        { name: 'Copyright', value: 2000 },
+        { name: 'Creator Code', value: 1349676880 },
       ]);
     });
 
@@ -167,7 +165,7 @@ describe('InputTypeProPresenter5', () => {
       ]);
     });
 
-    it('should get the expected SLIDES from a ProPresenter 5 file2 when a slide has a title but no lyrics', () => {
+    it('should get the expected SLIDES from a ProPresenter 5 file2 when a slide has no title but lyrics', () => {
       expect(
         inputConverter.extractSongData(mockPpFiles.pp5File3OneSlideWithLyricsAndNoName).slides
       ).toEqual([
