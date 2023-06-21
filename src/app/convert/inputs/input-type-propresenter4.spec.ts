@@ -72,27 +72,25 @@ describe('InputTypeProPresenter4', () => {
 
     it('should get the expected INFO from a ProPresenter 4 file1', () => {
       expect(inputConverter.extractSongData(mockPpFiles.pp4File1).info).toEqual([
-        { name: 'creatorCode', value: 1349676880 },
-        { name: 'category', value: 'Song' },
-        { name: 'CCLISongTitle', value: 'Be Near' },
-        { name: 'CCLIPublisher', value: 'Waiting Room Music' },
-        { name: 'CCLICopyrightInfo', value: 2003 },
+        { name: 'Category', value: 'Song' },
+        { name: 'Copyright', value: 2003 },
+        { name: 'Creator Code', value: 1349676880 },
+        { name: 'Publisher', value: 'Waiting Room Music' },
       ]);
     });
 
     it('should get the expected INFO from a ProPresenter 4 file2', () => {
       expect(inputConverter.extractSongData(mockPpFiles.pp4File2).info).toEqual([
-        { name: 'creatorCode', value: 1349676880 },
-        { name: 'category', value: 'Song' },
-        { name: 'author', value: 'Charlie Hall' },
-        { name: 'CCLISongTitle', value: 'Give Us Clean Hands' },
+        { name: 'Author', value: 'Charlie Hall' },
+        { name: 'CCLI Number', value: 2060208 },
+        { name: 'Category', value: 'Song' },
+        { name: 'Copyright', value: 2000 },
+        { name: 'Creator Code', value: 1349676880 },
         {
-          name: 'CCLIPublisher',
+          name: 'Publisher',
           value:
-            'worshiptogether.com songs | sixsteps Music (Admin. by EMI Christian Music Publishing) | (Admin. by EMI Christian Music Publishing)',
+          'worshiptogether.com songs | sixsteps Music (Admin. by EMI Christian Music Publishing) | (Admin. by EMI Christian Music Publishing)',
         },
-        { name: 'CCLICopyrightInfo', value: 2000 },
-        { name: 'CCLILicenseNumber', value: 2060208 },
       ]);
     });
 
