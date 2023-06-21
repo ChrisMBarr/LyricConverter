@@ -20,7 +20,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **Plain Text**                                                     |   ✅   |   ✅  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v4**     |   ✅   |   ⭕  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✅   |   ✅  |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v6**     |   ✅    |  ⭕  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v6**     |   ✅    |  ✅  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v7**💾  |   ⭕    |  ⭕  |
 | **[SongPro](https://songpro.org/)**                                |   ✅   |   ✅  |
 | **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✅   |   ⭕  |
@@ -30,7 +30,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 * ✅ = Supported
 * ⭕ = Not supported (yet?)
 * ❓ = Unknown/Untested
-* 💾 = You can import the ProPresenter v5 files made by LyricConverter into ProPresenter v6 & v7!
+* 💾 = You can import the ProPresenter 6 files made by LyricConverter into ProPresenter 7!
 
 [1]: https://github.com/FiniteLooper/LyricConverter/issues/3
 [2]: https://github.com/FiniteLooper/LyricConverter/issues/5

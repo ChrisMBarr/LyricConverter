@@ -9,6 +9,7 @@ import { IOutputConverter } from '../outputs/output-converter.model';
 //Input Types
 import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
+import { InputTypeProPresenter6 } from '../inputs/input-type-propresenter6';
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 import { InputTypeSongPro } from '../inputs/input-type-songpro';
 import { InputTypeSongShowPlus7 } from '../inputs/input-type-songshowplus7';
@@ -25,7 +26,7 @@ import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { ErrorsService } from '../errors/errors.service';
-import { InputTypeProPresenter6 } from '../inputs/input-type-propresenter6';
+import { OutputTypeProPresenter6 } from '../outputs/output-type-propresenter6';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,7 @@ export class ParserService {
   ];
 
   readonly outputConverters: IOutputConverter[] = [
+    new OutputTypeProPresenter6(),
     new OutputTypeProPresenter5(),
     new OutputTypeChordpro(),
     new OutputTypeOpenLyrics(),
