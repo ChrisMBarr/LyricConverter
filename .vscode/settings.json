@@ -1,12 +1,10 @@
 {
   "files.exclude": {
-      "**/*.tsx": true,
       "**/*.json": false,
       "**/.gitignore": true,
       "**/.gitkeep": true,
       ".angular": true,
       ".editorconfig": true,
-      ".prettierrc": true,
       "coverage": true,
       "design": true,
       "dist": true,
@@ -22,14 +20,5 @@
       "*.pro5": "xml",
       "*.pro6": "xml",
     },
-    "explorer.fileNesting.expand": false,
-    "cSpell.words": [
-      "CCLI",
-      "chordpro",
-      "openlyrics",
-      "propresenter",
-      "sbsong",
-      "songpro",
-      "songshowplus"
-    ]
+    "explorer.fileNesting.expand": false
 }

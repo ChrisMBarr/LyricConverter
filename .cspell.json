@@ -1,0 +1,14 @@
+{
+  "words": [
+    "CCLI",
+    "chordpro",
+    "openlyrics",
+    "propresenter",
+    "sbsong",
+    "songpro",
+    "songshowplus"
+  ],
+  "ignorePaths": [
+    "package.json"
+  ]
+}
