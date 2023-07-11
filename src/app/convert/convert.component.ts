@@ -102,7 +102,7 @@ export class ConvertComponent implements OnInit, OnDestroy {
   }
 
   private scrollBackToTop(): void {
-    const thisComponentEl: HTMLElement = this.elementRef.nativeElement;
+    const thisComponentEl = this.elementRef.nativeElement as HTMLElement;
     const elTop = thisComponentEl.offsetTop;
     this.window.scrollTo({ top: elTop, behavior: 'smooth' });
   }

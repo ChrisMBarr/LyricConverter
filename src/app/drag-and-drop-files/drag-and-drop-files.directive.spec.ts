@@ -29,7 +29,7 @@ describe('DragAndDropFilesDirective', () => {
       declarations: [DragAndDropFilesDirective, TestComponent],
     }).createComponent(TestComponent);
 
-    injectedDocument = Inject(DOCUMENT);
+    injectedDocument = Inject(DOCUMENT) as Document;
     debugEl = fixture.debugElement.query(By.directive(DragAndDropFilesDirective));
 
     directiveInstance = debugEl.injector.get(DragAndDropFilesDirective);

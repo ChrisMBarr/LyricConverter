@@ -66,7 +66,8 @@ export class ParserService {
 
       for (let i = 0; i <= files.length - 1; i++) {
         const reader = new FileReader();
-        const f = files[i]!; //This cannot be null since it's in the list that came here
+        //This cannot be null since it's in the list that came here
+        const f = files[i]!; //eslint-disable-line @typescript-eslint/no-non-null-assertion
         //File reading happens async
         //Set up an event for what to do when the file has finished being read
         const completeFn = this.handleFile(f, loadedFiles, files.length);
@@ -97,7 +98,7 @@ export class ParserService {
     //When called, it has to return a function back up to the listener event
     return (ev: ProgressEvent<FileReader>) => {
       const fileNameParts = theFile.name.split('.');
-      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : '';
+      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : ''; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
 
       const newFile: IFileWithData = {
@@ -109,7 +110,7 @@ export class ParserService {
         lastModified: theFile.lastModified,
         //I've tried to force this to return data that isn't a string, but I can't get it to happen.
         //The process of using FileReader seems to convert the file content to a string no matter what
-        data: ev.target?.result?.toString() ??  /* istanbul ignore next */ '',
+        data: ev.target?.result?.toString() ?? /* istanbul ignore next */ '',
       };
 
       //Add the current file to the array
@@ -129,7 +130,7 @@ export class ParserService {
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
-        data: f.data
+        data: f.data,
       });
     }
 

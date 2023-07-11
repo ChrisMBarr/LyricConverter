@@ -27,7 +27,7 @@ export class DownloadDisplayComponent {
     }
 
     //Generate the zip file contents
-    zip
+    void zip
       .generateAsync({
         type: 'blob',
       })

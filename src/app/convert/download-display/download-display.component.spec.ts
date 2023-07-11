@@ -32,9 +32,8 @@ describe('DownloadDisplayComponent', () => {
       fixture.detectChanges();
 
       expect(fixture.debugElement.queryAll(By.css('.btn')).length).toEqual(1);
-      expect(fixture.debugElement.query(By.css('.btn')).nativeElement.textContent.trim()).toEqual(
-        'Download File'
-      );
+      const btn = fixture.debugElement.query(By.css('.btn')).nativeElement as HTMLButtonElement;
+      expect(btn.textContent?.trim()).toEqual('Download File');
     });
 
     it('should call onClickDownloadFiles() when the button for a single file is clicked', () => {
@@ -55,12 +54,14 @@ describe('DownloadDisplayComponent', () => {
       fixture.detectChanges();
 
       expect(fixture.debugElement.queryAll(By.css('.btn')).length).toEqual(2);
-      expect(
-        fixture.debugElement.query(By.css('.btn:nth-of-type(1)')).nativeElement.textContent.trim()
-      ).toEqual('Download as .zip');
-      expect(
-        fixture.debugElement.query(By.css('.btn:nth-of-type(2)')).nativeElement.textContent.trim()
-      ).toEqual('Download 2 individual files');
+
+      const btn1 = fixture.debugElement.query(By.css('.btn:nth-of-type(1)'))
+        .nativeElement as HTMLButtonElement;
+      expect(btn1.textContent?.trim()).toEqual('Download as .zip');
+
+      const btn2 = fixture.debugElement.query(By.css('.btn:nth-of-type(2)'))
+        .nativeElement as HTMLButtonElement;
+      expect(btn2.textContent?.trim()).toEqual('Download 2 individual files');
     });
 
     it('should call onClickDownloadZipFile() when multiple files are passed and the "download as .zip" button is clicked', () => {
@@ -109,7 +110,7 @@ describe('DownloadDisplayComponent', () => {
     it('should call the fileSaver library once, to save a ZIP file, when onClickDownloadZipFile() is called with multiple passed in files', fakeAsync(() => {
       component.outputFileList = TestUtils.deepClone(mockOutputFiles);
 
-      spyOn(JSZip.prototype, 'file').and.callThrough()
+      spyOn(JSZip.prototype, 'file').and.callThrough();
       spyOn(JSZip.prototype, 'generateAsync').and.returnValue(Promise.resolve('some blob'));
       spyOn(fileSaver, 'saveAs');
 

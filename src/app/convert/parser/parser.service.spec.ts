@@ -71,8 +71,7 @@ describe('ParserService', () => {
 
     it('should call the ErrorService when a weird file fails to be read', () => {
       spyOn(injectedErrorsSvc, 'add');
-      //Purposely pass bad data that would otherwise break things to test this
-      //@ts-expect-error
+      //@ts-expect-error - Purposely pass bad data that would otherwise break things to test this
       service.parseFiles(['🚫👎🏼⛔🙅🏼‍♀️'] as FileList);
 
       expect(injectedErrorsSvc.add).toHaveBeenCalled();

@@ -8,6 +8,8 @@ describe('HelpComponent', () => {
   let fixture: ComponentFixture<HelpComponent>;
   let parserSvc: ParserService;
 
+  //this is how Angular defines it!
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   function configureTestBed(providersArray: any[]) {
     TestBed.configureTestingModule({
       declarations: [HelpComponent],
@@ -39,16 +41,40 @@ describe('HelpComponent', () => {
     configureTestBed([{ provide: ParserService, useValue: mockParserService }]);
 
     component.unsupportedFormatsList = [
-      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false, url: 'http://askjeeves.com' },
+      {
+        name: 'Not Supported',
+        canImport: false,
+        canExport: false,
+        hasNote: false,
+        url: 'http://askjeeves.com',
+      },
     ];
     fixture.detectChanges();
 
     expect(component.combinedFormatsList).toEqual([
       { name: 'Bar', canImport: true, canExport: true, hasNote: false, url: 'http://google.com' },
       { name: 'Foo', canImport: true, canExport: true, hasNote: false, url: undefined },
-      { name: 'InputOnly', canImport: true, canExport: false, hasNote: false, url: 'http://yahoo.com' },
-      { name: 'Not Supported', canImport: false, canExport: false, hasNote: false, url: 'http://askjeeves.com' },
-      { name: 'OutputOnly', canImport: false, canExport: true, hasNote: false, url: 'http://bing.com' },
+      {
+        name: 'InputOnly',
+        canImport: true,
+        canExport: false,
+        hasNote: false,
+        url: 'http://yahoo.com',
+      },
+      {
+        name: 'Not Supported',
+        canImport: false,
+        canExport: false,
+        hasNote: false,
+        url: 'http://askjeeves.com',
+      },
+      {
+        name: 'OutputOnly',
+        canImport: false,
+        canExport: true,
+        hasNote: false,
+        url: 'http://bing.com',
+      },
     ]);
   });
 

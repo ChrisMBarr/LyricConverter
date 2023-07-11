@@ -13,7 +13,7 @@ export class ErrorsService {
   add(songError: ISongError): void {
     //If the thrown error is a custom LyricConverter error, use the message from that instead of the default message
     if (this.isCustomLyricConverterError(songError.thrownError)) {
-      songError.message = (songError.thrownError as Error).message as string;
+      songError.message = (songError.thrownError as Error).message;
     }
 
     this.errorsList.push(songError);

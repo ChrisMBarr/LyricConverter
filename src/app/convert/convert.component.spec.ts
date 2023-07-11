@@ -44,7 +44,7 @@ describe('ConvertComponent', () => {
         SlideDisplayComponent,
         DownloadDisplayComponent,
       ],
-      providers: providers as T[],
+      providers,
     });
     parserSvc = TestBed.inject(ParserService);
     errorsSvc = TestBed.inject(ErrorsService);
@@ -143,7 +143,10 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         expect(
-          fixture.debugElement.query(By.css('#test-accepted-input-formats')).nativeElement.textContent
+          (
+            fixture.debugElement.query(By.css('#test-accepted-input-formats'))
+              .nativeElement as HTMLElement
+          ).textContent
         ).toContain('FooIn, BarIn, or BazIn');
       });
     });
@@ -332,7 +335,7 @@ describe('ConvertComponent', () => {
         dt.items.add(file);
 
         const inputElDebug = fixture.debugElement.query(By.css('input[type="file"]'));
-        const inputEl: HTMLInputElement = inputElDebug.nativeElement;
+        const inputEl = inputElDebug.nativeElement as HTMLInputElement;
         inputEl.files = dt.files;
 
         const changeEvent = new Event('change');
@@ -346,17 +349,15 @@ describe('ConvertComponent', () => {
       it('should trigger a click event on the file chooser when the "select some files" link is clicked', () => {
         fixture.detectChanges();
 
-        const inputEl: HTMLInputElement = fixture.debugElement.query(
-          By.css('input[type="file"]')
-        ).nativeElement;
+        const inputEl = fixture.debugElement.query(By.css('input[type="file"]'))
+          .nativeElement as HTMLInputElement;
 
         spyOn(inputEl, 'click').and.callFake(() => {});
 
-        const selectFilesLinkEl = fixture.debugElement.query(
-          By.css('#begin-area a')
-        );
+        const selectFilesLinkEl = fixture.debugElement.query(By.css('#begin-area a'))
+          .nativeElement as HTMLAnchorElement;
         const clickEvent = new Event('click');
-        selectFilesLinkEl.nativeElement.dispatchEvent(clickEvent);
+        selectFilesLinkEl.dispatchEvent(clickEvent);
         fixture.detectChanges();
         expect(inputEl.click)
           .withContext('The "select some files" link that triggers the file input')
@@ -367,17 +368,16 @@ describe('ConvertComponent', () => {
         component.displayInitialUi = false;
         fixture.detectChanges();
 
-        const inputEl: HTMLInputElement = fixture.debugElement.query(
-          By.css('input[type="file"]')
-        ).nativeElement;
+        const inputEl = fixture.debugElement.query(By.css('input[type="file"]'))
+          .nativeElement as HTMLInputElement;
 
         spyOn(inputEl, 'click').and.callFake(() => {});
 
         const selectFilesLinkEl = fixture.debugElement.query(
           By.css('#test-drop-instructions-more a')
-        );
+        ).nativeElement as HTMLAnchorElement;
         const clickEvent = new Event('click');
-        selectFilesLinkEl.nativeElement.dispatchEvent(clickEvent);
+        selectFilesLinkEl.dispatchEvent(clickEvent);
         fixture.detectChanges();
         expect(inputEl.click)
           .withContext('The "select some more files" link that triggers the file input')
@@ -616,9 +616,9 @@ describe('ConvertComponent', () => {
           convertToType(song): IOutputFile {
             throw SyntaxError();
 
-            //@ts-expect-error
+            //@ts-expect-error - we are testing throwing errors so we need this unreachable code
             return {
-              fileName: `${song.fileName}.${this.fileExt}`,
+              fileName: `${song.fileName}.${this.fileExt!}`,
               outputContent: '',
               songData: song,
             };
@@ -648,7 +648,9 @@ describe('ConvertComponent', () => {
           done();
         });
 
-        errorsSvc.add({ message: '[[TEST:convert.component.spec.ts]] test message' });
+        errorsSvc.add({
+          message: '[[TEST:convert.component.spec.ts]] test message',
+        });
       });
 
       it('should tell the ErrorsService to clear out error messages when receiving new files to parse', () => {
@@ -686,10 +688,18 @@ describe('ConvertComponent', () => {
         expect(errorListEl.queryAll(By.css('ul li')).length)
           .withContext('The count of displayed error messages')
           .toEqual(2);
-        expect(errorListEl.query(By.css('ul li:nth-of-type(1)')).nativeElement.innerText.trim())
+        expect(
+          (
+            errorListEl.query(By.css('ul li:nth-of-type(1)')).nativeElement as HTMLElement
+          ).innerText.trim()
+        )
           .withContext('The 1st error message in the list')
           .toEqual('[[TEST:convert.component.spec.ts]] Just a message');
-        expect(errorListEl.query(By.css('ul li:nth-of-type(2)')).nativeElement.innerText.trim())
+        expect(
+          (
+            errorListEl.query(By.css('ul li:nth-of-type(2)')).nativeElement as HTMLElement
+          ).innerText.trim()
+        )
           .withContext('The 2nd error message in the list')
           .toEqual(
             'not-a-virus.exe - [[TEST:convert.component.spec.ts]] A message with a file name'

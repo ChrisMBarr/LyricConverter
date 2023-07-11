@@ -112,10 +112,14 @@ export class InputTypeOpenLyrics implements IInputConverter {
     const key = 'Comment';
     if (comments.length === 1) {
       //Just one comment
+      //Just one comment - we know it exists to we can assert that it's not null
+      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       commentsArr.push({ name: key, value: comments[0]! });
     } else {
       //Multiple comments added as separate infos with numbered names
       for (let i = 0; i < comments.length; i++) {
+        //of course we know the value here!
+        //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const comment = comments[i]!;
         commentsArr.push({ name: `${key} ${i + 1}`, value: comment });
       }
@@ -126,16 +130,17 @@ export class InputTypeOpenLyrics implements IInputConverter {
   private getSpecialPropSongBooks(songBooks: IParserSongBook[]): ISongInfo[] {
     const songBookInfoArr: ISongInfo[] = [];
     const name = 'Song Book';
-    if (songBooks.length === 1) {
-      //Just one song book
-      let sbVal = songBooks[0]?.name!;
-      if (songBooks[0]?.entry !== undefined) {
+    if (songBooks.length === 1 && songBooks[0] != null) {
+      let sbVal = songBooks[0].name;
+      if (songBooks[0].entry && songBooks[0].entry !== '') {
         sbVal += ` (entry ${songBooks[0].entry})`;
       }
       songBookInfoArr.push({ name, value: sbVal });
     } else {
       //Multiple comments added as separate infos with numbered names
       for (let i = 0; i < songBooks.length; i++) {
+        //of course we know the value here!
+        //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const sb = songBooks[i]!;
         let sbVal = sb.name;
         if (sb.entry !== '') {
@@ -171,7 +176,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
               //Only get the text type objects
               .filter((c) => c.type === 'text')
               //only get the values from these objects
-              .map((x) => x.value!)
+              .map((x) => x.value)
               //join this array together as a single string
               .join('')
           );
