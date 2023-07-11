@@ -4,7 +4,7 @@
 # LyricConverter
 Parses the song info & lyrics from various lyric presentation software file formats. You can convert between different formats and download the converted files.
 
-### Use it here: http://LyricConverter.net
+### Use it here: https://LyricConverter.net
 
 ![Lyric Converter Screen Recording](https://github.com/FiniteLooper/LyricConverter/blob/master/lyric-converter-demo.gif?raw=true)
 
@@ -100,4 +100,4 @@ Anything added to this project will most likely be a new format for LyricConvert
    Add tests to verify that this new output type can take all kinds of `ISong` objects and convert them to the expected output `string`
 
 
-> I am not in any way affiliated with R-Technics' [SongShow Plus](http://songshowplus.com/) or Renewed Vision's [ProPresenter](http://www.renewedvision.com/propresenter.php).
+> I am not in any way affiliated with R-Technics' [SongShow Plus](https://songshowplus.com/) or Renewed Vision's [ProPresenter](https://www.renewedvision.com/propresenter.php).

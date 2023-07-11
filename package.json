@@ -1,7 +1,7 @@
 {
   "name": "lyric-converter",
   "version": "3.1.2",
-  "homepage": "http://lyricconverter.net",
+  "homepage": "https://lyricconverter.net",
   "author": {
     "name": "Chris Barr",
     "url": "http://chrisbarr.me"
@@ -10,7 +10,7 @@
     "ng": "npm run genversion && ng",
     "start": "npm run genversion && ng serve",
     "build": "npm run genversion && ng build",
-    "build-gh-pages": "npm run genversion && ng build --base-href=http://lyricconverter.net/",
+    "build-gh-pages": "npm run genversion && ng build --base-href=https://lyricconverter.net/",
     "genversion": "npx genversion src/app/version.ts --es6 --semi",
     "watch": "npm run genversion && ng build --watch --configuration development",
     "test": "npm run genversion && ng test",
