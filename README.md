@@ -49,7 +49,6 @@ Parses the song info & lyrics from various lyric presentation software file form
 * [eligrey/FileSaver.js](https://github.com/eligrey/FileSaver.js)
 
 ### TODO Items:
-* Angular prerender templates
 * Deal with possibly duplicated info keys
 * Allow user-configurable options for output file (resolution, text size, etc)
 
