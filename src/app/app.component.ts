@@ -8,7 +8,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   private readonly backgroundImagesCount = 8;
-  title = 'Lyric Converter';
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 

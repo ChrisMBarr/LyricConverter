@@ -5,9 +5,9 @@ import { AboutComponent } from './about/about.component';
 import { ConvertComponent } from './convert/convert.component';
 
 const routes: Routes = [
-  { path: '', component: ConvertComponent },
-  { path: 'about', component: AboutComponent, pathMatch: 'full' },
-  { path: 'help', component: HelpComponent, pathMatch: 'full' },
+  { path: '', component: ConvertComponent, title: 'Lyric Converter' },
+  { path: 'about', component: AboutComponent, pathMatch: 'full', title: 'Lyric Converter: About' },
+  { path: 'help', component: HelpComponent, pathMatch: 'full', title: 'Lyric Converter: Help' },
   { path: '**', redirectTo: '' },
 ];
 
