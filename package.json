@@ -6,11 +6,18 @@
     "name": "Chris Barr",
     "url": "http://chrisbarr.me"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FiniteLooper/LyricConverter"
+  },
+  "bugs": {
+    "url": "https://github.com/FiniteLooper/LyricConverter/issues"
+  },
   "scripts": {
     "ng": "npm run genversion && ng",
     "start": "npm run genversion && ng serve",
     "build": "npm run genversion && ng build",
-    "build-gh-pages": "npm run genversion && ng build --base-href=https://lyricconverter.net/",
+    "build-gh-pages": "npm run genversion && ng build",
     "genversion": "npx genversion src/app/version.ts --es6 --semi",
     "watch": "npm run genversion && ng build --watch --configuration development",
     "test": "npm run genversion && ng test",
