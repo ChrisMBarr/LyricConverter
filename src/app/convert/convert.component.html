@@ -134,6 +134,7 @@
     ></app-slide-display>
     <app-download-display
       *ngIf="selectedOutputType.name !== 'Display Slides'"
+      [selectedOutputType]="this.selectedOutputType"
       [outputFileList]="convertedSongsForOutput"
     ></app-download-display>
   </div>

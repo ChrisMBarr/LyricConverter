@@ -6,6 +6,7 @@ import * as fileSaver from 'file-saver';
 import * as JSZip from 'jszip';
 import { mockOutputFiles } from 'test/mock-output-files';
 import { TestUtils } from 'test/test-utils';
+import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 
 describe('DownloadDisplayComponent', () => {
   let component: DownloadDisplayComponent;
@@ -17,6 +18,7 @@ describe('DownloadDisplayComponent', () => {
     });
     fixture = TestBed.createComponent(DownloadDisplayComponent);
     component = fixture.componentInstance;
+    component.selectedOutputType = new OutputTypePlainText(); //only needed for google analytics reporting
     fixture.detectChanges();
   });
 

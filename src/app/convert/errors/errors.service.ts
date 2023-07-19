@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ISongError } from '../models/errors.model';
 import { Subject } from 'rxjs';
 import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,8 @@ import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
 export class ErrorsService {
   private errorsList: ISongError[] = [];
   errorsChanged$ = new Subject<ISongError[]>();
+
+  constructor(private readonly $gaService: GoogleAnalyticsService) {}
 
   add(songError: ISongError): void {
     //If the thrown error is a custom LyricConverter error, use the message from that instead of the default message
@@ -18,6 +21,9 @@ export class ErrorsService {
 
     this.errorsList.push(songError);
     this.errorsChanged$.next(this.errorsList.slice());
+
+    //Log error events to google analytics
+    this.$gaService.event('error', 'convert', songError.message);
 
     console.warn('[LyricConverter Error Service]', songError);
   }

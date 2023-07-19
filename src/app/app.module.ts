@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,9 @@ import { DownloadDisplayComponent } from './convert/download-display/download-di
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxGoogleAnalyticsModule.forRoot(isDevMode() ? '' : 'G-1W69G30JB8'),
+    NgxGoogleAnalyticsRouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
