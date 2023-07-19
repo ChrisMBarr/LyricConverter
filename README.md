@@ -66,10 +66,11 @@ I recommend you use [VSCode](https://code.visualstudio.com/) and install the rec
 * In VSCode press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> to run the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) code formatter.
 * Run `ng lint` to report on any potential code issues
 * Run `ng test` to run the unit tests. Please add tests for any new features or changes you make.
-* Run `ng test --code-coverage --no-watch` to generate a code coverage report.  View the generated `/coverage/lyric-converter/index.html` file to see specifics about uncovered areas of code if needed.
+* Run `npm run test-coverage` to generate a test coverage report.  View the generated `/coverage/lyric-converter/index.html` file to see specifics about uncovered areas of code if needed.
 
 ## Build
 * Run `ng build` to build the project in production mode which is stored in the `dist/` directory.
+* Run `npm run prerender` to generate the prerendered HTML pages for each route - this is what is deployed to production
 
 
 ## Overview on how LyricConverter works
