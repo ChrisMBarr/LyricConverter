@@ -16,4 +16,4 @@ updates:
     versioning-strategy: increase
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
