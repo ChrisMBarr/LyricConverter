@@ -59,8 +59,7 @@ describe('OutputTypeOpenLyrics', () => {
       <title>Your Grace is Enough</title>
     </titles>
     <authors>
-      <author>
-Bethel Music      </author>
+      <author>Bethel Music</author>
     </authors>
     <ccliNo>1234</ccliNo>
     <key>G</key>
@@ -103,8 +102,7 @@ Bethel Music      </author>
       <title>At the Cross</title>
     </titles>
     <authors>
-      <author>
-Hymn      </author>
+      <author>Hymn</author>
     </authors>
     <comments>
       <comment>Words and Music by Randy & Terry Butler</comment>
@@ -147,8 +145,7 @@ Hymn      </author>
       <title>Be Near</title>
     </titles>
     <authors>
-      <author>
-Shane Bernard      </author>
+      <author>Shane Bernard</author>
     </authors>
     <copyright>2003</copyright>
     <keywords>Grace, Peace, Nearness</keywords>
@@ -207,14 +204,10 @@ Shane Bernard      </author>
       <title>Amazing Grace</title>
     </titles>
     <authors>
-      <author>
-John Newton      </author>
-      <author>
-Chris Rice      </author>
-      <author>
-Richard Wagner      </author>
-      <author>
-František Foo      </author>
+      <author>John Newton</author>
+      <author>Chris Rice</author>
+      <author>Richard Wagner</author>
+      <author>František Foo</author>
     </authors>
     <comments>
       <comment>This is one of the most popular songs in our congregation.</comment>
@@ -225,20 +218,13 @@ František Foo      </author>
       <songbook name="Songbook with Letters in Entry Name" entry="153c"/>
     </songbooks>
     <themes>
-      <theme>
-Adoration      </theme>
-      <theme>
-Grace      </theme>
-      <theme>
-Praise      </theme>
-      <theme>
-Salvation      </theme>
-      <theme>
-Graça      </theme>
-      <theme>
-Adoração      </theme>
-      <theme>
-Salvação      </theme>
+      <theme>Adoration</theme>
+      <theme>Grace</theme>
+      <theme>Praise</theme>
+      <theme>Salvation</theme>
+      <theme>Graça</theme>
+      <theme>Adoração</theme>
+      <theme>Salvação</theme>
     </themes>
     <tempo type="bpm">90</tempo>
     <ccliNo>4639462</ccliNo>
