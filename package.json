@@ -35,7 +35,7 @@
   "private": false,
   "dependencies": {
     "@angular/animations": "^16.1.7",
-    "@angular/common": "^16.1.7",
+    "@angular/common": "^16.1.8",
     "@angular/compiler": "^16.1.8",
     "@angular/core": "^16.1.7",
     "@angular/platform-browser": "^16.1.7",
