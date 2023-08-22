@@ -27,6 +27,7 @@
     "test-coverage": "npm run genversion && ng test --code-coverage --no-watch",
     "test-coverage-headless": "npm run genversion && ng test --code-coverage --no-watch --browsers=ChromeHeadless",
     "lint": "ng lint",
+    "update": "ncu -u && npm i",
     "dev:ssr": "ng run LyricConverter:serve-ssr",
     "serve:ssr": "node dist/LyricConverter/server/main.js",
     "build:ssr": "ng build && ng run LyricConverter:server",
