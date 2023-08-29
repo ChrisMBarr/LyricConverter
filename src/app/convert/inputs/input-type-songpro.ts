@@ -9,12 +9,12 @@ export class InputTypeSongPro implements IInputConverter {
   readonly fileExt = 'sng';
   readonly url = 'https://songpro.org/';
 
-  doesInputFileMatchThisType(file: IRawDataFile): boolean {
+  doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     //There are not a lot of examples of this file format online,
     // it's not clear which file extension is commonly used,
     // but since there's no overlap with other formats in this
     // project we can just check for either one
-    const lowerCaseExt = file.ext.toLowerCase();
+    const lowerCaseExt = rawFile.ext.toLowerCase();
     return lowerCaseExt === this.fileExt || lowerCaseExt === 'md';
   }
 

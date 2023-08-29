@@ -9,9 +9,9 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
   readonly fileExt = 'sbsong';
   readonly url = 'https://songshowplus.com/';
 
-  doesInputFileMatchThisType(file: IRawDataFile): boolean {
+  doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     //TODO: Determine a way to check the version or if that's even important!
-    return file.ext.toLowerCase() === this.fileExt;
+    return rawFile.ext.toLowerCase() === this.fileExt;
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

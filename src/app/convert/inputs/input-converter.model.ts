@@ -22,7 +22,7 @@ export declare interface IInputConverter {
    * @param rawFile
    * @returns {true} if the passed file matches for this type
    */
-  doesInputFileMatchThisType: (file: IRawDataFile) => boolean;
+  doesInputFileMatchThisType: (rawFile: IRawDataFile) => boolean;
   /**
    * @description A method that will parse the input file and extract relevant data.
    * @param rawFile

@@ -16,8 +16,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
   readonly fileExt = 'xml';
   readonly url = 'http://openlyrics.org/';
 
-  doesInputFileMatchThisType(file: IRawDataFile): boolean {
-    return file.ext.toLowerCase() === this.fileExt;
+  doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
+    return rawFile.ext.toLowerCase() === this.fileExt;
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
