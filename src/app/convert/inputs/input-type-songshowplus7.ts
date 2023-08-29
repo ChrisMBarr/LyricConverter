@@ -14,24 +14,30 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     return rawFile.ext.toLowerCase() === this.fileExt;
   }
 
+  // eslint-disable-next-line complexity
   extractSongData(rawFile: IRawDataFile): ISong {
     const sspParser = new SongShowPlus();
-    const parsedSong = sspParser.parse(rawFile.data);
+    const parsedSong = sspParser.parse(rawFile.dataAsBuffer);
 
     const title = parsedSong.title === '' ? rawFile.name : parsedSong.title;
 
     const info: ISongInfo[] = [];
-    if (parsedSong.artist !== '') info.push({ name: 'Artist', value: parsedSong.artist });
+    if (parsedSong.author !== '') info.push({ name: 'Author', value: parsedSong.author });
     if (parsedSong.copyright !== '') info.push({ name: 'Copyright', value: parsedSong.copyright });
     if (parsedSong.ccli !== '') info.push({ name: 'CCLI', value: parsedSong.ccli });
-    if (parsedSong.keywords.length > 0) {
+    if (parsedSong.key !== '') info.push({ name: 'Key', value: parsedSong.key });
+    if (parsedSong.comments !== '') info.push({ name: 'Comments', value: parsedSong.comments });
+    if (parsedSong.verseOrder !== '') info.push({ name: 'Verse Order', value: parsedSong.verseOrder });
+    if (parsedSong.songBook !== '') info.push({ name: 'Song Book', value: parsedSong.songBook });
+    if (parsedSong.songNumber !== '') info.push({ name: 'Song Number', value: parsedSong.songNumber });
+    if (parsedSong.topics.length > 0) {
       info.push({
-        name: 'Keywords',
-        value: parsedSong.keywords.join(STRING_LIST_SEPARATOR_JOIN) });
+        name: 'Topics',
+        value: parsedSong.topics.join(STRING_LIST_SEPARATOR_JOIN) });
     }
 
     //These object use the same property keys, so we can just copy it over
-    const slides: ISongSlide[] = parsedSong.sections;
+    const slides: ISongSlide[] = parsedSong.lyricSections;
 
     return {
       fileName: rawFile.name,

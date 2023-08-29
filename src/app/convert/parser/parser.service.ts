@@ -73,8 +73,9 @@ export class ParserService {
         const completeFn = this.handleFile(f, loadedFiles, files.length);
         reader.addEventListener('loadend', completeFn, false);
 
-        //Actually read the file
-        reader.readAsText(f);
+        //Actually read the file, but as an array buffer
+        //Some input types needs this raw data, others will just convert it to a string to be parsed
+        reader.readAsArrayBuffer(f);
       }
     } catch (err: unknown) {
       this.errorsSvc.add({
@@ -101,21 +102,20 @@ export class ParserService {
       const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : ''; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
 
-      const newFile: IFileWithData = {
-        name: theFile.name,
-        nameWithoutExt,
-        ext: fileExt.toLowerCase(),
-        type: theFile.type,
-        size: theFile.size,
-        lastModified: theFile.lastModified,
-        //I've tried to force this to return data that isn't a string, but I can't get it to happen.
-        //The process of using FileReader seems to convert the file content to a string no matter what
-        data: ev.target?.result?.toString() ?? /* istanbul ignore next */ '',
-      };
+      if (ev.target?.result != null) {
+        const newFile: IFileWithData = {
+          name: theFile.name,
+          nameWithoutExt,
+          ext: fileExt.toLowerCase(),
+          type: theFile.type,
+          size: theFile.size,
+          lastModified: theFile.lastModified,
+          bufferData: ev.target.result as ArrayBuffer,
+        };
 
-      //Add the current file to the array
-      fileArray.push(newFile);
-
+        //Add the current file to the array
+        fileArray.push(newFile);
+      }
       //Once all the files have been read and converted should we continue
       if (fileArray.length === fileCount) {
         this.emitRawFiles(fileArray);
@@ -126,11 +126,15 @@ export class ParserService {
   private emitRawFiles(files: IFileWithData[]): void {
     const rawDataFiles: IRawDataFile[] = [];
     for (const f of files) {
+
+
+
       rawDataFiles.push({
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
-        data: f.data,
+        dataAsBuffer: f.bufferData,
+        dataAsString: ''
       });
     }
 

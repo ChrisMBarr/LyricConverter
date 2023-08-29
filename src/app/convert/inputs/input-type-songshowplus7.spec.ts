@@ -209,7 +209,7 @@ describe('InputTypeSongShowPlus7', () => {
         info: [
           {
             name: 'Artist',
-            value: '8Jobe, Caleb | Cohen, Ezra | Hesami, Josh | Trimble, Paul',
+            value: 'Jobe, Caleb | Cohen, Ezra | Hesami, Josh | Trimble, Paul',
           },
           {
             name: 'Copyright',
@@ -255,12 +255,7 @@ describe('InputTypeSongShowPlus7', () => {
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
         title: 'Devuelveme El Gozo',
-        info: [
-          {
-            name: 'Keywords',
-            value: 'Tahoma | ?',
-          },
-        ],
+        info: [],
         slides: [
           {
             title: 'Verse 1',
@@ -283,10 +278,6 @@ describe('InputTypeSongShowPlus7', () => {
         fileName: testFile.name,
         title: 'La Sangre (The Blood)',
         info: [
-          {
-            name: 'Keywords',
-            value: 'Background Improv',
-          },
         ],
         slides: [
           {
@@ -297,7 +288,7 @@ describe('InputTypeSongShowPlus7', () => {
           {
             title: 'Chorus',
             lyrics:
-              'Oh, porque alcanza a limpiar nuestras manchas\r\ny alcanza a curar nuestras llagas\r\npecador ven al manantial \r\nque fluyendo esta\r\ny lavara tu ser\r\nporque Cristo nunca perdera su fuerza!!"',
+              'Oh, porque alcanza a limpiar nuestras manchas\r\ny alcanza a curar nuestras llagas\r\npecador ven al manantial \r\nque fluyendo esta\r\ny lavara tu ser\r\nporque Cristo nunca perdera su fuerza!!',
           },
         ],
       });

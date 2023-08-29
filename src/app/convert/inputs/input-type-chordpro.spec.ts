@@ -354,7 +354,7 @@ describe('InputTypeChordPro', () => {
 
     it('should use the filename as a fallback title when the song has no title', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
-      testFile.data = testFile.data.replace('{title: This is a title}', '');
+      testFile.dataAsString = testFile.dataAsString.replace('{title: This is a title}', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
   });

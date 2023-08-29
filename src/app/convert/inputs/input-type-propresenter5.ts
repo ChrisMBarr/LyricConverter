@@ -18,7 +18,7 @@ export class InputTypeProPresenter5 implements IInputConverter {
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
-    const parsedDoc: IPro5Song = ProPresenter5Parser(rawFile.data);
+    const parsedDoc: IPro5Song = ProPresenter5Parser(rawFile.dataAsString);
 
     let title = parsedDoc.properties.CCLISongTitle;
     if (title === '') title = rawFile.name;

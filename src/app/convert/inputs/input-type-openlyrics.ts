@@ -21,7 +21,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
-    const parsedDoc = OpenLyricsParser(rawFile.data);
+    const parsedDoc = OpenLyricsParser(rawFile.dataAsString);
 
     const title = this.getTitle(parsedDoc.properties.titles, rawFile.name);
     const info = this.getInfo(parsedDoc.properties);

@@ -21,7 +21,7 @@ export class InputTypeJSON implements IInputConverter {
 
     //This JSON object was probably generated from LyricConverter
     //we should just be able to pass it right on through!
-    const parsed = JSON.parse(rawFile.data) as ISong;
+    const parsed = JSON.parse(rawFile.dataAsString) as ISong;
 
     if (this.isSongObject(parsed)) {
       returnSong.title = parsed.title;

@@ -66,7 +66,7 @@ describe('InputTypeProPresenter4', () => {
 
     it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
       const fileCopy = TestUtils.deepClone(mockPpFiles.pp4File1);
-      fileCopy.data = fileCopy.data.replace('CCLISongTitle="Be Near" ', '');
+      fileCopy.dataAsString = fileCopy.dataAsString.replace('CCLISongTitle="Be Near" ', '');
       expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
     });
 

@@ -4,7 +4,8 @@ export const mockPlainTextFile1: IRawDataFile = {
   name: 'Your Grace is Enough',
   ext: 'txt',
   type: 'plain/text',
-  data: `Title: Your Grace is Enough
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `Title: Your Grace is Enough
 CCLI Number: 1234
 artist: Bethel Music
 key: G
@@ -32,7 +33,8 @@ export const mockPlainTextFile2: IRawDataFile = {
   name: 'At the Cross',
   ext: 'txt',
   type: 'plain/text',
-  data: `Title: At the Cross
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `Title: At the Cross
 artist: Hymn
 key: E
 comment: Words and Music by Randy & Terry Butler

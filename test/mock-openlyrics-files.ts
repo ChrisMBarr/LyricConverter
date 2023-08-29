@@ -4,7 +4,8 @@ export const mockOpenLyricsFileSimpleFile: IRawDataFile = {
   name: 'simple',
   ext: 'xml',
   type: 'application/xml',
-  data: `<?xml version="1.0" encoding="UTF-8"?>
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.8"
@@ -28,7 +29,8 @@ export const mockOpenLyricsFileComplexFile: IRawDataFile = {
   name: 'complex',
   ext: 'xml',
   type: 'application/xml',
-  data: `<?xml version="1.0" encoding="UTF-8"?>
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
       version="0.8"
@@ -125,7 +127,8 @@ export const mockOpenLyricsSongFile1: IRawDataFile = {
   name: 'Amazing Grace',
   ext: 'xml',
   type: 'application/xml',
-  data: `<?xml version="1.0" encoding="utf-8"?>
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.137828">
   <properties>
@@ -175,7 +178,8 @@ export const mockOpenLyricsSongFile2: IRawDataFile = {
   name: 'It Is Well With My Soul',
   ext: 'xml',
   type: 'application/xml',
-  data: `<?xml version="1.0" encoding="utf-8"?>
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.643833">
   <properties>
@@ -244,7 +248,8 @@ export const mockOpenLyricsSongFile3: IRawDataFile = {
   name: 'It Is Well With My Soul',
   ext: 'xml',
   type: 'application/xml',
-  data: `<?xml version="1.0" encoding="utf-8"?>
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.643833">
   <properties>
@@ -267,7 +272,8 @@ export const mockOpenLyricsSongFileHebrew: IRawDataFile = {
   name: 'Hava Nagila',
   ext: 'xml',
   type: 'application/xml',
-  data: `<?xml version="1.0" encoding="utf-8"?>
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="Trac 0.11.2" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.006882">
   <properties>

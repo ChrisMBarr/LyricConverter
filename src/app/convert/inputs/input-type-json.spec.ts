@@ -19,7 +19,8 @@ describe('InputTypeJSON', () => {
         name: 'foo',
         ext: 'json',
         type: 'text/json',
-        data: '{}',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: '{}',
       };
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
@@ -29,7 +30,8 @@ describe('InputTypeJSON', () => {
         name: 'foo',
         ext: 'txt',
         type: 'text/plain',
-        data: 'this is some plain text',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: 'this is some plain text',
       };
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
@@ -39,7 +41,8 @@ describe('InputTypeJSON', () => {
         name: 'foo',
         ext: 'pro5',
         type: '',
-        data: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>',
       };
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
@@ -51,7 +54,8 @@ describe('InputTypeJSON', () => {
         name: 'foo',
         ext: 'json',
         type: 'text/json',
-        data: '{"title":"Great is your faithfulness O God","info":[{"name":"Order","value":"1C2CBC"}],"slides":[{"title":"Chorus","lyrics":"Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"},{"title":"Verse 1","lyrics":"Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"}]}',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: '{"title":"Great is your faithfulness O God","info":[{"name":"Order","value":"1C2CBC"}],"slides":[{"title":"Chorus","lyrics":"Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"},{"title":"Verse 1","lyrics":"Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"}]}',
       };
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -82,7 +86,8 @@ describe('InputTypeJSON', () => {
         name: 'foo',
         ext: 'json',
         type: 'text/json',
-        data: '{}',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: '{}',
       };
 
       const err = new LyricConverterError(
@@ -96,7 +101,8 @@ describe('InputTypeJSON', () => {
         name: 'foo',
         ext: 'json',
         type: 'text/json',
-        data: 'bad data',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: 'bad data',
       };
 
       //We can't test against specific error messages thrown due to error message text differences in how browsers report them

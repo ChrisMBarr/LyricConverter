@@ -8,14 +8,15 @@ export interface IFileWithData {
   name: string;
   nameWithoutExt: string;
   ext: string;
-  data: string;
+  bufferData: ArrayBuffer;
 }
 
 export interface IRawDataFile {
   name: string;
   ext: string;
   type: string;
-  data: string;
+  dataAsBuffer: ArrayBuffer;
+  dataAsString: string;
 }
 
 export interface IOutputFile {

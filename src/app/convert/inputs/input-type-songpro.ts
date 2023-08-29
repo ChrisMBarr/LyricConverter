@@ -19,7 +19,7 @@ export class InputTypeSongPro implements IInputConverter {
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
-    const song = SongPro.parse(Utils.normalizeLineEndings(rawFile.data));
+    const song = SongPro.parse(Utils.normalizeLineEndings(rawFile.dataAsString));
 
     const title = song.attrs.title ?? rawFile.name;
     const info: ISongInfo[] = this.getSongInfo(song);

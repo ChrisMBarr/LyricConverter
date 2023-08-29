@@ -140,7 +140,7 @@ describe('InputTypeOpenLyrics', () => {
       );
 
       //remove the titles so the parser can't find one
-      testFile.data = testFile.data.replace(/<titles>[\W\w]+?<\/titles>/, '');
+      testFile.dataAsString = testFile.dataAsString.replace(/<titles>[\W\w]+?<\/titles>/, '');
 
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
@@ -150,7 +150,7 @@ describe('InputTypeOpenLyrics', () => {
         mockOpenLyrics.mockOpenLyricsFileSimpleFile
       );
 
-      testFile.data = testFile.data.replace('how sweet the sound','how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound')
+      testFile.dataAsString = testFile.dataAsString.replace('how sweet the sound','how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound')
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,

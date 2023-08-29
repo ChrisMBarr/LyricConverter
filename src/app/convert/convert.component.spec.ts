@@ -387,7 +387,8 @@ describe('ConvertComponent', () => {
 
     describe('getConvertersAndExtractData()', () => {
       const rawJsonFile: IRawDataFile = {
-        data: '{\r\n    "title": "Great is your faithfulness O God",\r\n    "info": [{\r\n        "name": "Order",\r\n        "value": "1C2CBC"\r\n    }],\r\n    "slides": [{\r\n        "title": "Chorus",\r\n        "lyrics": "Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"\r\n    }, {\r\n        "title": "Verse 1",\r\n        "lyrics": "Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"\r\n    }, {\r\n        "title": "Verse 2",\r\n        "lyrics": "Great is your love and justice God\\r\\nYou use the weak to lead the strong\\r\\nYou lead us in the song of your salvation\\r\\nAnd all your people sing along"\r\n    }, {\r\n        "title": "Verse 3",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 4",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 5",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 6",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 7",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Coda",\r\n        "lyrics": "(Chorus 2.)\\r\\n\\r\\nYour grace is enough\\r\\nHeaven reaching down to us\\r\\nYour grace is enough for me\\r\\nGod, I see your grace is enough\\r\\nI\'m covered in your love\\r\\nYour grace is enough for me\\r\\nFor me"\r\n    }, {\r\n        "title": "Bridge",\r\n        "lyrics": "So remember you people\\r\\nRemember your children\\r\\nRemember your promise\\r\\nOh God"\r\n    }]\r\n}',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: '{\r\n    "title": "Great is your faithfulness O God",\r\n    "info": [{\r\n        "name": "Order",\r\n        "value": "1C2CBC"\r\n    }],\r\n    "slides": [{\r\n        "title": "Chorus",\r\n        "lyrics": "Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"\r\n    }, {\r\n        "title": "Verse 1",\r\n        "lyrics": "Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"\r\n    }, {\r\n        "title": "Verse 2",\r\n        "lyrics": "Great is your love and justice God\\r\\nYou use the weak to lead the strong\\r\\nYou lead us in the song of your salvation\\r\\nAnd all your people sing along"\r\n    }, {\r\n        "title": "Verse 3",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 4",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 5",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 6",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Verse 7",\r\n        "lyrics": ""\r\n    }, {\r\n        "title": "Coda",\r\n        "lyrics": "(Chorus 2.)\\r\\n\\r\\nYour grace is enough\\r\\nHeaven reaching down to us\\r\\nYour grace is enough for me\\r\\nGod, I see your grace is enough\\r\\nI\'m covered in your love\\r\\nYour grace is enough for me\\r\\nFor me"\r\n    }, {\r\n        "title": "Bridge",\r\n        "lyrics": "So remember you people\\r\\nRemember your children\\r\\nRemember your promise\\r\\nOh God"\r\n    }]\r\n}',
         ext: 'json',
         name: 'JSON - Your Grace Is Enough',
         type: 'application/json',
@@ -465,7 +466,8 @@ describe('ConvertComponent', () => {
 
         const fakeParsedFiles: IRawDataFile[] = [
           {
-            data: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
             ext: 'json',
             name: 'JSON - Your Grace Is Enough',
             type: 'application/json',
@@ -482,7 +484,8 @@ describe('ConvertComponent', () => {
 
         const fakeParsedFiles: IRawDataFile[] = [
           {
-            data: 'blah blah whatever',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: 'blah blah whatever',
             ext: 'notreal',
             name: 'fake file',
             type: 'application/madeup',
@@ -498,7 +501,8 @@ describe('ConvertComponent', () => {
 
         const fakeParsedFiles: IRawDataFile[] = [
           {
-            data: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
             ext: 'json',
             name: 'JSON - Your Grace Is Enough',
             type: 'application/json',
@@ -541,7 +545,8 @@ describe('ConvertComponent', () => {
             name: 'cat',
             ext: 'jpg',
             type: 'image/jpeg',
-            data: 'pretend this is image data',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: 'pretend this is image data',
           },
         ]);
 
@@ -556,7 +561,8 @@ describe('ConvertComponent', () => {
             name: 'no-extension',
             ext: '',
             type: '',
-            data: 'junk data here',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: 'junk data here',
           },
         ]);
 
@@ -575,7 +581,8 @@ describe('ConvertComponent', () => {
             name: 'bad-file',
             ext: 'json',
             type: 'text/json',
-            data: '{}',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: '{}',
           },
         ]);
 
@@ -598,7 +605,8 @@ describe('ConvertComponent', () => {
             name: 'malformed-file',
             ext: 'json',
             type: 'text/json',
-            data: '{{{{{',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: '{{{{{',
           },
         ]);
 
@@ -627,7 +635,8 @@ describe('ConvertComponent', () => {
 
         const fakeParsedFiles: IRawDataFile[] = [
           {
-            data: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
+            dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+            dataAsString: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
             ext: 'json',
             name: 'Your Grace Is Enough',
             type: 'application/json',

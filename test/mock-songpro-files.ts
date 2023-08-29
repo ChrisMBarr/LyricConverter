@@ -4,7 +4,8 @@ export const mockSongProFile1: IRawDataFile = {
   name: 'Escape Capsule',
   ext: 'md',
   type: '',
-  data: `@title=Escape Capsule
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `@title=Escape Capsule
 @artist=Brian Kelly
 !bandcamp=https://spilth.bandcamp.com/track/escape-capsule
 
@@ -32,7 +33,8 @@ export const mockSongProFile2: IRawDataFile = {
   name: 'Bad Moon Rising',
   ext: 'sng',
   type: '',
-  data: `@title=Bad Moon Rising
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `@title=Bad Moon Rising
 @artist=Creedence Clearwater Revival
 @capo=1
 !difficulty=Easy

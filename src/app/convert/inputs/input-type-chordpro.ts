@@ -37,7 +37,7 @@ export class InputTypeChordPro implements IInputConverter {
   extractSongData(rawFile: IRawDataFile): ISong {
     //For the purposes of LyricConverter, we do not need any comments or chord markers
     //We can just strip those out and focus on getting the song info and lyrics extracted
-    const normalizedLineEndings = Utils.normalizeLineEndings(rawFile.data);
+    const normalizedLineEndings = Utils.normalizeLineEndings(rawFile.dataAsString);
     const simplifiedContent = this.stripCommentsAndChords(normalizedLineEndings);
     const directives = this.gatherDirectives(simplifiedContent);
     const songTitle = this.getSongTitle(directives, rawFile.name);

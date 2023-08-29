@@ -22,7 +22,7 @@ describe('OutputTypePropresenter5', () => {
       outputFile.outputContent
     );
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(
-      pp5FileEmptySong.data
+      pp5FileEmptySong.dataAsString
     );
 
     expect(outputFile.songData).toEqual(song);
@@ -38,7 +38,7 @@ describe('OutputTypePropresenter5', () => {
       outputFile.outputContent
     );
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(
-      pp5File4.data
+      pp5File4.dataAsString
     );
 
     expect(outputFile.songData).toEqual(song);

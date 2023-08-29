@@ -115,7 +115,7 @@ describe('InputTypeSongPro', () => {
     it('should use the filename as the title when a title is not present in the file', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockSongProFile1);
       testFile.name = 'My Test Title';
-      testFile.data = testFile.data.replace(/^@title=.+/i, '');
+      testFile.dataAsString = testFile.dataAsString.replace(/^@title=.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
   });

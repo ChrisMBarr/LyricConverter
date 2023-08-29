@@ -46,7 +46,7 @@ describe('InputTypePlainText', () => {
   describe('extractSongData()', () => {
     it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
-      testFile.data = testFile.data.replace('\n\n\n', '\n');
+      testFile.dataAsString = testFile.dataAsString.replace('\n\n\n', '\n');
 
       const expectedError = new LyricConverterError(
         `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`
@@ -149,7 +149,7 @@ describe('InputTypePlainText', () => {
     it('should use the filename as the title when a title is not present in the file', () => {
       const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile2);
       testFile.name = 'My Test Title';
-      testFile.data = testFile.data.replace(/^title:.+/i, '');
+      testFile.dataAsString = testFile.dataAsString.replace(/^title:.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
   });

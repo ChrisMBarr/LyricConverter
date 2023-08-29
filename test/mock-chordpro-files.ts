@@ -4,7 +4,8 @@ export const mockChordProFile1: IRawDataFile = {
   name: 'At The Cross',
   ext: 'cho',
   type: '',
-  data: `{title: At the Cross}
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `{title: At the Cross}
 {artist: Hymn}
 {key: E}
 {comment: Words and Music by Randy & Terry Butler}
@@ -35,7 +36,8 @@ export const mockChordProFile2: IRawDataFile = {
   name: 'Our Father',
   ext: 'chopro',
   type: '',
-  data: `{title: Our Father}
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `{title: Our Father}
 {artist: Bethel Music}
 {key: G}
 {comment: Words and Music by Marcus Meier}
@@ -100,7 +102,8 @@ export const mockChordProFile3: IRawDataFile = {
   name: 'Swing Low Sweet Chariot',
   ext: 'cho',
   type: '',
-  data: `# A simple ChordPro song.
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `# A simple ChordPro song.
 
 {title: Swing Low Sweet Chariot}
 
@@ -123,7 +126,8 @@ export const mockChordProFile4DirectivesWithoutLabels: IRawDataFile = {
   name: 'Our Father',
   ext: 'chopro',
   type: '',
-  data: `{title: Our Father}
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `{title: Our Father}
 {artist: Bethel Music}
 {key: G}
 {comment: Words and Music by Marcus Meier}
@@ -175,7 +179,8 @@ export const mockChordProFile5DirectivesWithInlineLabels: IRawDataFile = {
   name: 'Our Father',
   ext: 'chopro',
   type: '',
-  data: `{title: Our Father}
+  dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+  dataAsString: `{title: Our Father}
 {artist: Bethel Music}
 {key: G}
 {comment: Words and Music by Marcus Meier}

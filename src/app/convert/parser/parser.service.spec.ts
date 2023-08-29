@@ -28,7 +28,8 @@ describe('ParserService', () => {
     it('should emit a properly formatted RawDataFile with decoded content', (done: DoneFn) => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
-          data: 'this is some text for testing!',
+          dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+          dataAsString: 'this is some text for testing!',
           ext: '',
           name: 'no-extension',
           type: 'text/plain',
@@ -50,7 +51,8 @@ describe('ParserService', () => {
     it('should return correctly with a unicode file name', (done: DoneFn) => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
-          data: 'this is some other text for testing!',
+          dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+          dataAsString: 'this is some other text for testing!',
           ext: 'txt',
           name: 'ěščřžýáíé åäö',
           type: 'text/plain',
@@ -97,7 +99,8 @@ describe('ParserService', () => {
         name: 'foo',
         ext: 'pro5',
         type: '',
-        data: '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0"></RVPresentationDocument>',
+        dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+        dataAsString: '<RVPresentationDocument height="768" width="1024" versionNumber="500" docType="0"></RVPresentationDocument>',
       };
 
       const expectedClass = service.inputConverters.find((c) => {
