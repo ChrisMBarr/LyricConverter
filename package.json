@@ -54,7 +54,7 @@
     "propresenter-parser": "^1.0.2",
     "rxjs": "^7.8.1",
     "songpro": "^0.1.2",
-    "songshowplus-parser": "^2.0.1",
+    "songshowplus-parser": "^2.0.3",
     "timers-browserify": "^2.0.12",
     "tslib": "^2.6.2",
     "zone.js": "^0.13.1"
