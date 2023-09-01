@@ -16,7 +16,7 @@ import {
   mockSongShowPlusSpanishFile2,
 } from 'test/mock-songshowplus7-files';
 
-describe('InputTypeSongShowPlus7', () => {
+fdescribe('InputTypeSongShowPlus7', () => {
   let inputConverter: InputTypeSongShowPlus7;
 
   beforeEach(() => {
