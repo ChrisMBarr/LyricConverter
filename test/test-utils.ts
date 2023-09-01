@@ -47,6 +47,6 @@ export class TestUtils {
   }
 
   public static deepClone<T>(input: T): T {
-    return JSON.parse(JSON.stringify(input));
+    return structuredClone(input);
   }
 }
