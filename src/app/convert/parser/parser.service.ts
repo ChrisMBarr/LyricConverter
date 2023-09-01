@@ -58,6 +58,8 @@ export class ParserService {
 
   parsedFilesChanged$ = new Subject<IRawDataFile[]>();
 
+  private readonly decoder = new TextDecoder();
+
   constructor(private readonly errorsSvc: ErrorsService) {}
 
   parseFiles(files: FileList): void {
@@ -126,15 +128,12 @@ export class ParserService {
   private emitRawFiles(files: IFileWithData[]): void {
     const rawDataFiles: IRawDataFile[] = [];
     for (const f of files) {
-
-
-
       rawDataFiles.push({
         name: f.nameWithoutExt,
         ext: f.ext,
         type: f.type,
         dataAsBuffer: f.bufferData,
-        dataAsString: ''
+        dataAsString: this.decoder.decode(f.bufferData)
       });
     }
 

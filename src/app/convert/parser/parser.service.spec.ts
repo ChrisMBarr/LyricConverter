@@ -28,14 +28,19 @@ describe('ParserService', () => {
     it('should emit a properly formatted RawDataFile with decoded content', (done: DoneFn) => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
-          dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+          dataAsBuffer: new ArrayBuffer(30),
           dataAsString: 'this is some text for testing!',
           ext: '',
           name: 'no-extension',
           type: 'text/plain',
         };
 
-        expect(value).toEqual([expectedParsedFile]);
+        //We can't really compare ArrayBuffers, so we'll just compare the bytelength
+        expect(value[0]?.dataAsBuffer.byteLength).toEqual(expectedParsedFile.dataAsBuffer.byteLength);
+        expect(value[0]?.dataAsString).toEqual(expectedParsedFile.dataAsString);
+        expect(value[0]?.ext).toEqual(expectedParsedFile.ext);
+        expect(value[0]?.name).toEqual(expectedParsedFile.name);
+        expect(value[0]?.type).toEqual(expectedParsedFile.type);
         done();
       });
 
@@ -51,14 +56,19 @@ describe('ParserService', () => {
     it('should return correctly with a unicode file name', (done: DoneFn) => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
-          dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
+          dataAsBuffer: new ArrayBuffer(36),
           dataAsString: 'this is some other text for testing!',
           ext: 'txt',
           name: 'ěščřžýáíé åäö',
           type: 'text/plain',
         };
 
-        expect(value).toEqual([expectedParsedFile]);
+        //We can't really compare ArrayBuffers, so we'll just compare the bytelength
+        expect(value[0]?.dataAsBuffer.byteLength).toEqual(expectedParsedFile.dataAsBuffer.byteLength);
+        expect(value[0]?.dataAsString).toEqual(expectedParsedFile.dataAsString);
+        expect(value[0]?.ext).toEqual(expectedParsedFile.ext);
+        expect(value[0]?.name).toEqual(expectedParsedFile.name);
+        expect(value[0]?.type).toEqual(expectedParsedFile.type);
         done();
       });
 
