@@ -1,11 +1,11 @@
-import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { Utils } from '../shared/utils';
 import { IInputConverter } from './input-converter.model';
+import { IRawDataFile } from '../models/file.model';
+import { Utils } from '../shared/utils';
 
 interface IChordProDirectives {
-  keyValuePairs: ISongInfo[];
-  singles: IChordProSingleDirective[];
+  keyValuePairs: Array<ISongInfo>;
+  singles: Array<IChordProSingleDirective>;
 }
 
 interface IChordProSingleDirective {
@@ -24,6 +24,17 @@ interface IChordProMatchingDirectivePairs {
  * @description ChordPro File Official Docs: https://chordpro.org/chordpro/
  */
 export class InputTypeChordPro implements IInputConverter {
+  //Comment lines being with a #, so we just match that entire line including the line break at the end
+  private readonly patternComments = /^#.*([\r\n])*/gm;
+
+  //Chord markers like [E] or [Bm7] or [G/B] can appear anywhere. This matches anything between square brackets
+  private readonly patternChords = /\[.+?\]/gm;
+
+  //Directives appear between curly brackets. Some have a name:value pair, others just mark something
+  private readonly patternDirectives = /{(.+?)}/gm;
+
+  private readonly patternDirectiveStartMarkers = /^((?:so)|(?:start_of_))([a-z]+)/;
+
   readonly name = 'ChordPro';
   readonly fileExt = 'cho';
   readonly url = 'https://chordpro.org/';
@@ -55,17 +66,6 @@ export class InputTypeChordPro implements IInputConverter {
       slides: songLyrics,
     };
   }
-
-  //Comment lines being with a #, so we just match that entire line including the line break at the end
-  private readonly patternComments = /^#.*([\r\n])*/gm;
-
-  //Chord markers like [E] or [Bm7] or [G/B] can appear anywhere. This matches anything between square brackets
-  private readonly patternChords = /\[.+?\]/gm;
-
-  //Directives appear between curly brackets. Some have a name:value pair, others just mark something
-  private readonly patternDirectives = /{(.+?)}/gm;
-
-  private readonly patternDirectiveStartMarkers = /^((?:so)|(?:start_of_))([a-z]+)/;
 
   private stripCommentsAndChords(content: string): string {
     //Replaces all comment lines and chord markers with nothing
@@ -128,7 +128,7 @@ export class InputTypeChordPro implements IInputConverter {
     return fileNameFallback;
   }
 
-  private getSongInfo(keyValuePairs: ISongInfo[]): ISongInfo[] {
+  private getSongInfo(keyValuePairs: Array<ISongInfo>): Array<ISongInfo> {
     //List of item names to not include in the song info
     //These are ChordPro specific things that we don't care about saving
     //The title has already been extracted, so we skip that too
@@ -145,13 +145,13 @@ export class InputTypeChordPro implements IInputConverter {
   }
 
   private getMatchedDirectivePairs(
-    singleDirectives: IChordProSingleDirective[]
-  ): IChordProMatchingDirectivePairs[] {
+    singleDirectives: Array<IChordProSingleDirective>
+  ): Array<IChordProMatchingDirectivePairs> {
     //The matched directives are tags like:
     // {start_of_chorus} and {end_of_chorus}
     // {soc} and {eoc}
     //This method will find each pair of opening/closing directives and get their positions in the file
-    const pairs: IChordProMatchingDirectivePairs[] = [];
+    const pairs: Array<IChordProMatchingDirectivePairs> = [];
     for (const dir of singleDirectives) {
       const foundStart = this.patternDirectiveStartMarkers.exec(dir.name);
       if (foundStart) {
@@ -176,7 +176,7 @@ export class InputTypeChordPro implements IInputConverter {
   }
 
   private getLyricContentWithoutDirectives(
-    singleDirectives: IChordProSingleDirective[],
+    singleDirectives: Array<IChordProSingleDirective>,
     content: string
   ): string {
     //ChordPro Environment directives should always have a beginning and an ending tag
@@ -199,7 +199,7 @@ export class InputTypeChordPro implements IInputConverter {
     //  {soc: Chorus 2} OR {start_of_chorus: Chorus 3}
     const pairs = this.getMatchedDirectivePairs(singleDirectives);
     const contentToRemove = [];
-    const contentToSaveAndReformat: ISavedContent[] = [];
+    const contentToSaveAndReformat: Array<ISavedContent> = [];
     const typesToSave = ['c', 'v', 'b', 'chorus', 'verse', 'bridge'];
     for (const p of pairs) {
       //we have the positions for the begin/end tags.
@@ -268,8 +268,8 @@ export class InputTypeChordPro implements IInputConverter {
     return contentWithoutDirectives;
   }
 
-  private getLyrics(content: string): ISongSlide[] {
-    const slides: ISongSlide[] = [];
+  private getLyrics(content: string): Array<ISongSlide> {
+    const slides: Array<ISongSlide> = [];
     const sections = content.split('\n\n');
 
     for (const s of sections) {

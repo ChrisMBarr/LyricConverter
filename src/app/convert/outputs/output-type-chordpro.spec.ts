@@ -1,5 +1,5 @@
-import { TestUtils } from 'test/test-utils';
 import { OutputTypeChordpro } from './output-type-chordpro';
+import { TestUtils } from 'test/test-utils';
 import { mockSongObjects } from 'test/mock-song-objects';
 
 describe('OutputTypeChordpro', () => {

@@ -1,5 +1,5 @@
-import { TestUtils } from 'test/test-utils';
 import { InputTypeSongPro } from './input-type-songpro';
+import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeSongPro', () => {
   let inputConverter: InputTypeSongPro;

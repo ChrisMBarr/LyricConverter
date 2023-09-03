@@ -1,16 +1,17 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { ConvertComponent } from './convert/convert.component';
 import { DonateButtonComponent } from './donate-button/donate-button.component';
-import { DragAndDropFilesDirective } from './drag-and-drop-files/drag-and-drop-files.directive';
-import { SlideDisplayComponent } from './convert/slide-display/slide-display.component';
 import { DownloadDisplayComponent } from './convert/download-display/download-display.component';
+import { DragAndDropFilesDirective } from './drag-and-drop-files/drag-and-drop-files.directive';
+import { HelpComponent } from './help/help.component';
+import { SlideDisplayComponent } from './convert/slide-display/slide-display.component';
 
 @NgModule({
   declarations: [

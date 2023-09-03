@@ -1,5 +1,5 @@
-import { TestUtils } from 'test/test-utils';
 import { InputTypeOpenLyrics } from './input-type-openlyrics';
+import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeOpenLyrics', () => {
   let inputConverter: InputTypeOpenLyrics;

@@ -1,8 +1,8 @@
 export interface ISong {
   fileName: string;
   title: string;
-  info: ISongInfo[];
-  slides: ISongSlide[];
+  info: Array<ISongInfo>;
+  slides: Array<ISongSlide>;
 }
 
 export interface ISongSlide {

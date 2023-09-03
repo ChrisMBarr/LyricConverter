@@ -3,31 +3,31 @@ import { Subject } from 'rxjs';
 
 //Helpers & Types
 import { IFileWithData, IRawDataFile } from '../models/file.model';
+import { ErrorsService } from '../errors/errors.service';
 import { IInputConverter } from '../inputs/input-converter.model';
 import { IOutputConverter } from '../outputs/output-converter.model';
+import { Utils } from '../shared/utils';
 
 //Input Types
+import { InputTypeChordPro } from '../inputs/input-type-chordpro';
+import { InputTypeJSON } from '../inputs/input-type-json';
+import { InputTypeOpenLyrics } from '../inputs/input-type-openlyrics';
+import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypeProPresenter6 } from '../inputs/input-type-propresenter6';
-import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 import { InputTypeSongPro } from '../inputs/input-type-songpro';
 import { InputTypeSongShowPlus7 } from '../inputs/input-type-songshowplus7';
-import { InputTypeOpenLyrics } from '../inputs/input-type-openlyrics';
-import { InputTypePlainText } from '../inputs/input-type-plain-text';
-import { InputTypeJSON } from '../inputs/input-type-json';
 
 //Output Types
-import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
-import { OutputTypeOpenLyrics } from '../outputs/output-type-openlyrics';
-import { OutputTypeSongPro } from '../outputs/output-type-songpro';
-import { OutputTypePlainText } from '../outputs/output-type-plain-text';
-import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
-import { ErrorsService } from '../errors/errors.service';
+import { OutputTypeJSON } from '../outputs/output-type-json';
+import { OutputTypeOpenLyrics } from '../outputs/output-type-openlyrics';
+import { OutputTypePlainText } from '../outputs/output-type-plain-text';
+import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
 import { OutputTypeProPresenter6 } from '../outputs/output-type-propresenter6';
-import { Utils } from '../shared/utils';
+import { OutputTypeSongPro } from '../outputs/output-type-songpro';
 
 @Injectable({
   providedIn: 'root',
@@ -35,8 +35,10 @@ import { Utils } from '../shared/utils';
 export class ParserService {
   private readonly errorsSvc = inject(ErrorsService);
 
+  private readonly decoder = new TextDecoder();
+
   //List of all available Input Converters
-  readonly inputConverters: IInputConverter[] = [
+  readonly inputConverters: Array<IInputConverter> = [
     new InputTypeProPresenter4(),
     new InputTypeProPresenter5(),
     new InputTypeProPresenter6(),
@@ -48,7 +50,7 @@ export class ParserService {
     new InputTypeJSON(),
   ];
 
-  readonly outputConverters: IOutputConverter[] = [
+  readonly outputConverters: Array<IOutputConverter> = [
     new OutputTypeProPresenter6(),
     new OutputTypeProPresenter5(),
     new OutputTypeChordpro(),
@@ -59,13 +61,11 @@ export class ParserService {
     new OutputTypeDisplaySlides(),
   ];
 
-  parsedFilesChanged$ = new Subject<IRawDataFile[]>();
-
-  private readonly decoder = new TextDecoder();
+  parsedFilesChanged$ = new Subject<Array<IRawDataFile>>();
 
   parseFiles(files: FileList): void {
     try {
-      const loadedFiles: IFileWithData[] = [];
+      const loadedFiles: Array<IFileWithData> = [];
 
       for (let i = 0; i <= files.length - 1; i++) {
         const reader = new FileReader();
@@ -96,7 +96,7 @@ export class ParserService {
 
   private handleFile(
     theFile: File,
-    fileArray: IFileWithData[],
+    fileArray: Array<IFileWithData>,
     fileCount: number
   ): (ev: ProgressEvent<FileReader>) => void {
     //When called, it has to return a function back up to the listener event
@@ -124,8 +124,8 @@ export class ParserService {
     };
   }
 
-  private emitRawFiles(files: IFileWithData[]): void {
-    const rawDataFiles: IRawDataFile[] = [];
+  private emitRawFiles(files: Array<IFileWithData>): void {
+    const rawDataFiles: Array<IRawDataFile> = [];
     for (const f of files) {
       rawDataFiles.push({
         name: f.nameWithoutExt,

@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ParserService } from './parser.service';
+import { ErrorsService } from '../errors/errors.service';
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from '../inputs/input-type-json';
-import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
-import { ErrorsService } from '../errors/errors.service';
+import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
+import { ParserService } from './parser.service';
 import { TestUtils } from 'test/test-utils';
 
 describe('ParserService', () => {

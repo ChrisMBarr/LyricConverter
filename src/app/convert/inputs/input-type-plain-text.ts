@@ -1,8 +1,8 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { IInputConverter } from './input-converter.model';
 import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
-import { Utils } from '../shared/utils';
+import { IInputConverter } from './input-converter.model';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { LyricConverterError } from '../models/errors.model';
+import { Utils } from '../shared/utils';
 
 export class InputTypePlainText implements IInputConverter {
   readonly name = 'Plain Text';
@@ -14,8 +14,8 @@ export class InputTypePlainText implements IInputConverter {
 
   extractSongData(rawFile: IRawDataFile): ISong {
     let title = rawFile.name; //default/fallback name
-    let info: ISongInfo[] = [];
-    let slides: ISongSlide[] = [];
+    let info: Array<ISongInfo> = [];
+    let slides: Array<ISongSlide> = [];
     //The info and the lyrics are separated by 3 newline characters
     const parts = Utils.normalizeLineEndings(rawFile.dataAsString).split('\n\n\n');
     if (parts.length === 2 && parts[0] != null && parts[1] != null) {
@@ -39,8 +39,8 @@ export class InputTypePlainText implements IInputConverter {
     };
   }
 
-  private getSongInfo(infoContent: string): ISongInfo[] {
-    const info: ISongInfo[] = [];
+  private getSongInfo(infoContent: string): Array<ISongInfo> {
+    const info: Array<ISongInfo> = [];
 
     for (const line of infoContent.split('\n')) {
       const lineParts = line.split(':');
@@ -52,8 +52,8 @@ export class InputTypePlainText implements IInputConverter {
     return info;
   }
 
-  private getSongLyrics(lyricsContent: string): ISongSlide[] {
-    const slides: ISongSlide[] = [];
+  private getSongLyrics(lyricsContent: string): Array<ISongSlide> {
+    const slides: Array<ISongSlide> = [];
 
     for (const section of lyricsContent.split('\n\n')) {
       const lines = section.split('\n');

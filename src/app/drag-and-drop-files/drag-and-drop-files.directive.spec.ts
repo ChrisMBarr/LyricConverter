@@ -1,10 +1,11 @@
 import { Component, DebugElement, Inject } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { first } from 'rxjs';
+
 import { DragAndDropFilesDirective } from './drag-and-drop-files.directive';
 import { IFileWithData } from '../convert/models/file.model';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { first } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
 
 describe('DragAndDropFilesDirective', () => {
   //---------------------------------------------
@@ -12,8 +13,8 @@ describe('DragAndDropFilesDirective', () => {
     template: `<div appDragAndDropFiles (fileDrop)="onFileDrop($event)"></div>`,
   })
   class TestComponent {
-    filesFromDirective: IFileWithData[] = [];
-    onFileDrop(files: IFileWithData[]): void {
+    filesFromDirective: Array<IFileWithData> = [];
+    onFileDrop(files: Array<IFileWithData>): void {
       this.filesFromDirective = files;
     }
   }

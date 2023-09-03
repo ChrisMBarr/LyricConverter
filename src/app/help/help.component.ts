@@ -18,9 +18,9 @@ interface ICombinedFormatItem {
 export class HelpComponent implements OnInit {
   private readonly parserSvc = inject(ParserService);
 
-  combinedFormatsList: ICombinedFormatItem[] = [];
+  combinedFormatsList: Array<ICombinedFormatItem> = [];
 
-  unsupportedFormatsList: ICombinedFormatItem[] = [
+  unsupportedFormatsList: Array<ICombinedFormatItem> = [
     {
       name: 'ProPresenter 7',
       canImport: false,

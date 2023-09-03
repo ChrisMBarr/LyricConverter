@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Output, Inject, OnDestroy } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Inject, OnDestroy, Output } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({

@@ -16,6 +16,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        //Angular specific rules
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -32,31 +33,75 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/explicit-function-return-type": "warn",
-        "@typescript-eslint/method-signature-style": ["warn"],
-        "@typescript-eslint/naming-convention": "warn",
-        "@typescript-eslint/no-extraneous-class": "off",
+
+        //Prefer typescript versions of certain rules
         "no-invalid-this": "off",
-        "@typescript-eslint/no-invalid-this": "error",
+        "@typescript-eslint/no-invalid-this": "warn",
         "no-loop-func": "off",
-        "@typescript-eslint/no-loop-func": "error",
+        "@typescript-eslint/no-loop-func": "warn",
         "no-redeclare": "off",
-        "@typescript-eslint/no-redeclare": "error",
+        "@typescript-eslint/no-redeclare": "warn",
         "no-shadow": "off",
-        "@typescript-eslint/no-shadow": "error",
+        "@typescript-eslint/no-shadow": "warn",
         "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/no-use-before-define": "warn",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-return-await": "off",
+        "@typescript-eslint/return-await": "warn",
+
+        //Typescript specific rules
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/array-type": [
+          "warn",
+          {
+            "default": "generic"
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/method-signature-style": "warn",
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": "enum",
+            "format": ["StrictPascalCase"],
+            "suffix": ["Enum"]
+          },
+          {
+            "selector": "enumMember",
+            "format": ["UPPER_CASE"]
+          },
+          {
+            "selector": ["interface", "typeAlias"],
+            "format": ["StrictPascalCase"],
+            "prefix": ["I"]
+          }
+        ],
+        "@typescript-eslint/no-extraneous-class": "off",
         "@typescript-eslint/no-unnecessary-qualifier": "warn",
         "@typescript-eslint/prefer-readonly": "warn",
-        "@typescript-eslint/prefer-regexp-exec": "error",
-        "no-return-await": "off",
-        "@typescript-eslint/return-await": "error",
-        "@typescript-eslint/strict-boolean-expressions": "error",
+        "@typescript-eslint/prefer-regexp-exec": "warn",
+        "@typescript-eslint/strict-boolean-expressions": "warn",
+        "@typescript-eslint/member-ordering": [
+          "warn",
+          {
+            "classes": [
+              "private-readonly-field",
+              "private-field",
+              "decorated-field",
+              "field",
+              "constructor",
+              "public-method",
+              "private-method"
+            ]
+          }
+        ],
 
-        "array-callback-return": "error",
-        "complexity": ["error", { "max": 8 }],
-        "eqeqeq": ["error", "always", { "null": "ignore" }],
-        "no-unused-vars": "warn",
+        //Regular ESLint rules
+        "array-callback-return": "warn",
+        "sort-imports": ["warn", { "allowSeparatedGroups": true }],
+        "complexity": ["warn", { "max": 8 }],
+        "eqeqeq": ["warn", "always", { "null": "ignore" }],
         "object-shorthand": ["warn", "always"]
       }
     },

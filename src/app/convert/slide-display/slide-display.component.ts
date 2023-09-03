@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { IOutputFile } from '../models/file.model';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
+import { IOutputFile } from '../models/file.model';
 
 @Component({
   selector: 'app-slide-display',
@@ -10,7 +11,7 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 export class SlideDisplayComponent implements OnInit {
   private readonly $gaService = inject(GoogleAnalyticsService);
 
-  @Input() outputFileList: IOutputFile[] = [];
+  @Input() outputFileList: Array<IOutputFile> = [];
 
   ngOnInit(): void {
     this.$gaService.event('display_slides', 'convert', undefined, this.outputFileList.length, true);

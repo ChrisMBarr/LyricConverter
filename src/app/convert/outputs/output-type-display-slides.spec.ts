@@ -1,5 +1,5 @@
-import { mockSongObjects } from 'test/mock-song-objects';
 import { OutputTypeDisplaySlides } from './output-type-display-slides';
+import { mockSongObjects } from 'test/mock-song-objects';
 
 describe('OutputTypeDisplaySlides', () => {
   let outputType: OutputTypeDisplaySlides;

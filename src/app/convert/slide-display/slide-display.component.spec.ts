@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { SlideDisplayComponent } from './slide-display.component';
-import { By } from '@angular/platform-browser';
 import { mockOutputFiles } from 'test/mock-output-files';
 
 describe('SlideDisplayComponent', () => {

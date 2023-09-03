@@ -1,5 +1,6 @@
-import { DOCUMENT, isPlatformServer } from '@angular/common';
 import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
+
 import { version } from './version';
 
 @Component({

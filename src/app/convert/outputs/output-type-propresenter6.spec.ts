@@ -1,6 +1,6 @@
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
-import { TestUtils } from 'test/test-utils';
 import { OutputTypeProPresenter6 } from './output-type-propresenter6';
+import { TestUtils } from 'test/test-utils';
 
 describe('OutputTypePropresenter6', () => {
   let outputType: OutputTypeProPresenter6;

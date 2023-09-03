@@ -1,9 +1,11 @@
 import { Component, Input, inject } from '@angular/core';
-import { IOutputFile } from '../models/file.model';
-import * as fileSaver from 'file-saver';
+
 import * as JSZip from 'jszip';
+import * as fileSaver from 'file-saver';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
 import { IOutputConverter } from '../outputs/output-converter.model';
+import { IOutputFile } from '../models/file.model';
 
 @Component({
   selector: 'app-download-display',
@@ -13,7 +15,7 @@ import { IOutputConverter } from '../outputs/output-converter.model';
 export class DownloadDisplayComponent {
   private readonly $gaService = inject(GoogleAnalyticsService);
 
-  @Input() outputFileList: IOutputFile[] = [];
+  @Input() outputFileList: Array<IOutputFile> = [];
   @Input() selectedOutputType!: IOutputConverter;
 
   onClickDownloadFiles(): void {

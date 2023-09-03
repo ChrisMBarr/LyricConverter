@@ -10,7 +10,7 @@ describe('HelpComponent', () => {
 
   //this is how Angular defines it!
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function configureTestBed(providersArray: any[]) {
+  function configureTestBed(providersArray: Array<any>) {
     TestBed.configureTestingModule({
       declarations: [HelpComponent],
       providers: providersArray,

@@ -1,6 +1,6 @@
 import { InputTypePlainText } from './input-type-plain-text';
-import { TestUtils } from 'test/test-utils';
 import { LyricConverterError } from '../models/errors.model';
+import { TestUtils } from 'test/test-utils';
 
 describe('InputTypePlainText', () => {
   let inputConverter: InputTypePlainText;

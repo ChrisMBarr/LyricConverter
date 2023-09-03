@@ -1,5 +1,5 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { IInputConverter } from './input-converter.model';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { ISong } from 'src/app/convert/models/song.model';
 import { LyricConverterError } from '../models/errors.model';
 

@@ -6,10 +6,10 @@ import {
   IParserVerse,
   OpenLyricsParser,
 } from 'openlyrics-parser';
-import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
 import { IInputConverter } from './input-converter.model';
+import { IRawDataFile } from '../models/file.model';
+import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
 
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';
@@ -40,7 +40,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
     };
   }
 
-  private getTitle(titlesArr: IParserTitle[], fallbackName: string): string {
+  private getTitle(titlesArr: Array<IParserTitle>, fallbackName: string): string {
     let title = fallbackName;
 
     //OpenLyrics songs can have multiple titles. We'll just take the first one if it's there
@@ -50,8 +50,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return title;
   }
 
-  private getInfo(properties: IParserProperties): ISongInfo[] {
-    let info: ISongInfo[] = [];
+  private getInfo(properties: IParserProperties): Array<ISongInfo> {
+    let info: Array<ISongInfo> = [];
 
     //Add all string properties, skipping a few, and special handling for Tempo
     const skipProperties = ['tempoType', 'version'];
@@ -94,8 +94,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return info;
   }
 
-  private getSpecialPropAuthors(authors: IParserAuthor[]): ISongInfo[] {
-    const authorsArr: ISongInfo[] = [];
+  private getSpecialPropAuthors(authors: Array<IParserAuthor>): Array<ISongInfo> {
+    const authorsArr: Array<ISongInfo> = [];
     const key = authors.length === 1 ? 'Author' : 'Authors';
     const val = authors
       .map((a) => {
@@ -107,8 +107,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return authorsArr;
   }
 
-  private getSpecialPropComments(comments: string[]): ISongInfo[] {
-    const commentsArr: ISongInfo[] = [];
+  private getSpecialPropComments(comments: Array<string>): Array<ISongInfo> {
+    const commentsArr: Array<ISongInfo> = [];
     const key = 'Comment';
     if (comments.length === 1) {
       //Just one comment
@@ -127,8 +127,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return commentsArr;
   }
 
-  private getSpecialPropSongBooks(songBooks: IParserSongBook[]): ISongInfo[] {
-    const songBookInfoArr: ISongInfo[] = [];
+  private getSpecialPropSongBooks(songBooks: Array<IParserSongBook>): Array<ISongInfo> {
+    const songBookInfoArr: Array<ISongInfo> = [];
     const name = 'Song Book';
     if (songBooks.length === 1 && songBooks[0] != null) {
       let sbVal = songBooks[0].name;
@@ -153,8 +153,8 @@ export class InputTypeOpenLyrics implements IInputConverter {
     return songBookInfoArr;
   }
 
-  private getSlides(verses: IParserVerse[]): ISongSlide[] {
-    const slides: ISongSlide[] = [];
+  private getSlides(verses: Array<IParserVerse>): Array<ISongSlide> {
+    const slides: Array<ISongSlide> = [];
 
     for (const v of verses) {
       let title = v.name;

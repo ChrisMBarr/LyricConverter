@@ -1,8 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { ISongError } from '../models/errors.model';
-import { Subject } from 'rxjs';
-import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
+
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { Subject } from 'rxjs';
+
+import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
+import { ISongError } from '../models/errors.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 export class ErrorsService {
   private readonly $gaService = inject(GoogleAnalyticsService);
 
-  private errorsList: ISongError[] = [];
-  errorsChanged$ = new Subject<ISongError[]>();
+  private errorsList: Array<ISongError> = [];
+  errorsChanged$ = new Subject<Array<ISongError>>();
 
   add(songError: ISongError): void {
     //If the thrown error is a custom LyricConverter error, use the message from that instead of the default message

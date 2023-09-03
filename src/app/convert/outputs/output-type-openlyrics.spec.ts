@@ -1,6 +1,6 @@
-import { TestUtils } from 'test/test-utils';
-import { OutputTypeOpenLyrics } from './output-type-openlyrics';
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
+import { OutputTypeOpenLyrics } from './output-type-openlyrics';
+import { TestUtils } from 'test/test-utils';
 import { version } from '../../version';
 
 describe('OutputTypeOpenLyrics', () => {

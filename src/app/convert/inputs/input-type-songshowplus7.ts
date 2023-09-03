@@ -1,8 +1,8 @@
-import { SongShowPlus } from 'songshowplus-parser';
-import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
 import { IInputConverter } from './input-converter.model';
+import { IRawDataFile } from '../models/file.model';
+import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+import { SongShowPlus } from 'songshowplus-parser';
 
 export class InputTypeSongShowPlus7 implements IInputConverter {
   readonly name = 'SongShow Plus 7';
@@ -21,7 +21,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
 
     const title = parsedSong.title === '' ? rawFile.name : parsedSong.title;
 
-    const info: ISongInfo[] = [];
+    const info: Array<ISongInfo> = [];
     if (parsedSong.author !== '') info.push({ name: 'Author', value: parsedSong.author });
     if (parsedSong.copyright !== '') info.push({ name: 'Copyright', value: parsedSong.copyright });
     if (parsedSong.ccli !== '') info.push({ name: 'CCLI', value: parsedSong.ccli });
@@ -37,7 +37,7 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     }
 
     //These object use the same property keys, so we can just copy it over
-    const slides: ISongSlide[] = parsedSong.lyricSections;
+    const slides: Array<ISongSlide> = parsedSong.lyricSections;
 
     return {
       fileName: rawFile.name,

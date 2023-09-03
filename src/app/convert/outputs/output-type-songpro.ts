@@ -1,6 +1,6 @@
-import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
+import { IOutputFile } from '../models/file.model';
 
 export class OutputTypeSongPro implements IOutputConverter {
   readonly name = 'SongPro';
@@ -25,12 +25,12 @@ export class OutputTypeSongPro implements IOutputConverter {
     return fileContent.trim();
   }
 
-  private getSongAttributes(title: string, infoArr: ISongInfo[]): string {
+  private getSongAttributes(title: string, infoArr: Array<ISongInfo>): string {
     //SongPro has a few standard/known attributes that should be
     //listed first and marked differently than any custom attributes
     const standardAttributeNames = ['artist', 'capo', 'key', 'tempo', 'year', 'album', 'tuning'];
-    const standardAttributes: string[] = [];
-    const customAttributes: string[] = [];
+    const standardAttributes: Array<string> = [];
+    const customAttributes: Array<string> = [];
     for (const info of infoArr) {
       if (standardAttributeNames.includes(info.name.toLowerCase())) {
         standardAttributes.push(`@${info.name.toLowerCase()}=${info.value}\n`);
@@ -47,7 +47,7 @@ export class OutputTypeSongPro implements IOutputConverter {
     return attributesStr;
   }
 
-  private getSongLyrics(slidesArr: ISongSlide[]): string {
+  private getSongLyrics(slidesArr: Array<ISongSlide>): string {
     let lyricsStr = '';
 
     for (const slide of slidesArr) {

@@ -4,9 +4,9 @@ import {
   IPro5BuilderOptionsSlide,
   ProPresenter5Builder,
 } from 'propresenter-parser';
-import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
+import { IOutputFile } from '../models/file.model';
 
 export class OutputTypeProPresenter5 implements IOutputConverter {
   readonly name = 'ProPresenter 5';
@@ -40,7 +40,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
     };
   }
 
-  private setProperties(songInfo: ISongInfo[], props: IPro5BuilderOptionsProperties): void {
+  private setProperties(songInfo: Array<ISongInfo>, props: IPro5BuilderOptionsProperties): void {
     this.setPropertyValueByNamePattern(songInfo, /album/i, props, 'album');
     this.setPropertyValueByNamePattern(songInfo, /artist/i, props, 'artist');
     this.setPropertyValueByNamePattern(songInfo, /author/i, props, 'author');
@@ -52,7 +52,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
   }
 
   private setPropertyValueByNamePattern(
-    info: ISongInfo[],
+    info: Array<ISongInfo>,
     namePattern: RegExp,
     props: IPro5BuilderOptionsProperties,
     propertyKey: keyof IPro5BuilderOptionsProperties
@@ -64,8 +64,8 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
     }
   }
 
-  private getSlides(slides: ISongSlide[]): IPro5BuilderOptionsSlide[] {
-    const slidesArr: IPro5BuilderOptionsSlide[] = [];
+  private getSlides(slides: Array<ISongSlide>): Array<IPro5BuilderOptionsSlide> {
+    const slidesArr: Array<IPro5BuilderOptionsSlide> = [];
 
     for (const s of slides) {
       slidesArr.push({ label: s.title, text: s.lyrics });

@@ -4,17 +4,19 @@ import { Subject } from 'rxjs';
 
 import { ConvertComponent } from './convert.component';
 import { DonateButtonComponent } from '../donate-button/donate-button.component';
-import { ParserService } from './parser/parser.service';
-import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
-import { SlideDisplayComponent } from './slide-display/slide-display.component';
 import { DownloadDisplayComponent } from './download-display/download-display.component';
+import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
+import { ErrorsService } from './errors/errors.service';
 import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypePlainText } from './outputs/output-type-plain-text';
-import { IOutputConverter } from './outputs/output-converter.model';
+import { ParserService } from './parser/parser.service';
+import { SlideDisplayComponent } from './slide-display/slide-display.component';
+
 import { IOutputFile, IRawDataFile } from './models/file.model';
+import { IOutputConverter } from './outputs/output-converter.model';
 import { ISong } from './models/song.model';
-import { ErrorsService } from './errors/errors.service';
 import { LyricConverterError } from './models/errors.model';
+
 import { TestUtils } from 'test/test-utils';
 
 class MockConverter implements IOutputConverter {
@@ -35,7 +37,7 @@ describe('ConvertComponent', () => {
   let parserSvc: ParserService;
   let errorsSvc: ErrorsService;
 
-  function configureTestBed<T>(providers: T[]) {
+  function configureTestBed<T>(providers: Array<T>) {
     TestBed.configureTestingModule({
       declarations: [
         ConvertComponent,
@@ -55,9 +57,9 @@ describe('ConvertComponent', () => {
 
   describe('Needs a mocked ParserService', () => {
     const mockParserService = {
-      outputConverters: [] as MockConverter[],
-      inputConverters: [] as MockConverter[],
-      parsedFilesChanged$: new Subject<IRawDataFile[]>(),
+      outputConverters: [] as Array<MockConverter>,
+      inputConverters: [] as Array<MockConverter>,
+      parsedFilesChanged$: new Subject<Array<IRawDataFile>>(),
       parseFiles: () => {},
     };
 
@@ -467,7 +469,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
         expect(component.convertedFileCount).toEqual(0);
 
-        const fakeParsedFiles: IRawDataFile[] = [
+        const fakeParsedFiles: Array<IRawDataFile> = [
           {
             dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
             dataAsString: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
@@ -485,7 +487,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
         expect(component.convertedFileCount).toEqual(0);
 
-        const fakeParsedFiles: IRawDataFile[] = [
+        const fakeParsedFiles: Array<IRawDataFile> = [
           {
             dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
             dataAsString: 'blah blah whatever',
@@ -502,7 +504,7 @@ describe('ConvertComponent', () => {
       it('should update the saved value in localStorage when converting a song', () => {
         fixture.detectChanges();
 
-        const fakeParsedFiles: IRawDataFile[] = [
+        const fakeParsedFiles: Array<IRawDataFile> = [
           {
             dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
             dataAsString: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',
@@ -636,7 +638,7 @@ describe('ConvertComponent', () => {
           },
         };
 
-        const fakeParsedFiles: IRawDataFile[] = [
+        const fakeParsedFiles: Array<IRawDataFile> = [
           {
             dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
             dataAsString: '{"title": "Great is your faithfulness O God","info": [], "slides": []}',

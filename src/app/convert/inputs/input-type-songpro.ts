@@ -1,7 +1,7 @@
-import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
+import { ISongProLine, ISongProSong, SongPro } from 'songpro';
 import { IInputConverter } from './input-converter.model';
-import { ISongProSong, SongPro, ISongProLine } from 'songpro';
+import { IRawDataFile } from '../models/file.model';
 import { Utils } from '../shared/utils';
 
 export class InputTypeSongPro implements IInputConverter {
@@ -22,8 +22,8 @@ export class InputTypeSongPro implements IInputConverter {
     const song = SongPro.parse(Utils.normalizeLineEndings(rawFile.dataAsString));
 
     const title = song.attrs.title ?? rawFile.name;
-    const info: ISongInfo[] = this.getSongInfo(song);
-    const slides: ISongSlide[] = this.getSongSlides(song);
+    const info: Array<ISongInfo> = this.getSongInfo(song);
+    const slides: Array<ISongSlide> = this.getSongSlides(song);
 
     // console.group(title);
     // console.log('Song Object', song);
@@ -39,8 +39,8 @@ export class InputTypeSongPro implements IInputConverter {
     };
   }
 
-  private getSongInfo(song: ISongProSong): ISongInfo[] {
-    const info: ISongInfo[] = [];
+  private getSongInfo(song: ISongProSong): Array<ISongInfo> {
+    const info: Array<ISongInfo> = [];
 
     for (const attrKey of Object.keys(song.attrs)) {
       //add all attributes, except the title, to our array of info
@@ -61,8 +61,8 @@ export class InputTypeSongPro implements IInputConverter {
     return info;
   }
 
-  private getSongSlides(song: ISongProSong): ISongSlide[] {
-    const slides: ISongSlide[] = [];
+  private getSongSlides(song: ISongProSong): Array<ISongSlide> {
+    const slides: Array<ISongSlide> = [];
 
     for (const section of song.sections) {
       const lyrics = this.getCombinedLyricsFromLines(section.lines).trim();
@@ -79,7 +79,7 @@ export class InputTypeSongPro implements IInputConverter {
     return slides;
   }
 
-  private getCombinedLyricsFromLines(lines: ISongProLine[]): string {
+  private getCombinedLyricsFromLines(lines: Array<ISongProLine>): string {
     //Lines contain objects with partial lyrics and chords.
     //We don't care about the chords so we just join each part
     // together as a single string and then each string as a line of text

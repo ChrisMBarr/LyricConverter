@@ -1,15 +1,15 @@
 import {
-  OpenLyricsBuilder,
-  IBuilderOptions,
   IBuilderAuthor,
-  IBuilderTheme,
+  IBuilderOptions,
   IBuilderSongBook,
+  IBuilderTheme,
   IBuilderVerse,
+  OpenLyricsBuilder,
 } from 'openlyrics-parser';
-import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { STRING_LIST_SEPARATOR_JOIN, STRING_LIST_SEPARATOR_SPLIT } from '../shared/constants';
 import { IOutputConverter } from './output-converter.model';
+import { IOutputFile } from '../models/file.model';
 import { version } from '../../version';
 
 export class OutputTypeOpenLyrics implements IOutputConverter {
@@ -58,7 +58,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     };
   }
 
-  private findPropertyValue(info: ISongInfo[], namePattern: RegExp): string | undefined {
+  private findPropertyValue(info: Array<ISongInfo>, namePattern: RegExp): string | undefined {
     const infoMatch = info.find((i) => namePattern.test(i.name));
     if (infoMatch !== undefined) {
       return infoMatch.value.toString();
@@ -66,7 +66,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertyAuthors(info: ISongInfo[]): IBuilderAuthor[] | undefined {
+  private findSpecialPropertyAuthors(info: Array<ISongInfo>): Array<IBuilderAuthor> | undefined {
     const foundAuthors = info.filter((i) => /(artist)|(author)/i.test(i.name));
 
     if (foundAuthors.length > 0) {
@@ -83,7 +83,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertyTempo(info: ISongInfo[]): string | number | undefined {
+  private findSpecialPropertyTempo(info: Array<ISongInfo>): string | number | undefined {
     //If we have a property, look for '90' in a string like '90bpm' and then just return the number
     //If no number, just return the text
     const foundProp = this.findPropertyValue(info, /^tempo$/i);
@@ -97,7 +97,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertyThemes(info: ISongInfo[]): IBuilderTheme[] | undefined {
+  private findSpecialPropertyThemes(info: Array<ISongInfo>): Array<IBuilderTheme> | undefined {
     //There should only be one theme item in the info
     const foundTheme = info.find((i) => i.name.toLowerCase().startsWith('theme'));
     if (foundTheme) {
@@ -110,7 +110,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertyComments(info: ISongInfo[]): string[] | undefined {
+  private findSpecialPropertyComments(info: Array<ISongInfo>): Array<string> | undefined {
     const foundComments = info.filter((c) => c.name.toLowerCase().startsWith('comment'));
 
     if (foundComments.length > 0) {
@@ -126,7 +126,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertySongBooks(info: ISongInfo[]): IBuilderSongBook[] | undefined {
+  private findSpecialPropertySongBooks(info: Array<ISongInfo>): Array<IBuilderSongBook> | undefined {
     const foundSongBooks = info.filter((sb) => /^song ?book/i.test(sb.name));
 
     if (foundSongBooks.length > 0) {
@@ -147,7 +147,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findVerses(songSlides: ISongSlide[]): IBuilderVerse[] {
+  private findVerses(songSlides: Array<ISongSlide>): Array<IBuilderVerse> {
     return (
       songSlides
         //Ignore the slides with no lyrics

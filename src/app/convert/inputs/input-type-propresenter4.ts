@@ -1,7 +1,7 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { IPro4Properties, IPro4Slide, IPro4Song, ProPresenter4Parser } from 'propresenter-parser';
 import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
 import { IInputConverter } from './input-converter.model';
-import { IPro4Properties, IPro4Slide, IPro4Song, ProPresenter4Parser } from 'propresenter-parser';
+import { IRawDataFile } from 'src/app/convert/models/file.model';
 
 export class InputTypeProPresenter4 implements IInputConverter {
   readonly name = 'ProPresenter 4';
@@ -26,8 +26,8 @@ export class InputTypeProPresenter4 implements IInputConverter {
     };
   }
 
-  private getInfo(props: IPro4Properties): ISongInfo[] {
-    const info: ISongInfo[] = [];
+  private getInfo(props: IPro4Properties): Array<ISongInfo> {
+    const info: Array<ISongInfo> = [];
 
     this.addStringPropValue(info, props, 'Album', 'album');
     this.addStringPropValue(info, props, 'Artist Credits', 'CCLIArtistCredits');
@@ -45,7 +45,7 @@ export class InputTypeProPresenter4 implements IInputConverter {
   }
 
   private addStringPropValue(
-    arr: ISongInfo[],
+    arr: Array<ISongInfo>,
     props: IPro4Properties,
     infoName: string,
     propKey: keyof IPro4Properties
@@ -56,8 +56,8 @@ export class InputTypeProPresenter4 implements IInputConverter {
     }
   }
 
-  private getSlides(slidesArr: IPro4Slide[]): ISongSlide[] {
-    const slidesList: ISongSlide[] = [];
+  private getSlides(slidesArr: Array<IPro4Slide>): Array<ISongSlide> {
+    const slidesList: Array<ISongSlide> = [];
 
     for (const slide of slidesArr) {
       const title = slide.label;
