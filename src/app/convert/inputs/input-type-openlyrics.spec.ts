@@ -1,7 +1,6 @@
 import { TestUtils } from 'test/test-utils';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeOpenLyrics } from './input-type-openlyrics';
-import * as mockOpenLyrics from 'test/mock-openlyrics-files';
 import * as mockRawFiles from 'test/mock-raw-files';
 
 describe('InputTypeOpenLyrics', () => {
@@ -16,9 +15,10 @@ describe('InputTypeOpenLyrics', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a OpenLyrics XML file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockOpenLyrics.mockOpenLyricsFileSimpleFile
+    it('should properly ACCEPT a OpenLyrics XML file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/examples',
+        'simple.xml'
       );
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
@@ -45,9 +45,10 @@ describe('InputTypeOpenLyrics', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for a simple OpenLyrics file', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockOpenLyrics.mockOpenLyricsFileSimpleFile
+    it('should return a song for a simple OpenLyrics file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/examples',
+        'simple.xml'
       );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -63,9 +64,10 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a complex OpenLyrics file', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockOpenLyrics.mockOpenLyricsFileComplexFile
+    it('should return a song for a complex OpenLyrics file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/examples',
+        'complex.xml'
       );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -84,7 +86,8 @@ describe('InputTypeOpenLyrics', () => {
           { name: 'verseOrder', value: 'v1 v2  v3 c v4 c1 c2 b b1 b2' },
           {
             name: 'Authors',
-            value: 'John Newton | Chris Rice (words) | Richard Wagner (music) | František Foo (translation)',
+            value:
+              'John Newton | Chris Rice (words) | Richard Wagner (music) | František Foo (translation)',
           },
           {
             name: 'Comment',
@@ -134,9 +137,10 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should use the filename for the title if there is no title', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockOpenLyrics.mockOpenLyricsFileSimpleFile
+    it('should use the filename for the title if there is no title', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/examples',
+        'simple.xml'
       );
 
       //remove the titles so the parser can't find one
@@ -145,12 +149,16 @@ describe('InputTypeOpenLyrics', () => {
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
-    it('should ignore/exclude comments from the song lyrics', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockOpenLyrics.mockOpenLyricsFileSimpleFile
+    it('should ignore/exclude comments from the song lyrics', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/examples',
+        'simple.xml'
       );
 
-      testFile.dataAsString = testFile.dataAsString.replace('how sweet the sound','how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound')
+      testFile.dataAsString = testFile.dataAsString.replace(
+        'how sweet the sound',
+        'how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound'
+      );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -165,8 +173,11 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file 1', () => {
-      const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile1);
+    it('should return a song for a OpenLyrics example file 1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/songs',
+        'Amazing Grace.xml'
+      );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -202,8 +213,11 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file 2', () => {
-      const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile2);
+    it('should return a song for a OpenLyrics example file 2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/songs',
+        'It Is Well With My Soul.xml'
+      );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -211,7 +225,6 @@ describe('InputTypeOpenLyrics', () => {
         info: [
           { name: 'ccliNo', value: '25376' },
           { name: 'copyright', value: 'Public Domain' },
-          { name: 'Tempo', value: 'Moderate' },
           { name: 'verseOrder', value: 'v1 c v2 c v3 c v4 c' },
           { name: 'Authors', value: 'Horatio Spafford | Philip Bliss' },
           { name: 'Themes', value: 'Peace | Assurance | Trust' },
@@ -246,8 +259,12 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file 3 - a single songbook and multiple comments', () => {
-      const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile3);
+    it('should return a song for a OpenLyrics example file 3 - a single songbook and multiple comments', async () => {
+      // const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile3);
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/examples',
+        'multiple-comments.xml'
+      );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -261,9 +278,10 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockOpenLyrics.mockOpenLyricsSongFileHebrew
+    it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'OpenLyrics/songs',
+        'Hava Nagila.xml'
       );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
