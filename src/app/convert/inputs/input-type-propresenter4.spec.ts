@@ -1,6 +1,5 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeProPresenter4 } from './input-type-propresenter4';
-import * as mockPpFiles from 'test/mock-propresenter-files';
 import { TestUtils } from 'test/test-utils';
 import {
   mockEmptyJsonFile,
@@ -55,112 +54,119 @@ describe('InputTypeProPresenter4', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should get the expected TITLES from ProPresenter 4 files', () => {
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File1).title).toEqual('Be Near');
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File2).title).toEqual(
-        'Give Us Clean Hands'
+    it('should get a TITLE from the file name when the file does not have a CCLISongTitle', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'ProPresenter',
+        'v4 - Be Near.pro4'
       );
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File3).title).toEqual('Jesus Saves');
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File4).title).toEqual('You Are');
+
+      testFile.dataAsString = testFile.dataAsString.replace('CCLISongTitle="Be Near" ', '');
+      expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
-    it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
-      const fileCopy = structuredClone(mockPpFiles.pp4File1);
-      fileCopy.dataAsString = fileCopy.dataAsString.replace('CCLISongTitle="Be Near" ', '');
-      expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
+    it('should get a song from a ProPresenter 4 file1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'ProPresenter',
+        'v4 - Be Near.pro4'
+      );
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Be Near',
+        info: [
+          { name: 'Category', value: 'Song' },
+          { name: 'Copyright', value: 2003 },
+          { name: 'Creator Code', value: 1349676880 },
+          { name: 'Publisher', value: 'Waiting Room Music' },
+        ],
+        slides: [
+          {
+            title: 'Chorus 1',
+            lyrics:
+              'Be near O God\nBe near O God of us\nYour nearness is to us our good\nBe near O God\nBe near O God of us\nYour nearness is to us our good\nOur good',
+          },
+          {
+            title: 'Verse 1',
+            lyrics:
+              "You are all big and small\nBeautiful\nAnd wonderful\nTo trust in grace through faith\nBut I'm asking to taste",
+          },
+          {
+            title: 'Verse 2',
+            lyrics:
+              'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
+          },
+          {
+            title: 'Verse 3',
+            lyrics:
+              'Your fullness is mine\nRevelation divine\nBut oh to taste\nTo know much more than a page\nTo feel Your embrace',
+          },
+          {
+            title: 'Verse 4',
+            lyrics:
+              'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
+          },
+          {
+            title: '',
+            lyrics: 'My good',
+          },
+        ],
+      });
     });
 
-    it('should get the expected INFO from a ProPresenter 4 file1', () => {
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File1).info).toEqual([
-        { name: 'Category', value: 'Song' },
-        { name: 'Copyright', value: 2003 },
-        { name: 'Creator Code', value: 1349676880 },
-        { name: 'Publisher', value: 'Waiting Room Music' },
-      ]);
-    });
+    it('should get a song from a ProPresenter 4 file2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile(
+        'ProPresenter',
+        'v4 - Give Us Clean Hands.pro4'
+      );
 
-    it('should get the expected INFO from a ProPresenter 4 file2', () => {
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File2).info).toEqual([
-        { name: 'Author', value: 'Charlie Hall' },
-        { name: 'CCLI Number', value: 2060208 },
-        { name: 'Category', value: 'Song' },
-        { name: 'Copyright', value: 2000 },
-        { name: 'Creator Code', value: 1349676880 },
-        {
-          name: 'Publisher',
-          value:
-          'worshiptogether.com songs | sixsteps Music (Admin. by EMI Christian Music Publishing) | (Admin. by EMI Christian Music Publishing)',
-        },
-      ]);
-    });
-
-    it('should get the expected SLIDES from a ProPresenter 4 file1', () => {
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File1).slides).toEqual([
-        {
-          title: 'Chorus 1',
-          lyrics:
-            'Be near O God\nBe near O God of us\nYour nearness is to us our good\nBe near O God\nBe near O God of us\nYour nearness is to us our good\nOur good',
-        },
-        {
-          title: 'Verse 1',
-          lyrics:
-            "You are all big and small\nBeautiful\nAnd wonderful\nTo trust in grace through faith\nBut I'm asking to taste",
-        },
-        {
-          title: 'Verse 2',
-          lyrics:
-            'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
-        },
-        {
-          title: 'Verse 3',
-          lyrics:
-            'Your fullness is mine\nRevelation divine\nBut oh to taste\nTo know much more than a page\nTo feel Your embrace',
-        },
-        {
-          title: 'Verse 4',
-          lyrics:
-            'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
-        },
-        {
-          title: '',
-          lyrics: 'My good',
-        },
-      ]);
-    });
-
-    it('should get the expected SLIDES from a ProPresenter 4 file2', () => {
-      expect(inputConverter.extractSongData(mockPpFiles.pp4File2).slides).toEqual([
-        {
-          title: 'Verse 1',
-          lyrics:
-            'We bow our hearts we bend our knees\nOh Spirit come make us humble\nWe turn our eyes from evil things\nOh Lord we cast down our idols',
-        },
-        {
-          title: 'Chorus 1',
-          lyrics:
-            'Give us clean hands give us pure hearts\nLet us not lift our souls to another\nGive us clean hands give us pure hearts\nLet us not lift our souls to another',
-        },
-        {
-          title: 'Chorus 1',
-          lyrics:
-            'Oh God let us be a generation\n That seeks\nThat seeks Your face oh God of Jacob\nOh God let us be a generation                  That seeks\nThat seeks Your face oh God of Jacob',
-        },
-        {
-          title: 'Verse 1',
-          lyrics:
-            'We bow our hearts we bend our knees\nOh Spirit come make us humble\nWe turn our eyes from evil things\nOh Lord we cast down our idols',
-        },
-        {
-          title: 'Chorus 1',
-          lyrics:
-            'Give us clean hands give us pure hearts\nLet us not lift our souls to another\nGive us clean hands give us pure hearts\nLet us not lift our souls to another',
-        },
-        {
-          title: 'Chorus 1',
-          lyrics:
-            'Oh God let us be a generation\n That seeks\nThat seeks Your face oh God of Jacob\nOh God let us be a generation                  That seeks\nThat seeks Your face oh God of Jacob',
-        },
-      ]);
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Give Us Clean Hands',
+        info: [
+          { name: 'Author', value: 'Charlie Hall' },
+          { name: 'CCLI Number', value: 2060208 },
+          { name: 'Category', value: 'Song' },
+          { name: 'Copyright', value: 2000 },
+          { name: 'Creator Code', value: 1349676880 },
+          {
+            name: 'Publisher',
+            value:
+              'worshiptogether.com songs | sixsteps Music (Admin. by EMI Christian Music Publishing) | (Admin. by EMI Christian Music Publishing)',
+          },
+        ],
+        slides: [
+          {
+            title: 'Verse 1',
+            lyrics:
+              'We bow our hearts we bend our knees\nOh Spirit come make us humble\nWe turn our eyes from evil things\nOh Lord we cast down our idols',
+          },
+          {
+            title: 'Chorus 1',
+            lyrics:
+              'Give us clean hands give us pure hearts\nLet us not lift our souls to another\nGive us clean hands give us pure hearts\nLet us not lift our souls to another',
+          },
+          {
+            title: 'Chorus 1',
+            lyrics:
+              'Oh God let us be a generation\n That seeks\nThat seeks Your face oh God of Jacob\nOh God let us be a generation                  That seeks\nThat seeks Your face oh God of Jacob',
+          },
+          {
+            title: 'Verse 1',
+            lyrics:
+              'We bow our hearts we bend our knees\nOh Spirit come make us humble\nWe turn our eyes from evil things\nOh Lord we cast down our idols',
+          },
+          {
+            title: 'Chorus 1',
+            lyrics:
+              'Give us clean hands give us pure hearts\nLet us not lift our souls to another\nGive us clean hands give us pure hearts\nLet us not lift our souls to another',
+          },
+          {
+            title: 'Chorus 1',
+            lyrics:
+              'Oh God let us be a generation\n That seeks\nThat seeks Your face oh God of Jacob\nOh God let us be a generation                  That seeks\nThat seeks Your face oh God of Jacob',
+          },
+        ],
+      });
     });
   });
 });

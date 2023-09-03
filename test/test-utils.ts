@@ -18,7 +18,7 @@ export class TestUtils {
   }
 
   public static normalizeWhitespace(str: string): string {
-    return str.replace(/\n\s+/g, '\n');
+    return str.replace(/\r\n/g, '\n').replace(/\n\s+/g, '\n').trim();
   }
 
   public static normalizeUuidAttributes(str: string): string {
