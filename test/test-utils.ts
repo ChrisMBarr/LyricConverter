@@ -1,5 +1,10 @@
+import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { Utils } from 'src/app/convert/shared/utils';
+
 export class TestUtils {
-  public static dedent(inputStrings: TemplateStringsArray, ...values: any[]): string {
+  private static readonly decoder = new TextDecoder();
+
+  public static dedent(inputStrings: TemplateStringsArray, ...values: never[]): string {
     //Convert template string arr into a real string
     const fullString = inputStrings.reduce(
       (accumulator, str, i) => `${accumulator}${values[i - 1]}${str}`
@@ -44,6 +49,26 @@ export class TestUtils {
   public static normalizeOpenLyricsStringForTesting(str: string): string {
     //A helper method to do all of our replacements in one for comparing OpenLyrics files
     return TestUtils.normalizeDateAttribute('modifiedDate', TestUtils.normalizeWhitespace(str));
+  }
+
+  public static async loadTestFileAsRawDataFile(folderPath: string, fileName: string): Promise<IRawDataFile> {
+    const path = `/base/test/sample-files/${folderPath}/${fileName}`;
+    const response = await fetch(path);
+
+    if(response.statusText !== 'OK'){
+      throw new Error(`Test file at '${path}' could not be fetched! Is it included in the karma.conf.js files list?`);
+    }
+
+    const fileNameParts = Utils.getFileNameParts(fileName);
+    const dataAsBuffer = await response.arrayBuffer()
+
+    return {
+      name: fileNameParts.name,
+      ext: fileNameParts.ext,
+      type: response.type,
+      dataAsBuffer,
+      dataAsString: TestUtils.decoder.decode(dataAsBuffer),
+    };
   }
 
   public static deepClone<T>(input: T): T {

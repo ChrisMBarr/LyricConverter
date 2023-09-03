@@ -7,16 +7,8 @@ import {
 import { TestUtils } from 'test/test-utils';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
-import {
-  mockSongShowPlusFile1,
-  mockSongShowPlusFile2,
-  mockSongShowPlusFile3,
-  mockSongShowPlusFile4,
-  mockSongShowPlusSpanishFile1,
-  mockSongShowPlusSpanishFile2,
-} from 'test/mock-songshowplus7-files';
 
-fdescribe('InputTypeSongShowPlus7', () => {
+describe('InputTypeSongShowPlus7', () => {
   let inputConverter: InputTypeSongShowPlus7;
 
   beforeEach(() => {
@@ -50,8 +42,8 @@ fdescribe('InputTypeSongShowPlus7', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for an ENGLISH SongShow Plus 7 file1', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusFile1);
+    it('should return a song for an ENGLISH SongShow Plus 7 file1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Be Near.sbsong');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -69,6 +61,7 @@ fdescribe('InputTypeSongShowPlus7', () => {
             lyrics:
               'Be near O God\nBe near O God of us\nYour nearness is to us our good\nBe near O God\nBe near O God of us\nYour nearness is to us our good\nOur good',
           },
+          { title: 'Other', lyrics: '' },
           {
             title: 'Verse 1',
             lyrics:
@@ -97,8 +90,8 @@ fdescribe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for an ENGLISH SongShow Plus 7 file2', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusFile2);
+    it('should return a song for an ENGLISH SongShow Plus 7 file2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Give Us Clean Hands.sbsong');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -145,8 +138,8 @@ fdescribe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for an ENGLISH SongShow Plus 7 file3', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusFile3);
+    it('should return a song for an ENGLISH SongShow Plus 7 file3', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Jesus Saves.sbsong');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -183,12 +176,12 @@ fdescribe('InputTypeSongShowPlus7', () => {
               'She shall bring forth a Son thou\nShalt call His name Jesus and He shall save\nSave His people from sin and give peace within\nWhat amazing grace - Jesus saves',
           },
           {
-            title: 'Verse 3r',
+            title: 'Verse 3',
             lyrics:
               "Jesus saves, He's the One that has never known sin\nJesus saves, yet for us He took on the sins of men\nJesus saves for he became our sin that we \nMay become the righteousness of God\nJesus saves and now I'll see His face in peace\nJesus saves and I will live with Him eternally\nJesus saves and I will join with the angels\nAround the throne Singing Holy, Holy, Holy",
           },
           {
-            title: 'Verse 4z',
+            title: 'Verse 4',
             lyrics:
               "Jesus saves and today you can leave here set free\nJesus saves and even now He will give you liberty\nJesus saves no matter what, no matter who, no\nMatter where just call Him, He'll answer your prayer\nJesus saves and your life will never be the same\nJesus saves and right now you can be born again\nJesus saves for he that be in Christ\nThe old has past and all is made new",
           },
@@ -199,14 +192,14 @@ fdescribe('InputTypeSongShowPlus7', () => {
           },
           {
             title: 'Vamp 1',
-            lyrics: "Jesus saves (repeat) Hallelujah (repeat)\n'(",
+            lyrics: "Jesus saves (repeat) Hallelujah (repeat)",
           },
         ],
       });
     });
 
-    it('should return a song for an ENGLISH SongShow Plus 7 file4', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusFile4);
+    it('should return a song for an ENGLISH SongShow Plus 7 file4', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'You Are.sbsong');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -258,8 +251,8 @@ fdescribe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for a SPANISH SongShow Plus 7 file1', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusSpanishFile1);
+    it('should return a song for a SPANISH SongShow Plus 7 file1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Spanish - Devuelveme El Gozo.sbsong');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -280,8 +273,8 @@ fdescribe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for a SPANISH SongShow Plus 7 file2', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongShowPlusSpanishFile2);
+    it('should return a song for a SPANISH SongShow Plus 7 file2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Spanish - La Sangre (The Blood).sbsong');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,

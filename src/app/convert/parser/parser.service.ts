@@ -27,6 +27,7 @@ import { OutputTypeJSON } from '../outputs/output-type-json';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { ErrorsService } from '../errors/errors.service';
 import { OutputTypeProPresenter6 } from '../outputs/output-type-propresenter6';
+import { Utils } from '../shared/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -100,15 +101,13 @@ export class ParserService {
   ): (ev: ProgressEvent<FileReader>) => void {
     //When called, it has to return a function back up to the listener event
     return (ev: ProgressEvent<FileReader>) => {
-      const fileNameParts = theFile.name.split('.');
-      const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : ''; //eslint-disable-line @typescript-eslint/no-non-null-assertion
-      const nameWithoutExt = theFile.name.replace(`.${fileExt}`, '');
+      const fileNameParts = Utils.getFileNameParts(theFile.name);
 
       if (ev.target?.result != null) {
         const newFile: IFileWithData = {
           name: theFile.name,
-          nameWithoutExt,
-          ext: fileExt.toLowerCase(),
+          nameWithoutExt: fileNameParts.name,
+          ext: fileNameParts.ext,
           type: theFile.type,
           size: theFile.size,
           lastModified: theFile.lastModified,

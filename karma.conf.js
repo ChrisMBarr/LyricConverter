@@ -35,5 +35,13 @@ module.exports = function (config) {
     reporters: ["progress", "kjhtml"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
+    files: [
+      {
+        pattern: "test/sample-files/SongShow Plus/*.sbsong",
+        watched: false,
+        served: true,
+        included: false,
+      },
+    ],
   });
 };
