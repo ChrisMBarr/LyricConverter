@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SlideDisplayComponent } from './slide-display.component';
 import { By } from '@angular/platform-browser';
 import { mockOutputFiles } from 'test/mock-output-files';
-import { TestUtils } from 'test/test-utils';
 
 describe('SlideDisplayComponent', () => {
   let component: SlideDisplayComponent;

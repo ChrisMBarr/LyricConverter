@@ -1,4 +1,3 @@
-import { TestUtils } from 'test/test-utils';
 import { OutputTypeJSON } from './output-type-json';
 import { mockSongObjects } from 'test/mock-song-objects';
 

@@ -1,4 +1,3 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeProPresenter4 } from './input-type-propresenter4';
 import { TestUtils } from 'test/test-utils';
 

@@ -5,7 +5,6 @@ import { By } from '@angular/platform-browser';
 import * as fileSaver from 'file-saver';
 import * as JSZip from 'jszip';
 import { mockOutputFiles } from 'test/mock-output-files';
-import { TestUtils } from 'test/test-utils';
 import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 
 describe('DownloadDisplayComponent', () => {
