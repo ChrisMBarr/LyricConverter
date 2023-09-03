@@ -1,12 +1,14 @@
 import {
   Component,
   ElementRef,
-  Inject,
   OnInit,
   ViewChild,
   ViewEncapsulation,
-  OnDestroy,
+  inject,
+  DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import { ParserService } from './parser/parser.service';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
@@ -14,7 +16,6 @@ import { IOutputConverter } from './outputs/output-converter.model';
 import { ErrorsService } from './errors/errors.service';
 import { ISongError } from './models/errors.model';
 import { DOCUMENT } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -22,14 +23,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './convert.component.html',
   styleUrls: ['./convert.component.css'],
 })
-export class ConvertComponent implements OnInit, OnDestroy {
+export class ConvertComponent implements OnInit {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly document: Document = inject(DOCUMENT);
+  private readonly elementRef = inject(ElementRef);
+  private readonly parserSvc = inject(ParserService);
+  private readonly errorsSvc = inject(ErrorsService);
+
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
   private readonly convertedFileCountStorageKey = 'CONVERT_COUNT';
   private readonly window: Window = this.document.defaultView as Window;
 
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
-  private filesChangedSub$: Subscription = Subscription.EMPTY;
-  private errorsChangedSub$: Subscription = Subscription.EMPTY;
 
   displayInitialUi = true;
   convertedFileCount = 0;
@@ -40,34 +45,24 @@ export class ConvertComponent implements OnInit, OnDestroy {
   selectedOutputType!: IOutputConverter;
   convertedSongsForOutput: IOutputFile[] = [];
 
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    private readonly elementRef: ElementRef,
-    private readonly parserSvc: ParserService,
-    private readonly errorsSvc: ErrorsService
-  ) {}
-
   ngOnInit(): void {
     this.buildOutputTypesList();
     this.buildInputTypesList();
     this.getSavedConvertedFileCount();
 
     //When files have finished parsing we will handle them here
-    this.filesChangedSub$ = this.parserSvc.parsedFilesChanged$.subscribe(
-      (rawFiles: IRawDataFile[]) => {
+    this.parserSvc.parsedFilesChanged$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((rawFiles: IRawDataFile[]) => {
         this.getConvertersAndExtractData(rawFiles);
-      }
-    );
+      });
 
     //Updates from the error service
-    this.errorsChangedSub$ = this.errorsSvc.errorsChanged$.subscribe((errorsList: ISongError[]) => {
-      this.errorsList = errorsList;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.filesChangedSub$.unsubscribe();
-    this.errorsChangedSub$.unsubscribe();
+    this.errorsSvc.errorsChanged$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((errorsList: ISongError[]) => {
+        this.errorsList = errorsList;
+      });
   }
 
   private buildOutputTypesList(): void {

@@ -1,5 +1,5 @@
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { version } from './version';
 
 @Component({
@@ -8,12 +8,10 @@ import { version } from './version';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  private readonly backgroundImagesCount = 8;
+  private readonly document: Document = inject(DOCUMENT);
+  private readonly platformId = inject(PLATFORM_ID);
 
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    @Inject(PLATFORM_ID) private readonly platformId: string
-  ) {}
+  private readonly backgroundImagesCount = 8;
 
   ngOnInit(): void {
     //Set the version number in the meta tag, maybe useful for prerendering & SEO, and just to know which version is deployed

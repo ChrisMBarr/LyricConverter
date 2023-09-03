@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { IOutputFile } from '../models/file.model';
 import * as fileSaver from 'file-saver';
 import * as JSZip from 'jszip';
@@ -11,10 +11,10 @@ import { IOutputConverter } from '../outputs/output-converter.model';
   styleUrls: ['./download-display.component.css'],
 })
 export class DownloadDisplayComponent {
+  private readonly $gaService = inject(GoogleAnalyticsService);
+
   @Input() outputFileList: IOutputFile[] = [];
   @Input() selectedOutputType!: IOutputConverter;
-
-  constructor(private readonly $gaService: GoogleAnalyticsService) {}
 
   onClickDownloadFiles(): void {
     for (const outputFile of this.outputFileList) {

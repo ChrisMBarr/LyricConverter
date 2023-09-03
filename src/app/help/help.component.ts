@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ParserService } from '../convert/parser/parser.service';
 import { Utils } from '../convert/shared/utils';
 
@@ -16,6 +16,8 @@ interface ICombinedFormatItem {
   styleUrls: ['./help.component.css'],
 })
 export class HelpComponent implements OnInit {
+  private readonly parserSvc = inject(ParserService);
+
   combinedFormatsList: ICombinedFormatItem[] = [];
 
   unsupportedFormatsList: ICombinedFormatItem[] = [
@@ -48,8 +50,6 @@ export class HelpComponent implements OnInit {
       url: 'http://opensong.org/',
     },
   ];
-
-  constructor(private readonly parserSvc: ParserService) {}
 
   ngOnInit(): void {
     //Add all input/import types to the list

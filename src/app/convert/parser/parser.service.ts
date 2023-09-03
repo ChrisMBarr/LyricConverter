@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 
 //Helpers & Types
@@ -33,6 +33,8 @@ import { Utils } from '../shared/utils';
   providedIn: 'root',
 })
 export class ParserService {
+  private readonly errorsSvc = inject(ErrorsService);
+
   //List of all available Input Converters
   readonly inputConverters: IInputConverter[] = [
     new InputTypeProPresenter4(),
@@ -60,8 +62,6 @@ export class ParserService {
   parsedFilesChanged$ = new Subject<IRawDataFile[]>();
 
   private readonly decoder = new TextDecoder();
-
-  constructor(private readonly errorsSvc: ErrorsService) {}
 
   parseFiles(files: FileList): void {
     try {

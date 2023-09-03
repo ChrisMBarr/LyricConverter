@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { IOutputFile } from '../models/file.model';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -8,9 +8,9 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
   styleUrls: ['./slide-display.component.css'],
 })
 export class SlideDisplayComponent implements OnInit {
-  @Input() outputFileList: IOutputFile[] = [];
+  private readonly $gaService = inject(GoogleAnalyticsService);
 
-  constructor(private readonly $gaService: GoogleAnalyticsService) {}
+  @Input() outputFileList: IOutputFile[] = [];
 
   ngOnInit(): void {
     this.$gaService.event('display_slides', 'convert', undefined, this.outputFileList.length, true);
