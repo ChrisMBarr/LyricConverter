@@ -100,4 +100,4 @@ Anything added to this project will most likely be a new format for LyricConvert
    Add tests to verify that this new output type can take all kinds of `ISong` objects and convert them to the expected output `string`
 
 
-> I am not in any way affiliated with R-Technics' [SongShow Plus](https://songshowplus.com/) or Renewed Vision's [ProPresenter](https://www.renewedvision.com/propresenter.php).
+> I am not in any way affiliated with any of the companies or organizations that make any of the lyric file formats or presentation software listed here
