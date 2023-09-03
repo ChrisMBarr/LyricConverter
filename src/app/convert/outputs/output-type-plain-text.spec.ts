@@ -14,7 +14,7 @@ describe('OutputTypePlainText', () => {
   });
 
   it('should convert a song to a text file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[0]!);
+    const song = structuredClone(mockSongObjects[0]!);
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
@@ -45,7 +45,7 @@ describe('OutputTypePlainText', () => {
   });
 
   it('should not include info with blank values', () => {
-    const song = TestUtils.deepClone(mockSongObjects[0]!);
+    const song = structuredClone(mockSongObjects[0]!);
 
     song.info.push({name: 'Test Blank', value: ''})
 
@@ -78,7 +78,7 @@ describe('OutputTypePlainText', () => {
   });
 
   it('should not include slides with blank lyrics', () => {
-    const song = TestUtils.deepClone(mockSongObjects[0]!);
+    const song = structuredClone(mockSongObjects[0]!);
 
     song.slides.push({title: 'Test Blank', lyrics: ''})
 

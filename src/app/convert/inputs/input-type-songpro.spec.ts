@@ -21,24 +21,24 @@ describe('InputTypeSongPro', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a SongPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptySongProFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptySongProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a plain text file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyTextFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
+      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
 
   describe('extractSongData()', () => {
     it('should return a song for a SongPro file1', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongProFile1);
+      const testFile: IRawDataFile = structuredClone(mockSongProFile1);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -62,7 +62,7 @@ describe('InputTypeSongPro', () => {
     });
 
     it('should return a song for a SongPro file2', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongProFile2);
+      const testFile: IRawDataFile = structuredClone(mockSongProFile2);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -113,7 +113,7 @@ describe('InputTypeSongPro', () => {
     });
 
     it('should use the filename as the title when a title is not present in the file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSongProFile1);
+      const testFile: IRawDataFile = structuredClone(mockSongProFile1);
       testFile.name = 'My Test Title';
       testFile.dataAsString = testFile.dataAsString.replace(/^@title=.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);

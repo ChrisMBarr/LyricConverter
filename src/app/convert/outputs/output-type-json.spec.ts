@@ -14,7 +14,7 @@ describe('OutputTypeJSON', () => {
   });
 
   it('should output a JSON object identical to the input, but without the filename property', () => {
-    const song = TestUtils.deepClone(mockSongObjects[0]!);
+    const song = structuredClone(mockSongObjects[0]!);
 
     const expectedJsonString = JSON.stringify(
       { title: song.title, info: song.info, slides: song.slides },

@@ -17,36 +17,36 @@ describe('InputTypeOpenLyrics', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a OpenLyrics XML file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(
+      const testFile: IRawDataFile = structuredClone(
         mockOpenLyrics.mockOpenLyricsFileSimpleFile
       );
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a plain text file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockRawFiles.mockEmptyTextFile);
+      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockRawFiles.mockSimpleChordProFile);
+      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a JSON file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockRawFiles.mockEmptyJsonFile);
+      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockEmptyJsonFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ProPresenter file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockRawFiles.mockEmptyProPresenter5File);
+      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockEmptyProPresenter5File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
 
   describe('extractSongData()', () => {
     it('should return a song for a simple OpenLyrics file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(
+      const testFile: IRawDataFile = structuredClone(
         mockOpenLyrics.mockOpenLyricsFileSimpleFile
       );
 
@@ -64,7 +64,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a complex OpenLyrics file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(
+      const testFile: IRawDataFile = structuredClone(
         mockOpenLyrics.mockOpenLyricsFileComplexFile
       );
 
@@ -135,7 +135,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should use the filename for the title if there is no title', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(
+      const testFile: IRawDataFile = structuredClone(
         mockOpenLyrics.mockOpenLyricsFileSimpleFile
       );
 
@@ -146,7 +146,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should ignore/exclude comments from the song lyrics', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(
+      const testFile: IRawDataFile = structuredClone(
         mockOpenLyrics.mockOpenLyricsFileSimpleFile
       );
 
@@ -166,7 +166,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 1', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockOpenLyrics.mockOpenLyricsSongFile1);
+      const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile1);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -203,7 +203,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 2', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockOpenLyrics.mockOpenLyricsSongFile2);
+      const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile2);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -247,7 +247,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 3 - a single songbook and multiple comments', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockOpenLyrics.mockOpenLyricsSongFile3);
+      const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile3);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -262,7 +262,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(
+      const testFile: IRawDataFile = structuredClone(
         mockOpenLyrics.mockOpenLyricsSongFileHebrew
       );
 

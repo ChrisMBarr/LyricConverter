@@ -23,29 +23,29 @@ describe('InputTypePlainText', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a plain text file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyTextFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
+      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a JSON file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyJsonFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptyJsonFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ProPresenter file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter5File);
+      const testFile: IRawDataFile = structuredClone(mockEmptyProPresenter5File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
 
   describe('extractSongData()', () => {
     it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
+      const testFile: IRawDataFile = structuredClone(mockPlainTextFile1);
       testFile.dataAsString = testFile.dataAsString.replace('\n\n\n', '\n');
 
       const expectedError = new LyricConverterError(
@@ -55,7 +55,7 @@ describe('InputTypePlainText', () => {
     });
 
     it('should return a song for a plain text file1', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile1);
+      const testFile: IRawDataFile = structuredClone(mockPlainTextFile1);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -100,7 +100,7 @@ describe('InputTypePlainText', () => {
     });
 
     it('should return a song for a plain text file2', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile2);
+      const testFile: IRawDataFile = structuredClone(mockPlainTextFile2);
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -147,7 +147,7 @@ describe('InputTypePlainText', () => {
     });
 
     it('should use the filename as the title when a title is not present in the file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockPlainTextFile2);
+      const testFile: IRawDataFile = structuredClone(mockPlainTextFile2);
       testFile.name = 'My Test Title';
       testFile.dataAsString = testFile.dataAsString.replace(/^title:.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);

@@ -70,8 +70,4 @@ export class TestUtils {
       dataAsString: TestUtils.decoder.decode(dataAsBuffer),
     };
   }
-
-  public static deepClone<T>(input: T): T {
-    return structuredClone(input);
-  }
 }

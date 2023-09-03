@@ -15,7 +15,7 @@ describe('OutputTypePropresenter5', () => {
   });
 
   it('should convert a basic empty song to a ProPresenter 5 file', () => {
-    const song = TestUtils.deepClone(mockEmptySong);
+    const song = structuredClone(mockEmptySong);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeProPresenterStringForTesting(
@@ -31,7 +31,7 @@ describe('OutputTypePropresenter5', () => {
   });
 
   it('should convert a song to a ProPresenter 5 file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[2]!);
+    const song = structuredClone(mockSongObjects[2]!);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeProPresenterStringForTesting(

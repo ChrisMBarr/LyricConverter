@@ -21,22 +21,22 @@ describe('InputTypeSongShowPlus7', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a SongPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptySongShowPlusFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptySongShowPlusFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a SongPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptySongProFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptySongProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a plain text file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyTextFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
+      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });

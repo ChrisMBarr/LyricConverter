@@ -14,7 +14,7 @@ describe('OutputTypeSongPro', () => {
   });
 
   it('should convert a basic empty song to a SongPro file', () => {
-    const song = TestUtils.deepClone(mockEmptySong);
+    const song = structuredClone(mockEmptySong);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
@@ -23,7 +23,7 @@ describe('OutputTypeSongPro', () => {
   });
 
   it('should convert a simple song (1) to a SongPro file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[0]!);
+    const song = structuredClone(mockSongObjects[0]!);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
@@ -55,7 +55,7 @@ And all your people sing along`);
   });
 
   it('should convert a song (2) to a SongPro file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[1]!);
+    const song = structuredClone(mockSongObjects[1]!);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
@@ -86,7 +86,7 @@ He gave us life again`);
   });
 
   it('should convert a song (3) to a SongPro file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[2]!);
+    const song = structuredClone(mockSongObjects[2]!);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
@@ -150,7 +150,7 @@ My Good`);
   });
 
   it('should convert a song (4) to a SongPro file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[3]!);
+    const song = structuredClone(mockSongObjects[3]!);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);

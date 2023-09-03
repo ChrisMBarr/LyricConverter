@@ -15,7 +15,7 @@ describe('OutputTypeOpenLyrics', () => {
   });
 
   it('should convert an empty song to an empty OpenLyrics XML file', () => {
-    const song = TestUtils.deepClone(mockEmptySong);
+    const song = structuredClone(mockEmptySong);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
@@ -43,7 +43,7 @@ describe('OutputTypeOpenLyrics', () => {
   });
 
   it('should convert a song (1) to a OpenLyrics XML file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[0]!);
+    const song = structuredClone(mockSongObjects[0]!);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
@@ -86,7 +86,7 @@ describe('OutputTypeOpenLyrics', () => {
   });
 
   it('should convert a song (2) to a OpenLyrics XML file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[1]!);
+    const song = structuredClone(mockSongObjects[1]!);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
@@ -129,7 +129,7 @@ describe('OutputTypeOpenLyrics', () => {
   });
 
   it('should convert a song (3) to a OpenLyrics XML file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[2]!);
+    const song = structuredClone(mockSongObjects[2]!);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
@@ -188,7 +188,7 @@ describe('OutputTypeOpenLyrics', () => {
   });
 
   it('should convert a song (4) to a OpenLyrics XML file', () => {
-    const song = TestUtils.deepClone(mockSongObjects[3]!);
+    const song = structuredClone(mockSongObjects[3]!);
     const outputFile = outputType.convertToType(song);
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(

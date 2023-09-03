@@ -23,7 +23,7 @@ describe('SlideDisplayComponent', () => {
   });
 
   it('should display the song data in the UI for a single song', () => {
-    const mockFilesCopy = TestUtils.deepClone(mockOutputFiles[0]!);
+    const mockFilesCopy = structuredClone(mockOutputFiles[0]!);
     component.outputFileList = [mockFilesCopy];
 
     fixture.detectChanges();
@@ -64,7 +64,7 @@ describe('SlideDisplayComponent', () => {
   });
 
   it('should display the song data in the UI for multiple songs', () => {
-    const mockFiles = TestUtils.deepClone(mockOutputFiles);
+    const mockFiles = structuredClone(mockOutputFiles);
     component.outputFileList = mockFiles;
 
     fixture.detectChanges();

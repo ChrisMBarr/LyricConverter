@@ -23,32 +23,32 @@ describe('InputTypeProPresenter5', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a ProPresenter 5 file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter5File);
+      const testFile: IRawDataFile = structuredClone(mockEmptyProPresenter5File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a ProPresenter 4 file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyProPresenter4File);
+      const testFile: IRawDataFile = structuredClone(mockEmptyProPresenter4File);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a JSON file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyJsonFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptyJsonFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a plain text file', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockEmptyTextFile);
+      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file with a .cho extension', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
+      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly REJECT a ChordPro file with a .pro extension', () => {
-      const testFile: IRawDataFile = TestUtils.deepClone(mockSimpleChordProFile);
+      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
       testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
@@ -63,7 +63,7 @@ describe('InputTypeProPresenter5', () => {
     });
 
     it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
-      const fileCopy = TestUtils.deepClone(mockPpFiles.pp5File1);
+      const fileCopy = structuredClone(mockPpFiles.pp5File1);
       fileCopy.dataAsString = fileCopy.dataAsString.replace('CCLISongTitle="Be Near" ', '');
       expect(inputConverter.extractSongData(fileCopy).title).toEqual(fileCopy.name);
     });
