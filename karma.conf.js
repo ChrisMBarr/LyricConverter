@@ -37,7 +37,7 @@ module.exports = function (config) {
     restartOnFileChange: true,
     files: [
       {
-        pattern: "test/sample-files/SongShow Plus/*.sbsong",
+        pattern: "test/sample-files/**/*.*",
         watched: false,
         served: true,
         included: false,

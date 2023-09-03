@@ -7,13 +7,6 @@ import {
 } from 'test/mock-raw-files';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeChordPro } from './input-type-chordpro';
-import {
-  mockChordProFile1,
-  mockChordProFile2,
-  mockChordProFile3,
-  mockChordProFile4DirectivesWithoutLabels,
-  mockChordProFile5DirectivesWithInlineLabels,
-} from 'test/mock-chordpro-files';
 import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeChordPro', () => {
@@ -96,15 +89,14 @@ describe('InputTypeChordPro', () => {
         slides: [
           {
             title: 'Verse1',
-            lyrics: TestUtils.dedent`I know a place
-                                     A wonderful place`,
+            lyrics: `I know a place\nA wonderful place`,
           },
         ],
       });
     });
 
-    it('should return a song for test file 1', () => {
-      const testFile: IRawDataFile = structuredClone(mockChordProFile1);
+    it('should return a song for test file 1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'At the Cross.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -130,14 +122,7 @@ describe('InputTypeChordPro', () => {
         slides: [
           {
             title: 'Verse',
-            lyrics: TestUtils.dedent`I know a place
-                                     A wonderful place
-                                     Where accused and condemned
-                                     Find mercy and grace
-                                     Where the wrongs we have done
-                                     And the wrongs done to us
-                                     Were nailed there with him
-                                     There on the cross`,
+            lyrics: `I know a place\nA wonderful place\nWhere accused and condemned\nFind mercy and grace\nWhere the wrongs we have done\nAnd the wrongs done to us\nWere nailed there with him\nThere on the cross`,
           },
           {
             title: 'Chorus',
@@ -147,8 +132,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 2', () => {
-      const testFile: IRawDataFile = structuredClone(mockChordProFile2);
+    it('should return a song for test file 2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -198,8 +183,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 3', () => {
-      const testFile: IRawDataFile = structuredClone(mockChordProFile3);
+    it('should return a song for test file 3', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Swing Low Sweet Chariot.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -224,8 +209,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 4 that only uses unlabeled paired directives', () => {
-      const testFile: IRawDataFile = structuredClone(mockChordProFile4DirectivesWithoutLabels);
+    it('should return a song for test file 4 that only uses unlabeled paired directives', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - unlabeled paired directives.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -287,10 +272,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 5 that only uses paired directives with internal labels', () => {
-      const testFile: IRawDataFile = structuredClone(
-        mockChordProFile5DirectivesWithInlineLabels
-      );
+    it('should return a song for test file 5 that only uses paired directives with internal labels', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - directives with internal inline labels.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
