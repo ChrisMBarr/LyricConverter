@@ -47,20 +47,14 @@ describe('InputTypeProPresenter5', () => {
 
   describe('extractSongData()', () => {
     it('should get a TITLE from the file name when the file does not have a CCLISongTitle', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v5 - Be Near.pro5'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Be Near.pro5');
 
       testFile.dataAsString = testFile.dataAsString.replace('CCLISongTitle="Be Near" ', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
     it('should get a song from a ProPresenter 5 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v5 - Be Near.pro5'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Be Near.pro5');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -87,8 +81,7 @@ describe('InputTypeProPresenter5', () => {
           },
           {
             title: 'Bridge 1',
-            lyrics:
-              'For dark is light to You\nDepths are Height to you\nFar is near\nBut Lord I need to hear from You',
+            lyrics: 'For dark is light to You\nDepths are Height to you\nFar is near\nBut Lord I need to hear from You',
           },
           {
             title: 'Chorus',
@@ -119,10 +112,7 @@ describe('InputTypeProPresenter5', () => {
     });
 
     it('should get a song from a ProPresenter 5 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v5 - Give Us Clean Hands.pro5'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Give Us Clean Hands.pro5');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -150,13 +140,11 @@ describe('InputTypeProPresenter5', () => {
           },
           {
             title: 'Pre-Chorus',
-            lyrics:
-              'Give us clean hands\nGive us pure hearts\nLet us not lift our\nSouls to another',
+            lyrics: 'Give us clean hands\nGive us pure hearts\nLet us not lift our\nSouls to another',
           },
           {
             title: 'Chorus',
-            lyrics:
-              'Oh God let us be\nA generation that seeks\nThat seeks Your face\nOh God of Jacob',
+            lyrics: 'Oh God let us be\nA generation that seeks\nThat seeks Your face\nOh God of Jacob',
           },
           {
             title: '*blank*',
@@ -167,14 +155,9 @@ describe('InputTypeProPresenter5', () => {
     });
 
     it('should get the expected SLIDES from a ProPresenter 5 file2 when a slide has no title but lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v5 - single-unnamed-slide.pro5'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - single-unnamed-slide.pro5');
 
-      expect(
-        inputConverter.extractSongData(testFile).slides
-      ).toEqual([
+      expect(inputConverter.extractSongData(testFile).slides).toEqual([
         {
           title: '',
           lyrics: 'We bow our hearts\nWe bend our knees\nOh Spirit come\nMake us humble',

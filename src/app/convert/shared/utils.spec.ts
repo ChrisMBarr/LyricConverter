@@ -5,10 +5,7 @@ describe('Utils', () => {
     it('should only combine arrays of objects together when all values of the same key are unique', () => {
       const obj1 = [{ foo: 'fooVal' }];
       const obj2 = [{ foo: 'barVal' }];
-      expect(Utils.mergeArraysByProp(obj1, obj2, 'foo')).toEqual([
-        { foo: 'fooVal' },
-        { foo: 'barVal' },
-      ]);
+      expect(Utils.mergeArraysByProp(obj1, obj2, 'foo')).toEqual([{ foo: 'fooVal' }, { foo: 'barVal' }]);
     });
 
     it('should merge identical arrays of objects together, overwriting values for the same key', () => {
@@ -40,12 +37,8 @@ describe('Utils', () => {
       expect(Utils.normalizeLineEndings('\r\n')).withContext('\\r\\n => \\n').toEqual('\n');
 
       //Multiple instances
-      expect(Utils.normalizeLineEndings('\n\r\n\r'))
-        .withContext('\\n\\r\\n\\r => \\n\\n')
-        .toEqual('\n\n');
-      expect(Utils.normalizeLineEndings('\r\n\r\n'))
-        .withContext('\\r\\n\\r\\n => \\n\\n')
-        .toEqual('\n\n');
+      expect(Utils.normalizeLineEndings('\n\r\n\r')).withContext('\\n\\r\\n\\r => \\n\\n').toEqual('\n\n');
+      expect(Utils.normalizeLineEndings('\r\n\r\n')).withContext('\\r\\n\\r\\n => \\n\\n').toEqual('\n\n');
 
       //No chages expected here
       expect(Utils.normalizeLineEndings('\n')).withContext('\\n => \\n').toEqual('\n');

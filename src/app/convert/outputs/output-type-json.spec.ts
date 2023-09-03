@@ -15,11 +15,7 @@ describe('OutputTypeJSON', () => {
   it('should output a JSON object identical to the input, but without the filename property', () => {
     const song = structuredClone(mockSongObjects[0]!);
 
-    const expectedJsonString = JSON.stringify(
-      { title: song.title, info: song.info, slides: song.slides },
-      null,
-      2
-    );
+    const expectedJsonString = JSON.stringify({ title: song.title, info: song.info, slides: song.slides }, null, 2);
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,

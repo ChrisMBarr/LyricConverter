@@ -43,8 +43,7 @@ describe('InputTypeSongPro', () => {
         slides: [
           {
             title: 'Verse 1',
-            lyrics:
-              "Climb a-board \nI've been waiting for you \nClimb a-board \nYou'll be safe in here",
+            lyrics: "Climb a-board \nI've been waiting for you \nClimb a-board \nYou'll be safe in here",
           },
           {
             title: 'Chorus 1',
@@ -68,31 +67,26 @@ describe('InputTypeSongPro', () => {
           { name: 'difficulty', value: '0' },
           {
             name: 'spotify',
-            value:
-              'https://open.spotify.com/track/66FSV5dLK5sNLZ00IfHxfD?si=rQq390e7TcKTxdP9yofslw',
+            value: 'https://open.spotify.com/track/66FSV5dLK5sNLZ00IfHxfD?si=rQq390e7TcKTxdP9yofslw',
           },
           { name: 'order', value: '4' },
         ],
         slides: [
           {
             title: 'Verse 1',
-            lyrics:
-              "I see a bad moon a-rising\nI see trouble on the way\nI see earth-quakes and lightnin'\nI see bad times to-day",
+            lyrics: "I see a bad moon a-rising\nI see trouble on the way\nI see earth-quakes and lightnin'\nI see bad times to-day",
           },
           {
             title: 'Chorus 1',
-            lyrics:
-              "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
+            lyrics: "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
           {
             title: 'Verse 2',
-            lyrics:
-              'I hear hurri-canes a-blowing\nI know the end is coming soon\nI fear rivers over flowing\nI hear the voice of rage and ruin',
+            lyrics: 'I hear hurri-canes a-blowing\nI know the end is coming soon\nI fear rivers over flowing\nI hear the voice of rage and ruin',
           },
           {
             title: 'Chorus 2',
-            lyrics:
-              "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
+            lyrics: "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
           {
             title: 'Verse 3',
@@ -101,13 +95,11 @@ describe('InputTypeSongPro', () => {
           },
           {
             title: 'Chorus 3',
-            lyrics:
-              "Well don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
+            lyrics: "Well don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
           {
             title: 'Chorus 4',
-            lyrics:
-              "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
+            lyrics: "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
         ],
       });

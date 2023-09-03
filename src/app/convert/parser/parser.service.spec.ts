@@ -91,7 +91,7 @@ describe('ParserService', () => {
   });
 
   describe('detectInputTypeAndGetConverter()', () => {
-    it('should return undefined when a file type cannot be detected', async() => {
+    it('should return undefined when a file type cannot be detected', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('image', 'mr-bean.png');
       expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(undefined);
     });
@@ -102,9 +102,7 @@ describe('ParserService', () => {
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypePlainText;
       });
-      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
-        expectedClass
-      );
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });
 
     it('should properly detect a ProPresenter5 file', () => {
@@ -128,9 +126,7 @@ describe('ParserService', () => {
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeJSON;
       });
-      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
-        expectedClass
-      );
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });
   });
 });

@@ -134,15 +134,15 @@ describe('DragAndDropFilesDirective', () => {
 
         //It'd difficult to test the specific properties of a File object,
         // so as long as we have the correct number of files with the correct names we are good to go
-        expect(outputFiles.length).withContext('Number of emitted files').toEqual(3)
-        expect(outputFiles.item(0)?.name).withContext('Emitted file #1 name').toEqual('UPPERCASE.WITH.DOTS.TXT')
-        expect(outputFiles.item(1)?.name).withContext('Emitted file #2 name').toEqual('no-extension')
-        expect(outputFiles.item(2)?.name).withContext('Emitted file #3 name').toEqual('lowercase-file.pro5')
+        expect(outputFiles.length).withContext('Number of emitted files').toEqual(3);
+        expect(outputFiles.item(0)?.name).withContext('Emitted file #1 name').toEqual('UPPERCASE.WITH.DOTS.TXT');
+        expect(outputFiles.item(1)?.name).withContext('Emitted file #2 name').toEqual('no-extension');
+        expect(outputFiles.item(2)?.name).withContext('Emitted file #3 name').toEqual('lowercase-file.pro5');
 
         done();
       });
 
-      directiveInstance.document.dispatchEvent(new DragEvent('drop', { cancelable: true, dataTransfer: dt }))
+      directiveInstance.document.dispatchEvent(new DragEvent('drop', { cancelable: true, dataTransfer: dt }));
       fixture.detectChanges();
     });
   });

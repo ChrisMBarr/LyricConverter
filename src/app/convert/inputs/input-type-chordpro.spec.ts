@@ -69,21 +69,10 @@ describe('InputTypeChordPro', () => {
         fileName: testFile.name,
         title: 'This is a title',
         info: [
-          {
-            name: 'artist',
-            value: 'Hymn',
-          },
-          {
-            name: 'key',
-            value: 'E',
-          },
+          { name: 'artist', value: 'Hymn' },
+          { name: 'key', value: 'E' },
         ],
-        slides: [
-          {
-            title: 'Verse 1',
-            lyrics: `I know a place\nA wonderful place`,
-          },
-        ],
+        slides: [{ title: 'Verse 1', lyrics: `I know a place\nA wonderful place` }],
       });
     });
 
@@ -271,18 +260,9 @@ describe('InputTypeChordPro', () => {
         fileName: testFile.name,
         title: 'Our Father',
         info: [
-          {
-            name: 'artist',
-            value: 'Bethel Music',
-          },
-          {
-            name: 'key',
-            value: 'G',
-          },
-          {
-            name: 'comment',
-            value: 'Words and Music by Marcus Meier',
-          },
+          { name: 'artist', value: 'Bethel Music' },
+          { name: 'key', value: 'G' },
+          { name: 'comment', value: 'Words and Music by Marcus Meier' },
         ],
         slides: [
           {

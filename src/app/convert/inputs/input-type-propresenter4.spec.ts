@@ -47,20 +47,14 @@ describe('InputTypeProPresenter4', () => {
 
   describe('extractSongData()', () => {
     it('should get a TITLE from the file name when the file does not have a CCLISongTitle', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v4 - Be Near.pro4'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - Be Near.pro4');
 
       testFile.dataAsString = testFile.dataAsString.replace('CCLISongTitle="Be Near" ', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
     it('should get a song from a ProPresenter 4 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v4 - Be Near.pro4'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - Be Near.pro4');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -79,23 +73,19 @@ describe('InputTypeProPresenter4', () => {
           },
           {
             title: 'Verse 1',
-            lyrics:
-              "You are all big and small\nBeautiful\nAnd wonderful\nTo trust in grace through faith\nBut I'm asking to taste",
+            lyrics: "You are all big and small\nBeautiful\nAnd wonderful\nTo trust in grace through faith\nBut I'm asking to taste",
           },
           {
             title: 'Verse 2',
-            lyrics:
-              'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
+            lyrics: 'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
           },
           {
             title: 'Verse 3',
-            lyrics:
-              'Your fullness is mine\nRevelation divine\nBut oh to taste\nTo know much more than a page\nTo feel Your embrace',
+            lyrics: 'Your fullness is mine\nRevelation divine\nBut oh to taste\nTo know much more than a page\nTo feel Your embrace',
           },
           {
             title: 'Verse 4',
-            lyrics:
-              'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
+            lyrics: 'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
           },
           {
             title: '',
@@ -106,10 +96,7 @@ describe('InputTypeProPresenter4', () => {
     });
 
     it('should get a song from a ProPresenter 4 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'ProPresenter',
-        'v4 - Give Us Clean Hands.pro4'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - Give Us Clean Hands.pro4');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,

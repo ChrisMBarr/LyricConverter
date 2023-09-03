@@ -53,24 +53,12 @@ describe('InputTypePlainText', () => {
         fileName: testFile.name,
         title: 'Your Grace is Enough',
         info: [
-          {
-            name: 'CCLI Number',
-            value: '1234',
-          },
-          {
-            name: 'artist',
-            value: 'Bethel Music',
-          },
-          {
-            name: 'key',
-            value: 'G',
-          },
+          { name: 'CCLI Number', value: '1234' },
+          { name: 'artist', value: 'Bethel Music' },
+          { name: 'key', value: 'G' },
         ],
         slides: [
-          {
-            title: 'Chorus',
-            lyrics: `Your grace is enough\nYour grace is enough\nYour grace is enough for me`,
-          },
+          { title: 'Chorus', lyrics: `Your grace is enough\nYour grace is enough\nYour grace is enough for me` },
           {
             title: 'Verse 1',
             lyrics: `Great is your faithfulness O God\nYou wrestle with the sinners heart\nYou lead us by still waters and to mercy\nAnd nothing can keep us apart`,
@@ -90,32 +78,17 @@ describe('InputTypePlainText', () => {
         fileName: testFile.name,
         title: 'At the Cross',
         info: [
-          {
-            name: 'artist',
-            value: 'Hymn',
-          },
-          {
-            name: 'key',
-            value: 'E',
-          },
-          {
-            name: 'comment',
-            value: 'Words and Music by Randy & Terry Butler',
-          },
-          {
-            name: 'comment',
-            value: '(c)1993 Mercy Publishing',
-          },
+          { name: 'artist', value: 'Hymn' },
+          { name: 'key', value: 'E' },
+          { name: 'comment', value: 'Words and Music by Randy & Terry Butler' },
+          { name: 'comment', value: '(c)1993 Mercy Publishing' },
         ],
         slides: [
           {
             title: 'Verse',
             lyrics: `I know a place\nA wonderful place\nWhere accused and condemned\nFind mercy and grace\nWhere the wrongs we have done\nAnd the wrongs done to us\nWere nailed there with him\nThere on the cross`,
           },
-          {
-            title: 'Chorus',
-            lyrics: `At the cross\nHe died for our sins\nAt the cross\nHe gave us life again`,
-          },
+          { title: 'Chorus', lyrics: `At the cross\nHe died for our sins\nAt the cross\nHe gave us life again` },
         ],
       });
     });

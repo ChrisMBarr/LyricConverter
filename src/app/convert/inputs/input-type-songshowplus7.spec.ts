@@ -57,23 +57,19 @@ describe('InputTypeSongShowPlus7', () => {
           { title: 'Other', lyrics: '' },
           {
             title: 'Verse 1',
-            lyrics:
-              "You are all big and small\nBeautiful\nAnd wonderful\nTo trust in grace through faith\nBut I'm asking to taste",
+            lyrics: "You are all big and small\nBeautiful\nAnd wonderful\nTo trust in grace through faith\nBut I'm asking to taste",
           },
           {
             title: 'Verse 2',
-            lyrics:
-              'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
+            lyrics: 'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
           },
           {
             title: 'Verse 3',
-            lyrics:
-              'Your fullness is mine\nRevelation divine\nBut oh to taste\nTo know much more than a page\nTo feel Your embrace',
+            lyrics: 'Your fullness is mine\nRevelation divine\nBut oh to taste\nTo know much more than a page\nTo feel Your embrace',
           },
           {
             title: 'Verse 4',
-            lyrics:
-              'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
+            lyrics: 'For dark is light to You\nDepths are height to You\nFar is near\nBut Lord I need to hear from You',
           },
           {
             title: 'Ending',
@@ -90,26 +86,11 @@ describe('InputTypeSongShowPlus7', () => {
         fileName: testFile.name,
         title: 'Give Us Clean Hands',
         info: [
-          {
-            name: 'Author',
-            value: 'Hall, Charlie',
-          },
-          {
-            name: 'Copyright',
-            value: '2000 worshiptogether.com songs',
-          },
-          {
-            name: 'CCLI',
-            value: '2060208',
-          },
-          {
-            name: 'Key',
-            value: 'Ab',
-          },
-          {
-            name: 'Topics',
-            value: 'Prayer | Repentance',
-          },
+          { name: 'Author', value: 'Hall, Charlie' },
+          { name: 'Copyright', value: '2000 worshiptogether.com songs' },
+          { name: 'CCLI', value: '2060208' },
+          { name: 'Key', value: 'Ab' },
+          { name: 'Topics', value: 'Prayer | Repentance' },
         ],
         slides: [
           {
@@ -138,14 +119,8 @@ describe('InputTypeSongShowPlus7', () => {
         fileName: testFile.name,
         title: 'Jesus Saves (2)',
         info: [
-          {
-            name: 'Author',
-            value: 'Eddie James',
-          },
-          {
-            name: 'Copyright',
-            value: '© Fresh Wine Publishing',
-          },
+          { name: 'Author', value: 'Eddie James' },
+          { name: 'Copyright', value: '© Fresh Wine Publishing' },
         ],
         slides: [
           {
@@ -185,7 +160,7 @@ describe('InputTypeSongShowPlus7', () => {
           },
           {
             title: 'Vamp 1',
-            lyrics: "Jesus saves (repeat) Hallelujah (repeat)",
+            lyrics: 'Jesus saves (repeat) Hallelujah (repeat)',
           },
         ],
       });
@@ -198,26 +173,11 @@ describe('InputTypeSongShowPlus7', () => {
         fileName: testFile.name,
         title: 'You Are (2)',
         info: [
-          {
-            name: 'Author',
-            value: 'Jobe, Caleb | Cohen, Ezra | Hesami, Josh | Trimble, Paul',
-          },
-          {
-            name: 'Copyright',
-            value: '2010 CFN Music',
-          },
-          {
-            name: 'CCLI',
-            value: '5715921',
-          },
-          {
-            name: 'Key',
-            value: 'C',
-          },
-          {
-            name: 'Topics',
-            value: 'Appreciation | Breakthrough | Christ | Declaration | Jesus',
-          },
+          { name: 'Author', value: 'Jobe, Caleb | Cohen, Ezra | Hesami, Josh | Trimble, Paul' },
+          { name: 'Copyright', value: '2010 CFN Music' },
+          { name: 'CCLI', value: '5715921' },
+          { name: 'Key', value: 'C' },
+          { name: 'Topics', value: 'Appreciation | Breakthrough | Christ | Declaration | Jesus' },
         ],
         slides: [
           {

@@ -14,10 +14,7 @@ describe('InputTypeOpenLyrics', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a OpenLyrics XML file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/examples',
-        'simple.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
@@ -44,10 +41,7 @@ describe('InputTypeOpenLyrics', () => {
 
   describe('extractSongData()', () => {
     it('should return a song for a simple OpenLyrics file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/examples',
-        'simple.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -63,10 +57,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a complex OpenLyrics file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/examples',
-        'complex.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'complex.xml');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -84,8 +75,7 @@ describe('InputTypeOpenLyrics', () => {
           { name: 'verseOrder', value: 'v1 v2  v3 c v4 c1 c2 b b1 b2' },
           {
             name: 'Authors',
-            value:
-              'John Newton | Chris Rice (words) | Richard Wagner (music) | František Foo (translation)',
+            value: 'John Newton | Chris Rice (words) | Richard Wagner (music) | František Foo (translation)',
           },
           {
             name: 'Comment',
@@ -136,10 +126,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should use the filename for the title if there is no title', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/examples',
-        'simple.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
       //remove the titles so the parser can't find one
       testFile.dataAsString = testFile.dataAsString.replace(/<titles>[\W\w]+?<\/titles>/, '');
@@ -148,10 +135,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should ignore/exclude comments from the song lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/examples',
-        'simple.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
       testFile.dataAsString = testFile.dataAsString.replace(
         'how sweet the sound',
@@ -172,10 +156,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/songs',
-        'Amazing Grace.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Amazing Grace.xml');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -189,8 +170,7 @@ describe('InputTypeOpenLyrics', () => {
         slides: [
           {
             title: 'v1',
-            lyrics:
-              "Amazing grace how sweet the sound that saved a wretch like me;\nI once was lost but now I'm found, was blind but now I see.",
+            lyrics: "Amazing grace how sweet the sound that saved a wretch like me;\nI once was lost but now I'm found, was blind but now I see.",
           },
           {
             title: 'v2',
@@ -212,10 +192,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/songs',
-        'It Is Well With My Soul.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'It Is Well With My Soul.xml');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -235,8 +212,7 @@ describe('InputTypeOpenLyrics', () => {
           },
           {
             title: 'c',
-            lyrics:
-              'It is well, (it is well,)\nWith my soul, (with my soul,)\nIt is well, it is well with my soul.',
+            lyrics: 'It is well, (it is well,)\nWith my soul, (with my soul,)\nIt is well, it is well with my soul.',
           },
           {
             title: 'v2',
@@ -259,10 +235,7 @@ describe('InputTypeOpenLyrics', () => {
 
     it('should return a song for a OpenLyrics example file 3 - a single songbook and multiple comments', async () => {
       // const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile3);
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/examples',
-        'multiple-comments.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'multiple-comments.xml');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -277,10 +250,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile(
-        'OpenLyrics/songs',
-        'Hava Nagila.xml'
-      );
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Hava Nagila.xml');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -321,13 +291,11 @@ describe('InputTypeOpenLyrics', () => {
           },
           {
             title: 'b (he - transliterated in en)',
-            lyrics:
-              "Uru, uru achim!\nUru achim b'lev sameach\n\nUru achim, uru achim!\nB'lev sameach",
+            lyrics: "Uru, uru achim!\nUru achim b'lev sameach\n\nUru achim, uru achim!\nB'lev sameach",
           },
           {
             title: 'b (en)',
-            lyrics:
-              'Awake, awake, brothers!\nAwake brothers with a happy heart\nAwake, brothers, awake, brothers!\nWith a happy heart',
+            lyrics: 'Awake, awake, brothers!\nAwake brothers with a happy heart\nAwake, brothers, awake, brothers!\nWith a happy heart',
           },
         ],
       });

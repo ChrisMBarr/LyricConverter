@@ -55,23 +55,16 @@ describe('InputTypeJSON', () => {
         ext: 'json',
         type: 'text/json',
         dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
-        dataAsString: '{"title":"Great is your faithfulness O God","info":[{"name":"Order","value":"1C2CBC"}],"slides":[{"title":"Chorus","lyrics":"Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"},{"title":"Verse 1","lyrics":"Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"}]}',
+        dataAsString:
+          '{"title":"Great is your faithfulness O God","info":[{"name":"Order","value":"1C2CBC"}],"slides":[{"title":"Chorus","lyrics":"Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"},{"title":"Verse 1","lyrics":"Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"}]}',
       };
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
         title: 'Great is your faithfulness O God',
-        info: [
-          {
-            name: 'Order',
-            value: '1C2CBC',
-          },
-        ],
+        info: [{ name: 'Order', value: '1C2CBC' }],
         slides: [
-          {
-            title: 'Chorus',
-            lyrics: 'Your grace is enough\r\nYour grace is enough\r\nYour grace is enough for me',
-          },
+          { title: 'Chorus', lyrics: 'Your grace is enough\r\nYour grace is enough\r\nYour grace is enough for me' },
           {
             title: 'Verse 1',
             lyrics:
@@ -90,9 +83,7 @@ describe('InputTypeJSON', () => {
         dataAsString: '{}',
       };
 
-      const err = new LyricConverterError(
-        `This file is not formatted as a LyricConverter JSON file`
-      );
+      const err = new LyricConverterError(`This file is not formatted as a LyricConverter JSON file`);
       expect(() => inputConverter.extractSongData(testFile)).toThrow(err);
     });
 

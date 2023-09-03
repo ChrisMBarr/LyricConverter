@@ -26,9 +26,7 @@ describe('ErrorsService', () => {
 
   it('should emit the list of errors when an error with a message and a file name is added', (done: DoneFn) => {
     service.errorsChanged$.subscribe((list) => {
-      expect(list).toEqual([
-        { message: '[[TEST:errors.service.spec.ts]] Test Message 2', fileName: 'example-file.exe' },
-      ]);
+      expect(list).toEqual([{ message: '[[TEST:errors.service.spec.ts]] Test Message 2', fileName: 'example-file.exe' }]);
       done();
     });
 
@@ -60,9 +58,7 @@ describe('ErrorsService', () => {
   });
 
   it('should emit the list of errors and use the custom error message instead of the default message when a custom error object is attached', (done: DoneFn) => {
-    const customErrorObj = new LyricConverterError(
-      '[[TEST:errors.service.spec.ts]] Test Message 4'
-    );
+    const customErrorObj = new LyricConverterError('[[TEST:errors.service.spec.ts]] Test Message 4');
 
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([

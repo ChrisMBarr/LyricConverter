@@ -47,7 +47,7 @@ describe('OutputTypePlainText', () => {
   it('should not include info with blank values', () => {
     const song = structuredClone(mockSongObjects[0]!);
 
-    song.info.push({name: 'Test Blank', value: ''})
+    song.info.push({ name: 'Test Blank', value: '' });
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
@@ -80,7 +80,7 @@ describe('OutputTypePlainText', () => {
   it('should not include slides with blank lyrics', () => {
     const song = structuredClone(mockSongObjects[0]!);
 
-    song.slides.push({title: 'Test Blank', lyrics: ''})
+    song.slides.push({ title: 'Test Blank', lyrics: '' });
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,

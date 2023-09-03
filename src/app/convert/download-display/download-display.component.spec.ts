@@ -57,12 +57,10 @@ describe('DownloadDisplayComponent', () => {
 
       expect(fixture.debugElement.queryAll(By.css('.btn')).length).toEqual(2);
 
-      const btn1 = fixture.debugElement.query(By.css('.btn:nth-of-type(1)'))
-        .nativeElement as HTMLButtonElement;
+      const btn1 = fixture.debugElement.query(By.css('.btn:nth-of-type(1)')).nativeElement as HTMLButtonElement;
       expect(btn1.textContent?.trim()).toEqual('Download as .zip');
 
-      const btn2 = fixture.debugElement.query(By.css('.btn:nth-of-type(2)'))
-        .nativeElement as HTMLButtonElement;
+      const btn2 = fixture.debugElement.query(By.css('.btn:nth-of-type(2)')).nativeElement as HTMLButtonElement;
       expect(btn2.textContent?.trim()).toEqual('Download 2 individual files');
     });
 

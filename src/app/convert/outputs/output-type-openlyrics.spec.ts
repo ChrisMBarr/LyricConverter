@@ -18,9 +18,7 @@ describe('OutputTypeOpenLyrics', () => {
     const song = structuredClone(mockEmptySong);
     const outputFile = outputType.convertToType(song);
 
-    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
-      outputFile.outputContent
-    );
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
       `<?xml version="1.0" encoding="UTF-8"?>
@@ -36,9 +34,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName)
-      .withContext('file name')
-      .toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -46,9 +42,7 @@ describe('OutputTypeOpenLyrics', () => {
     const song = structuredClone(mockSongObjects[0]!);
     const outputFile = outputType.convertToType(song);
 
-    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
-      outputFile.outputContent
-    );
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
       `<?xml version="1.0" encoding="UTF-8"?>
@@ -79,9 +73,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName)
-      .withContext('file name')
-      .toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -89,9 +81,7 @@ describe('OutputTypeOpenLyrics', () => {
     const song = structuredClone(mockSongObjects[1]!);
     const outputFile = outputType.convertToType(song);
 
-    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
-      outputFile.outputContent
-    );
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
       `<?xml version="1.0" encoding="UTF-8"?>
@@ -122,9 +112,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName)
-      .withContext('file name')
-      .toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -132,9 +120,7 @@ describe('OutputTypeOpenLyrics', () => {
     const song = structuredClone(mockSongObjects[2]!);
     const outputFile = outputType.convertToType(song);
 
-    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
-      outputFile.outputContent
-    );
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
       `<?xml version="1.0" encoding="UTF-8"?>
@@ -181,9 +167,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName)
-      .withContext('file name')
-      .toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -191,9 +175,7 @@ describe('OutputTypeOpenLyrics', () => {
     const song = structuredClone(mockSongObjects[3]!);
     const outputFile = outputType.convertToType(song);
 
-    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(
-      outputFile.outputContent
-    );
+    const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
     const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
       `<?xml version="1.0" encoding="UTF-8"?>
@@ -258,9 +240,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName)
-      .withContext('file name')
-      .toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 });

@@ -17,14 +17,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [
-        AppComponent,
-        HelpComponent,
-        AboutComponent,
-        ConvertComponent,
-        DonateButtonComponent,
-        DragAndDropFilesDirective,
-      ],
+      declarations: [AppComponent, HelpComponent, AboutComponent, ConvertComponent, DonateButtonComponent, DragAndDropFilesDirective],
     });
 
     fixture = TestBed.createComponent(AppComponent);
@@ -38,6 +31,6 @@ describe('AppComponent', () => {
 
   it('should set a random background image on the <body> element', () => {
     fixture.detectChanges();
-    expect(injectedDocument.body.getAttribute('style')).toMatch(/background-image: url\("\/assets\/bg\d+.jpg"\);/)
+    expect(injectedDocument.body.getAttribute('style')).toMatch(/background-image: url\("\/assets\/bg\d+.jpg"\);/);
   });
 });
