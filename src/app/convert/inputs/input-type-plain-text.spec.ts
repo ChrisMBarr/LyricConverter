@@ -7,7 +7,6 @@ import {
   mockSimpleChordProFile,
   mockEmptyTextFile,
 } from 'test/mock-raw-files';
-import { mockPlainTextFile1, mockPlainTextFile2 } from 'test/mock-plain-text-files';
 import { LyricConverterError } from '../models/errors.model';
 
 describe('InputTypePlainText', () => {
@@ -44,9 +43,9 @@ describe('InputTypePlainText', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', () => {
-      const testFile: IRawDataFile = structuredClone(mockPlainTextFile1);
-      testFile.dataAsString = testFile.dataAsString.replace('\n\n\n', '\n');
+    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
+      testFile.dataAsString = testFile.dataAsString.replace('\r\n\r\n\r\n', '\r\n');
 
       const expectedError = new LyricConverterError(
         `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`
@@ -54,8 +53,8 @@ describe('InputTypePlainText', () => {
       expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedError);
     });
 
-    it('should return a song for a plain text file1', () => {
-      const testFile: IRawDataFile = structuredClone(mockPlainTextFile1);
+    it('should return a song for a plain text file1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -77,30 +76,22 @@ describe('InputTypePlainText', () => {
         slides: [
           {
             title: 'Chorus',
-            lyrics: TestUtils.dedent`Your grace is enough
-                                     Your grace is enough
-                                     Your grace is enough for me`,
+            lyrics: `Your grace is enough\nYour grace is enough\nYour grace is enough for me`,
           },
           {
             title: 'Verse 1',
-            lyrics: TestUtils.dedent`Great is your faithfulness O God
-                                     You wrestle with the sinners heart
-                                     You lead us by still waters and to mercy
-                                     And nothing can keep us apart`,
+            lyrics: `Great is your faithfulness O God\nYou wrestle with the sinners heart\nYou lead us by still waters and to mercy\nAnd nothing can keep us apart`,
           },
           {
             title: 'Verse 2',
-            lyrics: TestUtils.dedent`Great is your love and justice God
-                                     You use the weak to lead the strong
-                                     You lead us in the song of your salvation
-                                     And all your people sing along`,
+            lyrics: `Great is your love and justice God\nYou use the weak to lead the strong\nYou lead us in the song of your salvation\nAnd all your people sing along`,
           },
         ],
       });
     });
 
-    it('should return a song for a plain text file2', () => {
-      const testFile: IRawDataFile = structuredClone(mockPlainTextFile2);
+    it('should return a song for a plain text file2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'At the Cross.txt');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -126,28 +117,18 @@ describe('InputTypePlainText', () => {
         slides: [
           {
             title: 'Verse',
-            lyrics: TestUtils.dedent`I know a place
-                                     A wonderful place
-                                     Where accused and condemned
-                                     Find mercy and grace
-                                     Where the wrongs we have done
-                                     And the wrongs done to us
-                                     Were nailed there with him
-                                     There on the cross`,
+            lyrics: `I know a place\nA wonderful place\nWhere accused and condemned\nFind mercy and grace\nWhere the wrongs we have done\nAnd the wrongs done to us\nWere nailed there with him\nThere on the cross`,
           },
           {
             title: 'Chorus',
-            lyrics: TestUtils.dedent`At the cross
-                                     He died for our sins
-                                     At the cross
-                                     He gave us life again`,
+            lyrics: `At the cross\nHe died for our sins\nAt the cross\nHe gave us life again`,
           },
         ],
       });
     });
 
-    it('should use the filename as the title when a title is not present in the file', () => {
-      const testFile: IRawDataFile = structuredClone(mockPlainTextFile2);
+    it('should use the filename as the title when a title is not present in the file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'At the Cross.txt');
       testFile.name = 'My Test Title';
       testFile.dataAsString = testFile.dataAsString.replace(/^title:.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
