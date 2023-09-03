@@ -6,7 +6,6 @@ import {
 import { TestUtils } from 'test/test-utils';
 import { IRawDataFile } from '../models/file.model';
 import { InputTypeSongPro } from './input-type-songpro';
-import { mockSongProFile1, mockSongProFile2 } from 'test/mock-songpro-files';
 
 describe('InputTypeSongPro', () => {
   let inputConverter: InputTypeSongPro;
@@ -37,8 +36,8 @@ describe('InputTypeSongPro', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for a SongPro file1', () => {
-      const testFile: IRawDataFile = structuredClone(mockSongProFile1);
+    it('should return a song for a SongPro file1', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongPro', 'escape-capsule.sng');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -61,21 +60,24 @@ describe('InputTypeSongPro', () => {
       });
     });
 
-    it('should return a song for a SongPro file2', () => {
-      const testFile: IRawDataFile = structuredClone(mockSongProFile2);
+    it('should return a song for a SongPro file2', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongPro', 'bad-moon-rising.sng');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
         title: 'Bad Moon Rising',
         info: [
           { name: 'artist', value: 'Creedence Clearwater Revival' },
-          { name: 'capo', value: '1' },
-          { name: 'difficulty', value: 'Easy' },
+          { name: 'year', value: '1969' },
+          { name: 'tempo', value: '92' },
+          { name: 'key', value: 'D Major' },
+          { name: 'difficulty', value: '0' },
           {
-            name: 'spotify_url',
+            name: 'spotify',
             value:
-              'https://open.spotify.com/track/20OFwXhEXf12DzwXmaV7fj?si=cE76lY5TT26fyoNmXEjNpA',
+              'https://open.spotify.com/track/66FSV5dLK5sNLZ00IfHxfD?si=rQq390e7TcKTxdP9yofslw',
           },
+          { name: 'order', value: '4' },
         ],
         slides: [
           {
@@ -84,7 +86,7 @@ describe('InputTypeSongPro', () => {
               "I see a bad moon a-rising\nI see trouble on the way\nI see earth-quakes and lightnin'\nI see bad times to-day",
           },
           {
-            title: 'Chorus',
+            title: 'Chorus 1',
             lyrics:
               "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
@@ -94,7 +96,7 @@ describe('InputTypeSongPro', () => {
               'I hear hurri-canes a-blowing\nI know the end is coming soon\nI fear rivers over flowing\nI hear the voice of rage and ruin',
           },
           {
-            title: 'Chorus',
+            title: 'Chorus 2',
             lyrics:
               "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
@@ -104,16 +106,21 @@ describe('InputTypeSongPro', () => {
               "I hope you got your things to-gether\nHope you are quite pre-pared to die\nLook's like we're in for nasty weather\nOne eye is taken for an eye",
           },
           {
-            title: 'Chorus',
+            title: 'Chorus 3',
             lyrics:
-              "Oh don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise\nThere's a bad moon on the rise",
+              "Well don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
+          },
+          {
+            title: 'Chorus 4',
+            lyrics:
+              "Don't go 'round tonight\nIt's bound to take your life\nThere's a bad moon on the rise",
           },
         ],
       });
     });
 
-    it('should use the filename as the title when a title is not present in the file', () => {
-      const testFile: IRawDataFile = structuredClone(mockSongProFile1);
+    it('should use the filename as the title when a title is not present in the file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongPro', 'escape-capsule.sng');
       testFile.name = 'My Test Title';
       testFile.dataAsString = testFile.dataAsString.replace(/^@title=.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
