@@ -1,7 +1,5 @@
 import { TestUtils } from 'test/test-utils';
-import { IRawDataFile } from '../models/file.model';
 import { InputTypeOpenLyrics } from './input-type-openlyrics';
-import * as mockRawFiles from 'test/mock-raw-files';
 
 describe('InputTypeOpenLyrics', () => {
   let inputConverter: InputTypeOpenLyrics;
@@ -23,23 +21,23 @@ describe('InputTypeOpenLyrics', () => {
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
-    it('should properly REJECT a plain text file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockEmptyTextFile);
+    it('should properly REJECT a plain text file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockSimpleChordProFile);
+    it('should properly REJECT a ChordPro file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a JSON file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockEmptyJsonFile);
+    it('should properly REJECT a JSON file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a ProPresenter file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockRawFiles.mockEmptyProPresenter5File);
+    it('should properly REJECT a ProPresenter file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });

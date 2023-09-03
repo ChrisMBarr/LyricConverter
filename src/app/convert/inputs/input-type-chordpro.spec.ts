@@ -1,11 +1,3 @@
-import {
-  mockEmptyJsonFile,
-  mockSimpleChordProFile,
-  mockEmptyTextFile,
-  mockEmptyProPresenter5File,
-  mockEmptyProPresenter4File,
-} from 'test/mock-raw-files';
-import { IRawDataFile } from '../models/file.model';
 import { InputTypeChordPro } from './input-type-chordpro';
 import { TestUtils } from 'test/test-utils';
 
@@ -22,56 +14,56 @@ describe('InputTypeChordPro', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/
-    it('should properly accept a ChordPro file with a .cho extension', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly accept a ChordPro file with a .cho extension', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
-    it('should properly accept a ChordPro file with a .crd extension', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly accept a ChordPro file with a .crd extension', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'crd';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
-    it('should properly accept a ChordPro file with a .chopro extension', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly accept a ChordPro file with a .chopro extension', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'chopro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
-    it('should properly accept a ChordPro file with a .chord extension', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly accept a ChordPro file with a .chord extension', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'chord';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
-    it('should properly accept a ChordPro file with a .pro extension', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly accept a ChordPro file with a .pro extension', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
-    it('should properly reject a plain text file', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
+    it('should properly reject a plain text file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly reject a JSON file', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyJsonFile);
+    it('should properly reject a JSON file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly reject a ProPresenter 4 file', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyProPresenter4File);
+    it('should properly reject a ProPresenter 4 file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - empty.pro4');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly reject a ProPresenter 5 file', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyProPresenter5File);
+    it('should properly reject a ProPresenter 5 file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for a simple test file', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should return a song for a simple test file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
         fileName: testFile.name,
@@ -88,7 +80,7 @@ describe('InputTypeChordPro', () => {
         ],
         slides: [
           {
-            title: 'Verse1',
+            title: 'Verse 1',
             lyrics: `I know a place\nA wonderful place`,
           },
         ],
@@ -335,8 +327,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should use the filename as a fallback title when the song has no title', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should use the filename as a fallback title when the song has no title', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.dataAsString = testFile.dataAsString.replace('{title: This is a title}', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });

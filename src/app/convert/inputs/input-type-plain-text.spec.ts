@@ -1,12 +1,5 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypePlainText } from './input-type-plain-text';
 import { TestUtils } from 'test/test-utils';
-import {
-  mockEmptyJsonFile,
-  mockEmptyProPresenter5File,
-  mockSimpleChordProFile,
-  mockEmptyTextFile,
-} from 'test/mock-raw-files';
 import { LyricConverterError } from '../models/errors.model';
 
 describe('InputTypePlainText', () => {
@@ -21,23 +14,23 @@ describe('InputTypePlainText', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a plain text file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
+    it('should properly ACCEPT a plain text file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
-    it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly REJECT a ChordPro file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a JSON file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyJsonFile);
+    it('should properly REJECT a JSON file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a ProPresenter file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyProPresenter5File);
+    it('should properly REJECT a ProPresenter file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });

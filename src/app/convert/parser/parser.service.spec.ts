@@ -5,8 +5,8 @@ import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
-import * as mockRawFiles from 'test/mock-raw-files';
 import { ErrorsService } from '../errors/errors.service';
+import { TestUtils } from 'test/test-utils';
 
 describe('ParserService', () => {
   let service: ParserService;
@@ -91,15 +91,18 @@ describe('ParserService', () => {
   });
 
   describe('detectInputTypeAndGetConverter()', () => {
-    it('should return undefined when a file type cannot be detected', () => {
-      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockImageFile)).toEqual(undefined);
+    it('should return undefined when a file type cannot be detected', async() => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('image', 'mr-bean.png');
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(undefined);
     });
 
-    it('should properly detect a plain text file', () => {
+    it('should properly detect a plain text file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypePlainText;
       });
-      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockEmptyTextFile)).toEqual(
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
         expectedClass
       );
     });
@@ -119,11 +122,13 @@ describe('ParserService', () => {
       expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });
 
-    it('should properly detect a JSON file', () => {
+    it('should properly detect a JSON file', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeJSON;
       });
-      expect(service.detectInputTypeAndGetConverter(mockRawFiles.mockEmptyJsonFile)).toEqual(
+      expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(
         expectedClass
       );
     });

@@ -1,11 +1,4 @@
-import {
-  mockEmptySongShowPlusFile,
-  mockEmptySongProFile,
-  mockEmptyTextFile,
-  mockSimpleChordProFile,
-} from 'test/mock-raw-files';
 import { TestUtils } from 'test/test-utils';
-import { IRawDataFile } from '../models/file.model';
 import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
 
 describe('InputTypeSongShowPlus7', () => {
@@ -20,23 +13,23 @@ describe('InputTypeSongShowPlus7', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a SongPro file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptySongShowPlusFile);
+    it('should properly ACCEPT a SongShowPlus file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'empty.sbsong');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
-    it('should properly REJECT a SongPro file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptySongProFile);
+    it('should properly REJECT a SongPro file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongPro', '_empty.sng');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a plain text file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockEmptyTextFile);
+    it('should properly REJECT a plain text file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
-    it('should properly REJECT a ChordPro file when tested', () => {
-      const testFile: IRawDataFile = structuredClone(mockSimpleChordProFile);
+    it('should properly REJECT a ChordPro file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
