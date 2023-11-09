@@ -6,7 +6,6 @@ import { IOutputFile } from '../models/file.model';
 @Component({
   selector: 'app-slide-display',
   templateUrl: './slide-display.component.html',
-  styleUrls: ['./slide-display.component.css'],
 })
 export class SlideDisplayComponent implements OnInit {
   private readonly $gaService = inject(GoogleAnalyticsService);

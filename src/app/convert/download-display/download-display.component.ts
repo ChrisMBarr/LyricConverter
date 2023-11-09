@@ -10,7 +10,6 @@ import { IOutputFile } from '../models/file.model';
 @Component({
   selector: 'app-download-display',
   templateUrl: './download-display.component.html',
-  styleUrls: ['./download-display.component.css'],
 })
 export class DownloadDisplayComponent {
   private readonly $gaService = inject(GoogleAnalyticsService);
