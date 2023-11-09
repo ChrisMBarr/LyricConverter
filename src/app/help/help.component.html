@@ -16,56 +16,63 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let format of combinedFormatsList">
+          @for (format of combinedFormatsList; track format) {
+          <tr>
             <th scope="row" class="text-left">
-              <a *ngIf="format.url" [href]="format.url" target="_blank">{{ format.name }}</a>
-              <span *ngIf="!format.url">{{ format.name }}</span>
+              @if (format.url) {
+              <a [href]="format.url" target="_blank">{{ format.name }}</a>
+              } @else {
+              <span>{{ format.name }}</span>
+              } @if (format.hasNote) {
               <svg
-                *ngIf="format.hasNote"
                 class="icon ml-1 text-sm text-blue-400"
                 role="img"
                 aria-label="Info: about this format"
               >
                 <use xlink:href="#info-fill" />
               </svg>
+              }
             </th>
             <td class="text-center">
+              @if (format.canImport) {
               <svg
-                *ngIf="format.canImport"
                 class="icon text-green-400 drop-shadow-md"
                 role="img"
                 aria-label="Import is supported"
               >
                 <use xlink:href="#check-circle-fill" />
               </svg>
+              } @else {
               <svg
-                *ngIf="!format.canImport"
                 class="icon text-red-400 drop-shadow-md"
                 role="img"
                 aria-label="Export is not supported"
               >
                 <use xlink:href="#x-circle" />
               </svg>
+              }
             </td>
             <td class="text-center">
+              @if (format.canExport) {
               <svg
-                *ngIf="format.canExport"
                 class="icon text-green-400 drop-shadow-md"
                 role="img"
                 aria-label="Export is supported"
               >
                 <use xlink:href="#check-circle-fill" />
               </svg>
+              } @else {
               <svg
-                *ngIf="!format.canExport"
                 class="icon text-red-400 drop-shadow-md"
                 role="img"
                 aria-label="Export is not supported"
               >
                 <use xlink:href="#x-circle" />
               </svg>
+              }
             </td>
           </tr>
+          }
         </tbody>
       </table>
 
@@ -93,9 +100,7 @@
             </svg>
             Open an issue on GitHub
           </a>
-          <div class="my-2">
-            or
-          </div>
+          <div class="my-2">or</div>
           <a
             class="btn btn-secondary btn-lg"
             target="_blank"

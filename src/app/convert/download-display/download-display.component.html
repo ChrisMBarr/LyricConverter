@@ -3,19 +3,15 @@
     Converted {{ outputFileList.length }} {{ outputFileList.length === 1 ? "Song" : "Songs" }}
   </h3>
   <div class="card-content">
-    <button
-      type="button"
-      class="btn btn-primary"
-      *ngIf="outputFileList.length === 1"
-      (click)="onClickDownloadFiles()"
-    >
+    @if (outputFileList.length === 1) {
+    <button type="button" class="btn btn-primary" (click)="onClickDownloadFiles()">
       <svg class="icon" role="img">
         <use xlink:href="#file-text-fill" />
       </svg>
       Download File
     </button>
-
-    <div *ngIf="outputFileList.length > 1">
+    } @if (outputFileList.length > 1) {
+    <div>
       <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
         <svg class="icon" role="img">
           <use xlink:href="#file-zip-fill" />
@@ -30,5 +26,6 @@
         Download {{ outputFileList.length }} individual files
       </button>
     </div>
+    }
   </div>
 </div>

@@ -1,28 +1,32 @@
-<div class="card mb-4 last-of-type:mb-0" *ngFor="let f of outputFileList">
+@for (f of outputFileList; track f) {
+<div class="card mb-4 last-of-type:mb-0">
   <h3 class="card-title">{{ f.songData.title }}</h3>
 
   <div class="card-content !pb-2">
     <ul class="text-sm flex flex-wrap gap-1">
+      @for (info of f.songData.info; track info) {
       <li
         class="inline-flex rounded overflow-hidden text-slate-800 cursor-default border border-slate-500 hover:border-slate-600 bg-slate-300 hover:bg-slate-400"
-        *ngFor="let info of f.songData.info"
       >
         <strong class="px-1">{{ info.name }}</strong>
         <!-- &#32; is a space character. We need to keep it here for copy/paste and for testing -->
-        <span class="bg-slate-50  px-1">&#32;{{ info.value }}</span>
+        <span class="bg-slate-50 px-1">&#32;{{ info.value }}</span>
       </li>
+      }
     </ul>
   </div>
 
   <div
     class="test-song-slides-container card-content grid gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
   >
+    @for (slide of f.songData.slides; track slide) {
     <div
       class="flex flex-col rounded-md overflow-hidden text-slate-800 cursor-default border border-slate-500 hover:border-slate-600 bg-slate-300 hover:bg-slate-400"
-      *ngFor="let slide of f.songData.slides"
     >
       <p class="grow p-1 leading-4 text-sm bg-slate-50">{{ slide.lyrics }}</p>
-      <footer class=" px-1 font-bold">{{ slide.title }}</footer>
+      <footer class="px-1 font-bold">{{ slide.title }}</footer>
     </div>
+    }
   </div>
 </div>
+}
