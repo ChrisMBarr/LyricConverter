@@ -1,4 +1,5 @@
 import 'zone.js/node';
+import 'localstorage-polyfill'
 
 import * as express from 'express';
 import { APP_BASE_HREF } from '@angular/common';
@@ -7,6 +8,8 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { AppServerModule } from './src/main.server';
+
+global['localStorage'] = localStorage;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {

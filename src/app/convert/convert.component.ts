@@ -25,7 +25,7 @@ import { ParserService } from './parser/parser.service';
 })
 export class ConvertComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
-  private readonly document: Document = inject(DOCUMENT);
+  private readonly document = inject(DOCUMENT);
   private readonly elementRef = inject(ElementRef);
   private readonly parserSvc = inject(ParserService);
   private readonly errorsSvc = inject(ErrorsService);
