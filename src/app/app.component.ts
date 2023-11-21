@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     //don't set a random BG image when generating the pre-rendered routes
     if (!isPlatformServer(this.platformId)) {
       const randomNum = Math.floor(Math.random() * this.backgroundImagesCount + 1);
-      this.document.body.style.backgroundImage = `url('/assets/bg${randomNum}.jpg')`;
+      this.document.body.style.backgroundImage = `url('/assets/background/bg${randomNum}.jpg')`;
     }
   }
 }

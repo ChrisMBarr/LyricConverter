@@ -31,6 +31,6 @@ describe('AppComponent', () => {
 
   it('should set a random background image on the <body> element', () => {
     fixture.detectChanges();
-    expect(injectedDocument.body.getAttribute('style')).toMatch(/background-image: url\("\/assets\/bg\d+.jpg"\);/);
+    expect(injectedDocument.body.getAttribute('style')).toMatch(/background-image: url\("\/assets\/background\/bg\d+.jpg"\);/);
   });
 });
