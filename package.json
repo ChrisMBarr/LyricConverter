@@ -35,7 +35,7 @@
   },
   "private": false,
   "dependencies": {
-    "@angular/animations": "^17.0.8",
+    "@angular/animations": "^17.1.2",
     "@angular/common": "^17.0.8",
     "@angular/compiler": "^17.0.8",
     "@angular/core": "^17.0.8",
