@@ -15,7 +15,7 @@ export class OutputTypeJSON implements IOutputConverter {
         slides: song.slides,
       },
       null,
-      2
+      2,
     );
 
     return {

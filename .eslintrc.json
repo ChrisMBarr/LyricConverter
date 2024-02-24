@@ -8,12 +8,10 @@
         "project": ["tsconfig.(app|spec|server).json"]
       },
       "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/strict",
-        "plugin:@typescript-eslint/recommended-type-checked",
-        "plugin:@typescript-eslint/strict-type-checked",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@typescript-eslint/strict-type-checked",
+        "plugin:prettier/recommended"
       ],
       "rules": {
         //Angular specific rules
@@ -102,7 +100,14 @@
         "sort-imports": ["warn", { "allowSeparatedGroups": true }],
         "complexity": ["warn", { "max": 8 }],
         "eqeqeq": ["warn", "always", { "null": "ignore" }],
-        "object-shorthand": ["warn", "always"]
+        "object-shorthand": ["warn", "always"],
+
+        "prettier/prettier": [
+          "warn",
+          {
+            "endOfLine": "auto"
+          }
+        ]
       }
     },
     {

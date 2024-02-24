@@ -175,7 +175,7 @@ export class ConvertComponent implements OnInit {
     //Restore the saved file count from any previous session
     const savedConvertedFileCount = parseInt(
       localStorage.getItem(this.convertedFileCountStorageKey) ?? '',
-      10
+      10,
     );
     if (!isNaN(savedConvertedFileCount) && savedConvertedFileCount > 0) {
       this.convertedFileCount = savedConvertedFileCount;

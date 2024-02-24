@@ -27,13 +27,16 @@ export class InputTypeSongShowPlus7 implements IInputConverter {
     if (parsedSong.ccli !== '') info.push({ name: 'CCLI', value: parsedSong.ccli });
     if (parsedSong.key !== '') info.push({ name: 'Key', value: parsedSong.key });
     if (parsedSong.comments !== '') info.push({ name: 'Comments', value: parsedSong.comments });
-    if (parsedSong.verseOrder !== '') info.push({ name: 'Verse Order', value: parsedSong.verseOrder });
+    if (parsedSong.verseOrder !== '')
+      info.push({ name: 'Verse Order', value: parsedSong.verseOrder });
     if (parsedSong.songBook !== '') info.push({ name: 'Song Book', value: parsedSong.songBook });
-    if (parsedSong.songNumber !== '') info.push({ name: 'Song Number', value: parsedSong.songNumber });
+    if (parsedSong.songNumber !== '')
+      info.push({ name: 'Song Number', value: parsedSong.songNumber });
     if (parsedSong.topics.length > 0) {
       info.push({
         name: 'Topics',
-        value: parsedSong.topics.join(STRING_LIST_SEPARATOR_JOIN) });
+        value: parsedSong.topics.join(STRING_LIST_SEPARATOR_JOIN),
+      });
     }
 
     //These object use the same property keys, so we can just copy it over

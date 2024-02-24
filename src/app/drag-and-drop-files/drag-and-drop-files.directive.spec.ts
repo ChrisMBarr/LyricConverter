@@ -114,19 +114,19 @@ describe('DragAndDropFilesDirective', () => {
         new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', {
           lastModified: fileCreationTime,
           type: 'text/plain',
-        })
+        }),
       );
       dt.items.add(
         new File(['this file has no extension!'], 'no-extension', {
           lastModified: fileCreationTime,
           type: '',
-        })
+        }),
       );
       dt.items.add(
         new File(['this is a PP5 file!'], 'lowercase-file.pro5', {
           lastModified: fileCreationTime,
           type: '',
-        })
+        }),
       );
 
       directiveInstance.fileDrop.pipe(first()).subscribe((outputFiles: FileList) => {

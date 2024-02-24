@@ -48,7 +48,7 @@ export class InputTypeProPresenter4 implements IInputConverter {
     arr: Array<ISongInfo>,
     props: IPro4Properties,
     infoName: string,
-    propKey: keyof IPro4Properties
+    propKey: keyof IPro4Properties,
   ): void {
     const val = props[propKey];
     if ((typeof val === 'string' || typeof val === 'number') && val !== '') {

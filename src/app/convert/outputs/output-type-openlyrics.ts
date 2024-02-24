@@ -126,7 +126,9 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
     return undefined;
   }
 
-  private findSpecialPropertySongBooks(info: Array<ISongInfo>): Array<IBuilderSongBook> | undefined {
+  private findSpecialPropertySongBooks(
+    info: Array<ISongInfo>,
+  ): Array<IBuilderSongBook> | undefined {
     const foundSongBooks = info.filter((sb) => /^song ?book/i.test(sb.name));
 
     if (foundSongBooks.length > 0) {

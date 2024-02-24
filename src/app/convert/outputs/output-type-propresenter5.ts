@@ -55,7 +55,7 @@ export class OutputTypeProPresenter5 implements IOutputConverter {
     info: Array<ISongInfo>,
     namePattern: RegExp,
     props: IPro5BuilderOptionsProperties,
-    propertyKey: keyof IPro5BuilderOptionsProperties
+    propertyKey: keyof IPro5BuilderOptionsProperties,
   ): void {
     const infoMatch = info.find((i) => namePattern.test(i.name));
     if (infoMatch !== undefined) {

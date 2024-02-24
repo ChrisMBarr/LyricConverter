@@ -88,14 +88,10 @@ describe('HelpComponent', () => {
 
     unsupportedNames.forEach((n) => {
       expect(inputFormatNames)
-        .withContext(
-          'A supported input format name was found in the list of unsupported formats! Remove this!'
-        )
+        .withContext('A supported input format name was found in the list of unsupported formats! Remove this!')
         .not.toContain(n);
       expect(outputFormatNames)
-        .withContext(
-          'A supported output format name was found in the list of unsupported formats! Remove this!'
-        )
+        .withContext('A supported output format name was found in the list of unsupported formats! Remove this!')
         .not.toContain(n);
     });
   });

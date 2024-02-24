@@ -45,7 +45,12 @@ export class OutputTypeProPresenter6 implements IOutputConverter {
     this.setPropertyValueByNamePattern(songInfo, /artist/i, props, 'CCLIArtistCredits');
     this.setPropertyValueByNamePattern(songInfo, /author/i, props, 'CCLIAuthor');
     this.setPropertyValueByNamePattern(songInfo, /category/i, props, 'category');
-    this.setPropertyValueByNamePattern(songInfo, /(ccliNo)|(CCLI ?Number)/i, props, 'CCLISongNumber');
+    this.setPropertyValueByNamePattern(
+      songInfo,
+      /(ccliNo)|(CCLI ?Number)/i,
+      props,
+      'CCLISongNumber',
+    );
     this.setPropertyValueByNamePattern(songInfo, /(year)|(copyright)/i, props, 'CCLICopyrightYear');
     this.setPropertyValueByNamePattern(songInfo, /notes/i, props, 'notes');
     this.setPropertyValueByNamePattern(songInfo, /publisher/i, props, 'CCLIPublisher');
@@ -55,7 +60,7 @@ export class OutputTypeProPresenter6 implements IOutputConverter {
     info: Array<ISongInfo>,
     namePattern: RegExp,
     props: IPro6BuilderOptionsProperties,
-    propertyKey: keyof IPro6BuilderOptionsProperties
+    propertyKey: keyof IPro6BuilderOptionsProperties,
   ): void {
     const infoMatch = info.find((i) => namePattern.test(i.name));
     if (infoMatch !== undefined) {

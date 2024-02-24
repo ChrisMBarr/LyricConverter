@@ -1,6 +1,6 @@
-import { IOutputConverter } from "./output-converter.model";
-import { IOutputFile } from "../models/file.model";
-import { ISong } from "../models/song.model";
+import { IOutputConverter } from './output-converter.model';
+import { IOutputFile } from '../models/file.model';
+import { ISong } from '../models/song.model';
 
 export class OutputTypeChordpro implements IOutputConverter {
   readonly name = 'ChordPro';

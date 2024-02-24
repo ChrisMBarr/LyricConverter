@@ -41,7 +41,7 @@ describe('InputTypePlainText', () => {
       testFile.dataAsString = testFile.dataAsString.replace('\r\n\r\n\r\n', '\r\n');
 
       const expectedError = new LyricConverterError(
-        `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`
+        `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`,
       );
       expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedError);
     });

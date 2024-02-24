@@ -52,7 +52,7 @@ export class OutputTypeSongPro implements IOutputConverter {
 
     for (const slide of slidesArr) {
       //Don't add blank slides!
-      if(slide.lyrics !== ''){
+      if (slide.lyrics !== '') {
         lyricsStr += `# ${slide.title}\n\n${slide.lyrics}\n\n`;
       }
     }

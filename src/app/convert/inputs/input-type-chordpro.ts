@@ -55,7 +55,7 @@ export class InputTypeChordPro implements IInputConverter {
     const songInfo = this.getSongInfo(directives.keyValuePairs);
     const lyricContent = this.getLyricContentWithoutDirectives(
       directives.singles,
-      simplifiedContent
+      simplifiedContent,
     );
     const songLyrics = this.getLyrics(lyricContent);
 
@@ -145,7 +145,7 @@ export class InputTypeChordPro implements IInputConverter {
   }
 
   private getMatchedDirectivePairs(
-    singleDirectives: Array<IChordProSingleDirective>
+    singleDirectives: Array<IChordProSingleDirective>,
   ): Array<IChordProMatchingDirectivePairs> {
     //The matched directives are tags like:
     // {start_of_chorus} and {end_of_chorus}
@@ -177,7 +177,7 @@ export class InputTypeChordPro implements IInputConverter {
 
   private getLyricContentWithoutDirectives(
     singleDirectives: Array<IChordProSingleDirective>,
-    content: string
+    content: string,
   ): string {
     //ChordPro Environment directives should always have a beginning and an ending tag
     //https://www.chordpro.org/chordpro/chordpro-directives/
@@ -208,7 +208,7 @@ export class InputTypeChordPro implements IInputConverter {
 
       const contentAndTags = content.substring(
         p.begin.position,
-        p.end.position + p.end.name.length + 2
+        p.end.position + p.end.name.length + 2,
       );
 
       if (typesToSave.includes(p.type)) {
@@ -235,7 +235,7 @@ export class InputTypeChordPro implements IInputConverter {
       (accumulator: string, toRemove: string) => {
         return accumulator.replace(toRemove, '');
       },
-      content
+      content,
     );
 
     //Here we want to replace the tags and the content with just the content
@@ -257,7 +257,7 @@ export class InputTypeChordPro implements IInputConverter {
 
         return accumulator.replace(toReplace.full, title + toReplace.content);
       },
-      contentWithRemovedSections
+      contentWithRemovedSections,
     );
 
     //Now remove all directives because we have extracted all needed information from them at this point

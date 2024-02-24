@@ -27,7 +27,7 @@ export class InputTypePlainText implements IInputConverter {
       slides = this.getSongLyrics(parts[1]);
     } else {
       throw new LyricConverterError(
-        `This ${this.name} file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`
+        `This ${this.name} file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`,
       );
     }
 

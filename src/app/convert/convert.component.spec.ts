@@ -20,7 +20,10 @@ import { LyricConverterError } from './models/errors.model';
 import { TestUtils } from 'test/test-utils';
 
 class MockConverter implements IOutputConverter {
-  constructor(public name: string, public fileExt?: string) {}
+  constructor(
+    public name: string,
+    public fileExt?: string,
+  ) {}
 
   convertToType = (song: ISong): IOutputFile => {
     return {
@@ -128,7 +131,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         expect((fixture.debugElement.query(By.css('#test-accepted-input-formats')).nativeElement as HTMLElement).textContent).toContain(
-          'FooIn, BarIn, or BazIn'
+          'FooIn, BarIn, or BazIn',
         );
       });
     });
@@ -248,13 +251,13 @@ describe('ConvertComponent', () => {
           new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', {
             lastModified: fileCreationTime,
             type: 'text/plain',
-          })
+          }),
         );
         dt.items.add(
           new File(['this file has no extension!'], 'no-extension', {
             lastModified: fileCreationTime,
             type: '',
-          })
+          }),
         );
 
         component.onReceiveFiles(dt.files);

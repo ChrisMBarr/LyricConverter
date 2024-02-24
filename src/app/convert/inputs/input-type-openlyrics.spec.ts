@@ -139,7 +139,7 @@ describe('InputTypeOpenLyrics', () => {
 
       testFile.dataAsString = testFile.dataAsString.replace(
         'how sweet the sound',
-        'how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound'
+        'how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound',
       );
 
       expect(inputConverter.extractSongData(testFile)).toEqual({

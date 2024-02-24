@@ -22,7 +22,7 @@ import { SlideDisplayComponent } from './convert/slide-display/slide-display.com
     DonateButtonComponent,
     DragAndDropFilesDirective,
     SlideDisplayComponent,
-    DownloadDisplayComponent
+    DownloadDisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +31,6 @@ import { SlideDisplayComponent } from './convert/slide-display/slide-display.com
     NgxGoogleAnalyticsRouterModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

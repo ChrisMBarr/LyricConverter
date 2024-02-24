@@ -97,7 +97,7 @@ export class ParserService {
   private handleFile(
     theFile: File,
     fileArray: Array<IFileWithData>,
-    fileCount: number
+    fileCount: number,
   ): (ev: ProgressEvent<FileReader>) => void {
     //When called, it has to return a function back up to the listener event
     return (ev: ProgressEvent<FileReader>) => {
@@ -132,7 +132,7 @@ export class ParserService {
         ext: f.ext,
         type: f.type,
         dataAsBuffer: f.bufferData,
-        dataAsString: this.decoder.decode(f.bufferData)
+        dataAsString: this.decoder.decode(f.bufferData),
       });
     }
 

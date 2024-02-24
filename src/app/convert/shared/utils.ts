@@ -12,7 +12,7 @@ export class Utils {
     return reduced.concat(b);
   }
 
-  public static getFileNameParts(fileName: string): {name: string; ext: string} {
+  public static getFileNameParts(fileName: string): { name: string; ext: string } {
     const fileNameParts = fileName.split('.');
     const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : ''; //eslint-disable-line @typescript-eslint/no-non-null-assertion
     const nameWithoutExt = fileName.replace(`.${fileExt}`, '');

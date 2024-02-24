@@ -70,7 +70,7 @@ export class HelpComponent implements OnInit {
       .filter((t) => t.name !== 'Display Slides')
       .forEach((t) => {
         const matchedToInput = this.combinedFormatsList.find(
-          (inputType) => inputType.name === t.name
+          (inputType) => inputType.name === t.name,
         );
         if (matchedToInput) {
           matchedToInput.canExport = true;
@@ -89,7 +89,7 @@ export class HelpComponent implements OnInit {
     this.combinedFormatsList = Utils.mergeArraysByProp(
       this.combinedFormatsList,
       this.unsupportedFormatsList,
-      'name'
+      'name',
     ).sort((a, b) => {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;

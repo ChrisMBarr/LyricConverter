@@ -30,7 +30,7 @@ describe('OutputTypeOpenLyrics', () => {
     </titles>
   </properties>
   <lyrics></lyrics>
-</song>`
+</song>`,
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
@@ -69,7 +69,7 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>Great is your love and justice God<br/>You use the weak to lead the strong<br/>You lead us in the song of your salvation<br/>And all your people sing along</lines>
     </verse>
   </lyrics>
-</song>`
+</song>`,
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
@@ -108,7 +108,7 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>At the cross<br/>He died for our sins<br/>At the cross<br/>He gave us life again</lines>
     </verse>
   </lyrics>
-</song>`
+</song>`,
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
@@ -163,7 +163,7 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>My Good</lines>
     </verse>
   </lyrics>
-</song>`
+</song>`,
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
@@ -236,7 +236,7 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>This is text of ending.</lines>
     </verse>
   </lyrics>
-</song>`
+</song>`,
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);

@@ -1,6 +1,6 @@
-import { IOutputConverter } from "./output-converter.model";
-import { IOutputFile } from "../models/file.model";
-import { ISong } from "../models/song.model";
+import { IOutputConverter } from './output-converter.model';
+import { IOutputFile } from '../models/file.model';
+import { ISong } from '../models/song.model';
 
 export class OutputTypeDisplaySlides implements IOutputConverter {
   readonly name = 'Display Slides';
@@ -10,7 +10,7 @@ export class OutputTypeDisplaySlides implements IOutputConverter {
     return {
       songData: song,
       fileName: '',
-      outputContent: ''
-    }
+      outputContent: '',
+    };
   }
 }

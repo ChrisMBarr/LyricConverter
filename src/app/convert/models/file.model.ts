@@ -1,4 +1,4 @@
-import { ISong } from "./song.model";
+import { ISong } from './song.model';
 
 //Similar to File, but with some custom props & missing prototypes we don't need
 export interface IFileWithData {
@@ -21,6 +21,6 @@ export interface IRawDataFile {
 
 export interface IOutputFile {
   songData: ISong;
-  fileName: string,
+  fileName: string;
   outputContent: string;
 }

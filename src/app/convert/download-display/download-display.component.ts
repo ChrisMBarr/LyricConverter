@@ -20,7 +20,9 @@ export class DownloadDisplayComponent {
   onClickDownloadFiles(): void {
     for (const outputFile of this.outputFileList) {
       fileSaver.saveAs(
-        new File(['\ufeff' + outputFile.outputContent], outputFile.fileName, { type: 'text/plain' })
+        new File(['\ufeff' + outputFile.outputContent], outputFile.fileName, {
+          type: 'text/plain',
+        }),
       );
     }
 
@@ -29,7 +31,7 @@ export class DownloadDisplayComponent {
       this.selectedOutputType.name,
       'files',
       this.outputFileList.length,
-      true
+      true,
     );
   }
 
@@ -53,7 +55,7 @@ export class DownloadDisplayComponent {
           this.selectedOutputType.name,
           'zip',
           this.outputFileList.length,
-          true
+          true,
         );
       });
   }

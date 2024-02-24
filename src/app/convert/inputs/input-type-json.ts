@@ -29,7 +29,7 @@ export class InputTypeJSON implements IInputConverter {
       returnSong.slides = parsed.slides;
     } else {
       throw new LyricConverterError(
-        `This file is not formatted as a LyricConverter ${this.name} file`
+        `This file is not formatted as a LyricConverter ${this.name} file`,
       );
     }
 

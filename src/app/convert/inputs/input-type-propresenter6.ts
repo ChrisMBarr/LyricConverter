@@ -50,7 +50,7 @@ export class InputTypeProPresenter6 implements IInputConverter {
     arr: Array<ISongInfo>,
     props: IPro6Properties,
     infoName: string,
-    propKey: keyof IPro6Properties
+    propKey: keyof IPro6Properties,
   ): void {
     const val = props[propKey];
     if ((typeof val === 'string' || typeof val === 'number') && val !== '') {
