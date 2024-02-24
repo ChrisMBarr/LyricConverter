@@ -1,32 +1,33 @@
 @for (f of outputFileList; track f) {
-<div class="card mb-4 last-of-type:mb-0">
-  <h3 class="card-title">{{ f.songData.title }}</h3>
+  <div class="card mb-4 last-of-type:mb-0">
+    <h3 class="card-title">{{ f.songData.title }}</h3>
 
-  <div class="card-content !pb-2">
-    <ul class="text-sm flex flex-wrap gap-1">
-      @for (info of f.songData.info; track info) {
-      <li
-        class="inline-flex rounded overflow-hidden text-slate-800 cursor-default border border-slate-500 hover:border-slate-600 bg-slate-300 hover:bg-slate-400"
-      >
-        <strong class="px-1">{{ info.name }}</strong>
-        <!-- &#32; is a space character. We need to keep it here for copy/paste and for testing -->
-        <span class="bg-slate-50 px-1">&#32;{{ info.value }}</span>
-      </li>
-      }
-    </ul>
-  </div>
-
-  <div
-    class="test-song-slides-container card-content grid gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
-  >
-    @for (slide of f.songData.slides; track slide) {
-    <div
-      class="flex flex-col rounded-md overflow-hidden text-slate-800 cursor-default border border-slate-500 hover:border-slate-600 bg-slate-300 hover:bg-slate-400"
-    >
-      <p class="grow p-1 leading-4 text-sm bg-slate-50">{{ slide.lyrics }}</p>
-      <footer class="px-1 font-bold">{{ slide.title }}</footer>
+    <div class="card-content !pb-2">
+      <ul class="flex flex-wrap gap-1 text-sm">
+        @for (info of f.songData.info; track info) {
+          <li
+            class="inline-flex cursor-default overflow-hidden rounded border border-slate-500 bg-slate-300 text-slate-800 hover:border-slate-600 hover:bg-slate-400"
+          >
+            <strong class="px-1">{{ info.name }}</strong>
+            <!-- &#32; is a space character. We need to keep it here for copy/paste and for testing -->
+            <span class="bg-slate-50 px-1">&#32;{{ info.value }}</span>
+          </li>
+        }
+      </ul>
     </div>
-    }
+
+    <div
+      class="card-content grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+      data-test="song-slides-container"
+    >
+      @for (slide of f.songData.slides; track slide) {
+        <div
+          class="flex cursor-default flex-col overflow-hidden rounded-md border border-slate-500 bg-slate-300 text-slate-800 hover:border-slate-600 hover:bg-slate-400"
+        >
+          <p class="grow bg-slate-50 p-1 text-sm leading-4">{{ slide.lyrics }}</p>
+          <footer class="px-1 font-bold">{{ slide.title }}</footer>
+        </div>
+      }
+    </div>
   </div>
-</div>
 }

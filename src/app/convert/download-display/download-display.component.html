@@ -4,28 +4,29 @@
   </h3>
   <div class="card-content">
     @if (outputFileList.length === 1) {
-    <button type="button" class="btn btn-primary" (click)="onClickDownloadFiles()">
-      <svg class="icon" role="img">
-        <use xlink:href="#file-text-fill" />
-      </svg>
-      Download File
-    </button>
-    } @if (outputFileList.length > 1) {
-    <div>
-      <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
+      <button type="button" class="btn btn-primary" (click)="onClickDownloadFiles()">
         <svg class="icon" role="img">
-          <use xlink:href="#file-zip-fill" />
+          <use xlink:href="#file-text-fill" />
         </svg>
-        Download as .zip
+        Download File
       </button>
-      or
-      <button type="button" class="btn btn-secondary btn-small" (click)="onClickDownloadFiles()">
-        <svg class="icon" role="img">
-          <use xlink:href="#files" />
-        </svg>
-        Download {{ outputFileList.length }} individual files
-      </button>
-    </div>
+    }
+    @if (outputFileList.length > 1) {
+      <div>
+        <button type="button" class="btn btn-primary" (click)="onClickDownloadZipFile()">
+          <svg class="icon" role="img">
+            <use xlink:href="#file-zip-fill" />
+          </svg>
+          Download as .zip
+        </button>
+        or
+        <button type="button" class="btn btn-secondary btn-small" (click)="onClickDownloadFiles()">
+          <svg class="icon" role="img">
+            <use xlink:href="#files" />
+          </svg>
+          Download {{ outputFileList.length }} individual files
+        </button>
+      </div>
     }
   </div>
 </div>

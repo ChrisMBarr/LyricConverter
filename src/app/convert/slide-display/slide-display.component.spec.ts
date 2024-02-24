@@ -42,12 +42,12 @@ describe('SlideDisplayComponent', () => {
     mockFilesCopy.songData.slides.forEach((slide, idx) => {
       expect(
         (
-          fixture.debugElement.query(By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) p`)).nativeElement as HTMLElement
+          fixture.debugElement.query(By.css(`[data-test='song-slides-container'] > div:nth-of-type(${idx + 1}) p`)).nativeElement as HTMLElement
         ).textContent!.trim(),
       ).toEqual(slide.lyrics);
       expect(
         (
-          fixture.debugElement.query(By.css(`.test-song-slides-container > div:nth-of-type(${idx + 1}) footer`)).nativeElement as HTMLElement
+          fixture.debugElement.query(By.css(`[data-test='song-slides-container'] > div:nth-of-type(${idx + 1}) footer`)).nativeElement as HTMLElement
         ).textContent!.trim(),
       ).toEqual(slide.title);
     });
@@ -79,14 +79,16 @@ describe('SlideDisplayComponent', () => {
       f.songData.slides.forEach((slide, idx) => {
         expect(
           (
-            fixture.debugElement.query(By.css(`.card:nth-of-type(${fileIdx + 1}) .test-song-slides-container > div:nth-of-type(${idx + 1}) p`))
-              .nativeElement as HTMLElement
+            fixture.debugElement.query(
+              By.css(`.card:nth-of-type(${fileIdx + 1}) [data-test='song-slides-container'] > div:nth-of-type(${idx + 1}) p`),
+            ).nativeElement as HTMLElement
           ).textContent!.trim(),
         ).toEqual(slide.lyrics);
         expect(
           (
-            fixture.debugElement.query(By.css(`.card:nth-of-type(${fileIdx + 1}) .test-song-slides-container > div:nth-of-type(${idx + 1}) footer`))
-              .nativeElement as HTMLElement
+            fixture.debugElement.query(
+              By.css(`.card:nth-of-type(${fileIdx + 1}) [data-test='song-slides-container'] > div:nth-of-type(${idx + 1}) footer`),
+            ).nativeElement as HTMLElement
           ).textContent!.trim(),
         ).toEqual(slide.title);
       });

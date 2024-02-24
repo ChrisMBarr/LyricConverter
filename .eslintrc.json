@@ -4,6 +4,7 @@
   "overrides": [
     {
       "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": ["tsconfig.(app|spec|server).json"]
       },
@@ -33,18 +34,12 @@
         ],
 
         //Prefer typescript versions of certain rules
-        "no-invalid-this": "off",
-        "@typescript-eslint/no-invalid-this": "warn",
         "no-loop-func": "off",
         "@typescript-eslint/no-loop-func": "warn",
-        "no-redeclare": "off",
-        "@typescript-eslint/no-redeclare": "warn",
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": "warn",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": "warn",
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "warn",
         "no-return-await": "off",
         "@typescript-eslint/return-await": "warn",
 
@@ -112,9 +107,12 @@
     },
     {
       "files": ["*.html"],
+      "parser": "@angular-eslint/template-parser",
       "extends": [
         "plugin:@angular-eslint/template/recommended",
-        "plugin:@angular-eslint/template/accessibility"
+        "plugin:@angular-eslint/template/accessibility",
+        "plugin:tailwindcss/recommended",
+        "plugin:prettier/recommended"
       ],
       "rules": {}
     },

@@ -1,11 +1,11 @@
 <div
   id="drop-area"
-  class="pointer-events-none fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center backdrop-blur-sm bg-slate-600/50"
+  class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-slate-600/50 backdrop-blur-sm"
   appDragAndDropFiles
   (fileDrop)="onReceiveFiles($event)"
 >
   <div
-    class="bg-slate-50/90 text-slate-800 rounded-xl shadow-lg text-3xl font-bold p-8 border-2 border-slate-600 flex items-center"
+    class="flex items-center rounded-xl border-2 border-slate-600 bg-slate-50/90 p-8 text-3xl font-bold text-slate-800 shadow-lg"
   >
     <svg class="icon mr-2" role="img">
       <use xlink:href="#files" />
@@ -16,7 +16,7 @@
 
 <input class="hidden" type="file" multiple (change)="onFileSelect($event)" #fileInput />
 
-<div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
   <div [ngClass]="{ 'sm:col-span-2 md:col-span-1': !displayInitialUi }">
     <!-- wrapping div needed to make sticky work inside a grid layout -->
     <aside
@@ -25,122 +25,124 @@
         'sm:grid sm:grid-cols-2 sm:gap-4 md:block md:grid-cols-none': !displayInitialUi
       }"
     >
-      <nav class="card p-0 grid grid-cols-1 overflow-hidden" id="test-convert-types-nav">
-        <strong class="card-title text-center py-2"> Convert To </strong>
+      <nav class="card grid grid-cols-1 overflow-hidden p-0" id="test-convert-types-nav">
+        <strong class="card-title py-2 text-center"> Convert To </strong>
         @for (fmt of outputTypesForMenu; track fmt) {
-        <a
-          (click)="onSwitchConversionType(fmt, $event)"
-          [ngClass]="{
-            'font-bold bg-lc-highlight/10 border-l-2 border-l-lc-highlight':
-              selectedOutputType === fmt
-          }"
-          class="flex items-center p-2 text-white border-b border-b-lc-highlight/10 hover:no-underline hover:bg-lc-highlight/20"
-          href="#"
-        >
-          {{ fmt.name }}
-          @if (fmt.fileExt) {
-          <span
-            class="bg-slate-300 text-slate-800 border border-white/30 p-0.5 pl-0 leading-none rounded text-xs font-mono ml-1"
-            >.{{ fmt.fileExt }}</span
+          <a
+            (click)="onSwitchConversionType(fmt, $event)"
+            [ngClass]="{
+              'border-l-2 border-l-lc-highlight bg-lc-highlight/10 font-bold':
+                selectedOutputType === fmt
+            }"
+            class="flex items-center border-b border-b-lc-highlight/10 p-2 text-white hover:bg-lc-highlight/20 hover:no-underline"
+            href="#"
           >
-          }
-        </a>
+            {{ fmt.name }}
+            @if (fmt.fileExt) {
+              <span
+                class="ml-1 rounded border border-white/30 bg-slate-300 p-0.5 pl-0 font-mono text-xs leading-none text-slate-800"
+                >.{{ fmt.fileExt }}</span
+              >
+            }
+          </a>
         }
       </nav>
 
       @if (!displayInitialUi) {
-      <div id="test-drop-instructions-more" class="card mt-4 sm:mt-0 md:mt-4">
-        <div class="card-content">
-          You can drag more songs into this window to convert them, or
-          <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+        <div id="test-drop-instructions-more" class="card mt-4 sm:mt-0 md:mt-4">
+          <div class="card-content">
+            You can drag more songs into this window to convert them, or
+            <a href="#" (click)="onSelectFilesClick($event)">select some more files</a>
+          </div>
         </div>
-      </div>
       }
     </aside>
   </div>
 
   @if (displayInitialUi) {
-  <div id="begin-area" class="card md:col-span-3">
-    <div class="card-content text-center flex flex-col items-center justify-center">
-      <p class="mb-4 mt-auto">Choose what file type you want to convert to, then&hellip;</p>
-      <h2 class="text-3xl">Drag your <strong>Song Files</strong> into this window</h2>
-      <p>or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
+    <div id="begin-area" class="card md:col-span-3">
+      <div class="card-content flex flex-col items-center justify-center text-center">
+        <p class="mb-4 mt-auto">Choose what file type you want to convert to, then&hellip;</p>
+        <h2 class="text-3xl">Drag your <strong>Song Files</strong> into this window</h2>
+        <p>or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
 
-      <!-- Weirdness below is to preserve how whitespace is rendered -->
-      <small id="test-accepted-input-formats" class="mt-auto"
-        ><strong>Accepted Formats: </strong>@for (inputType of inputTypesList; track inputType; let
-        i = $index) {
-        <span
-          >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
-          }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
-        >
-        }</small
-      >
-    </div>
-  </div>
-  } @else {
-  <div id="display-area" class="sm:col-span-2 md:col-span-3">
-    <hr class="mb-4 md:hidden" />
-
-    @if (convertedFileCount >= convertedCountMessageThreshold) {
-    <div
-      id="test-donate"
-      class="card bg-blue-100/70 text-blue-900 border-blue-800/80 mb-4"
-      role="alert"
-    >
-      <div class="card-content">
-        <div class="flex items-center mb-2">
-          <svg class="icon icon-lg me-2" role="img" aria-label="Info:">
-            <use xlink:href="#info-fill" />
-          </svg>
-          <h4 class="text-lg">
-            Wow, you've converted a total of
-            <strong>{{ convertedFileCount }} songs</strong> with LyricConverter!
-          </h4>
-        </div>
-        <p class="mb-2">
-          I've spent a lot of time working on this and I would really appreciate a small donation if
-          you've found this tool to be useful.
-        </p>
-
-        <app-donate-button></app-donate-button>
-      </div>
-    </div>
-    } @if (errorsList.length > 0) {
-    <div
-      id="test-error-message-display"
-      class="card bg-red-200/80 text-red-700 border-red-700/80 mb-4"
-      role="alert"
-    >
-      <div class="card-content">
-        <h4 class="flex items-center text-xl font-bold mb-2">
-          <svg class="icon icon-lg mr-2" role="img" aria-label="Alert:">
-            <use xlink:href="#exclamation-triangle-fill" />
-          </svg>
-          File Conversion Errors
-        </h4>
-        <ul>
-          @for (err of errorsList; track err) {
-          <li>
-            @if (err.fileName) {
+        <!-- Weirdness below is to preserve how whitespace is rendered -->
+        <small id="test-accepted-input-formats" class="mt-auto"
+          ><strong>Accepted Formats: </strong>
+          @for (inputType of inputTypesList; track inputType; let i = $index) {
             <span
-              ><strong>{{ err.fileName }}</strong> -
-            </span>
-            }
-            {{ err.message }}
-          </li>
+              >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
+              }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
+            >
           }
-        </ul>
+        </small>
       </div>
     </div>
-    } @if (selectedOutputType.name === 'Display Slides') {
-    <app-slide-display [outputFileList]="convertedSongsForOutput"></app-slide-display>
-    } @else {
-    <app-download-display
-      [selectedOutputType]="this.selectedOutputType"
-      [outputFileList]="convertedSongsForOutput"
-    ></app-download-display>
-    }
-  </div>
+  } @else {
+    <div id="display-area" class="sm:col-span-2 md:col-span-3">
+      <hr class="mb-4 md:hidden" />
+
+      @if (convertedFileCount >= convertedCountMessageThreshold) {
+        <div
+          id="test-donate"
+          class="card mb-4 border-blue-800/80 bg-blue-100/70 text-blue-900"
+          role="alert"
+        >
+          <div class="card-content">
+            <div class="mb-2 flex items-center">
+              <svg class="icon icon-lg me-2" role="img" aria-label="Info:">
+                <use xlink:href="#info-fill" />
+              </svg>
+              <h4 class="text-lg">
+                Wow, you've converted a total of
+                <strong>{{ convertedFileCount }} songs</strong> with LyricConverter!
+              </h4>
+            </div>
+            <p class="mb-2">
+              I've spent a lot of time working on this and I would really appreciate a small
+              donation if you've found this tool to be useful.
+            </p>
+
+            <app-donate-button></app-donate-button>
+          </div>
+        </div>
+      }
+      @if (errorsList.length > 0) {
+        <div
+          id="test-error-message-display"
+          class="card mb-4 border-red-700/80 bg-red-200/80 text-red-700"
+          role="alert"
+        >
+          <div class="card-content">
+            <h4 class="mb-2 flex items-center text-xl font-bold">
+              <svg class="icon icon-lg mr-2" role="img" aria-label="Alert:">
+                <use xlink:href="#exclamation-triangle-fill" />
+              </svg>
+              File Conversion Errors
+            </h4>
+            <ul>
+              @for (err of errorsList; track err) {
+                <li>
+                  @if (err.fileName) {
+                    <span
+                      ><strong>{{ err.fileName }}</strong> -
+                    </span>
+                  }
+                  {{ err.message }}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+      @if (selectedOutputType.name === "Display Slides") {
+        <app-slide-display [outputFileList]="convertedSongsForOutput"></app-slide-display>
+      } @else {
+        <app-download-display
+          [selectedOutputType]="this.selectedOutputType"
+          [outputFileList]="convertedSongsForOutput"
+        ></app-download-display>
+      }
+    </div>
   }
 </div>
