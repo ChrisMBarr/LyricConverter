@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="OpenLP 3.0.2" modifiedIn="OpenLP 3.0.2" modifiedDate="2024-02-11T23:54:37">
+  <properties>
+    <titles>
+      <title>1 Bože, tebe chválíme</title>
+    </titles>
+    <ccliNo>11109</ccliNo>
+    <authors>
+      <author>Neznámý autor</author>
+    </authors>
+    <songbooks>
+      <songbook name="Kancionál CB"/>
+    </songbooks>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines break="optional">Bože, tebe chválíme, před tebou se skláníme <br/>s neskonalou radostí, se srdečnou vděčností,</lines>
+      <lines>neb nám sebe dáváš znáti. Něžně miluješ nás vždy,<br/>otec milý v Kristu jsi, dětmi ráčíš nás v něm zváti.</lines>
+    </verse>
+    <verse name="v2">
+      <lines>Chválíme tě s vroucností, žes nám poslal z výsosti <br/>Syna svého drahého,<br/>hřích náš vložils na něho a<br/>my svobodni jsme nyní. Vzhůru, srdce, vznes se, vznes,<br/>vesele ať zní tvůj ples z Božího tu dobrodiní!</lines>
+    </verse>
+    <verse name="v3">
+      <lines>Chválíme tě uctivě, vděčně, vroucně, ohnivě. Díky tobě vzdáváme, nad tvou láskou jásáme,<br/>vždyť jsme lid tvůj vykoupený. Tys nás v poušti nenechal, tys nám život věčný dal. Bože náš, buď velebený!</lines>
+    </verse>
+    <verse name="v4">
+      <lines>Z Ducha znovuzrozeni, s tebou v Kristu spojeni, spásy máme jistotu, tvoji známe dobrotu, tebe, Bože, velebíme.<br/>Díky tobě vzdáváme, že jsme tvoji, jásáme, tebe, Otče, vděčně ctíme.</lines>
+    </verse>
+  </lyrics>
+</song>
