@@ -68,7 +68,7 @@
     "@angular-eslint/eslint-plugin-template": "^17.2.1",
     "@angular-eslint/schematics": "~17.2.1",
     "@angular-eslint/template-parser": "~17.2.1",
-    "@angular/cli": "^17.2.3",
+    "@angular/cli": "^17.3.2",
     "@angular/compiler-cli": "^17.2.4",
     "@chiragrupani/karma-chromium-edge-launcher": "^2.3.1",
     "@types/express": "^4.17.21",
