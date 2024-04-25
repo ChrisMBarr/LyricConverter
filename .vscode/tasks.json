@@ -3,9 +3,11 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Start",
       "type": "npm",
       "script": "start",
       "isBackground": true,
+      "icon": {"color": "terminal.ansiGreen", "id": "play"},
       "problemMatcher": {
         "owner": "typescript",
         "pattern": "$tsc",
@@ -21,9 +23,31 @@
       }
     },
     {
+      "label": "Unit Tests",
       "type": "npm",
       "script": "test",
       "isBackground": true,
+      "icon": { "color": "terminal.ansiCyan", "id": "symbol-unit" },
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      }
+    },
+    {
+      "label": "Lint",
+      "type": "npm",
+      "script": "lint",
+      "isBackground": true,
+      "icon": { "color": "terminal.ansiYellow", "id": "check-all" },
       "problemMatcher": {
         "owner": "typescript",
         "pattern": "$tsc",

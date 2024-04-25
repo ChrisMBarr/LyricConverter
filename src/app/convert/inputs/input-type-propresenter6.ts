@@ -66,7 +66,7 @@ export class InputTypeProPresenter6 implements IInputConverter {
         let title = group.groupLabel;
         if (group.slides.length > 1) {
           //Add number suffix to every slide in the group if that group has more than one slide
-          title += ` (${i + 1})`;
+          title += ` (${(i + 1).toString()})`;
         }
 
         //combine text of multiple text elements on a single slide

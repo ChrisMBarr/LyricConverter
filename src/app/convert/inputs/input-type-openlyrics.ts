@@ -121,7 +121,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
         //of course we know the value here!
         //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const comment = comments[i]!;
-        commentsArr.push({ name: `${key} ${i + 1}`, value: comment });
+        commentsArr.push({ name: `${key} ${(i + 1).toString()}`, value: comment });
       }
     }
     return commentsArr;
@@ -146,7 +146,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
         if (sb.entry !== '') {
           sbVal += ` (entry ${sb.entry})`;
         }
-        songBookInfoArr.push({ name: `${name} ${i + 1}`, value: sbVal });
+        songBookInfoArr.push({ name: `${name} ${(i + 1).toString()}`, value: sbVal });
       }
     }
 

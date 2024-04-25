@@ -48,7 +48,10 @@ export class DownloadDisplayComponent {
         type: 'blob',
       })
       .then((zipContent: Blob) => {
-        fileSaver.saveAs(zipContent, `LyricConverter (${this.outputFileList.length} files).zip`);
+        fileSaver.saveAs(
+          zipContent,
+          `LyricConverter (${this.outputFileList.length.toString()} files).zip`,
+        );
 
         this.$gaService.event(
           'file_download',

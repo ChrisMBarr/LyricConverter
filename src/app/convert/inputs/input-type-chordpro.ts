@@ -87,7 +87,7 @@ export class InputTypeChordPro implements IInputConverter {
     for (const match of directiveMatches) {
       const directiveContent = match[1];
       if (directiveContent != null) {
-        const pos = match.index ?? /* istanbul ignore next */ 0;
+        const pos = match.index;
 
         //Anything with a colon we treat as info, EXCEPT FOR labeled directive start markers
         if (directiveContent.includes(':')) {
@@ -155,18 +155,19 @@ export class InputTypeChordPro implements IInputConverter {
     for (const dir of singleDirectives) {
       const foundStart = this.patternDirectiveStartMarkers.exec(dir.name);
       if (foundStart) {
+        const directiveType = foundStart[2] ?? '';
         let matchingEnd;
         if (foundStart[1] === 'so') {
-          matchingEnd = singleDirectives.find((d) => d.name === 'eo' + foundStart[2]);
+          matchingEnd = singleDirectives.find((d) => d.name === 'eo' + directiveType);
         } else if (foundStart[1] === 'start_of_') {
-          matchingEnd = singleDirectives.find((d) => d.name === 'end_of_' + foundStart[2]);
+          matchingEnd = singleDirectives.find((d) => d.name === 'end_of_' + directiveType);
         }
 
-        if (foundStart[2] != null && matchingEnd) {
+        if (directiveType !== '' && matchingEnd) {
           pairs.push({
             begin: dir,
             end: matchingEnd,
-            type: foundStart[2],
+            type: directiveType,
           });
         }
       }

@@ -17,7 +17,7 @@ export class OutputTypeChordpro implements IOutputConverter {
     for (const info of song.info) {
       if (info.value.toString().trim().length > 0) {
         fileContent += newLine;
-        fileContent += `{${info.name}: ${info.value}}`;
+        fileContent += `{${info.name}: ${info.value.toString()}}`;
       }
     }
 

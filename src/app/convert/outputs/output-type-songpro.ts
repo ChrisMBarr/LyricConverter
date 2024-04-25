@@ -33,9 +33,9 @@ export class OutputTypeSongPro implements IOutputConverter {
     const customAttributes: Array<string> = [];
     for (const info of infoArr) {
       if (standardAttributeNames.includes(info.name.toLowerCase())) {
-        standardAttributes.push(`@${info.name.toLowerCase()}=${info.value}\n`);
+        standardAttributes.push(`@${info.name.toLowerCase()}=${info.value.toString()}\n`);
       } else {
-        customAttributes.push(`!${info.name}=${info.value}\n`);
+        customAttributes.push(`!${info.name}=${info.value.toString()}\n`);
       }
     }
 
