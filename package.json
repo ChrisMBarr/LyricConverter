@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FiniteLooper/LyricConverter"
+    "url": "https://github.com/ChrisMBarr/LyricConverter"
   },
   "bugs": {
-    "url": "https://github.com/FiniteLooper/LyricConverter/issues"
+    "url": "https://github.com/ChrisMBarr/LyricConverter/issues"
   },
   "scripts": {
     "ng": "npm run genversion && ng",

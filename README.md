@@ -1,12 +1,12 @@
-[![GitHub - release](https://img.shields.io/github/v/release/FiniteLooper/LyricConverter?style=flat)](https://github.com/FiniteLooper/LyricConverter/releases/latest)
-[![GitHub - build](https://img.shields.io/github/actions/workflow/status/FiniteLooper/LyricConverter/publish-to-gh-pages.yml?logo=github&style=flat)](https://github.com/FiniteLooper/LyricConverter/actions/workflows/publish-to-gh-pages.yml)
+[![GitHub - release](https://img.shields.io/github/v/release/ChrisMBarr/LyricConverter?style=flat)](https://github.com/ChrisMBarr/LyricConverter/releases/latest)
+[![GitHub - build](https://img.shields.io/github/actions/workflow/status/ChrisMBarr/LyricConverter/publish-to-gh-pages.yml?logo=github&style=flat)](https://github.com/ChrisMBarr/LyricConverter/actions/workflows/publish-to-gh-pages.yml)
 
 # LyricConverter
 Parses the song info & lyrics from various lyric presentation software file formats. You can convert between different formats and download the converted files.
 
 ### Use it here: https://LyricConverter.net
 
-![Lyric Converter Screen Recording](https://github.com/FiniteLooper/LyricConverter/blob/master/lyric-converter-demo.gif?raw=true)
+![Lyric Converter Screen Recording](https://github.com/ChrisMBarr/LyricConverter/blob/master/lyric-converter-demo.gif?raw=true)
 
 ## Formats
 |                                                                    | Input  | Output |
@@ -32,14 +32,14 @@ Parses the song info & lyrics from various lyric presentation software file form
 * ❓ = Unknown/Untested
 * 💾 = You can import the ProPresenter 6 files made by LyricConverter into ProPresenter 7!
 
-[1]: https://github.com/FiniteLooper/LyricConverter/issues/3
-[2]: https://github.com/FiniteLooper/LyricConverter/issues/5
+[1]: https://github.com/ChrisMBarr/LyricConverter/issues/3
+[2]: https://github.com/ChrisMBarr/LyricConverter/issues/5
 
 
 ### LyricConverter uses these projects for extracting from and/or creating song files
-* [FiniteLooper/ProPresenter-Parser](https://github.com/FiniteLooper/ProPresenter-Parser)
-* [FiniteLooper/OpenLyrics-Parser](https://github.com/FiniteLooper/OpenLyrics-Parser)
-* [FiniteLooper/SongShowPlus-Parser](https://github.com/FiniteLooper/SongShowPlus-Parser)
+* [ChrisMBarr/ProPresenter-Parser](https://github.com/ChrisMBarr/ProPresenter-Parser)
+* [ChrisMBarr/OpenLyrics-Parser](https://github.com/ChrisMBarr/OpenLyrics-Parser)
+* [ChrisMBarr/SongShowPlus-Parser](https://github.com/ChrisMBarr/SongShowPlus-Parser)
 * [SongProOrg/songpro-javascript](https://github.com/SongProOrg/songpro-javascript)
 
 ### LyricConverter relies heavily on these projects
