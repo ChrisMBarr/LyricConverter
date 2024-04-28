@@ -1,0 +1,48 @@
+{
+  "Folders": [
+    {
+      "Name": "All",
+      "Lyrics": [
+        {
+          "cclid": null,
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "JOY is joy\r\nJoy in the Holy Ghost\r\nJOY is joy\r\nJoy in the Lord",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "14708390-e0c9-4202-abaf-ca12c2115c63"
+            },
+            {
+              "Lyrics": "Don’t let nobody spoil your joy\r\nDon’t let nobody spoil your joy\r\nDon’t let nobody spoil your joy,\r\nJoy in the Lord",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "679e7229-b18e-43a4-9d0b-17fa7f5b142d"
+            },
+            {
+              "Lyrics": "LOVE love\r\nLove in the Holy Ghost\r\nLOVE Love\r\nLove in the Lord",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "98e63159-9305-4a28-a858-93907d8682d4"
+            },
+            {
+              "Lyrics": "PEACE\r\nPeace in the Holy Ghost\r\nPEACE\r\nPeace in the Lord",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "ff8f9b70-7aac-4020-b0a5-0a0ae980ee30"
+            }
+          ],
+          "songId": "200f9c84-0269-4668-b12e-cfe57409e24e",
+          "Title": "JOY is Joy",
+          "SongNumber": null,
+          "Authors": []
+        }
+      ]
+    }
+  ]
+}

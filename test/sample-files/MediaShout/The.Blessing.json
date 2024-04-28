@@ -1,0 +1,34 @@
+{
+  "Folders": [
+    {
+      "Name": "All",
+      "Lyrics": [
+        {
+          "cclid": null,
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "The Lord bless you and keep you\r\nMake His face shine upon you and be gracious to you\r\nThe Lord turn His face toward you\r\nAnd give you peace",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "796ff3bd-2c93-4ea2-ade6-6c4b61e8ea87"
+            },
+            {
+              "Lyrics": "Amen, Amen, Amen\r\nAmen, Amen, Amen",
+              "PartType": 3,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "9be57911-059b-4345-b46d-f88738643d10"
+            }
+          ],
+          "songId": "23201acf-959a-4e99-af7a-b02ba54c90b1",
+          "Title": "The Blessing - Kari Jobe",
+          "SongNumber": null,
+          "Authors": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "Folders": [
+    {
+      "Name": "All",
+      "Lyrics": [
+        {
+          "cclid": null,
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "All creatures of our God and King.\r\nLift up your voice with us and sing:\r\nAlleluia!  Alleluia! O burning sun\r\nwith golden beam\r\nAnd silver moon with softer gleam:",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "d01df14e-4032-423c-a87a-09aea08a30f2"
+            },
+            {
+              "Lyrics": "Oh, praise Him!\r\nOh, praise Him!\r\nAlleluia, alleluia,\r\nalleluia!",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "b5d39794-f470-4b2b-abc6-dae9ca05e3be"
+            },
+            {
+              "Lyrics": "O rushing wind and breezes soft,\r\nO clouds that ride the winds aloft:\r\nO praise Him! Alleluia!\r\nO rising morn, in praise rejoice,\r\nO lights of evening, find a voice.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "0ef645ff-9377-499e-baaa-b4db820b26a1"
+            },
+            {
+              "Lyrics": "O flowing waters, pure and clear,\r\nMake music for your Lord to hear,\r\nO praise Him! Alleluia!\r\nO fire so masterful and bright,\r\nProviding us with warmth and light,",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "cd667952-9c4d-4602-a9b7-1571ca0da31a"
+            },
+            {
+              "Lyrics": "Let all things their Creator bless,\r\nAnd worship Him in humbleness,\r\nO praise Him! Alleluia!\r\nOh, praise the Father, praise the Son,\r\nAnd praise the Spirit, three in One!",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "03e7991e-d5f8-4b74-b772-2843404bcc87"
+            }
+          ],
+          "songId": "8bf61074-238e-4704-86ea-5f8443d34e35",
+          "Title": "Hymn 002 - All Creatures of our God",
+          "SongNumber": null,
+          "Authors": []
+        }
+      ]
+    }
+  ]
+}
