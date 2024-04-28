@@ -1,6 +1,7 @@
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { InputTypeJSON } from './input-type-json';
 import { LyricConverterError } from '../models/errors.model';
+import { TestUtils } from 'test/test-utils';
 
 describe('InputTypeJSON', () => {
   let inputConverter: InputTypeJSON;
@@ -46,6 +47,11 @@ describe('InputTypeJSON', () => {
       };
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
+
+    it('should properly reject a MediaShout JSON file when tested', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    })
   });
 
   describe('extractSongData()', () => {

@@ -8,7 +8,13 @@ export class InputTypeJSON implements IInputConverter {
   readonly fileExt = 'json';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
-    return rawFile.ext.toLowerCase() === this.fileExt;
+    try {
+      //Make sure this does not contain any properties that a MediaShout JSON file would contain
+      const parsed = JSON.parse(rawFile.dataAsString) as Record<string, unknown>;
+      return rawFile.ext.toLowerCase() === this.fileExt && typeof parsed['Folders'] === 'undefined';
+    } catch {
+      return false;
+    }
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {
