@@ -44,6 +44,7 @@
     "@angular/platform-server": "^17.3.6",
     "@angular/router": "^17.3.6",
     "@angular/ssr": "^17.3.6",
+    "chordsheetjs": "^9.0.2",
     "express": "^4.19.2",
     "file-saver": "^2.0.5",
     "js-base64": "^3.7.7",
