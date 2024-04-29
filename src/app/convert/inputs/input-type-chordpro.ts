@@ -1,4 +1,4 @@
-import ChordSheetJS, { Paragraph, Tag } from 'chordsheetjs';
+import ChordSheetJS, { ChordLyricsPair, Paragraph, Tag } from 'chordsheetjs';
 
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
@@ -24,12 +24,13 @@ export class InputTypeChordPro implements IInputConverter {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition  --  typedefs are wrong
     const title = parsedSong.title ?? rawFile.name;
     const info = this.getSongInfo(parsedSong.metadata.metadata, parsedSong.bodyParagraphs);
+    const slides = this.getLyrics(parsedSong.bodyParagraphs);
 
     return {
       fileName: rawFile.name,
       title,
       info,
-      slides: [],
+      slides,
     };
   }
 
@@ -59,30 +60,45 @@ export class InputTypeChordPro implements IInputConverter {
     return songInfo.concat(tagsAsInfo);
   }
 
-  // private getLyrics(content: string): Array<ISongSlide> {
-  //   const slides: Array<ISongSlide> = [];
-  //   const sections = content.split('\n\n');
+  private getLyrics(bodyParagraphs: Array<Paragraph>): Array<ISongSlide> {
+    const slides: Array<ISongSlide> = [];
 
-  //   for (const s of sections) {
-  //     //Each section should begin with the name of the section
-  //     //If so we will use that as a title with the colon removed
-  //     //If not we will just use "Verse"
-  //     const lines = s.trim().split('\n');
-  //     if (lines[0] != null) {
-  //       let title = lines[0].trim();
-  //       let lyrics = s.trim();
+    for (const paragraph of bodyParagraphs) {
+      //join all lyrics together, ignoring the chords
+      const lyricLines = paragraph.lines.map((line) =>
+        line.items
+          .filter((item): item is ChordLyricsPair => item instanceof ChordLyricsPair)
+          .map((item) => item.lyrics)
+          .join(''),
+      );
 
-  //       if (/^(chorus|verse|bridge)/i.test(title)) {
-  //         title = title.replace(':', '');
-  //         lyrics = lyrics.replace(lines[0] + '\n', '');
-  //       } else {
-  //         title = 'Verse';
-  //       }
+      //Sometimes we might have a paragraph title/label that is not inside a curly brace tag/directive. We will want to grab
+      const foundTitleIdx = lyricLines.findIndex((l) => /^(chorus|verse|bridge)/i.test(l));
+      let title = paragraph.label ?? paragraph.type.toString();
 
-  //       slides.push({ title, lyrics });
-  //     }
-  //   }
+      //If we found a title from above...
+      if (foundTitleIdx > -1) {
+        //Use it as the title, but remove the colon if it exists
+        title = lyricLines[foundTitleIdx]?.replace(':', '') ?? title;
+        //discard that line from the lyrics
+        lyricLines.splice(foundTitleIdx, 1);
+      }
 
-  //   return slides;
-  // }
+      //"none" sucks as a label, use something better
+      if (title === 'none') title = 'verse';
+
+      //Capitalize the first letter of the title
+      title = title.charAt(0).toUpperCase() + title.slice(1);
+
+      //Join all lines together with line breaks
+      const lyrics = lyricLines.join('\n').trim();
+
+      //Don't add slides with empty lyrics
+      if (lyrics !== '') {
+        slides.push({ title, lyrics });
+      }
+    }
+
+    return slides;
+  }
 }
