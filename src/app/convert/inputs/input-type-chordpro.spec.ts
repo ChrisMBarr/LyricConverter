@@ -62,7 +62,7 @@ describe('InputTypeChordPro', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for a simple test file', async () => {
+    it('should return a song for "simple" test file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -76,7 +76,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 1', async () => {
+    it('should return a song for "At the Cross"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'At the Cross.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -113,7 +113,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 2', async () => {
+    it('should return a song for "Our Father"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -164,7 +164,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 3', async () => {
+    it('should return a song for "Swing Low Sweet Chariot"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Swing Low Sweet Chariot.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -190,7 +190,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 4 that only uses unlabeled paired directives', async () => {
+    it('should return a song for test file 4 that only uses unlabeled paired directives for "Our Father - unlabeled paired directives"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - unlabeled paired directives.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -253,7 +253,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 5 that only uses paired directives with internal labels', async () => {
+    it('should return a song for test file 5 that only uses paired directives with internal labels for "Our Father - directives with internal inline labels"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - directives with internal inline labels.cho');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
@@ -307,7 +307,7 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should use the filename as a fallback title when the song has no title', async () => {
+    it('should use the filename as a fallback title when the song has no title for "simple"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.dataAsString = testFile.dataAsString.replace('{title: This is a title}', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
