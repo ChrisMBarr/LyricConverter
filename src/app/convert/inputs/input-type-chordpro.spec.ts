@@ -307,6 +307,48 @@ describe('InputTypeChordPro', () => {
       });
     });
 
+    it('should return a song for test file 6 that only uses paired directives with internal labels for "Our Father - complex tags"', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - complex tags.cho');
+
+      expect(inputConverter.extractSongData(testFile)).toEqual({
+        fileName: testFile.name,
+        title: 'Our Father',
+        info: [
+          { name: 'artist', value: 'Bethel Music' },
+          { name: 'key', value: 'G' },
+          { name: 'comment', value: 'Words and Music by Marcus Meier' },
+        ],
+        slides: [
+          {
+            title: 'Verse',
+            lyrics: TestUtils.dedent`Our Father in Heaven
+                                     Hallowed be Your name
+                                     Your Kingdom come quickly
+                                     Your will be done the same`,
+          },
+          {
+            title: 'Chorus',
+            lyrics: TestUtils.dedent`On Earth as it is in Heaven
+                                     Let Heaven come to
+                                     Earth as it is in Heaven
+                                     Let Heaven come`,
+          },
+          {
+            title: 'Bridge 1',
+            lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
+                                     Let Heaven come, let Heaven come`,
+          },
+          {
+            title: 'Bridge 2',
+            lyrics: TestUtils.dedent`Yours is the Kingdom, Yours is the power
+                                     Yours is the glory forever, amen
+                                     Yours is the Kingdom, Yours is the power
+                                     Yours is the glory forever amen`,
+          },
+        ],
+      });
+    });
+
     it('should use the filename as a fallback title when the song has no title for "simple"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.dataAsString = testFile.dataAsString.replace('{title: This is a title}', '');
