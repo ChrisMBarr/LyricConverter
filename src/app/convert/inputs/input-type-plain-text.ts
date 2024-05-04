@@ -3,6 +3,7 @@ import { IInputConverter } from './input-converter.model';
 import { IRawDataFile } from 'src/app/convert/models/file.model';
 import { LyricConverterError } from '../models/errors.model';
 import { Utils } from '../shared/utils';
+import { version } from '../../version';
 
 export class InputTypePlainText implements IInputConverter {
   readonly name = 'Plain Text';
@@ -32,7 +33,13 @@ export class InputTypePlainText implements IInputConverter {
     }
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title,
       info,
       slides,

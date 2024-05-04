@@ -2,6 +2,7 @@ import { IPro4Properties, IPro4Slide, IPro4Song, ProPresenter4Parser } from 'pro
 import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
 import { IInputConverter } from './input-converter.model';
 import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { version } from '../../version';
 
 export class InputTypeProPresenter4 implements IInputConverter {
   readonly name = 'ProPresenter 4';
@@ -19,7 +20,13 @@ export class InputTypeProPresenter4 implements IInputConverter {
     if (title === '') title = rawFile.name;
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title,
       info: this.getInfo(parsedDoc.properties),
       slides: this.getSlides(parsedDoc.slides),

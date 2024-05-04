@@ -1,5 +1,7 @@
 import { InputTypeProPresenter5 } from './input-type-propresenter5';
 import { TestUtils } from 'test/test-utils';
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
 
 describe('InputTypeProPresenter5', () => {
   let inputConverter: InputTypeProPresenter5;
@@ -56,8 +58,15 @@ describe('InputTypeProPresenter5', () => {
     it('should get a song from a ProPresenter 5 file1', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Be Near.pro5');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Be Near',
         info: [
           { name: 'Artist', value: 'Shane Bernard' },
@@ -114,8 +123,15 @@ describe('InputTypeProPresenter5', () => {
     it('should get a song from a ProPresenter 5 file2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Give Us Clean Hands.pro5');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Give Us Clean Hands',
         info: [
           { name: 'Artist', value: 'Charlie Hall' },

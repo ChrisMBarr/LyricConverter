@@ -1,5 +1,11 @@
 export interface ISong {
-  fileName: string;
+  lyricConverterVersion: string;
+  timestamp: string;
+  originalFile: {
+    extension: string;
+    format: string;
+    name: string;
+  };
   title: string;
   info: Array<ISongInfo>;
   slides: Array<ISongSlide>;

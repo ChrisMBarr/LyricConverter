@@ -18,6 +18,8 @@ import { ISong } from './models/song.model';
 import { LyricConverterError } from './models/errors.model';
 
 import { TestUtils } from 'test/test-utils';
+import { mockStaticTimestamp } from '../../../test/mock-song-objects';
+import { version } from '../version';
 
 class MockConverter implements IOutputConverter {
   constructor(
@@ -353,7 +355,13 @@ describe('ConvertComponent', () => {
 
       const outputFile: IOutputFile = {
         songData: {
-          fileName: 'JSON - Your Grace Is Enough',
+          originalFile: {
+            extension: 'json',
+            format: 'JSON',
+            name: 'JSON - Your Grace Is Enough',
+          },
+          lyricConverterVersion: version,
+          timestamp: mockStaticTimestamp,
           title: 'Great is your faithfulness O God',
           info: [{ name: 'Order', value: '1C2CBC' }],
           slides: [
@@ -395,6 +403,13 @@ describe('ConvertComponent', () => {
       it('should get converters for passed in raw files and list them for Text Type Output', () => {
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile]);
+
+        //normalize timestamps for comparison
+        component.convertedSongsForOutput = component.convertedSongsForOutput.map((convertedSong) => {
+          convertedSong.songData = TestUtils.normalizeSongTimestamp(convertedSong.songData);
+          return convertedSong;
+        });
+
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
 
@@ -403,6 +418,13 @@ describe('ConvertComponent', () => {
 
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile, imageFile]);
+
+        //normalize timestamps for comparison
+        component.convertedSongsForOutput = component.convertedSongsForOutput.map((convertedSong) => {
+          convertedSong.songData = TestUtils.normalizeSongTimestamp(convertedSong.songData);
+          return convertedSong;
+        });
+
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
     });
@@ -582,7 +604,7 @@ describe('ConvertComponent', () => {
 
             //@ts-expect-error - we are testing throwing errors so we need this unreachable code
             return {
-              fileName: `${song.fileName}.${this.fileExt!}`,
+              fileName: `${song.originalFile.name}.${this.fileExt!}`,
               outputContent: '',
               songData: song,
             };

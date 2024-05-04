@@ -3,6 +3,7 @@ import { ISongProLine, ISongProSong, SongPro } from 'songpro';
 import { IInputConverter } from './input-converter.model';
 import { IRawDataFile } from '../models/file.model';
 import { Utils } from '../shared/utils';
+import { version } from '../../version';
 
 export class InputTypeSongPro implements IInputConverter {
   readonly name = 'SongPro';
@@ -32,7 +33,13 @@ export class InputTypeSongPro implements IInputConverter {
     // console.groupEnd();
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title,
       info,
       slides,

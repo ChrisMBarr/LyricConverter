@@ -23,7 +23,7 @@ describe('OutputTypePropresenter6', () => {
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(emptySongFile.dataAsString);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).toEqual(normalizedExpectation);
   });
 
@@ -37,7 +37,7 @@ describe('OutputTypePropresenter6', () => {
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(songFile.dataAsString);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).toEqual(normalizedExpectation);
   });
 });

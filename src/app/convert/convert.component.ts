@@ -142,7 +142,7 @@ export class ConvertComponent implements OnInit {
           //Handle any errors that happen downstream on the selected IOutputConverter
           this.errorsSvc.add({
             message: `There was a problem converting this song to the ${this.selectedOutputType.name} format`,
-            fileName: s.fileName,
+            fileName: s.originalFile.name,
             thrownError: err,
           });
         }

@@ -3,6 +3,7 @@ import { ChordLyricsPair, ChordProParser, Paragraph, Tag } from 'chordsheetjs';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
 import { IRawDataFile } from '../models/file.model';
+import { version } from '../../version';
 
 /**
  * @description ChordPro File Official Docs: https://chordpro.org/chordpro/
@@ -35,7 +36,13 @@ export class InputTypeChordPro implements IInputConverter {
     const slides = this.getLyrics(parsedSong.bodyParagraphs);
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title,
       info,
       slides,

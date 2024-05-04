@@ -19,7 +19,7 @@ describe('OutputTypeJSON', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: expectedJsonString,
     });
   });

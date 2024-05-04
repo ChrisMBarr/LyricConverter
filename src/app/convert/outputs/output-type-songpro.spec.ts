@@ -17,7 +17,7 @@ describe('OutputTypeSongPro', () => {
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(outputFile.outputContent).toEqual(`@title=Empty Title`);
   });
 
@@ -26,7 +26,7 @@ describe('OutputTypeSongPro', () => {
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(outputFile.outputContent).toEqual(`@title=Your Grace is Enough
 @artist=Bethel Music
 @key=G
@@ -58,7 +58,7 @@ And all your people sing along`);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(outputFile.outputContent).toEqual(`@title=At the Cross
 @artist=Hymn
 @key=E
@@ -89,7 +89,7 @@ He gave us life again`);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(outputFile.outputContent).toEqual(`@title=Be Near
 @artist=Shane Bernard
 !creatorCode=1349676880
@@ -153,7 +153,7 @@ My Good`);
     const outputFile = outputType.convertToType(song);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(outputFile.outputContent).toEqual(`@title=Amazing Grace
 @tempo=90bpm
 @key=C#

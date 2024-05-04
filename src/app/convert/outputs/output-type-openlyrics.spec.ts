@@ -34,7 +34,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -73,7 +73,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -112,7 +112,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -167,7 +167,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 
@@ -240,7 +240,7 @@ describe('OutputTypeOpenLyrics', () => {
     );
 
     expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
   });
 });

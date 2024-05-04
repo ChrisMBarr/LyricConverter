@@ -1,5 +1,7 @@
 import { InputTypeProPresenter6 } from './input-type-propresenter6';
 import { TestUtils } from 'test/test-utils';
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
 
 describe('InputTypeProPresenter6', () => {
   let inputConverter: InputTypeProPresenter6;
@@ -58,7 +60,7 @@ describe('InputTypeProPresenter6', () => {
       const songData = inputConverter.extractSongData(testFile);
 
       //Skip slides from file 1 b/c it has weird commas in the lyrics. Just an artifact of how it was made. Not great for testing here
-      expect(songData.fileName).toEqual(testFile.name);
+      expect(songData.originalFile.name).toEqual(testFile.name);
       expect(songData.title).toEqual('Be Near');
       expect(songData.info).toEqual([
         { name: 'Artist', value: 'Shane Bernard' },
@@ -71,8 +73,15 @@ describe('InputTypeProPresenter6', () => {
     it('should get a song from a ProPresenter 6 file2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6 - Amazing Grace.pro6');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Amazing Grace',
         info: [
           { name: 'Artist', value: 'John Newton' },
@@ -119,8 +128,15 @@ describe('InputTypeProPresenter6', () => {
     it('should get a song from a ProPresenter 6 file3', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6 - Feature Test.pro6');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'v6 - Feature Test',
         info: [{ name: 'Category', value: 'Song' }],
         slides: [
@@ -136,8 +152,15 @@ describe('InputTypeProPresenter6', () => {
     it('should get a song from a ProPresenter 6 file2 when a slide has no title but lyrics', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6 - single-unnamed-slide.pro6');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'v6 - single-unnamed-slide',
         info: [{ name: 'Category', value: 'Song' }],
         slides: [{ title: '', lyrics: 'two' }],
