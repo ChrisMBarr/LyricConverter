@@ -1,9 +1,9 @@
 import { ChordLyricsPair, ChordProParser, Paragraph, Tag } from 'chordsheetjs';
 
+import { version } from '../../version';
+import { IRawDataFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from '../models/file.model';
-import { version } from '../../version';
 
 /**
  * @description ChordPro File Official Docs: https://chordpro.org/chordpro/

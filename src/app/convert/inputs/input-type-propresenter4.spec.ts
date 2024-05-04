@@ -1,7 +1,8 @@
-import { InputTypeProPresenter4 } from './input-type-propresenter4';
 import { TestUtils } from 'test/test-utils';
+
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
 import { version } from '../../version';
+import { InputTypeProPresenter4 } from './input-type-propresenter4';
 
 describe('InputTypeProPresenter4', () => {
   let inputConverter: InputTypeProPresenter4;

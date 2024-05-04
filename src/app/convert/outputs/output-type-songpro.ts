@@ -1,6 +1,6 @@
+import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
-import { IOutputFile } from '../models/file.model';
 
 export class OutputTypeSongPro implements IOutputConverter {
   readonly name = 'SongPro';

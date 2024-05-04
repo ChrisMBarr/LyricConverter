@@ -1,7 +1,8 @@
-import { InputTypeChordPro } from './input-type-chordpro';
 import { TestUtils } from 'test/test-utils';
-import { version } from '../../version';
+
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { InputTypeChordPro } from './input-type-chordpro';
 
 describe('InputTypeChordPro', () => {
   let inputConverter: InputTypeChordPro;

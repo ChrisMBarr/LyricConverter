@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { mockOutputFiles } from 'test/mock-output-files';
 
 import { SlideDisplayComponent } from './slide-display.component';
-import { mockOutputFiles } from 'test/mock-output-files';
 
 describe('SlideDisplayComponent', () => {
   let component: SlideDisplayComponent;

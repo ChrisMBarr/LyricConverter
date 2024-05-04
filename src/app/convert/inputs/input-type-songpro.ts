@@ -1,9 +1,10 @@
-import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { ISongProLine, ISongProSong, SongPro } from 'songpro';
-import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from '../models/file.model';
-import { Utils } from '../shared/utils';
+
 import { version } from '../../version';
+import { IRawDataFile } from '../models/file.model';
+import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
+import { Utils } from '../shared/utils';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypeSongPro implements IInputConverter {
   readonly name = 'SongPro';

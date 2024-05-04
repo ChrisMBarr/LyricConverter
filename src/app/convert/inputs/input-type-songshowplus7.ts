@@ -1,9 +1,10 @@
-import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from '../models/file.model';
-import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
 import { SongShowPlus } from 'songshowplus-parser';
+
 import { version } from '../../version';
+import { IRawDataFile } from '../models/file.model';
+import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
+import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypeSongShowPlus7 implements IInputConverter {
   readonly name = 'SongShow Plus 7';

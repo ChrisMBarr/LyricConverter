@@ -1,7 +1,8 @@
-import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
-import { TestUtils } from 'test/test-utils';
 import { mockStaticTimestamp } from 'test/mock-song-objects';
+import { TestUtils } from 'test/test-utils';
+
 import { version } from '../../version';
+import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
 
 describe('InputTypeSongShowPlus7', () => {
   let inputConverter: InputTypeSongShowPlus7;

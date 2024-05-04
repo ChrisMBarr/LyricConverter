@@ -4,10 +4,11 @@ import {
   IPro5Song,
   ProPresenter5Parser,
 } from 'propresenter-parser';
-import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
-import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from 'src/app/convert/models/file.model';
+
 import { version } from '../../version';
+import { IRawDataFile } from '../models/file.model';
+import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypeProPresenter5 implements IInputConverter {
   readonly name = 'ProPresenter 5';

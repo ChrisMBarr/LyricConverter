@@ -1,6 +1,7 @@
-import { OutputTypePlainText } from './output-type-plain-text';
-import { TestUtils } from 'test/test-utils';
 import { mockSongObjects } from 'test/mock-song-objects';
+import { TestUtils } from 'test/test-utils';
+
+import { OutputTypePlainText } from './output-type-plain-text';
 
 describe('OutputTypePlainText', () => {
   let outputType: OutputTypePlainText;

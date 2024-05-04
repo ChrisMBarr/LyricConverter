@@ -1,10 +1,9 @@
-import { Injectable, inject } from '@angular/core';
-
+import { inject, Injectable } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Subject } from 'rxjs';
 
-import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
 import { ISongError } from '../models/errors.model';
+import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
 
 @Injectable({
   providedIn: 'root',

@@ -1,9 +1,9 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { InputTypeJSON } from './input-type-json';
-import { LyricConverterError } from '../models/errors.model';
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
-import { version } from '../../version';
 import { TestUtils } from '../../../../test/test-utils';
+import { version } from '../../version';
+import { LyricConverterError } from '../models/errors.model';
+import { IRawDataFile } from '../models/file.model';
+import { InputTypeJSON } from './input-type-json';
 
 describe('InputTypeJSON', () => {
   let inputConverter: InputTypeJSON;

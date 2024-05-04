@@ -1,7 +1,8 @@
-import { InputTypeSongPro } from './input-type-songpro';
 import { TestUtils } from 'test/test-utils';
-import { version } from '../../version';
+
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { InputTypeSongPro } from './input-type-songpro';
 
 describe('InputTypeSongPro', () => {
   let inputConverter: InputTypeSongPro;

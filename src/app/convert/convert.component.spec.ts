@@ -1,25 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
+import { TestUtils } from 'test/test-utils';
 
-import { ConvertComponent } from './convert.component';
+import { mockStaticTimestamp } from '../../../test/mock-song-objects';
 import { DonateButtonComponent } from '../donate-button/donate-button.component';
-import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
+import { version } from '../version';
+import { ConvertComponent } from './convert.component';
+import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { ErrorsService } from './errors/errors.service';
+import { LyricConverterError } from './models/errors.model';
+import { IOutputFile, IRawDataFile } from './models/file.model';
+import { ISong } from './models/song.model';
+import { IOutputConverter } from './outputs/output-converter.model';
 import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypePlainText } from './outputs/output-type-plain-text';
 import { ParserService } from './parser/parser.service';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
-
-import { IOutputFile, IRawDataFile } from './models/file.model';
-import { IOutputConverter } from './outputs/output-converter.model';
-import { ISong } from './models/song.model';
-import { LyricConverterError } from './models/errors.model';
-
-import { TestUtils } from 'test/test-utils';
-import { mockStaticTimestamp } from '../../../test/mock-song-objects';
-import { version } from '../version';
 
 class MockConverter implements IOutputConverter {
   constructor(

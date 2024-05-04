@@ -6,11 +6,12 @@ import {
   IParserVerse,
   OpenLyricsParser,
 } from 'openlyrics-parser';
-import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from '../models/file.model';
-import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+
 import { version } from '../../version';
+import { IRawDataFile } from '../models/file.model';
+import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
+import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';

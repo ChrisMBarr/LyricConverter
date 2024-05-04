@@ -1,6 +1,6 @@
 {
   "name": "lyric-converter",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "homepage": "https://lyricconverter.net",
   "author": {
     "name": "Chris Barr",
@@ -45,6 +45,8 @@
     "@angular/router": "^17.3.7",
     "@angular/ssr": "^17.3.6",
     "chordsheetjs": "^9.0.2",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
     "express": "^4.19.2",
     "file-saver": "^2.0.5",
     "js-base64": "^3.7.7",

@@ -1,15 +1,15 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { ISong } from 'src/app/convert/models/song.model';
-import { Utils } from 'src/app/convert/shared/utils';
+import { IRawDataFile } from '../src/app/convert/models/file.model';
+import { ISong } from '../src/app/convert/models/song.model';
+import { Utils } from '../src/app/convert/shared/utils';
 import { mockStaticTimestamp } from './mock-song-objects';
 
 export class TestUtils {
   private static readonly decoder = new TextDecoder();
 
-  public static dedent(inputStrings: TemplateStringsArray, ...values: never[]): string {
+  public static dedent(inputStrings: TemplateStringsArray, ...values: Array<string>): string {
     //Convert template string arr into a real string
     const fullString = inputStrings.reduce(
-      (accumulator, str, i) => `${accumulator}${values[i - 1]}${str}`,
+      (accumulator, str, i) => `${accumulator}${values[i - 1] ?? ''}${str}`,
     );
 
     //on each line, remove any leading whitespace

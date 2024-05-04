@@ -1,4 +1,5 @@
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
+
 import { OutputTypeSongPro } from './output-type-songpro';
 
 describe('OutputTypeSongPro', () => {

@@ -1,5 +1,6 @@
-import { OutputTypeJSON } from './output-type-json';
 import { mockSongObjects } from 'test/mock-song-objects';
+
+import { OutputTypeJSON } from './output-type-json';
 
 describe('OutputTypeJSON', () => {
   let outputType: OutputTypeJSON;

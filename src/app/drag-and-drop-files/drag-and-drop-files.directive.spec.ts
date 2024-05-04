@@ -1,11 +1,11 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, DebugElement, Inject } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
 import { first } from 'rxjs';
 
-import { DragAndDropFilesDirective } from './drag-and-drop-files.directive';
 import { IFileWithData } from '../convert/models/file.model';
+import { DragAndDropFilesDirective } from './drag-and-drop-files.directive';
 
 describe('DragAndDropFilesDirective', () => {
   //---------------------------------------------

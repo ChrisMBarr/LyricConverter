@@ -1,12 +1,11 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
-import * as JSZip from 'jszip';
 import * as fileSaver from 'file-saver';
-
-import { DownloadDisplayComponent } from './download-display.component';
-import { OutputTypePlainText } from '../outputs/output-type-plain-text';
+import * as JSZip from 'jszip';
 import { mockOutputFiles } from 'test/mock-output-files';
+
+import { OutputTypePlainText } from '../outputs/output-type-plain-text';
+import { DownloadDisplayComponent } from './download-display.component';
 
 describe('DownloadDisplayComponent', () => {
   let component: DownloadDisplayComponent;

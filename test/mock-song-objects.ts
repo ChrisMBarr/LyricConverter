@@ -1,9 +1,9 @@
-import { ISong } from 'src/app/convert/models/song.model';
+import { ISong } from '../src/app/convert/models/song.model';
 import { version } from '../src/app/version';
 
-export const mockStaticTimestamp = '2024-05-04T14:34:37.190Z'
+export const mockStaticTimestamp = '2024-05-04T14:34:37.190Z';
 
-export const mockSongObjects: ISong[] = [
+export const mockSongObjects: Array<ISong> = [
   {
     originalFile: {
       extension: 'txt',

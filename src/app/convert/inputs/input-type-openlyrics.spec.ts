@@ -1,7 +1,8 @@
-import { InputTypeOpenLyrics } from './input-type-openlyrics';
 import { TestUtils } from 'test/test-utils';
+
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
 import { version } from '../../version';
+import { InputTypeOpenLyrics } from './input-type-openlyrics';
 
 describe('InputTypeOpenLyrics', () => {
   let inputConverter: InputTypeOpenLyrics;

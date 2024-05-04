@@ -1,8 +1,9 @@
-import { InputTypePlainText } from './input-type-plain-text';
-import { LyricConverterError } from '../models/errors.model';
 import { TestUtils } from 'test/test-utils';
+
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
 import { version } from '../../version';
+import { LyricConverterError } from '../models/errors.model';
+import { InputTypePlainText } from './input-type-plain-text';
 
 describe('InputTypePlainText', () => {
   let inputConverter: InputTypePlainText;
