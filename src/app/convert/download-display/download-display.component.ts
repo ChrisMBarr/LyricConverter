@@ -1,11 +1,10 @@
-import { Component, Input, inject } from '@angular/core';
-
-import * as JSZip from 'jszip';
+import { Component, inject, Input } from '@angular/core';
 import * as fileSaver from 'file-saver';
+import * as JSZip from 'jszip';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
-import { IOutputConverter } from '../outputs/output-converter.model';
 import { IOutputFile } from '../models/file.model';
+import { IOutputConverter } from '../outputs/output-converter.model';
 
 @Component({
   selector: 'app-download-display',

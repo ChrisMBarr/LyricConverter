@@ -6,11 +6,12 @@ import {
   IBuilderVerse,
   OpenLyricsBuilder,
 } from 'openlyrics-parser';
+
+import { version } from '../../version';
+import { IOutputFile } from '../models/file.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { STRING_LIST_SEPARATOR_JOIN, STRING_LIST_SEPARATOR_SPLIT } from '../shared/constants';
 import { IOutputConverter } from './output-converter.model';
-import { IOutputFile } from '../models/file.model';
-import { version } from '../../version';
 
 export class OutputTypeOpenLyrics implements IOutputConverter {
   readonly name = 'OpenLyrics';
@@ -53,7 +54,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.fileName}.${this.fileExt}`,
+      fileName: `${song.originalFile.name}.${this.fileExt}`,
       outputContent: fileContent,
     };
   }

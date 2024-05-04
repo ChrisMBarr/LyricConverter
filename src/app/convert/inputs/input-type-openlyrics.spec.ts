@@ -1,5 +1,8 @@
-import { InputTypeOpenLyrics } from './input-type-openlyrics';
 import { TestUtils } from 'test/test-utils';
+
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { InputTypeOpenLyrics } from './input-type-openlyrics';
 
 describe('InputTypeOpenLyrics', () => {
   let inputConverter: InputTypeOpenLyrics;
@@ -43,8 +46,15 @@ describe('InputTypeOpenLyrics', () => {
     it('should return a song for a simple OpenLyrics file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Amazing Grace',
         info: [],
         slides: [
@@ -59,8 +69,15 @@ describe('InputTypeOpenLyrics', () => {
     it('should return a song for a complex OpenLyrics file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'complex.xml');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Amazing Grace',
         info: [
           { name: 'ccliNo', value: '4639462' },
@@ -142,8 +159,15 @@ describe('InputTypeOpenLyrics', () => {
         'how sweet <!-- a comment and  <chord name="a tag here"/> -->the sound',
       );
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Amazing Grace',
         info: [],
         slides: [
@@ -158,8 +182,15 @@ describe('InputTypeOpenLyrics', () => {
     it('should return a song for a OpenLyrics example file 1', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Amazing Grace.xml');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Amazing Grace',
         info: [
           { name: 'ccliNo', value: '1037882' },
@@ -194,8 +225,15 @@ describe('InputTypeOpenLyrics', () => {
     it('should return a song for a OpenLyrics example file 2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'It Is Well With My Soul.xml');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'It Is Well With My Soul',
         info: [
           { name: 'ccliNo', value: '25376' },
@@ -237,8 +275,15 @@ describe('InputTypeOpenLyrics', () => {
       // const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile3);
       const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'multiple-comments.xml');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'It Is Well With My Soul',
         info: [
           { name: 'Comment 1', value: 'First' },
@@ -252,8 +297,15 @@ describe('InputTypeOpenLyrics', () => {
     it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Hava Nagila.xml');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'הבה נגילה',
         info: [
           { name: 'copyright', value: 'public domain' },

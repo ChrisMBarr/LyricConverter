@@ -1,5 +1,6 @@
-import { OutputTypeJSON } from './output-type-json';
 import { mockSongObjects } from 'test/mock-song-objects';
+
+import { OutputTypeJSON } from './output-type-json';
 
 describe('OutputTypeJSON', () => {
   let outputType: OutputTypeJSON;
@@ -19,7 +20,7 @@ describe('OutputTypeJSON', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: expectedJsonString,
     });
   });

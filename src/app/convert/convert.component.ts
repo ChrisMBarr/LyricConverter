@@ -1,20 +1,20 @@
+import { DOCUMENT } from '@angular/common';
 import {
   Component,
   DestroyRef,
   ElementRef,
+  inject,
   OnInit,
   ViewChild,
   ViewEncapsulation,
-  inject,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ErrorsService } from './errors/errors.service';
-import { IOutputConverter } from './outputs/output-converter.model';
-import { ISong } from './models/song.model';
 import { ISongError } from './models/errors.model';
+import { IOutputFile, IRawDataFile } from './models/file.model';
+import { ISong } from './models/song.model';
+import { IOutputConverter } from './outputs/output-converter.model';
 import { ParserService } from './parser/parser.service';
 
 @Component({
@@ -142,7 +142,7 @@ export class ConvertComponent implements OnInit {
           //Handle any errors that happen downstream on the selected IOutputConverter
           this.errorsSvc.add({
             message: `There was a problem converting this song to the ${this.selectedOutputType.name} format`,
-            fileName: s.fileName,
+            fileName: s.originalFile.name,
             thrownError: err,
           });
         }

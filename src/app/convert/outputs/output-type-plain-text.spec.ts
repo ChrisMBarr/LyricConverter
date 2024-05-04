@@ -1,6 +1,7 @@
-import { OutputTypePlainText } from './output-type-plain-text';
-import { TestUtils } from 'test/test-utils';
 import { mockSongObjects } from 'test/mock-song-objects';
+import { TestUtils } from 'test/test-utils';
+
+import { OutputTypePlainText } from './output-type-plain-text';
 
 describe('OutputTypePlainText', () => {
   let outputType: OutputTypePlainText;
@@ -18,7 +19,7 @@ describe('OutputTypePlainText', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: TestUtils.dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
@@ -51,7 +52,7 @@ describe('OutputTypePlainText', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: TestUtils.dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music
@@ -84,7 +85,7 @@ describe('OutputTypePlainText', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: TestUtils.dedent`Title: Your Grace is Enough
                             CCLI Number: 1234
                             artist: Bethel Music

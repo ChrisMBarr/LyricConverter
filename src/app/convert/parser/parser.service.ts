@@ -1,13 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-//Helpers & Types
-import { IFileWithData, IRawDataFile } from '../models/file.model';
 import { ErrorsService } from '../errors/errors.service';
 import { IInputConverter } from '../inputs/input-converter.model';
-import { IOutputConverter } from '../outputs/output-converter.model';
-import { Utils } from '../shared/utils';
-
 //Input Types
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 import { InputTypeJSON } from '../inputs/input-type-json';
@@ -18,7 +13,9 @@ import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypeProPresenter6 } from '../inputs/input-type-propresenter6';
 import { InputTypeSongPro } from '../inputs/input-type-songpro';
 import { InputTypeSongShowPlus7 } from '../inputs/input-type-songshowplus7';
-
+//Helpers & Types
+import { IFileWithData, IRawDataFile } from '../models/file.model';
+import { IOutputConverter } from '../outputs/output-converter.model';
 //Output Types
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
@@ -28,6 +25,7 @@ import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
 import { OutputTypeProPresenter6 } from '../outputs/output-type-propresenter6';
 import { OutputTypeSongPro } from '../outputs/output-type-songpro';
+import { Utils } from '../shared/utils';
 
 @Injectable({
   providedIn: 'root',

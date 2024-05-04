@@ -1,6 +1,7 @@
-import { OutputTypeChordpro } from './output-type-chordpro';
-import { TestUtils } from 'test/test-utils';
 import { mockSongObjects } from 'test/mock-song-objects';
+import { TestUtils } from 'test/test-utils';
+
+import { OutputTypeChordpro } from './output-type-chordpro';
 
 describe('OutputTypeChordpro', () => {
   let outputType: OutputTypeChordpro;
@@ -18,7 +19,7 @@ describe('OutputTypeChordpro', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: TestUtils.dedent`{title: Your Grace is Enough}
                                       {CCLI Number: 1234}
                                       {artist: Bethel Music}
@@ -50,7 +51,7 @@ describe('OutputTypeChordpro', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: TestUtils.dedent`{title: Your Grace is Enough}
                                       {CCLI Number: 1234}
                                       {artist: Bethel Music}
@@ -82,7 +83,7 @@ describe('OutputTypeChordpro', () => {
 
     expect(outputType.convertToType(song)).toEqual({
       songData: song,
-      fileName: `${song.fileName}.${outputType.fileExt}`,
+      fileName: `${song.originalFile.name}.${outputType.fileExt}`,
       outputContent: TestUtils.dedent`{title: Your Grace is Enough}
                                       {CCLI Number: 1234}
                                       {artist: Bethel Music}

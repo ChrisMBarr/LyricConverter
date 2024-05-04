@@ -1,7 +1,8 @@
-import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { ISong } from 'src/app/convert/models/song.model';
+import { version } from '../../version';
 import { LyricConverterError } from '../models/errors.model';
+import { IRawDataFile } from '../models/file.model';
+import { ISong } from '../models/song.model';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypeJSON implements IInputConverter {
   readonly name = 'JSON';
@@ -19,7 +20,13 @@ export class InputTypeJSON implements IInputConverter {
 
   extractSongData(rawFile: IRawDataFile): ISong {
     const returnSong: ISong = {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title: rawFile.name,
       info: [],
       slides: [],

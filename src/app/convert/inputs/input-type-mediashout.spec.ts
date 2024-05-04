@@ -1,5 +1,8 @@
-import { InputTypeMediaShout } from './input-type-mediashout';
 import { TestUtils } from 'test/test-utils';
+
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { InputTypeMediaShout } from './input-type-mediashout';
 
 describe('InputTypeMediaShout', () => {
   let inputConverter: InputTypeMediaShout;
@@ -39,7 +42,13 @@ describe('InputTypeMediaShout', () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'All.Creatures.or.our.God.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Hymn 002 - All Creatures of our God',
         info: [{ name: 'Song ID', value: '8bf61074-238e-4704-86ea-5f8443d34e35' }],
         slides: [
@@ -75,7 +84,13 @@ describe('InputTypeMediaShout', () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'The Blessing - Kari Jobe',
         info: [{ name: 'Song ID', value: '23201acf-959a-4e99-af7a-b02ba54c90b1' }],
         slides: [
@@ -92,7 +107,13 @@ describe('InputTypeMediaShout', () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'JOY.is.Joy.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'JOY is Joy',
         info: [{ name: 'Song ID', value: '200f9c84-0269-4668-b12e-cfe57409e24e' }],
         slides: [

@@ -1,4 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+
 import { ParserService } from '../convert/parser/parser.service';
 import { Utils } from '../convert/shared/utils';
 

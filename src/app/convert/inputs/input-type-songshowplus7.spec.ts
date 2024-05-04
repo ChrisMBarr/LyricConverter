@@ -1,5 +1,8 @@
-import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
+import { mockStaticTimestamp } from 'test/mock-song-objects';
 import { TestUtils } from 'test/test-utils';
+
+import { version } from '../../version';
+import { InputTypeSongShowPlus7 } from './input-type-songshowplus7';
 
 describe('InputTypeSongShowPlus7', () => {
   let inputConverter: InputTypeSongShowPlus7;
@@ -38,8 +41,15 @@ describe('InputTypeSongShowPlus7', () => {
     it('should return a song for an ENGLISH SongShow Plus 7 file1', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Be Near.sbsong');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Be Near',
         info: [
           { name: 'Author', value: 'Barnard, Shane' },
@@ -82,8 +92,15 @@ describe('InputTypeSongShowPlus7', () => {
     it('should return a song for an ENGLISH SongShow Plus 7 file2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Give Us Clean Hands.sbsong');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Give Us Clean Hands',
         info: [
           { name: 'Author', value: 'Hall, Charlie' },
@@ -115,8 +132,15 @@ describe('InputTypeSongShowPlus7', () => {
     it('should return a song for an ENGLISH SongShow Plus 7 file3', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Jesus Saves.sbsong');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Jesus Saves (2)',
         info: [
           { name: 'Author', value: 'Eddie James' },
@@ -169,8 +193,15 @@ describe('InputTypeSongShowPlus7', () => {
     it('should return a song for an ENGLISH SongShow Plus 7 file4', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'You Are.sbsong');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'You Are (2)',
         info: [
           { name: 'Author', value: 'Jobe, Caleb | Cohen, Ezra | Hesami, Josh | Trimble, Paul' },
@@ -207,8 +238,15 @@ describe('InputTypeSongShowPlus7', () => {
     it('should return a song for a SPANISH SongShow Plus 7 file1', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Spanish - Devuelveme El Gozo.sbsong');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Devuelveme El Gozo',
         info: [],
         slides: [
@@ -229,8 +267,15 @@ describe('InputTypeSongShowPlus7', () => {
     it('should return a song for a SPANISH SongShow Plus 7 file2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Spanish - La Sangre (The Blood).sbsong');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'La Sangre (The Blood)',
         info: [],
         slides: [

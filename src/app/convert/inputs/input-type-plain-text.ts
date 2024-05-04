@@ -1,8 +1,9 @@
-import { ISong, ISongInfo, ISongSlide } from 'src/app/convert/models/song.model';
-import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from 'src/app/convert/models/file.model';
+import { version } from '../../version';
 import { LyricConverterError } from '../models/errors.model';
+import { IRawDataFile } from '../models/file.model';
+import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { Utils } from '../shared/utils';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypePlainText implements IInputConverter {
   readonly name = 'Plain Text';
@@ -32,7 +33,13 @@ export class InputTypePlainText implements IInputConverter {
     }
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title,
       info,
       slides,

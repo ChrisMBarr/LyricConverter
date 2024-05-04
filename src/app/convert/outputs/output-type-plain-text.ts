@@ -1,6 +1,6 @@
-import { IOutputConverter } from './output-converter.model';
 import { IOutputFile } from '../models/file.model';
 import { ISong } from '../models/song.model';
+import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypePlainText implements IOutputConverter {
   readonly name = 'Plain Text';
@@ -36,7 +36,7 @@ export class OutputTypePlainText implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.fileName}.${this.fileExt}`,
+      fileName: `${song.originalFile.name}.${this.fileExt}`,
       outputContent: fileContent.trim(), //remove any trailing whitespace
     };
   }

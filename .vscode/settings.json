@@ -15,5 +15,11 @@
       "*.pro5": "xml",
       "*.pro6": "xml",
     },
-    "explorer.fileNesting.expand": false
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+      "*.ts": "${capture}.spec.ts",
+      "tsconfig.json": "tsconfig.*.json",
+      "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb"
+    },
+    "typescript.preferences.importModuleSpecifier": "relative"
 }

@@ -1,7 +1,9 @@
-import { IRawDataFile } from 'src/app/convert/models/file.model';
-import { InputTypeJSON } from './input-type-json';
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { TestUtils } from '../../../../test/test-utils';
+import { version } from '../../version';
 import { LyricConverterError } from '../models/errors.model';
-import { TestUtils } from 'test/test-utils';
+import { IRawDataFile } from '../models/file.model';
+import { InputTypeJSON } from './input-type-json';
 
 describe('InputTypeJSON', () => {
   let inputConverter: InputTypeJSON;
@@ -65,8 +67,15 @@ describe('InputTypeJSON', () => {
           '{"title":"Great is your faithfulness O God","info":[{"name":"Order","value":"1C2CBC"}],"slides":[{"title":"Chorus","lyrics":"Your grace is enough\\r\\nYour grace is enough\\r\\nYour grace is enough for me"},{"title":"Verse 1","lyrics":"Great is your faithfulness O God\\r\\nYou wrestle with the sinners heart\\r\\nYou lead us by still waters and to mercy\\r\\nAnd nothing can keep us apart"}]}',
       };
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Great is your faithfulness O God',
         info: [{ name: 'Order', value: '1C2CBC' }],
         slides: [

@@ -1,7 +1,7 @@
 import { IOutputFile } from '../src/app/convert/models/file.model';
 import { mockSongObjects } from './mock-song-objects';
 
-export const mockOutputFiles: IOutputFile[] = [
+export const mockOutputFiles: Array<IOutputFile> = [
   {
     songData: mockSongObjects[0]!,
     fileName: '',

@@ -1,5 +1,8 @@
-import { InputTypeChordPro } from './input-type-chordpro';
 import { TestUtils } from 'test/test-utils';
+
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { InputTypeChordPro } from './input-type-chordpro';
 
 describe('InputTypeChordPro', () => {
   let inputConverter: InputTypeChordPro;
@@ -62,11 +65,18 @@ describe('InputTypeChordPro', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for a simple test file', async () => {
+    it('should return a song for "simple" test file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'This is a title',
         info: [
           { name: 'artist', value: 'Hymn' },
@@ -76,11 +86,18 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 1', async () => {
+    it('should return a song for "At the Cross"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'At the Cross.cho');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'At the Cross',
         info: [
           {
@@ -113,11 +130,18 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 2', async () => {
+    it('should return a song for "Our Father"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father.cho');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Our Father',
         info: [
           {
@@ -164,11 +188,18 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 3', async () => {
+    it('should return a song for "Swing Low Sweet Chariot"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Swing Low Sweet Chariot.cho');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Swing Low Sweet Chariot',
         info: [],
         slides: [
@@ -190,11 +221,18 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 4 that only uses unlabeled paired directives', async () => {
+    it('should return a song for test file 4 that only uses unlabeled paired directives for "Our Father - unlabeled paired directives"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - unlabeled paired directives.cho');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Our Father',
         info: [
           {
@@ -253,11 +291,18 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 5 that only uses paired directives with internal labels', async () => {
+    it('should return a song for test file 5 that only uses paired directives with internal labels for "Our Father - directives with internal inline labels"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - directives with internal inline labels.cho');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Our Father',
         info: [
           { name: 'artist', value: 'Bethel Music' },
@@ -307,7 +352,56 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should use the filename as a fallback title when the song has no title', async () => {
+    it('should return a song for test file 6 that only uses paired directives with internal labels for "Our Father - complex tags"', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our Father - complex tags.cho');
+
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
+        title: 'Our Father',
+        info: [
+          { name: 'artist', value: 'Bethel Music' },
+          { name: 'key', value: 'G' },
+          { name: 'comment', value: 'Words and Music by Marcus Meier' },
+        ],
+        slides: [
+          {
+            title: 'Verse',
+            lyrics: TestUtils.dedent`Our Father in Heaven
+                                     Hallowed be Your name
+                                     Your Kingdom come quickly
+                                     Your will be done the same`,
+          },
+          {
+            title: 'Chorus',
+            lyrics: TestUtils.dedent`On Earth as it is in Heaven
+                                     Let Heaven come to
+                                     Earth as it is in Heaven
+                                     Let Heaven come`,
+          },
+          {
+            title: 'Bridge 1',
+            lyrics: TestUtils.dedent`Let Heaven come, let Heaven come
+                                     Let Heaven come, let Heaven come`,
+          },
+          {
+            title: 'Bridge 2',
+            lyrics: TestUtils.dedent`Yours is the Kingdom, Yours is the power
+                                     Yours is the glory forever, amen
+                                     Yours is the Kingdom, Yours is the power
+                                     Yours is the glory forever amen`,
+          },
+        ],
+      });
+    });
+
+    it('should use the filename as a fallback title when the song has no title for "simple"', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.dataAsString = testFile.dataAsString.replace('{title: This is a title}', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);

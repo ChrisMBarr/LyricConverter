@@ -1,6 +1,6 @@
-import { IOutputConverter } from './output-converter.model';
 import { IOutputFile } from '../models/file.model';
 import { ISong } from '../models/song.model';
+import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypeJSON implements IOutputConverter {
   readonly name = 'JSON';
@@ -20,7 +20,7 @@ export class OutputTypeJSON implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.fileName}.${this.fileExt}`,
+      fileName: `${song.originalFile.name}.${this.fileExt}`,
       outputContent: jsonString,
     };
   }

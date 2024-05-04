@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
+import { TestUtils } from 'test/test-utils';
 
-import { ConvertComponent } from './convert.component';
+import { mockStaticTimestamp } from '../../../test/mock-song-objects';
 import { DonateButtonComponent } from '../donate-button/donate-button.component';
-import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
+import { version } from '../version';
+import { ConvertComponent } from './convert.component';
+import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { ErrorsService } from './errors/errors.service';
+import { LyricConverterError } from './models/errors.model';
+import { IOutputFile, IRawDataFile } from './models/file.model';
+import { ISong } from './models/song.model';
+import { IOutputConverter } from './outputs/output-converter.model';
 import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypePlainText } from './outputs/output-type-plain-text';
 import { ParserService } from './parser/parser.service';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
-
-import { IOutputFile, IRawDataFile } from './models/file.model';
-import { IOutputConverter } from './outputs/output-converter.model';
-import { ISong } from './models/song.model';
-import { LyricConverterError } from './models/errors.model';
-
-import { TestUtils } from 'test/test-utils';
 
 class MockConverter implements IOutputConverter {
   constructor(
@@ -353,7 +353,13 @@ describe('ConvertComponent', () => {
 
       const outputFile: IOutputFile = {
         songData: {
-          fileName: 'JSON - Your Grace Is Enough',
+          originalFile: {
+            extension: 'json',
+            format: 'JSON',
+            name: 'JSON - Your Grace Is Enough',
+          },
+          lyricConverterVersion: version,
+          timestamp: mockStaticTimestamp,
           title: 'Great is your faithfulness O God',
           info: [{ name: 'Order', value: '1C2CBC' }],
           slides: [
@@ -395,6 +401,13 @@ describe('ConvertComponent', () => {
       it('should get converters for passed in raw files and list them for Text Type Output', () => {
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile]);
+
+        //normalize timestamps for comparison
+        component.convertedSongsForOutput = component.convertedSongsForOutput.map((convertedSong) => {
+          convertedSong.songData = TestUtils.normalizeSongTimestamp(convertedSong.songData);
+          return convertedSong;
+        });
+
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
 
@@ -403,6 +416,13 @@ describe('ConvertComponent', () => {
 
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile, imageFile]);
+
+        //normalize timestamps for comparison
+        component.convertedSongsForOutput = component.convertedSongsForOutput.map((convertedSong) => {
+          convertedSong.songData = TestUtils.normalizeSongTimestamp(convertedSong.songData);
+          return convertedSong;
+        });
+
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
     });
@@ -582,7 +602,7 @@ describe('ConvertComponent', () => {
 
             //@ts-expect-error - we are testing throwing errors so we need this unreachable code
             return {
-              fileName: `${song.fileName}.${this.fileExt!}`,
+              fileName: `${song.originalFile.name}.${this.fileExt!}`,
               outputContent: '',
               songData: song,
             };

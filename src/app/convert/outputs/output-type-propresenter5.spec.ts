@@ -1,6 +1,7 @@
 import { mockEmptySong, mockSongObjects } from 'test/mock-song-objects';
-import { OutputTypeProPresenter5 } from './output-type-propresenter5';
 import { TestUtils } from 'test/test-utils';
+
+import { OutputTypeProPresenter5 } from './output-type-propresenter5';
 
 describe('OutputTypePropresenter5', () => {
   let outputType: OutputTypeProPresenter5;
@@ -23,7 +24,7 @@ describe('OutputTypePropresenter5', () => {
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(emptySongFile.dataAsString);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).toEqual(normalizedExpectation);
   });
 
@@ -37,7 +38,7 @@ describe('OutputTypePropresenter5', () => {
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(songFile.dataAsString);
 
     expect(outputFile.songData).toEqual(song);
-    expect(outputFile.fileName).toEqual(`${song.fileName}.${outputType.fileExt}`);
+    expect(outputFile.fileName).toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
     expect(normalizedOutput).toEqual(normalizedExpectation);
   });
 });

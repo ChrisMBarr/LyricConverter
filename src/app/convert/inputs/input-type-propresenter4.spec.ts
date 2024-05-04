@@ -1,5 +1,8 @@
-import { InputTypeProPresenter4 } from './input-type-propresenter4';
 import { TestUtils } from 'test/test-utils';
+
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { InputTypeProPresenter4 } from './input-type-propresenter4';
 
 describe('InputTypeProPresenter4', () => {
   let inputConverter: InputTypeProPresenter4;
@@ -56,8 +59,15 @@ describe('InputTypeProPresenter4', () => {
     it('should get a song from a ProPresenter 4 file1', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - Be Near.pro4');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Be Near',
         info: [
           { name: 'Category', value: 'Song' },
@@ -98,8 +108,15 @@ describe('InputTypeProPresenter4', () => {
     it('should get a song from a ProPresenter 4 file2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - Give Us Clean Hands.pro4');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Give Us Clean Hands',
         info: [
           { name: 'Author', value: 'Charlie Hall' },

@@ -1,0 +1,74 @@
+{title: Our Father}
+{artist: Bethel Music}
+{key: G}
+{comment: Words and Music by Marcus Meier}
+
+{gc:Intro:}
+[G]  [C/E]  [C]
+
+{sov}
+Verse:
+Our Fa[G]ther in Heaven
+Hal[C]lowed be Your [D]name
+Your Kin[G]gdom come quickly
+Your w[C]ill be done the s[D]ame
+{eov}
+
+{soc}
+Chorus:
+On E[C]arth a[G/B]s it[Am] is in [Em]Heaven
+Let He[D]aven come to
+[C]Earth [G/B]as i[Am]t is in[Em] Heaven
+Let He[D]aven [G]come
+{eoc}
+
+{sob}
+Bridge 1:
+Let Heaven c[C]ome, let Heaven[Em] come
+Let Heaven c[C]ome, let Heaven[Em] come
+{eob}
+
+Bridge 2:
+[C]Yours is the Kingdom, Yours is the p[D]ower
+[Em]Yours is the glory [G/B]forever, amen
+[C]Yours is the Kingdom, Yours is the p[D]ower
+[Em]Yours is the glory [G/B]forever amen
+
+{start_of_grid}
+|| Am . . . | C . . . | D  . . . | F  . . . |
+|  Am . . . | C . . . | E  . . . | E  . . . |
+|  Am . . . | C . . . | D  . . . | F  . . . |
+|  Am . . . | E . . . | Am . . . | Am . . . ||
+{end_of_grid}
+
+{start_of_abc}
+X:1
+T:The Gentle Breeze
+M:2/4
+L:1/8
+R:Air
+K:Em
+E>F G/2E/2-E| {A}B2{^c/2B/2}A>B| G/2E/2-E d2| B/2^c/2d B/2c/2d| e>f d>f|\
+e3 B| g>B f>B| ef| eB F>B| E4:|
+
+{end_of_abc}
+
+{start_of_textblock align=right flush=right}
+She died of the fever,
+and nothing could save her
+And that was the end of sweet Molly Malone
+{end_of_textblock}
+
+{start_of_svg}
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
+  <g stroke="red" fill="none" stroke-width="2">
+    <polygon points="1 17 19 17 10 1" stroke-linejoin="round"/>
+    <rect x="9" y="13" width="2" height="2" stroke="none" fill="red"/>
+    <polygon points="9 12 8.5 7 11.5 7 11 12" stroke="none" fill="red"/>
+  </g>
+</svg>
+{end_of_svg}
+
+{start_of_ly}
+\\relative { g'8\\( a b[ c b\\) a] g4 }
+{end_of_ly}

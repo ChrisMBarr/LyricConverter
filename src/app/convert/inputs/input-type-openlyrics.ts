@@ -6,10 +6,12 @@ import {
   IParserVerse,
   OpenLyricsParser,
 } from 'openlyrics-parser';
-import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
-import { IInputConverter } from './input-converter.model';
+
+import { version } from '../../version';
 import { IRawDataFile } from '../models/file.model';
+import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { STRING_LIST_SEPARATOR_JOIN } from '../shared/constants';
+import { IInputConverter } from './input-converter.model';
 
 export class InputTypeOpenLyrics implements IInputConverter {
   name = 'OpenLyrics';
@@ -33,7 +35,13 @@ export class InputTypeOpenLyrics implements IInputConverter {
     // console.groupEnd();
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: new Date().toISOString(),
       title,
       info,
       slides,

@@ -1,3 +1,6 @@
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { IRawDataFile } from '../models/file.model';
 import {
   IMediaShoutLyricPart,
   IMediaShoutLyrics,
@@ -5,7 +8,6 @@ import {
 } from '../models/mediashout.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
-import { IRawDataFile } from 'src/app/convert/models/file.model';
 
 export class InputTypeMediaShout implements IInputConverter {
   readonly name = 'MediaShout';
@@ -32,7 +34,13 @@ export class InputTypeMediaShout implements IInputConverter {
     if (title == null || title === '') title = rawFile.name;
 
     return {
-      fileName: rawFile.name,
+      originalFile: {
+        extension: this.fileExt,
+        format: this.name,
+        name: rawFile.name,
+      },
+      lyricConverterVersion: version,
+      timestamp: mockStaticTimestamp,
       title,
       info: firstFolderLyrics ? this.getInfo(firstFolderLyrics) : [],
       slides: this.getSlides(firstFolderLyrics?.LyricParts ?? []),

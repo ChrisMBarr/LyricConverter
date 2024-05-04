@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { IOutputFile } from '../models/file.model';

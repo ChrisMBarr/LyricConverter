@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "prettier", "only-warn"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -9,9 +9,11 @@
         "project": ["tsconfig.(app|spec|server).json"]
       },
       "extends": [
-        "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:@typescript-eslint/strict-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
       ],
       "rules": {
@@ -44,6 +46,7 @@
         "@typescript-eslint/return-await": "warn",
 
         //Typescript specific rules
+        "@typescript-eslint/no-empty-function":"off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/array-type": [
           "warn",
@@ -92,10 +95,26 @@
 
         //Regular ESLint rules
         "array-callback-return": "warn",
-        "sort-imports": ["warn", { "allowSeparatedGroups": true }],
         "complexity": ["warn", { "max": 8 }],
         "eqeqeq": ["warn", "always", { "null": "ignore" }],
         "object-shorthand": ["warn", "always"],
+        "simple-import-sort/imports": "warn",
+
+        "no-restricted-imports": [
+          "warn",
+          {
+            "patterns": [
+              {
+                "group": ["rxjs/internal/*"],
+                "message": "Don't import from 'rxjs/internal/*', this can cause optimization bailouts. See this for more details: https://bobbyhadz.com/blog/angular-commonjs-or-amd-dependencies-can-cause-optimization-bailouts "
+              },
+              {
+                "group": ["src/*"],
+                "message": "Please use a relative import path beginning with './' or '../' so they can be more easily sorted and grouped"
+              }
+            ]
+          }
+        ],
 
         "prettier/prettier": [
           "warn",

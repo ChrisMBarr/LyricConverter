@@ -41,6 +41,7 @@ Parses the song info & lyrics from various lyric presentation software file form
 * [ChrisMBarr/OpenLyrics-Parser](https://github.com/ChrisMBarr/OpenLyrics-Parser)
 * [ChrisMBarr/SongShowPlus-Parser](https://github.com/ChrisMBarr/SongShowPlus-Parser)
 * [SongProOrg/songpro-javascript](https://github.com/SongProOrg/songpro-javascript)
+* [martijnversluis/ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS)
 
 ### LyricConverter relies heavily on these projects
 * [Microsoft/TypeScript](https://github.com/microsoft/typescript)

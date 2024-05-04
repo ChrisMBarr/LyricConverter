@@ -1,8 +1,17 @@
-import { ISong } from 'src/app/convert/models/song.model';
+import { ISong } from '../src/app/convert/models/song.model';
+import { version } from '../src/app/version';
 
-export const mockSongObjects: ISong[] = [
+export const mockStaticTimestamp = '2024-05-04T14:34:37.190Z';
+
+export const mockSongObjects: Array<ISong> = [
   {
-    fileName: 'example-file.txt',
+    originalFile: {
+      extension: 'txt',
+      format: 'Plain Text',
+      name: 'example-file',
+    },
+    lyricConverterVersion: version,
+    timestamp: mockStaticTimestamp,
     title: 'Your Grace is Enough',
     info: [
       { name: 'CCLI Number', value: '1234' },
@@ -27,7 +36,13 @@ export const mockSongObjects: ISong[] = [
     ],
   },
   {
-    fileName: 'example-file2.txt',
+    originalFile: {
+      extension: 'txt',
+      format: 'Plain Text',
+      name: 'example-file2',
+    },
+    lyricConverterVersion: version,
+    timestamp: mockStaticTimestamp,
     title: 'At the Cross',
     info: [
       { name: 'artist', value: 'Hymn' },
@@ -48,7 +63,13 @@ export const mockSongObjects: ISong[] = [
     ],
   },
   {
-    fileName: 'Be Near.txt',
+    originalFile: {
+      extension: 'txt',
+      format: 'Plain Text',
+      name: 'Be Near',
+    },
+    lyricConverterVersion: version,
+    timestamp: mockStaticTimestamp,
     title: 'Be Near',
     info: [
       {
@@ -129,7 +150,13 @@ export const mockSongObjects: ISong[] = [
     ],
   },
   {
-    fileName: 'Amazing Grace',
+    originalFile: {
+      extension: 'txt',
+      format: 'Plain Text',
+      name: 'Amazing Grace',
+    },
+    lyricConverterVersion: version,
+    timestamp: mockStaticTimestamp,
     title: 'Amazing Grace',
     info: [
       {
@@ -190,14 +217,19 @@ export const mockSongObjects: ISong[] = [
         lyrics: 'This is text of ending.',
       },
     ],
-  }
+  },
 ];
 
 export const mockEmptySong: ISong = {
-  fileName: 'Empty.txt',
+  originalFile: {
+    extension: 'txt',
+    name: 'Empty',
+    format: 'Plain Text',
+  },
+  lyricConverterVersion: version,
+  timestamp: mockStaticTimestamp,
   title: 'Empty Title',
-  info: [
-  ],
+  info: [],
   slides: [
     {
       title: 'Empty Slide',

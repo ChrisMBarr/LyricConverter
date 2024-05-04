@@ -1,6 +1,9 @@
-import { InputTypePlainText } from './input-type-plain-text';
-import { LyricConverterError } from '../models/errors.model';
 import { TestUtils } from 'test/test-utils';
+
+import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
+import { version } from '../../version';
+import { LyricConverterError } from '../models/errors.model';
+import { InputTypePlainText } from './input-type-plain-text';
 
 describe('InputTypePlainText', () => {
   let inputConverter: InputTypePlainText;
@@ -49,8 +52,15 @@ describe('InputTypePlainText', () => {
     it('should return a song for a plain text file1', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'Your Grace is Enough',
         info: [
           { name: 'CCLI Number', value: '1234' },
@@ -74,8 +84,15 @@ describe('InputTypePlainText', () => {
     it('should return a song for a plain text file2', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'At the Cross.txt');
 
-      expect(inputConverter.extractSongData(testFile)).toEqual({
-        fileName: testFile.name,
+      const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+      expect(normalizedSongData).toEqual({
+        originalFile: {
+          extension: inputConverter.fileExt,
+          format: inputConverter.name,
+          name: testFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
         title: 'At the Cross',
         info: [
           { name: 'artist', value: 'Hymn' },
