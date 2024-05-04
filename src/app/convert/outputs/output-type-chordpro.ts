@@ -2,6 +2,8 @@ import { IOutputConverter } from './output-converter.model';
 import { IOutputFile } from '../models/file.model';
 import { ISong } from '../models/song.model';
 
+//No need to use ChordSheetJS here, this is simple and the complexity that would add wouldn't be worth it
+
 export class OutputTypeChordpro implements IOutputConverter {
   readonly name = 'ChordPro';
   readonly fileExt = 'cho';
