@@ -28,6 +28,7 @@ export class InputTypeChordPro implements IInputConverter {
       .replace(/{start_of_textblock.+?}[\s\S]+?{end_of_textblock}/, '');
 
     const parsedSong = parser.parse(preProcessedData);
+
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition  --  typedefs are wrong
     const title = parsedSong.title ?? rawFile.name;
     const info = this.getSongInfo(parsedSong.metadata.metadata, parsedSong.bodyParagraphs);
