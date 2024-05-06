@@ -20,8 +20,26 @@ export interface IMediaShoutLyrics {
 
 export interface IMediaShoutLyricPart {
   Lyrics: string;
-  PartType: number;
+  PartType: MediaShoutPartTypeEnum;
   PartTypeNumber: number;
   PartLabel: string | null;
   Guid: string;
+}
+
+export enum MediaShoutPartTypeEnum {
+  Verse = 0,
+  Chorus = 1,
+  Bridge = 2,
+  Ending = 3,
+  Blank = 4,
+  Intro = 5,
+  PreChorus = 6,
+  AltEnding = 7,
+  Tag = 8,
+  Refrain = 9,
+  Reprise = 10,
+  Reading = 11,
+  Interlude = 12,
+  Misc = 13,
+  Vamp = 14,
 }

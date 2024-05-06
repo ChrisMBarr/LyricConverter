@@ -1,0 +1,238 @@
+{
+  "Folders": [
+    {
+      "Name": "All",
+      "Lyrics": [
+        {
+          "cclid": "1156",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "Holy, holy, holy,\nLord God Almighty!\nEarly in the morning\nMy song shall rise to Thee.\nHoly, holy, holy!\nMerciful and mighty!\nGod in three Persons,\nBlessed Trinity!",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "8dd35384-8444-4397-a176-8033b2aeeeb7"
+            },
+            {
+              "Lyrics": "Holy, holy, holy!\nAll the saints adore Thee,\nCasting down their golden crowns\nAround the glassy sea;\nCherubim and seraphim\nFalling down before Thee,\nWhich wert, and art,\nAnd evermore shall be.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "6714af37-91b6-4fd5-a29d-2cf69d34818b"
+            },
+            {
+              "Lyrics": "Holy, holy, holy!\nThough the darkness hide Thee,\nThough the eye of sinful man\nThy glory may not see.\nOnly Thou art holy;\nThere is none beside Thee\nPerfect in power,\nIn love, in purity.",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "d44075b2-e120-4121-a882-90f8e81f52c1"
+            },
+            {
+              "Lyrics": "Holy, holy, holy!\nLord God Almighty!\nAll Thy works shall praise Thy name\nIn earth, and sky, and sea.\nHoly, holy, holy!\nMerciful and mighty!\nGod in three Persons,\nBlessed Trinity.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "d01affdf-d9bc-4f74-8f9f-cdd981b7a62e"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "Holy Holy Holy",
+          "SongNumber": "MS-0078",
+          "Authors": [
+            "John B. Dykes",
+            "Reginald Heber"
+          ]
+        },
+        {
+          "cclid": "25424",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "I am Thine O Lord; I have heard Thy voice,\nAnd it told Thy love to me.\nBut I long to rise in the arms of faith,\nAnd be closer drawn to Thee.",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "127bdfcf-52c2-437b-8108-59ba45481055"
+            },
+            {
+              "Lyrics": "Consecrate me now to Thy service Lord,\nBy the power of grace divine.\nLet my soul look up with a steadfast hope,\nAnd my will be lost in Thine.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "aa440968-5360-4b55-a667-1c7cb4c74b18"
+            },
+            {
+              "Lyrics": "Oh the pure delight of a single hour\nThat before Thy throne I spend,\nWhen I kneel in prayer and with Thee my God,\nI commune as friend with friend!",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "45b63b45-a625-44ab-8590-e0895048f73d"
+            },
+            {
+              "Lyrics": "There are depths of love that I cannot know\nTill I cross the narrow sea;\nThere are heights of joy that I may not reach\nTill I rest in peace with Thee.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "536dff03-e327-4674-9669-bee91f9bf50e"
+            },
+            {
+              "Lyrics": "Draw me nearer, nearer blessed Lord,\nTo the cross where Thou hast died.\nDraw me nearer, nearer, nearer blessed Lord.\nTo Thy precious bleeding side.",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "728b6260-bd4e-4b09-946c-85ae34e54e80"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "I Am Thine O Lord",
+          "SongNumber": "MS-0083",
+          "Authors": [
+            "Fanny J. Crosby",
+            "William H. Doane"
+          ]
+        },
+        {
+          "cclid": "",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "If everyone who said they believed\nBelieved in You\nIf everyone who said that they follow\nFollow You\nThen why are there so few\nListening to You\nOthers may not want to hear You\nBut I do",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "84be8221-46a3-4c02-93a1-a7f29eb50eca"
+            },
+            {
+              "Lyrics": "You say and I'll go\nWherever You need me to\nI believe in You\nI believe in You",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "9e3ec3b8-447e-4615-af7c-7d5ca7f7556e"
+            },
+            {
+              "Lyrics": "Just say which way\nI will not delay  oh Lord",
+              "PartType": 2,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "bcd42783-7260-4cac-a66b-fa7e31236b6c"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "I Believe in You",
+          "SongNumber": "EM-034",
+          "Authors": [
+            "Rick Muchow"
+          ]
+        },
+        {
+          "cclid": "124820",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "Father, I stretch my hands to Thee;\nNo other help I know.\nIf Thou withdraw thyself from me,\nAh, whither shall I go?",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "9a6188af-0f9d-4369-9f46-121fe75ea9d1"
+            },
+            {
+              "Lyrics": "What did Thine only Son endure\nBefore I drew my breath!\nWhat pain, what labor,\nTo secure my soul from endless death!",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "8d3fff53-5d6c-49a2-aa16-bc00d84cc93d"
+            },
+            {
+              "Lyrics": "Author of faith, to Thee I lift\nMy weary, longing eyes.\nOh, let me now receive that gift;\nMy soul, without it, dies.",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "eec1e38a-224b-432f-b8e3-fcf0f0a5661f"
+            },
+            {
+              "Lyrics": "Surely Thou canst not let me die;\nOh, speak, and I shall live.\nAnd here I will unwearied lie\nTill Thou Thy Spirit give.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "c5dae51a-9a70-4576-bf9a-782dcfeb4f66"
+            },
+            {
+              "Lyrics": "How would my fainting soul rejoice\nCould I but see Thy face!\nnow let me hear Thy quick'ning voice,\nAnd taste Thy pard'ning grace.",
+              "PartType": 0,
+              "PartTypeNumber": 5,
+              "PartLabel": null,
+              "Guid": "7f3ba41c-c0c4-42df-a9e9-a7f285421e99"
+            },
+            {
+              "Lyrics": "I do believe, I now believe\nThat Jesus died for me;",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "277530ff-8682-4e4f-a370-9326d4d8bb88"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "I Do Believe",
+          "SongNumber": "MS-0084",
+          "Authors": [
+            "Wesley",
+            "Charles"
+          ]
+        },
+        {
+          "cclid": "125362",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "I remember when the Lord\nSpoke to my soul.\nI could feel the heavy burden\nFrom me roll.\nWhen He spoke the gracious words,\n\"Wilt Thou be whole?\"\nThen I settled the question forever.",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "09f1e845-fa15-4027-9b5a-5d4176876107"
+            },
+            {
+              "Lyrics": "I no longer walk the ways\nOf sinfulness,\nBut I daily tread\nThe paths of righteousness.\nSince the day the Lord\nHas come to my life to bless.\nI have settled the question forever.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "8323e79e-3b2c-4ec2-8268-37ac9cc363a9"
+            },
+            {
+              "Lyrics": "I will choose the holy joys\nThat always last.\nAnd reject sin's pleasures,\nThat will soon be past.\nTo the treasures of true worth,\nI'm holding fast.\nI have settled the question forever.",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "9e0d7de1-1bb9-4e8d-bf80-e20078967a82"
+            },
+            {
+              "Lyrics": "Others may deny the Lord\nAnd live in sin.\nBut the race that I have entered\nI must win.\nThro' the pearly gates,\nI mean to enter in.\nI have settled the question forever.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "4fd4caff-4030-46c3-964c-23c63b677095"
+            },
+            {
+              "Lyrics": "I have settled the question,\nHallelujah!\nI will never turn back\nFrom the narrow way.\nI am going thro' with Jesus,\nHallelujah!\n'Til I reach the gates\nOf glory some sweet day.",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "04188657-6ff7-4057-b062-0e42ab78126b"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "I Have Settled the Question",
+          "SongNumber": "MS-0085",
+          "Authors": [
+            "Haldor Lillenas"
+          ]
+        }
+      ]
+    }
+  ]
+}

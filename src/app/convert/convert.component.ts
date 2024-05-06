@@ -100,7 +100,7 @@ export class ConvertComponent implements OnInit {
     this.displayInitialUi = false;
     this.scrollBackToTop();
 
-    const convertedSongs: Array<ISong> = [];
+    const extractedSongDataArr: Array<ISong> = [];
     for (const f of parsedFiles) {
       const fileName = f.ext !== '' ? `${f.name}.${f.ext}` : f.name;
 
@@ -109,7 +109,7 @@ export class ConvertComponent implements OnInit {
       //Skip formatters for unknown formats
       if (converter) {
         try {
-          convertedSongs.push(converter.extractSongData(f));
+          extractedSongDataArr.push(converter.extractSongData(f));
         } catch (err: unknown) {
           //Handle any errors that happen downstream on the IInputConverter for this file
           this.errorsSvc.add({
@@ -118,6 +118,11 @@ export class ConvertComponent implements OnInit {
             thrownError: err,
           });
         }
+      } else if (f.ext === 'sc7x' || f.ext === 'sc6x') {
+        this.errorsSvc.add({
+          message: `These type of MediaShould files cannot be read by LyricConverter. You'll need to export them as JSON files and try again. Read this knowledgebase article to learn how to do that: https://support.mediashout.com/244705-How-to-move-your-Song-Library-from-one-computer-to-another---MediaShout-7`,
+          fileName,
+        });
       } else {
         //Show a message if this file type cannot be converted because we don't have a way to read it
         this.errorsSvc.add({
@@ -127,27 +132,8 @@ export class ConvertComponent implements OnInit {
       }
     }
 
-    if (convertedSongs.length) {
-      //Update the converted file count and save it
-      this.convertedFileCount += convertedSongs.length;
-      localStorage.setItem(this.convertedFileCountStorageKey, this.convertedFileCount.toString());
-
-      const convertedSongsArr: Array<IOutputFile> = [];
-      for (const s of convertedSongs) {
-        try {
-          //Convert the songs to the specified type and save them to an array
-          //The array is used in template components to allow display in the UI or download
-          convertedSongsArr.push(this.selectedOutputType.convertToType(s));
-        } catch (err: unknown) {
-          //Handle any errors that happen downstream on the selected IOutputConverter
-          this.errorsSvc.add({
-            message: `There was a problem converting this song to the ${this.selectedOutputType.name} format`,
-            fileName: s.originalFile.name,
-            thrownError: err,
-          });
-        }
-      }
-      this.convertedSongsForOutput = convertedSongsArr;
+    if (extractedSongDataArr.length) {
+      this.convertToSelectedTypes(extractedSongDataArr);
     }
   }
 
@@ -186,5 +172,28 @@ export class ConvertComponent implements OnInit {
     const thisComponentEl = this.elementRef.nativeElement as HTMLElement;
     const elTop = thisComponentEl.offsetTop;
     this.window.scrollTo({ top: elTop, behavior: 'smooth' });
+  }
+
+  private convertToSelectedTypes(songs: Array<ISong>): void {
+    //Update the converted file count and save it
+    this.convertedFileCount += songs.length;
+    localStorage.setItem(this.convertedFileCountStorageKey, this.convertedFileCount.toString());
+
+    const convertedSongsArr: Array<IOutputFile> = [];
+    for (const s of songs) {
+      try {
+        //Convert the songs to the specified type and save them to an array
+        //The array is used in template components to allow display in the UI or download
+        convertedSongsArr.push(this.selectedOutputType.convertToType(s));
+      } catch (err: unknown) {
+        //Handle any errors that happen downstream on the selected IOutputConverter
+        this.errorsSvc.add({
+          message: `There was a problem converting this song to the ${this.selectedOutputType.name} format`,
+          fileName: s.originalFile.name,
+          thrownError: err,
+        });
+      }
+    }
+    this.convertedSongsForOutput = convertedSongsArr;
   }
 }

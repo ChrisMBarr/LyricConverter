@@ -4,7 +4,7 @@ import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
 import { version } from '../../version';
 import { InputTypeMediaShout } from './input-type-mediashout';
 
-describe('InputTypeMediaShout', () => {
+fdescribe('InputTypeMediaShout', () => {
   let inputConverter: InputTypeMediaShout;
 
   beforeEach(() => {
@@ -53,26 +53,26 @@ describe('InputTypeMediaShout', () => {
         info: [{ name: 'Song ID', value: '8bf61074-238e-4704-86ea-5f8443d34e35' }],
         slides: [
           {
-            title: '0',
+            title: 'Verse 1',
             lyrics:
               'All creatures of our God and King.\r\nLift up your voice with us and sing:\r\nAlleluia!  Alleluia! O burning sun\r\nwith golden beam\r\nAnd silver moon with softer gleam:',
           },
           {
-            title: '1',
+            title: 'Chorus 1',
             lyrics: 'Oh, praise Him!\r\nOh, praise Him!\r\nAlleluia, alleluia,\r\nalleluia!',
           },
           {
-            title: '0',
+            title: 'Verse 2',
             lyrics:
               'O rushing wind and breezes soft,\r\nO clouds that ride the winds aloft:\r\nO praise Him! Alleluia!\r\nO rising morn, in praise rejoice,\r\nO lights of evening, find a voice.',
           },
           {
-            title: '0',
+            title: 'Verse 3',
             lyrics:
               'O flowing waters, pure and clear,\r\nMake music for your Lord to hear,\r\nO praise Him! Alleluia!\r\nO fire so masterful and bright,\r\nProviding us with warmth and light,',
           },
           {
-            title: '0',
+            title: 'Verse 4',
             lyrics:
               'Let all things their Creator bless,\r\nAnd worship Him in humbleness,\r\nO praise Him! Alleluia!\r\nOh, praise the Father, praise the Son,\r\nAnd praise the Spirit, three in One!',
           },
@@ -94,11 +94,12 @@ describe('InputTypeMediaShout', () => {
         title: 'The Blessing - Kari Jobe',
         info: [{ name: 'Song ID', value: '23201acf-959a-4e99-af7a-b02ba54c90b1' }],
         slides: [
-          // {
-          //   title: 'Chorus 1',
-          //   lyrics:
-          //     'Be near O God\nBe near O God of us\nYour nearness is to us our good\nBe near O God\nBe near O God of us\nYour nearness is to us our good\nOur good',
-          // },
+          {
+            title: 'Verse 1',
+            lyrics:
+              'The Lord bless you and keep you\r\nMake His face shine upon you and be gracious to you\r\nThe Lord turn His face toward you\r\nAnd give you peace',
+          },
+          { title: 'Ending 1', lyrics: `Amen, Amen, Amen\r\nAmen, Amen, Amen` },
         ],
       });
     });
@@ -117,11 +118,13 @@ describe('InputTypeMediaShout', () => {
         title: 'JOY is Joy',
         info: [{ name: 'Song ID', value: '200f9c84-0269-4668-b12e-cfe57409e24e' }],
         slides: [
-          // {
-          //   title: 'Chorus 1',
-          //   lyrics:
-          //     'Be near O God\nBe near O God of us\nYour nearness is to us our good\nBe near O God\nBe near O God of us\nYour nearness is to us our good\nOur good',
-          // },
+          { title: 'Verse 1', lyrics: 'JOY is joy\r\nJoy in the Holy Ghost\r\nJOY is joy\r\nJoy in the Lord' },
+          {
+            title: 'Chorus 1',
+            lyrics: 'Don’t let nobody spoil your joy\r\nDon’t let nobody spoil your joy\r\nDon’t let nobody spoil your joy,\r\nJoy in the Lord',
+          },
+          { title: 'Verse 2', lyrics: 'LOVE love\r\nLove in the Holy Ghost\r\nLOVE Love\r\nLove in the Lord' },
+          { title: 'Verse 3', lyrics: 'PEACE\r\nPeace in the Holy Ghost\r\nPEACE\r\nPeace in the Lord' },
         ],
       });
     });

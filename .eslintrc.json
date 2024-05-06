@@ -65,7 +65,7 @@
           },
           {
             "selector": "enumMember",
-            "format": ["UPPER_CASE"]
+            "format": ["StrictPascalCase"]
           },
           {
             "selector": ["interface", "typeAlias"],

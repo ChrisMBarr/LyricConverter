@@ -5,9 +5,13 @@ import {
   IMediaShoutLyricPart,
   IMediaShoutLyrics,
   IMediaShoutRootDoc,
+  MediaShoutPartTypeEnum,
 } from '../models/mediashout.model';
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
+
+//TODO: Deal with multiple songs in the same file?
+//TODO: Throw custom error when .sc7x files are attempted
 
 export class InputTypeMediaShout implements IInputConverter {
   readonly name = 'MediaShout';
@@ -69,10 +73,8 @@ export class InputTypeMediaShout implements IInputConverter {
     const val = props[propKey];
     if ((typeof val === 'string' || typeof val === 'number') && val !== '') {
       arr.push({ name: infoName, value: val });
-    } else if (Array.isArray(val)) {
-      // val.forEach((item) => {
-      //   //TODO: What are possible values here?
-      // });
+    } else if (Array.isArray(val) && val.length > 0) {
+      arr.push({ name: infoName, value: val.join(', ') });
     }
   }
 
@@ -80,14 +82,28 @@ export class InputTypeMediaShout implements IInputConverter {
     const slidesList: Array<ISongSlide> = [];
 
     for (const slide of slidesArr) {
-      const title = slide.PartLabel ?? slide.PartType.toString();
-      //combine text of multiple text elements on a single slide
-      const lyrics = slide.Lyrics;
-      if (title !== '' || lyrics !== '') {
-        slidesList.push({ title, lyrics });
+      if (slide.Lyrics !== '') {
+        slidesList.push({ title: this.getSlideTitle(slide), lyrics: slide.Lyrics });
       }
     }
 
     return slidesList;
+  }
+
+  private getSlideTitle(slide: IMediaShoutLyricPart): string {
+    let label = '';
+
+    //prefer the label if provided, otherwise look up the part type from the enum
+    if (slide.PartLabel != null) {
+      label = slide.PartLabel;
+    } else {
+      //look up the name from the enum, then transform PascalCase kebab-case: "PreChorus" => "Pre-Chorus"
+      label = MediaShoutPartTypeEnum[slide.PartType].replace(
+        /[A-Z]+(?![a-z])|[A-Z]/g,
+        (str, ofs: number) => (ofs > 0 ? '-' : '') + str,
+      );
+    }
+
+    return `${label} ${slide.PartTypeNumber.toString()}`;
   }
 }
