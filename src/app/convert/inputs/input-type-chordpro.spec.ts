@@ -37,10 +37,16 @@ describe('InputTypeChordPro', () => {
       testFile.ext = 'chord';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
+
     it('should properly accept a ChordPro file with a .pro extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+    });
+
+    it('should properly reject a ProPresenter file with a .pro extension', async () => {
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At the Cross.pro');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
     it('should properly reject a plain text file', async () => {

@@ -16,7 +16,14 @@ export class InputTypeChordPro implements IInputConverter {
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {
     //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/
     //Possibles: .cho, .crd, .chopro, .chord, .pro
-    return /^cho|crd|chopro|chord|pro$/i.test(rawFile.ext);
+
+    if (rawFile.ext === 'pro') {
+      //Accept a ChordPro file and reject a ProPresenter file
+      //Look for something basic like a ChordPro directive of any kind
+      return /{\w+:[\s\w]+}/i.test(rawFile.dataAsString);
+    } else {
+      return /^cho|crd|chopro|chord$/i.test(rawFile.ext);
+    }
   }
 
   extractSongData(rawFile: IRawDataFile): ISong {

@@ -572,6 +572,38 @@ describe('ConvertComponent', () => {
         });
       });
 
+      it('should call the ErrorService with a custom message for a MediaShout SC7X file ', async () => {
+        fixture.detectChanges();
+        spyOn(errorsSvc, 'add').and.callThrough();
+
+        const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'script.sc7x');
+        component.getConvertersAndExtractData([testFile]);
+
+        const expectedErr = new LyricConverterError(
+          `These type of MediaShout files cannot be read by LyricConverter. You'll need to export them as JSON files and try again. <a href="https://support.mediashout.com/244705-How-to-move-your-Song-Library-from-one-computer-to-another---MediaShout-7">Read this knowledgebase article to learn how to do that</a>`,
+        );
+        expect(errorsSvc.add).toHaveBeenCalledWith({
+          message: expectedErr.message,
+          fileName: 'script.sc7x',
+        });
+      });
+
+      it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file ', async () => {
+        fixture.detectChanges();
+        spyOn(errorsSvc, 'add').and.callThrough();
+
+        const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At the Cross.pro');
+        component.getConvertersAndExtractData([testFile]);
+
+        const expectedErr = new LyricConverterError(
+          `Only ProPresenter files from version 4, 5, or 6 can be ready by LyricConverter. You will have to export this files as plain text`,
+        );
+        expect(errorsSvc.add).toHaveBeenCalledWith({
+          message: expectedErr.message,
+          fileName: 'v7-At the Cross.pro',
+        });
+      });
+
       it("should call the ErrorService when an InputConverter downstream throws a native error for something we can't control", () => {
         fixture.detectChanges();
         spyOn(errorsSvc, 'add').and.callThrough();

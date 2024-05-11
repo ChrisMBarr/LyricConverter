@@ -107,6 +107,7 @@ export class ConvertComponent implements OnInit {
       const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
 
       //Skip formatters for unknown formats
+      console.log(converter);
       if (converter) {
         try {
           extractedSongDataArr.push(converter.extractSongData(f));
@@ -118,17 +119,8 @@ export class ConvertComponent implements OnInit {
             thrownError: err,
           });
         }
-      } else if (f.ext === 'sc7x' || f.ext === 'sc6x') {
-        this.errorsSvc.add({
-          message: `These type of MediaShould files cannot be read by LyricConverter. You'll need to export them as JSON files and try again. Read this knowledgebase article to learn how to do that: https://support.mediashout.com/244705-How-to-move-your-Song-Library-from-one-computer-to-another---MediaShout-7`,
-          fileName,
-        });
       } else {
-        //Show a message if this file type cannot be converted because we don't have a way to read it
-        this.errorsSvc.add({
-          message: `This is not a file type that LyricConverter knows how to convert!`,
-          fileName,
-        });
+        this.showErrorForUnsupportedTypes(fileName, f.ext);
       }
     }
 
@@ -172,6 +164,27 @@ export class ConvertComponent implements OnInit {
     const thisComponentEl = this.elementRef.nativeElement as HTMLElement;
     const elTop = thisComponentEl.offsetTop;
     this.window.scrollTo({ top: elTop, behavior: 'smooth' });
+  }
+
+  private showErrorForUnsupportedTypes(fileName: string, fileExt: string): void {
+    if (fileExt === 'sc7x') {
+      this.errorsSvc.add({
+        message: `These type of MediaShout files cannot be read by LyricConverter. You'll need to export them as JSON files and try again. <a href="https://support.mediashout.com/244705-How-to-move-your-Song-Library-from-one-computer-to-another---MediaShout-7">Read this knowledgebase article to learn how to do that</a>`,
+        fileName,
+      });
+    } else if (fileExt === 'pro') {
+      //ChordPro files can also have a .pro extension, but they should have been accepted by that parser. That means if we got here it was rejected
+      this.errorsSvc.add({
+        message: `Only ProPresenter files from version 4, 5, or 6 can be ready by LyricConverter. You will have to export this files as plain text`,
+        fileName,
+      });
+    } else {
+      //Show a message if this file type cannot be converted because we don't have a way to read it
+      this.errorsSvc.add({
+        message: `This is not a file type that LyricConverter knows how to convert!`,
+        fileName,
+      });
+    }
   }
 
   private convertToSelectedTypes(songs: Array<ISong>): void {
