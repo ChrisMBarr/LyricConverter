@@ -3,9 +3,9 @@ import { Subject } from 'rxjs';
 
 import { ErrorsService } from '../errors/errors.service';
 import { IInputConverter } from '../inputs/input-converter.model';
-//Input Types
 import { InputTypeChordPro } from '../inputs/input-type-chordpro';
 import { InputTypeJSON } from '../inputs/input-type-json';
+import { InputTypeMediaShout7 } from '../inputs/input-type-mediashout7';
 import { InputTypeOpenLyrics } from '../inputs/input-type-openlyrics';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeProPresenter4 } from '../inputs/input-type-propresenter4';
@@ -13,10 +13,8 @@ import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { InputTypeProPresenter6 } from '../inputs/input-type-propresenter6';
 import { InputTypeSongPro } from '../inputs/input-type-songpro';
 import { InputTypeSongShowPlus7 } from '../inputs/input-type-songshowplus7';
-//Helpers & Types
 import { IFileWithData, IRawDataFile } from '../models/file.model';
 import { IOutputConverter } from '../outputs/output-converter.model';
-//Output Types
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypeJSON } from '../outputs/output-type-json';
@@ -33,6 +31,7 @@ import { Utils } from '../shared/utils';
 export class ParserService {
   private readonly errorsSvc = inject(ErrorsService);
 
+  private readonly parsedFilesChangedSubj$ = new Subject<Array<IRawDataFile>>();
   private readonly decoder = new TextDecoder();
 
   //List of all available Input Converters
@@ -44,6 +43,7 @@ export class ParserService {
     new InputTypeSongPro(),
     new InputTypeSongShowPlus7(),
     new InputTypeOpenLyrics(),
+    new InputTypeMediaShout7(),
     new InputTypePlainText(),
     new InputTypeJSON(),
   ];
@@ -59,7 +59,7 @@ export class ParserService {
     new OutputTypeDisplaySlides(),
   ];
 
-  parsedFilesChanged$ = new Subject<Array<IRawDataFile>>();
+  readonly parsedFilesChanged$ = this.parsedFilesChangedSubj$.asObservable();
 
   parseFiles(files: FileList): void {
     try {
@@ -134,6 +134,6 @@ export class ParserService {
       });
     }
 
-    this.parsedFilesChanged$.next(rawDataFiles);
+    this.parsedFilesChangedSubj$.next(rawDataFiles);
   }
 }

@@ -43,6 +43,26 @@
       }
     },
     {
+      "label": "Unit Tests + Coverage",
+      "type": "npm",
+      "script": "test-coverage",
+      "isBackground": true,
+      "icon": { "color": "terminal.ansiCyan", "id": "symbol-method" },
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      }
+    },
+    {
       "label": "Lint",
       "type": "npm",
       "script": "lint",

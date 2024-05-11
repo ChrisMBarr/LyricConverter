@@ -30,13 +30,6 @@ export class HelpComponent implements OnInit {
       url: 'https://renewedvision.com/propresenter/',
     },
     {
-      name: 'MediaShout',
-      canImport: false,
-      canExport: false,
-      hasNote: false,
-      url: 'https://mediashout.com/',
-    },
-    {
       name: 'EasyWorship',
       canImport: false,
       canExport: false,

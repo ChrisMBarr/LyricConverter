@@ -11,10 +11,9 @@ import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
 
 //TODO: Deal with multiple songs in the same file?
-//TODO: Throw custom error when .sc7x files are attempted
 
-export class InputTypeMediaShout implements IInputConverter {
-  readonly name = 'MediaShout';
+export class InputTypeMediaShout7 implements IInputConverter {
+  readonly name = 'MediaShout 7';
   readonly fileExt = 'json';
   readonly url = 'https://mediashout.com';
 

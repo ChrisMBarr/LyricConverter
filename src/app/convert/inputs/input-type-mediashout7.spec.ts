@@ -2,13 +2,13 @@ import { TestUtils } from 'test/test-utils';
 
 import { mockStaticTimestamp } from '../../../../test/mock-song-objects';
 import { version } from '../../version';
-import { InputTypeMediaShout } from './input-type-mediashout';
+import { InputTypeMediaShout7 } from './input-type-mediashout7';
 
-fdescribe('InputTypeMediaShout', () => {
-  let inputConverter: InputTypeMediaShout;
+describe('InputTypeMediaShout7', () => {
+  let inputConverter: InputTypeMediaShout7;
 
   beforeEach(() => {
-    inputConverter = new InputTypeMediaShout();
+    inputConverter = new InputTypeMediaShout7();
   });
 
   it('should create an instance', () => {
