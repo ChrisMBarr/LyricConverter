@@ -12649,6 +12649,224 @@
           "Authors": []
         }
       ]
+    },
+    {
+      "Name": "Christmas",
+      "Lyrics": [
+        {
+          "cclid": "517860",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "When Jesus our Savior\nIn Bethlehem lowly\nWas born of a virgin\nAnd cradled in hay;\nAngels sent from heaven\nWith glad song announced Him\nAnd guided the shepherds\nTo the place where He lay.",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "002092c4-32b0-4274-a00b-0755f65c016f"
+            },
+            {
+              "Lyrics": "Dear Savior, we bring Thee\nOur heart's adoration\nAnd bow in Thy presence,\nOur wonderful King!\nAll heaven re-echoes\nThe song of the angels\nAnd our hearts are joining\nIn the carols they sing.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "28428698-8487-4d75-871a-49b108a8704f"
+            },
+            {
+              "Lyrics": "This same lowly Jesus\nWho lay in the manger\nNow reigns in the glory,\nAnd prays for me there;\nAnd one day He's coming,\nHis lov'd ones to gather\nTo join Him forever\nAll His riches to share!",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "e25a6b27-6cbb-4b46-8b16-ae82d05e40da"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "A Christmas Hymn",
+          "SongNumber": "MS-0001",
+          "Authors": [
+            "Frances Johnston"
+          ]
+        },
+        {
+          "cclid": "27879",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "O little town of Bethlehem,\nHow still we see thee lie;\nAbove thy deep and dreamless sleep,\nThe silent stars go by.\nYet in thy dark streets shineth\nThe everlasting Light;\nThe hopes and fears of all the years,\nAre met in thee tonight.",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "49995c92-cbf8-483e-bcf5-e4bd9c4e5dba"
+            },
+            {
+              "Lyrics": "For Christ is born of Mary\nAnd gathered all above;\nWhile mortals sleep the angels keep\nTheir watch of wondering love.\nO, morning stars together\nProclaim the holy birth;\nAnd praises sing to God the King\nAnd peace to men on earth.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "f3f9290a-b2de-4c8a-b942-16da15315109"
+            },
+            {
+              "Lyrics": "How silently, how silently,\nThe wondrous gift is giv'n;\nSo God imparts to human hearts,\nThe blessings of His heaven.\nNo ear may hear His coming,\nBut in this world of sin;\nWhere meek souls will\nReceive Him still,\nThe dear Christ enters in.",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "06f76df0-bce3-483b-9765-5c35159a37e7"
+            },
+            {
+              "Lyrics": "O, holy child of Bethlehem,\nDescend to us we pray;\nCast out our sin and enter in,\nBe born in us today.\nWe hear the Christmas angels,\nThe great glad tidings tell;\nO, come to us abide with us,\nOur Lord, Emmanuel.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "4dd20793-4fc8-4db8-bbe3-704665b0ed87"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "O Little Town of Bethlehem",
+          "SongNumber": "MS-0153",
+          "Authors": [
+            "Phillips Brooks",
+            "Lewis H. Redner"
+          ]
+        },
+        {
+          "cclid": "27862",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "Silent night, holy night,\nAll is calm, all is bright.\nRound yon virgin mother and child;\nHoly infant, so tender and mild,\nSleep in heavenly peace;\nSleep in heavenly peace.",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "8daa5371-32c9-4508-835e-69a56f0bbd4b"
+            },
+            {
+              "Lyrics": "Silent night, holy night,\nShepherds quake at the sight.\nGlories stream from heaven afar,\nHeavenly hosts sing \"Alleluia.\nChrist the Savior is born;\nChrist the Savior is born.\"",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "e56f39ef-0e57-42a9-9a68-8d3009e649e7"
+            },
+            {
+              "Lyrics": "Silent night, holy night,\nSon of God, love's pure light.\nRadiant beams from Thy holy face,\nWith the dawn of redeeming grace.\nJesus, Lord, at Thy birth;\nJesus, Lord, at Thy birth.",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "20377cb3-6f5b-4e06-8e2f-f8c6375efcc2"
+            },
+            {
+              "Lyrics": "Silent night, holy night,\nWondrous star, lend thy light.\nWith the angels, let us sing,\nAlleluia to our King.\nChrist the Savior is born;\nChrist the Savior is born.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "12cd058d-dec0-4262-bd8d-d91994c1138f"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "Silent Night Holy Night",
+          "SongNumber": "MS-0180",
+          "Authors": [
+            "Joseph Mohr",
+            "Franz Gruber"
+          ]
+        },
+        {
+          "cclid": "38002",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "We three kings of Orient are,\nBearing gifts we traverse afar;\nField and fountain moor and mountain,\nFollowing yonder star.",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "1473389f-e526-44a5-8e8f-5d5f05d05b2c"
+            },
+            {
+              "Lyrics": "Born a King on Bethlehem's plain,\nGold I bring to crown Him again;\nKing forever, ceasing never,\nOver us all to reign.",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "1c1f490e-a2fc-4e05-8efd-0f67e23752e8"
+            },
+            {
+              "Lyrics": "Frankincense to offer have I,\nIncense owns a Deity nigh;\nPrayer and praising, all men raising,\nWorship Him, God on high.",
+              "PartType": 0,
+              "PartTypeNumber": 3,
+              "PartLabel": null,
+              "Guid": "51126d07-13aa-4068-aa1b-c90b4a0a7d37"
+            },
+            {
+              "Lyrics": "Myrrh is mine, its bitter perfume,\nBreathes a life of gathering gloom;\nSorrowing, sighing, bleeding, dying,\nSealed in the stone cold tomb.",
+              "PartType": 0,
+              "PartTypeNumber": 4,
+              "PartLabel": null,
+              "Guid": "dff1efa7-d490-484a-a187-d38eb02a6670"
+            },
+            {
+              "Lyrics": "Glorious now behold Him arise,\nKing and God and sacrifice;\nAlleluia, alleluia!\nEarth to heav'n replies.",
+              "PartType": 0,
+              "PartTypeNumber": 5,
+              "PartLabel": null,
+              "Guid": "f49448d9-0a87-4618-907c-bb69f200de46"
+            },
+            {
+              "Lyrics": "O star of wonder, star of night,\nStar with royal beauty bright;\nWestward leading, still proceeding,\nGuide us to Thy perfect light.",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "8bccbc82-656e-4697-844c-040a8002f212"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "We Three Kings of Orient Are",
+          "SongNumber": "MS-0226",
+          "Authors": [
+            "John H. Hopkins",
+            "Jr."
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Other Folder",
+      "Lyrics": [
+        {
+          "cclid": "",
+          "copyrights": [],
+          "Disclaimer": null,
+          "LyricParts": [
+            {
+              "Lyrics": "Your thoughts toward us are beautiful\nYour thoughts Lord soothe the soul\nLike rain refreshing the desert\nDeep inside a heart",
+              "PartType": 0,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "6e0fd5a5-9129-4626-9a8c-4fe6bbff7432"
+            },
+            {
+              "Lyrics": "Your thoughts toward us are musical\nYou sing Your song through us\nYour thoughts are precious and many \nLet the music start",
+              "PartType": 0,
+              "PartTypeNumber": 2,
+              "PartLabel": null,
+              "Guid": "6f81de47-9461-4207-9717-d446516f5733"
+            },
+            {
+              "Lyrics": "Songs of peace\nSongs of forgiveness\nSongs of life everlasting\nYou make the mountains\nAnd create the wind\nAnd You make Your \nThoughts known to us",
+              "PartType": 1,
+              "PartTypeNumber": 1,
+              "PartLabel": null,
+              "Guid": "75e2999c-87f6-47ba-88f1-e023746ea7b9"
+            }
+          ],
+          "songId": "00000000-0000-0000-0000-000000000000",
+          "Title": "Your Thoughts Toward Us",
+          "SongNumber": "EM-025",
+          "Authors": [
+            "Rick Muchow"
+          ]
+        }
+      ]
     }
   ]
 }

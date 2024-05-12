@@ -26,7 +26,7 @@ export declare interface IInputConverter {
   /**
    * @description A method that will parse the input file and extract relevant data.
    * @param rawFile
-   * @returns {ISong} which is a generic format to later be used by an output formatter
+   * @returns {ISong | ISong[]} which is a generic format to later be used by an output formatter
    */
-  extractSongData: (rawFile: IRawDataFile) => ISong;
+  extractSongData: (rawFile: IRawDataFile) => ISong | Array<ISong>;
 }

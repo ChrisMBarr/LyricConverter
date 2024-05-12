@@ -398,7 +398,7 @@ describe('ConvertComponent', () => {
           "Title: Great is your faithfulness O God\nOrder: 1C2CBC\n\n\nChorus:\nYour grace is enough\r\nYour grace is enough\r\nYour grace is enough for me\n\nVerse 1:\nGreat is your faithfulness O God\r\nYou wrestle with the sinners heart\r\nYou lead us by still waters and to mercy\r\nAnd nothing can keep us apart\n\nVerse 2:\nGreat is your love and justice God\r\nYou use the weak to lead the strong\r\nYou lead us in the song of your salvation\r\nAnd all your people sing along\n\nCoda:\n(Chorus 2.)\r\n\r\nYour grace is enough\r\nHeaven reaching down to us\r\nYour grace is enough for me\r\nGod, I see your grace is enough\r\nI'm covered in your love\r\nYour grace is enough for me\r\nFor me\n\nBridge:\nSo remember you people\r\nRemember your children\r\nRemember your promise\r\nOh God",
       };
 
-      it('should get converters for passed in raw files and list them for Text Type Output', () => {
+      it('should get converters for passed in raw file and list it for Text Type Output', () => {
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile]);
 
@@ -424,6 +424,14 @@ describe('ConvertComponent', () => {
         });
 
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
+      });
+
+      it('should get converter for passed in raw file that contains multiple songs and return them all', async () => {
+        component.selectedOutputType = new OutputTypePlainText();
+        const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multiple-songs.json');
+        component.getConvertersAndExtractData([testFile]);
+
+        expect(component.convertedSongsForOutput.length).toEqual(5);
       });
     });
 

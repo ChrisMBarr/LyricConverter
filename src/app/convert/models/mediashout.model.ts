@@ -12,7 +12,7 @@ export interface IMediaShoutLyrics {
   Disclaimer: string | null;
   copyrights: Array<string>;
   songId: string;
-  Title: string;
+  Title: string | null;
   SongNumber: string | null;
   Authors: Array<string>;
   LyricParts: Array<IMediaShoutLyricPart>;

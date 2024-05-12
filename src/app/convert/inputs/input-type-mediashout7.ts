@@ -10,8 +10,6 @@ import {
 import { ISong, ISongInfo, ISongSlide } from '../models/song.model';
 import { IInputConverter } from './input-converter.model';
 
-//TODO: Deal with multiple songs in the same file?
-
 export class InputTypeMediaShout7 implements IInputConverter {
   readonly name = 'MediaShout 7';
   readonly fileExt = 'json';
@@ -27,27 +25,29 @@ export class InputTypeMediaShout7 implements IInputConverter {
     }
   }
 
-  extractSongData(rawFile: IRawDataFile): ISong {
+  extractSongData(rawFile: IRawDataFile): Array<ISong> {
     const parsedDoc = JSON.parse(rawFile.dataAsString) as IMediaShoutRootDoc;
 
-    //TODO: Not sure why this is an array, can there be multiple songs in a file?
-    const firstFolderLyrics = parsedDoc.Folders[0]?.Lyrics[0];
+    const convertedSongs: Array<ISong> = [];
+    parsedDoc.Folders.flatMap((folder) => folder.Lyrics).forEach((song) => {
+      let title = song.Title;
+      if (title == null || title === '') title = rawFile.name;
 
-    let title = firstFolderLyrics?.Title;
-    if (title == null || title === '') title = rawFile.name;
+      convertedSongs.push({
+        originalFile: {
+          extension: this.fileExt,
+          format: this.name,
+          name: rawFile.name,
+        },
+        lyricConverterVersion: version,
+        timestamp: mockStaticTimestamp,
+        title,
+        info: this.getInfo(song),
+        slides: this.getSlides(song.LyricParts),
+      });
+    });
 
-    return {
-      originalFile: {
-        extension: this.fileExt,
-        format: this.name,
-        name: rawFile.name,
-      },
-      lyricConverterVersion: version,
-      timestamp: mockStaticTimestamp,
-      title,
-      info: firstFolderLyrics ? this.getInfo(firstFolderLyrics) : [],
-      slides: this.getSlides(firstFolderLyrics?.LyricParts ?? []),
-    };
+    return convertedSongs;
   }
 
   private getInfo(props: IMediaShoutLyrics): Array<ISongInfo> {

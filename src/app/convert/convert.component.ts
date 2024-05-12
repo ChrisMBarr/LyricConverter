@@ -100,17 +100,21 @@ export class ConvertComponent implements OnInit {
     this.displayInitialUi = false;
     this.scrollBackToTop();
 
-    const extractedSongDataArr: Array<ISong> = [];
+    let extractedSongDataArr: Array<ISong> = [];
     for (const f of parsedFiles) {
       const fileName = f.ext !== '' ? `${f.name}.${f.ext}` : f.name;
 
       const converter = this.parserSvc.detectInputTypeAndGetConverter(f);
 
       //Skip formatters for unknown formats
-      console.log(converter);
       if (converter) {
         try {
-          extractedSongDataArr.push(converter.extractSongData(f));
+          const singleOrMultipleSongs = converter.extractSongData(f);
+          if (Array.isArray(singleOrMultipleSongs)) {
+            extractedSongDataArr = extractedSongDataArr.concat(singleOrMultipleSongs);
+          } else {
+            extractedSongDataArr.push(singleOrMultipleSongs);
+          }
         } catch (err: unknown) {
           //Handle any errors that happen downstream on the IInputConverter for this file
           this.errorsSvc.add({
