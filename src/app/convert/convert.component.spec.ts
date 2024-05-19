@@ -358,6 +358,7 @@ describe('ConvertComponent', () => {
             format: 'JSON',
             name: 'JSON - Your Grace Is Enough',
           },
+          outputFileName: 'JSON - Your Grace Is Enough',
           lyricConverterVersion: version,
           timestamp: mockStaticTimestamp,
           title: 'Great is your faithfulness O God',

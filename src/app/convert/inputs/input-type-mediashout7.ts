@@ -39,6 +39,7 @@ export class InputTypeMediaShout7 implements IInputConverter {
           format: this.name,
           name: rawFile.name,
         },
+        outputFileName: title, //each output file will have a file name that matches the song title
         lyricConverterVersion: version,
         timestamp: mockStaticTimestamp,
         title,

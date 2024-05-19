@@ -40,6 +40,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
         format: this.name,
         name: rawFile.name,
       },
+      outputFileName: rawFile.name, //song inputs are a one-to-one relationship for OpenLyrics, so the file name does not change when converting
       lyricConverterVersion: version,
       timestamp: new Date().toISOString(),
       title,

@@ -20,7 +20,7 @@ export class OutputTypeJSON implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.originalFile.name}.${this.fileExt}`,
+      fileName: `${song.outputFileName}.${this.fileExt}`,
       outputContent: jsonString,
     };
   }

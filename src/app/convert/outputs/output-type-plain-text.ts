@@ -36,7 +36,7 @@ export class OutputTypePlainText implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.originalFile.name}.${this.fileExt}`,
+      fileName: `${song.outputFileName}.${this.fileExt}`,
       outputContent: fileContent.trim(), //remove any trailing whitespace
     };
   }

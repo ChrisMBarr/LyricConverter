@@ -53,7 +53,7 @@ describe('InputTypeJSON', () => {
     it('should properly reject a MediaShout JSON file when tested', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
-    })
+    });
   });
 
   describe('extractSongData()', () => {
@@ -74,6 +74,7 @@ describe('InputTypeJSON', () => {
           format: inputConverter.name,
           name: testFile.name,
         },
+        outputFileName: testFile.name,
         lyricConverterVersion: version,
         timestamp: mockStaticTimestamp,
         title: 'Great is your faithfulness O God',

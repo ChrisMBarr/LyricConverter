@@ -54,7 +54,7 @@ export class OutputTypeOpenLyrics implements IOutputConverter {
 
     return {
       songData: song,
-      fileName: `${song.originalFile.name}.${this.fileExt}`,
+      fileName: `${song.outputFileName}.${this.fileExt}`,
       outputContent: fileContent,
     };
   }
