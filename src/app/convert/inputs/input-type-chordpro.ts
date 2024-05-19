@@ -29,15 +29,13 @@ export class InputTypeChordPro implements IInputConverter {
   extractSongData(rawFile: IRawDataFile): ISong {
     const parser = new ChordProParser();
 
-    //Needed until this is fixed: https://github.com/martijnversluis/ChordSheetJS/issues/1155
+    //Needed until this is fixed: https://github.com/martijnversluis/ChordSheetJS/issues/1178
     const preProcessedData = rawFile.dataAsString
-      .replace(/{start_of_abc}[\s\S]+?{end_of_abc}/, '')
       .replace(/{start_of_svg}[\s\S]+?{end_of_svg}/, '')
       .replace(/{start_of_textblock.+?}[\s\S]+?{end_of_textblock}/, '');
 
     const parsedSong = parser.parse(preProcessedData);
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition  --  typedefs are wrong
     const title = parsedSong.title ?? rawFile.name;
     const info = this.getSongInfo(parsedSong.metadata.metadata, parsedSong.bodyParagraphs);
     const slides = this.getLyrics(parsedSong.bodyParagraphs);
