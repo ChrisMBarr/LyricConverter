@@ -58,6 +58,11 @@ export class TestUtils {
     return TestUtils.normalizeDateAttribute('modifiedDate', TestUtils.normalizeWhitespace(str));
   }
 
+  public static normalizeMediaShoutStringForTesting(str: string): string {
+    //A helper method to do all of our replacements in one for comparing MediaShout files
+    return str.replace(/"(songId|Guid|)": "([a-z0-9-]+?)"/gi, `"$1": "fake-uuid-for-testing"`);
+  }
+
   public static async loadTestFileAsRawDataFile(
     folderPath: string,
     fileName: string,

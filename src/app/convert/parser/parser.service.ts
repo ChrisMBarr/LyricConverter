@@ -18,6 +18,7 @@ import { IOutputConverter } from '../outputs/output-converter.model';
 import { OutputTypeChordpro } from '../outputs/output-type-chordpro';
 import { OutputTypeDisplaySlides } from '../outputs/output-type-display-slides';
 import { OutputTypeJSON } from '../outputs/output-type-json';
+import { OutputTypeMediaShout7 } from '../outputs/output-type-mediashout7';
 import { OutputTypeOpenLyrics } from '../outputs/output-type-openlyrics';
 import { OutputTypePlainText } from '../outputs/output-type-plain-text';
 import { OutputTypeProPresenter5 } from '../outputs/output-type-propresenter5';
@@ -54,6 +55,7 @@ export class ParserService {
     new OutputTypeChordpro(),
     new OutputTypeOpenLyrics(),
     new OutputTypeSongPro(),
+    new OutputTypeMediaShout7(),
     new OutputTypePlainText(),
     new OutputTypeJSON(),
     new OutputTypeDisplaySlides(),
