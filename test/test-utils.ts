@@ -60,6 +60,7 @@ export class TestUtils {
 
   public static normalizeMediaShoutStringForTesting(str: string): string {
     //A helper method to do all of our replacements in one for comparing MediaShout files
+    //Find the specific JSON properties that can be GUIDs and replace them
     return str.replace(/"(songId|Guid|)": "([a-z0-9-]+?)"/gi, `"$1": "fake-uuid-for-testing"`);
   }
 
