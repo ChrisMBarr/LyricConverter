@@ -14,14 +14,14 @@ Parses the song info & lyrics from various lyric presentation software file form
 | **[ChordPro](https://chordpro.org/)**                              |   ✅   |   ✅  |
 | **[EasyWorship](https://easyworship.com/)** - [Issue #3][1]        |   ⭕   |   ⭕  |
 | **JSON**                                                           |   ✅   |   ✅  |
-| **[MediaShout](https://mediashout.com/)**                          |   ⭕   |   ⭕  |
+| **[MediaShout 7](https://mediashout.com/)**                        |   ✅   |   ✅  |
 | **[OpenSong](https://opensong.org/)** - [Issue #5][2]              |   ⭕   |   ⭕  |
 | **[OpenLyrics](https://docs.openlyrics.org)**                      |   ✅   |   ✅  |
 | **Plain Text**                                                     |   ✅   |   ✅  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v4**     |   ✅   |   ⭕  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v5**     |   ✅   |   ✅  |
 | **[ProPresenter](https://renewedvision.com/propresenter/) v6**     |   ✅    |  ✅  |
-| **[ProPresenter](https://renewedvision.com/propresenter/) v7**💾  |   ⭕    |  ⭕  |
+| **[ProPresenter](https://renewedvision.com/propresenter/) v7**💾   |   ⭕    |  ⭕  |
 | **[SongPro](https://songpro.org/)**                                |   ✅   |   ✅  |
 | **[SongShow Plus](https://songshowplus.com/) v7**                  |   ✅   |   ⭕  |
 | **[SongShow Plus](https://songshowplus.com/) v8**                  |   ❓   |   ⭕  |
