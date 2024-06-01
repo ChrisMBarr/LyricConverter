@@ -1,6 +1,5 @@
-import { isDevMode, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
@@ -23,12 +22,7 @@ import { HelpComponent } from './help/help.component';
     SlideDisplayComponent,
     DownloadDisplayComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgxGoogleAnalyticsModule.forRoot(isDevMode() ? '' : 'G-1W69G30JB8'),
-    NgxGoogleAnalyticsRouterModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

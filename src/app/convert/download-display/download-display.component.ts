@@ -1,7 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as fileSaver from 'file-saver';
 import * as JSZip from 'jszip';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { IOutputFile } from '../models/file.model';
 import { IOutputConverter } from '../outputs/output-converter.model';
@@ -11,8 +10,6 @@ import { IOutputConverter } from '../outputs/output-converter.model';
   templateUrl: './download-display.component.html',
 })
 export class DownloadDisplayComponent {
-  private readonly $gaService = inject(GoogleAnalyticsService);
-
   @Input() outputFileList: Array<IOutputFile> = [];
   @Input() selectedOutputType!: IOutputConverter;
 
@@ -24,14 +21,6 @@ export class DownloadDisplayComponent {
         }),
       );
     }
-
-    this.$gaService.event(
-      'file_download',
-      this.selectedOutputType.name,
-      'files',
-      this.outputFileList.length,
-      true,
-    );
   }
 
   onClickDownloadZipFile(): void {
@@ -50,14 +39,6 @@ export class DownloadDisplayComponent {
         fileSaver.saveAs(
           zipContent,
           `LyricConverter (${this.outputFileList.length.toString()} files).zip`,
-        );
-
-        this.$gaService.event(
-          'file_download',
-          this.selectedOutputType.name,
-          'zip',
-          this.outputFileList.length,
-          true,
         );
       });
   }

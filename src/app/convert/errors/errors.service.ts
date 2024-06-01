@@ -1,5 +1,4 @@
-import { inject, Injectable } from '@angular/core';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { ISongError } from '../models/errors.model';
@@ -9,8 +8,6 @@ import { CUSTOM_ERROR_IDENTIFIER } from '../shared/constants';
   providedIn: 'root',
 })
 export class ErrorsService {
-  private readonly $gaService = inject(GoogleAnalyticsService);
-
   private errorsList: Array<ISongError> = [];
   errorsChanged$ = new Subject<Array<ISongError>>();
 
@@ -22,9 +19,6 @@ export class ErrorsService {
 
     this.errorsList.push(songError);
     this.errorsChanged$.next(this.errorsList.slice());
-
-    //Log error events to google analytics
-    this.$gaService.event('error', 'convert', songError.message);
 
     console.warn('[LyricConverter Error Service]', songError);
   }
