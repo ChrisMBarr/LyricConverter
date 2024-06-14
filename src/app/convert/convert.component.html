@@ -22,7 +22,7 @@
     <aside
       class="sticky md:top-4"
       [ngClass]="{
-        'sm:grid sm:grid-cols-2 sm:gap-4 md:block md:grid-cols-none': !displayInitialUi
+        'sm:grid sm:grid-cols-2 sm:gap-4 md:block md:grid-cols-none': !displayInitialUi,
       }"
     >
       <nav class="card grid grid-cols-1 overflow-hidden p-0" id="test-convert-types-nav">
@@ -32,7 +32,7 @@
             (click)="onSwitchConversionType(fmt, $event)"
             [ngClass]="{
               'border-l-2 border-l-lc-highlight bg-lc-highlight/10 font-bold':
-                selectedOutputType === fmt
+                selectedOutputType === fmt,
             }"
             class="flex items-center border-b border-b-lc-highlight/10 p-2 text-white hover:bg-lc-highlight/20 hover:no-underline"
             href="#"
