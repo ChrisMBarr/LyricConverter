@@ -46,7 +46,7 @@
         "@typescript-eslint/return-await": "warn",
 
         //Typescript specific rules
-        "@typescript-eslint/no-empty-function":"off",
+        "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/array-type": [
           "warn",
@@ -116,12 +116,7 @@
           }
         ],
 
-        "prettier/prettier": [
-          "warn",
-          {
-            "endOfLine": "auto"
-          }
-        ]
+        "prettier/prettier": ["warn", { "endOfLine": "auto" }]
       }
     },
     {
@@ -140,7 +135,8 @@
       "rules": {
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/unbound-method": "off"
+        "@typescript-eslint/unbound-method": "off",
+        "prettier/prettier": ["warn", { "endOfLine": "auto" }]
       }
     }
   ]
