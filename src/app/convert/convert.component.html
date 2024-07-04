@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<input class="hidden" type="file" multiple (change)="onFileSelect($event)" #fileInput />
+<input #fileInput class="hidden" type="file" multiple (change)="onFileSelect($event)" />
 
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
   <div [ngClass]="{ 'sm:col-span-2 md:col-span-1': !displayInitialUi }">
@@ -29,13 +29,13 @@
         <strong class="card-title py-2 text-center"> Convert To </strong>
         @for (fmt of outputTypesForMenu; track fmt) {
           <a
-            (click)="onSwitchConversionType(fmt, $event)"
+            class="flex items-center border-b border-b-lc-highlight/10 p-2 text-white hover:bg-lc-highlight/20 hover:no-underline"
+            href="#"
             [ngClass]="{
               'border-l-2 border-l-lc-highlight bg-lc-highlight/10 font-bold':
                 selectedOutputType === fmt,
             }"
-            class="flex items-center border-b border-b-lc-highlight/10 p-2 text-white hover:bg-lc-highlight/20 hover:no-underline"
-            href="#"
+            (click)="onSwitchConversionType(fmt, $event)"
           >
             {{ fmt.name }}
             @if (fmt.fileExt) {
@@ -103,7 +103,7 @@
               donation if you've found this tool to be useful.
             </p>
 
-            <app-donate-button></app-donate-button>
+            <app-donate-button />
           </div>
         </div>
       }
@@ -136,12 +136,12 @@
         </div>
       }
       @if (selectedOutputType.name === "Display Slides") {
-        <app-slide-display [outputFileList]="convertedSongsForOutput"></app-slide-display>
+        <app-slide-display [outputFileList]="convertedSongsForOutput" />
       } @else {
         <app-download-display
           [selectedOutputType]="this.selectedOutputType"
           [outputFileList]="convertedSongsForOutput"
-        ></app-download-display>
+        />
       }
     </div>
   }

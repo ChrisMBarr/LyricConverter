@@ -20,7 +20,7 @@
             <tr>
               <th scope="row" class="text-left">
                 @if (format.url) {
-                  <a [href]="format.url" target="_blank">{{ format.name }}</a>
+                  <a target="_blank" [href]="format.url">{{ format.name }}</a>
                 } @else {
                   <span>{{ format.name }}</span>
                 }

@@ -13,16 +13,16 @@ import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HelpComponent,
     AboutComponent,
+    AppComponent,
     ConvertComponent,
     DonateButtonComponent,
-    DragAndDropFilesDirective,
-    SlideDisplayComponent,
     DownloadDisplayComponent,
+    DragAndDropFilesDirective,
+    HelpComponent,
+    SlideDisplayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [AppRoutingModule, BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
 })

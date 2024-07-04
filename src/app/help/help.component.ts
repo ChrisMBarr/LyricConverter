@@ -14,7 +14,7 @@ interface ICombinedFormatItem {
 @Component({
   selector: 'app-help',
   templateUrl: './help.component.html',
-  styleUrls: ['./help.component.css'],
+  styleUrl: './help.component.css',
 })
 export class HelpComponent implements OnInit {
   private readonly parserSvc = inject(ParserService);

@@ -9,10 +9,10 @@
         "project": ["tsconfig.(app|spec|server).json"]
       },
       "extends": [
-        "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:@typescript-eslint/strict-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked",
         "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/all",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
       ],
@@ -34,6 +34,9 @@
             "style": "kebab-case"
           }
         ],
+        "@angular-eslint/prefer-standalone": "off",
+        "@angular-eslint/prefer-standalone-component": "off",
+        "@angular-eslint/prefer-on-push-component-change-detection": "off",
 
         //Prefer typescript versions of certain rules
         "no-loop-func": "off",
@@ -123,12 +126,16 @@
       "files": ["*.html"],
       "parser": "@angular-eslint/template-parser",
       "extends": [
-        "plugin:@angular-eslint/template/recommended",
-        "plugin:@angular-eslint/template/accessibility",
+        "plugin:@angular-eslint/template/all",
         "plugin:tailwindcss/recommended",
         "plugin:prettier/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/i18n": "off",
+        "@angular-eslint/template/prefer-ngsrc": "off",
+        "@angular-eslint/template/no-inline-styles": "off",
+        "prettier/prettier": ["warn", { "endOfLine": "auto" }]
+      }
     },
     {
       "files": ["*.spec.ts", "test/**/*.ts"],

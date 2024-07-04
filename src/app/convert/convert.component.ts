@@ -18,10 +18,11 @@ import { IOutputConverter } from './outputs/output-converter.model';
 import { ParserService } from './parser/parser.service';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/use-component-view-encapsulation -- This is intentional and required to allow the drag-n-srop styles to be applied as we need them here
   encapsulation: ViewEncapsulation.None,
   selector: 'app-convert',
   templateUrl: './convert.component.html',
-  styleUrls: ['./convert.component.css'],
+  styleUrl: './convert.component.css',
 })
 export class ConvertComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);

@@ -6,7 +6,7 @@ import { Directive, EventEmitter, HostListener, Inject, OnDestroy, Output } from
 })
 export class DragAndDropFilesDirective implements OnDestroy {
   private readonly dragOverClass = 'drag-over';
-  @Output() fileDrop = new EventEmitter<FileList>();
+  @Output() readonly fileDrop = new EventEmitter<FileList>();
 
   constructor(@Inject(DOCUMENT) public readonly document: Document) {}
 
