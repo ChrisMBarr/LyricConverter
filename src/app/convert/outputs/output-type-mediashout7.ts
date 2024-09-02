@@ -10,7 +10,7 @@ import { IOutputConverter } from './output-converter.model';
 export class OutputTypeMediaShout7 implements IOutputConverter {
   private readonly partTypeEnumKeys = Object.values(MediaShoutPartTypeEnum).filter(
     (value) => typeof value === 'string',
-  ) as Array<string>;
+  );
 
   readonly name = 'MediaShout 7';
   readonly fileExt = 'json';
