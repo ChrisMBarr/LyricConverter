@@ -42,7 +42,7 @@
     "@angular/platform-browser-dynamic": "^18.2.3",
     "@angular/platform-browser": "^18.2.3",
     "@angular/platform-server": "^18.2.3",
-    "@angular/router": "^18.2.3",
+    "@angular/router": "^18.2.6",
     "@angular/ssr": "^18.2.3",
     "chordsheetjs": "^10.2.0",
     "express": "^4.21.0",
