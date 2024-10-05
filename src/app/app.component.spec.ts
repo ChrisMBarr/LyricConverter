@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
@@ -16,8 +16,9 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterOutlet, RouterLink, RouterLinkActive],
       declarations: [AppComponent, HelpComponent, AboutComponent, ConvertComponent, DonateButtonComponent, DragAndDropFilesDirective],
+      providers: [provideRouter([])],
     });
 
     fixture = TestBed.createComponent(AppComponent);
