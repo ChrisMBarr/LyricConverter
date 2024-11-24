@@ -1,12 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { Directive, EventEmitter, HostListener, Inject, OnDestroy, Output } from '@angular/core';
+import { Directive, EventEmitter, HostListener, inject, OnDestroy, Output } from '@angular/core';
 
 @Directive({ selector: '[appDragAndDropFiles]' })
 export class DragAndDropFilesDirective implements OnDestroy {
+  private readonly document = inject(DOCUMENT);
   private readonly dragOverClass = 'drag-over';
   @Output() readonly fileDrop = new EventEmitter<FileList>();
-
-  constructor(@Inject(DOCUMENT) public readonly document: Document) {}
 
   ngOnDestroy(): void {
     this.toggleDragOver(false);
@@ -27,7 +26,7 @@ export class DragAndDropFilesDirective implements OnDestroy {
     //This event fires too often, when changing which element you are hovered over,
     // which causes the CSS animation to flash as it partially transitions
     // By checking the mouse coordinates now it will only fire when the cursor has truly left the page
-    if (evt.x === 0 && evt.y === 0) {
+    if (evt.x <= 0 && evt.y <= 0) {
       this.toggleDragOver(false);
     }
   }

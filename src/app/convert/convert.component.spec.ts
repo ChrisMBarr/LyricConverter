@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
@@ -39,6 +40,7 @@ describe('ConvertComponent', () => {
   let fixture: ComponentFixture<ConvertComponent>;
   let parserSvc: ParserService;
   let errorsSvc: ErrorsService;
+  let injectedDocument: Document;
 
   function configureTestBed<T>(providers: Array<T>) {
     TestBed.configureTestingModule({
@@ -46,6 +48,7 @@ describe('ConvertComponent', () => {
       providers,
     });
     parserSvc = TestBed.inject(ParserService);
+    injectedDocument = TestBed.inject(DOCUMENT);
     errorsSvc = TestBed.inject(ErrorsService);
 
     fixture = TestBed.createComponent(ConvertComponent);
@@ -77,11 +80,11 @@ describe('ConvertComponent', () => {
       const prefKey = 'CONVERT_TO';
 
       beforeEach(() => {
-        localStorage.clear();
+        injectedDocument.defaultView?.localStorage.clear();
       });
 
       afterEach(() => {
-        localStorage.clear();
+        injectedDocument.defaultView?.localStorage.clear();
       });
 
       it('should build a list of all available output types to convert to', () => {
@@ -95,7 +98,7 @@ describe('ConvertComponent', () => {
       });
 
       it('should auto-select the saved type to convert to when a preference is saved', () => {
-        localStorage.setItem(prefKey, 'BazOut');
+        injectedDocument.defaultView?.localStorage.setItem(prefKey, 'BazOut');
         fixture.detectChanges();
         expect(component.selectedOutputType.name).toEqual('BazOut');
       });
@@ -122,7 +125,7 @@ describe('ConvertComponent', () => {
         fixture.debugElement.query(By.css('#test-convert-types-nav a:nth-of-type(2)')).triggerEventHandler('click', new Event('click'));
 
         fixture.detectChanges();
-        expect(localStorage.getItem(prefKey)).toEqual('BarOut');
+        expect(injectedDocument.defaultView?.localStorage.getItem(prefKey)).toEqual('BarOut');
       });
     });
 
@@ -286,7 +289,7 @@ describe('ConvertComponent', () => {
           done();
         });
 
-        directiveInstance.document.dispatchEvent(dropEvent);
+        injectedDocument.dispatchEvent(dropEvent);
         fixture.detectChanges();
       });
 
@@ -440,11 +443,11 @@ describe('ConvertComponent', () => {
       const prefKey = 'CONVERT_COUNT';
 
       beforeEach(() => {
-        localStorage.clear();
+        injectedDocument.defaultView?.localStorage.clear();
       });
 
       afterEach(() => {
-        localStorage.clear();
+        injectedDocument.defaultView?.localStorage.clear();
       });
 
       it('should increase the count when a song of a known type is converted', () => {
@@ -483,7 +486,7 @@ describe('ConvertComponent', () => {
         expect(component.convertedFileCount).toEqual(0);
       });
 
-      it('should update the saved value in localStorage when converting a song', () => {
+      it('should update the saved value in injectedDocument.defaultView?.localStorage when converting a song', () => {
         fixture.detectChanges();
 
         const fakeParsedFiles: Array<IRawDataFile> = [
@@ -497,11 +500,11 @@ describe('ConvertComponent', () => {
         ];
         component.getConvertersAndExtractData(fakeParsedFiles);
         fixture.detectChanges();
-        expect(localStorage.getItem(prefKey)).toEqual('1');
+        expect(injectedDocument.defaultView?.localStorage.getItem(prefKey)).toEqual('1');
       });
 
-      it('start the count at a previously saved value from localStorage', () => {
-        localStorage.setItem(prefKey, '5');
+      it('start the count at a previously saved value from injectedDocument.defaultView?.localStorage', () => {
+        injectedDocument.defaultView?.localStorage.setItem(prefKey, '5');
         fixture.detectChanges();
         expect(component.convertedFileCount).toEqual(5);
       });

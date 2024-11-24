@@ -45,6 +45,7 @@ export class ConvertComponent implements OnInit {
   private readonly conversionTypeStorageKey = 'CONVERT_TO';
   private readonly convertedFileCountStorageKey = 'CONVERT_COUNT';
   private readonly window: Window = this.document.defaultView as Window;
+  private readonly localStorage = this.document.defaultView?.localStorage;
 
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
 
@@ -82,7 +83,7 @@ export class ConvertComponent implements OnInit {
     this.displayInitialUi = true;
     this.selectedOutputType = newType;
 
-    localStorage.setItem(this.conversionTypeStorageKey, newType.name);
+    this.localStorage?.setItem(this.conversionTypeStorageKey, newType.name);
   }
 
   onSelectFilesClick(evt: Event): void {
@@ -148,7 +149,7 @@ export class ConvertComponent implements OnInit {
   private buildOutputTypesList(): void {
     this.outputTypesForMenu = [...this.parserSvc.outputConverters];
 
-    const savedOutputTypePrefName = localStorage.getItem(this.conversionTypeStorageKey);
+    const savedOutputTypePrefName = this.localStorage?.getItem(this.conversionTypeStorageKey);
     //auto-select the saved preference, but if none auto-select the first type
     //It's possible for this to be `undefined` but very unlikely
     this.selectedOutputType =
@@ -168,7 +169,7 @@ export class ConvertComponent implements OnInit {
   private getSavedConvertedFileCount(): void {
     //Restore the saved file count from any previous session
     const savedConvertedFileCount = parseInt(
-      localStorage.getItem(this.convertedFileCountStorageKey) ?? '',
+      this.localStorage?.getItem(this.convertedFileCountStorageKey) ?? '',
       10,
     );
     if (!isNaN(savedConvertedFileCount) && savedConvertedFileCount > 0) {
@@ -206,7 +207,10 @@ export class ConvertComponent implements OnInit {
   private convertToSelectedTypes(songs: Array<ISong>): void {
     //Update the converted file count and save it
     this.convertedFileCount += songs.length;
-    localStorage.setItem(this.convertedFileCountStorageKey, this.convertedFileCount.toString());
+    this.localStorage?.setItem(
+      this.convertedFileCountStorageKey,
+      this.convertedFileCount.toString(),
+    );
 
     const convertedSongsArr: Array<IOutputFile> = [];
     for (const s of songs) {

@@ -1,6 +1,6 @@
 {
   "name": "lyric-converter",
-  "version": "3.3.4",
+  "version": "3.3.5",
   "homepage": "https://lyricconverter.net",
   "author": {
     "name": "Chris Barr",
@@ -27,7 +27,8 @@
     "test-coverage": "npm run genversion && ng test --code-coverage --no-watch",
     "test-coverage-headless": "npm run genversion && ng test --code-coverage --no-watch --browsers=ChromeHeadless",
     "lint": "ng lint --fix",
-    "update": "ncu -u"
+    "update": "ncu -u",
+    "serve:ssr:LyricConverter": "node dist/LyricConverter/server/server.mjs"
   },
   "private": false,
   "dependencies": {
@@ -41,10 +42,10 @@
     "@angular/router": "^19.0.0",
     "@angular/ssr": "^19.0.1",
     "chordsheetjs": "^10.5.0",
+    "express": "^4.18.2",
     "file-saver": "^2.0.5",
     "js-base64": "^3.7.7",
     "jszip": "^3.10.1",
-    "localstorage-polyfill": "^1.0.1",
     "openlyrics-parser": "^1.1.6",
     "propresenter-parser": "^1.0.3",
     "rxjs": "^7.8.1",
@@ -66,9 +67,10 @@
     "@angular/cli": "^19.0.1",
     "@angular/compiler-cli": "^19.0.0",
     "@chiragrupani/karma-chromium-edge-launcher": "^2.4.1",
+    "@types/express": "^4.17.17",
     "@types/file-saver": "~2.0.7",
     "@types/jasmine": "~5.1.4",
-    "@types/node": "^22.9.3",
+    "@types/node": "^18.18.0",
     "@typescript-eslint/eslint-plugin": "~8.15.0",
     "@typescript-eslint/parser": "~8.15.0",
     "autoprefixer": "^10.4.20",
