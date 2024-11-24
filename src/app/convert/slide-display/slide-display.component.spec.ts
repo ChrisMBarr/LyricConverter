@@ -10,8 +10,8 @@ describe('SlideDisplayComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SlideDisplayComponent],
-    });
+    imports: [SlideDisplayComponent],
+});
     fixture = TestBed.createComponent(SlideDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -8,8 +8,8 @@ describe('DonateButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DonateButtonComponent],
-    });
+    imports: [DonateButtonComponent],
+});
     fixture = TestBed.createComponent(DonateButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

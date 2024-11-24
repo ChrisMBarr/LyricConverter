@@ -6,9 +6,8 @@ import { IOutputFile } from '../models/file.model';
 import { IOutputConverter } from '../outputs/output-converter.model';
 
 @Component({
-  selector: 'app-download-display',
-  templateUrl: './download-display.component.html',
-  standalone: false,
+    selector: 'app-download-display',
+    templateUrl: './download-display.component.html',
 })
 export class DownloadDisplayComponent {
   @Input() outputFileList: Array<IOutputFile> = [];

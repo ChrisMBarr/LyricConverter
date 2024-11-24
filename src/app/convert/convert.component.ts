@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgClass } from '@angular/common';
 import {
   Component,
   DestroyRef,
@@ -16,6 +16,10 @@ import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
 import { ParserService } from './parser/parser.service';
+import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
+import { DonateButtonComponent } from '../donate-button/donate-button.component';
+import { SlideDisplayComponent } from './slide-display/slide-display.component';
+import { DownloadDisplayComponent } from './download-display/download-display.component';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/use-component-view-encapsulation -- This is intentional and required to allow the drag-n-srop styles to be applied as we need them here
@@ -23,7 +27,7 @@ import { ParserService } from './parser/parser.service';
     selector: 'app-convert',
     templateUrl: './convert.component.html',
     styleUrl: './convert.component.css',
-    standalone: false
+    imports: [DragAndDropFilesDirective, NgClass, DonateButtonComponent, SlideDisplayComponent, DownloadDisplayComponent]
 })
 export class ConvertComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);

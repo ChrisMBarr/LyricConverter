@@ -9,8 +9,8 @@ describe('AboutComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AboutComponent, DonateButtonComponent],
-    });
+    imports: [AboutComponent, DonateButtonComponent],
+});
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

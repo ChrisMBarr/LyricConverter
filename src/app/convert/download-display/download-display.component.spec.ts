@@ -14,8 +14,8 @@ describe('DownloadDisplayComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DownloadDisplayComponent],
-    });
+    imports: [DownloadDisplayComponent],
+});
     fixture = TestBed.createComponent(DownloadDisplayComponent);
     component = fixture.componentInstance;
     component.selectedOutputType = new OutputTypePlainText(); //only needed for google analytics reporting
