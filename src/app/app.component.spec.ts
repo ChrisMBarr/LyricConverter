@@ -16,9 +16,19 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [RouterOutlet, RouterLink, RouterLinkActive, HelpComponent, AboutComponent, ConvertComponent, DonateButtonComponent, DragAndDropFilesDirective, AppComponent],
-    providers: [provideRouter([])],
-});
+      imports: [
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        HelpComponent,
+        AboutComponent,
+        ConvertComponent,
+        DonateButtonComponent,
+        DragAndDropFilesDirective,
+        AppComponent,
+      ],
+      providers: [provideRouter([])],
+    });
 
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.componentInstance;

@@ -11,8 +11,8 @@ describe('DragAndDropFilesDirective', () => {
   //---------------------------------------------
   @Component({
     template: `<div appDragAndDropFiles (fileDrop)="onFileDrop($event)"></div>`,
-    selector: 'app-test-component'
-})
+    selector: 'app-test-component',
+  })
   class TestComponent {
     filesFromDirective: Array<IFileWithData> = [];
     onFileDrop(files: Array<IFileWithData>): void {
@@ -28,8 +28,8 @@ describe('DragAndDropFilesDirective', () => {
 
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-    imports: [DragAndDropFilesDirective, TestComponent],
-}).createComponent(TestComponent);
+      imports: [DragAndDropFilesDirective, TestComponent],
+    }).createComponent(TestComponent);
 
     injectedDocument = Inject(DOCUMENT) as Document;
     debugEl = fixture.debugElement.query(By.directive(DragAndDropFilesDirective));

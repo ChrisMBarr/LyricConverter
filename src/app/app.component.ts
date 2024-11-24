@@ -1,13 +1,13 @@
 import { DOCUMENT, isPlatformServer } from '@angular/common';
 import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { version } from './version';
-import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    imports: [RouterLinkActive, RouterLink, RouterOutlet]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  imports: [RouterLinkActive, RouterLink, RouterOutlet],
 })
 export class AppComponent implements OnInit {
   private readonly document: Document = inject(DOCUMENT);

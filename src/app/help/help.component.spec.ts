@@ -12,9 +12,9 @@ describe('HelpComponent', () => {
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
   function configureTestBed(providersArray: Array<any>) {
     TestBed.configureTestingModule({
-    imports: [HelpComponent],
-    providers: providersArray,
-});
+      imports: [HelpComponent],
+      providers: providersArray,
+    });
     fixture = TestBed.createComponent(HelpComponent);
     component = fixture.componentInstance;
     parserSvc = TestBed.inject(ParserService);

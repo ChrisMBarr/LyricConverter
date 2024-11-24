@@ -42,9 +42,9 @@ describe('ConvertComponent', () => {
 
   function configureTestBed<T>(providers: Array<T>) {
     TestBed.configureTestingModule({
-    imports: [ConvertComponent, DonateButtonComponent, DragAndDropFilesDirective, SlideDisplayComponent, DownloadDisplayComponent],
-    providers,
-});
+      imports: [ConvertComponent, DonateButtonComponent, DragAndDropFilesDirective, SlideDisplayComponent, DownloadDisplayComponent],
+      providers,
+    });
     parserSvc = TestBed.inject(ParserService);
     errorsSvc = TestBed.inject(ErrorsService);
 

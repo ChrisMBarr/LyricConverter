@@ -10,24 +10,30 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { DonateButtonComponent } from '../donate-button/donate-button.component';
+import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
+import { DownloadDisplayComponent } from './download-display/download-display.component';
 import { ErrorsService } from './errors/errors.service';
 import { ISongError } from './models/errors.model';
 import { IOutputFile, IRawDataFile } from './models/file.model';
 import { ISong } from './models/song.model';
 import { IOutputConverter } from './outputs/output-converter.model';
 import { ParserService } from './parser/parser.service';
-import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
-import { DonateButtonComponent } from '../donate-button/donate-button.component';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
-import { DownloadDisplayComponent } from './download-display/download-display.component';
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/use-component-view-encapsulation -- This is intentional and required to allow the drag-n-srop styles to be applied as we need them here
-    encapsulation: ViewEncapsulation.None,
-    selector: 'app-convert',
-    templateUrl: './convert.component.html',
-    styleUrl: './convert.component.css',
-    imports: [DragAndDropFilesDirective, NgClass, DonateButtonComponent, SlideDisplayComponent, DownloadDisplayComponent]
+  // eslint-disable-next-line @angular-eslint/use-component-view-encapsulation -- This is intentional and required to allow the drag-n-srop styles to be applied as we need them here
+  encapsulation: ViewEncapsulation.None,
+  selector: 'app-convert',
+  templateUrl: './convert.component.html',
+  styleUrl: './convert.component.css',
+  imports: [
+    DragAndDropFilesDirective,
+    NgClass,
+    DonateButtonComponent,
+    SlideDisplayComponent,
+    DownloadDisplayComponent,
+  ],
 })
 export class ConvertComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
