@@ -2,7 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { Directive, EventEmitter, HostListener, Inject, OnDestroy, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appDragAndDropFiles]',
+    selector: '[appDragAndDropFiles]',
+    standalone: false
 })
 export class DragAndDropFilesDirective implements OnDestroy {
   private readonly dragOverClass = 'drag-over';

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-donate-button',
-  templateUrl: './donate-button.component.html',
+    selector: 'app-donate-button',
+    templateUrl: './donate-button.component.html',
+    standalone: false
 })
 export class DonateButtonComponent {}

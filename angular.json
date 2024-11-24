@@ -15,21 +15,32 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/LyricConverter/browser",
+            "outputPath": {
+              "base": "dist/LyricConverter"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "allowedCommonJsDependencies": ["jszip", "file-saver", "fast-xml-parser", "songpro"],
+            "allowedCommonJsDependencies": [
+              "jszip",
+              "file-saver",
+              "fast-xml-parser",
+              "songpro"
+            ],
             "assets": [
               "src/assets",
               "src/favicon.ico"
             ],
-            "styles": ["src/styles.css"],
-            "scripts": []
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "browser": "src/main.ts",
           },
           "configurations": {
             "production": {
@@ -48,9 +59,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -97,61 +106,6 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/LyricConverter/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "inlineStyleLanguage": "css"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false,
-              "vendorChunk": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@angular-devkit/build-angular:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "LyricConverter:build:development",
-              "serverTarget": "LyricConverter:server:development"
-            },
-            "production": {
-              "browserTarget": "LyricConverter:build:production",
-              "serverTarget": "LyricConverter:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "LyricConverter:build:production",
-              "serverTarget": "LyricConverter:server:production"
-            },
-            "development": {
-              "browserTarget": "LyricConverter:build:development",
-              "serverTarget": "LyricConverter:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       }
     }

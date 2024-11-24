@@ -8,6 +8,7 @@ import { IOutputConverter } from '../outputs/output-converter.model';
 @Component({
   selector: 'app-download-display',
   templateUrl: './download-display.component.html',
+  standalone: false,
 })
 export class DownloadDisplayComponent {
   @Input() outputFileList: Array<IOutputFile> = [];
@@ -25,7 +26,7 @@ export class DownloadDisplayComponent {
   }
 
   onClickDownloadZipFile(): void {
-    const zip = new JSZip();
+    const zip = new JSZip.default();
 
     for (const outputFile of this.outputFileList) {
       zip.file(outputFile.fileName, new File([outputFile.outputContent], outputFile.fileName));

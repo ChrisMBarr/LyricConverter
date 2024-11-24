@@ -4,8 +4,9 @@ import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { version } from './version';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent implements OnInit {
   private readonly document: Document = inject(DOCUMENT);

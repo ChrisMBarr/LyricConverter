@@ -6,7 +6,7 @@
       "files": ["*.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "project": ["tsconfig.(app|spec|server).json"]
+        "project": ["tsconfig.(app|spec).json"]
       },
       "extends": [
         "plugin:@typescript-eslint/strict-type-checked",

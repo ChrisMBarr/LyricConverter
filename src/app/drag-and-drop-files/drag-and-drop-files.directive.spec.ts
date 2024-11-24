@@ -12,7 +12,8 @@ describe('DragAndDropFilesDirective', () => {
   @Component({
     template: `<div appDragAndDropFiles (fileDrop)="onFileDrop($event)"></div>`,
     selector: 'app-test-component',
-  })
+    standalone: false
+})
   class TestComponent {
     filesFromDirective: Array<IFileWithData> = [];
     onFileDrop(files: Array<IFileWithData>): void {
