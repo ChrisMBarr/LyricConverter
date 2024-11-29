@@ -17,7 +17,6 @@
     "ng": "npm run genversion && ng",
     "start": "npm run genversion && ng serve",
     "build": "npm run genversion && ng build",
-    "build-gh-pages": "npm run genversion && npm run prerender",
     "genversion": "npx genversion src/app/version.ts --es6 --semi",
     "watch": "npm run genversion && ng build --watch --configuration development",
     "test": "npm run genversion && ng test",
@@ -92,7 +91,7 @@
     "prettier": "^3.4.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.15",
-    "typescript": "^5.6.3"
+    "typescript": "~5.6.3"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*"
