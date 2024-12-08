@@ -1,64 +1,44 @@
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import prettier from "eslint-plugin-prettier";
-import onlyWarn from "eslint-plugin-only-warn";
+// @ts-check
+
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
-import parser from "@angular-eslint/template-parser";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import angularEslint from "angular-eslint";
+import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
+import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
+import eslintPluginTailwindCSS from "eslint-plugin-tailwindcss";
+import eslintPluginOnlyWarn from "eslint-plugin-only-warn"; //just importing this will activate it, no need to do anything else!
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-export default [
+export default tseslint.config(
+  eslintPluginPrettier,
   {
-    plugins: {
-      "@typescript-eslint": typescriptEslint,
-      "simple-import-sort": simpleImportSort,
-      prettier,
-      "only-warn": onlyWarn,
-    },
-  },
-  ...compat
-    .extends(
-      "plugin:@typescript-eslint/strict-type-checked",
-      "plugin:@typescript-eslint/stylistic-type-checked",
-      "plugin:@angular-eslint/recommended",
-      "plugin:@angular-eslint/all",
-      "plugin:@angular-eslint/template/process-inline-templates",
-      "plugin:prettier/recommended",
-    )
-    .map((config) => ({
-      ...config,
-      files: ["**/*.ts"],
-    })),
-  {
+    // Everything in this config object targets our TypeScript files (Components, Directives, Pipes etc)
     files: ["**/*.ts"],
-
+    plugins: {
+      "simple-import-sort": eslintPluginSimpleImportSort,
+    },
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.strictTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
+      ...angularEslint.configs.tsAll,
+    ],
+    processor: angularEslint.processInlineTemplates,
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 5,
       sourceType: "script",
-
       parserOptions: {
         project: ["tsconfig.(app|spec).json"],
       },
     },
-
     rules: {
       "@angular-eslint/directive-selector": [
-        "error",
+        "warn",
         { type: "attribute", prefix: "app", style: "camelCase" },
       ],
       "@angular-eslint/component-selector": [
-        "error",
+        "warn",
         { type: "element", prefix: "app", style: "kebab-case" },
       ],
       "@angular-eslint/prefer-standalone": "off",
@@ -125,25 +105,15 @@ export default [
           ],
         },
       ],
-
       "prettier/prettier": ["warn", { endOfLine: "auto" }],
     },
   },
-  ...compat
-    .extends(
-      "plugin:@angular-eslint/template/all",
-      "plugin:tailwindcss/recommended",
-      "plugin:prettier/recommended",
-    )
-    .map((config) => ({
-      ...config,
-      files: ["**/*.html"],
-    })),
   {
     files: ["**/*.html"],
-    languageOptions: {
-      parser: parser,
-    },
+    extends: [
+      ...angularEslint.configs.templateAll,
+      ...eslintPluginTailwindCSS.configs["flat/recommended"],
+    ],
     rules: {
       "@angular-eslint/template/i18n": "off",
       "@angular-eslint/template/prefer-ngsrc": "off",
@@ -160,4 +130,4 @@ export default [
       "prettier/prettier": ["warn", { endOfLine: "auto" }],
     },
   },
-];
+);
