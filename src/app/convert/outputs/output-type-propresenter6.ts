@@ -17,7 +17,6 @@ export class OutputTypeProPresenter6 implements IOutputConverter {
   convertToType(song: ISong): IOutputFile {
     const builderOpts: IPro6BuilderOptions = {
       properties: {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         CCLISongTitle: song.title,
         width: 1920,
         height: 1080,

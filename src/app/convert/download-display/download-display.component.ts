@@ -15,7 +15,6 @@ export class DownloadDisplayComponent {
 
   onClickDownloadFiles(): void {
     for (const outputFile of this.outputFileList) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated -- TS selects the wrong overload and says it deprecated. It's not
       fileSaver.saveAs(
         new File(['\ufeff' + outputFile.outputContent], outputFile.fileName, {
           type: 'text/plain',
@@ -37,7 +36,6 @@ export class DownloadDisplayComponent {
         type: 'blob',
       })
       .then((zipContent: Blob) => {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- TS selects the wrong overload and says it deprecated. It's not
         fileSaver.saveAs(
           zipContent,
           `LyricConverter (${this.outputFileList.length.toString()} files).zip`,

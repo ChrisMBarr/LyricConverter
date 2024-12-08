@@ -156,7 +156,7 @@ export class ConvertComponent implements OnInit {
       this.parserSvc.outputConverters.find((c) => c.name === savedOutputTypePrefName) ??
       //We know we weill always have output types in this array, so this is safe to assume here
       //We need to disable this rule here to avoid complexity elsewhere with it being possibly undefined
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       this.outputTypesForMenu[0]!;
   }
 

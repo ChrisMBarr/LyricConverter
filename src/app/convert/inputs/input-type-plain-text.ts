@@ -68,7 +68,7 @@ export class InputTypePlainText implements IInputConverter {
       let title = '';
       let lyrics = section;
       //the first line always exists, even in an empty file!
-      const firstLine = lines[0]!; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+      const firstLine = lines[0]!;
       if (firstLine.endsWith(':')) {
         title = firstLine.replace(':', '').trim();
         lyrics = lyrics.replace(firstLine + '\n', '').trim();

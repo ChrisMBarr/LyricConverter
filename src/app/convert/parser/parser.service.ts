@@ -70,7 +70,7 @@ export class ParserService {
       for (let i = 0; i <= files.length - 1; i++) {
         const reader = new FileReader();
         //This cannot be null since it's in the list that came here
-        const f = files[i]!; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+        const f = files[i]!;
         //File reading happens async
         //Set up an event for what to do when the file has finished being read
         const completeFn = this.handleFile(f, loadedFiles, files.length);

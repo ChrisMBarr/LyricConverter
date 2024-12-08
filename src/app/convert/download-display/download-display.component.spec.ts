@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-deprecated -- TS selects the wrong overload and says it deprecated. It's not */
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import * as fileSaver from 'file-saver';

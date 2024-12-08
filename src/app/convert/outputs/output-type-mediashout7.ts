@@ -101,9 +101,7 @@ export class OutputTypeMediaShout7 implements IOutputConverter {
   private getLyricParts(slidesArray: Array<ISongSlide>): Array<IMediaShoutLyricPart> {
     return slidesArray.map((slide) => {
       //Defaults to be the first part of a verse and the slide title is the label
-      let partType: MediaShoutPartTypeEnum = MediaShoutPartTypeEnum.Verse;
       let partTypeNumber = 1;
-      let partLabel: string | null = slide.title;
 
       //Try to extract the part type number form the title if there is one. If not just default to using 1
       //Some might end with the number between parenthesis
@@ -113,36 +111,51 @@ export class OutputTypeMediaShout7 implements IOutputConverter {
         partTypeNumber = parseInt(partTypeNumMatch[1], 10);
       }
 
-      //Exclude the number and try to parse the remainder of the label as an MediaShout part type enum, so we can use the enum number as the final value here
-      //If we have a match, we use that instead of a label
-      const partTypeMatch = /^\D+/.exec(slide.title);
-      if (partTypeMatch?.[0] != null) {
-        const partTypeToEnumName = this.tryConvertToEnum(partTypeMatch[0]).trim();
-        //See if the string we have matches one on the enum. If it's greater than -1 we have a match
-        const enumIndex = this.partTypeEnumKeys.indexOf(partTypeToEnumName);
-
-        if (enumIndex > -1) {
-          partType = enumIndex;
-
-          //If the title contained a number with parentheses, we have already parsed out the "real" number, so now we can use the rest as the label
-          if (partTypeNumContainsParen) {
-            //example: "Verse 2 (1)" would be the first part/slide of Verse 2. So here we set the label as "Verse 2"
-            partLabel = slide.title.replace(partTypeNumMatch![0], '').trim();
-          } else {
-            //Nothing special, the part type is set as the enum so we don't need a special label
-            partLabel = null;
-          }
-        }
-      }
+      const partTypeAndLabel = this.getPartTypeAndLabelForSlide(
+        slide,
+        partTypeNumContainsParen,
+        partTypeNumMatch,
+      );
 
       return {
         Lyrics: slide.lyrics,
-        PartType: partType,
         PartTypeNumber: partTypeNumber,
-        PartLabel: partLabel,
+        ...partTypeAndLabel,
         Guid: this.makeGuid(),
       };
     });
+  }
+
+  private getPartTypeAndLabelForSlide(
+    slide: ISongSlide,
+    partTypeNumContainsParen: boolean,
+    partTypeNumMatch: RegExpExecArray | null,
+  ): Pick<IMediaShoutLyricPart, 'PartType' | 'PartLabel'> {
+    let partType: MediaShoutPartTypeEnum = MediaShoutPartTypeEnum.Verse;
+    let partLabel: string | null = slide.title;
+    //Exclude the number and try to parse the remainder of the label as an MediaShout part type enum, so we can use the enum number as the final value here
+    //If we have a match, we use that instead of a label
+    const partTypeMatch = /^\D+/.exec(slide.title);
+    if (partTypeMatch?.[0] != null) {
+      const partTypeToEnumName = this.tryConvertToEnum(partTypeMatch[0]).trim();
+      //See if the string we have matches one on the enum. If it's greater than -1 we have a match
+      const enumIndex = this.partTypeEnumKeys.indexOf(partTypeToEnumName);
+
+      if (enumIndex > -1) {
+        partType = enumIndex;
+
+        //If the title contained a number with parentheses, we have already parsed out the "real" number, so now we can use the rest as the label
+        if (partTypeNumContainsParen) {
+          //example: "Verse 2 (1)" would be the first part/slide of Verse 2. So here we set the label as "Verse 2"
+          partLabel = slide.title.replace(partTypeNumMatch![0], '').trim();
+        } else {
+          //Nothing special, the part type is set as the enum so we don't need a special label
+          partLabel = null;
+        }
+      }
+    }
+
+    return { PartType: partType, PartLabel: partLabel };
   }
 
   private makeGuid(): string {

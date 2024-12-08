@@ -122,13 +122,13 @@ export class InputTypeOpenLyrics implements IInputConverter {
     if (comments.length === 1) {
       //Just one comment
       //Just one comment - we know it exists to we can assert that it's not null
-      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       commentsArr.push({ name: key, value: comments[0]! });
     } else {
       //Multiple comments added as separate infos with numbered names
       for (let i = 0; i < comments.length; i++) {
         //of course we know the value here!
-        //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
         const comment = comments[i]!;
         commentsArr.push({ name: `${key} ${(i + 1).toString()}`, value: comment });
       }
@@ -149,7 +149,7 @@ export class InputTypeOpenLyrics implements IInputConverter {
       //Multiple comments added as separate infos with numbered names
       for (let i = 0; i < songBooks.length; i++) {
         //of course we know the value here!
-        //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
         const sb = songBooks[i]!;
         let sbVal = sb.name;
         if (sb.entry !== '') {

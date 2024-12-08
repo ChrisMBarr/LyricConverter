@@ -14,7 +14,7 @@ export class Utils {
 
   public static getFileNameParts(fileName: string): { name: string; ext: string } {
     const fileNameParts = fileName.split('.');
-    const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : ''; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+    const fileExt = fileNameParts.length > 1 ? fileNameParts.slice(-1)[0]! : '';
     const nameWithoutExt = fileName.replace(`.${fileExt}`, '');
 
     return {
