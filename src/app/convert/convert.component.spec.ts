@@ -27,11 +27,7 @@ class MockConverter implements IOutputConverter {
   ) {}
 
   convertToType = (song: ISong): IOutputFile => {
-    return {
-      songData: song,
-      fileName: '',
-      outputContent: '',
-    };
+    return { songData: song, fileName: '', outputContent: '' };
   };
 }
 
@@ -42,7 +38,7 @@ describe('ConvertComponent', () => {
   let errorsSvc: ErrorsService;
   let injectedDocument: Document;
 
-  function configureTestBed<T>(providers: Array<T>) {
+  function configureTestBed(providers: Array<unknown>) {
     TestBed.configureTestingModule({
       imports: [ConvertComponent, DonateButtonComponent, DragAndDropFilesDirective, SlideDisplayComponent, DownloadDisplayComponent],
       providers,
@@ -251,17 +247,9 @@ describe('ConvertComponent', () => {
         const fileCreationTime = Date.now();
         const dt = new DataTransfer();
         dt.items.add(
-          new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', {
-            lastModified: fileCreationTime,
-            type: 'text/plain',
-          }),
+          new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', { lastModified: fileCreationTime, type: 'text/plain' }),
         );
-        dt.items.add(
-          new File(['this file has no extension!'], 'no-extension', {
-            lastModified: fileCreationTime,
-            type: '',
-          }),
-        );
+        dt.items.add(new File(['this file has no extension!'], 'no-extension', { lastModified: fileCreationTime, type: '' }));
 
         component.onReceiveFiles(dt.files);
         expect(parserSvc.parseFiles).toHaveBeenCalled();
@@ -276,10 +264,7 @@ describe('ConvertComponent', () => {
         dt.items.add(file);
         dt.items.add(file);
 
-        const dropEvent = new DragEvent('drop', {
-          cancelable: true,
-          dataTransfer: dt,
-        });
+        const dropEvent = new DragEvent('drop', { cancelable: true, dataTransfer: dt });
 
         const dropEl = fixture.debugElement.query(By.css('#drop-area'));
         const directiveInstance = dropEl.injector.get(DragAndDropFilesDirective);
@@ -356,21 +341,14 @@ describe('ConvertComponent', () => {
 
       const outputFile: IOutputFile = {
         songData: {
-          originalFile: {
-            extension: 'json',
-            format: 'JSON',
-            name: 'JSON - Your Grace Is Enough',
-          },
+          originalFile: { extension: 'json', format: 'JSON', name: 'JSON - Your Grace Is Enough' },
           outputFileName: 'JSON - Your Grace Is Enough',
           lyricConverterVersion: version,
           timestamp: mockStaticTimestamp,
           title: 'Great is your faithfulness O God',
           info: [{ name: 'Order', value: '1C2CBC' }],
           slides: [
-            {
-              title: 'Chorus',
-              lyrics: 'Your grace is enough\r\nYour grace is enough\r\nYour grace is enough for me',
-            },
+            { title: 'Chorus', lyrics: 'Your grace is enough\r\nYour grace is enough\r\nYour grace is enough for me' },
             {
               title: 'Verse 1',
               lyrics:
@@ -391,10 +369,7 @@ describe('ConvertComponent', () => {
               lyrics:
                 "(Chorus 2.)\r\n\r\nYour grace is enough\r\nHeaven reaching down to us\r\nYour grace is enough for me\r\nGod, I see your grace is enough\r\nI'm covered in your love\r\nYour grace is enough for me\r\nFor me",
             },
-            {
-              title: 'Bridge',
-              lyrics: 'So remember you people\r\nRemember your children\r\nRemember your promise\r\nOh God',
-            },
+            { title: 'Bridge', lyrics: 'So remember you people\r\nRemember your children\r\nRemember your promise\r\nOh God' },
           ],
         },
         fileName: 'JSON - Your Grace Is Enough.txt',
@@ -577,11 +552,7 @@ describe('ConvertComponent', () => {
         ]);
 
         const expectedErr = new LyricConverterError('This file is not formatted as a LyricConverter JSON file');
-        expect(errorsSvc.add).toHaveBeenCalledWith({
-          message: expectedErr.message,
-          fileName: 'bad-file.json',
-          thrownError: expectedErr,
-        });
+        expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'bad-file.json', thrownError: expectedErr });
       });
 
       it('should call the ErrorService with a custom message for a MediaShout SC7X file ', async () => {
@@ -594,10 +565,7 @@ describe('ConvertComponent', () => {
         const expectedErr = new LyricConverterError(
           `These type of MediaShout files cannot be read by LyricConverter. You'll need to export them as JSON files and try again. <a href="https://support.mediashout.com/244705-How-to-move-your-Song-Library-from-one-computer-to-another---MediaShout-7">Read this knowledgebase article to learn how to do that</a>`,
         );
-        expect(errorsSvc.add).toHaveBeenCalledWith({
-          message: expectedErr.message,
-          fileName: 'script.sc7x',
-        });
+        expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'script.sc7x' });
       });
 
       it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file ', async () => {
@@ -610,10 +578,7 @@ describe('ConvertComponent', () => {
         const expectedErr = new LyricConverterError(
           `Only ProPresenter files from version 4, 5, or 6 can be ready by LyricConverter. You will have to export this files as plain text`,
         );
-        expect(errorsSvc.add).toHaveBeenCalledWith({
-          message: expectedErr.message,
-          fileName: 'v7-At the Cross.pro',
-        });
+        expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'v7-At the Cross.pro' });
       });
 
       it("should call the ErrorService when an InputConverter downstream throws a native error for something we can't control", () => {
@@ -645,11 +610,7 @@ describe('ConvertComponent', () => {
             throw SyntaxError();
 
             //@ts-expect-error - we are testing throwing errors so we need this unreachable code
-            return {
-              fileName: `${song.originalFile.name}.${this.fileExt!}`,
-              outputContent: '',
-              songData: song,
-            };
+            return { fileName: `${song.originalFile.name}.${this.fileExt!}`, outputContent: '', songData: song };
           },
         };
 
@@ -677,9 +638,7 @@ describe('ConvertComponent', () => {
           done();
         });
 
-        errorsSvc.add({
-          message: '[[TEST:convert.component.spec.ts]] test message',
-        });
+        errorsSvc.add({ message: '[[TEST:convert.component.spec.ts]] test message' });
       });
 
       it('should tell the ErrorsService to clear out error messages when receiving new files to parse', () => {
@@ -704,10 +663,7 @@ describe('ConvertComponent', () => {
         component.displayInitialUi = false;
         component.errorsList = [
           { message: '[[TEST:convert.component.spec.ts]] Just a message' },
-          {
-            message: '[[TEST:convert.component.spec.ts]] A message with a file name',
-            fileName: 'not-a-virus.exe',
-          },
+          { message: '[[TEST:convert.component.spec.ts]] A message with a file name', fileName: 'not-a-virus.exe' },
         ];
         fixture.detectChanges();
 
