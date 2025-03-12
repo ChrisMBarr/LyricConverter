@@ -2,11 +2,11 @@
   <div class="card mb-4 last-of-type:mb-0">
     <h3 class="card-title">{{ f.songData.title }}</h3>
 
-    <div class="card-content !pb-2">
+    <div class="card-content pb-2!">
       <ul class="flex flex-wrap gap-1 text-sm">
         @for (info of f.songData.info; track info) {
           <li
-            class="inline-flex cursor-default overflow-hidden rounded border border-slate-500 bg-slate-300 text-slate-800 hover:border-slate-600 hover:bg-slate-400"
+            class="inline-flex cursor-default overflow-hidden rounded-sm border border-slate-500 bg-slate-300 text-slate-800 hover:border-slate-600 hover:bg-slate-400"
           >
             <strong class="px-1">{{ info.name }}</strong>
             <!-- &#32; is a space character. We need to keep it here for copy/paste and for testing -->

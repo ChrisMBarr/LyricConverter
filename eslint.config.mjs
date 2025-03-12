@@ -6,7 +6,6 @@ import tsParser from "@typescript-eslint/parser";
 import angularEslint from "angular-eslint";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
-import eslintPluginTailwindCSS from "eslint-plugin-tailwindcss";
 import eslintPluginOnlyWarn from "eslint-plugin-only-warn"; //just importing this will activate it, no need to do anything else!
 
 export default tseslint.config(
@@ -110,10 +109,7 @@ export default tseslint.config(
   },
   {
     files: ["**/*.html"],
-    extends: [
-      ...angularEslint.configs.templateAll,
-      ...eslintPluginTailwindCSS.configs["flat/recommended"],
-    ],
+    extends: [...angularEslint.configs.templateAll],
     rules: {
       "@angular-eslint/template/i18n": "off",
       "@angular-eslint/template/prefer-ngsrc": "off",

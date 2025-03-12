@@ -1,6 +1,6 @@
 <div
   id="drop-area"
-  class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-slate-600/50 backdrop-blur-sm"
+  class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-slate-600/50 backdrop-blur-xs"
   appDragAndDropFiles
   (fileDrop)="onReceiveFiles($event)"
 >
@@ -29,10 +29,10 @@
         <strong class="card-title py-2 text-center"> Convert To </strong>
         @for (fmt of outputTypesForMenu; track fmt) {
           <a
-            class="flex items-center border-b border-b-lc-highlight/10 p-2 text-white hover:bg-lc-highlight/20 hover:no-underline"
+            class="border-b-lc-highlight/10 hover:bg-lc-highlight/20 flex items-center border-b p-2 text-white hover:no-underline"
             href="#"
             [ngClass]="{
-              'border-l-2 border-l-lc-highlight bg-lc-highlight/10 font-bold':
+              'border-l-lc-highlight bg-lc-highlight/10 border-l-2 font-bold':
                 selectedOutputType === fmt,
             }"
             (click)="onSwitchConversionType(fmt, $event)"
@@ -40,7 +40,7 @@
             {{ fmt.name }}
             @if (fmt.fileExt) {
               <span
-                class="ml-1 rounded border border-white/30 bg-slate-300 p-0.5 pl-0 font-mono text-xs leading-none text-slate-800"
+                class="ml-1 rounded-sm border border-white/30 bg-slate-300 p-0.5 pl-0 font-mono text-xs leading-none text-slate-800"
                 >.{{ fmt.fileExt }}</span
               >
             }
@@ -62,7 +62,7 @@
   @if (displayInitialUi) {
     <div id="begin-area" class="card md:col-span-3">
       <div class="card-content flex flex-col items-center justify-center text-center">
-        <p class="mb-4 mt-auto">Choose what file type you want to convert to, then&hellip;</p>
+        <p class="mt-auto mb-4">Choose what file type you want to convert to, then&hellip;</p>
         <h2 class="text-3xl">Drag your <strong>Song Files</strong> into this window</h2>
         <p>or, <a href="#" (click)="onSelectFilesClick($event)">select some files</a></p>
 

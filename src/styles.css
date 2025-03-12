@@ -1,78 +1,172 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-lc-highlight: #3ea8b2;
+  --color-lc-light: #7bc9d1;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility card {
+  @apply rounded-lg bg-slate-900/40 backdrop-blur-lg border border-lc-highlight/10;
+
+  & .card-title {
+    @apply border-b border-b-lc-highlight/10;
+  }
+
+  & h3.card-title {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  & h4.card-title {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  & h5.card-title {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  & .card-content {
+    @apply p-4 h-full;
+  }
+
+  & .card-content + .card-content {
+    @apply border-t border-t-lc-highlight/10;
+  }
+
+  & h3.card-title + .card-content {
+    @apply pt-2;
+  }
+
+  & h4.card-title + .card-content {
+    @apply pt-2;
+  }
+
+  & h5.card-title + .card-content {
+    @apply pt-2;
+  }
+
+  & .card-content + .card-content {
+    @apply pt-2;
+  }
+}
+
+@utility card-title {
+  .card & {
+    @apply border-b border-b-lc-highlight/10;
+  }
+
+  .card &h3 {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  .card &h4 {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  .card &h5 {
+    @apply text-xl p-4 pb-2 font-bold;
+  }
+
+  .card &h3 + .card-content {
+    @apply pt-2;
+  }
+
+  .card &h4 + .card-content {
+    @apply pt-2;
+  }
+
+  .card &h5 + .card-content {
+    @apply pt-2;
+  }
+}
+
+@utility card-content {
+  .card & {
+    @apply p-4 h-full;
+  }
+
+  .card & + & {
+    @apply border-t border-t-lc-highlight/10;
+  }
+
+  .card h3.card-title + & {
+    @apply pt-2;
+  }
+
+  .card h4.card-title + & {
+    @apply pt-2;
+  }
+
+  .card h5.card-title + & {
+    @apply pt-2;
+  }
+
+  .card & + & {
+    @apply pt-2;
+  }
+}
+
+@utility btn {
+  @apply font-bold py-2 px-4 rounded-sm shadow-sm inline-flex items-center hover:no-underline;
+
+  & .icon {
+    @apply mr-1;
+  }
+}
+
+@utility btn-primary {
+  @apply text-white bg-blue-600 hover:bg-blue-700;
+}
+
+@utility btn-secondary {
+  @apply bg-slate-300 hover:bg-slate-400 text-slate-800;
+}
+
+@utility btn-success {
+  @apply text-white bg-green-600 hover:bg-green-700;
+}
+
+@utility btn-small {
+  @apply py-1 px-2 text-sm;
+}
+
+@utility icon {
+  /* Bootstrap SVG icons - defaults to match text size and color */
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+
+  .btn & {
+    @apply mr-1;
+  }
+}
+
+@utility icon-lg {
+  /* fixed larger size when this class is added */
+  width: 32px;
+  height: 32px;
+}
 
 @layer base {
   a {
     @apply hover:underline text-lc-light;
-  }
-}
-
-@layer components {
-  .card {
-    @apply rounded-lg bg-slate-900/40 backdrop-blur-lg border border-lc-highlight/10;
-  }
-
-  .card .card-title {
-    @apply border-b border-b-lc-highlight/10;
-  }
-
-  .card h3.card-title,
-  .card h4.card-title,
-  .card h5.card-title    {
-    @apply text-xl p-4 pb-2 font-bold;
-  }
-
-  .card .card-content {
-    @apply p-4 h-full;
-  }
-
-  .card .card-content + .card-content {
-    @apply border-t border-t-lc-highlight/10;
-  }
-
-  .card h3.card-title + .card-content,
-  .card h4.card-title + .card-content,
-  .card h5.card-title + .card-content,
-  .card .card-content + .card-content  {
-    @apply pt-2;
-  }
-
-  .btn {
-    @apply font-bold py-2 px-4 rounded shadow inline-flex items-center hover:no-underline;
-  }
-
-  .btn-primary {
-    @apply text-white bg-blue-600 hover:bg-blue-700;
-  }
-
-  .btn-secondary {
-    @apply bg-slate-300 hover:bg-slate-400 text-slate-800;
-  }
-
-  .btn-success {
-    @apply text-white bg-green-600 hover:bg-green-700;
-  }
-
-  .btn-small {
-    @apply py-1 px-2 text-sm;
-  }
-
-  .icon {
-    /* Bootstrap SVG icons - defaults to match text size and color */
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    fill: currentcolor;
-  }
-
-  .icon-lg {
-    /* fixed larger size when this class is added */
-    width: 32px;
-    height: 32px;
-  }
-
-  .btn .icon {
-    @apply mr-1;
   }
 }
