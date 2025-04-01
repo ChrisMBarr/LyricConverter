@@ -31,7 +31,7 @@
     "serve:ssr:LyricConverter": "node dist/LyricConverter/server/server.mjs"
   },
   "dependencies": {
-    "@angular/animations": "^19.2.1",
+    "@angular/animations": "^19.2.4",
     "@angular/common": "^19.2.1",
     "@angular/compiler": "^19.2.1",
     "@angular/core": "^19.2.1",
