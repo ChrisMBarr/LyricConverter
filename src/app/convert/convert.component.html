@@ -69,11 +69,8 @@
         <!-- Weirdness below is to preserve how whitespace is rendered -->
         <small id="test-accepted-input-formats" class="mt-auto"
           ><strong>Accepted Formats: </strong>
-          @for (inputType of inputTypesList; track inputType; let i = $index) {
-            <span
-              >{{ i === inputTypesList.length - 1 ? "or " : "" }}{{ inputType.name
-              }}{{ i < inputTypesList.length - 1 ? ", " : "" }}</span
-            >
+          @for (inputType of inputTypesList; track inputType) {
+            <span>{{ $last ? "or " : "" }}{{ inputType.name }}{{ !$last ? ", " : "" }}</span>
           }
         </small>
       </div>
