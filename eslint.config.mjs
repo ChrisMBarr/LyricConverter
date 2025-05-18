@@ -45,6 +45,7 @@ export default tseslint.config(
       "@angular-eslint/prefer-standalone-component": "off",
       "@angular-eslint/prefer-on-push-component-change-detection": "off",
       "@angular-eslint/prefer-signals": "off",
+      "@angular-eslint/prefer-output-emitter-ref": "off",
       "no-loop-func": "off",
       "@typescript-eslint/no-loop-func": "warn",
       "no-shadow": "off",

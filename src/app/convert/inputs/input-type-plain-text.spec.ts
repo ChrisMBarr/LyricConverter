@@ -39,9 +39,17 @@ describe('InputTypePlainText', () => {
   });
 
   describe('extractSongData()', () => {
-    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
+    fit('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
-      testFile.dataAsString = testFile.dataAsString.replace('\r\n\r\n\r\n', '\r\n');
+      testFile.dataAsString = testFile.dataAsString.replace(
+        `
+
+`,
+        `
+`,
+      );
+
+      console.log(testFile.dataAsString, testFile.dataAsString.charAt(73));
 
       const expectedError = new LyricConverterError(
         `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`,
