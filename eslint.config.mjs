@@ -119,6 +119,7 @@ export default tseslint.config(
       "@angular-eslint/template/i18n": "off",
       "@angular-eslint/template/prefer-ngsrc": "off",
       "@angular-eslint/template/no-inline-styles": "off",
+      "@angular-eslint/template/cyclomatic-complexity": "off",
       "prettier/prettier": ["warn", { endOfLine: "auto" }],
     },
   },

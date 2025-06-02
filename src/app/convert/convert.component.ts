@@ -22,11 +22,7 @@ import { ParserService } from './parser/parser.service';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/use-component-view-encapsulation -- This is intentional and required to allow the drag-n-srop styles to be applied as we need them here
-  encapsulation: ViewEncapsulation.None,
   selector: 'app-convert',
-  templateUrl: './convert.component.html',
-  styleUrl: './convert.component.css',
   imports: [
     DragAndDropFilesDirective,
     NgClass,
@@ -34,6 +30,10 @@ import { SlideDisplayComponent } from './slide-display/slide-display.component';
     SlideDisplayComponent,
     DownloadDisplayComponent,
   ],
+  templateUrl: './convert.component.html',
+  styleUrl: './convert.component.css',
+  // eslint-disable-next-line @angular-eslint/use-component-view-encapsulation -- This is intentional and required to allow the drag-n-srop styles to be applied as we need them here
+  encapsulation: ViewEncapsulation.None,
 })
 export class ConvertComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);

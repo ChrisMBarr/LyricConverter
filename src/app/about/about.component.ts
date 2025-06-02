@@ -4,7 +4,7 @@ import { DonateButtonComponent } from '../donate-button/donate-button.component'
 
 @Component({
   selector: 'app-about',
-  templateUrl: './about.component.html',
   imports: [DonateButtonComponent],
+  templateUrl: './about.component.html',
 })
 export class AboutComponent {}
