@@ -64,7 +64,7 @@
     "@angular-eslint/schematics": "~19.7.0",
     "@angular-eslint/template-parser": "~19.7.0",
     "@angular/cli": "19.2.12",
-    "@angular/compiler-cli": "^19.2.11",
+    "@angular/compiler-cli": "^20.0.0",
     "@chiragrupani/karma-chromium-edge-launcher": "^2.4.1",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.28.0",
