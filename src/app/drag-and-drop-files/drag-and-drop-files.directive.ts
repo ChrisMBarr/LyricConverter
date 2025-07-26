@@ -1,5 +1,12 @@
-import { DOCUMENT } from '@angular/common';
-import { Directive, EventEmitter, HostListener, inject, OnDestroy, Output } from '@angular/core';
+import {
+  Directive,
+  DOCUMENT,
+  EventEmitter,
+  HostListener,
+  inject,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 
 @Directive({ selector: '[appDragAndDropFiles]' })
 export class DragAndDropFilesDirective implements OnDestroy {

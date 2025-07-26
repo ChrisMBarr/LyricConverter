@@ -1,5 +1,5 @@
-import { DOCUMENT, isPlatformServer } from '@angular/common';
-import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
+import { Component, DOCUMENT, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { version } from './version';

@@ -39,7 +39,7 @@ describe('InputTypePlainText', () => {
   });
 
   describe('extractSongData()', () => {
-    fit('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
+    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
       testFile.dataAsString = testFile.dataAsString.replace(
         `

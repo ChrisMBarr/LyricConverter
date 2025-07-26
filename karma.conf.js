@@ -13,7 +13,6 @@ module.exports = function (config) {
       require("@chiragrupani/karma-chromium-edge-launcher"),
       require("karma-jasmine-html-reporter"),
       require("karma-coverage"),
-      require("@angular-devkit/build-angular/plugins/karma"),
     ],
     client: {
       jasmine: {
@@ -40,7 +39,7 @@ module.exports = function (config) {
         pattern: "test/sample-files/**/*.*",
         watched: false,
         served: true,
-        included: false,
+        included: true,
       },
     ],
   });

@@ -1,7 +1,8 @@
-import { DOCUMENT, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   Component,
   DestroyRef,
+  DOCUMENT,
   ElementRef,
   inject,
   OnInit,
