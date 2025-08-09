@@ -49,7 +49,7 @@ describe('InputTypePlainText', () => {
 `,
       );
 
-      console.log(testFile.dataAsString, testFile.dataAsString.charAt(73));
+      // console.log(testFile.dataAsString, testFile.dataAsString.charAt(73));
 
       const expectedError = new LyricConverterError(
         `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`,
