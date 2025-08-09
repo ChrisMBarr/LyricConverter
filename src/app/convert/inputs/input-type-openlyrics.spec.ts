@@ -22,7 +22,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should properly REJECT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
@@ -37,7 +37,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should properly REJECT a ProPresenter file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - empty.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
@@ -183,7 +183,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Amazing Grace.xml');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Amazing-Grace.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -227,7 +227,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file 2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'It Is Well With My Soul.xml');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'It-Is-Well-With-My-Soul.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -301,7 +301,7 @@ describe('InputTypeOpenLyrics', () => {
     });
 
     it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Hava Nagila.xml');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Hava-Nagila.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({

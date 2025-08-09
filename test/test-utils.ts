@@ -68,8 +68,20 @@ export class TestUtils {
     folderPath: string,
     fileName: string,
   ): Promise<IRawDataFile> {
-    const path = `/base/test/sample-files/${folderPath}/${fileName}`;
+    if (folderPath.includes(' ')) {
+      throw new Error(
+        `The folder '${folderPath}' cannot contain any spaces due to a Karma limitation`,
+      );
+    } else if (fileName.includes(' ')) {
+      throw new Error(
+        `The file name '${fileName}' cannot contain any spaces due to a Karma limitation`,
+      );
+    }
+
+    const path = `/sample-files/${folderPath}/${fileName}`;
     const response = await fetch(path);
+
+    console.log(response);
 
     if (response.statusText !== 'OK') {
       throw new Error(

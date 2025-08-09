@@ -18,7 +18,7 @@ describe('InputTypePlainText', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
@@ -33,14 +33,14 @@ describe('InputTypePlainText', () => {
     });
 
     it('should properly REJECT a ProPresenter file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - empty.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
   });
 
   describe('extractSongData()', () => {
     it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'Your-Grace-is-Enough.txt');
       testFile.dataAsString = testFile.dataAsString.replace(
         `
 
@@ -52,13 +52,13 @@ describe('InputTypePlainText', () => {
       // console.log(testFile.dataAsString, testFile.dataAsString.charAt(73));
 
       const expectedError = new LyricConverterError(
-        `This Plain Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`,
+        `This Plain-Text file is not formatted correctly. It needs to have 2 blank lines between the info at the top and the lyrics so they can be differentiated.`,
       );
       expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedError);
     });
 
     it('should return a song for a plain text file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'Your Grace is Enough.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'Your-Grace-is-Enough.txt');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -91,7 +91,7 @@ describe('InputTypePlainText', () => {
     });
 
     it('should return a song for a plain text file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'At the Cross.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'At-the-Cross.txt');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -121,7 +121,7 @@ describe('InputTypePlainText', () => {
     });
 
     it('should use the filename as the title when a title is not present in the file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'At the Cross.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'At-the-Cross.txt');
       testFile.name = 'My Test Title';
       testFile.dataAsString = testFile.dataAsString.replace(/^title:.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);

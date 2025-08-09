@@ -17,7 +17,7 @@ describe('InputTypeSongShowPlus7', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a SongShowPlus file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'empty.sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'empty.sbsong');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
@@ -27,7 +27,7 @@ describe('InputTypeSongShowPlus7', () => {
     });
 
     it('should properly REJECT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
@@ -39,7 +39,7 @@ describe('InputTypeSongShowPlus7', () => {
 
   describe('extractSongData()', () => {
     it('should return a song for an ENGLISH SongShow Plus 7 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Be Near.sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Be-Near.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -91,7 +91,7 @@ describe('InputTypeSongShowPlus7', () => {
     });
 
     it('should return a song for an ENGLISH SongShow Plus 7 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Give Us Clean Hands.sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Give-Us-Clean-Hands.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -132,7 +132,7 @@ describe('InputTypeSongShowPlus7', () => {
     });
 
     it('should return a song for an ENGLISH SongShow Plus 7 file3', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Jesus Saves.sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Jesus-Saves.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -194,7 +194,7 @@ describe('InputTypeSongShowPlus7', () => {
     });
 
     it('should return a song for an ENGLISH SongShow Plus 7 file4', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'You Are.sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'You-Are.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -240,7 +240,7 @@ describe('InputTypeSongShowPlus7', () => {
     });
 
     it('should return a song for a SPANISH SongShow Plus 7 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Spanish - Devuelveme El Gozo.sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-Devuelveme-El-Gozo.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -270,7 +270,7 @@ describe('InputTypeSongShowPlus7', () => {
     });
 
     it('should return a song for a SPANISH SongShow Plus 7 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShow Plus', 'Spanish - La Sangre (The Blood).sbsong');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-La-Sangre-(The-Blood).sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({

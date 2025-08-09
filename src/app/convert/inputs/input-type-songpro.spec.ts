@@ -22,7 +22,7 @@ describe('InputTypeSongPro', () => {
     });
 
     it('should properly REJECT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 

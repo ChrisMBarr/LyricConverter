@@ -18,7 +18,7 @@ describe('OutputTypePropresenter6', () => {
     const song = structuredClone(mockEmptySong);
     const outputFile = outputType.convertToType(song);
 
-    const emptySongFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6 - empty-song.pro6');
+    const emptySongFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6-empty-song.pro6');
 
     const normalizedOutput = TestUtils.normalizeProPresenterStringForTesting(outputFile.outputContent);
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(emptySongFile.dataAsString);
@@ -32,7 +32,7 @@ describe('OutputTypePropresenter6', () => {
     const song = structuredClone(mockSongObjects[2]!);
     const outputFile = outputType.convertToType(song);
 
-    const songFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6 - Be Near (2).pro6');
+    const songFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6-Be-Near-2.pro6');
 
     const normalizedOutput = TestUtils.normalizeProPresenterStringForTesting(outputFile.outputContent);
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(songFile.dataAsString);

@@ -17,12 +17,12 @@ describe('InputTypeProPresenter5', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a ProPresenter 5 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - empty.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
     });
 
     it('should properly REJECT a ProPresenter 4 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4 - empty.pro4');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
@@ -32,7 +32,7 @@ describe('InputTypeProPresenter5', () => {
     });
 
     it('should properly REJECT a plain text file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
     });
 
@@ -50,14 +50,14 @@ describe('InputTypeProPresenter5', () => {
 
   describe('extractSongData()', () => {
     it('should get a TITLE from the file name when the file does not have a CCLISongTitle', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Be Near.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-Be-Near.pro5');
 
       testFile.dataAsString = testFile.dataAsString.replace('CCLISongTitle="Be Near" ', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
     it('should get a song from a ProPresenter 5 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Be Near.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-Be-Near.pro5');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -123,7 +123,7 @@ describe('InputTypeProPresenter5', () => {
     });
 
     it('should get a song from a ProPresenter 5 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - Give Us Clean Hands.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-Give-Us-Clean-Hands.pro5');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -174,7 +174,7 @@ describe('InputTypeProPresenter5', () => {
     });
 
     it('should get the expected SLIDES from a ProPresenter 5 file2 when a slide has no title but lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5 - single-unnamed-slide.pro5');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-single-unnamed-slide.pro5');
 
       expect(inputConverter.extractSongData(testFile).slides).toEqual([
         {

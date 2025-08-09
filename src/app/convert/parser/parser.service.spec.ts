@@ -97,7 +97,7 @@ describe('ParserService', () => {
     });
 
     it('should properly detect a plain text file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain Text', 'empty.txt');
+      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
 
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypePlainText;

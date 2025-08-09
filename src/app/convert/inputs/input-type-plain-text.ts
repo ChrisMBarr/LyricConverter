@@ -6,7 +6,7 @@ import { Utils } from '../shared/utils';
 import { IInputConverter } from './input-converter.model';
 
 export class InputTypePlainText implements IInputConverter {
-  readonly name = 'Plain Text';
+  readonly name = 'Plain-Text';
   readonly fileExt = 'txt';
 
   doesInputFileMatchThisType(rawFile: IRawDataFile): boolean {

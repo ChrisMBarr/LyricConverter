@@ -3,7 +3,7 @@ import { ISong } from '../models/song.model';
 import { IOutputConverter } from './output-converter.model';
 
 export class OutputTypePlainText implements IOutputConverter {
-  readonly name = 'Plain Text';
+  readonly name = 'Plain-Text';
   readonly fileExt = 'txt';
 
   convertToType(song: ISong): IOutputFile {

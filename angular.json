@@ -98,7 +98,12 @@
             "inlineStyleLanguage": "css",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "test/sample-files",
+                "output": "/sample-files"
+              }
             ],
             "styles": ["src/styles.css"],
             "scripts": [],

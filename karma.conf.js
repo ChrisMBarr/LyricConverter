@@ -34,13 +34,5 @@ module.exports = function (config) {
     reporters: ["progress", "kjhtml"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
-    files: [
-      {
-        pattern: "test/sample-files/**/*.*",
-        watched: false,
-        served: true,
-        included: true,
-      },
-    ],
   });
 };

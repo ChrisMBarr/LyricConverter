@@ -7,7 +7,7 @@ export const mockSongObjects: Array<ISong> = [
   {
     originalFile: {
       extension: 'txt',
-      format: 'Plain Text',
+      format: 'Plain-Text',
       name: 'example-file',
     },
     outputFileName: 'example-file',
@@ -39,7 +39,7 @@ export const mockSongObjects: Array<ISong> = [
   {
     originalFile: {
       extension: 'txt',
-      format: 'Plain Text',
+      format: 'Plain-Text',
       name: 'example-file2',
     },
     outputFileName: 'example-file2',
@@ -67,7 +67,7 @@ export const mockSongObjects: Array<ISong> = [
   {
     originalFile: {
       extension: 'txt',
-      format: 'Plain Text',
+      format: 'Plain-Text',
       name: 'Be Near',
     },
     outputFileName: 'Be Near',
@@ -155,7 +155,7 @@ export const mockSongObjects: Array<ISong> = [
   {
     originalFile: {
       extension: 'txt',
-      format: 'Plain Text',
+      format: 'Plain-Text',
       name: 'Amazing Grace',
     },
     outputFileName: 'Amazing Grace',
@@ -228,7 +228,7 @@ export const mockEmptySong: ISong = {
   originalFile: {
     extension: 'txt',
     name: 'Empty',
-    format: 'Plain Text',
+    format: 'Plain-Text',
   },
   outputFileName: 'Empty',
   lyricConverterVersion: version,

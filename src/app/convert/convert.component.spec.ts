@@ -572,13 +572,13 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
         spyOn(errorsSvc, 'add').and.callThrough();
 
-        const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At the Cross.pro');
+        const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
         component.getConvertersAndExtractData([testFile]);
 
         const expectedErr = new LyricConverterError(
           `Only ProPresenter files from version 4, 5, or 6 can be ready by LyricConverter. You will have to export this files as plain text`,
         );
-        expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'v7-At the Cross.pro' });
+        expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'v7-At-the-Cross.pro' });
       });
 
       it("should call the ErrorService when an InputConverter downstream throws a native error for something we can't control", () => {
