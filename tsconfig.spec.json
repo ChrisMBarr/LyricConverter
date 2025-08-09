@@ -8,6 +8,7 @@
     ]
   },
   "include": [
+    "karma-polyfills.ts",
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ]
