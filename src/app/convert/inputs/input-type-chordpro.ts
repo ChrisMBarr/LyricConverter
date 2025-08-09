@@ -95,7 +95,7 @@ export class InputTypeChordPro implements IInputConverter {
 
       //Sometimes we might have a paragraph title/label that is not inside a curly brace tag/directive. We will want to grab
       const foundTitleIdx = lyricLines.findIndex((l) => /^(chorus|verse|bridge)/i.test(l));
-      let title = paragraph.label ?? paragraph.type.toString();
+      let title = paragraph.label ?? paragraph.type;
 
       //If we found a title from above...
       if (foundTitleIdx > -1) {
