@@ -71,7 +71,7 @@
     "@types/file-saver": "~2.0.7",
     "@types/jasmine": "~5.1.9",
     "@types/node": "^24.4.0",
-    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.43.0",
     "angular-eslint": "^20.3.0",
     "autoprefixer": "^10.4.21",
