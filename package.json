@@ -59,7 +59,7 @@
     "@angular-devkit/architect": "0.2003.6",
     "@angular-devkit/core": "^20.3.6",
     "@angular-eslint/builder": "~20.4.0",
-    "@angular-eslint/eslint-plugin": "~20.4.0",
+    "@angular-eslint/eslint-plugin": "~20.5.0",
     "@angular-eslint/eslint-plugin-template": "^20.4.0",
     "@angular-eslint/schematics": "~20.4.0",
     "@angular-eslint/template-parser": "~20.4.0",
