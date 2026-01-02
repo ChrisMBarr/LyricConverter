@@ -1,3 +1,4 @@
+import { provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { Buffer } from 'buffer';
 
@@ -6,6 +7,9 @@ import { appConfig } from './app/app.config';
 
 window.Buffer = Buffer; // Needed for SongShowPlus-Parser
 
-bootstrapApplication(AppComponent, appConfig).catch((err: unknown) => {
+bootstrapApplication(AppComponent, {
+  ...appConfig,
+  providers: [provideZoneChangeDetection(), ...appConfig.providers],
+}).catch((err: unknown) => {
   console.error(err);
 });
