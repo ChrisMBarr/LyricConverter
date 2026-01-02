@@ -33,7 +33,7 @@ describe('SlideDisplayComponent', () => {
     //Song Info
     mockFilesCopy.songData.info.forEach((info, idx) => {
       const a = `${info.name} ${info.value.toString()}`;
-      const b = (fixture.debugElement.query(By.css(`ul li:nth-of-type(${(idx + 1).toString()})`)).nativeElement as HTMLElement).textContent!.trim();
+      const b = (fixture.debugElement.query(By.css(`ul li:nth-of-type(${(idx + 1).toString()})`)).nativeElement as HTMLElement).textContent.trim();
 
       expect(a).toEqual(b);
     });
@@ -44,13 +44,13 @@ describe('SlideDisplayComponent', () => {
         (
           fixture.debugElement.query(By.css(`[data-test='song-slides-container'] > div:nth-of-type(${(idx + 1).toString()}) p`))
             .nativeElement as HTMLElement
-        ).textContent!.trim(),
+        ).textContent.trim(),
       ).toEqual(slide.lyrics);
       expect(
         (
           fixture.debugElement.query(By.css(`[data-test='song-slides-container'] > div:nth-of-type(${(idx + 1).toString()}) footer`))
             .nativeElement as HTMLElement
-        ).textContent!.trim(),
+        ).textContent.trim(),
       ).toEqual(slide.title);
     });
   });
@@ -74,7 +74,7 @@ describe('SlideDisplayComponent', () => {
           (
             fixture.debugElement.query(By.css(`.card:nth-of-type(${(fileIdx + 1).toString()}) ul li:nth-of-type(${(idx + 1).toString()})`))
               .nativeElement as HTMLElement
-          ).textContent!.trim(),
+          ).textContent.trim(),
         ).toEqual(`${info.name} ${info.value.toString()}`);
       });
 
@@ -87,7 +87,7 @@ describe('SlideDisplayComponent', () => {
                 `.card:nth-of-type(${(fileIdx + 1).toString()}) [data-test='song-slides-container'] > div:nth-of-type(${(idx + 1).toString()}) p`,
               ),
             ).nativeElement as HTMLElement
-          ).textContent!.trim(),
+          ).textContent.trim(),
         ).toEqual(slide.lyrics);
         expect(
           (
@@ -96,7 +96,7 @@ describe('SlideDisplayComponent', () => {
                 `.card:nth-of-type(${(fileIdx + 1).toString()}) [data-test='song-slides-container'] > div:nth-of-type(${(idx + 1).toString()}) footer`,
               ),
             ).nativeElement as HTMLElement
-          ).textContent!.trim(),
+          ).textContent.trim(),
         ).toEqual(slide.title);
       });
     });

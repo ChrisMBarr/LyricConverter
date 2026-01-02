@@ -34,7 +34,7 @@ describe('DownloadDisplayComponent', () => {
 
       expect(fixture.debugElement.queryAll(By.css('.btn')).length).toEqual(1);
       const btn = fixture.debugElement.query(By.css('.btn')).nativeElement as HTMLButtonElement;
-      expect(btn.textContent?.trim()).toEqual('Download File');
+      expect(btn.textContent.trim()).toEqual('Download File');
     });
 
     it('should call onClickDownloadFiles() when the button for a single file is clicked', () => {
@@ -57,10 +57,10 @@ describe('DownloadDisplayComponent', () => {
       expect(fixture.debugElement.queryAll(By.css('.btn')).length).toEqual(2);
 
       const btn1 = fixture.debugElement.query(By.css('.btn:nth-of-type(1)')).nativeElement as HTMLButtonElement;
-      expect(btn1.textContent?.trim()).toEqual('Download as .zip');
+      expect(btn1.textContent.trim()).toEqual('Download as .zip');
 
       const btn2 = fixture.debugElement.query(By.css('.btn:nth-of-type(2)')).nativeElement as HTMLButtonElement;
-      expect(btn2.textContent?.trim()).toEqual('Download 2 individual files');
+      expect(btn2.textContent.trim()).toEqual('Download 2 individual files');
     });
 
     it('should call onClickDownloadZipFile() when multiple files are passed and the "download as .zip" button is clicked', () => {

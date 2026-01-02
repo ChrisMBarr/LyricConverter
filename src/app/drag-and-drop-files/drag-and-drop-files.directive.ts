@@ -1,14 +1,13 @@
-import {
-  Directive,
-  DOCUMENT,
-  EventEmitter,
-  HostListener,
-  inject,
-  OnDestroy,
-  Output,
-} from '@angular/core';
+import { Directive, DOCUMENT, EventEmitter, inject, OnDestroy, Output } from '@angular/core';
 
-@Directive({ selector: '[appDragAndDropFiles]' })
+@Directive({
+  selector: '[appDragAndDropFiles]',
+  host: {
+    '(document:dragover)': 'onDragOver($event)',
+    '(document:dragleave)': 'onDragLeave($event)',
+    '(document:drop)': 'onDrop($event)',
+  },
+})
 export class DragAndDropFilesDirective implements OnDestroy {
   private readonly document = inject(DOCUMENT);
   private readonly dragOverClass = 'drag-over';
@@ -18,15 +17,13 @@ export class DragAndDropFilesDirective implements OnDestroy {
     this.toggleDragOver(false);
   }
 
-  //Dragover listener, when something is dragged over our host element
-  @HostListener('document:dragover', ['$event']) onDragOver(evt: DragEvent): void {
+  public onDragOver(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
     this.toggleDragOver(true);
   }
 
-  //Dragleave listener, when something is dragged away from our host element
-  @HostListener('document:dragleave', ['$event']) public onDragLeave(evt: DragEvent): void {
+  public onDragLeave(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
 
@@ -38,7 +35,7 @@ export class DragAndDropFilesDirective implements OnDestroy {
     }
   }
 
-  @HostListener('document:drop', ['$event']) public onDrop(evt: DragEvent): void {
+  public onDrop(evt: DragEvent): void {
     evt.preventDefault();
     evt.stopPropagation();
     this.toggleDragOver(false);
