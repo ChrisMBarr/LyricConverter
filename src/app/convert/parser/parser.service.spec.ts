@@ -7,6 +7,7 @@ import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { IRawDataFile } from '../models/file.model';
 import { ParserService } from './parser.service';
+import { MockDataTransfer } from '../../../../test/mock-data-transfer';
 
 describe('ParserService', () => {
   let service: ParserService;
@@ -43,7 +44,7 @@ describe('ParserService', () => {
         expect(value[0]?.type).toEqual(expectedParsedFile.type);
       });
 
-      const dt = new DataTransfer();
+      const dt = new MockDataTransfer();
       const file = new File(['this is some text for testing!'], 'no-extension', {
         lastModified: 1684251444527,
         type: 'text/plain',
@@ -70,7 +71,7 @@ describe('ParserService', () => {
         expect(value[0]?.type).toEqual(expectedParsedFile.type);
       });
 
-      const dt = new DataTransfer();
+      const dt = new MockDataTransfer();
       const file = new File(['this is some other text for testing!'], 'ěščřžýáíé åäö.txt', {
         lastModified: 1684251444527,
         type: 'text/plain',

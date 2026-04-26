@@ -1,4 +1,5 @@
 import fs from 'fs';
+import mime from 'mime-types';
 import path from 'path';
 
 import { IRawDataFile } from '../src/app/convert/models/file.model';
@@ -71,13 +72,14 @@ export class TestUtils {
     const filePath = path.resolve(__dirname, `test/sample-files/${folderPath}/${fileName}`);
     const rawBuffer = fs.readFileSync(filePath);
     const dataAsString = rawBuffer.toString('utf-8');
-    const dataType = '';
+    let mimeType = mime.lookup(filePath);
+    if (mimeType === false) mimeType = '';
     const fileNameParts = Utils.getFileNameParts(fileName);
 
     return {
       name: fileNameParts.name,
       ext: fileNameParts.ext,
-      type: dataType,
+      type: mimeType,
       dataAsBuffer: rawBuffer.buffer,
       dataAsString,
     };

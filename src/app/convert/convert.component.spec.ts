@@ -19,6 +19,7 @@ import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypePlainText } from './outputs/output-type-plain-text';
 import { ParserService } from './parser/parser.service';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
+import { MockDataTransfer } from '../../../test/mock-data-transfer';
 
 class MockConverter implements IOutputConverter {
   constructor(
@@ -176,7 +177,7 @@ describe('ConvertComponent', () => {
         });
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
         dt.items.add(file);
         dt.items.add(file);
 
@@ -204,7 +205,7 @@ describe('ConvertComponent', () => {
         });
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
         dt.items.add(file);
         dt.items.add(file);
 
@@ -215,7 +216,7 @@ describe('ConvertComponent', () => {
     describe('Drop area interaction, file chooser interaction, and onReceiveFiles()', () => {
       it('should NOT call the parser when no files are passed to onReceiveFiles()', () => {
         vi.spyOn(parserSvc, 'parseFiles');
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
 
         component.onReceiveFiles(dt.files);
         expect(parserSvc.parseFiles).not.toHaveBeenCalled();
@@ -227,7 +228,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         const fileCreationTime = Date.now();
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
         dt.items.add(
           new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', { lastModified: fileCreationTime, type: 'text/plain' }),
         );
@@ -242,11 +243,11 @@ describe('ConvertComponent', () => {
         vi.spyOn(component, 'onReceiveFiles');
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
         dt.items.add(file);
         dt.items.add(file);
 
-        const dropEvent = new DragEvent('drop', { cancelable: true, dataTransfer: dt });
+        const dropEvent = new DragEvent('drop', { cancelable: true, MockDataTransfer: dt });
 
         const dropEl = fixture.debugElement.query(By.css('#drop-area'));
         const directiveInstance = dropEl.injector.get(DragAndDropFilesDirective);
@@ -264,7 +265,7 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
         dt.items.add(file);
         dt.items.add(file);
 
@@ -624,7 +625,7 @@ describe('ConvertComponent', () => {
       it('should tell the ErrorsService to clear out error messages when receiving new files to parse', () => {
         vi.spyOn(errorsSvc, 'clear');
 
-        const dt = new DataTransfer();
+        const dt = new MockDataTransfer();
         dt.items.add(new File(['foo'], 'foo.txt'));
         component.onReceiveFiles(dt.files);
 
