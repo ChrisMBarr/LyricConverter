@@ -16,30 +16,30 @@ describe('InputTypeMediaShout7', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a MediaShout file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
+    it('should properly ACCEPT a MediaShout file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly REJECT a plain JSON file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+    it('should properly REJECT a plain JSON file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ProPresenter 5 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
+    it('should properly REJECT a ProPresenter 5 file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a plain text file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+    it('should properly REJECT a plain text file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 
   describe('extractSongData()', () => {
-    it('should get a single song from a "All.Creatures.or.our.God"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'All.Creatures.or.our.God.json');
+    it('should get a single song from a "All.Creatures.or.our.God"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'All.Creatures.or.our.God.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual([
         {
@@ -83,8 +83,8 @@ describe('InputTypeMediaShout7', () => {
       ]);
     });
 
-    it('should get a song from a "The.Blessing"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
+    it('should get a song from a "The.Blessing"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual([
         {
@@ -110,8 +110,8 @@ describe('InputTypeMediaShout7', () => {
       ]);
     });
 
-    it('should get a single song from a "JOY.is.joy"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'JOY.is.Joy.json');
+    it('should get a single song from a "JOY.is.joy"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'JOY.is.Joy.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual([
         {
@@ -138,8 +138,8 @@ describe('InputTypeMediaShout7', () => {
       ]);
     });
 
-    it('should get multiple songs from a file with multiple songs in a single folder', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multiple-songs.json');
+    it('should get multiple songs from a file with multiple songs in a single folder', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multiple-songs.json');
 
       expect(inputConverter.extractSongData(testFile)).toEqual([
         {
@@ -404,8 +404,8 @@ describe('InputTypeMediaShout7', () => {
       ]);
     });
 
-    it('should get multiple songs from an entire library file with multiple songs in multiple folders', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multi-folder-library.json');
+    it('should get multiple songs from an entire library file with multiple songs in multiple folders', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multi-folder-library.json');
 
       expect(inputConverter.extractSongData(testFile).length).toEqual(289);
     });

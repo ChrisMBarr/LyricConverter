@@ -50,8 +50,8 @@ describe('InputTypeJSON', () => {
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly reject a MediaShout JSON file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
+    it('should properly reject a MediaShout JSON file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
@@ -113,7 +113,7 @@ describe('InputTypeJSON', () => {
       };
 
       //We can't test against specific error messages thrown due to error message text differences in how browsers report them
-      expect(() => inputConverter.extractSongData(testFile)).toThrowError();
+      expect(() => inputConverter.extractSongData(testFile)).toThrow();
     });
   });
 });

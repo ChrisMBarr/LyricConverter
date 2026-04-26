@@ -15,7 +15,7 @@ describe('ErrorsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should emit the list of errors when an error with only a message is added', async () => {
+  it('should emit the list of errors when an error with only a message is added', () => {
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([{ message: '[[TEST:errors.service.spec.ts]] Test Message 1' }]);
     });
@@ -23,7 +23,7 @@ describe('ErrorsService', () => {
     service.add({ message: '[[TEST:errors.service.spec.ts]] Test Message 1' });
   });
 
-  it('should emit the list of errors when an error with a message and a file name is added', async () => {
+  it('should emit the list of errors when an error with a message and a file name is added', () => {
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([{ message: '[[TEST:errors.service.spec.ts]] Test Message 2', fileName: 'example-file.exe' }]);
     });
@@ -34,7 +34,7 @@ describe('ErrorsService', () => {
     });
   });
 
-  it('should emit the list of errors and use the default message when a native error object is attached', async () => {
+  it('should emit the list of errors and use the default message when a native error object is attached', () => {
     const nativeErrorObj = new Error('do not use this message');
 
     service.errorsChanged$.subscribe((list) => {
@@ -54,7 +54,7 @@ describe('ErrorsService', () => {
     });
   });
 
-  it('should emit the list of errors and use the custom error message instead of the default message when a custom error object is attached', async () => {
+  it('should emit the list of errors and use the custom error message instead of the default message when a custom error object is attached', () => {
     const customErrorObj = new LyricConverterError('[[TEST:errors.service.spec.ts]] Test Message 4');
 
     service.errorsChanged$.subscribe((list) => {
@@ -70,7 +70,7 @@ describe('ErrorsService', () => {
     });
   });
 
-  it('should emit an empty list of errors when it is cleared', async () => {
+  it('should emit an empty list of errors when it is cleared', () => {
     service.add({ message: '[[TEST:errors.service.spec.ts]] Test Message 5' });
 
     service.errorsChanged$.subscribe((list) => {

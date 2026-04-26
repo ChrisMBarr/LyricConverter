@@ -17,30 +17,30 @@ describe('InputTypePlainText', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+    it('should properly ACCEPT a plain text file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly REJECT a ChordPro file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly REJECT a ChordPro file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a JSON file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+    it('should properly REJECT a JSON file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ProPresenter file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
+    it('should properly REJECT a ProPresenter file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 
   describe('extractSongData()', () => {
-    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'Your-Grace-is-Enough.txt');
+    it('should throw an error if there are not enough blank lines to tell the info apart form the lyrics', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'Your-Grace-is-Enough.txt');
       testFile.dataAsString = testFile.dataAsString.replace(
         `
 
@@ -57,8 +57,8 @@ describe('InputTypePlainText', () => {
       expect(() => inputConverter.extractSongData(testFile)).toThrow(expectedError);
     });
 
-    it('should return a song for a plain text file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'Your-Grace-is-Enough.txt');
+    it('should return a song for a plain text file1', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'Your-Grace-is-Enough.txt');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -90,8 +90,8 @@ describe('InputTypePlainText', () => {
       });
     });
 
-    it('should return a song for a plain text file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'At-the-Cross.txt');
+    it('should return a song for a plain text file2', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'At-the-Cross.txt');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -120,8 +120,8 @@ describe('InputTypePlainText', () => {
       });
     });
 
-    it('should use the filename as the title when a title is not present in the file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'At-the-Cross.txt');
+    it('should use the filename as the title when a title is not present in the file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'At-the-Cross.txt');
       testFile.name = 'My Test Title';
       testFile.dataAsString = testFile.dataAsString.replace(/^title:.+/i, '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);

@@ -25,7 +25,7 @@ describe('ParserService', () => {
   });
 
   describe('parseFiles()', () => {
-    it('should emit a properly formatted RawDataFile with decoded content', async () => {
+    it('should emit a properly formatted RawDataFile with decoded content', () => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
           dataAsBuffer: new ArrayBuffer(30),
@@ -52,7 +52,7 @@ describe('ParserService', () => {
       service.parseFiles(dt.files);
     });
 
-    it('should return correctly with a unicode file name', async () => {
+    it('should return correctly with a unicode file name', () => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
           dataAsBuffer: new ArrayBuffer(36),
@@ -89,13 +89,13 @@ describe('ParserService', () => {
   });
 
   describe('detectInputTypeAndGetConverter()', () => {
-    it('should return undefined when a file type cannot be detected', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('image', 'mr-bean.png');
+    it('should return undefined when a file type cannot be detected', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('image', 'mr-bean.png');
       expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(undefined);
     });
 
-    it('should properly detect a plain text file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+    it('should properly detect a plain text file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
 
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypePlainText;
@@ -118,8 +118,8 @@ describe('ParserService', () => {
       expect(service.detectInputTypeAndGetConverter(testFile)).toEqual(expectedClass);
     });
 
-    it('should properly detect a JSON file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+    it('should properly detect a JSON file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
 
       const expectedClass = service.inputConverters.find((c) => {
         return c instanceof InputTypeJSON;

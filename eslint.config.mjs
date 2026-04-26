@@ -4,6 +4,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
 import angularEslint from "angular-eslint";
+import globals from 'globals';
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
 import eslintPluginOnlyWarn from "eslint-plugin-only-warn"; //just importing this will activate it, no need to do anything else!
@@ -121,6 +122,9 @@ export default tseslint.config(
   },
   {
     files: ["**/*.spec.ts", "test/**/*.ts"],
+    languageOptions:{
+      globals:{...globals.vitest, ...globals.node}
+    },
     rules: {
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/explicit-function-return-type": "off",

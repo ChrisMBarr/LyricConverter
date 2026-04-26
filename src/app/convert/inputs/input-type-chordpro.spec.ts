@@ -17,62 +17,62 @@ describe('InputTypeChordPro', () => {
 
   describe('doesInputFileMatchThisType()', () => {
     //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/
-    it('should properly accept a ChordPro file with a .cho extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly accept a ChordPro file with a .cho extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly accept a ChordPro file with a .crd extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly accept a ChordPro file with a .crd extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'crd';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
-    it('should properly accept a ChordPro file with a .chopro extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly accept a ChordPro file with a .chopro extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'chopro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
-    it('should properly accept a ChordPro file with a .chord extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly accept a ChordPro file with a .chord extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'chord';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly accept a ChordPro file with a .pro extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly accept a ChordPro file with a .pro extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'pro';
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly reject a ProPresenter file with a .pro extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
+    it('should properly reject a ProPresenter file with a .pro extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly reject a plain text file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+    it('should properly reject a plain text file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly reject a JSON file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+    it('should properly reject a JSON file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly reject a ProPresenter 4 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
+    it('should properly reject a ProPresenter 4 file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly reject a ProPresenter 5 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
+    it('should properly reject a ProPresenter 5 file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
       expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for "simple" test file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should return a song for "simple" test file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -93,8 +93,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for "At the Cross"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'At-the-Cross.cho');
+    it('should return a song for "At the Cross"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'At-the-Cross.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -138,8 +138,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for "Our Father"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father.cho');
+    it('should return a song for "Our Father"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -197,8 +197,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for "Swing Low Sweet Chariot"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Swing-Low-Sweet-Chariot.cho');
+    it('should return a song for "Swing Low Sweet Chariot"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Swing-Low-Sweet-Chariot.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -231,8 +231,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 4 that only uses unlabeled paired directives for "Our Father - unlabeled paired directives"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father-unlabeled-paired-directives.cho');
+    it('should return a song for test file 4 that only uses unlabeled paired directives for "Our Father - unlabeled paired directives"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father-unlabeled-paired-directives.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -302,8 +302,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 5 that only uses paired directives with internal labels for "Our Father - directives with internal inline labels"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father-directives-with-internal-inline-labels.cho');
+    it('should return a song for test file 5 that only uses paired directives with internal labels for "Our Father - directives with internal inline labels"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father-directives-with-internal-inline-labels.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -364,8 +364,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should return a song for test file 6 that only uses paired directives with internal labels for "Our Father - complex tags"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father-complex-tags.cho');
+    it('should return a song for test file 6 that only uses paired directives with internal labels for "Our Father - complex tags"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'Our-Father-complex-tags.cho');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -414,8 +414,8 @@ describe('InputTypeChordPro', () => {
       });
     });
 
-    it('should use the filename as a fallback title when the song has no title for "simple"', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should use the filename as a fallback title when the song has no title for "simple"', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.dataAsString = testFile.dataAsString.replace('{title: This is a title}', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });

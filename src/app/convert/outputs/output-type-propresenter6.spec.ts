@@ -14,11 +14,11 @@ describe('OutputTypePropresenter6', () => {
     expect(outputType).toBeTruthy();
   });
 
-  it('should convert a basic empty song to a ProPresenter 6 file', async () => {
+  it('should convert a basic empty song to a ProPresenter 6 file', () => {
     const song = structuredClone(mockEmptySong);
     const outputFile = outputType.convertToType(song);
 
-    const emptySongFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6-empty-song.pro6');
+    const emptySongFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6-empty-song.pro6');
 
     const normalizedOutput = TestUtils.normalizeProPresenterStringForTesting(outputFile.outputContent);
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(emptySongFile.dataAsString);
@@ -28,11 +28,11 @@ describe('OutputTypePropresenter6', () => {
     expect(normalizedOutput).toEqual(normalizedExpectation);
   });
 
-  it('should convert a song to a ProPresenter 6 file', async () => {
+  it('should convert a song to a ProPresenter 6 file', () => {
     const song = structuredClone(mockSongObjects[2]!);
     const outputFile = outputType.convertToType(song);
 
-    const songFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6-Be-Near-2.pro6');
+    const songFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v6-Be-Near-2.pro6');
 
     const normalizedOutput = TestUtils.normalizeProPresenterStringForTesting(outputFile.outputContent);
     const normalizedExpectation = TestUtils.normalizeProPresenterStringForTesting(songFile.dataAsString);

@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import { IRawDataFile } from '../src/app/convert/models/file.model';
 import { ISong } from '../src/app/convert/models/song.model';
 import { Utils } from '../src/app/convert/shared/utils';
@@ -64,40 +67,19 @@ export class TestUtils {
     return str.replace(/"(songId|Guid|)": "([a-z0-9-]+?)"/gi, `"$1": "fake-uuid-for-testing"`);
   }
 
-  public static async loadTestFileAsRawDataFile(
-    folderPath: string,
-    fileName: string,
-  ): Promise<IRawDataFile> {
-    if (folderPath.includes(' ')) {
-      throw new Error(
-        `The folder '${folderPath}' cannot contain any spaces due to a Karma limitation`,
-      );
-    } else if (fileName.includes(' ')) {
-      throw new Error(
-        `The file name '${fileName}' cannot contain any spaces due to a Karma limitation`,
-      );
-    }
-
-    const path = `/sample-files/${folderPath}/${fileName}`;
-    const response = await fetch(path);
-
-    console.log(response);
-
-    if (response.statusText !== 'OK') {
-      throw new Error(
-        `Test file at '${path}' could not be fetched! Is it included in the karma.conf.js files list?`,
-      );
-    }
-
+  public static loadTestFileAsRawDataFile(folderPath: string, fileName: string): IRawDataFile {
+    const filePath = path.resolve(__dirname, `test/sample-files/${folderPath}/${fileName}`);
+    const rawBuffer = fs.readFileSync(filePath);
+    const dataAsString = rawBuffer.toString('utf-8');
+    const dataType = '';
     const fileNameParts = Utils.getFileNameParts(fileName);
-    const dataAsBuffer = await response.arrayBuffer();
 
     return {
       name: fileNameParts.name,
       ext: fileNameParts.ext,
-      type: response.type,
-      dataAsBuffer,
-      dataAsString: TestUtils.decoder.decode(dataAsBuffer),
+      type: dataType,
+      dataAsBuffer: rawBuffer.buffer,
+      dataAsString,
     };
   }
 }

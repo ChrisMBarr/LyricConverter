@@ -154,7 +154,7 @@ describe('ConvertComponent', () => {
         expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').toBeNull();
       });
 
-      it('should show the display UI when the "display slides" output is selected after files are dropped', async () => {
+      it('should show the display UI when the "display slides" output is selected after files are dropped', () => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypeDisplaySlides();
 
@@ -183,7 +183,7 @@ describe('ConvertComponent', () => {
         component.onReceiveFiles(dt.files);
       });
 
-      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', async () => {
+      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypePlainText();
 
@@ -237,7 +237,7 @@ describe('ConvertComponent', () => {
         expect(parserSvc.parseFiles).toHaveBeenCalled();
       });
 
-      it('should call onReceiveFiles() when files are dropped onto the begin element with the directive', async () => {
+      it('should call onReceiveFiles() when files are dropped onto the begin element with the directive', () => {
         fixture.detectChanges();
         vi.spyOn(component, 'onReceiveFiles');
 
@@ -371,8 +371,8 @@ describe('ConvertComponent', () => {
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
 
-      it('should NOT get converters for passed in raw files of an unknown type', async () => {
-        const imageFile = await TestUtils.loadTestFileAsRawDataFile('image', 'mr-bean.png');
+      it('should NOT get converters for passed in raw files of an unknown type', () => {
+        const imageFile = TestUtils.loadTestFileAsRawDataFile('image', 'mr-bean.png');
 
         component.selectedOutputType = new OutputTypePlainText();
         component.getConvertersAndExtractData([rawJsonFile, imageFile]);
@@ -386,9 +386,9 @@ describe('ConvertComponent', () => {
         expect(component.convertedSongsForOutput).toEqual([outputFile]);
       });
 
-      it('should get converter for passed in raw file that contains multiple songs and return them all', async () => {
+      it('should get converter for passed in raw file that contains multiple songs and return them all', () => {
         component.selectedOutputType = new OutputTypePlainText();
-        const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multiple-songs.json');
+        const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'multiple-songs.json');
         component.getConvertersAndExtractData([testFile]);
 
         expect(component.convertedSongsForOutput.length).toEqual(5);
@@ -536,11 +536,11 @@ describe('ConvertComponent', () => {
         expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'bad-file.json', thrownError: expectedErr });
       });
 
-      it('should call the ErrorService with a custom message for a MediaShout SC7X file ', async () => {
+      it('should call the ErrorService with a custom message for a MediaShout SC7X file ', () => {
         fixture.detectChanges();
         vi.spyOn(errorsSvc, 'add');
 
-        const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'script.sc7x');
+        const testFile = TestUtils.loadTestFileAsRawDataFile('MediaShout', 'script.sc7x');
         component.getConvertersAndExtractData([testFile]);
 
         const expectedErr = new LyricConverterError(
@@ -549,11 +549,11 @@ describe('ConvertComponent', () => {
         expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'script.sc7x' });
       });
 
-      it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file ', async () => {
+      it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file ', () => {
         fixture.detectChanges();
         vi.spyOn(errorsSvc, 'add');
 
-        const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
+        const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
         component.getConvertersAndExtractData([testFile]);
 
         const expectedErr = new LyricConverterError(
@@ -611,7 +611,7 @@ describe('ConvertComponent', () => {
         expect(errorsSvc.add).toHaveBeenCalled();
       });
 
-      it('should update the local errorList property from the subscription when a new error is added', async () => {
+      it('should update the local errorList property from the subscription when a new error is added', () => {
         fixture.detectChanges();
 
         errorsSvc.errorsChanged$.subscribe((errorsList) => {
