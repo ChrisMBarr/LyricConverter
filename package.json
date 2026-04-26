@@ -67,19 +67,19 @@
     "@angular/cli": "21.2.8",
     "@angular/compiler-cli": "^21.2.10",
     "@chiragrupani/karma-chromium-edge-launcher": "^2.5.1",
+    "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
     "@types/file-saver": "~2.0.7",
     "@types/jasmine": "~5.1.13",
     "@types/node": "^25.6.0",
-    "@typescript-eslint/eslint-plugin": "^8.51.0",
-    "@typescript-eslint/parser": "^8.51.0",
+    "@typescript-eslint/parser": "^8.59.0",
     "angular-eslint": "^21.3.1",
     "autoprefixer": "^10.5.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-only-warn": "^1.2.1",
     "eslint-plugin-prettier": "^5.5.5",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
     "genversion": "^3.2.0",
     "jasmine-core": "~5.13.0",
     "karma": "~6.4.4",
@@ -93,7 +93,7 @@
     "prettier-plugin-tailwindcss": "^0.7.3",
     "tailwindcss": "3.0.24",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.51.0"
+    "typescript-eslint": "^8.59.0"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*"

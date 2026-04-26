@@ -15,8 +15,8 @@ export class InputTypePlainText implements IInputConverter {
 
   extractSongData(rawFile: IRawDataFile): ISong {
     let title = rawFile.name; //default/fallback name
-    let info: Array<ISongInfo> = [];
-    let slides: Array<ISongSlide> = [];
+    let info: Array<ISongInfo>;
+    let slides: Array<ISongSlide>;
     //The info and the lyrics are separated by 3 newline characters
     const parts = Utils.normalizeLineEndings(rawFile.dataAsString).split('\n\n\n');
     if (parts.length === 2 && parts[0] != null && parts[1] != null) {

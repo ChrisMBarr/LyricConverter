@@ -91,7 +91,7 @@ export class InputTypeMediaShout7 implements IInputConverter {
   }
 
   private getSlideTitle(slide: IMediaShoutLyricPart): string {
-    let label = '';
+    let label: string;
 
     //prefer the label if provided, otherwise look up the part type from the enum
     if (slide.PartLabel != null) {
