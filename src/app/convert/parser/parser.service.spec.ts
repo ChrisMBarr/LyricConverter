@@ -25,7 +25,7 @@ describe('ParserService', () => {
   });
 
   describe('parseFiles()', () => {
-    it('should emit a properly formatted RawDataFile with decoded content', (done: DoneFn) => {
+    it('should emit a properly formatted RawDataFile with decoded content', async () => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
           dataAsBuffer: new ArrayBuffer(30),
@@ -41,7 +41,6 @@ describe('ParserService', () => {
         expect(value[0]?.ext).toEqual(expectedParsedFile.ext);
         expect(value[0]?.name).toEqual(expectedParsedFile.name);
         expect(value[0]?.type).toEqual(expectedParsedFile.type);
-        done();
       });
 
       const dt = new DataTransfer();
@@ -53,7 +52,7 @@ describe('ParserService', () => {
       service.parseFiles(dt.files);
     });
 
-    it('should return correctly with a unicode file name', (done: DoneFn) => {
+    it('should return correctly with a unicode file name', async () => {
       service.parsedFilesChanged$.subscribe((value) => {
         const expectedParsedFile: IRawDataFile = {
           dataAsBuffer: new ArrayBuffer(36),
@@ -69,7 +68,6 @@ describe('ParserService', () => {
         expect(value[0]?.ext).toEqual(expectedParsedFile.ext);
         expect(value[0]?.name).toEqual(expectedParsedFile.name);
         expect(value[0]?.type).toEqual(expectedParsedFile.type);
-        done();
       });
 
       const dt = new DataTransfer();
@@ -82,7 +80,7 @@ describe('ParserService', () => {
     });
 
     it('should call the ErrorService when a weird file fails to be read', () => {
-      spyOn(injectedErrorsSvc, 'add');
+      vi.spyOn(injectedErrorsSvc, 'add');
       //@ts-expect-error - Purposely pass bad data that would otherwise break things to test this
       service.parseFiles(['🚫👎🏼⛔🙅🏼‍♀️'] as FileList);
 

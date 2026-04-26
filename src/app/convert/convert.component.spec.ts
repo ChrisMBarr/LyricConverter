@@ -148,43 +148,31 @@ describe('ConvertComponent', () => {
     describe('User Interface', () => {
       it('should show the initial UI', () => {
         fixture.detectChanges();
-        expect(component.displayInitialUi).withContext('The displayInitialUi property').toBeTrue();
-        expect(fixture.debugElement.query(By.css('#begin-area')))
-          .withContext('#begin-area Element')
-          .not.toBeNull();
-        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')))
-          .withContext('#test-drop-instructions-more Element')
-          .toBeNull();
-        expect(fixture.debugElement.query(By.css('#display-area')))
-          .withContext('#display-area Element')
-          .toBeNull();
+        expect(component.displayInitialUi, 'The displayInitialUi property').toBe(true);
+        expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').not.toBeNull();
+        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').toBeNull();
+        expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').toBeNull();
       });
 
-      it('should show the display UI when the "display slides" output is selected after files are dropped', (done: DoneFn) => {
+      it('should show the display UI when the "display slides" output is selected after files are dropped', async () => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypeDisplaySlides();
 
         parserSvc.parsedFilesChanged$.subscribe(() => {
           fixture.detectChanges();
 
-          expect(component.displayInitialUi).withContext('The displayInitialUi property').toBeFalse();
-          expect(fixture.debugElement.query(By.css('#begin-area')))
-            .withContext('#begin-area Element')
-            .toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')))
-            .withContext('#test-drop-instructions-more Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')))
-            .withContext('#display-area Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent)))
-            .withContext('The SlideDisplayComponent inside of the #display-area Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')).query(By.directive(DownloadDisplayComponent)))
-            .withContext('The DownloadDisplayComponent inside of the #display-area Element')
-            .toBeNull();
-
-          done();
+          expect(component.displayInitialUi, 'The displayInitialUi property').toBe(false);
+          expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').toBeNull();
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
+          expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
+          expect(
+            fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent)),
+            'The SlideDisplayComponent inside of the #display-area Element',
+          ).not.toBeNull();
+          expect(
+            fixture.debugElement.query(By.css('#display-area')).query(By.directive(DownloadDisplayComponent)),
+            'The DownloadDisplayComponent inside of the #display-area Element',
+          ).toBeNull();
         });
 
         const file = new File(['this is file content!'], 'dummy.txt');
@@ -195,30 +183,24 @@ describe('ConvertComponent', () => {
         component.onReceiveFiles(dt.files);
       });
 
-      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', (done: DoneFn) => {
+      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', async () => {
         fixture.detectChanges();
         component.selectedOutputType = new OutputTypePlainText();
 
         parserSvc.parsedFilesChanged$.subscribe(() => {
           fixture.detectChanges();
-          expect(component.displayInitialUi).withContext('The displayInitialUi property').toBeFalse();
-          expect(fixture.debugElement.query(By.css('#begin-area')))
-            .withContext('#begin-area Element')
-            .toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')))
-            .withContext('#test-drop-instructions-more Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')))
-            .withContext('#display-area Element')
-            .not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent)))
-            .withContext('The SlideDisplayComponent inside of the #display-area Element')
-            .toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')).query(By.directive(DownloadDisplayComponent)))
-            .withContext('The DownloadDisplayComponent inside of the #display-area Element')
-            .not.toBeNull();
-
-          done();
+          expect(component.displayInitialUi, 'The displayInitialUi property').toBe(false);
+          expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').toBeNull();
+          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
+          expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
+          expect(
+            fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent)),
+            'The SlideDisplayComponent inside of the #display-area Element',
+          ).toBeNull();
+          expect(
+            fixture.debugElement.query(By.css('#display-area')).query(By.directive(DownloadDisplayComponent)),
+            'The DownloadDisplayComponent inside of the #display-area Element',
+          ).not.toBeNull();
         });
 
         const file = new File(['this is file content!'], 'dummy.txt');
@@ -232,7 +214,7 @@ describe('ConvertComponent', () => {
 
     describe('Drop area interaction, file chooser interaction, and onReceiveFiles()', () => {
       it('should NOT call the parser when no files are passed to onReceiveFiles()', () => {
-        spyOn(parserSvc, 'parseFiles');
+        vi.spyOn(parserSvc, 'parseFiles');
         const dt = new DataTransfer();
 
         component.onReceiveFiles(dt.files);
@@ -240,7 +222,7 @@ describe('ConvertComponent', () => {
       });
 
       it('should call the parser when files are passed to onReceiveFiles()', () => {
-        spyOn(parserSvc, 'parseFiles').and.callFake(() => []);
+        vi.spyOn(parserSvc, 'parseFiles').mockImplementation(() => []);
 
         fixture.detectChanges();
 
@@ -255,9 +237,9 @@ describe('ConvertComponent', () => {
         expect(parserSvc.parseFiles).toHaveBeenCalled();
       });
 
-      it('should call onReceiveFiles() when files are dropped onto the begin element with the directive', (done: DoneFn) => {
+      it('should call onReceiveFiles() when files are dropped onto the begin element with the directive', async () => {
         fixture.detectChanges();
-        spyOn(component, 'onReceiveFiles').and.callThrough();
+        vi.spyOn(component, 'onReceiveFiles');
 
         const file = new File(['this is file content!'], 'dummy.txt');
         const dt = new DataTransfer();
@@ -271,7 +253,6 @@ describe('ConvertComponent', () => {
 
         directiveInstance.fileDrop.subscribe(() => {
           expect(component.onReceiveFiles).toHaveBeenCalled();
-          done();
         });
 
         injectedDocument.dispatchEvent(dropEvent);
@@ -279,7 +260,7 @@ describe('ConvertComponent', () => {
       });
 
       it('should call onReceiveFiles() when files manually selected with the file input', () => {
-        spyOn(component, 'onReceiveFiles').and.callThrough();
+        vi.spyOn(component, 'onReceiveFiles');
         fixture.detectChanges();
 
         const file = new File(['this is file content!'], 'dummy.txt');
@@ -304,13 +285,13 @@ describe('ConvertComponent', () => {
 
         const inputEl = fixture.debugElement.query(By.css('input[type="file"]')).nativeElement as HTMLInputElement;
 
-        spyOn(inputEl, 'click').and.callFake(() => {});
+        vi.spyOn(inputEl, 'click').mockImplementation(() => {});
 
         const selectFilesLinkEl = fixture.debugElement.query(By.css('#begin-area a')).nativeElement as HTMLAnchorElement;
         const clickEvent = new Event('click');
         selectFilesLinkEl.dispatchEvent(clickEvent);
         fixture.detectChanges();
-        expect(inputEl.click).withContext('The "select some files" link that triggers the file input').toHaveBeenCalledTimes(1);
+        expect(inputEl.click, 'The "select some files" link that triggers the file input').toHaveBeenCalledTimes(1);
       });
 
       it('should trigger a click event on the file chooser when the "select some more files" link is clicked', () => {
@@ -319,13 +300,13 @@ describe('ConvertComponent', () => {
 
         const inputEl = fixture.debugElement.query(By.css('input[type="file"]')).nativeElement as HTMLInputElement;
 
-        spyOn(inputEl, 'click').and.callFake(() => {});
+        vi.spyOn(inputEl, 'click').mockImplementation(() => {});
 
         const selectFilesLinkEl = fixture.debugElement.query(By.css('#test-drop-instructions-more a')).nativeElement as HTMLAnchorElement;
         const clickEvent = new Event('click');
         selectFilesLinkEl.dispatchEvent(clickEvent);
         fixture.detectChanges();
-        expect(inputEl.click).withContext('The "select some more files" link that triggers the file input').toHaveBeenCalledTimes(1);
+        expect(inputEl.click, 'The "select some more files" link that triggers the file input').toHaveBeenCalledTimes(1);
       });
     });
 
@@ -502,7 +483,7 @@ describe('ConvertComponent', () => {
     describe('Errors', () => {
       it('should add an error to the ErrorsService when an unknown file type fails to match with an InputConverter', () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add').and.callThrough();
+        vi.spyOn(errorsSvc, 'add');
 
         //Once with a regular file name that has an extension
         component.getConvertersAndExtractData([
@@ -539,7 +520,7 @@ describe('ConvertComponent', () => {
 
       it('should call the ErrorService when an InputConverter downstream throws a custom error for a known error case', () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add').and.callThrough();
+        vi.spyOn(errorsSvc, 'add');
 
         component.getConvertersAndExtractData([
           {
@@ -557,7 +538,7 @@ describe('ConvertComponent', () => {
 
       it('should call the ErrorService with a custom message for a MediaShout SC7X file ', async () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add').and.callThrough();
+        vi.spyOn(errorsSvc, 'add');
 
         const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'script.sc7x');
         component.getConvertersAndExtractData([testFile]);
@@ -570,7 +551,7 @@ describe('ConvertComponent', () => {
 
       it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file ', async () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add').and.callThrough();
+        vi.spyOn(errorsSvc, 'add');
 
         const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
         component.getConvertersAndExtractData([testFile]);
@@ -583,7 +564,7 @@ describe('ConvertComponent', () => {
 
       it("should call the ErrorService when an InputConverter downstream throws a native error for something we can't control", () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add').and.callThrough();
+        vi.spyOn(errorsSvc, 'add');
 
         component.getConvertersAndExtractData([
           {
@@ -601,7 +582,7 @@ describe('ConvertComponent', () => {
 
       it("should call the ErrorService when an OutputConverter downstream throws a native error for something we can't control", () => {
         fixture.detectChanges();
-        spyOn(errorsSvc, 'add').and.callThrough();
+        vi.spyOn(errorsSvc, 'add');
 
         component.selectedOutputType = {
           name: 'Mock Output File Type',
@@ -630,19 +611,18 @@ describe('ConvertComponent', () => {
         expect(errorsSvc.add).toHaveBeenCalled();
       });
 
-      it('should update the local errorList property from the subscription when a new error is added', (done: DoneFn) => {
+      it('should update the local errorList property from the subscription when a new error is added', async () => {
         fixture.detectChanges();
 
         errorsSvc.errorsChanged$.subscribe((errorsList) => {
           expect(component.errorsList).toEqual(errorsList);
-          done();
         });
 
         errorsSvc.add({ message: '[[TEST:convert.component.spec.ts]] test message' });
       });
 
       it('should tell the ErrorsService to clear out error messages when receiving new files to parse', () => {
-        spyOn(errorsSvc, 'clear');
+        vi.spyOn(errorsSvc, 'clear');
 
         const dt = new DataTransfer();
         dt.items.add(new File(['foo'], 'foo.txt'));
@@ -654,9 +634,7 @@ describe('ConvertComponent', () => {
       it('should NOT show the errors list in the UI when there are no errors', () => {
         component.displayInitialUi = false;
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('#test-error-message-display')))
-          .withContext('The #test-error-message-display Element')
-          .toBeNull();
+        expect(fixture.debugElement.query(By.css('#test-error-message-display')), 'The #test-error-message-display Element').toBeNull();
       });
 
       it('should display the errors in the UI properly when there are errors', () => {
@@ -668,17 +646,17 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         const errorListEl = fixture.debugElement.query(By.css('#test-error-message-display'));
-        expect(errorListEl).withContext('The #test-error-message-display Element').not.toBeNull();
+        expect(errorListEl, 'The #test-error-message-display Element').not.toBeNull();
 
-        expect(errorListEl.queryAll(By.css('ul li')).length)
-          .withContext('The count of displayed error messages')
-          .toEqual(2);
-        expect((errorListEl.query(By.css('ul li:nth-of-type(1)')).nativeElement as HTMLElement).innerText.trim())
-          .withContext('The 1st error message in the list')
-          .toEqual('[[TEST:convert.component.spec.ts]] Just a message');
-        expect((errorListEl.query(By.css('ul li:nth-of-type(2)')).nativeElement as HTMLElement).innerText.trim())
-          .withContext('The 2nd error message in the list')
-          .toEqual('not-a-virus.exe - [[TEST:convert.component.spec.ts]] A message with a file name');
+        expect(errorListEl.queryAll(By.css('ul li')).length, 'The count of displayed error messages').toEqual(2);
+        expect(
+          (errorListEl.query(By.css('ul li:nth-of-type(1)')).nativeElement as HTMLElement).innerText.trim(),
+          'The 1st error message in the list',
+        ).toEqual('[[TEST:convert.component.spec.ts]] Just a message');
+        expect(
+          (errorListEl.query(By.css('ul li:nth-of-type(2)')).nativeElement as HTMLElement).innerText.trim(),
+          'The 2nd error message in the list',
+        ).toEqual('not-a-virus.exe - [[TEST:convert.component.spec.ts]] A message with a file name');
       });
     });
   });

@@ -51,9 +51,9 @@ describe('OutputTypeMediaShout7', () => {
 
     const normalizedExpectation = TestUtils.normalizeMediaShoutStringForTesting(JSON.stringify(expectedSongObj, null, 2));
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (1) to a MediaShout 7 file', () => {
@@ -108,9 +108,9 @@ describe('OutputTypeMediaShout7', () => {
 
     const normalizedExpectation = TestUtils.normalizeMediaShoutStringForTesting(JSON.stringify(expectedSongObj, null, 2));
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (2) to a MediaShout 7 file', () => {
@@ -157,9 +157,9 @@ describe('OutputTypeMediaShout7', () => {
 
     const normalizedExpectation = TestUtils.normalizeMediaShoutStringForTesting(JSON.stringify(expectedSongObj, null, 2));
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (3) to a MediaShout 7 file', () => {
@@ -261,9 +261,9 @@ describe('OutputTypeMediaShout7', () => {
 
     const normalizedExpectation = TestUtils.normalizeMediaShoutStringForTesting(JSON.stringify(expectedSongObj, null, 2));
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (4) to a MediaShout 7 file', () => {
@@ -331,8 +331,8 @@ describe('OutputTypeMediaShout7', () => {
 
     const normalizedExpectation = TestUtils.normalizeMediaShoutStringForTesting(JSON.stringify(expectedSongObj, null, 2));
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 });

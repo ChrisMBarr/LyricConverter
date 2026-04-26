@@ -25,7 +25,7 @@ describe('InputTypeJSON', () => {
         dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
         dataAsString: '{}',
       };
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly reject plain text files when tested', () => {
@@ -36,7 +36,7 @@ describe('InputTypeJSON', () => {
         dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
         dataAsString: 'this is some plain text',
       };
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly reject a ProPresenter file when tested', () => {
@@ -47,12 +47,12 @@ describe('InputTypeJSON', () => {
         dataAsBuffer: new ArrayBuffer(0), //not needed for this file type
         dataAsString: '<RVPresentationDocument height="768" width="1024" versionNumber="400" docType="0"></RVPresentationDocument>',
       };
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly reject a MediaShout JSON file when tested', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 

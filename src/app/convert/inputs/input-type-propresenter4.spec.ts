@@ -18,33 +18,33 @@ describe('InputTypeProPresenter4', () => {
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a ProPresenter 4 file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly REJECT a ProPresenter 5 file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a JSON file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a plain text file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a ChordPro file with a .cho extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a ChordPro file with a .pro extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'pro';
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 

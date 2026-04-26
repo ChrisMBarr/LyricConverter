@@ -87,12 +87,8 @@ describe('HelpComponent', () => {
     const outputFormatNames = parserSvc.outputConverters.map((f) => f.name);
 
     unsupportedNames.forEach((n) => {
-      expect(inputFormatNames)
-        .withContext('A supported input format name was found in the list of unsupported formats! Remove this!')
-        .not.toContain(n);
-      expect(outputFormatNames)
-        .withContext('A supported output format name was found in the list of unsupported formats! Remove this!')
-        .not.toContain(n);
+      expect(inputFormatNames, 'A supported input format name was found in the list of unsupported formats! Remove this!').not.toContain(n);
+      expect(outputFormatNames, 'A supported output format name was found in the list of unsupported formats! Remove this!').not.toContain(n);
     });
   });
 });

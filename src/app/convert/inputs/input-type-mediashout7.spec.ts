@@ -18,22 +18,22 @@ describe('InputTypeMediaShout7', () => {
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a MediaShout file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('MediaShout', 'The.Blessing.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly REJECT a plain JSON file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a ProPresenter 5 file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a plain text file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 

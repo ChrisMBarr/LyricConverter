@@ -18,17 +18,17 @@ describe('InputTypeSongPro', () => {
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a SongPro file when tested', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('SongPro', '_empty.sng');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly REJECT a plain text file when tested', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly REJECT a ChordPro file when tested', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 

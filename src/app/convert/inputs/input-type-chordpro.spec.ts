@@ -19,54 +19,54 @@ describe('InputTypeChordPro', () => {
     //Possible file extensions for ChordPro described on this page: https://www.chordpro.org/chordpro/chordpro-introduction/
     it('should properly accept a ChordPro file with a .cho extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly accept a ChordPro file with a .crd extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'crd';
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
     it('should properly accept a ChordPro file with a .chopro extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'chopro';
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
     it('should properly accept a ChordPro file with a .chord extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'chord';
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly accept a ChordPro file with a .pro extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'pro';
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
     it('should properly reject a ProPresenter file with a .pro extension', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v7-At-the-Cross.pro');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly reject a plain text file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly reject a JSON file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly reject a ProPresenter 4 file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
     it('should properly reject a ProPresenter 5 file', async () => {
       const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 

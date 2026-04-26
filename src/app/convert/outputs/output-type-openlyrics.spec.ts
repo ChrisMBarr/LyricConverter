@@ -21,8 +21,7 @@ describe('OutputTypeOpenLyrics', () => {
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
-    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(`<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="en" version="0.9" createdIn="LyricConverter ${version}" modifiedIn="LyricConverter ${version}" modifiedDate="2023-05-21T20:27:32">
   <properties>
@@ -31,12 +30,11 @@ describe('OutputTypeOpenLyrics', () => {
     </titles>
   </properties>
   <lyrics></lyrics>
-</song>`,
-    );
+</song>`);
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (1) to a OpenLyrics XML file', () => {
@@ -45,8 +43,7 @@ describe('OutputTypeOpenLyrics', () => {
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
-    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(`<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="en" version="0.9" createdIn="LyricConverter ${version}" modifiedIn="LyricConverter ${version}" modifiedDate="2023-05-21T20:27:32">
   <properties>
@@ -70,12 +67,11 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>Great is your love and justice God<br/>You use the weak to lead the strong<br/>You lead us in the song of your salvation<br/>And all your people sing along</lines>
     </verse>
   </lyrics>
-</song>`,
-    );
+</song>`);
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (2) to a OpenLyrics XML file', () => {
@@ -84,8 +80,7 @@ describe('OutputTypeOpenLyrics', () => {
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
-    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(`<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="en" version="0.9" createdIn="LyricConverter ${version}" modifiedIn="LyricConverter ${version}" modifiedDate="2023-05-21T20:27:32">
   <properties>
@@ -109,12 +104,11 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>At the cross<br/>He died for our sins<br/>At the cross<br/>He gave us life again</lines>
     </verse>
   </lyrics>
-</song>`,
-    );
+</song>`);
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (3) to a OpenLyrics XML file', () => {
@@ -123,8 +117,7 @@ describe('OutputTypeOpenLyrics', () => {
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
-    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(`<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="en" version="0.9" createdIn="LyricConverter ${version}" modifiedIn="LyricConverter ${version}" modifiedDate="2023-05-21T20:27:32">
   <properties>
@@ -164,12 +157,11 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>My Good</lines>
     </verse>
   </lyrics>
-</song>`,
-    );
+</song>`);
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 
   it('should convert a song (4) to a OpenLyrics XML file', () => {
@@ -178,8 +170,7 @@ describe('OutputTypeOpenLyrics', () => {
 
     const normalizedOutput = TestUtils.normalizeOpenLyricsStringForTesting(outputFile.outputContent);
 
-    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(
-      `<?xml version="1.0" encoding="UTF-8"?>
+    const normalizedExpectation = TestUtils.normalizeOpenLyricsStringForTesting(`<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="en" version="0.9" createdIn="LyricConverter ${version}" modifiedIn="LyricConverter ${version}" modifiedDate="2023-05-21T20:27:32">
   <properties>
@@ -237,11 +228,10 @@ describe('OutputTypeOpenLyrics', () => {
       <lines>This is text of ending.</lines>
     </verse>
   </lyrics>
-</song>`,
-    );
+</song>`);
 
-    expect(outputFile.songData).withContext('original song data').toEqual(song);
-    expect(outputFile.fileName).withContext('file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
-    expect(normalizedOutput).withContext('file content').toEqual(normalizedExpectation);
+    expect(outputFile.songData, 'original song data').toEqual(song);
+    expect(outputFile.fileName, 'file name').toEqual(`${song.originalFile.name}.${outputType.fileExt}`);
+    expect(normalizedOutput, 'file content').toEqual(normalizedExpectation);
   });
 });

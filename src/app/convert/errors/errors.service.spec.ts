@@ -15,19 +15,17 @@ describe('ErrorsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should emit the list of errors when an error with only a message is added', (done: DoneFn) => {
+  it('should emit the list of errors when an error with only a message is added', async () => {
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([{ message: '[[TEST:errors.service.spec.ts]] Test Message 1' }]);
-      done();
     });
 
     service.add({ message: '[[TEST:errors.service.spec.ts]] Test Message 1' });
   });
 
-  it('should emit the list of errors when an error with a message and a file name is added', (done: DoneFn) => {
+  it('should emit the list of errors when an error with a message and a file name is added', async () => {
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([{ message: '[[TEST:errors.service.spec.ts]] Test Message 2', fileName: 'example-file.exe' }]);
-      done();
     });
 
     service.add({
@@ -36,7 +34,7 @@ describe('ErrorsService', () => {
     });
   });
 
-  it('should emit the list of errors and use the default message when a native error object is attached', (done: DoneFn) => {
+  it('should emit the list of errors and use the default message when a native error object is attached', async () => {
     const nativeErrorObj = new Error('do not use this message');
 
     service.errorsChanged$.subscribe((list) => {
@@ -47,7 +45,6 @@ describe('ErrorsService', () => {
           thrownError: nativeErrorObj,
         },
       ]);
-      done();
     });
 
     service.add({
@@ -57,14 +54,13 @@ describe('ErrorsService', () => {
     });
   });
 
-  it('should emit the list of errors and use the custom error message instead of the default message when a custom error object is attached', (done: DoneFn) => {
+  it('should emit the list of errors and use the custom error message instead of the default message when a custom error object is attached', async () => {
     const customErrorObj = new LyricConverterError('[[TEST:errors.service.spec.ts]] Test Message 4');
 
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([
         { message: '[[TEST:errors.service.spec.ts]] Test Message 4', fileName: 'example-file.exe', thrownError: customErrorObj },
       ]);
-      done();
     });
 
     service.add({
@@ -74,12 +70,11 @@ describe('ErrorsService', () => {
     });
   });
 
-  it('should emit an empty list of errors when it is cleared', (done: DoneFn) => {
+  it('should emit an empty list of errors when it is cleared', async () => {
     service.add({ message: '[[TEST:errors.service.spec.ts]] Test Message 5' });
 
     service.errorsChanged$.subscribe((list) => {
       expect(list).toEqual([]);
-      done();
     });
 
     service.clear();

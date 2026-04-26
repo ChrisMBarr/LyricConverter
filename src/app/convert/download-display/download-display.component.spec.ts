@@ -41,7 +41,7 @@ describe('DownloadDisplayComponent', () => {
       const mockFilesCopy = structuredClone(mockOutputFiles[0]!);
       component.outputFileList = [mockFilesCopy];
 
-      spyOn(component, 'onClickDownloadFiles');
+      vi.spyOn(component, 'onClickDownloadFiles');
       fixture.detectChanges();
 
       fixture.debugElement.query(By.css('.btn')).triggerEventHandler('click');
@@ -66,7 +66,7 @@ describe('DownloadDisplayComponent', () => {
     it('should call onClickDownloadZipFile() when multiple files are passed and the "download as .zip" button is clicked', () => {
       component.outputFileList = structuredClone(mockOutputFiles);
 
-      spyOn(component, 'onClickDownloadZipFile');
+      vi.spyOn(component, 'onClickDownloadZipFile');
       fixture.detectChanges();
 
       fixture.debugElement.query(By.css('.btn:nth-of-type(1)')).triggerEventHandler('click');
@@ -77,7 +77,7 @@ describe('DownloadDisplayComponent', () => {
     it('should call onClickDownloadFiles() when multiple files are passed and the "download individual files" button is clicked', () => {
       component.outputFileList = structuredClone(mockOutputFiles);
 
-      spyOn(component, 'onClickDownloadFiles');
+      vi.spyOn(component, 'onClickDownloadFiles');
       fixture.detectChanges();
 
       fixture.debugElement.query(By.css('.btn:nth-of-type(2)')).triggerEventHandler('click');
@@ -87,12 +87,12 @@ describe('DownloadDisplayComponent', () => {
   });
 
   //Unable to spy on saveAs method with Jasmine right now, so there's no way yo test this!
-  xdescribe('Download Functionality', () => {
+  describe.skip('Download Functionality', () => {
     it('should call the fileSaver library once, to save a song file, when onClickDownloadFiles() is called with one passed in file', () => {
       const mockFilesCopy = structuredClone(mockOutputFiles[0]!);
       component.outputFileList = [mockFilesCopy];
 
-      spyOn(fileSaver, 'saveAs');
+      vi.spyOn(fileSaver, 'saveAs');
       component.onClickDownloadFiles();
 
       expect(fileSaver.saveAs).toHaveBeenCalledTimes(1);
@@ -101,7 +101,7 @@ describe('DownloadDisplayComponent', () => {
     it('should call the fileSaver library multiple times, to save song files, when onClickDownloadFiles() is called with multiple passed in files', () => {
       component.outputFileList = structuredClone(mockOutputFiles);
 
-      spyOn(fileSaver, 'saveAs');
+      vi.spyOn(fileSaver, 'saveAs');
       component.onClickDownloadFiles();
 
       expect(fileSaver.saveAs).toHaveBeenCalledTimes(2);
@@ -110,9 +110,9 @@ describe('DownloadDisplayComponent', () => {
     it('should call the fileSaver library once, to save a ZIP file, when onClickDownloadZipFile() is called with multiple passed in files', fakeAsync(() => {
       component.outputFileList = structuredClone(mockOutputFiles);
 
-      spyOn(JSZip.prototype, 'file').and.callThrough();
-      spyOn(JSZip.prototype, 'generateAsync').and.returnValue(Promise.resolve('some blob'));
-      spyOn(fileSaver, 'saveAs');
+      vi.spyOn(JSZip.prototype, 'file');
+      vi.spyOn(JSZip.prototype, 'generateAsync').mockReturnValue(Promise.resolve('some blob'));
+      vi.spyOn(fileSaver, 'saveAs');
 
       component.onClickDownloadZipFile();
       tick();
