@@ -91,25 +91,8 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "polyfills": ["zone.js", "zone.js/testing", "karma-polyfills.ts"],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "css",
-            "assets": [
-              "src/assets",
-              "src/favicon.ico",
-              {
-                "glob": "**/*",
-                "input": "test/sample-files",
-                "output": "/sample-files"
-              }
-            ],
-            "styles": ["src/styles.css"],
-            "scripts": [],
-            "codeCoverageExclude": ["src/lib/**/*"],
-            "karmaConfig": "karma.conf.js"
-          }
+          "builder": "@angular/build:unit-test",
+          "options": {}
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
