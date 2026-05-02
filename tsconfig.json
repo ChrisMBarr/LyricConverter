@@ -22,7 +22,9 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2022",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "noEmit": true,
+    "composite": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

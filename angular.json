@@ -21,24 +21,12 @@
               "base": "dist/LyricConverter"
             },
             "index": "src/index.html",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "allowedCommonJsDependencies": [
-              "jszip",
-              "file-saver",
-              "fast-xml-parser",
-              "songpro"
-            ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "allowedCommonJsDependencies": ["jszip", "file-saver", "fast-xml-parser", "songpro"],
+            "assets": ["src/assets", "src/favicon.ico"],
+            "styles": ["src/styles.css"],
             "scripts": [],
             "browser": "src/main.ts",
             "server": "src/main.server.ts",
@@ -92,8 +80,7 @@
         },
         "test": {
           "builder": "@angular/build:unit-test",
-          "options": {
-          }
+          "options": {}
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
@@ -105,9 +92,7 @@
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ],
+    "schematicCollections": ["@angular-eslint/schematics"],
     "analytics": false
   },
   "schematics": {
