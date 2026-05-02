@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { TestUtils } from 'test/test-utils';
 
+import { MockDataTransfer } from '../../../test/mock-data-transfer';
 import { mockStaticTimestamp } from '../../../test/mock-song-objects';
 import { DonateButtonComponent } from '../donate-button/donate-button.component';
 import { DragAndDropFilesDirective } from '../drag-and-drop-files/drag-and-drop-files.directive';
@@ -19,7 +20,6 @@ import { OutputTypeDisplaySlides } from './outputs/output-type-display-slides';
 import { OutputTypePlainText } from './outputs/output-type-plain-text';
 import { ParserService } from './parser/parser.service';
 import { SlideDisplayComponent } from './slide-display/slide-display.component';
-import { MockDataTransfer } from '../../../test/mock-data-transfer';
 
 class MockConverter implements IOutputConverter {
   constructor(
@@ -177,11 +177,9 @@ describe('ConvertComponent', () => {
         });
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new MockDataTransfer();
-        dt.items.add(file);
-        dt.items.add(file);
+        const fileList = [file, file] as unknown as FileList;
 
-        component.onReceiveFiles(dt.files);
+        component.onReceiveFiles(fileList);
       });
 
       it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
@@ -205,20 +203,18 @@ describe('ConvertComponent', () => {
         });
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new MockDataTransfer();
-        dt.items.add(file);
-        dt.items.add(file);
+        const fileList = [file, file] as unknown as FileList;
 
-        component.onReceiveFiles(dt.files);
+        component.onReceiveFiles(fileList);
       });
     });
 
     describe('Drop area interaction, file chooser interaction, and onReceiveFiles()', () => {
       it('should NOT call the parser when no files are passed to onReceiveFiles()', () => {
         vi.spyOn(parserSvc, 'parseFiles');
-        const dt = new MockDataTransfer();
+        const fileList = [] as unknown as FileList;
 
-        component.onReceiveFiles(dt.files);
+        component.onReceiveFiles(fileList);
         expect(parserSvc.parseFiles).not.toHaveBeenCalled();
       });
 
@@ -228,13 +224,12 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         const fileCreationTime = Date.now();
-        const dt = new MockDataTransfer();
-        dt.items.add(
+        const files = [
           new File(['this is some plain text file content!'], 'UPPERCASE.WITH.DOTS.TXT', { lastModified: fileCreationTime, type: 'text/plain' }),
-        );
-        dt.items.add(new File(['this file has no extension!'], 'no-extension', { lastModified: fileCreationTime, type: '' }));
+          new File(['this file has no extension!'], 'no-extension', { lastModified: fileCreationTime, type: '' }),
+        ] as unknown as FileList;
 
-        component.onReceiveFiles(dt.files);
+        component.onReceiveFiles(files);
         expect(parserSvc.parseFiles).toHaveBeenCalled();
       });
 
@@ -243,11 +238,15 @@ describe('ConvertComponent', () => {
         vi.spyOn(component, 'onReceiveFiles');
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new MockDataTransfer();
+        const dt = new MockDataTransfer() as unknown as DataTransfer;
         dt.items.add(file);
         dt.items.add(file);
 
-        const dropEvent = new DragEvent('drop', { cancelable: true, MockDataTransfer: dt });
+        const dropEvent = new Event('drop', { cancelable: true });
+        Object.defineProperty(dropEvent, 'dataTransfer', {
+          configurable: true,
+          value: dt,
+        });
 
         const dropEl = fixture.debugElement.query(By.css('#drop-area'));
         const directiveInstance = dropEl.injector.get(DragAndDropFilesDirective);
@@ -265,20 +264,20 @@ describe('ConvertComponent', () => {
         fixture.detectChanges();
 
         const file = new File(['this is file content!'], 'dummy.txt');
-        const dt = new MockDataTransfer();
-        dt.items.add(file);
-        dt.items.add(file);
+        const fileList = [file, file] as unknown as FileList;
 
         const inputElDebug = fixture.debugElement.query(By.css('input[type="file"]'));
         const inputEl = inputElDebug.nativeElement as HTMLInputElement;
-        inputEl.files = dt.files;
+        Object.defineProperty(inputEl, 'files', {
+          value: fileList,
+        });
 
         const changeEvent = new Event('change');
         inputEl.dispatchEvent(changeEvent);
 
         fixture.detectChanges();
 
-        expect(component.onReceiveFiles).toHaveBeenCalledWith(dt.files);
+        expect(component.onReceiveFiles).toHaveBeenCalledWith(fileList);
       });
 
       it('should trigger a click event on the file chooser when the "select some files" link is clicked', () => {
@@ -625,9 +624,9 @@ describe('ConvertComponent', () => {
       it('should tell the ErrorsService to clear out error messages when receiving new files to parse', () => {
         vi.spyOn(errorsSvc, 'clear');
 
-        const dt = new MockDataTransfer();
-        dt.items.add(new File(['foo'], 'foo.txt'));
-        component.onReceiveFiles(dt.files);
+        const files = [new File(['foo'], 'foo.txt')] as unknown as FileList;
+
+        component.onReceiveFiles(files);
 
         expect(errorsSvc.clear).toHaveBeenCalled();
       });
@@ -648,16 +647,15 @@ describe('ConvertComponent', () => {
 
         const errorListEl = fixture.debugElement.query(By.css('#test-error-message-display'));
         expect(errorListEl, 'The #test-error-message-display Element').not.toBeNull();
-
         expect(errorListEl.queryAll(By.css('ul li')).length, 'The count of displayed error messages').toEqual(2);
         expect(
-          (errorListEl.query(By.css('ul li:nth-of-type(1)')).nativeElement as HTMLElement).innerText.trim(),
+          (errorListEl.queryAll(By.css('ul li'))[0]!.nativeElement as HTMLElement).textContent.trim(),
           'The 1st error message in the list',
         ).toEqual('[[TEST:convert.component.spec.ts]] Just a message');
         expect(
-          (errorListEl.query(By.css('ul li:nth-of-type(2)')).nativeElement as HTMLElement).innerText.trim(),
+          (errorListEl.queryAll(By.css('ul li'))[1]!.nativeElement as HTMLElement).textContent.trim(),
           'The 2nd error message in the list',
-        ).toEqual('not-a-virus.exe - [[TEST:convert.component.spec.ts]] A message with a file name');
+        ).toEqual('not-a-virus.exe -  [[TEST:convert.component.spec.ts]] A message with a file name');
       });
     });
   });

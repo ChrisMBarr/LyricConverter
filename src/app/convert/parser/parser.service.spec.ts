@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { TestUtils } from 'test/test-utils';
 
+import { MockDataTransfer } from '../../../../test/mock-data-transfer';
 import { ErrorsService } from '../errors/errors.service';
 import { InputTypeJSON } from '../inputs/input-type-json';
 import { InputTypePlainText } from '../inputs/input-type-plain-text';
 import { InputTypeProPresenter5 } from '../inputs/input-type-propresenter5';
 import { IRawDataFile } from '../models/file.model';
 import { ParserService } from './parser.service';
-import { MockDataTransfer } from '../../../../test/mock-data-transfer';
 
 describe('ParserService', () => {
   let service: ParserService;

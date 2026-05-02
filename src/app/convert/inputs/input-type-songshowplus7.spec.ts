@@ -271,8 +271,8 @@ describe('InputTypeSongShowPlus7', () => {
 
     it('should return a song for a SPANISH SongShow Plus 7 file2', () => {
       const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-La-Sangre-(The-Blood).sbsong');
-
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+
       expect(normalizedSongData).toEqual({
         originalFile: {
           extension: inputConverter.fileExt,
