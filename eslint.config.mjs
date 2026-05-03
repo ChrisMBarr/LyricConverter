@@ -4,9 +4,11 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
 import angularEslint from "angular-eslint";
-import globals from 'globals';
+import globals from "globals";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
+import eslintPluginVitest from "@vitest/eslint-plugin";
+
 import eslintPluginOnlyWarn from "eslint-plugin-only-warn"; //just importing this will activate it, no need to do anything else!
 
 export default tseslint.config(
@@ -122,10 +124,25 @@ export default tseslint.config(
   },
   {
     files: ["**/*.spec.ts", "test/**/*.ts"],
-    languageOptions:{
-      globals:{...globals.vitest, ...globals.node}
+    languageOptions: {
+      globals: { ...globals.vitest, ...globals.node },
     },
+    ...eslintPluginVitest.configs.all,
+    settings: { vitest: { typecheck: true } },
     rules: {
+      "vitest/consistent-test-filename": "off",
+      "vitest/no-focused-tests": ["warn", { fixable: false }],
+      "vitest/valid-title": [
+        "warn",
+        {
+          ignoreTypeOfDescribeName: true,
+          allowArguments: false,
+          mustMatch: {
+            it: ["^should "], //tests must begin with "should "
+          },
+        },
+      ],
+      "vitest/warn-todo": "warn",
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/unbound-method": "off",

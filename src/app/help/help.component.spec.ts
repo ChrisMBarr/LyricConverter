@@ -78,7 +78,7 @@ describe('HelpComponent', () => {
     ]);
   });
 
-  it('Should not have an item in the unsupported list that is actually supported', () => {
+  it('should not have an item in the unsupported list that is actually supported', () => {
     configureTestBed([ParserService]);
     fixture.detectChanges();
 

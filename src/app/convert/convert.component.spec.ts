@@ -142,10 +142,6 @@ describe('ConvertComponent', () => {
       configureTestBed([ParserService, ErrorsService]);
     });
 
-    it('should create', () => {
-      expect(component).toBeTruthy();
-    });
-
     describe('User Interface', () => {
       it('should show the initial UI', () => {
         fixture.detectChanges();
@@ -156,8 +152,8 @@ describe('ConvertComponent', () => {
       });
 
       it('should show the display UI when the "display slides" output is selected after files are dropped', () => {
-        fixture.detectChanges();
         component.selectedOutputType = new OutputTypeDisplaySlides();
+        fixture.detectChanges();
 
         parserSvc.parsedFilesChanged$.subscribe(() => {
           fixture.detectChanges();
@@ -167,11 +163,11 @@ describe('ConvertComponent', () => {
           expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
           expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
           expect(
-            fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent)),
+            fixture.debugElement.query(By.css('#display-area app-slide-display')),
             'The SlideDisplayComponent inside of the #display-area Element',
           ).not.toBeNull();
           expect(
-            fixture.debugElement.query(By.css('#display-area')).query(By.directive(DownloadDisplayComponent)),
+            fixture.debugElement.query(By.css('#display-area app-download-display')),
             'The DownloadDisplayComponent inside of the #display-area Element',
           ).toBeNull();
         });
@@ -183,8 +179,8 @@ describe('ConvertComponent', () => {
       });
 
       it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
-        fixture.detectChanges();
         component.selectedOutputType = new OutputTypePlainText();
+        fixture.detectChanges();
 
         parserSvc.parsedFilesChanged$.subscribe(() => {
           fixture.detectChanges();
@@ -193,11 +189,11 @@ describe('ConvertComponent', () => {
           expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
           expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
           expect(
-            fixture.debugElement.query(By.css('#display-area')).query(By.directive(SlideDisplayComponent)),
+            fixture.debugElement.query(By.css('#display-area app-slide-display')),
             'The SlideDisplayComponent inside of the #display-area Element',
           ).toBeNull();
           expect(
-            fixture.debugElement.query(By.css('#display-area')).query(By.directive(DownloadDisplayComponent)),
+            fixture.debugElement.query(By.css('#display-area app-download-display')),
             'The DownloadDisplayComponent inside of the #display-area Element',
           ).not.toBeNull();
         });
@@ -459,7 +455,7 @@ describe('ConvertComponent', () => {
         expect(injectedDocument.defaultView?.localStorage.getItem(prefKey)).toEqual('1');
       });
 
-      it('start the count at a previously saved value from injectedDocument.defaultView?.localStorage', () => {
+      it('should start the count at a previously saved value from injectedDocument.defaultView?.localStorage', () => {
         injectedDocument.defaultView?.localStorage.setItem(prefKey, '5');
         fixture.detectChanges();
         expect(component.convertedFileCount).toEqual(5);
@@ -536,7 +532,7 @@ describe('ConvertComponent', () => {
         expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'bad-file.json', thrownError: expectedErr });
       });
 
-      it('should call the ErrorService with a custom message for a MediaShout SC7X file ', () => {
+      it('should call the ErrorService with a custom message for a MediaShout SC7X file', () => {
         fixture.detectChanges();
         vi.spyOn(errorsSvc, 'add');
 
@@ -549,7 +545,7 @@ describe('ConvertComponent', () => {
         expect(errorsSvc.add).toHaveBeenCalledWith({ message: expectedErr.message, fileName: 'script.sc7x' });
       });
 
-      it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file ', () => {
+      it('should call the ErrorService with a custom message for a ProPresenter 7 PRO file', () => {
         fixture.detectChanges();
         vi.spyOn(errorsSvc, 'add');
 

@@ -80,7 +80,9 @@
         },
         "test": {
           "builder": "@angular/build:unit-test",
-          "options": {}
+          "options": {
+            "runnerConfig": "vitest.config.js"
+          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
