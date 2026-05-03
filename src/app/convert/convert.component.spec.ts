@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
+import { firstValueFrom, Subject } from 'rxjs';
 import { TestUtils } from 'test/test-utils';
 
 import { MockDataTransfer } from '../../../test/mock-data-transfer';
@@ -151,57 +151,57 @@ describe('ConvertComponent', () => {
         expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').toBeNull();
       });
 
-      it('should show the display UI when the "display slides" output is selected after files are dropped', () => {
-        component.selectedOutputType = new OutputTypeDisplaySlides();
+      it('should show the display UI when the "display slides" output is selected after files are dropped', async () => {
         fixture.detectChanges();
+        component.selectedOutputType = new OutputTypeDisplaySlides();
 
-        parserSvc.parsedFilesChanged$.subscribe(() => {
-          fixture.detectChanges();
-
-          expect(component.displayInitialUi, 'The displayInitialUi property').toBe(false);
-          expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
-          expect(
-            fixture.debugElement.query(By.css('#display-area app-slide-display')),
-            'The SlideDisplayComponent inside of the #display-area Element',
-          ).not.toBeNull();
-          expect(
-            fixture.debugElement.query(By.css('#display-area app-download-display')),
-            'The DownloadDisplayComponent inside of the #display-area Element',
-          ).toBeNull();
-        });
+        console.log('BEFORE', component.selectedOutputType);
 
         const file = new File(['this is file content!'], 'dummy.txt');
         const fileList = [file, file] as unknown as FileList;
-
         component.onReceiveFiles(fileList);
+
+        await firstValueFrom(parserSvc.parsedFilesChanged$);
+        fixture.detectChanges();
+
+        expect(component.displayInitialUi, 'The displayInitialUi property').toBe(false);
+        expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').toBeNull();
+        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
+        expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
+        expect(
+          fixture.debugElement.query(By.css('#display-area app-slide-display')),
+          'The SlideDisplayComponent inside of the #display-area Element',
+        ).not.toBeNull();
+        expect(
+          fixture.debugElement.query(By.css('#display-area app-download-display')),
+          'The DownloadDisplayComponent inside of the #display-area Element',
+        ).toBeNull();
+        // });
       });
 
-      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', () => {
-        component.selectedOutputType = new OutputTypePlainText();
+      it('should show the download UI when anything but the "display slides" output is selected after files are dropped', async () => {
         fixture.detectChanges();
-
-        parserSvc.parsedFilesChanged$.subscribe(() => {
-          fixture.detectChanges();
-          expect(component.displayInitialUi, 'The displayInitialUi property').toBe(false);
-          expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').toBeNull();
-          expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
-          expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
-          expect(
-            fixture.debugElement.query(By.css('#display-area app-slide-display')),
-            'The SlideDisplayComponent inside of the #display-area Element',
-          ).toBeNull();
-          expect(
-            fixture.debugElement.query(By.css('#display-area app-download-display')),
-            'The DownloadDisplayComponent inside of the #display-area Element',
-          ).not.toBeNull();
-        });
+        component.selectedOutputType = new OutputTypePlainText();
 
         const file = new File(['this is file content!'], 'dummy.txt');
         const fileList = [file, file] as unknown as FileList;
-
         component.onReceiveFiles(fileList);
+
+        await firstValueFrom(parserSvc.parsedFilesChanged$);
+        fixture.detectChanges();
+
+        expect(component.displayInitialUi, 'The displayInitialUi property').toBe(false);
+        expect(fixture.debugElement.query(By.css('#begin-area')), '#begin-area Element').toBeNull();
+        expect(fixture.debugElement.query(By.css('#test-drop-instructions-more')), '#test-drop-instructions-more Element').not.toBeNull();
+        expect(fixture.debugElement.query(By.css('#display-area')), '#display-area Element').not.toBeNull();
+        expect(
+          fixture.debugElement.query(By.css('#display-area app-slide-display')),
+          'The SlideDisplayComponent inside of the #display-area Element',
+        ).toBeNull();
+        expect(
+          fixture.debugElement.query(By.css('#display-area app-download-display')),
+          'The DownloadDisplayComponent inside of the #display-area Element',
+        ).not.toBeNull();
       });
     });
 
