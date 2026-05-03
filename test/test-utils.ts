@@ -35,8 +35,7 @@ export class TestUtils {
   }
 
   public static normalizeSongTimestamp(song: ISong): ISong {
-    song.timestamp = mockStaticTimestamp;
-    return song;
+    return { ...song, timestamp: mockStaticTimestamp };
   }
 
   public static normalizeDateAttribute(attrName: string, str: string): string {
@@ -80,7 +79,11 @@ export class TestUtils {
       name: fileNameParts.name,
       ext: fileNameParts.ext,
       type: mimeType,
-      dataAsBuffer: rawBuffer.buffer,
+      //Ensure we get a fresh file buffer every time since Node might re-use the buffer if the same file gets read multiple times
+      dataAsBuffer: rawBuffer.buffer.slice(
+        rawBuffer.byteOffset,
+        rawBuffer.byteOffset + rawBuffer.byteLength,
+      ),
       dataAsString,
     };
   }

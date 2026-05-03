@@ -11,10 +11,6 @@ describe('InputTypeSongShowPlus7', () => {
     inputConverter = new InputTypeSongShowPlus7();
   });
 
-  it('should create an instance', () => {
-    expect(inputConverter).toBeTruthy();
-  });
-
   describe('doesInputFileMatchThisType()', () => {
     it('should properly ACCEPT a SongShowPlus file when tested', () => {
       const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'empty.sbsong');
