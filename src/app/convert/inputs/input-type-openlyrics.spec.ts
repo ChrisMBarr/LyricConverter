@@ -16,35 +16,35 @@ describe('InputTypeOpenLyrics', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a OpenLyrics XML file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+    it('should properly ACCEPT a OpenLyrics XML file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly REJECT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a plain text file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ChordPro file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a ChordPro file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a JSON file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a JSON file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ProPresenter file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a ProPresenter file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for a simple OpenLyrics file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
+    it('should return a song for a simple OpenLyrics file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -67,8 +67,8 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a complex OpenLyrics file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'complex.xml');
+    it('should return a song for a complex OpenLyrics file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'complex.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -144,8 +144,8 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should use the filename for the title if there is no title', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
+    it('should use the filename for the title if there is no title', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
       //remove the titles so the parser can't find one
       testFile.dataAsString = testFile.dataAsString.replace(/<titles>[\W\w]+?<\/titles>/, '');
@@ -153,8 +153,8 @@ describe('InputTypeOpenLyrics', () => {
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
-    it('should ignore/exclude comments from the song lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
+    it('should ignore/exclude comments from the song lyrics', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'simple.xml');
 
       testFile.dataAsString = testFile.dataAsString.replace(
         'how sweet the sound',
@@ -182,8 +182,8 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file 1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Amazing-Grace.xml');
+    it('should return a song for a OpenLyrics example file 1', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Amazing-Grace.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -226,8 +226,8 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file 2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'It-Is-Well-With-My-Soul.xml');
+    it('should return a song for a OpenLyrics example file 2', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'It-Is-Well-With-My-Soul.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -276,9 +276,9 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file 3 - a single songbook and multiple comments', async () => {
+    it('should return a song for a OpenLyrics example file 3 - a single songbook and multiple comments', () => {
       // const testFile: IRawDataFile = structuredClone(mockOpenLyrics.mockOpenLyricsSongFile3);
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'multiple-comments.xml');
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/examples', 'multiple-comments.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -300,8 +300,8 @@ describe('InputTypeOpenLyrics', () => {
       });
     });
 
-    it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Hava-Nagila.xml');
+    it('should return a song for a OpenLyrics example file with Hebrew lyrics and transliterated lyrics', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('OpenLyrics/songs', 'Hava-Nagila.xml');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({

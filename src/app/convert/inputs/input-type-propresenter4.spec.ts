@@ -16,48 +16,48 @@ describe('InputTypeProPresenter4', () => {
   });
 
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a ProPresenter 4 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+    it('should properly ACCEPT a ProPresenter 4 file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-empty.pro4');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly REJECT a ProPresenter 5 file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a ProPresenter 5 file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v5-empty.pro5');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a JSON file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a JSON file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('JSON', 'empty.json');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a plain text file', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a plain text file', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ChordPro file with a .cho extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a ChordPro file with a .cho extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ChordPro file with a .pro extension', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+    it('should properly REJECT a ChordPro file with a .pro extension', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
       testFile.ext = 'pro';
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 
   describe('extractSongData()', () => {
-    it('should get a TITLE from the file name when the file does not have a CCLISongTitle', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-Be-Near.pro4');
+    it('should get a TITLE from the file name when the file does not have a CCLISongTitle', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-Be-Near.pro4');
 
       testFile.dataAsString = testFile.dataAsString.replace('CCLISongTitle="Be Near" ', '');
       expect(inputConverter.extractSongData(testFile).title).toEqual(testFile.name);
     });
 
-    it('should get a song from a ProPresenter 4 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-Be-Near.pro4');
+    it('should get a song from a ProPresenter 4 file1', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-Be-Near.pro4');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -106,8 +106,8 @@ describe('InputTypeProPresenter4', () => {
       });
     });
 
-    it('should get a song from a ProPresenter 4 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-Give-Us-Clean-Hands.pro4');
+    it('should get a song from a ProPresenter 4 file2', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ProPresenter', 'v4-Give-Us-Clean-Hands.pro4');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({

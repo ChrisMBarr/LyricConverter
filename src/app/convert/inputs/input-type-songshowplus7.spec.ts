@@ -11,35 +11,31 @@ describe('InputTypeSongShowPlus7', () => {
     inputConverter = new InputTypeSongShowPlus7();
   });
 
-  it('should create an instance', () => {
-    expect(inputConverter).toBeTruthy();
-  });
-
   describe('doesInputFileMatchThisType()', () => {
-    it('should properly ACCEPT a SongShowPlus file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'empty.sbsong');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeTrue();
+    it('should properly ACCEPT a SongShowPlus file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'empty.sbsong');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(true);
     });
 
-    it('should properly REJECT a SongPro file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongPro', '_empty.sng');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a SongPro file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongPro', '_empty.sng');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a plain text file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a plain text file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('Plain-Text', 'empty.txt');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
 
-    it('should properly REJECT a ChordPro file when tested', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
-      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBeFalse();
+    it('should properly REJECT a ChordPro file when tested', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('ChordPro', 'simple.cho');
+      expect(inputConverter.doesInputFileMatchThisType(testFile)).toBe(false);
     });
   });
 
   describe('extractSongData()', () => {
-    it('should return a song for an ENGLISH SongShow Plus 7 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Be-Near.sbsong');
+    it('should return a song for an ENGLISH SongShow Plus 7 file1', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Be-Near.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -90,8 +86,8 @@ describe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for an ENGLISH SongShow Plus 7 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Give-Us-Clean-Hands.sbsong');
+    it('should return a song for an ENGLISH SongShow Plus 7 file2', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Give-Us-Clean-Hands.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -131,8 +127,8 @@ describe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for an ENGLISH SongShow Plus 7 file3', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Jesus-Saves.sbsong');
+    it('should return a song for an ENGLISH SongShow Plus 7 file3', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Jesus-Saves.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -193,8 +189,8 @@ describe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for an ENGLISH SongShow Plus 7 file4', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'You-Are.sbsong');
+    it('should return a song for an ENGLISH SongShow Plus 7 file4', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'You-Are.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -239,8 +235,8 @@ describe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for a SPANISH SongShow Plus 7 file1', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-Devuelveme-El-Gozo.sbsong');
+    it('should return a song for a SPANISH SongShow Plus 7 file1', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-Devuelveme-El-Gozo.sbsong');
 
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
       expect(normalizedSongData).toEqual({
@@ -269,10 +265,10 @@ describe('InputTypeSongShowPlus7', () => {
       });
     });
 
-    it('should return a song for a SPANISH SongShow Plus 7 file2', async () => {
-      const testFile = await TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-La-Sangre-(The-Blood).sbsong');
-
+    it('should return a song for a SPANISH SongShow Plus 7 file2', () => {
+      const testFile = TestUtils.loadTestFileAsRawDataFile('SongShowPlus', 'Spanish-La-Sangre-(The-Blood).sbsong');
       const normalizedSongData = TestUtils.normalizeSongTimestamp(inputConverter.extractSongData(testFile));
+
       expect(normalizedSongData).toEqual({
         originalFile: {
           extension: inputConverter.fileExt,

@@ -1,3 +1,7 @@
+import fs from 'fs';
+import mime from 'mime-types';
+import path from 'path';
+
 import { IRawDataFile } from '../src/app/convert/models/file.model';
 import { ISong } from '../src/app/convert/models/song.model';
 import { Utils } from '../src/app/convert/shared/utils';
@@ -31,8 +35,7 @@ export class TestUtils {
   }
 
   public static normalizeSongTimestamp(song: ISong): ISong {
-    song.timestamp = mockStaticTimestamp;
-    return song;
+    return { ...song, timestamp: mockStaticTimestamp };
   }
 
   public static normalizeDateAttribute(attrName: string, str: string): string {
@@ -64,40 +67,24 @@ export class TestUtils {
     return str.replace(/"(songId|Guid|)": "([a-z0-9-]+?)"/gi, `"$1": "fake-uuid-for-testing"`);
   }
 
-  public static async loadTestFileAsRawDataFile(
-    folderPath: string,
-    fileName: string,
-  ): Promise<IRawDataFile> {
-    if (folderPath.includes(' ')) {
-      throw new Error(
-        `The folder '${folderPath}' cannot contain any spaces due to a Karma limitation`,
-      );
-    } else if (fileName.includes(' ')) {
-      throw new Error(
-        `The file name '${fileName}' cannot contain any spaces due to a Karma limitation`,
-      );
-    }
-
-    const path = `/sample-files/${folderPath}/${fileName}`;
-    const response = await fetch(path);
-
-    console.log(response);
-
-    if (response.statusText !== 'OK') {
-      throw new Error(
-        `Test file at '${path}' could not be fetched! Is it included in the karma.conf.js files list?`,
-      );
-    }
-
+  public static loadTestFileAsRawDataFile(folderPath: string, fileName: string): IRawDataFile {
+    const filePath = path.resolve(__dirname, `test/sample-files/${folderPath}/${fileName}`);
+    const rawBuffer = fs.readFileSync(filePath);
+    const dataAsString = rawBuffer.toString('utf-8');
+    let mimeType = mime.lookup(filePath);
+    if (mimeType === false) mimeType = '';
     const fileNameParts = Utils.getFileNameParts(fileName);
-    const dataAsBuffer = await response.arrayBuffer();
 
     return {
       name: fileNameParts.name,
       ext: fileNameParts.ext,
-      type: response.type,
-      dataAsBuffer,
-      dataAsString: TestUtils.decoder.decode(dataAsBuffer),
+      type: mimeType,
+      //Ensure we get a fresh file buffer every time since Node might re-use the buffer if the same file gets read multiple times
+      dataAsBuffer: rawBuffer.buffer.slice(
+        rawBuffer.byteOffset,
+        rawBuffer.byteOffset + rawBuffer.byteLength,
+      ),
+      dataAsString,
     };
   }
 }

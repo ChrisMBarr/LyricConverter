@@ -2,14 +2,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
+    "composite": true,
     "outDir": "./out-tsc/spec",
-    "types": [
-      "jasmine"
-    ]
+    "types": ["node", "vitest/globals"]
   },
-  "include": [
-    "karma-polyfills.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
-  ]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

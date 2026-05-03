@@ -21,24 +21,12 @@
               "base": "dist/LyricConverter"
             },
             "index": "src/index.html",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "allowedCommonJsDependencies": [
-              "jszip",
-              "file-saver",
-              "fast-xml-parser",
-              "songpro"
-            ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "allowedCommonJsDependencies": ["jszip", "file-saver", "fast-xml-parser", "songpro"],
+            "assets": ["src/assets", "src/favicon.ico"],
+            "styles": ["src/styles.css"],
             "scripts": [],
             "browser": "src/main.ts",
             "server": "src/main.server.ts",
@@ -91,24 +79,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing", "karma-polyfills.ts"],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "css",
-            "assets": [
-              "src/assets",
-              "src/favicon.ico",
-              {
-                "glob": "**/*",
-                "input": "test/sample-files",
-                "output": "/sample-files"
-              }
-            ],
-            "styles": ["src/styles.css"],
-            "scripts": [],
-            "codeCoverageExclude": ["src/lib/**/*"],
-            "karmaConfig": "karma.conf.js"
+            "runnerConfig": "vitest.config.js"
           }
         },
         "lint": {
@@ -121,9 +94,7 @@
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ],
+    "schematicCollections": ["@angular-eslint/schematics"],
     "analytics": false
   },
   "schematics": {

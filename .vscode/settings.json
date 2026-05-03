@@ -1,33 +1,41 @@
 {
   "files.exclude": {
-      "**/.gitignore": true,
-      "**/.gitkeep": true,
-      ".angular": true,
-      ".editorconfig": true,
-      "coverage": true,
-      "design": true,
-      "dist": true,
-      "node_modules": true,
-    },
-    "files.associations": {
-      "*.sng": "chordpro",
-      "*.pro4": "xml",
-      "*.pro5": "xml",
-      "*.pro6": "xml",
-    },
-    "explorer.fileNesting.expand": false,
-    "explorer.fileNesting.patterns": {
-      "*.ts": "${capture}.spec.ts",
-      "tsconfig.json": "tsconfig.*.json",
-      "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb"
-    },
-    "typescript.preferences.importModuleSpecifier": "relative",
-    "files.watcherExclude": {
-      "**/.git/objects/**": true,
-      "**/.git/subtree-cache/**": true,
-      "**/.hg/store/**": true,
-      "**/.git/**": true,
-      "**/node_modules/**": true,
-      "**/.vscode/**": true
-    }
+    "**/.gitignore": true,
+    "**/.gitkeep": true,
+    ".angular": true,
+    ".editorconfig": true,
+    "coverage": true,
+    "design": true,
+    "dist": true,
+    "node_modules": true
+  },
+  "files.associations": {
+    "*.sng": "chordpro",
+    "*.pro4": "xml",
+    "*.pro5": "xml",
+    "*.pro6": "xml"
+  },
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.spec.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb"
+  },
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "**/.git/**": true,
+    "**/node_modules/**": true,
+    "**/.vscode/**": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

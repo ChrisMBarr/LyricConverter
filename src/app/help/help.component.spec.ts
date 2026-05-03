@@ -78,7 +78,7 @@ describe('HelpComponent', () => {
     ]);
   });
 
-  it('Should not have an item in the unsupported list that is actually supported', () => {
+  it('should not have an item in the unsupported list that is actually supported', () => {
     configureTestBed([ParserService]);
     fixture.detectChanges();
 
@@ -87,12 +87,8 @@ describe('HelpComponent', () => {
     const outputFormatNames = parserSvc.outputConverters.map((f) => f.name);
 
     unsupportedNames.forEach((n) => {
-      expect(inputFormatNames)
-        .withContext('A supported input format name was found in the list of unsupported formats! Remove this!')
-        .not.toContain(n);
-      expect(outputFormatNames)
-        .withContext('A supported output format name was found in the list of unsupported formats! Remove this!')
-        .not.toContain(n);
+      expect(inputFormatNames, 'A supported input format name was found in the list of unsupported formats! Remove this!').not.toContain(n);
+      expect(outputFormatNames, 'A supported output format name was found in the list of unsupported formats! Remove this!').not.toContain(n);
     });
   });
 });
